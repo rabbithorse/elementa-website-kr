@@ -11,5 +11,6 @@
     "types/**/*.d.ts",
     "components/**/*.vue",
     "pages/**/*.vue",
+    "env.d.ts", ".nuxt/nuxt.d.ts", "**/*"
   ]
 }
