@@ -1,0 +1,47 @@
+{
+  "name": "elementa",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "preview": "nuxt preview",
+    "generate": "nuxt generate",
+    "lint": "eslint \"**/*.{ts,tsx,vue,js}\" --fix",
+    "lint-eslint": "eslint --ignore-path .gitignore **/*{ts,tsx,vue,js,json} --fix",
+    "lint-prettier": "prettier --write \"**/*.(ts|tsx|vue|js|json)\"",
+    "tailwind:init": "tailwindcss init"
+  },
+  "dependencies": {
+    "@nuxt/image": "^1.11.0",
+    "@studio-freight/lenis": "^1.0.42",
+    "gsap": "^3.13.0"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-win32-x64-msvc": "^4.52.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "@nuxt/schema": "^4.2.0",
+    "@nuxt/types": "^2.18.1",
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@types/node": "^24.10.0",
+    "@typescript-eslint/eslint-plugin": "^8.46.2",
+    "@typescript-eslint/parser": "^8.46.2",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-nuxt": "^4.0.0",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-vue": "^10.5.1",
+    "globals": "^16.5.0",
+    "nuxt": "^3.17.7",
+    "postcss": "^8.4.47",
+    "prettier": "^3.6.2",
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.2",
+    "vite": "^6.3.1",
+    "vue-tsc": "^3.1.3"
+  }
+}
