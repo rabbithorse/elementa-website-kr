@@ -54,20 +54,23 @@
         targetY = ((relY - height / 2) / (height / 2)) * -moveForce;
         targetRotateY = ((relX / width) * rotateForce * 2) - rotateForce;
         targetRotateX = (((relY / height) * rotateForce * 2) - rotateForce);
-
-        console.log(targetX);
       })
 
       
 
       card.value.addEventListener("mouseleave", function(){
         animation = false;
-        card.value.removeEventListener("mouseleave",function(){
+        function removeStyle(){
           card.value.style.transition = 'transform 0.4s ease';
           card.value.style.transform = 'rotateX(0deg) rotateY(0deg) translate(0, 0)';
-        })
+
+          setTimeout(() => card.value.style.transition = '', 300);
+        }
+        card.value.addEventListener("mouseleave", removeStyle);
+        card.value.removeEventListener("mousemove", removeStyle);
         
-        setTimeout(() => card.value.style.transition = '', 600);
+        
+        console.log(card.value.style.transform);
       });
       
       animate();
@@ -82,15 +85,16 @@
 
 <style scoped>
   .card-wrap {
-    width: 300px; height: 200px;
+    width: 100%;
+    height: 100%;
   }
   .card-moving {
     position: absolute;
     top:50%; 
     left:50%;
-    width:300px; 
-    height:120px;
-    margin: -60px 0 0 -150px;
+    width: 100%;
+    height: 80%;
+    /* margin: -60px 0 0 -150px; */
     perspective: 800px;
   }
 
@@ -98,12 +102,9 @@
     position: absolute;
     width: 100%;
     height: 100%;
-
     padding: 10px;
     box-sizing: border-box;
-    border-radius: 20px 0 20px 0;
     cursor: pointer;
     transform-style: preserve-3d;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
   }
 </style>

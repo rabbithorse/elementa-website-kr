@@ -37,8 +37,8 @@
           </h2>
           <div class="flex flex-col mt-auto">
             <p class="text-white text-[2.3rem] font-normal mb-8">
-              Design the Future of Play, <br />
-              Create a Culture the World Shares
+              <TypographySecondary>Design the Future of Play,</TypographySecondary><br>
+              <TypographySecondary>Create a Culture the World Shares</TypographySecondary>
             </p>
             <div class="w-fit">
               <EffectGlass>
@@ -198,12 +198,62 @@
         </div>
 
       </Container>
-      <div class="primaryTrigger trigger1 h-full" ref="trigger1"></div> 
-      <div class="primaryTrigger trigger2 h-full" ref="trigger2"></div> 
-      <div class="primaryTrigger trigger3 h-full" ref="trigger3"></div> 
-    </section>
-    <section class="relative">
       
+    </section>
+    <section class="h-full accordion-section" ref="accordionSection">
+      <div class="accordion-list flex">
+        <BlocksAccordion>
+          <template #accordionTitle>
+            <span>01</span>
+            <h3>SILVER PALACE</h3>
+          </template>
+          <template #accordionContent>
+            <div class="title-img">
+              <img src="~assets/images/main/text-game-silverpalace.svg" alt="">
+            </div>
+            <p class="subtitle">
+              사건의 진위, <br>
+              무대의 서막
+            </p>
+            <div class="content-detail">
+              <p>
+                펠리아나 3년, 다시 실버니아로 돌아온 탐정. <br>
+                그리고 현실과 우화가 뒤섞이고, 번영과 몰락의 경계에 <br>
+                서 있는 실버니아.
+              </p>
+              <p>
+                사교와 조사, 판단 그리고 전투, 당신이 그 총알 한 발의 <br>
+                진실을 찾아낸다면, 자신은 물론, 모든 이들의 운명까지 <br>
+                결정짓게 될 것이다.
+              </p>
+            </div>
+          </template>
+        </BlocksAccordion>
+        <BlocksAccordion class="locked">
+          <template #accordionTitle >
+            <span class="locked-title-icon">
+            </span>
+            <span class="locked-title-text">
+              
+            </span>
+          </template>
+          <template #accordionContent></template>
+        </BlocksAccordion>
+        <BlocksAccordion class="locked">
+          <template #accordionTitle >
+            <span class="locked-title-icon"></span>
+            <span class="locked-title-text"></span>
+          </template>
+          <template #accordionContent></template>
+        </BlocksAccordion>
+        <BlocksAccordion class="locked">
+          <template #accordionTitle>
+            <span class="locked-title-icon"></span>
+            <span class="locked-title-text"></span>
+          </template>
+          <template #accordionContent></template>
+        </BlocksAccordion>
+      </div>
     </section>
     <section></section>
     <section class="newsroom-section">
@@ -223,15 +273,85 @@
         <div class="section-content">
           <div class="card-grid">
             <div class="card-list flex flex-wrap gap-8 justify-center py-20 flow-left">
-              <div class="card" v-for="news in newsPosts" :key="news.title">
+              <div class="card w-[28rem]" >
                 <EffectCardHover>
-                  <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+                  <div class="flex flex-col w-full h-full items-center justify-center">
                     <div class="card-img">
-                      <img :src="news.src" alt="">
+                      <img src="~assets/images/main/newsroom-thumb01.png" alt="">
                     </div>
                     <div class="card-content">
-                      <div class="card-title">
-                        {{ news.title }}
+                      <div class="card-title text-white">
+                        '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
+                      </div>
+                    </div>
+                  </div>
+                </EffectCardHover>
+              </div>
+              <div class="card w-[28rem]" >
+                <EffectCardHover>
+                  <div class="flex flex-col w-full h-full items-center justify-center">
+                    <div class="card-img">
+                      <img src="~assets/images/main/newsroom-thumb02.png" alt="">
+                    </div>
+                    <div class="card-content">
+                      <div class="card-title text-white">
+                        UE5로 만든 싱가포르 서브컬처 기대작, 실버 팰리스 공개
+                      </div>
+                    </div>
+                  </div>
+                </EffectCardHover>
+              </div>
+              <div class="card w-[28rem]" >
+                <EffectCardHover>
+                  <div class="flex flex-col w-full h-full items-center justify-center">
+                    <div class="card-img">
+                      <img src="~assets/images/main/newsroom-thumb03.png" alt="">
+                    </div>
+                    <div class="card-content">
+                      <div class="card-title text-white">
+                        엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 게임...
+                      </div>
+                    </div>
+                  </div>
+                </EffectCardHover>
+              </div>
+              <div class="card w-[28rem]" >
+                <EffectCardHover>
+                  <div class="flex flex-col w-full h-full items-center justify-center">
+                    <div class="card-img">
+                      <img src="~assets/images/main/newsroom-thumb04.png" alt="">
+                    </div>
+                    <div class="card-content">
+                      <div class="card-title text-white">
+                        엘리멘타, 신작 실버 팰리스 첫 공개
+                      </div>
+                    </div>
+                  </div>
+                </EffectCardHover>
+              </div>
+              <div class="card w-[28rem]" >
+                <EffectCardHover>
+                  <div class="flex flex-col w-full h-full items-center justify-center">
+                    <div class="card-img">
+                      <img src="~assets/images/main/newsroom-thumb05.png" alt="">
+                    </div>
+                    <div class="card-content">
+                      <div class="card-title text-white">
+                        엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 공개…글로벌 시장 공략
+                      </div>
+                    </div>
+                  </div>
+                </EffectCardHover>
+              </div>
+              <div class="card w-[28rem]" >
+                <EffectCardHover>
+                  <div class="flex flex-col w-full h-full items-center justify-center">
+                    <div class="card-img">
+                      <img src="~assets/images/main/newsroom-thumb06.png" alt="">
+                    </div>
+                    <div class="card-content">
+                      <div class="card-title text-white">
+                        '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
                       </div>
                     </div>
                   </div>
@@ -239,7 +359,7 @@
               </div>
             </div>
             <div class="card-list flex flex-wrap gap-8 justify-center py-20 flow-right">
-              <div class="card" v-for="news in newsPosts" :key="news.title">
+              <div class="card">
                 
               </div>
             </div>
@@ -277,16 +397,6 @@
 
 <script setup>
 import Container from '~/components/Container.vue';
-import { useNuxtApp } from '#app'
-
-const newsPosts = [
-      { title: "'실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'", src: "~/assets/images/main/newsroom-thumb01.png" },
-      { title: "UE5로 만든 싱가포르 서브컬처 기대작, 실버 팰리스 공개", src: "~/assets/images/main/newsroom-thumb02.png" },
-      { title: "엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 게임...", src: "~/assets/images/main/newsroom-thumb03.png" },
-      { title: "엘리멘타, 신작 실버 팰리스 첫 공개", src: "~/assets/images/main/newsroom-thumb04.png" },
-      { title: "엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 공개…글로벌 시장 공략", src: "~/assets/images/main/newsroom-thumb05.png" },
-      { title: "'실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'", src: "~/assets/images/main/newsroom-thumb06.png" },
-    ]
 
 
 const { $gsap, $ScrollTrigger } = useNuxtApp()
@@ -369,6 +479,18 @@ onMounted(() => {
       trigger: videoWrapLayer.value,
       start: () => "+=" + window.innerHeight,
       end: () => "+=" + window.innerHeight,
+      scrub: 1,
+    }
+  })
+  .fromTo(missionSection.value, {
+    position: 'relative',
+  },{
+    position: 'absolute',
+    ease: 'none',
+    scrollTrigger: {
+      trigger: videoWrapLayer.value,
+      start: () => "+=" + (window.innerHeight * 1.5),
+      end: () => "+=" + (window.innerHeight / 2),
       scrub: 1,
     }
   })
