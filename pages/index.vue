@@ -9,7 +9,7 @@
       <Container class="h-full">
         <!-- 첫번째 애니메이션 -->
         <div class="section-text flex flex-col h-full pb-[6.25rem]" ref="visualTitle">
-          <h2 class="text-[17rem] leading-1 font-bold text-white pt-[6.25rem]">
+          <h2 class="text-[17rem] leading-1 font-bold text-white pt-[6.25rem]" >
             <TypographyPrimary>
               E
             </TypographyPrimary>
@@ -67,98 +67,210 @@
         </div>
 
         <!-- 두번째 애니메이션 -->
-        <div>
-          <h2 class="text-[17rem] leading-1 font-bold text-white pt-[6.25rem]">
-            <div>
-              <span>
-                <TypographyPrimary>
-                W
-                </TypographyPrimary>
-                <TypographyPrimary>
-                E
-                </TypographyPrimary>
-              </span>
-              <span>
-                <TypographyPrimary>
-                C
-                </TypographyPrimary>
-                <TypographyPrimary>
-                R
-                </TypographyPrimary>
-                <TypographyPrimary>
-                E
-                </TypographyPrimary>
-                <TypographyPrimary>
-                A
-                </TypographyPrimary>
-                <TypographyPrimary>
-                T
-                </TypographyPrimary>
-                <TypographyPrimary>
-                E
-                </TypographyPrimary>
-              </span>
-            </div>
-            <div>
-              <span>
-                <TypographyPrimary>
-                N
-                </TypographyPrimary>
-                <TypographyPrimary>
-                E
-                </TypographyPrimary>
-                <TypographyPrimary>
-                W
-                </TypographyPrimary>
-              </span>
-              <span>
-                <TypographyPrimary>
-                P
-                </TypographyPrimary>
-                <TypographyPrimary>
-                A
-                </TypographyPrimary>
-                <TypographyPrimary>
-                R
-                </TypographyPrimary>
-                <TypographyPrimary>
-                A
-                </TypographyPrimary>
-                <TypographyPrimary>
-                D
-                </TypographyPrimary>
-                <TypographyPrimary>
-                I
-                </TypographyPrimary>
-                <TypographyPrimary>
-                G
-                </TypographyPrimary>
-                <TypographyPrimary>
-                M
-                </TypographyPrimary>
-              </span>
-            </div>
-
-          </h2>
+        <div class="mission-section flex flex-col justify-center items-center" ref="missionSection">
+          <div class="text-wrap">
+            <h2 class="text-[17rem] leading-1 font-bold text-white pt-[6.25rem]">
+              <div ref="weCreate" class="" >
+                <span>
+                  <TypographyPrimary>
+                  W
+                  </TypographyPrimary>
+                  <TypographyPrimary>
+                  E
+                  </TypographyPrimary>
+                </span>
+                <span>
+                  <TypographyPrimary>
+                  C
+                  </TypographyPrimary>
+                  <TypographyPrimary>
+                  R
+                  </TypographyPrimary>
+                  <TypographyPrimary>
+                  E
+                  </TypographyPrimary>
+                  <TypographyPrimary>
+                  A
+                  </TypographyPrimary>
+                  <TypographyPrimary>
+                  T
+                  </TypographyPrimary>
+                  <TypographyPrimary>
+                  E
+                  </TypographyPrimary>
+                </span>
+              </div>
+              <div ref="newParadigm" class="" >
+                <span>
+                  <TypographyPrimaryBoth>
+                  N
+                  </TypographyPrimaryBoth>
+                  <TypographyPrimaryBoth>
+                  E
+                  </TypographyPrimaryBoth>
+                  <TypographyPrimaryBoth>
+                  W
+                  </TypographyPrimaryBoth>
+                </span>
+                <span>
+                  <TypographyPrimaryBoth>
+                  P
+                  </TypographyPrimaryBoth>
+                  <TypographyPrimaryBoth>
+                  A
+                  </TypographyPrimaryBoth>
+                  <TypographyPrimaryBoth>
+                  R
+                  </TypographyPrimaryBoth>
+                  <TypographyPrimaryBoth>
+                  A
+                  </TypographyPrimaryBoth>
+                  <TypographyPrimaryBoth>
+                  D
+                  </TypographyPrimaryBoth>
+                  <TypographyPrimaryBoth>
+                  I
+                  </TypographyPrimaryBoth>
+                  <TypographyPrimaryBoth>
+                  G
+                  </TypographyPrimaryBoth>
+                  <TypographyPrimaryBoth>
+                  M
+                  </TypographyPrimaryBoth>
+                </span>
+              </div>
+              <div ref="lastingImpact" class="" >
+                <span>
+                  <TypographyPrimary>
+                  L
+                  </TypographyPrimary>
+                  <TypographyPrimary>
+                  A
+                  </TypographyPrimary>
+                  <TypographyPrimary>
+                  S
+                  </TypographyPrimary>
+                  <TypographyPrimary>
+                  T
+                  </TypographyPrimary>
+                  <TypographyPrimary>
+                  I
+                  </TypographyPrimary>
+                  <TypographyPrimary>
+                  N
+                  </TypographyPrimary>
+                  <TypographyPrimary>
+                  G
+                  </TypographyPrimary>
+                </span>
+                <span>
+                  <TypographyPrimary>
+                  I
+                  </TypographyPrimary>
+                  <TypographyPrimary>
+                  M
+                  </TypographyPrimary>
+                  <TypographyPrimary>
+                  P
+                  </TypographyPrimary>
+                  <TypographyPrimary>
+                  A
+                  </TypographyPrimary>
+                  <TypographyPrimary>
+                  C
+                  </TypographyPrimary>
+                  <TypographyPrimary>
+                  T
+                  </TypographyPrimary>
+                </span>
+              </div>
+            </h2>
+          </div>
+          <div class="box-wrap">
+            <EffectGlass>
+              <span class="sectionTitle-eng">Our Mission</span>
+              <div class="text-content gap-x-7 py-[0.9rem]">
+                <p>혁신적 경험으로 게임의 기준을 새롭게 쓰고, 협력과 도전으로 문화를 확장하며, 전 세계가 공감할 지속 가능한 감동을 만드는 문화·패러다임의 선도자로 성장하겠습니다.</p>
+              </div>
+              <button type="button">View more</button>
+            </EffectGlass>
+          </div>
         </div>
 
       </Container>
-        
+      <div class="primaryTrigger trigger1 h-full" ref="trigger1"></div> 
+      <div class="primaryTrigger trigger2 h-full" ref="trigger2"></div> 
+      <div class="primaryTrigger trigger3 h-full" ref="trigger3"></div> 
     </section>
     <section class="relative">
-      <Container>
-        <div class="card-list flex flex-wrap gap-8 justify-center py-20">
-          <EffectCardHover v-for="n in 6" :key="n">
-            <div class="w-[300px] h-[400px] bg-gray-200 flex items-center justify-center">
-              <h3 class="text-2xl font-bold">Card {{ n }}</h3>
-            </div>
-          </EffectCardHover>
-        </div>
-      </Container>
+      
     </section>
     <section></section>
-    <section>
-    
+    <section class="newsroom-section">
+      <Container>
+        <div class="section-heading">
+          <div class="heading-text">
+            <span class="sectionTitle-eng">NEWSROOM</span>
+            <h6>
+              ELEMENTA의 가장 최신 뉴스를 알아보세요. <br>
+              New Paradigm, Lasting Impact
+            </h6>
+          </div>
+          <div class="heading-button">
+            <a href="">View more</a>
+          </div>
+        </div>
+        <div class="section-content">
+          <div class="card-grid">
+            <div class="card-list flex flex-wrap gap-8 justify-center py-20 flow-left">
+              <div class="card" v-for="news in newsPosts" :key="news.title">
+                <EffectCardHover>
+                  <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+                    <div class="card-img">
+                      <img :src="news.src" alt="">
+                    </div>
+                    <div class="card-content">
+                      <div class="card-title">
+                        {{ news.title }}
+                      </div>
+                    </div>
+                  </div>
+                </EffectCardHover>
+              </div>
+            </div>
+            <div class="card-list flex flex-wrap gap-8 justify-center py-20 flow-right">
+              <div class="card" v-for="news in newsPosts" :key="news.title">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </Container>
+    </section>
+    <section class="careers-section">
+      <Container>
+        <div class="section-heading">
+          <div class="heading-text">
+            <span class="sectionTitle-eng">CAREERS</span>
+            <h6>
+              ELEMENTA와 함께 성장할 동료를 기다립니다. <br>
+              Design the Future of Play, Create a Culture the World Shares 
+            </h6>
+          </div>
+          <div class="heading-button">
+            <a href="">View more</a>
+          </div>
+        </div>
+        <div class="section-content">
+          <div class="card-grid">
+            <div class="card-list flex flex-wrap gap-8 justify-center py-20 flow-left">
+              
+            </div>
+          </div>
+        </div>
+        
+      </Container>
     </section>
   </div>
 </template>
@@ -167,6 +279,15 @@
 import Container from '~/components/Container.vue';
 import { useNuxtApp } from '#app'
 
+const newsPosts = [
+      { title: "'실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'", src: "~/assets/images/main/newsroom-thumb01.png" },
+      { title: "UE5로 만든 싱가포르 서브컬처 기대작, 실버 팰리스 공개", src: "~/assets/images/main/newsroom-thumb02.png" },
+      { title: "엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 게임...", src: "~/assets/images/main/newsroom-thumb03.png" },
+      { title: "엘리멘타, 신작 실버 팰리스 첫 공개", src: "~/assets/images/main/newsroom-thumb04.png" },
+      { title: "엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 공개…글로벌 시장 공략", src: "~/assets/images/main/newsroom-thumb05.png" },
+      { title: "'실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'", src: "~/assets/images/main/newsroom-thumb06.png" },
+    ]
+
 
 const { $gsap, $ScrollTrigger } = useNuxtApp()
 const videoWrap = ref(null)
@@ -174,6 +295,11 @@ const videoWrapLayer = ref(null)
 const visualSection = ref(null)
 const videoSubWrap = ref(null)
 const visualTitle = ref(null)
+const missionSection = ref(null)
+const weCreate = ref(null)
+const newParadigm = ref(null)
+const lastingImpact = ref(null)
+
 
 onMounted(() => {
   const tl = $gsap.timeline({
@@ -181,7 +307,7 @@ onMounted(() => {
       trigger: visualSection.value,
       start: "top top",
       pin: true, 
-      end: () => "+=" + (window.innerHeight * 5),
+      end: () => "+=" + (window.innerHeight * 7),
     }
   });
   tl.fromTo(videoWrap.value, {
@@ -197,6 +323,7 @@ onMounted(() => {
         start: 'top top',
         end: () => "+=" + window.innerHeight,
         scrub: 1,
+        
       },
     }
   )
@@ -245,6 +372,54 @@ onMounted(() => {
       scrub: 1,
     }
   })
+  .fromTo(weCreate.value, {
+    opacity: 0,
+    visibility: 'hidden',
+  },{
+    opacity: 1,
+    visibility: 'visible',
+    ease: 'none',
+    scrollTrigger: {
+      trigger: videoWrapLayer.value,
+      start: () => "+=" + (window.innerHeight * 2.5),
+      end: () => "+=" + (window.innerHeight / 2),
+      scrub: 1,
+    }
+  })
+  .fromTo(newParadigm.value, {
+    opacity: 0,
+    visibility: 'hidden',
+  },{
+    opacity: 1,
+    visibility: 'visible',
+    ease: 'none',
+    scrollTrigger: {
+      trigger: videoWrapLayer.value,
+      start: () => "+=" + (window.innerHeight * 2.5),
+      end: () => "+=" + (window.innerHeight / 2),
+      scrub: 1,
+    }
+  })
+  .fromTo(lastingImpact.value, {
+    opacity: 0,
+    visibility: 'hidden',
+  },{
+    opacity: 1,
+    visibility: 'visible',
+    ease: 'none',
+    scrollTrigger: {
+      trigger: videoWrapLayer.value,
+      start: () => "+=" + (window.innerHeight * 3),
+      end: () => "+=" + (window.innerHeight / 2),
+      scrub: 1,
+    }
+  })
+
+  
+  //const primaryAni = $gsap.timeline();
+  
+
+  
 })
 
 const nodeVersion = process.version
@@ -303,6 +478,11 @@ h2 {
   position: absolute;
   top: 5rem;
   clip-path: polygon(91% 0%, 100% 0%, 100% 100%, 71% 100%);
+}
+
+.mission-section {
+  width: 100svw; 
+  height: 100svh;
 }
   
 </style>

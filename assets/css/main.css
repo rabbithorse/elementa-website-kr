@@ -3,3 +3,8 @@ body {background: #05060B; font-family: 'Paperlogy', sans-serif;}
 
 #header {}
 #nuxt-devtools-container {display: none;}
+.container {position: relative;}
+
+/* 폰트 */
+.section-text {position: absolute; width: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.primaryWrap {position: relative; }
