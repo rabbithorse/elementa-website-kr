@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- /NavigationHeader /> -->
+    <NavigationHeader />
 
     <main class="sub">
       <slot ></slot>
