@@ -27,6 +27,7 @@
   box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
   position: relative;
+  height: 100%;
 }
 
 .glass-filter,
@@ -40,8 +41,8 @@
 .glass-filter {
   z-index: 0;
   inset: 0;
-  backdrop-filter: blur(8px);
-  filter: url(#glass-distortion) saturate(120%) brightness(1.12);
+  backdrop-filter: blur(6px);
+  filter: url(#glass-distortion) saturate(120%) brightness(1.1);
   isolation: isolate;
 }
 
@@ -64,6 +65,7 @@
 
 .glass-content {
   position: relative;
+  height: 100%;
   /* z-index: 3;/ */
 }
 </style>

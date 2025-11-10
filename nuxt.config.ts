@@ -11,9 +11,9 @@ export default defineNuxtConfig({
   ssr: true,
   app: {
     head: {
-      title: 'Elementa 3.10 App',
+      title: 'Elementa',
       meta: [
-        { name: 'description', content: 'Elementa 3.10 stable project' }
+        { name: 'description', content: 'Elementa' }
       ]
     }
   },

@@ -9,12 +9,100 @@ body {background: #05060B; font-family: 'Paperlogy', sans-serif;}
 .section-text {position: absolute; width: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%); }
 .primaryWrap {position: relative; }
 
-.locked {width: 6.8rem;}
+h2 {
+  font-family: "Oswald";
+}
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: 0.15;
+}
+
+.bg-video-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  z-index: -1;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.bg-video__content {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  
+}
+
+.video-layer--main {
+  position: absolute;
+  top: 5rem;
+  clip-path: polygon(60% 0%, 90% 0%, 70% 100%, 40% 100%);
+}
+
+.video-layer-sub {
+  position: absolute;
+  top: 5rem;
+  clip-path: polygon(91% 0%, 100% 0%, 100% 100%, 71% 100%);
+}
+
+section {position: relative; height: 100vh;}
+
+.mission-section {
+  width: 100svw; 
+  height: 100svh;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.accordion-item:first-child {flex: 1;}
+.accordion-item button {display: flex; flex-direction: column; row-gap: 3.125rem; padding: 6.25rem 2.5rem;}
+.accordion-item button h3 {writing-mode: vertical-lr; transform: rotate(180deg);}
+.accordion-item.locked button {padding: 6.25rem 1rem;}
+.locked {width: 6.8rem; flex-shrink: 0;}
+.locked .accordion-trigger {width: 100%;}
 .locked button {display: flex; flex-direction: column; align-items: center; row-gap: 2rem;}
 .locked-title-icon {display: inline-block; width: 28px; height: 42px; background: url("~/assets/images/main/icon-lock.svg") no-repeat center/contain; vertical-align: middle; }
 .locked-title-text {display: inline-block; width: 79px; height: 230px; background: url("~/assets/images/main/text-lock.png") no-repeat center/contain; vertical-align: middle; flex-shrink: 0;}
+.accordion-item .content-bg {z-index: -1;}
+.accordion-item .content-text {}
+.accordion-item .content-text * {color: #fff;}
+.accordion-item.opened .accordion-content {width: 100%;}
+
+.slider-img {clip-path: polygon(7% 0, 100% 0%, 92% 100%, 0% 100%); max-width: 0; overflow: hidden;}
+.slider-img img {max-width: unset;}
 .newsroom-section .container {overflow: visible;}
-.newsroom-section .card {height: 20rem;}
+.newsroom-section .card {height: 20rem; flex-shrink: 0; } 
 .newsroom-section .card-moving {margin: -14rem 0 0 -10rem;}
-.newsroom-section .card-img {height: 15rem;}
+.newsroom-section .card-img {height: 16rem; overflow: hidden;}
 .newsroom-section .card-img img {object-fit: cover; min-height: 100%; min-width: 100%;}
+.newsroom-section .card-grid {display: grid; grid-template-rows: repeat(2, 1fr); width: 100%; max-width: 80em; margin: 0 auto; position: relative;}
+.newsroom-section .card-list {display: flex; flex-direction: row;}
+
+@supports (animation-timeline: scroll()) {
+  .newsroom-section .card-grid {}
+  .newsroom-section .row-reverse {flex-direction: row-reverse;}
+
+  @keyframes adjust-position {
+    from {
+      transform: translateX(calc(-100% + 100vw));
+    }
+    to {
+      transform: translateX(calc(100% - 100vw));
+    }
+  }
+
+  .newsroom-section .row-reverse {
+    animation: adjust-position linear forwards;
+    animation-timeline: scroll(root block);
+  }
+}

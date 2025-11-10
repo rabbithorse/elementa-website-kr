@@ -4,8 +4,9 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lenis from '@studio-freight/lenis'
 
+gsap.registerPlugin(ScrollTrigger)
+
 export default defineNuxtPlugin((nuxtApp) => {
-  gsap.registerPlugin(ScrollTrigger)
 
   // Lenis 초기화
   const lenis = new Lenis({
@@ -22,6 +23,6 @@ export default defineNuxtPlugin((nuxtApp) => {
   requestAnimationFrame(raf)
 
   nuxtApp.provide('gsap', gsap)
-  nuxtApp.provide("ScrollTrigger", ScrollTrigger)
+  nuxtApp.provide('ScrollTrigger', ScrollTrigger)
   nuxtApp.provide('lenis', lenis)
 })
