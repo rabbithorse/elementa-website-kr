@@ -36,8 +36,8 @@
             </TypographyPrimary>
           </h2>
           <div class="flex flex-col mt-auto">
-            <p class="text-white text-[2.3rem] font-normal mb-8">
-              <TypographySecondary>Design the Future of Play,</TypographySecondary><br>
+            <p class="text-white text-[2.3rem] font-normal mb-8 flex flex-col">
+              <TypographySecondary>Design the Future of Play,</TypographySecondary>
               <TypographySecondary>Create a Culture the World Shares</TypographySecondary>
             </p>
             <div class="w-fit">
@@ -200,32 +200,47 @@
       </Container>
       
     </section>
-    <section class="h-full accordion-section" ref="accordionSection">
-      <div class="accordion-list flex">
-        <BlocksAccordion>
-          <template #accordionTitle>
-            <span>01</span>
-            <h3>SILVER PALACE</h3>
+    <section class="accordion-section" ref="accordionSection">
+      <div class="accordion-list flex h-full w-full">
+        <BlocksAccordion class="silver-palace opened" background>
+          <template #accordionTitle class="accordion-title">
+            <span class="text-white">01</span>
+            <h3 class="text-white">SILVER PALACE</h3>
           </template>
           <template #accordionContent>
-            <div class="title-img">
-              <img src="~assets/images/main/text-game-silverpalace.svg" alt="">
+            <div class="content-bg absolute left-0 top-0 w-full h-full overflow-hidden">
+              <video autoplay muted loop class="w-full h-full object-cover">
+                <source src="~/assets/videos/main-game-silverpalace.mp4" type="video/mp4">
+              </video>
             </div>
-            <p class="subtitle">
-              사건의 진위, <br>
-              무대의 서막
-            </p>
-            <div class="content-detail">
-              <p>
-                펠리아나 3년, 다시 실버니아로 돌아온 탐정. <br>
-                그리고 현실과 우화가 뒤섞이고, 번영과 몰락의 경계에 <br>
-                서 있는 실버니아.
-              </p>
-              <p>
-                사교와 조사, 판단 그리고 전투, 당신이 그 총알 한 발의 <br>
-                진실을 찾아낸다면, 자신은 물론, 모든 이들의 운명까지 <br>
-                결정짓게 될 것이다.
-              </p>
+
+            <div class="content-text w-fit h-full ml-auto ">
+              <EffectGlass class="h-full">
+                <div class="flex flex-col justify-end gap-y-[3.125rem] pb-[5.625rem] px-8 h-full">
+                  <div class="content-title title-img">
+                    <img src="~assets/images/main/text-game-silverpalace.svg" alt="icon" />
+                  </div>
+                  <div class="content-detail flex flex-col gap-y-6 ">
+                    <p class="subtitle text-[1.625rem] font-semibold leading-[2rem]">
+                      사건의 진위, <br>
+                      무대의 서막
+                    </p>
+                    <p class="text-[1.125rem] leading-7">
+                      펠리아나 3년, 다시 실버니아로 돌아온 탐정. <br>
+                      그리고 현실과 우화가 뒤섞이고, 번영과 몰락의 경계에 <br>
+                      서 있는 실버니아.
+                    </p>
+                    <p>
+                      사교와 조사, 판단 그리고 전투, 당신이 그 총알 한 발의 <br>
+                      진실을 찾아낸다면, 자신은 물론, 모든 이들의 운명까지 <br>
+                      결정짓게 될 것이다.
+                    </p>
+                  </div>
+                  <div class="content-button">
+                    <a href="" class="butn">View more</a>
+                  </div>
+                </div>
+              </EffectGlass>
             </div>
           </template>
         </BlocksAccordion>
@@ -255,24 +270,80 @@
         </BlocksAccordion>
       </div>
     </section>
-    <section></section>
+    <section class="h-auto" ref="elementaKoreaSection">
+      <div class="slider-wrap">
+        <div class="slider-text">
+          <h2 class="flex items-center justify-center gap-x-8 text-[17rem] leading-1 font-bold text-white pt-[6.25rem]" ref="elementaKorea">
+            <span class="leading-[100%] text-[#9FAEB5] font-[15rem] tracking-[-0.3rem]">
+              ELEMENTA
+            </span>
+            <div class="slider-img flex items-center justify-center mt-3" ref="sliderImg">
+              <img src="~assets/images/main/elementakorea-center-img.png" alt="" class="block">
+            </div>
+            <span class="leading-[100%] text-[#9FAEB5] font-[15rem] tracking-[-0.3rem]">
+              KOREA
+            </span>
+          </h2>
+        </div>
+        
+      </div>
+    </section>
+    <section class="wetheworld-section" ref="wetheworldSection">
+      <h2 class="text-[17rem] leading-1 font-bold text-white pt-[6.25rem]" ref="wetheworld">
+        <span>
+          <TypographyPrimary>
+            W
+          </TypographyPrimary>
+          <TypographyPrimary>
+            E
+          </TypographyPrimary>
+        </span>
+        <div class="text-spacer"></div>
+        <span>
+          <TypographyPrimary>
+              T
+            </TypographyPrimary>
+            <TypographyPrimary>
+              H
+            </TypographyPrimary>
+            <TypographyPrimary>
+              E
+            </TypographyPrimary>
+            <TypographyPrimary>
+              W
+            </TypographyPrimary>
+            <TypographyPrimary>
+              O
+            </TypographyPrimary>
+            <TypographyPrimary>
+              R
+            </TypographyPrimary>
+            <TypographyPrimary>
+              L
+            </TypographyPrimary>
+            <TypographyPrimary>
+              D
+            </TypographyPrimary>
+        </span>
+      </h2>
+    </section>
     <section class="newsroom-section">
       <Container>
         <div class="section-heading">
           <div class="heading-text">
             <span class="sectionTitle-eng">NEWSROOM</span>
-            <h6>
-              ELEMENTA의 가장 최신 뉴스를 알아보세요. <br>
-              New Paradigm, Lasting Impact
+            <h6 class="text-white">
+              <TypographySecondary>ELEMENTA의 가장 최신 뉴스를 알아보세요. </TypographySecondary> <br />
+              <TypographySecondary>New Paradigm, Lasting Impact</TypographySecondary>
             </h6>
-          </div>
+          </div> 
           <div class="heading-button">
             <a href="">View more</a>
           </div>
         </div>
         <div class="section-content">
           <div class="card-grid">
-            <div class="card-list flex flex-wrap gap-8 justify-center py-20 flow-left">
+            <div class="card-list flex gap-8 justify-center py-20 flow-left">
               <div class="card w-[28rem]" >
                 <EffectCardHover>
                   <div class="flex flex-col w-full h-full items-center justify-center">
@@ -358,9 +429,90 @@
                 </EffectCardHover>
               </div>
             </div>
-            <div class="card-list flex flex-wrap gap-8 justify-center py-20 flow-right">
-              <div class="card">
-                
+            <div class="card-list flex gap-8 justify-center py-20 flow-left rows-reverse">
+              <div class="card w-[28rem]" >
+                <EffectCardHover>
+                  <div class="flex flex-col w-full h-full items-center justify-center">
+                    <div class="card-img">
+                      <img src="~assets/images/main/newsroom-thumb01.png" alt="">
+                    </div>
+                    <div class="card-content">
+                      <div class="card-title text-white">
+                        '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
+                      </div>
+                    </div>
+                  </div>
+                </EffectCardHover>
+              </div>
+              <div class="card w-[28rem]" >
+                <EffectCardHover>
+                  <div class="flex flex-col w-full h-full items-center justify-center">
+                    <div class="card-img">
+                      <img src="~assets/images/main/newsroom-thumb02.png" alt="">
+                    </div>
+                    <div class="card-content">
+                      <div class="card-title text-white">
+                        UE5로 만든 싱가포르 서브컬처 기대작, 실버 팰리스 공개
+                      </div>
+                    </div>
+                  </div>
+                </EffectCardHover>
+              </div>
+              <div class="card w-[28rem]" >
+                <EffectCardHover>
+                  <div class="flex flex-col w-full h-full items-center justify-center">
+                    <div class="card-img">
+                      <img src="~assets/images/main/newsroom-thumb03.png" alt="">
+                    </div>
+                    <div class="card-content">
+                      <div class="card-title text-white">
+                        엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 게임...
+                      </div>
+                    </div>
+                  </div>
+                </EffectCardHover>
+              </div>
+              <div class="card w-[28rem]" >
+                <EffectCardHover>
+                  <div class="flex flex-col w-full h-full items-center justify-center">
+                    <div class="card-img">
+                      <img src="~assets/images/main/newsroom-thumb04.png" alt="">
+                    </div>
+                    <div class="card-content">
+                      <div class="card-title text-white">
+                        엘리멘타, 신작 실버 팰리스 첫 공개
+                      </div>
+                    </div>
+                  </div>
+                </EffectCardHover>
+              </div>
+              <div class="card w-[28rem]" >
+                <EffectCardHover>
+                  <div class="flex flex-col w-full h-full items-center justify-center">
+                    <div class="card-img">
+                      <img src="~assets/images/main/newsroom-thumb05.png" alt="">
+                    </div>
+                    <div class="card-content">
+                      <div class="card-title text-white">
+                        엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 공개…글로벌 시장 공략
+                      </div>
+                    </div>
+                  </div>
+                </EffectCardHover>
+              </div>
+              <div class="card w-[28rem]" >
+                <EffectCardHover>
+                  <div class="flex flex-col w-full h-full items-center justify-center">
+                    <div class="card-img">
+                      <img src="~assets/images/main/newsroom-thumb06.png" alt="">
+                    </div>
+                    <div class="card-content">
+                      <div class="card-title text-white">
+                        '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
+                      </div>
+                    </div>
+                  </div>
+                </EffectCardHover>
               </div>
             </div>
           </div>
@@ -398,7 +550,6 @@
 <script setup>
 import Container from '~/components/Container.vue';
 
-
 const { $gsap, $ScrollTrigger } = useNuxtApp()
 const videoWrap = ref(null)
 const videoWrapLayer = ref(null)
@@ -409,6 +560,8 @@ const missionSection = ref(null)
 const weCreate = ref(null)
 const newParadigm = ref(null)
 const lastingImpact = ref(null)
+const elementaKoreaSection = ref(null)
+const sliderImg = ref(null)
 
 
 onMounted(() => {
@@ -417,7 +570,7 @@ onMounted(() => {
       trigger: visualSection.value,
       start: "top top",
       pin: true, 
-      end: () => "+=" + (window.innerHeight * 7),
+      end: () => "+=" + (window.innerHeight * 5),
     }
   });
   tl.fromTo(videoWrap.value, {
@@ -494,52 +647,90 @@ onMounted(() => {
       scrub: 1,
     }
   })
-  .fromTo(weCreate.value, {
-    opacity: 0,
-    visibility: 'hidden',
-  },{
-    opacity: 1,
-    visibility: 'visible',
-    ease: 'none',
+
+  const elementaKoreaTl = $gsap.timeline({
     scrollTrigger: {
-      trigger: videoWrapLayer.value,
-      start: () => "+=" + (window.innerHeight * 2.5),
-      end: () => "+=" + (window.innerHeight / 2),
-      scrub: 1,
-    }
-  })
-  .fromTo(newParadigm.value, {
-    opacity: 0,
-    visibility: 'hidden',
-  },{
-    opacity: 1,
-    visibility: 'visible',
-    ease: 'none',
-    scrollTrigger: {
-      trigger: videoWrapLayer.value,
-      start: () => "+=" + (window.innerHeight * 2.5),
-      end: () => "+=" + (window.innerHeight / 2),
-      scrub: 1,
-    }
-  })
-  .fromTo(lastingImpact.value, {
-    opacity: 0,
-    visibility: 'hidden',
-  },{
-    opacity: 1,
-    visibility: 'visible',
-    ease: 'none',
-    scrollTrigger: {
-      trigger: videoWrapLayer.value,
-      start: () => "+=" + (window.innerHeight * 3),
-      end: () => "+=" + (window.innerHeight / 2),
+      trigger: elementaKoreaSection.value,
+      start: 'top 80%',
+      end: () => "+=" + (elementaKoreaSection.value.offsetHeight * 1.5),
       scrub: 1,
     }
   })
 
+  elementaKoreaTl.to(sliderImg.value, {
+    maxWidth: '30rem',
+    ease: 'power2.out',
+    duration: 5,
+  })
+
+  
+  // .fromTo(weCreate.value, {
+  //   opacity: 0,
+  //   visibility: 'hidden',
+  // },{
+  //   opacity: 1,
+  //   visibility: 'visible',
+  //   ease: 'none',
+  //   scrollTrigger: {
+  //     trigger: videoWrapLayer.value,
+  //     start: () => "+=" + (window.innerHeight * 2.5),
+  //     end: () => "+=" + (window.innerHeight / 2),
+  //     scrub: 1,
+  //   }
+  // })
+  // .fromTo(newParadigm.value, {
+  //   opacity: 0,
+  //   visibility: 'hidden',
+  // },{
+  //   opacity: 1,
+  //   visibility: 'visible',
+  //   ease: 'none',
+  //   scrollTrigger: {
+  //     trigger: videoWrapLayer.value,
+  //     start: () => "+=" + (window.innerHeight * 2.5),
+  //     end: () => "+=" + (window.innerHeight / 2),
+  //     scrub: 1,
+  //   }
+  // })
+  // .fromTo(lastingImpact.value, {
+  //   opacity: 0,
+  //   visibility: 'hidden',
+  // },{
+  //   opacity: 1,
+  //   visibility: 'visible',
+  //   ease: 'none',
+  //   scrollTrigger: {
+  //     trigger: videoWrapLayer.value,
+  //     start: () => "+=" + (window.innerHeight * 3),
+  //     end: () => "+=" + (window.innerHeight / 2),
+  //     scrub: 1,
+  //   }
+  // })
+  
+
   
   //const primaryAni = $gsap.timeline();
   
+  // const starsContainer = document.querySelector(".stars-container");
+
+  // function createStar() {
+  //     const star = document.createElement("div");
+  //     star.classList.add("star");
+
+  //     // Random position
+  //     star.style.left = Math.random() * window.innerWidth + "px";
+  //     star.style.animationDuration = (Math.random() * 5 + 2) + "s";
+      
+  //     starsContainer.appendChild(star);
+
+  //     // Remove the star after animation ends
+  //     setTimeout(() => {
+  //         star.remove();
+  //     }, 7000);
+  // }
+
+  // // Generate stars at intervals
+  // setInterval(createStar, 200);
 
   
 })
@@ -557,54 +748,6 @@ const nodeVersion = process.version
   font-family: system-ui, sans-serif;
 }
 
-h2 {
-  font-family: "Oswald";
-}
 
-.bg-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: -1;
-  opacity: 0.15;
-}
-
-.bg-video-layer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: #000;
-  z-index: -1;
-  opacity: 0;
-  visibility: hidden;
-}
-
-.bg-video__content {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  
-}
-
-.video-layer--main {
-  position: absolute;
-  top: 5rem;
-  clip-path: polygon(60% 0%, 90% 0%, 70% 100%, 40% 100%);
-}
-
-.video-layer-sub {
-  position: absolute;
-  top: 5rem;
-  clip-path: polygon(91% 0%, 100% 0%, 100% 100%, 71% 100%);
-}
-
-.mission-section {
-  width: 100svw; 
-  height: 100svh;
-}
   
 </style>

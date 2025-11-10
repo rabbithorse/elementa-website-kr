@@ -12,7 +12,19 @@
   const secondaryChar = ref(null);
 
   onMounted(() => {
-    const secondaryTl = $gsap.timeline();
+    const secondaryTl = $gsap.timeline({
+      scrollTrigger: {
+        trigger: secondaryCharWrap.value,
+        //once: true,
+        start: "top 80%",
+        end: "bottom 40%",
+        markers: true,
+        scrub: true,
+        onEnter: () => {
+          secondaryTl.resume()
+        }
+      },
+    });
       secondaryTl.to(secondaryChar.value, {
         y: '0%',
         duration: 1.5,

@@ -7,19 +7,36 @@
 </template>
 
 <script setup lang="ts">
-  const { $gsap } = useNuxtApp()
-  const primaryCharWrap = ref(null);
+  const { $gsap, $ScrollTrigger } = useNuxtApp()
+  
+  const primaryCharWrap = ref([]);
   const primaryChar = ref(null);
 
   onMounted(() => {
-    const primaryTl = $gsap.timeline();
-      primaryTl.to(primaryChar.value, {
-        x: '0%',
-        duration: 1.5,
-        ease: 'power4.out',
-      }, "+=1.5");
+    const primaryTl = $gsap.timeline({
+      paused: true,
+      defaults: { immediateRender: false },
+      scrollTrigger: {
+        trigger: primaryCharWrap.value,
+        //once: true,
+        start: "top 80%",
+        end: "bottom 40%",
+        markers: true,
+        scrub: true,
+        onEnter: () => {
+          primaryTl.resume()
+        }
+      },
     });
+    primaryTl.to(primaryChar.value, {
+      x: '0%',
+      duration: 1.5,
+      ease: 'power4.out',
 
+    }, "+=1");
+
+  
+  });
 </script>
 
 <style scoped>

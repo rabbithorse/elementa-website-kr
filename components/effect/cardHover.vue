@@ -93,7 +93,7 @@
     top:50%; 
     left:50%;
     width: 100%;
-    height: 80%;
+    height: 100%;
     /* margin: -60px 0 0 -150px; */
     perspective: 800px;
   }
