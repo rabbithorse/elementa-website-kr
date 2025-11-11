@@ -102,7 +102,6 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    padding: 10px;
     box-sizing: border-box;
     cursor: pointer;
     transform-style: preserve-3d;

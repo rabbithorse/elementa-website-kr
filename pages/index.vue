@@ -6,6 +6,19 @@
           <source src="~/assets/videos/main-logo-ani.mp4" type="video/mp4" />
         </video>
       </div>
+      <div ref="videoWrap" class="video-layer video-layer--main">
+          <span ref="videoWrapLayer" class="bg-video-layer"></span>
+          <EffectGlass>
+            <video autoplay muted loop>
+              <source src="~/assets/videos/main-fly.mp4" type="video/mp4" />
+            </video>
+          </EffectGlass>
+        </div>
+        <div ref="videoSubWrap" class="video-layer video-layer--sub">
+          <video autoplay muted loop>
+            <source src="~/assets/videos/main-war.mp4" type="video/mp4" />
+          </video>
+        </div>
       <Container class="h-full">
         <!-- 첫번째 애니메이션 -->
         <div class="section-text flex flex-col h-full pb-[6.25rem]" ref="visualTitle">
@@ -51,21 +64,6 @@
             </div>
           </div>
         </div>
-        
-        <div ref="videoWrap" class="video-layer video-layer--main">
-          <span ref="videoWrapLayer" class="bg-video-layer"></span>
-          <EffectGlass>
-            <video autoplay muted loop>
-              <source src="~/assets/videos/main-fly.mp4" type="video/mp4" />
-            </video>
-          </EffectGlass>
-        </div>
-        <div ref="videoSubWrap" class="video-layer video-layer-sub">
-          <video autoplay muted loop>
-            <source src="~/assets/videos/main-war.mp4" type="video/mp4" />
-          </video>
-        </div>
-
         <!-- 두번째 애니메이션 -->
         <div class="mission-section flex flex-col justify-center items-center" ref="missionSection">
           <div class="text-wrap">
@@ -192,23 +190,23 @@
               <div class="text-content gap-x-7 py-[0.9rem]">
                 <p>혁신적 경험으로 게임의 기준을 새롭게 쓰고, 협력과 도전으로 문화를 확장하며, 전 세계가 공감할 지속 가능한 감동을 만드는 문화·패러다임의 선도자로 성장하겠습니다.</p>
               </div>
-              <button type="button">View more</button>
+              <ButtonsBasic size="sm" color="white">View more</ButtonsBasic>
             </EffectGlass>
           </div>
         </div>
 
       </Container>
-      
+       
     </section>
     <section class="accordion-section" ref="accordionSection">
       <div class="accordion-list flex h-full w-full">
-        <BlocksAccordion class="silver-palace opened" background>
+        <BlocksAccordion class="silver-palace opened" background ref="accordionItem">
           <template #accordionTitle class="accordion-title">
             <span class="text-white">01</span>
             <h3 class="text-white">SILVER PALACE</h3>
           </template>
           <template #accordionContent>
-            <div class="content-bg absolute left-0 top-0 w-full h-full overflow-hidden">
+            <div class="content-bg absolute left-0 top-0 w-[100vw] h-full overflow-hidden">
               <video autoplay muted loop class="w-full h-full object-cover">
                 <source src="~/assets/videos/main-game-silverpalace.mp4" type="video/mp4">
               </video>
@@ -237,14 +235,14 @@
                     </p>
                   </div>
                   <div class="content-button">
-                    <a href="" class="butn">View more</a>
+                    <ButtonsBasic size="sm" color="yellow ">View more</ButtonsBasic>
                   </div>
                 </div>
               </EffectGlass>
             </div>
           </template>
         </BlocksAccordion>
-        <BlocksAccordion class="locked">
+        <BlocksAccordion class="locked" ref="accordionItem">
           <template #accordionTitle >
             <span class="locked-title-icon">
             </span>
@@ -254,14 +252,14 @@
           </template>
           <template #accordionContent></template>
         </BlocksAccordion>
-        <BlocksAccordion class="locked">
+        <BlocksAccordion class="locked" ref="accordionItem">
           <template #accordionTitle >
             <span class="locked-title-icon"></span>
             <span class="locked-title-text"></span>
           </template>
           <template #accordionContent></template>
         </BlocksAccordion>
-        <BlocksAccordion class="locked">
+        <BlocksAccordion class="locked" ref="accordionItem">
           <template #accordionTitle>
             <span class="locked-title-icon"></span>
             <span class="locked-title-text"></span>
@@ -288,9 +286,14 @@
         
       </div>
     </section>
-    <section class="wetheworld-section" ref="wetheworldSection">
-      <h2 class="text-[17rem] leading-1 font-bold text-white pt-[6.25rem]" ref="wetheworld">
-        <span>
+    <section class="wetheworld-section flex items-center justify-center" ref="wetheworldSection">
+      <div class="wetheworldbg-video01 opacity-0 invisible absolute inset-0 z-0" ref="wetheworldbg1">
+        <video class="bg-video--content w-full h-full object-cover" autoplay muted loop>
+          <source src="~/assets/videos/main-wetheworld.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <h2 class="text-[17rem] leading-1 font-bold text-white pt-[6.25rem] text-center">
+        <span ref="weText" class="block leading-[100%]">
           <TypographyPrimary>
             W
           </TypographyPrimary>
@@ -299,7 +302,7 @@
           </TypographyPrimary>
         </span>
         <div class="text-spacer"></div>
-        <span>
+        <span ref="theworldText" class="block leading-[100%]">
           <TypographyPrimary>
               T
             </TypographyPrimary>
@@ -327,194 +330,206 @@
         </span>
       </h2>
     </section>
-    <section class="newsroom-section">
+    <section class="newsroom-section relative pt-[6.25rem] pb-[6rem]" ref="newsroomSection">
+      <div class="bg-text absolute bottom-0 left-0 ">
+        <span class="text-[#403B4E] text-[5rem] font-bold">NEW PARADIGM, LASTING IMPACT. ELEMENTA KOREA</span>
+        <h2 class="text-[28rem] text-fill font-bold">ELEMENTA ELEMENTA</h2>
+      </div>
       <Container>
-        <div class="section-heading">
-          <div class="heading-text">
-            <span class="sectionTitle-eng">NEWSROOM</span>
-            <h6 class="text-white">
+        <div class="section-heading relative">
+          <div class="heading-text flex flex-col gap-y-10">
+            <span class="sectionTitle-eng text-white text-base relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] before:w-3 before:h-3 before:rounded-full pl-5 ">NEWSROOM</span>
+            <h6 class="text-white text-[2.3rem] font-normal">
               <TypographySecondary>ELEMENTA의 가장 최신 뉴스를 알아보세요. </TypographySecondary> <br />
               <TypographySecondary>New Paradigm, Lasting Impact</TypographySecondary>
             </h6>
           </div> 
-          <div class="heading-button">
-            <a href="">View more</a>
+          <div class="heading-button absolute right-0 bottom-0">
+            <ButtonsBasic size="lg" color="blue">View more</ButtonsBasic>
           </div>
         </div>
-        <div class="section-content">
-          <div class="card-grid">
-            <div class="card-list flex gap-8 justify-center py-20 flow-left">
-              <div class="card w-[28rem]" >
-                <EffectCardHover>
-                  <div class="flex flex-col w-full h-full items-center justify-center">
-                    <div class="card-img">
-                      <img src="~assets/images/main/newsroom-thumb01.png" alt="">
-                    </div>
-                    <div class="card-content">
-                      <div class="card-title text-white">
-                        '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
+        <div class="section-content flex">
+          <div class="content-text">
+            <p class="text-white ">
+              New Paradigm, <br>
+              Lasting Impact
+            </p>
+          </div>
+          <div class="card-grid flex flex-col gap-y-18">
+            <EffectGlass class="card-glass pt-[5rem] relative after:absolute after:inset-y-0 after:right-0 after:w-80">
+              <div class="card-list flex gap-[3.75rem] justify-center flow-left mb-[4.375rem]" ref="flowLeft">
+                <div class="card w-[28rem]" >
+                  <EffectCardHover>
+                    <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                      <div class="card-img">
+                        <img src="~assets/images/main/newsroom-thumb01.png" alt="">
+                      </div>
+                      <div class="card-content">
+                        <div class="card-title text-white break-keep">
+                          '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </EffectCardHover>
-              </div>
-              <div class="card w-[28rem]" >
-                <EffectCardHover>
-                  <div class="flex flex-col w-full h-full items-center justify-center">
-                    <div class="card-img">
-                      <img src="~assets/images/main/newsroom-thumb02.png" alt="">
-                    </div>
-                    <div class="card-content">
-                      <div class="card-title text-white">
-                        UE5로 만든 싱가포르 서브컬처 기대작, 실버 팰리스 공개
+                  </EffectCardHover>
+                </div>
+                <div class="card w-[28rem]" >
+                  <EffectCardHover>
+                    <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                      <div class="card-img">
+                        <img src="~assets/images/main/newsroom-thumb02.png" alt="">
+                      </div>
+                      <div class="card-content">
+                        <div class="card-title text-white break-keep">
+                          UE5로 만든 싱가포르 서브컬처 기대작, 실버 팰리스 공개
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </EffectCardHover>
-              </div>
-              <div class="card w-[28rem]" >
-                <EffectCardHover>
-                  <div class="flex flex-col w-full h-full items-center justify-center">
-                    <div class="card-img">
-                      <img src="~assets/images/main/newsroom-thumb03.png" alt="">
-                    </div>
-                    <div class="card-content">
-                      <div class="card-title text-white">
-                        엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 게임...
+                  </EffectCardHover>
+                </div>
+                <div class="card w-[28rem]" >
+                  <EffectCardHover>
+                    <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                      <div class="card-img">
+                        <img src="~assets/images/main/newsroom-thumb03.png" alt="">
+                      </div>
+                      <div class="card-content">
+                        <div class="card-title text-white break-keep">
+                          엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 게임...
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </EffectCardHover>
-              </div>
-              <div class="card w-[28rem]" >
-                <EffectCardHover>
-                  <div class="flex flex-col w-full h-full items-center justify-center">
-                    <div class="card-img">
-                      <img src="~assets/images/main/newsroom-thumb04.png" alt="">
-                    </div>
-                    <div class="card-content">
-                      <div class="card-title text-white">
-                        엘리멘타, 신작 실버 팰리스 첫 공개
+                  </EffectCardHover>
+                </div>
+                <div class="card w-[28rem]" >
+                  <EffectCardHover>
+                    <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                      <div class="card-img">
+                        <img src="~assets/images/main/newsroom-thumb04.png" alt="">
+                      </div>
+                      <div class="card-content">
+                        <div class="card-title text-white break-keep">
+                          엘리멘타, 신작 실버 팰리스 첫 공개
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </EffectCardHover>
-              </div>
-              <div class="card w-[28rem]" >
-                <EffectCardHover>
-                  <div class="flex flex-col w-full h-full items-center justify-center">
-                    <div class="card-img">
-                      <img src="~assets/images/main/newsroom-thumb05.png" alt="">
-                    </div>
-                    <div class="card-content">
-                      <div class="card-title text-white">
-                        엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 공개…글로벌 시장 공략
+                  </EffectCardHover>
+                </div>
+                <div class="card w-[28rem]" >
+                  <EffectCardHover>
+                    <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                      <div class="card-img">
+                        <img src="~assets/images/main/newsroom-thumb05.png" alt="">
+                      </div>
+                      <div class="card-content">
+                        <div class="card-title text-white break-keep">
+                          엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 공개…글로벌 시장 공략
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </EffectCardHover>
-              </div>
-              <div class="card w-[28rem]" >
-                <EffectCardHover>
-                  <div class="flex flex-col w-full h-full items-center justify-center">
-                    <div class="card-img">
-                      <img src="~assets/images/main/newsroom-thumb06.png" alt="">
-                    </div>
-                    <div class="card-content">
-                      <div class="card-title text-white">
-                        '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
+                  </EffectCardHover>
+                </div>
+                <div class="card w-[28rem]" >
+                  <EffectCardHover>
+                    <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                      <div class="card-img">
+                        <img src="~assets/images/main/newsroom-thumb06.png" alt="">
+                      </div>
+                      <div class="card-content">
+                        <div class="card-title text-white break-keep">
+                          '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </EffectCardHover>
+                  </EffectCardHover>
+                </div>
               </div>
-            </div>
-            <div class="card-list flex gap-8 justify-center py-20 flow-left rows-reverse">
-              <div class="card w-[28rem]" >
-                <EffectCardHover>
-                  <div class="flex flex-col w-full h-full items-center justify-center">
-                    <div class="card-img">
-                      <img src="~assets/images/main/newsroom-thumb01.png" alt="">
-                    </div>
-                    <div class="card-content">
-                      <div class="card-title text-white">
-                        '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
+              <div class="card-list flex gap-[3.75rem] justify-center flow-left rows-reverse" ref="flowRight">
+                <div class="card w-[28rem]" >
+                  <EffectCardHover>
+                    <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                      <div class="card-img">
+                        <img src="~assets/images/main/newsroom-thumb01.png" alt="">
+                      </div>
+                      <div class="card-content">
+                        <div class="card-title text-white break-keep ">
+                          '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </EffectCardHover>
-              </div>
-              <div class="card w-[28rem]" >
-                <EffectCardHover>
-                  <div class="flex flex-col w-full h-full items-center justify-center">
-                    <div class="card-img">
-                      <img src="~assets/images/main/newsroom-thumb02.png" alt="">
-                    </div>
-                    <div class="card-content">
-                      <div class="card-title text-white">
-                        UE5로 만든 싱가포르 서브컬처 기대작, 실버 팰리스 공개
+                  </EffectCardHover>
+                </div>
+                <div class="card w-[28rem]" >
+                  <EffectCardHover>
+                    <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                      <div class="card-img">
+                        <img src="~assets/images/main/newsroom-thumb02.png" alt="">
+                      </div>
+                      <div class="card-content">
+                        <div class="card-title text-white break-keep">
+                          UE5로 만든 싱가포르 서브컬처 기대작, 실버 팰리스 공개
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </EffectCardHover>
-              </div>
-              <div class="card w-[28rem]" >
-                <EffectCardHover>
-                  <div class="flex flex-col w-full h-full items-center justify-center">
-                    <div class="card-img">
-                      <img src="~assets/images/main/newsroom-thumb03.png" alt="">
-                    </div>
-                    <div class="card-content">
-                      <div class="card-title text-white">
-                        엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 게임...
+                  </EffectCardHover>
+                </div>
+                <div class="card w-[28rem]" >
+                  <EffectCardHover>
+                    <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                      <div class="card-img">
+                        <img src="~assets/images/main/newsroom-thumb03.png" alt="">
+                      </div>
+                      <div class="card-content">
+                        <div class="card-title text-white break-keep">
+                          엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 게임...
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </EffectCardHover>
-              </div>
-              <div class="card w-[28rem]" >
-                <EffectCardHover>
-                  <div class="flex flex-col w-full h-full items-center justify-center">
-                    <div class="card-img">
-                      <img src="~assets/images/main/newsroom-thumb04.png" alt="">
-                    </div>
-                    <div class="card-content">
-                      <div class="card-title text-white">
-                        엘리멘타, 신작 실버 팰리스 첫 공개
+                  </EffectCardHover>
+                </div>
+                <div class="card w-[28rem]" >
+                  <EffectCardHover>
+                    <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                      <div class="card-img">
+                        <img src="~assets/images/main/newsroom-thumb04.png" alt="">
+                      </div>
+                      <div class="card-content">
+                        <div class="card-title text-white break-keep">
+                          엘리멘타, 신작 실버 팰리스 첫 공개
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </EffectCardHover>
-              </div>
-              <div class="card w-[28rem]" >
-                <EffectCardHover>
-                  <div class="flex flex-col w-full h-full items-center justify-center">
-                    <div class="card-img">
-                      <img src="~assets/images/main/newsroom-thumb05.png" alt="">
-                    </div>
-                    <div class="card-content">
-                      <div class="card-title text-white">
-                        엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 공개…글로벌 시장 공략
+                  </EffectCardHover>
+                </div>
+                <div class="card w-[28rem]" >
+                  <EffectCardHover>
+                    <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                      <div class="card-img">
+                        <img src="~assets/images/main/newsroom-thumb05.png" alt="">
+                      </div>
+                      <div class="card-content">
+                        <div class="card-title text-white break-keep">
+                          엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 공개…글로벌 시장 공략
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </EffectCardHover>
-              </div>
-              <div class="card w-[28rem]" >
-                <EffectCardHover>
-                  <div class="flex flex-col w-full h-full items-center justify-center">
-                    <div class="card-img">
-                      <img src="~assets/images/main/newsroom-thumb06.png" alt="">
-                    </div>
-                    <div class="card-content">
-                      <div class="card-title text-white">
-                        '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
+                  </EffectCardHover>
+                </div>
+                <div class="card w-[28rem]" >
+                  <EffectCardHover>
+                    <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                      <div class="card-img">
+                        <img src="~assets/images/main/newsroom-thumb06.png" alt="">
+                      </div>
+                      <div class="card-content">
+                        <div class="card-title text-white break-keep">
+                          '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </EffectCardHover>
+                  </EffectCardHover>
+                </div>
               </div>
-            </div>
+            </EffectGlass>
           </div>
         </div>
         
@@ -548,6 +563,7 @@
 </template>
 
 <script setup>
+import { EffectGlass } from '#components';
 import Container from '~/components/Container.vue';
 
 const { $gsap, $ScrollTrigger } = useNuxtApp()
@@ -562,6 +578,15 @@ const newParadigm = ref(null)
 const lastingImpact = ref(null)
 const elementaKoreaSection = ref(null)
 const sliderImg = ref(null)
+const newsroomSection = ref(null)
+const flowLeft = ref(null)
+const flowRight = ref(null)
+const accordionSection = ref(null)
+const accordionItem = ref([])
+const wetheworldSection = ref(null)
+const wetheworldbg1 = ref(null)
+const weText = ref(null)
+const theworldText = ref(null)
 
 
 onMounted(() => {
@@ -570,6 +595,7 @@ onMounted(() => {
       trigger: visualSection.value,
       start: "top top",
       pin: true, 
+      pinSpacing: true,
       end: () => "+=" + (window.innerHeight * 5),
     }
   });
@@ -607,9 +633,11 @@ onMounted(() => {
 
   tl.fromTo(videoSubWrap.value, {
     x: 0,
+    clipPath: 'polygon(60% 0%, 90% 0%, 70% 100%, 40% 100%)',
   },
   {
     x: 1200,
+    clipPath: 'polygon(30% 0%, 100% 0%, 100% 100%, 20% 100%)',
     ease: 'none',
     scrollTrigger: {
       trigger: videoSubWrap.value,
@@ -620,12 +648,12 @@ onMounted(() => {
   })
   .fromTo(videoWrapLayer.value, {
     opacity: 0,
-    zIndex: 1,
+    zIndex: 5,
     visibility: 'hidden',
   },
   {
     opacity: 0.5,
-    zIndex: 1,
+    zIndex: 5,
     visibility: 'visible',
     ease: 'none',
     scrollTrigger: {
@@ -648,6 +676,66 @@ onMounted(() => {
     }
   })
 
+  const accordionItems = accordionSection.value.querySelectorAll('.accordion-list > *');
+  const accordionArray = Array.from(accordionItems);
+  
+  const accordionTl = $gsap.timeline({
+    scrollTrigger: {
+      trigger: accordionSection.value,
+      start: 'top 80%',
+      end: () => "+=" + (accordionSection.value.offsetHeight * 0.6),
+      scrub: 1,
+    }
+  })
+  accordionTl.from(accordionArray, {
+    x: 100,
+    y: 50,
+    opacity: 0,
+    stagger: 0.1,
+  })
+
+  const wetheworldTl = $gsap.timeline({
+    scrollTrigger: {
+      trigger: wetheworldSection.value,
+      pin: true,
+      pinSpacing: true,
+      end: () => "+=" + (wetheworldSection.value.offsetHeight * 5),
+      scrub: 1,
+      markers: true
+    }
+  })
+
+  wetheworldTl.to(wetheworldbg1.value, {
+    opacity: 1,
+    visibility: 'visible',
+    start: 'top top',
+    end: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
+  }, 0)
+  .to(weText.value, {
+    color: 'black',
+    start: 'top top',
+    end: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
+  }, 0)
+  .to(theworldText.value, {
+    color: 'black',
+    start: 'top top',
+    end: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
+  }, 0)
+  .to(weText.value, {
+    y: '-80vh',
+    start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
+    end: () => "+=" + (wetheworldSection.value.offsetHeight * 1.2),
+    scrub: 1,
+  })
+  .to(theworldText.value, {
+    y: '80vh',
+    start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
+    end: () => "+=" + (wetheworldSection.value.offsetHeight * 1.2),
+    scrub: 1,
+  }, "<")
+  
+  
+
   const elementaKoreaTl = $gsap.timeline({
     scrollTrigger: {
       trigger: elementaKoreaSection.value,
@@ -662,6 +750,44 @@ onMounted(() => {
     ease: 'power2.out',
     duration: 5,
   })
+
+  const newsroomTl = $gsap.timeline({
+    scrollTrigger: {
+      trigger: newsroomSection.value,
+      start: 'top -20%',
+      pin: true,
+      end: () => "+=" + (newsroomSection.value.offsetHeight * 3),
+      scrub: 1,
+    }
+  })
+
+  newsroomTl.fromTo(flowLeft.value, {
+    x: calcTransform("x", "calc(100% - 100vw)"),
+  }, {
+    x: calcTransform("x", "calc(100% - 150vw)"),
+    ease: 'power2.out',
+    duration: 3,
+  }, 0.2)
+
+  newsroomTl.fromTo(flowRight.value, {
+    x: calcTransform("x", "calc(-80% + 100vw)"),
+  }, {
+    x: calcTransform("x", "calc(-100% + 150vw)"),
+    ease: 'power2.out',
+    duration: 3,
+  }, 0.2)
+
+  function calcTransform(property, value) {
+    let alias = { y: "translateY", x: "translateX", z: "translateZ", rotation: "rotate" };
+    return function (i, target) {
+      let transform = target.style.transform;
+      target.style.transform = (alias[property] || property) + "(" + value + ")";
+      let computed = parseFloat($gsap.getProperty(target, property, property.substr(0, 3) === "rot" ? "deg" : "px", true));
+      target.style.transform = transform;
+      $gsap.getProperty(target, property, "px", true);
+      return computed; 
+    };
+  }
 
   
   // .fromTo(weCreate.value, {
