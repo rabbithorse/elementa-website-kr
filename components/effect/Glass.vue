@@ -8,14 +8,50 @@
       </div>
     </div>
 
-    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute; overflow:hidden">
-        <defs>
-            <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%">
-                <feTurbulence type="fractalNoise" baseFrequency="1.008 1.008" numOctaves="1" seed="9000" result="noise" />
-                <feGaussianBlur in="noise" stdDeviation="1" result="blurred" />
-                <feDisplacementMap in="SourceGraphic" in2="blurred" scale="77" xChannelSelector="R" yChannelSelector="G" />
-            </filter>
-        </defs>
+    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 0 0" style="position: absolute; overflow: hidden;" fill="none">
+      <g filter="url(#filter0_diin_406_2516)">
+        <rect width="100%" height="100%" rx="5" fill="black" fill-opacity="0.15" shape-rendering="crispEdges"/>
+      </g>
+      <defs>
+        <filter id="glass-distortion" x="-3" y="-3" width="100%" height="100%" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+          <feOffset dx="20" dy="20"/>
+          <feGaussianBlur stdDeviation="10"/>
+          <feComposite in2="hardAlpha" operator="out"/>
+          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+          <feBlend mode="multiply" in2="BackgroundImageFix" result="effect1_dropShadow_406_2516"/>
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+          <feOffset dx="3" dy="3"/>
+          <feGaussianBlur stdDeviation="1.5"/>
+          <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+          <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.3 0"/>
+          <feBlend mode="plus-lighter" in2="shape" result="effect2_innerShadow_406_2516"/>
+          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+          <feOffset dx="-3" dy="-3"/>
+          <feGaussianBlur stdDeviation="1.5"/>
+          <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+          <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0"/>
+          <feBlend mode="plus-lighter" in2="effect2_innerShadow_406_2516" result="effect3_innerShadow_406_2516"/>
+          <feTurbulence type="fractalNoise" baseFrequency="2 2" stitchTiles="stitch" numOctaves="3" result="noise" seed="6569"/>
+          <feComponentTransfer in="noise" result="coloredNoise1">
+            <feFuncR type="linear" slope="2" intercept="-0.5"/>
+            <feFuncG type="linear" slope="2" intercept="-0.5"/>
+            <feFuncB type="linear" slope="2" intercept="-0.5"/>
+            <feFuncA type="discrete" tableValues="0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
+          </feComponentTransfer>
+          <feComposite operator="in" in2="effect3_innerShadow_406_2516" in="coloredNoise1" result="noise1Clipped"/>
+          <feComponentTransfer in="noise1Clipped" result="color1">
+            <feFuncA type="table" tableValues="0 0.4"/>
+          </feComponentTransfer>
+          <feMerge result="effect4_noise_406_2516">
+            <feMergeNode in="effect3_innerShadow_406_2516"/>
+            <feMergeNode in="color1"/>
+          </feMerge>
+          <feBlend mode="normal" in="effect4_noise_406_2516" in2="effect1_dropShadow_406_2516" result="effect4_noise_406_2516"/>
+        </filter>
+      </defs>
     </svg>
   </div>
 </template>
@@ -66,6 +102,6 @@
 .glass-content {
   position: relative;
   height: 100%;
-  /* z-index: 3;/ */
+  z-index: 3;
 }
 </style>
