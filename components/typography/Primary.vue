@@ -14,26 +14,19 @@
 
   onMounted(() => {
     const primaryTl = $gsap.timeline({
-      paused: true,
-      defaults: { immediateRender: false },
       scrollTrigger: {
-        trigger: primaryCharWrap.value,
+        trigger: primaryChar.value,
         //once: true,
-        start: "top 80%",
-        end: "bottom 40%",
-        markers: true,
-        scrub: true,
-        onEnter: () => {
-          primaryTl.resume()
-        }
+        start: "top 10%",
+        //markers: true,
       },
     });
     primaryTl.to(primaryChar.value, {
       x: '0%',
-      duration: 1.5,
+      duration: 3,
       ease: 'power4.out',
-
-    }, "+=1");
+      scrub: 1,
+    }, ">2");
 
   
   });

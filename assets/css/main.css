@@ -9,7 +9,6 @@ body {background: #05060B; font-family: 'Paperlogy', sans-serif;}
 h2 {font-family: "Oswald";}
 .section-text {position: absolute; width: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%); }
 .primaryWrap {position: relative; }
-.text-fill {-webkit-text-fill-color: transparent;}
 
 .bg-video {position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: -1; opacity: 0.15;}
 .bg-video-layer {position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: #000; z-index: -1; opacity: 0; visibility: hidden;}
@@ -24,14 +23,17 @@ h2 {font-family: "Oswald";}
 
 /* 섹션 공통 */
 section {position: relative; height: 100vh;}
+section .primary-text, section .primary-text * {line-height: 1em;}
+.gradient-text {display: inline-block; position: relative; color: transparent; -webkit-text-fill-color: transparent;}
+.gradient-text.grey {background: linear-gradient(90deg, rgba(154, 177, 188, 0.30) 1.75%, rgba(154, 177, 188, 0.10) 98.07%); line-height: 1; -webkit-background-clip: text; background-clip: text;}
+.gradient-text.blue {background: linear-gradient(90deg, #0AD9FE 1.03%, #7D4FF0 147.83%); -webkit-background-clip: text; background-clip: text;}
+.gradient-text * {background: none !important; color: inherit; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;}
+.gradient-text > .primary-char {display: inline-block; transform: translateX(-100%); opacity: 0;}
 
-.mission-section {
-  width: 100svw; 
-  height: 100svh;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-}
+.mission-section {width: 100svw; height: 100svh; left: 50%; transform: translateX(-50%); text-align: center;}
+.mission-section .gradient-text {display: flex; align-items: center; column-gap: 8px;}
+.mission-section .primary-char-wrap {margin-left: 0 !important;}
+.mission-section .glass-content {padding: 2rem 4.375rem;}
 
 .accordion-item:first-child {flex: 1;}
 .accordion-item .accordion-trigger button {display: flex; flex-direction: column; row-gap: 3.125rem; padding: 6.25rem 2.5rem;}
@@ -50,8 +52,8 @@ section {position: relative; height: 100vh;}
 .slider-img {clip-path: polygon(7% 0, 100% 0%, 92% 100%, 0% 100%); max-width: 0; overflow: hidden;}
 .slider-img img {max-width: unset;}
 .newsroom-section::after {content: ""; display: inline-block; width: 50rem; height: 54rem; position: absolute; top: 0; right: -3.75rem; pointer-events: none; background: url("~/assets/images/main/newsroom-bg-a.svg");}
-.newsroom-section .text-fill {background-image: linear-gradient(90deg, rgba(154, 177, 188, 0.30) 1.75%, rgba(154, 177, 188, 0.10) 98.07%); -webkit-background-clip: text; background-clip: text; white-space: nowrap; line-height: 1;}
 .newsroom-section .container {overflow: visible;}
+.newsroom-section .gradient-text {white-space: nowrap;}
 .newsroom-section .glass-content {position: static; padding-top: 5rem; padding-bottom: 10.75rem;}
 .newsroom-section .card-glass::after {background-image: linear-gradient(90deg, #04050A 22.6%, rgba(4, 5, 10, 0.00) 100%); }
 .newsroom-section .card {height: 20rem; flex-shrink: 0; } 
