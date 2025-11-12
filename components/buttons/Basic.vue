@@ -124,7 +124,7 @@
     position: absolute;
     left: 0px;
     bottom: -3px;
-    filter: blur(2.5px);
+    filter: blur(3.5px);
     box-shadow: 2px 1px 0px 0px #239db4;
   }
 
@@ -137,7 +137,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    filter: blur(2.5px);
+    filter: blur(3.5px);
     box-shadow: 2px 1px 0px 0px #239db4;
   }
 
@@ -154,11 +154,25 @@
     position: absolute;
     right: 8px;
     bottom: -7px;
-    filter: blur(2.5px);
+    filter: blur(3.5px);
     box-shadow: 1px 1px 0px 0px #239db4;
     transform: rotate(52deg);
     opacity: 0;
     transition: opacity 0.3s ease;
+  }
+
+  .btn .lg.inner ~ .hover_shadow2 {
+    height: 27px;
+    right: 8px;
+    bottom: -5px;
+    transform: rotate(40deg);
+  }
+
+  .btn .sm.inner ~ .hover_shadow2 {
+    height: 27px;
+    right: 6px;
+    bottom: -8px;
+    transform: rotate(54deg);
   }
 
   .btn:hover .hover_shadow2 {
