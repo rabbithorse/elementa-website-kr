@@ -26,7 +26,7 @@
       duration: 3,
       ease: 'power4.out',
       scrub: 1,
-    }, ">2");
+    }, "+=1");
 
   
   });
