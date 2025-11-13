@@ -5,7 +5,7 @@
     @click="$emit('click')"
     :class="[colorClass]"
   >
-    <span class="inner" :class="[sizeClass]">
+    <span class="inner" :class="[sizeClass, widthClass]">
       <slot />
     </span>
     <span class="hover_shadow"></span>
@@ -21,7 +21,7 @@
     :class="[colorClass]"
   >
 
-    <span class="inner" :class="[sizeClass]">
+    <span class="inner" :class="[sizeClass, widthClass]">
       <slot />
     </span>
     <span class="hover_shadow"></span>
@@ -36,7 +36,7 @@
     background: linear-gradient(78deg, rgba(255,255,255,0.20) -4.53%, rgba(255,255,255,0.25) 113.59%);
     box-shadow: -1.5px -1.5px 1.5px 0 rgba(255,255,255,0.20) inset,
                 2px 2px 2px 0 rgba(255,255,255,0.40) inset;
-    backdrop-filter: blur(10px);
+    /* backdrop-filter: blur(10px); */
     color:#fff;
     transition: all 0.3s ease;
     clip-path: polygon(100% 0,100% 33px, calc(100% - 20px) 100%,0 100%,0 0);
@@ -85,7 +85,7 @@
     background: linear-gradient(78deg, rgba(0,200,235,0.20), rgba(115,75,215,0.25));
   }
 
-  .btn .inner::after {content:''; display: block; width:100%; height: 100%; background: #fff;}
+  /* .btn .inner::after {content:''; display: block; width:100%; height: 100%; background: #fff;} */
 
   .btn:hover .inner {
     box-shadow:
@@ -161,6 +161,10 @@
     transition: opacity 0.3s ease;
   }
 
+  .btn.yellow .hover_shadow::before {background: rgba(226, 187, 0, 1); box-shadow: 2px 1px 0px 0px rgba(191, 191, 127);}
+  .btn.yellow .hover_shadow::after {background: rgba(226, 187, 0, 1); box-shadow: 2px 1px 0px 0px rgba(191, 191, 127);}
+  .btn.yellow .hover_shadow2 {background: rgba(226, 187, 0, 1); box-shadow: 1px 1px 0px 0px rgba(191, 191, 127);}
+
   .btn .lg.inner ~ .hover_shadow2 {
     height: 27px;
     right: 8px;
@@ -185,7 +189,8 @@ const props = defineProps({
   href: { type: String, default: '' },
   target: { type: String, default: '' },
   size: { type: String, default: 'md' },
-  color: { type: String, default: 'gray' }
+  color: { type: String, default: 'gray' },
+  width: { type: String, default: '' },
 })
 
 const sizeClass = computed(() => {
@@ -201,6 +206,14 @@ const colorClass = computed(() => {
     case 'yellow': return 'yellow'
     case 'blue': return 'blue'
     default: return 'gray'
+  }
+})
+
+const widthClass = computed(() => {
+  if (props.width === 'full') {
+    return 'w-full'
+  } else {
+    return ''
   }
 })
 </script>

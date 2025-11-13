@@ -92,22 +92,22 @@
             <li v-for="(n, index) in 12" :key="index" class="relative">
               <EffectCardHover>
                 <div class="filter-glass liquid"></div>
-                <a class="cont relative" href="">
+                <a class="cont relative" href="./join_us_detail">
                   <figure>
                     <img src="~/assets/images/sub/join-us-img01.png" alt="대표 이미지">
                   </figure>
                   <div class="text-box">
                     <div class="info">
                       <div class="tit">
-                        <p class="d-day text-[0.69rem]">D-10</p>
+                        <ButtonsBadge class="mb-[10px]">D-10</ButtonsBadge>
                         <h4 class="text-white text-xl">개발 PM 담당</h4>
                         <p class="text-white text-[0.88rem]">경력직 ㆍ 경력 2-4년</p>
                       </div>
                       <p class="text-white date text-[0.88rem]">25.10.01~25.10.30</p>
                     </div>
                     <div class="apply absolute">
-                      <span class="text-xs">100명의 지원자가 보고갔어요!</span>
-                      <ButtonsBasic size="sm" target="_blank">지원하러 가기</ButtonsBasic>
+                      <span class="text-xs text-[var(--main-color)]">100명의 지원자가 보고갔어요!</span>
+                      <ButtonsBasic size="sm">지원하러 가기</ButtonsBasic>
                     </div>
                   </div>
                 </a>
@@ -256,7 +256,6 @@
 <style scoped>
   .filter-glass {filter: url(#lg-dist); backdrop-filter: blur(12px); width: 100%; height:100%; position: absolute; left: 0;  bottom: 0; z-index: 1; background: url(~/assets/images/sub/otis-redding.png) repeat;}
   .filter-glass.liquid {filter: url(#liquid); background: none; backdrop-filter: blur(4px);}
-  .filter-shine {box-shadow: -3px -3px 3px 0 rgba(255, 255, 255, 0.05) inset, 3px 3px 3px 0 rgba(255, 255, 255, 0.30) inset; filter: drop-shadow(20px 20px 20px rgba(0, 0, 0, 0.10)); position: absolute; width: 100%; z-index: 1; height: 100%; left: 0; bottom: 0;}
   :deep(.filter-box .filter-inner .custom-select) {border-radius: 5px; background: rgba(255, 255, 255, 0.10);
   box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.25) inset, 0 0 4px 0 rgba(255, 255, 255, 0.60) inset, 0 4px 4px 0 rgba(0, 0, 0, 0.25); width:280px; border: 1px solid rgba(255, 255, 255, 0.2); height: 64px;}
   :deep(.filter-box .filter-inner .custom-select .selected) {padding: 15px 25px; cursor:pointer; height:100%; display:flex; align-items: center;}

@@ -101,6 +101,7 @@
 
   const { $gsap, $ScrollTrigger } = useNuxtApp()
 
+  const subSection = ref(null)
   const shapeBig = ref(null)
   const shapeSmall = ref(null)
   const pathVisual = ref(null)
@@ -151,6 +152,19 @@
       },
     }).to(wideImageArea.value, {
       y: '-100px',
+      ease: 'none',
+    })
+
+    $gsap.timeline({
+      scrollTrigger: {
+        trigger: subSection.value,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1,
+        markers: true,
+      },
+    }).to(wideImageArea.value, {
+     backgroundPositionY: '-200px',
       ease: 'none',
     })
   })

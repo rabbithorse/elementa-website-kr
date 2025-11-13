@@ -1,30 +1,98 @@
 <template>
   <div>
-    <section class="subSectionDetail pt-[180px] relative">
-      <Container>
-        <div class="detail-title-area">
-          <span class="text-[0.94rem] text-[var(--text-disabled)]">2025-09-17</span>
-          <h3 class="text-white text-[2.5rem] font-bold pt-[10px]">'실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'</h3>
-          <p class="text-white pt-[1.88rem] text-lg">짧은 설명이 들어가는 공간입니다. 짧은 설명이 들어가는 공간입니다.</p>
-        </div>
-        <div class="movie-frame">
-          <p>영상</p>
-        </div>
-        <div class="btn-wrap">
-          <ButtonsBasic href="#" color="blue">이전 게시글 보기</ButtonsBasic>
-          <ButtonsBasic href="#" color="blue">다음 게시글 보기</ButtonsBasic>
-          <ButtonsBasic href="#">목록으로</ButtonsBasic>
-        </div>
-      </Container>
+    <section class="subSection pt-[180px] relative">
+      <div class="media-detail-area pb-[250px]">
+        <Container class="grid gap-[9.4%] grid-cols-[1fr_23.7%] grid-row-[auto 1fr]">
+          <div class="detail-title-area col-span-2">
+            <span class="text-[0.94rem] text-[var(--text-disabled)]">2025-09-17</span>
+            <h3 class="text-white text-[2.5rem] font-bold pt-[10px]">'실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'</h3>
+            <p class="text-white pt-[1.88rem] text-lg leading-[1.81rem]">짧은 설명이 들어가는 공간입니다. 짧은 설명이 들어가는 공간입니다.</p>
+          </div>
+          <div class="movie-frame" ref="movieFrame">
+            <div class="w-full mx-auto aspect-video">
+              <iframe
+                class="w-full h-full"
+                src="https://www.youtube.com/embed/M7AHYpILIsc"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+          <div class="side-btn-wrap">
+            <div class="flex flex-col gap-[10px]" ref="sideBtnWrap">
+              <ButtonsBasic href="#" color="blue" width="full" size="lg"><i class="ico ico-prev bg-white"></i>이전 게시글 보기</ButtonsBasic>
+              <ButtonsBasic href="#" color="blue" width="full" size="lg">다음 게시글 보기<i class="ico ico-next bg-white"></i></ButtonsBasic>
+              <ButtonsBasic href="#" width="full" size="lg">목록으로</ButtonsBasic>
+            </div>
+          </div>
+        </Container>
+      </div>
+
+      <!-- 리스트 -->
+      <div class="media-list pb-[190px] relative">
+        <Container>
+          <div class="list-header pb-[30px] flex justify-between items-start">
+            <p class="font-bold text-3xl text-white deco-text relative pl-[60px]">연관 콘텐츠</p>
+            <div class="flex gap-[6px] slide-btn-wrap">
+              <button class="relative" type="button" aria-label="이전 슬라이드로 이동"><i class="ico big ico-prev bg-white"></i></button>
+              <button class="relative" type="button" aria-label="다음 슬라이드로 이동"><i class="ico big ico-next bg-white"></i></button>
+            </div>
+          </div>
+          <ul class="grid grid-cols-4 gap-x-[1.25rem] gap-y-[5.63rem] list relative">
+            <li v-for="(n, index) in 8" :key="index" class="relative card w-full">
+              <EffectCardHover>
+                <a class="flex flex-col gap-y-4 w-full h-full justify-start text-white" href="./media_detail">
+                  <div class="card-img relative">
+                      <img src="~assets/images/main/newsroom-thumb01.png" alt="">
+                    </div>
+                    <div class="card-content">
+                      <div class="card-title text-white break-keep">
+                        '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
+                      </div>
+                    </div>
+                </a>
+              </EffectCardHover>
+            </li>
+          </ul>
+        </Container>
+      </div>
+      <!-- 리스트 -->
     </section>
   </div>
 </template>
+
+<style scoped>
+</style>
 
 <script setup>
   definePageMeta({
     layout: 'sub', 
   })
+
+  import Container from '~/components/Container.vue';
+  import { ref, onMounted, onUnmounted } from 'vue'
+  import { useNuxtApp } from '#app'
+
+  const { $gsap, $ScrollTrigger } = useNuxtApp()
+
+  const movieFrame = ref(null)
+  const sideBtnWrap = ref(null)
+
+  onMounted(() => {
+    $gsap.to(movieFrame.value, {
+      scrollTrigger: {
+        trigger: movieFrame.value,
+        start: '-=150 top',
+        end: 'bottom-=150 25%',
+        scrub: 2,
+        //markers: true,
+        pin: sideBtnWrap.value,
+      },
+    })
+  });
+
+
 </script>
 
-<style scoped>
-</style>

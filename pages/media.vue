@@ -40,7 +40,7 @@
         </div>
         <!-- //slider wrap -->
         
-        <!-- 채용 리스트 -->
+        <!-- 리스트 -->
         <div class="media-list pt-[140px] pb-[270px] relative">
           <Container>
             <div class="list-sch-bar flex gap-[20px]">
@@ -65,7 +65,7 @@
             </ul>
           </Container>
         </div>
-        <!-- 채용 리스트 -->
+        <!-- 리스트 -->
       </section>
   </div>
 </template>
