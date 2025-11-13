@@ -10,6 +10,12 @@ h2 {font-family: "Oswald";}
 .section-text {position: absolute; width: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%); }
 .primaryWrap {position: relative; }
 
+/* 컴포넌트 */
+
+/* 칩 */
+.d-day {display: flex; padding: 4px 12px; justify-content: center; align-items: center; gap: 10px; border-radius: 50px;}
+.d-day.purple {border: 1px solid #734BD7; background: linear-gradient(100deg, rgba(115, 75, 215, 0.25) 8.3%, rgba(60, 39, 113, 0.25) 98.05%);}
+
 .bg-video {position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: -1; opacity: 0.15;}
 .bg-video-layer {position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: #000; z-index: -1; opacity: 0; visibility: hidden;}
 .bg-video__content {height: 100%; width: 100%; object-fit: cover;}
@@ -54,7 +60,7 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 
 .slider-img {clip-path: polygon(7% 0, 100% 0%, 92% 100%, 0% 100%); max-width: 0; overflow: hidden;}
 .slider-img img {max-width: unset;}
-.newsroom-section::after {content: ""; display: inline-block; width: 50rem; height: 54rem; position: absolute; top: 0; right: -3.75rem; pointer-events: none; background: url("~/assets/images/main/newsroom-bg-a.svg");}
+.newsroom-section::after {content: ""; display: inline-block; width: 50rem; height: 54rem; position: absolute; top: 0; right: -3.75rem; pointer-events: none; background: url("~/assets/images/main/newsroom-bg-a.svg"); z-index: -1;}
 .newsroom-section .content-text p::before {content: ""; display: inline-block; width: 5rem; height: 9rem; position: absolute; left: 0; bottom: -0.4rem; background: url("~/assets/images/main/newsroom-content-a.svg") no-repeat center / contain;}
 .newsroom-section .container {overflow: visible;}
 .newsroom-section .gradient-text {white-space: nowrap;}

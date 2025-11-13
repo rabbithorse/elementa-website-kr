@@ -513,7 +513,7 @@
           <source src="~/assets/videos/main-wetheworld.mp4" type="video/mp4" />
         </video>
       </div>
-      <h2 class="text-[17rem] leading-1 font-bold text-white text-center">
+      <h2 class="text-[17rem] leading-1 font-bold text-white text-center z-10">
         <span ref="weText" class="block leading-[100%]">
           <TypographyPrimary>
             W
@@ -522,7 +522,7 @@
             E
           </TypographyPrimary>
         </span>
-        <div class="text-spacer"></div>
+        <div class="text-spacer py-5"></div>
         <span ref="theworldText" class="block leading-[100%]">
           <TypographyPrimary>
               T
@@ -772,7 +772,7 @@
         
       </Container>
     </section>
-    <section class="careers-section">
+    <section class="careers-section pt-[17rem] pb-64">
       <Container>
         <div class="section-heading">
           <div class="heading-text flex flex-col gap-y-10">
@@ -790,7 +790,9 @@
           </div>
         </div>
         <div class="section-content">
-          
+          <EffectGlass class="content-glass ">
+            <BlocksSlider />
+          </EffectGlass>
         </div>
         
       </Container>
