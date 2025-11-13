@@ -70,7 +70,7 @@
 
         </Container>
       </div>
-      <div class="mission-section flex flex-col justify-center items-center relative" ref="missionSection">
+      <div class="mission-section flex flex-col gap-y-28 justify-center items-center relative" ref="missionSection">
         <div class="text-wrap">
           <h2 class="text-[13.75rem] leading-1 font-bold text-white pt-[6.25rem]">
             <div class="top-line">
@@ -245,45 +245,162 @@
               <div ref="lastingImpact" class="text-absolute absolute inset-0 text-center opacity-0 invisible leading-none" >
                 <span class="primary-text">
                   <TypographyPrimary>
-                  L
+                    <svg xmlns="http://www.w3.org/2000/svg" width="83" height="181" viewBox="0 0 83 181" fill="none">
+                      <foreignObject x="-40" y="-40" width="162.3" height="260.2"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_39_2053_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M40.8799 0.5V152.08H81.7998V179.7H0.5V0.5H40.8799Z" fill="url(#paint0_linear_39_2053)" stroke="black"/>
+                      <defs>
+                      <clipPath id="bgblur_0_39_2053_clip_path" transform="translate(40 40)"><path d="M40.8799 0.5V152.08H81.7998V179.7H0.5V0.5H40.8799Z"/>
+                      </clipPath><linearGradient id="paint0_linear_39_2053" x1="1.91428" y1="179.2" x2="2046.79" y2="179.2" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#0AD9FE"/>
+                      <stop offset="1" stop-color="#7D4FF0"/>
+                      </linearGradient>
+                      </defs>
+                    </svg>
                   </TypographyPrimary>
                   <TypographyPrimary>
-                  A
+                    <svg xmlns="http://www.w3.org/2000/svg" width="112" height="179" viewBox="0 0 112 179" fill="none">
+                      <foreignObject x="-40" y="-40" width="191.76" height="258.2"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_39_2052_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M0 178.2L33.66 0H78.54L111.76 178.2H75.46L69.52 140.58H43.34L37.18 178.2H0ZM46.86 117.04H65.78L56.32 47.52L46.86 117.04Z" fill="url(#paint0_linear_39_2052)"/>
+                      <defs>
+                      <clipPath id="bgblur_0_39_2052_clip_path" transform="translate(40 40)"><path d="M0 178.2L33.66 0H78.54L111.76 178.2H75.46L69.52 140.58H43.34L37.18 178.2H0ZM46.86 117.04H65.78L56.32 47.52L46.86 117.04Z"/>
+                      </clipPath><linearGradient id="paint0_linear_39_2052" x1="-81.4448" y1="178.2" x2="1963.43" y2="178.2" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#0AD9FE"/>
+                      <stop offset="1" stop-color="#7D4FF0"/>
+                      </linearGradient>
+                      </defs>
+                    </svg>
                   </TypographyPrimary>
                   <TypographyPrimary>
-                  S
+                    <svg xmlns="http://www.w3.org/2000/svg" width="98" height="184" viewBox="0 0 98 184" fill="none">
+                      <foreignObject x="-40" y="-40" width="177.9" height="263.26"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_39_2051_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M51.26 183.26C40.1133 183.26 30.8 181.28 23.32 177.32C15.84 173.36 10.1933 167.273 6.37999 159.06C2.56666 150.7 0.44 139.92 0 126.72L33.66 121.66C33.8067 129.287 34.4667 135.447 35.64 140.14C36.96 144.833 38.72 148.207 40.92 150.26C43.2667 152.313 46.0533 153.34 49.28 153.34C53.3867 153.34 56.0267 151.947 57.2 149.16C58.52 146.373 59.18 143.44 59.18 140.36C59.18 133.027 57.42 126.867 53.9 121.88C50.38 116.747 45.6133 111.613 39.6 106.48L24.2 93.06C17.4533 87.34 11.7333 80.8867 7.03999 73.7C2.49333 66.3667 0.220001 57.3467 0.220001 46.64C0.220001 31.5333 4.69333 20.02 13.64 12.1C22.5867 4.03333 34.76 0 50.16 0C59.6933 0 67.32 1.61333 73.04 4.84C78.9067 8.06667 83.3067 12.32 86.24 17.6C89.32 22.7333 91.3733 28.2333 92.4 34.1C93.5733 39.82 94.2333 45.32 94.38 50.6L60.5 54.78C60.3533 49.5 59.9867 44.9533 59.4 41.14C58.96 37.18 57.9333 34.1733 56.32 32.12C54.7067 29.92 52.2133 28.82 48.84 28.82C45.1733 28.82 42.46 30.36 40.7 33.44C39.0867 36.52 38.28 39.6 38.28 42.68C38.28 49.28 39.82 54.7067 42.9 58.96C46.1267 63.0667 50.3067 67.3933 55.44 71.94L70.18 84.92C77.9533 91.52 84.48 99 89.76 107.36C95.1867 115.72 97.9 126.06 97.9 138.38C97.9 146.74 95.9933 154.367 92.18 161.26C88.3667 168.007 82.94 173.36 75.9 177.32C69.0067 181.28 60.7933 183.26 51.26 183.26Z" fill="url(#paint0_linear_39_2051)"/>
+                      <defs>
+                      <clipPath id="bgblur_0_39_2051_clip_path" transform="translate(40 40)"><path d="M51.26 183.26C40.1133 183.26 30.8 181.28 23.32 177.32C15.84 173.36 10.1933 167.273 6.37999 159.06C2.56666 150.7 0.44 139.92 0 126.72L33.66 121.66C33.8067 129.287 34.4667 135.447 35.64 140.14C36.96 144.833 38.72 148.207 40.92 150.26C43.2667 152.313 46.0533 153.34 49.28 153.34C53.3867 153.34 56.0267 151.947 57.2 149.16C58.52 146.373 59.18 143.44 59.18 140.36C59.18 133.027 57.42 126.867 53.9 121.88C50.38 116.747 45.6133 111.613 39.6 106.48L24.2 93.06C17.4533 87.34 11.7333 80.8867 7.03999 73.7C2.49333 66.3667 0.220001 57.3467 0.220001 46.64C0.220001 31.5333 4.69333 20.02 13.64 12.1C22.5867 4.03333 34.76 0 50.16 0C59.6933 0 67.32 1.61333 73.04 4.84C78.9067 8.06667 83.3067 12.32 86.24 17.6C89.32 22.7333 91.3733 28.2333 92.4 34.1C93.5733 39.82 94.2333 45.32 94.38 50.6L60.5 54.78C60.3533 49.5 59.9867 44.9533 59.4 41.14C58.96 37.18 57.9333 34.1733 56.32 32.12C54.7067 29.92 52.2133 28.82 48.84 28.82C45.1733 28.82 42.46 30.36 40.7 33.44C39.0867 36.52 38.28 39.6 38.28 42.68C38.28 49.28 39.82 54.7067 42.9 58.96C46.1267 63.0667 50.3067 67.3933 55.44 71.94L70.18 84.92C77.9533 91.52 84.48 99 89.76 107.36C95.1867 115.72 97.9 126.06 97.9 138.38C97.9 146.74 95.9933 154.367 92.18 161.26C88.3667 168.007 82.94 173.36 75.9 177.32C69.0067 181.28 60.7933 183.26 51.26 183.26Z"/>
+                      </clipPath><linearGradient id="paint0_linear_39_2051" x1="-198.918" y1="180.62" x2="1845.96" y2="180.62" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#0AD9FE"/>
+                      <stop offset="1" stop-color="#7D4FF0"/>
+                      </linearGradient>
+                      </defs>
+                    </svg>
                   </TypographyPrimary>
                   <TypographyPrimary>
-                  T
+                    <svg xmlns="http://www.w3.org/2000/svg" width="94" height="179" viewBox="0 0 94 179" fill="none">
+                      <foreignObject x="-40" y="-40" width="173.06" height="258.2"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_39_2050_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M26.84 178.2V29.26H0V0H93.06V29.26H66.44V178.2H26.84Z" fill="url(#paint0_linear_39_2050)"/>
+                      <defs>
+                      <clipPath id="bgblur_0_39_2050_clip_path" transform="translate(40 40)"><path d="M26.84 178.2V29.26H0V0H93.06V29.26H66.44V178.2H26.84Z"/>
+                      </clipPath><linearGradient id="paint0_linear_39_2050" x1="-298.506" y1="178.2" x2="1746.37" y2="178.2" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#0AD9FE"/>
+                      <stop offset="1" stop-color="#7D4FF0"/>
+                      </linearGradient>
+                      </defs>
+                    </svg>
                   </TypographyPrimary>
                   <TypographyPrimary>
-                  I
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="179" viewBox="0 0 40 179" fill="none">
+                      <foreignObject x="-40" y="-40" width="119.38" height="258.2"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_39_2049_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M0 178.2V0H39.38V178.2H0Z" fill="url(#paint0_linear_39_2049)"/>
+                      <defs>
+                      <clipPath id="bgblur_0_39_2049_clip_path" transform="translate(40 40)"><path d="M0 178.2V0H39.38V178.2H0Z"/>
+                      </clipPath><linearGradient id="paint0_linear_39_2049" x1="-400.874" y1="178.2" x2="1644" y2="178.2" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#0AD9FE"/>
+                      <stop offset="1" stop-color="#7D4FF0"/>
+                      </linearGradient>
+                      </defs>
+                    </svg>
                   </TypographyPrimary>
                   <TypographyPrimary>
-                  N
+                    <svg xmlns="http://www.w3.org/2000/svg" width="97" height="179" viewBox="0 0 97 179" fill="none">
+                      <foreignObject x="-40" y="-40" width="176.8" height="258.2"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_39_2048_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M0 178.2V0H27.72L64.24 85.8V0H96.8V178.2H70.18L33.66 85.8V178.2H0Z" fill="url(#paint0_linear_39_2048)"/>
+                      <defs>
+                      <clipPath id="bgblur_0_39_2048_clip_path" transform="translate(40 40)"><path d="M0 178.2V0H27.72L64.24 85.8V0H96.8V178.2H70.18L33.66 85.8V178.2H0Z"/>
+                      </clipPath><linearGradient id="paint0_linear_39_2048" x1="-460.226" y1="178.2" x2="1584.65" y2="178.2" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#0AD9FE"/>
+                      <stop offset="1" stop-color="#7D4FF0"/>
+                      </linearGradient>
+                      </defs>
+                    </svg>
                   </TypographyPrimary>
                   <TypographyPrimary>
-                  G
+                    <svg xmlns="http://www.w3.org/2000/svg" width="106" height="184" viewBox="0 0 106 184" fill="none">
+                      <foreignObject x="-40" y="-40" width="185.82" height="263.26"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_39_2047_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M48.84 183.26C36.52 183.26 26.7666 180.693 19.58 175.56C12.54 170.427 7.47996 163.24 4.39996 154C1.46663 144.613 0 133.833 0 121.66V61.82C0 49.2067 1.6133 38.28 4.83997 29.04C8.06663 19.8 13.5666 12.6867 21.34 7.70001C29.26 2.56667 39.9666 0 53.46 0C66.66 0 77 2.2 84.48 6.60001C92.1066 11 97.5333 17.0867 100.76 24.86C103.987 32.6333 105.6 41.7267 105.6 52.14V63.58H67.1V49.06C67.1 45.2467 66.8066 41.7267 66.22 38.5C65.78 35.2733 64.6066 32.7067 62.7 30.8C60.94 28.7467 58.0066 27.72 53.9 27.72C49.6466 27.72 46.5666 28.8933 44.66 31.24C42.7533 33.44 41.5066 36.2267 40.92 39.6C40.48 42.9733 40.2599 46.4933 40.2599 50.16V132.66C40.2599 136.62 40.6267 140.36 41.36 143.88C42.24 147.253 43.7066 150.04 45.7599 152.24C47.96 154.293 51.04 155.32 55 155.32C59.1067 155.32 62.26 154.22 64.46 152.02C66.66 149.82 68.2 146.96 69.08 143.44C69.96 139.92 70.4 136.18 70.4 132.22V111.32H54.34V88.22H105.82V180.62H79.86L77.66 165.88C75.3133 170.867 71.8666 175.047 67.3199 178.42C62.7733 181.647 56.6133 183.26 48.84 183.26Z" fill="url(#paint0_linear_39_2047)"/>
+                      <defs>
+                      <clipPath id="bgblur_0_39_2047_clip_path" transform="translate(40 40)"><path d="M48.84 183.26C36.52 183.26 26.7666 180.693 19.58 175.56C12.54 170.427 7.47996 163.24 4.39996 154C1.46663 144.613 0 133.833 0 121.66V61.82C0 49.2067 1.6133 38.28 4.83997 29.04C8.06663 19.8 13.5666 12.6867 21.34 7.70001C29.26 2.56667 39.9666 0 53.46 0C66.66 0 77 2.2 84.48 6.60001C92.1066 11 97.5333 17.0867 100.76 24.86C103.987 32.6333 105.6 41.7267 105.6 52.14V63.58H67.1V49.06C67.1 45.2467 66.8066 41.7267 66.22 38.5C65.78 35.2733 64.6066 32.7067 62.7 30.8C60.94 28.7467 58.0066 27.72 53.9 27.72C49.6466 27.72 46.5666 28.8933 44.66 31.24C42.7533 33.44 41.5066 36.2267 40.92 39.6C40.48 42.9733 40.2599 46.4933 40.2599 50.16V132.66C40.2599 136.62 40.6267 140.36 41.36 143.88C42.24 147.253 43.7066 150.04 45.7599 152.24C47.96 154.293 51.04 155.32 55 155.32C59.1067 155.32 62.26 154.22 64.46 152.02C66.66 149.82 68.2 146.96 69.08 143.44C69.96 139.92 70.4 136.18 70.4 132.22V111.32H54.34V88.22H105.82V180.62H79.86L77.66 165.88C75.3133 170.867 71.8666 175.047 67.3199 178.42C62.7733 181.647 56.6133 183.26 48.84 183.26Z"/>
+                      </clipPath><linearGradient id="paint0_linear_39_2047" x1="-574.527" y1="180.62" x2="1470.35" y2="180.62" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#0AD9FE"/>
+                      <stop offset="1" stop-color="#7D4FF0"/>
+                      </linearGradient>
+                      </defs>
+                    </svg>
                   </TypographyPrimary>
                 </span>
                 <span class="primary-text ml-8">
                   <TypographyPrimary>
-                  I
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="179" viewBox="0 0 40 179" fill="none">
+                      <foreignObject x="-40" y="-40" width="119.38" height="258.2"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_39_2046_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M0 178.2V0H39.38V178.2H0Z" fill="url(#paint0_linear_39_2046)"/>
+                      <defs>
+                        <clipPath id="bgblur_0_39_2046_clip_path" transform="translate(40 40)"><path d="M0 178.2V0H39.38V178.2H0Z"/>
+                      </clipPath><linearGradient id="paint0_linear_39_2046" x1="-748.303" y1="178.2" x2="1296.57" y2="178.2" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#0AD9FE"/>
+                      <stop offset="1" stop-color="#7D4FF0"/>
+                    </linearGradient>
+                    </defs>
+                    </svg>
                   </TypographyPrimary>
                   <TypographyPrimary>
-                  M
+                    <svg xmlns="http://www.w3.org/2000/svg" width="130" height="179" viewBox="0 0 130 179" fill="none">
+                      <foreignObject x="-40" y="-40" width="209.8" height="258.2"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_39_2045_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M0 178.2L3.08002 0H45.32L64.9 103.62L86.02 0H126.72L129.8 178.2H101.86L98.56 59.62L77.88 178.2H53.02L31.02 58.74L28.38 178.2H0Z" fill="url(#paint0_linear_39_2045)"/>
+                      <defs>
+                      <clipPath id="bgblur_0_39_2045_clip_path" transform="translate(40 40)"><path d="M0 178.2L3.08002 0H45.32L64.9 103.62L86.02 0H126.72L129.8 178.2H101.86L98.56 59.62L77.88 178.2H53.02L31.02 58.74L28.38 178.2H0Z"/>
+                      </clipPath><linearGradient id="paint0_linear_39_2045" x1="-806.994" y1="178.2" x2="1237.88" y2="178.2" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#0AD9FE"/>
+                      <stop offset="1" stop-color="#7D4FF0"/>
+                      </linearGradient>
+                      </defs>
+                    </svg>
                   </TypographyPrimary>
                   <TypographyPrimary>
-                  P
+                    <svg xmlns="http://www.w3.org/2000/svg" width="107" height="179" viewBox="0 0 107 179" fill="none">
+                      <foreignObject x="-40" y="-40" width="186.7" height="258.2"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_39_2044_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M0 178.2V0H59.84C70.5467 0 79.3467 2.05333 86.2401 6.16C93.1334 10.12 98.2666 15.9867 101.64 23.76C105.013 31.3867 106.7 40.7 106.7 51.7C106.7 65.4867 104.427 76.0467 99.8799 83.38C95.3333 90.5667 89.1733 95.5533 81.4 98.34C73.6266 101.127 64.9 102.52 55.22 102.52H39.38V178.2H0ZM39.38 75.02H52.58C57.42 75.02 61.0867 74.14 63.58 72.38C66.0734 70.62 67.6867 67.98 68.42 64.46C69.3 60.94 69.7399 56.4667 69.7399 51.04C69.7399 46.4933 69.3733 42.5333 68.64 39.16C68.0533 35.64 66.5133 32.8533 64.02 30.8C61.5266 28.7467 57.64 27.72 52.36 27.72H39.38V75.02Z" fill="url(#paint0_linear_39_2044)"/>
+                      <defs>
+                        <clipPath id="bgblur_0_39_2044_clip_path" transform="translate(40 40)"><path d="M0 178.2V0H59.84C70.5467 0 79.3467 2.05333 86.2401 6.16C93.1334 10.12 98.2666 15.9867 101.64 23.76C105.013 31.3867 106.7 40.7 106.7 51.7C106.7 65.4867 104.427 76.0467 99.8799 83.38C95.3333 90.5667 89.1733 95.5533 81.4 98.34C73.6266 101.127 64.9 102.52 55.22 102.52H39.38V178.2H0ZM39.38 75.02H52.58C57.42 75.02 61.0867 74.14 63.58 72.38C66.0734 70.62 67.6867 67.98 68.42 64.46C69.3 60.94 69.7399 56.4667 69.7399 51.04C69.7399 46.4933 69.3733 42.5333 68.64 39.16C68.0533 35.64 66.5133 32.8533 64.02 30.8C61.5266 28.7467 57.64 27.72 52.36 27.72H39.38V75.02Z"/>
+                      </clipPath><linearGradient id="paint0_linear_39_2044" x1="-955.957" y1="178.2" x2="1088.92" y2="178.2" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#0AD9FE"/>
+                      <stop offset="1" stop-color="#7D4FF0"/>
+                    </linearGradient>
+                    </defs>
+                    </svg>
                   </TypographyPrimary>
                   <TypographyPrimary>
-                  A
+                    <svg xmlns="http://www.w3.org/2000/svg" width="112" height="179" viewBox="0 0 112 179" fill="none">
+                      <foreignObject x="-40" y="-40" width="191.76" height="258.2"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_39_2043_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M0 178.2L33.66 0H78.54L111.76 178.2H75.46L69.52 140.58H43.34L37.1801 178.2H0ZM46.86 117.04H65.78L56.3199 47.52L46.86 117.04Z" fill="url(#paint0_linear_39_2043)"/>
+                      <defs>
+                        <clipPath id="bgblur_0_39_2043_clip_path" transform="translate(40 40)"><path d="M0 178.2L33.66 0H78.54L111.76 178.2H75.46L69.52 140.58H43.34L37.1801 178.2H0ZM46.86 117.04H65.78L56.3199 47.52L46.86 117.04Z"/>
+                      </clipPath><linearGradient id="paint0_linear_39_2043" x1="-1055.93" y1="178.2" x2="988.94" y2="178.2" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#0AD9FE"/>
+                      <stop offset="1" stop-color="#7D4FF0"/>
+                    </linearGradient>
+                    </defs>
+                    </svg>
                   </TypographyPrimary>
                   <TypographyPrimary>
-                  C
+                    <svg xmlns="http://www.w3.org/2000/svg" width="105" height="184" viewBox="0 0 105 184" fill="none">
+                      <foreignObject x="-40" y="-40" width="184.72" height="263.26"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_39_2042_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M53.46 183.26C39.9666 183.26 29.26 180.84 21.34 176C13.5666 171.013 8.06663 164.12 4.83997 155.32C1.6133 146.373 0 135.887 0 123.86V59.62C0 47.3 1.6133 36.74 4.83997 27.94C8.06663 18.9933 13.5666 12.1 21.34 7.26C29.26 2.42 39.9666 0 53.46 0C66.66 0 76.9267 2.2 84.26 6.60001C91.74 10.8533 97.02 16.8667 100.1 24.64C103.18 32.4133 104.72 41.36 104.72 51.48V66.88H66.22V49.06C66.22 45.54 65.9999 42.1667 65.5599 38.94C65.2666 35.7133 64.24 33.0733 62.48 31.02C60.72 28.82 57.7133 27.72 53.46 27.72C49.3533 27.72 46.2733 28.82 44.22 31.02C42.3133 33.22 41.0666 36.0067 40.48 39.38C40.04 42.6067 39.8199 46.0533 39.8199 49.72V133.54C39.8199 137.5 40.1133 141.167 40.7 144.54C41.4333 147.767 42.7532 150.407 44.6599 152.46C46.7132 154.367 49.6466 155.32 53.46 155.32C57.5666 155.32 60.5 154.293 62.26 152.24C64.02 150.04 65.1199 147.253 65.5599 143.88C65.9999 140.507 66.22 137.06 66.22 133.54V114.84H104.72V130.24C104.72 140.36 103.18 149.453 100.1 157.52C97.1666 165.44 91.96 171.747 84.48 176.44C77.1466 180.987 66.8066 183.26 53.46 183.26Z" fill="url(#paint0_linear_39_2042)"/>
+                      <defs>
+                        <clipPath id="bgblur_0_39_2042_clip_path" transform="translate(40 40)"><path d="M53.46 183.26C39.9666 183.26 29.26 180.84 21.34 176C13.5666 171.013 8.06663 164.12 4.83997 155.32C1.6133 146.373 0 135.887 0 123.86V59.62C0 47.3 1.6133 36.74 4.83997 27.94C8.06663 18.9933 13.5666 12.1 21.34 7.26C29.26 2.42 39.9666 0 53.46 0C66.66 0 76.9267 2.2 84.26 6.60001C91.74 10.8533 97.02 16.8667 100.1 24.64C103.18 32.4133 104.72 41.36 104.72 51.48V66.88H66.22V49.06C66.22 45.54 65.9999 42.1667 65.5599 38.94C65.2666 35.7133 64.24 33.0733 62.48 31.02C60.72 28.82 57.7133 27.72 53.46 27.72C49.3533 27.72 46.2733 28.82 44.22 31.02C42.3133 33.22 41.0666 36.0067 40.48 39.38C40.04 42.6067 39.8199 46.0533 39.8199 49.72V133.54C39.8199 137.5 40.1133 141.167 40.7 144.54C41.4333 147.767 42.7532 150.407 44.6599 152.46C46.7132 154.367 49.6466 155.32 53.46 155.32C57.5666 155.32 60.5 154.293 62.26 152.24C64.02 150.04 65.1199 147.253 65.5599 143.88C65.9999 140.507 66.22 137.06 66.22 133.54V114.84H104.72V130.24C104.72 140.36 103.18 149.453 100.1 157.52C97.1666 165.44 91.96 171.747 84.48 176.44C77.1466 180.987 66.8066 183.26 53.46 183.26Z"/>
+                      </clipPath><linearGradient id="paint0_linear_39_2042" x1="-1173.87" y1="180.62" x2="871.001" y2="180.62" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#0AD9FE"/>
+                      <stop offset="1" stop-color="#7D4FF0"/>
+                    </linearGradient>
+                    </defs>
+                    </svg>
                   </TypographyPrimary>
                   <TypographyPrimary>
-                  T
+                    <svg xmlns="http://www.w3.org/2000/svg" width="94" height="179" viewBox="0 0 94 179" fill="none">
+                      <foreignObject x="-40" y="-40" width="173.06" height="258.2"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_39_2041_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M26.84 178.2V29.26H0V0H93.0599V29.26H66.4399V178.2H26.84Z" fill="url(#paint0_linear_39_2041)"/>
+                      <defs>
+                        <clipPath id="bgblur_0_39_2041_clip_path" transform="translate(40 40)"><path d="M26.84 178.2V29.26H0V0H93.0599V29.26H66.4399V178.2H26.84Z"/>
+                      </clipPath><linearGradient id="paint0_linear_39_2041" x1="-1282.88" y1="178.2" x2="761.996" y2="178.2" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#0AD9FE"/>
+                      <stop offset="1" stop-color="#7D4FF0"/>
+                    </linearGradient>
+                    </defs>
+                    </svg>
                   </TypographyPrimary>
                 </span>
               </div>
@@ -294,7 +411,7 @@
           <EffectGlass>
             <span class="sectionTitle-eng text-white text-base relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] before:w-3 before:h-3 before:rounded-full pl-5">Our Mission</span>
             <div class="text-content gap-x-7 py-[0.9rem]">
-              <p class="text-white text-2xl">혁신적 경험으로 게임의 기준을 새롭게 쓰고, 협력과 도전으로 문화를 확장하며, <br>전 세계가 공감할 지속 가능한 감동을 만드는 문화·패러다임의 선도자로 성장하겠습니다.</p>
+              <p class="text-white text-[1.5rem] leading-[150%]">혁신적 경험으로 게임의 기준을 새롭게 쓰고, 협력과 도전으로 문화를 확장하며, <br>전 세계가 공감할 지속 가능한 감동을 만드는 문화·패러다임의 선도자로 성장하겠습니다.</p>
             </div>
             <ButtonsBasic size="sm" color="white">View more</ButtonsBasic>
           </EffectGlass>
@@ -390,13 +507,13 @@
         
       </div>
     </section>
-    <section class="wetheworld-section flex items-center justify-center" ref="wetheworldSection">
+    <section class="wetheworld-section flex items-center justify-center overflow-hidden" ref="wetheworldSection">
       <div class="wetheworldbg-video01 opacity-0 invisible absolute inset-0 z-0" ref="wetheworldbg1">
         <video class="bg-video--content w-full h-full object-cover" autoplay muted loop>
           <source src="~/assets/videos/main-wetheworld.mp4" type="video/mp4" />
         </video>
       </div>
-      <h2 class="text-[17rem] leading-1 font-bold text-white pt-[6.25rem] text-center">
+      <h2 class="text-[17rem] leading-1 font-bold text-white text-center">
         <span ref="weText" class="block leading-[100%]">
           <TypographyPrimary>
             W
@@ -433,23 +550,29 @@
             </TypographyPrimary>
         </span>
       </h2>
-      <div class="gotopCurtain">
-        <div></div>
-        <div></div>
-        <div></div>
+
+      <div class="gotopCurtain curtains">
+        <div class="curtain-item absolute w-full h-[50vh] top-0 left-0" ref="gotopCurtain"></div>
+        <div class="curtain-item absolute w-full h-[50vh] top-0 left-0" ref="gotopCurtain"></div>
+        <div class="curtain-item absolute w-full h-[50vh] top-0 left-0" ref="gotopCurtain"></div>
       </div>
-      <div class="godownCurtain">
-        <div></div>
-        <div></div>
-        <div></div>
+      <div class="godownCurtain curtains">
+        <div class="curtain-item absolute w-full h-[50vh] bottom-0 left-0" ref="godownCurtain"></div>
+        <div class="curtain-item absolute w-full h-[50vh] bottom-0 left-0" ref="godownCurtain"></div>
+        <div class="curtain-item absolute w-full h-[50vh] bottom-0 left-0" ref="godownCurtain"></div>
       </div>
+      <h2 class="flex items-center text-[17rem] leading-1 font-bold text-white text-center h-0 overflow-clip absolute" ref="inspireText">
+        <span class="block leading-[100%]">
+          INSPIRE
+        </span>
+      </h2>
     </section>
     <section class="newsroom-section relative pt-[6.25rem] pb-[6rem]" ref="newsroomSection">
       <div class="bg-text absolute bottom-0 left-0 ">
         <span class="text-[#403B4E] text-[5rem] font-bold">NEW PARADIGM, LASTING IMPACT. ELEMENTA KOREA</span>
         <h2 class="text-[28rem] gradient-text grey font-bold">ELEMENTA ELEMENTA</h2>
       </div>
-      <Container>
+      <Container class="flex flex-col gap-y-[5rem]">
         <div class="section-heading relative">
           <div class="heading-text flex flex-col gap-y-10">
             <span class="sectionTitle-eng text-white text-base relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] before:w-3 before:h-3 before:rounded-full pl-5 ">NEWSROOM</span>
@@ -463,14 +586,14 @@
           </div>
         </div>
         <div class="section-content flex">
-          <div class="content-text">
-            <p class="text-white ">
+          <div class="content-text pt-[5.375rem]">
+            <p class="text-white relative pl-16">
               New Paradigm, <br>
               Lasting Impact
             </p>
           </div>
           <div class="card-grid flex flex-col gap-y-18">
-            <EffectGlass class="card-glass pt-[5rem] relative after:absolute after:inset-y-0 after:right-0 after:w-80">
+            <EffectGlass class="card-glass relative after:absolute after:inset-y-0 after:right-0 after:w-80">
               <div class="card-list flex gap-[3.75rem] justify-center flow-left mb-[4.375rem]" ref="flowLeft">
                 <div class="card w-[28rem]" >
                   <EffectCardHover>
@@ -652,23 +775,22 @@
     <section class="careers-section">
       <Container>
         <div class="section-heading">
-          <div class="heading-text">
-            <span class="sectionTitle-eng">CAREERS</span>
-            <h6>
+          <div class="heading-text flex flex-col gap-y-10">
+            <span class="sectionTitle-eng text-white text-base relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] before:w-3 before:h-3 before:rounded-full pl-5 ">CAREERS</span>
+            <h6 class="text-white text-[2.3rem] font-normal">
               ELEMENTA와 함께 성장할 동료를 기다립니다. <br>
               Design the Future of Play, Create a Culture the World Shares 
             </h6>
           </div>
-          <div class="heading-button">
-            <a href="">View more</a>
+          <div class="heading-button absolute right-0 bottom-0">
+            <div class="controls">
+
+            </div>
+            <ButtonsBasic size="lg" color="blue">View more</ButtonsBasic>
           </div>
         </div>
         <div class="section-content">
-          <div class="card-grid">
-            <div class="card-list flex flex-wrap gap-8 justify-center py-20 flow-left">
-              
-            </div>
-          </div>
+          
         </div>
         
       </Container>
@@ -703,6 +825,9 @@ const wetheworldSection = ref(null)
 const wetheworldbg1 = ref(null)
 const weText = ref(null)
 const theworldText = ref(null)
+const gotopCurtain = ref([])
+const godownCurtain = ref([])
+const inspireText = ref(null)
 
 onMounted(() => {
   let primaryTexts = missionSection.value.querySelectorAll('.primary-char');
@@ -817,6 +942,11 @@ onMounted(() => {
     }
   })
 
+  const gotopCurtainItems = wetheworldSection.value.querySelectorAll('.gotopCurtain .curtain-item');
+  const godownCurtainItems = wetheworldSection.value.querySelectorAll('.godownCurtain .curtain-item');
+  const gotopCurtainItemArray = Array.from(gotopCurtainItems);
+  const godownCurtainItemArray = Array.from(godownCurtainItems);
+
   wetheworldTl.to(wetheworldbg1.value, {
     opacity: 1,
     visibility: 'visible',
@@ -833,6 +963,18 @@ onMounted(() => {
     start: 'top top',
     end: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
   }, 0)
+  .to(gotopCurtainItemArray,
+  {
+    start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
+    duration: 0.1,
+    opacity: 0.4,
+  })
+  .to(godownCurtainItemArray, 
+  {
+    start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
+    duration: 0.1,
+    opacity: 0.4,
+  })
   .to(weText.value, {
     y: '-80vh',
     start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
@@ -845,6 +987,17 @@ onMounted(() => {
     end: () => "+=" + (wetheworldSection.value.offsetHeight * 1.2),
     scrub: 1,
   }, "<")
+  .to(gotopCurtainItemArray, {
+    yPercent: -100,
+    stagger: 0.05,
+  }, "<")
+  .to(godownCurtainItemArray, {
+    yPercent: 100,
+    stagger: 0.05,
+  }, "<")
+  .to(inspireText.value, {
+    height: '100%',
+  }, "-=0.5")
   
   
 

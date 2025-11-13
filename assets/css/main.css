@@ -33,6 +33,7 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 .mission-section {width: 100svw; height: 100svh; left: 50%; transform: translateX(-50%); text-align: center;}
 .mission-section .gradient-text {display: flex; align-items: center; column-gap: 8px;}
 .mission-section .primary-char-wrap {margin-left: 0 !important;}
+.mission-section .primary-char-wrap.ml-5 {margin-left: 1.25rem !important;}
 .mission-section .glass-content {padding: 2rem 4.375rem;}
 
 .accordion-item:first-child {flex: 1;}
@@ -49,9 +50,12 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 .accordion-item .content-text * {color: #fff;}
 .accordion-item.opened .accordion-content {width: 100%;}
 
+.curtain-item {opacity: 0; background: rgba(0, 0, 0, 0.20); box-shadow: -2px -3px 3px 0 rgba(255, 255, 255, 0.25) inset, 5px 3px 5px 0 rgba(255, 255, 255, 0.40) inset;}
+
 .slider-img {clip-path: polygon(7% 0, 100% 0%, 92% 100%, 0% 100%); max-width: 0; overflow: hidden;}
 .slider-img img {max-width: unset;}
 .newsroom-section::after {content: ""; display: inline-block; width: 50rem; height: 54rem; position: absolute; top: 0; right: -3.75rem; pointer-events: none; background: url("~/assets/images/main/newsroom-bg-a.svg");}
+.newsroom-section .content-text p::before {content: ""; display: inline-block; width: 5rem; height: 9rem; position: absolute; left: 0; bottom: -0.4rem; background: url("~/assets/images/main/newsroom-content-a.svg") no-repeat center / contain;}
 .newsroom-section .container {overflow: visible;}
 .newsroom-section .gradient-text {white-space: nowrap;}
 .newsroom-section .glass-content {position: static; padding-top: 5rem; padding-bottom: 10.75rem;}
