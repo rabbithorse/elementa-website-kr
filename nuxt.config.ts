@@ -30,8 +30,7 @@ export default defineNuxtConfig({
     },
   },
   modules: [
-    '@nuxt/image',
-    'nuxt-swiper'
+    '@nuxt/image'
   ],
   image: {
     // 이미지 모듈 설정
