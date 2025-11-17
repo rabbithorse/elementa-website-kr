@@ -88,8 +88,9 @@ box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.25) inset, 0 0 4px 0 rgba(255, 255,
 .input-basic:-ms-input-placeholder{color: #999;}
 .hide-select {display: none;}
 
-/* join us list recruit */
+/****** sub ******/
 
+/* join us list recruit */
 .list-recruit {background: #05060B; z-index: 2;}
 .list-recruit .list-header {color:#fff; z-index: 2;}
 .list-recruit .list {z-index: 2;}
@@ -118,11 +119,33 @@ box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.25) inset, 0 0 4px 0 rgba(255, 255,
 /* join us detail */
 .join-us-detail-area .deco-text::before {content:''; display:block; width:24px; height:38px; background:url(~/assets/images/sub/logo-icon.svg) no-repeat center / cover;}
 
-/* join us detail*/
 .detail-glass-box {background: rgba(0, 0, 0, 0.15); border-bottom:1px solid rgba(255,255,255,0.2); border-right: 1px solid rgba(255, 255, 255, 0.2); border-top: 1px solid rgba(255,255,255,0.5); border-left: 1px solid rgba(255,255,255,0.5); box-shadow: -28px -22px 0px -17px rgba(255,255,255,0.2) inset;}
 .detail-glass-box-side {background: rgba(0, 0, 0, 0.5); border-top: 1px solid rgba(255,255,255,0.5); box-shadow: -28px -22px 0px -17px rgba(255,255,255,0.2) inset;}
 .detail-glass-box-side::after {content:''; display:block; width:71px; height:79px; background:url(~/assets/images/sub/logo-icon-small.svg); position:absolute; right:0; top:0; z-index: 2; right:12px; top: 12px; filter: grayscale(1);}
 
+.our-office-area .img_area .img-item {transform: translateY(-20px); display: inline-block;}
+.our-office-area .img_area .img-item figure .inner-img {clip-path: inset(50% 30% 20% 30% round 15%); transition: clip-path 1.4s ease;}
+.our-office-area .img_area .img-item figure .dimmed {content: ''; display: block; width: 100%; height: 35%; position: absolute; opacity: 0; left: 0; bottom: 0; transition: all 2s cubic-bezier(0.075, 0.82, 0.165, 1); z-index: 2; backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px); background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.50) 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 60%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 60%);}
+.our-office-area .img_area .img-item figure .inner-img img {transform: scale(1.4); transition: transform 1.6s ease;}
+.our-office-area .img_area .img-item figure figcaption {left:0; bottom:-100%; transition: bottom .6s cubic-bezier(0.075, 0.82, 0.165, 1); z-index: 3;}
+.our-office-area .img_area .img-item.on figure .inner-img {clip-path: inset(0% 0% 0% 0% round 0%);}
+.our-office-area .img_area .img-item.on figure .inner-img img {transform: scale(1);}
+.our-office-area .img_area .img-item .card-moving {position: static;}
+.our-office-area .img_area .img-item .card-moving .animatedCard {position: static;}
+.our-office-area .img_area .img-item.item-02 {transform: translateY(195px);}
+.our-office-area .img_area .img-item.item-05 {transform: translateY(-240px);}
+.our-office-area .img_area .img-item.item-06 {transform: translate(-70px, 560px);}
+.our-office-area .img_area .img-item figure + p {transition: transform .5s ease; transform: translateY(0);}
+
+.our-office-area .img_area .img-item:hover figure figcaption {bottom: 45px;}
+.our-office-area .img_area .img-item:hover figure .inner-img img {transform: scale(1.1);}
+.our-office-area .img_area .img-item.item-01:hover figure figcaption,
+.our-office-area .img_area .img-item.item-03:hover figure figcaption,
+.our-office-area .img_area .img-item.item-04:hover figure figcaption,
+.our-office-area .img_area .img-item.item-06:hover figure figcaption {bottom: 25px;}
+.our-office-area .img_area .img-item:hover figure .dimmed {opacity: 1; backdrop-filter: blur(4.5px); -webkit-backdrop-filter: blur(4.5px);}
+.our-office-area .img_area .img-item:hover figure + p {transform: translateY(-100%);}
+ 
 .twink-point::before {content:''; width:12px; height:12px; background: var(--main-color); border-radius: 50%; animation: twink 2.8s ease-in-out infinite; opacity: .3;}
 
 @keyframes twink {
@@ -130,6 +153,8 @@ box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.25) inset, 0 0 4px 0 rgba(255, 255,
   50% {opacity: 1;}
   100% {opacity: .3;}
 }
+
+.our-office-area .img_area .text-bg {content:'';  display:block; width:100%; height:100vh; background: url(~/assets/images/sub/text-out-office.svg) no-repeat center / contain; position: absolute; left: 0; top: 0;}
 
 /* media slider */
 .media-slider-wrap {z-index: 2;}

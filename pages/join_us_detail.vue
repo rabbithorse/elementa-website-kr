@@ -1,13 +1,13 @@
 <template>
   <div>
     <section class="subSection logo-bg pt-[180px] relative">
-      <div class="join-us-detail-area pb-[250px]">
+      <div class="join-us-detail-area pb-[180px]">
         <Container class="grid gap-x-[9.4%] grid-cols-[1fr_23.7%] grid-row-[auto 1fr]">
           <div class="detail-title-area col-span-2">
             <ButtonsBadge category="y">Business</ButtonsBadge>
             <h3 class="text-white text-[4.69rem] pb-[90px] font-bold">퍼포먼스 마케터</h3>
           </div>
-          <div class="detail-cont">
+          <div class="detail-cont" ref="detailCont">
             <p class="font-bold text-[1.75rem] text-white leading-[2.63rem] pb-[30px] deco-text flex gap-[10px] relative items-center">신입 ∙ 0년~2년</p>
             <span class="text-[var(--text-disabled)] text-[0.94rem]">포지션 소개</span>
             <p class="text-white text-lg break-keep pt-[10px] pb-[3.75rem] leading-[1.81rem]">퍼포먼스 마케터는 온라인 광고 채널(Google, Meta, Naver, Kakao 등)을 운영하며 KPI 달성을 위한 캠페인을 설계하고 최적화하는 역할을 담당합니다. 데이터 기반으로 예산을 효율적으로 집행하고, 퍼널 분석과 A/B 테스트 등을 통해 신규 유저 유입과 리텐션을 동시에 강화합니다.</p>
@@ -90,6 +90,102 @@
           <!-- //Side -->
         </Container>
       </div>
+
+      <div class="our-office-area pb-[180px] ">
+        <Container>
+          <p class="text-white twink-point flex gap-[10px] items-center font-bold pb-[32px]">Our office</p>
+          <p class="text-white font-bold text-[2.5rem]">Dreaming bigger, <br>Working smarter, Creating together.</p>
+          <div class="img_area relative" ref="imgArea">
+            <div class="text-bg" ref="textBg"></div>
+            <!-- card1 -->
+            <div class="img-item item-01 text-white relative float-right">
+              <EffectCardHover>
+              <figure class="relative overflow-hidden z-20">
+                <span class="dimmed"></span>
+                <span class="dimmed blur"></span>
+                <div class="inner-img">
+                  <img src="/assets/images/sub/join-us-detail-item01.jpg" alt="">
+                </div>
+                <figcaption class="absolute text-center w-full font-bold text-2xl">Company overview</figcaption>
+              </figure>
+              <p class="pt-[30px] text-xl">→ Company overview</p>
+              </EffectCardHover>
+            </div>
+            <!-- //card1 -->
+            <!-- card2 -->
+            <div class="img-item item-02 text-white relative">
+              <EffectCardHover>
+              <figure class="relative overflow-hidden z-20">
+                <span class="dimmed"></span>
+                <div class="inner-img">
+                  <img src="/assets/images/sub/join-us-detail-item02.jpg" alt="">
+                </div>
+                <figcaption class="absolute text-center w-full font-bold text-[2.5rem]">Employee break area</figcaption>
+              </figure>
+              <p class="pt-[30px] text-xl">→ Employee break area</p>
+              </EffectCardHover>
+            </div>
+            <!-- //card2 -->
+            <!-- card3 -->
+            <div class="img-item item-03 text-white relative float-right mr-[265px]">
+              <EffectCardHover>
+              <figure class="relative overflow-hidden z-20">
+                <span class="dimmed"></span>
+                <div class="inner-img">
+                  <img src="/assets/images/sub/join-us-detail-item03.jpg" alt="">
+                </div>
+                <figcaption class="absolute text-center w-full font-bold text-2xl">Employee break area</figcaption>
+              </figure>
+              <p class="pt-[30px] text-xl">→ Employee break area</p>
+              </EffectCardHover>
+            </div>
+            <!-- //card3 -->
+            <!-- card4 -->
+            <div class="img-item item-04 text-white relative ml-[160px] mt-[560px]">
+              <EffectCardHover>
+              <figure class="relative overflow-hidden z-20">
+                <span class="dimmed"></span>
+                <div class="inner-img">
+                  <img src="/assets/images/sub/join-us-detail-item01.jpg" alt="">
+                </div>
+                <figcaption class="absolute text-center w-full font-bold text-2xl">Company overview</figcaption>
+              </figure>
+              <p class="pt-[30px] text-xl">→ Company overview</p>
+              </EffectCardHover>
+            </div>
+            <!-- //card4 -->
+            <!-- card5 -->
+            <div class="img-item item-05 text-white relative float-right">
+              <EffectCardHover>
+              <figure class="relative overflow-hidden z-20">
+                <span class="dimmed"></span>
+                <div class="inner-img">
+                  <img src="/assets/images/sub/join-us-detail-item04.jpg" alt="">
+                </div>
+                <figcaption class="absolute text-center w-full font-bold text-[2.5rem]">Company overview</figcaption>
+              </figure>
+              <p class="pt-[30px] text-xl">→ Company overview</p>
+              </EffectCardHover>
+            </div>
+            <!-- //card5 -->
+            <!-- card6 -->
+            <div class="img-item item-06 text-white relative mt-[500px]">
+              <EffectCardHover>
+              <figure class="relative overflow-hidden z-20">
+                <span class="dimmed"></span>
+                <div class="inner-img">
+                  <img src="/assets/images/sub/join-us-detail-item03.jpg" alt="">
+                </div>
+                <figcaption class="absolute text-center w-full font-bold text-2xl">Employee break area</figcaption>
+              </figure>
+              <p class="pt-[30px] text-xl">→ Employee break area</p>
+              </EffectCardHover>
+            </div>
+            <!-- //card6 -->
+          </div>
+        </Container>
+      </div>
+      <div class="h-[600px]"></div>
     </section>
 
     <svg style="display: none">
@@ -127,7 +223,50 @@
 
   const { $gsap, $ScrollTrigger } = useNuxtApp()
 
+  const sideInner = ref(null)
+  const detailCont = ref(null)
+  const imgArea = ref(null)
+  const textBg = ref(null)
+
   onMounted(() => {
-    
+    // 사이드 메뉴 고정
+    $gsap.to(detailCont.value, {
+      scrollTrigger: {
+        trigger: detailCont.value,
+        start: '-=150 top',
+        end: 'bottom bottom',
+        scrub: 2,
+        // markers: true,
+        pin: sideInner.value,
+      },
+    });
+
+    // 오피스 이미지 애니메이션
+    const item = document.querySelectorAll('.img-item')
+
+    item.forEach((el) => {
+      $gsap.to(el, {
+        scrollTrigger: {
+          trigger: el,
+          start: '40% bottom',
+          end: '40% top',
+          // markers: true,
+          onEnter: () => el.classList.add('on'),
+        }
+      })
+    })
+
+    // 오피스 고정 배경
+    $gsap.timeline({
+      scrollTrigger: {
+        trigger: imgArea.value,
+        start: 'top top',
+        end: 'bottom+=600 bottom',
+        scrub: 2,
+        // markers: true,
+        pin: textBg.value,
+        pinSpacing: false
+      },
+    })
   });
 </script>
