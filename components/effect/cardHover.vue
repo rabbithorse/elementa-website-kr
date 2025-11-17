@@ -10,7 +10,7 @@
 
 <script setup>
   let moveForce = 8;
-  let rotateForce = 8;
+  let rotateForce = 6;
   let ease = 0.05;
   const card = ref(null);
 
@@ -70,7 +70,7 @@
         card.value.removeEventListener("mousemove", removeStyle);
         
         
-        console.log(card.value.style.transform);
+        //console.log(card.value.style.transform);
       });
       
       animate();

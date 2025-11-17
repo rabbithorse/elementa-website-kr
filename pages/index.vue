@@ -772,9 +772,9 @@
         
       </Container>
     </section>
-    <section class="careers-section pt-[17rem] pb-64">
-      <Container>
-        <div class="section-heading">
+    <section class="careers-section pt-[17rem] pb-64 flex flex-col gap-y-[5rem]">
+      <div class="section-heading">
+        <Container>
           <div class="heading-text flex flex-col gap-y-10">
             <span class="sectionTitle-eng text-white text-base relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] before:w-3 before:h-3 before:rounded-full pl-5 ">CAREERS</span>
             <h6 class="text-white text-[2.3rem] font-normal">
@@ -782,20 +782,30 @@
               Design the Future of Play, Create a Culture the World Shares 
             </h6>
           </div>
-          <div class="heading-button absolute right-0 bottom-0">
-            <div class="controls">
-
+          <div class="heading-button absolute right-0 bottom-0 flex gap-5">
+            <div class="controls flex gap-3">
+              <button @click="swiper.slidePrev()" class="slide-arrow slide-arrow--prev">
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+                  <path d="M24 7.5L12 18.75L24 30" stroke="white" stroke-width="2"/>
+                </svg>
+                <span class="sr-only">Slide to the previous slide</span>
+              </button>
+              <button @click="swiper.slideNext()" class="slide-arrow slide-arrow--next">
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+                  <path d="M12 30L24 18.75L12 7.5" stroke="white" stroke-width="2"/>
+                </svg>
+                <span class="sr-only">Slide to the next slide</span>
+              </button>
             </div>
             <ButtonsBasic size="lg" color="blue">View more</ButtonsBasic>
           </div>
-        </div>
-        <div class="section-content">
-          <EffectGlass class="content-glass ">
-            <BlocksSlider />
-          </EffectGlass>
-        </div>
-        
-      </Container>
+        </Container>
+      </div>
+      <div class="section-content">
+        <EffectGlass class="content-glass">
+          <BlocksSlider />
+        </EffectGlass>
+      </div>
     </section>
   </div>
 </template>
@@ -830,11 +840,9 @@ const theworldText = ref(null)
 const gotopCurtain = ref([])
 const godownCurtain = ref([])
 const inspireText = ref(null)
+const swiper = ref(null)
 
 onMounted(() => {
-  let primaryTexts = missionSection.value.querySelectorAll('.primary-char');
-  let primaryArray = Array.from(primaryTexts);
-
   const tl = $gsap.timeline({
     scrollTrigger: {
       trigger: visualSection.value,
@@ -902,15 +910,15 @@ onMounted(() => {
       scrub: 1,
     }
   })
-  .to(primaryArray, {
-    xPercent: 0,
-    opacity: 1,
-    scrollTrigger: {
-      trigger: missionSection.value,
-      start: 'top center',
-      markers: true,
-    }
-  }, "+=8")
+  // .to(primaryArray, {
+  //   xPercent: 0,
+  //   opacity: 1,
+  //   scrollTrigger: {
+  //     trigger: missionSection.value,
+  //     start: 'top center',
+  //     markers: true,
+  //   }
+  // }, "+=8")
 
   
 
@@ -968,13 +976,13 @@ onMounted(() => {
   .to(gotopCurtainItemArray,
   {
     start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
-    duration: 0.1,
+    duration: 0.05,
     opacity: 0.4,
   })
   .to(godownCurtainItemArray, 
   {
     start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
-    duration: 0.1,
+    duration: 0.05,
     opacity: 0.4,
   })
   .to(weText.value, {
@@ -991,11 +999,11 @@ onMounted(() => {
   }, "<")
   .to(gotopCurtainItemArray, {
     yPercent: -100,
-    stagger: 0.05,
+    stagger: 0.03,
   }, "<")
   .to(godownCurtainItemArray, {
     yPercent: 100,
-    stagger: 0.05,
+    stagger: 0.03,
   }, "<")
   .to(inspireText.value, {
     height: '100%',
