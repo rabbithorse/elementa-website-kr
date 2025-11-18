@@ -1,30 +1,63 @@
 
 
 <template>
-  <ClientOnly>
-    <swiper-container slides-per-view="3" speed="500" loop="true" css-mode="true">
-      <swiper-slide>
-        <BlocksJoinCard />
-      </swiper-slide>
-      <swiper-slide>Slide 2</swiper-slide>
-      <swiper-slide>Slide 3</swiper-slide>
-    </swiper-container>
-  </ClientOnly>
+  <swiper
+    :slides-per-view="4"
+    :space-between="20"
+    @swiper="onSwiper"
+  >
+    <swiper-slide>
+      <BlocksJoinCard />
+    </swiper-slide>
+    <swiper-slide>
+      <BlocksJoinCard />
+    </swiper-slide>
+    <swiper-slide>
+      <BlocksJoinCard />
+    </swiper-slide>
+    <swiper-slide>
+      <BlocksJoinCard />
+    </swiper-slide>
+    <swiper-slide>
+      <BlocksJoinCard />
+    </swiper-slide>
+    <swiper-slide>
+      <BlocksJoinCard />
+    </swiper-slide>
+    <swiper-slide>
+      <BlocksJoinCard />
+    </swiper-slide>
+  </swiper>
 </template>
 
-<script setup>
-  
+<script>
+  import { Navigation } from 'swiper/modules';
+  import { Swiper, SwiperSlide } from 'swiper/vue';
+
+  import 'swiper/css/navigation';
+  import 'swiper/css';
+
+  export default {
+    components: {
+      Swiper,
+      SwiperSlide,
+    },
+    setup() {
+      const onSwiper = (swiper) => {
+        console.log(swiper);
+      };
+      const onSlideChange = () => {
+        console.log('slide change');
+      };
+      return {
+        onSwiper,
+        onSlideChange,
+        modules: [Navigation]
+      };
+    },
+  }
 </script>
 
 <style lang="css">
-swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-  height: 20vh;
-  font-size: 4rem;
-  font-weight: bold;
-  font-family: 'Roboto', sans-serif;
-}
+
 </style>

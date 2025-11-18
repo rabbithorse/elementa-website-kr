@@ -8,7 +8,7 @@
       </div>
     </div>
 
-    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none">
+    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" style="display: none;">
       <g filter="url(#glass-distortion)">
         <rect x="-40" width="100%" height="100%" rx="5" fill="black" fill-opacity="0.15" shape-rendering="crispEdges"/>
       </g>
@@ -52,7 +52,7 @@
           <feBlend mode="normal" in="effect4_noise_406_2570" in2="effect1_dropShadow_406_2570" result="effect4_noise_406_2570"/>
         </filter>
       </defs>
-    </svg>
+    </svg> -->
   </div>
 </template>
 
