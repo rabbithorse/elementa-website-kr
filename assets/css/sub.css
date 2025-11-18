@@ -8,6 +8,7 @@
 .ico {display: block; width: 24px; height: 24px;}
 .ico.ico-prev {mask: url(~/assets/images/sub/ico-prev.svg) no-repeat center / contain; -webkit-mask: url(~/assets/images/sub/ico-prev.svg) no-repeat center / contain;}
 .ico.ico-next {mask: url(~/assets/images/sub/ico-next.svg) no-repeat center / contain; -webkit-mask: url(~/assets/images/sub/ico-next.svg) no-repeat center / contain;}
+.ico.ico-play {mask: url(~/assets/images/sub/ico-play.svg) no-repeat center / contain; -webkit-mask: url(~/assets/images/sub/ico-play.svg) no-repeat center / contain;}
 .ico.big {width:32px; height: 32px;}
 
 .ico.ico-share {mask: url(~/assets/images/sub/ico-share.svg) no-repeat center / contain; -webkit-mask: url(~/assets/images/sub/ico-share.svg) no-repeat center / contain;}
@@ -192,20 +193,10 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 .media-slider-wrap .slider-text p.fade-in {opacity: 1; transform: translate(0px, 0px);}
 .media-slider-wrap .slider-text p.fade-out {opacity: 0; transform: translate(-50px, 30px);}
 
-.float-box {
-  top: 0;
-  left: 0;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%); /* 커서 중앙 맞추기 */
-  opacity: 0;
-  scale: 0.8;
-  z-index: 1000;
-  transition: opacity 0.3s ease, transform 0.1s ease;
-}
-
+.float-box {top: 0; left: 0; width: 80px; height: 80px; border-radius: 20px; pointer-events: none; transform: translate(-50%, -50%); opacity: 0; scale: 0.8; z-index: 1000; transition: opacity 0.3s ease, transform 0.1s ease; background: var(--main-color) url(~/assets/images/sub/ico-play.svg) no-repeat center / 40px;}
+.float-box.left,
+.float-box.right {box-shadow: -1.5px -1.5px 1.5px 0 rgba(255, 255, 255, 0.20) inset, 2px 2px 2px 0 rgba(255, 255, 255, 0.40) inset; backdrop-filter: blur(10px); background: rgba(0,0,0,0.3) url(~/assets/images/sub/ico-prev-style2.svg) no-repeat center / 40px;}
+.float-box.right {background: rgba(0,0,0,0.3) url(~/assets/images/sub/ico-next-style2.svg) no-repeat center / 40px;}
 
 /* list media & newsroom */
 .media-list .list .card {min-height:320px;}

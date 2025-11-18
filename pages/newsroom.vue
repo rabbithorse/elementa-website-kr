@@ -50,13 +50,9 @@
           class="media-slider relative mt-[85px]"
           :class="{ 'swiper-hidden': !isSwiperReady }"
           >
-            <div class="float-box absolute bg-[var(--main-color)]"></div>
+            <div class="float-box absolute"></div>
             <Swiper
               :modules="[Navigation, Autoplay]"
-              :navigation="{
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-              }"
               :autoplay="{
                 delay: 2000,
                 disableOnInteraction: false,
@@ -67,6 +63,11 @@
               :space-between="20"
               :loop="true"
               :speed="1500"
+              :simulateTouch="true"
+              :touchStartPreventDefault="false"
+              :grabCursor="true"
+              :loopedSlides="12"
+              :slideToClickedSlide="true"
               @slideChange="onSlideChange"
               @swiper="onSwiper"
             >
@@ -161,9 +162,14 @@
                   </a>
                 </div>
               </swiper-slide>
+              <swiper-slide data-text="뉴스룸 13번 슬라이드 설명 텍스트">
+                <div class="swiper-image">
+                  <a class="image" href="">
+                    <img src="~/assets/images/sub/newsroom-slide06.png" alt="">
+                  </a>
+                </div>
+              </swiper-slide>
             </Swiper>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
           </div>
           <!-- //slider -->
           <div class="slider-text relative z-20  pt-[2.19rem] pb-[3.75rem]">
@@ -269,6 +275,18 @@
       })
     })
 
+    let isDragging = false
+
+    // 마우스 누르면 드래그 시작
+    slider.addEventListener('mousedown', () => {
+      isDragging = true
+    })
+
+    // 마우스 떼면 드래그 종료
+    document.addEventListener('mouseup', () => {
+      isDragging = false
+    })
+
     // 마우스 이동 → float-box 따라오기
     slider.addEventListener('mousemove', (e) => {
       const rect = slider.getBoundingClientRect()
@@ -282,6 +300,25 @@
         duration: 0.2,
         ease: "power3.out"
       })
+
+      // --- 왼쪽 / 오른쪽 감지 ---
+      const activeSlide = document.querySelector('.swiper-slide-active')
+      if (!activeSlide) return
+
+      const slideRect = activeSlide.getBoundingClientRect()
+      const slideRight = slideRect.left + slideRect.width
+
+      if (e.clientX < slideRect.left) {
+        floatBox.classList.add('left')
+        floatBox.classList.remove('right')
+      } else if(e.clientX >= slideRight) {
+        floatBox.classList.add('right')
+        floatBox.classList.remove('left')
+      } else if(e.clientX > slideRect.left && e.clientX < slideRight) {
+        floatBox.classList.remove('left')
+        floatBox.classList.remove('right')
+      }
+
     })
 
     // 마우스가 슬라이더에서 벗어나면 사라짐
@@ -302,6 +339,7 @@
 
   const isSwiperReady = ref(false)
 
+  // **슬라이더 변경 시**
   const onSlideChange = (swiper) => {
     const textEl = document.querySelector('.slider-text p')
     if (!textEl) return
@@ -329,6 +367,7 @@
     }, 400) 
   }
 
+  // **swiper 초기화 시**
   const onSwiper = (swiper) => {
     swiperInstance.value = swiper
     
@@ -337,9 +376,6 @@
       isSwiperReady.value = true
     }, 400) 
   }
-
-
-
 
 </script>
 

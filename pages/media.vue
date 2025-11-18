@@ -41,13 +41,9 @@
           class="media-slider relative mt-[85px]"
           :class="{ 'swiper-hidden': !isSwiperReady }"
           >
-
+            <div class="float-box absolute"></div>
             <Swiper
               :modules="[Navigation, Autoplay]"
-              :navigation="{
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-              }"
               :autoplay="{
                 delay: 2000,
                 disableOnInteraction: false,
@@ -58,6 +54,11 @@
               :space-between="20"
               :loop="true"
               :speed="1500"
+              :simulateTouch="true"
+              :touchStartPreventDefault="false"
+              :grabCursor="true"
+              :loopedSlides="12"
+              :slideToClickedSlide="true"
               @slideChange="onSlideChange"
               @swiper="onSwiper"
             >
@@ -146,8 +147,6 @@
                 </div>
               </swiper-slide>
             </Swiper>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
           </div>
           <!-- //slider -->
           <div class="slider-text relative z-20  pt-[2.19rem] pb-[3.75rem]">
@@ -238,6 +237,74 @@
       backgroundPositionY: '-80px',
       ease: 'none',
     })
+    const floatBox = document.querySelector('.float-box')
+    const slider = document.querySelector('.media-slider')
+
+    if (!floatBox || !slider) return
+
+    // 마우스가 슬라이더에 들어오면 등장
+    slider.addEventListener('mouseenter', () => {
+      $gsap.to(floatBox, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.2
+      })
+    })
+
+    let isDragging = false
+
+    // 마우스 누르면 드래그 시작
+    slider.addEventListener('mousedown', () => {
+      isDragging = true
+    })
+
+    // 마우스 떼면 드래그 종료
+    document.addEventListener('mouseup', () => {
+      isDragging = false
+    })
+
+    // 마우스 이동 → float-box 따라오기
+    slider.addEventListener('mousemove', (e) => {
+      const rect = slider.getBoundingClientRect()
+
+      const x = e.clientX - rect.left
+      const y = e.clientY - rect.top
+
+      $gsap.to(floatBox, {
+        x: x,
+        y: y,
+        duration: 0.2,
+        ease: "power3.out"
+      })
+
+      // --- 왼쪽 / 오른쪽 감지 ---
+      const activeSlide = document.querySelector('.swiper-slide-active')
+      if (!activeSlide) return
+
+      const slideRect = activeSlide.getBoundingClientRect()
+      const slideRight = slideRect.left + slideRect.width
+
+      if (e.clientX < slideRect.left) {
+        floatBox.classList.add('left')
+        floatBox.classList.remove('right')
+      } else if(e.clientX >= slideRight) {
+        floatBox.classList.add('right')
+        floatBox.classList.remove('left')
+      } else if(e.clientX > slideRect.left && e.clientX < slideRight) {
+        floatBox.classList.remove('left')
+        floatBox.classList.remove('right')
+      }
+
+    })
+
+    // 마우스가 슬라이더에서 벗어나면 사라짐
+    slider.addEventListener('mouseleave', () => {
+      $gsap.to(floatBox, {
+        opacity: 0,
+        scale: 0.8,
+        duration: 0.2
+      })
+    })
   })
 
   // 현재 텍스트
@@ -247,7 +314,7 @@
 
   const isSwiperReady = ref(false)
 
-  // 슬라이드 변경 시
+  // ***슬라이드 변경 시***
   const onSlideChange = (swiper) => {
     const textEl = document.querySelector('.slider-text p')
     if (!textEl) return
@@ -278,7 +345,7 @@
     controlVideos(swiper)
   }
 
-  // 슬라이더 초기화 시
+  // ***슬라이더 초기화 시***
   const onSwiper = (swiper) => {
     swiperInstance.value = swiper
     
