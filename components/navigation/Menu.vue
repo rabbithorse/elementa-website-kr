@@ -12,7 +12,7 @@
   const menuItems = [
     { name: "Company", path: "/company" },
     { name: "Games", path: "/games" },
-    { name: "Careers", path: "/careers" },
+    { name: "Careers", path: "/join_us" },
     { name: "Newsroom", path: "/newsroom" },
     { name: "Media", path: "/media" },
     { name: "Contact", path: "/contact" },

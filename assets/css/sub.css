@@ -156,12 +156,58 @@ box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.25) inset, 0 0 4px 0 rgba(255, 255,
 
 .our-office-area .img_area .text-bg {content:'';  display:block; width:100%; height:100vh; background: url(~/assets/images/sub/text-out-office.svg) no-repeat center / contain; position: absolute; left: 0; top: 0;}
 
-/* media slider */
+/* media & newsroom slider */
 .media-slider-wrap {z-index: 2;}
 .media-slider-wrap::before {content:''; display: block; width:100%; height:50%; background:linear-gradient(0deg, black 60%, transparent 100%); position:absolute; left:0; bottom:0;}
-.media-slider {height:498px; z-index: 2; color:#fff; display: flex; align-items: center; justify-content: center; border:1px solid rgba(255,255,255,0.2)}
+.media-slider-wrap .dimmed-glass {content:''; display:block; max-width: 116rem; width: 100%; height: 394px; background: rgba(0, 0, 0, 0.15); backdrop-filter:blur(210px); position: absolute; left: 50%; transform: translateX(-50%); bottom: 0; 
+  box-shadow: -3px -3px 8px -2px #ffffff33 inset, 1px 1px 1px 0 rgba(255, 255, 255, 0.10) inset; filter: drop-shadow(20px 20px 20px rgba(0, 0, 0, 0.10)); border: 1px solid rgba(255,255,255,0.25)}
+.media-slider-wrap .dimmed-glass::before {content:''; display: block; width: 100%; height: 100%; background: url(~/assets/images/sub/otis-redding.png) repeat; position: absolute; left: 0; bottom: 0;}
+.media-slider-wrap .dimmed-yellow {width:490px; height:300px; background:rgb(124 101 54); left:50%; bottom:0; transform: translateX(-50%);}
+.media-slider-wrap .dimmed-yellow::before {content:''; display: block; width:100%; height: 30px; background: black; position: absolute; left: 0; bottom: 30px;}
 
-/* list media */
+.media-slider {z-index: 2; color:#fff; display: flex; align-items: center; justify-content: center; transition: opacity .4s ease; cursor:none;}
+.media-slider * {cursor:none!important;}
+.media-slider.swiper-hidden {visibility: hidden; opacity: 0;}
+.media-slider.swiper-hidden .swiper-slide {transition: none;}
+.media-slider .swiper {width: 100%; overflow: hidden;}
+.media-slider .swiper-wrapper {align-items: center; height: 26.35vw!important;}
+.media-slider .swiper-slide {position: relative; transition: all 1s ease-in-out; overflow: hidden; height: 10.42vw!important; background: #000;}
+.media-slider .swiper-backface-hidden .swiper-slide {transform: scale(.84) translateZ(0);}
+.media-slider .swiper-slide.swiper-slide-active {width: 46.88vw!important; height: 26.35vw!important;}
+.media-slider .swiper-slide.swiper-slide-prev {width: 11.46vw!important; height: 16.04vw!important;}
+.media-slider .swiper-slide.swiper-slide-next {width: 11.46vw!important; height: 16.04vw!important;}
+.media-slider .swiper-backface-hidden .swiper-slide.swiper-slide-active {transform: scale(1) translateZ(0) !important;}
+.media-slider .swiper-image {position: relative; width: 100%; height: 100%;}
+.media-slider .swiper-image .image {position: absolute; top: 0; left: 0; bottom: 0; width: 100%; height: 100%; display:block; opacity: 0.7; transition: opacity .5s ease; pointer-events: none;}
+.media-slider .swiper-slide:hover .swiper-image .image {opacity: 1;}
+.media-slider .swiper-slide.swiper-slide-active .swiper-image .image {opacity: 1; pointer-events: auto;}
+.media-slider .swiper-image .image img,
+.media-slider .swiper-image .image video {width:100%; height:100%; object-fit: cover; object-position: center;}
+.media-slider .swiper-image .image::before {content:''; display:block; width: 100%; height:100%; position:absolute; left:0; top:0; 
+box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(255, 255, 255, 0.40) inset;}
+.media-slider .swiper-button-next, .media-slider .swiper-button-prev {padding: 8px; width: 12px; height: 12px; margin-top: 0; background-color: rgba(0, 0, 0, .4); border-radius: 50%;}
+
+/* 내용 전환 효과 */
+.media-slider-wrap .slider-text p {opacity: 0; transition: all .5s ease; transform: translate(50px, 30px);}
+.media-slider-wrap .slider-text p.fade-in {opacity: 1; transform: translate(0px, 0px);}
+.media-slider-wrap .slider-text p.fade-out {opacity: 0; transform: translate(-50px, 30px);}
+
+.float-box {
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%); /* 커서 중앙 맞추기 */
+  opacity: 0;
+  scale: 0.8;
+  z-index: 1000;
+  transition: opacity 0.3s ease, transform 0.1s ease;
+}
+
+
+/* list media & newsroom */
 .media-list .list .card {min-height:320px;}
 .media-list .list .card .card-moving {top:0; left:0;}
 .media-list .list .card .card-img::after {content:''; display:block; width:100%; height:100%; position:absolute; left:0; top:0; box-shadow: 0px 2px 4px 2px rgba(255,255,255,0.5) inset;}

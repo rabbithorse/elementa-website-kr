@@ -9,6 +9,8 @@
         </div>
         <!-- slider wrap -->
         <div class="media-slider-wrap relative">
+          <div class="dimmed-yellow absolute"></div>
+          <div class="dimmed-glass absolute"></div>
           <Container>
             <h2 class="text-[11rem] leading-1 font-bold text-white subPageTitle relative">
             <TypographyPrimary>
@@ -44,8 +46,129 @@
             </p>
           </Container>
           <!-- slider -->
-          <div class="media-slider relative mt-[85px]">슬라이더 들어갈 곳</div>
+          <div
+          class="media-slider relative mt-[85px]"
+          :class="{ 'swiper-hidden': !isSwiperReady }"
+          >
+            <div class="float-box absolute bg-[var(--main-color)]"></div>
+            <Swiper
+              :modules="[Navigation, Autoplay]"
+              :navigation="{
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+              }"
+              :autoplay="{
+                delay: 2000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true
+              }"
+              :slides-per-view="4"
+              :centeredSlides="true"
+              :space-between="20"
+              :loop="true"
+              :speed="1500"
+              @slideChange="onSlideChange"
+              @swiper="onSwiper"
+            >
+              <swiper-slide data-text="'실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'">
+                <div class="swiper-image">
+                  <a class="image" href="">
+                    <img src="~/assets/images/sub/newsroom-slide01.png" alt="">
+                  </a>
+                </div>
+              </swiper-slide>
+              <swiper-slide data-text="뉴스룸 2번 슬라이드 설명 텍스트">
+                <div class="swiper-image">
+                  <a class="image" href="">
+                    <img src="~/assets/images/sub/newsroom-slide02.png" alt="">
+                  </a>
+                </div>
+              </swiper-slide>
+              <swiper-slide data-text="뉴스룸 3번 슬라이드 설명 텍스트">
+                <div class="swiper-image">
+                  <a class="image" href="">
+                    <img src="~/assets/images/sub/newsroom-slide03.png" alt="">
+                  </a>
+                </div>
+              </swiper-slide>
+              <swiper-slide data-text="뉴스룸 4번 슬라이드 설명 텍스트">
+                <div class="swiper-image">
+                  <a class="image" href="">
+                    <img src="~/assets/images/sub/newsroom-slide04.png" alt="">
+                  </a>
+                </div>
+              </swiper-slide>
+              <swiper-slide data-text="뉴스룸 5번 슬라이드 설명 텍스트">
+                <div class="swiper-image">
+                  <a class="image" href="">
+                    <img src="~/assets/images/sub/newsroom-slide05.png" alt="">
+                  </a>
+                </div>
+              </swiper-slide>
+              <swiper-slide data-text="뉴스룸 6번 슬라이드 설명 텍스트">
+                <div class="swiper-image">
+                  <a class="image" href="">
+                    <img src="~/assets/images/sub/newsroom-slide06.png" alt="">
+                  </a>
+                </div>
+              </swiper-slide>
+              <swiper-slide data-text="뉴스룸 7번 슬라이드 설명 텍스트">
+                <div class="swiper-image">
+                  <a class="image" href="">
+                    <img src="~/assets/images/sub/newsroom-slide01.png" alt="">
+                  </a>
+                </div>
+              </swiper-slide>
+              <swiper-slide data-text="뉴스룸 8번 슬라이드 설명 텍스트">
+                <div class="swiper-image">
+                  <a class="image" href="">
+                    <img src="~/assets/images/sub/newsroom-slide02.png" alt="">
+                  </a>
+                </div>
+              </swiper-slide>
+              <swiper-slide data-text="뉴스룸 9번 슬라이드 설명 텍스트">
+                <div class="swiper-image">
+                  <a class="image" href="">
+                    <img src="~/assets/images/sub/newsroom-slide03.png" alt="">
+                  </a>
+                </div>
+              </swiper-slide>
+              <swiper-slide data-text="뉴스룸 10번 슬라이드 설명 텍스트">
+                <div class="swiper-image">
+                  <a class="image" href="">
+                    <img src="~/assets/images/sub/newsroom-slide04.png" alt="">
+                  </a>
+                </div>
+              </swiper-slide>
+              <swiper-slide data-text="뉴스룸 11번 슬라이드 설명 텍스트">
+                <div class="swiper-image">
+                  <a class="image" href="">
+                    <img src="~/assets/images/sub/newsroom-slide05.png" alt="">
+                  </a>
+                </div>
+              </swiper-slide>
+              <swiper-slide data-text="뉴스룸 12번 슬라이드 설명 텍스트">
+                <div class="swiper-image">
+                  <a class="image" href="">
+                    <img src="~/assets/images/sub/newsroom-slide06.png" alt="">
+                  </a>
+                </div>
+              </swiper-slide>
+              <swiper-slide data-text="뉴스룸 12번 슬라이드 설명 텍스트">
+                <div class="swiper-image">
+                  <a class="image" href="">
+                    <img src="~/assets/images/sub/newsroom-slide06.png" alt="">
+                  </a>
+                </div>
+              </swiper-slide>
+            </Swiper>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
           <!-- //slider -->
+          <div class="slider-text relative z-20  pt-[2.19rem] pb-[3.75rem]">
+              <p class="text-white text-center text-[1.63rem] font-medium">{{ currentText }}</p>
+          </div>
         </div>
         <!-- //slider wrap -->
         
@@ -94,6 +217,13 @@
   const shapeSmall = ref(null)
   const pathVisual = ref(null)
 
+  // swiper settings
+  import { Navigation, Autoplay } from 'swiper/modules';
+  import { Swiper, SwiperSlide } from 'swiper/vue';
+
+  import 'swiper/css/navigation';
+  import 'swiper/css';
+
   onMounted(() => {
     // Visual Parallax Effect
 
@@ -124,7 +254,93 @@
       backgroundPositionY: '-80px',
       ease: 'none',
     })
+    
+    const floatBox = document.querySelector('.float-box')
+    const slider = document.querySelector('.media-slider')
+
+    if (!floatBox || !slider) return
+
+    // 마우스가 슬라이더에 들어오면 등장
+    slider.addEventListener('mouseenter', () => {
+      $gsap.to(floatBox, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.2
+      })
+    })
+
+    // 마우스 이동 → float-box 따라오기
+    slider.addEventListener('mousemove', (e) => {
+      const rect = slider.getBoundingClientRect()
+
+      const x = e.clientX - rect.left
+      const y = e.clientY - rect.top
+
+      $gsap.to(floatBox, {
+        x: x,
+        y: y,
+        duration: 0.2,
+        ease: "power3.out"
+      })
+    })
+
+    // 마우스가 슬라이더에서 벗어나면 사라짐
+    slider.addEventListener('mouseleave', () => {
+      $gsap.to(floatBox, {
+        opacity: 0,
+        scale: 0.8,
+        duration: 0.2
+      })
+    })
+
   })
+
+  // 현재 텍스트
+  const currentText = ref("")
+  const swiperInstance = ref(null)
+  let textTimer = null
+
+  const isSwiperReady = ref(false)
+
+  const onSlideChange = (swiper) => {
+    const textEl = document.querySelector('.slider-text p')
+    if (!textEl) return
+
+    // 타이머 중첩 방지
+    clearTimeout(textTimer)
+
+    // 0) 초기화 (클래스 모두 제거 → opacity 0, right-bottom)
+    textEl.classList.remove('fade-in', 'fade-out')
+
+    // 1) 아주 약간의 지연 후 fade-out 실행
+    textTimer = setTimeout(() => {
+      textEl.classList.add('fade-out')
+
+      // 2) fade-out 끝난 뒤 텍스트 교체 + fade-in
+      textTimer = setTimeout(() => {
+        const activeSlide = swiper.slides[swiper.activeIndex]
+        currentText.value = activeSlide?.dataset?.text || ""
+
+        // fade-out 제거하고 fade-in으로 중앙 등장
+        textEl.classList.remove('fade-out')
+        textEl.classList.add('fade-in')
+      }, 400) // fade-out 애니메이션과 동일해야 함
+
+    }, 400) 
+  }
+
+  const onSwiper = (swiper) => {
+    swiperInstance.value = swiper
+    
+    // 약간의 시간차 후 swiper-hidden 제거
+    setTimeout(() => {
+      isSwiperReady.value = true
+    }, 400) 
+  }
+
+
+
+
 </script>
 
 <style scoped>

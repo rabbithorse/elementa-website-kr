@@ -64,7 +64,7 @@
   const footerMenuItems = [
     { name: "Company", path: "/company" },
     { name: "Games", path: "/games" },
-    { name: "Join Us", path: "/join" },
+    { name: "Join Us", path: "/join_us" },
     { name: "Media", path: "/media" },
     { name: "Newsroom", path: "/newsroom" },
     { name: "Contact", path: "/contact" },
