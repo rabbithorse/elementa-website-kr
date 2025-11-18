@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section ref="visualSection" class="visualSection h-[100vh] relative overflow-hidden">
+    <section ref="visualSection" class="visualSection h-dvh relative overflow-hidden">
       <div ref="videoWrap" class="video-layer video-layer--main">
         <span ref="videoWrapLayer" class="bg-video-layer"></span>
         <EffectGlass>
@@ -23,7 +23,7 @@
         <Container class="h-full">
           <!-- 첫번째 애니메이션 -->
           <div class="flex flex-col h-full pb-[6.25rem]" ref="visualTitle">
-            <h2 class="text-[17rem] leading-1 font-bold text-white pt-[6.25rem] primary-text" >
+            <h2 class="text-[17rem] 2xl:text-[220px] md:text-[200px] leading-1 font-bold text-white pt-[6.25rem] primary-text" >
               <TypographyPrimary>
                 E
               </TypographyPrimary>
@@ -50,32 +50,30 @@
               </TypographyPrimary>
             </h2>
             <div class="flex flex-col mt-auto">
-              <p class="text-white text-[2.3rem] font-normal mb-8 flex flex-col">
+              <div class="text-white text-[2.3rem] font-normal mb-8 flex flex-col">
                 <TypographySecondary>Design the Future of Play,</TypographySecondary>
                 <TypographySecondary>Create a Culture the World Shares</TypographySecondary>
-              </p>
-              <div class="w-fit">
-                <EffectGlass>
+              </div>
+              <div class="w-fit polygon">
+                <div class="inner">
                   <div class="text-list flex gap-x-7 py-[0.9rem]">
                     <span class="text-lg text-white">Innovation</span>
                     <span class="text-lg text-white">Trust</span>
                     <span class="text-lg text-white">Culture</span>
-                  </div>
-                </EffectGlass>
+                    </div>
+                </div>
               </div>
             </div>
-          </div>
-          <!-- 두번째 애니메이션 -->
-          
-
+          </div>      
         </Container>
       </div>
+      <!-- 두번째 애니메이션 -->
       <div class="mission-section flex flex-col gap-y-28 justify-center items-center relative" ref="missionSection">
         <div class="text-wrap">
           <h2 class="text-[13.75rem] leading-1 font-bold text-white pt-[6.25rem]">
             <div class="top-line">
               <div ref="weCreate" class="leading-none" >
-                <span class="primary-text text-[13.75rem] leading-none">
+                <span class="primary-text text-[13.75rem] leading-none 2xl:text-[200px] md:text-[150px]">
                   <TypographyPrimary>
                   W
                   </TypographyPrimary>
@@ -83,7 +81,7 @@
                   E
                   </TypographyPrimary>
                 </span>
-                <span class="primary-text ml-8 text-[13.75rem] leading-none">
+                <span class="primary-text ml-8 text-[13.75rem] leading-none 2xl:text-[200px] md:text-[150px]">
                   <TypographyPrimary>
                   C
                   </TypographyPrimary>
@@ -108,7 +106,7 @@
             <div class="bottom-line relative">
               <div ref="newParadigm" class="leading-none gradient-text blue" >
                   <TypographyPrimary>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="97" height="179" viewBox="0 0 97 179" fill="none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="97" height="179" viewBox="0 0 97 179" fill="none" class="aspect-[97/179]">
                       <foreignObject x="-40" y="-40" width="176.8" height="258.2"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_24_1220_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M0 178.2V0H27.72L64.24 85.8V0H96.8V178.2H70.18L33.66 85.8V178.2H0Z" fill="url(#paint0_linear_24_1220)"/>
                       <defs>
                       <clipPath id="bgblur_0_24_1220_clip_path" transform="translate(40 40)"><path d="M0 178.2V0H27.72L64.24 85.8V0H96.8V178.2H70.18L33.66 85.8V178.2H0Z"/>
@@ -120,7 +118,7 @@
                     </svg>
                   </TypographyPrimary>
                   <TypographyPrimary>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="81" height="179" viewBox="0 0 81 179" fill="none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="81" height="179" viewBox="0 0 81 179" fill="none" class="aspect-[81/179]">
                       <foreignObject x="-40" y="-40" width="160.52" height="258.2"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_24_1219_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M0 178.2V0H80.08V26.84H39.38V71.06H70.4V98.34H39.38V151.58H80.52V178.2H0Z" fill="url(#paint0_linear_24_1219)"/>
                       <defs>
                       <clipPath id="bgblur_0_24_1219_clip_path" transform="translate(40 40)"><path d="M0 178.2V0H80.08V26.84H39.38V71.06H70.4V98.34H39.38V151.58H80.52V178.2H0Z"/>
@@ -132,7 +130,7 @@
                     </svg>
                   </TypographyPrimary>
                   <TypographyPrimary>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="142" height="179" viewBox="0 0 142 179" fill="none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="142" height="179" viewBox="0 0 142 179" fill="none" class="aspect-[142/179]">
                       <foreignObject x="-40" y="-40" width="221.46" height="258.2"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_24_1218_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M21.56 178.2L0 0H33.44L44 103.84L57.42 0.220011H83.6L97.68 103.18L108.46 0H141.46L120.12 178.2H85.8L70.62 70.62L56.32 178.2H21.56Z" fill="url(#paint0_linear_24_1218)"/>
                       <defs>
                         <clipPath id="bgblur_0_24_1218_clip_path" transform="translate(40 40)"><path d="M21.56 178.2L0 0H33.44L44 103.84L57.42 0.220011H83.6L97.68 103.18L108.46 0H141.46L120.12 178.2H85.8L70.62 70.62L56.32 178.2H21.56Z"/>
@@ -145,7 +143,7 @@
                   </TypographyPrimary>
                 
                   <TypographyPrimary class="ml-5" ref="primaryText">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="107" height="179" viewBox="0 0 107 179" fill="none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="107" height="179" viewBox="0 0 107 179" fill="none" class="aspect-[107/179]">
                       <foreignObject x="-40" y="-40" width="186.7" height="258.2"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_24_1217_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M0 178.2V0H59.84C70.5467 0 79.3467 2.05333 86.24 6.16C93.1333 10.12 98.2666 15.9867 101.64 23.76C105.013 31.3867 106.7 40.7 106.7 51.7C106.7 65.4867 104.427 76.0467 99.88 83.38C95.3333 90.5667 89.1733 95.5533 81.4 98.34C73.6267 101.127 64.9 102.52 55.22 102.52H39.38V178.2H0ZM39.38 75.02H52.58C57.42 75.02 61.0867 74.14 63.58 72.38C66.0733 70.62 67.6867 67.98 68.42 64.46C69.3 60.94 69.74 56.4667 69.74 51.04C69.74 46.4933 69.3733 42.5333 68.64 39.16C68.0533 35.64 66.5133 32.8533 64.02 30.8C61.5267 28.7467 57.64 27.72 52.36 27.72H39.38V75.02Z" fill="url(#paint0_linear_24_1217)"/>
                       <defs>
                         <clipPath id="bgblur_0_24_1217_clip_path" transform="translate(40 40)"><path d="M0 178.2V0H59.84C70.5467 0 79.3467 2.05333 86.24 6.16C93.1333 10.12 98.2666 15.9867 101.64 23.76C105.013 31.3867 106.7 40.7 106.7 51.7C106.7 65.4867 104.427 76.0467 99.88 83.38C95.3333 90.5667 89.1733 95.5533 81.4 98.34C73.6267 101.127 64.9 102.52 55.22 102.52H39.38V178.2H0ZM39.38 75.02H52.58C57.42 75.02 61.0867 74.14 63.58 72.38C66.0733 70.62 67.6867 67.98 68.42 64.46C69.3 60.94 69.74 56.4667 69.74 51.04C69.74 46.4933 69.3733 42.5333 68.64 39.16C68.0533 35.64 66.5133 32.8533 64.02 30.8C61.5267 28.7467 57.64 27.72 52.36 27.72H39.38V75.02Z"/>
@@ -419,7 +417,7 @@
       </div>
        
     </section>
-    <section class="accordion-section" ref="accordionSection">
+    <section class="accordion-section h-dvh" ref="accordionSection">
       <div class="accordion-list flex h-full w-full">
         <BlocksAccordion class="silver-palace opened" background ref="accordionItem">
           <template #accordionTitle class="accordion-title">
@@ -492,7 +490,7 @@
     <section class="h-auto" ref="elementaKoreaSection">
       <div class="slider-wrap">
         <div class="slider-text">
-          <h2 class="flex items-center justify-center gap-x-8 text-[17rem] leading-1 font-bold text-white pt-[6.25rem]" ref="elementaKorea">
+          <h2 class="flex items-center justify-center gap-x-8 text-[17rem] 2xl:text-[220px] md:text-[200px] leading-1 font-bold text-white pt-[6.25rem]" ref="elementaKorea">
             <span class="leading-[100%] text-[#9FAEB5] font-[15rem] tracking-[-0.3rem]">
               ELEMENTA
             </span>
@@ -507,13 +505,13 @@
         
       </div>
     </section>
-    <section class="wetheworld-section flex items-center justify-center overflow-hidden" ref="wetheworldSection">
+    <section class="wetheworld-section flex items-center justify-center overflow-hidden h-dvh" ref="wetheworldSection">
       <div class="wetheworldbg-video01 opacity-0 invisible absolute inset-0 z-0" ref="wetheworldbg1">
         <video class="bg-video--content w-full h-full object-cover" autoplay muted loop>
           <source src="~/assets/videos/main-wetheworld.mp4" type="video/mp4" />
         </video>
       </div>
-      <h2 class="text-[17rem] leading-1 font-bold text-white text-center z-10">
+      <h2 class="text-[17rem] leading-1 font-bold text-white text-center z-10 2xl:text-[220px] md:text-[200px]">
         <span ref="weText" class="block leading-[100%]">
           <TypographyPrimary>
             W
@@ -533,7 +531,8 @@
             <TypographyPrimary>
               E
             </TypographyPrimary>
-            <TypographyPrimary>
+            <span class="text-spacer pl-8"></span>
+            <TypographyPrimary >
               W
             </TypographyPrimary>
             <TypographyPrimary>
@@ -561,13 +560,13 @@
         <div class="curtain-item absolute w-full h-[50vh] bottom-0 left-0" ref="godownCurtain"></div>
         <div class="curtain-item absolute w-full h-[50vh] bottom-0 left-0" ref="godownCurtain"></div>
       </div>
-      <h2 class="flex items-center text-[17rem] leading-1 font-bold text-white text-center h-0 overflow-clip absolute" ref="inspireText">
+      <h2 class="flex items-center text-[17rem] 2xl:text-[220px] md:text-[200px] leading-1 font-bold text-white text-center h-0 overflow-clip absolute" ref="inspireText">
         <span class="block leading-[100%]">
           INSPIRE
         </span>
       </h2>
     </section>
-    <section class="newsroom-section relative pt-[6.25rem] pb-[6rem]" ref="newsroomSection">
+    <section class="newsroom-section relative pt-[6.25rem] pb-[6rem] min-h-dvh" ref="newsroomSection">
       <div class="bg-text absolute bottom-0 left-0 ">
         <span class="text-[#403B4E] text-[5rem] font-bold">NEW PARADIGM, LASTING IMPACT. ELEMENTA KOREA</span>
         <h2 class="text-[28rem] gradient-text grey font-bold">ELEMENTA ELEMENTA</h2>
@@ -772,7 +771,7 @@
         
       </Container>
     </section>
-    <section class="careers-section pt-[17rem] pb-64 flex flex-col gap-y-[5rem]">
+    <section class="careers-section pt-[17rem] pb-64 flex flex-col gap-y-[5rem] min-h-dvh">
       <div class="section-heading">
         <Container>
           <div class="heading-text flex flex-col gap-y-10">
@@ -782,20 +781,10 @@
               Design the Future of Play, Create a Culture the World Shares 
             </h6>
           </div>
-          <div class="heading-button absolute right-0 bottom-0 flex gap-5">
-            <div class="controls flex gap-3">
-              <button @click="swiper.slidePrev()" class="slide-arrow slide-arrow--prev">
-                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
-                  <path d="M24 7.5L12 18.75L24 30" stroke="white" stroke-width="2"/>
-                </svg>
-                <span class="sr-only">Slide to the previous slide</span>
-              </button>
-              <button @click="swiper.slideNext()" class="slide-arrow slide-arrow--next">
-                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
-                  <path d="M12 30L24 18.75L12 7.5" stroke="white" stroke-width="2"/>
-                </svg>
-                <span class="sr-only">Slide to the next slide</span>
-              </button>
+          <div class="heading-button absolute right-0 bottom-0 flex items-center gap-5">
+            <div class="controls flex gap-3 items-center">
+              <PrevButton :swiper="swiperInstance" />
+              <NextButton :swiper="swiperInstance" />
             </div>
             <ButtonsBasic size="lg" color="blue">View more</ButtonsBasic>
           </div>
@@ -803,7 +792,38 @@
       </div>
       <div class="section-content">
         <EffectGlass class="content-glass">
-          <BlocksSlider />
+          <swiper
+            :slidesPerView="3"
+            :spaceBetween="20"
+            @swiper="onSwiper"
+            :breakpoints="{
+              2000: {
+                slidesPerView: 4,
+              }
+            }"
+          >
+            <swiper-slide>
+              <BlocksJoinCard />
+            </swiper-slide>
+            <swiper-slide>
+              <BlocksJoinCard />
+            </swiper-slide>
+            <swiper-slide>
+              <BlocksJoinCard />
+            </swiper-slide>
+            <swiper-slide>
+              <BlocksJoinCard />
+            </swiper-slide>
+            <swiper-slide>
+              <BlocksJoinCard />
+            </swiper-slide>
+            <swiper-slide>
+              <BlocksJoinCard />
+            </swiper-slide>
+            <swiper-slide>
+              <BlocksJoinCard />
+            </swiper-slide>
+          </swiper>
         </EffectGlass>
       </div>
     </section>
@@ -840,7 +860,6 @@ const theworldText = ref(null)
 const gotopCurtain = ref([])
 const godownCurtain = ref([])
 const inspireText = ref(null)
-const swiper = ref(null)
 
 onMounted(() => {
   const tl = $gsap.timeline({
@@ -978,13 +997,15 @@ onMounted(() => {
     start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
     duration: 0.05,
     opacity: 0.4,
+    backdropFilter: 'blur(25px)'
   })
   .to(godownCurtainItemArray, 
   {
     start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
     duration: 0.05,
     opacity: 0.4,
-  })
+    backdropFilter: 'blur(25px)'
+  }, "<")
   .to(weText.value, {
     y: '-80vh',
     start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
@@ -1031,7 +1052,7 @@ onMounted(() => {
       trigger: newsroomSection.value,
       start: 'top -20%',
       pin: true,
-      end: () => "+=" + (newsroomSection.value.offsetHeight * 3),
+      end: () => "+=" + (newsroomSection.value.offsetHeight * 2),
       scrub: 1,
     }
   })
@@ -1041,7 +1062,7 @@ onMounted(() => {
   }, {
     x: calcTransform("x", "calc(100% - 150vw)"),
     ease: 'power2.out',
-    duration: 3,
+    duration: 2,
   }, 0.2)
 
   newsroomTl.fromTo(flowRight.value, {
@@ -1049,7 +1070,7 @@ onMounted(() => {
   }, {
     x: calcTransform("x", "calc(-100% + 150vw)"),
     ease: 'power2.out',
-    duration: 3,
+    duration: 2,
   }, 0.2)
 
   function calcTransform(property, value) {
@@ -1063,80 +1084,51 @@ onMounted(() => {
       return computed; 
     };
   }
-
-  
-  // .fromTo(weCreate.value, {
-  //   opacity: 0,
-  //   visibility: 'hidden',
-  // },{
-  //   opacity: 1,
-  //   visibility: 'visible',
-  //   ease: 'none',
-  //   scrollTrigger: {
-  //     trigger: videoWrapLayer.value,
-  //     start: () => "+=" + (window.innerHeight * 2.5),
-  //     end: () => "+=" + (window.innerHeight / 2),
-  //     scrub: 1,
-  //   }
-  // })
-  // .fromTo(newParadigm.value, {
-  //   opacity: 0,
-  //   visibility: 'hidden',
-  // },{
-  //   opacity: 1,
-  //   visibility: 'visible',
-  //   ease: 'none',
-  //   scrollTrigger: {
-  //     trigger: videoWrapLayer.value,
-  //     start: () => "+=" + (window.innerHeight * 2.5),
-  //     end: () => "+=" + (window.innerHeight / 2),
-  //     scrub: 1,
-  //   }
-  // })
-  // .fromTo(lastingImpact.value, {
-  //   opacity: 0,
-  //   visibility: 'hidden',
-  // },{
-  //   opacity: 1,
-  //   visibility: 'visible',
-  //   ease: 'none',
-  //   scrollTrigger: {
-  //     trigger: videoWrapLayer.value,
-  //     start: () => "+=" + (window.innerHeight * 3),
-  //     end: () => "+=" + (window.innerHeight / 2),
-  //     scrub: 1,
-  //   }
-  // })
-  
-
-  
-  //const primaryAni = $gsap.timeline();
-  
-  // const starsContainer = document.querySelector(".stars-container");
-
-  // function createStar() {
-  //     const star = document.createElement("div");
-  //     star.classList.add("star");
-
-  //     // Random position
-  //     star.style.left = Math.random() * window.innerWidth + "px";
-  //     star.style.animationDuration = (Math.random() * 5 + 2) + "s";
-      
-  //     starsContainer.appendChild(star);
-
-  //     // Remove the star after animation ends
-  //     setTimeout(() => {
-  //         star.remove();
-  //     }, 7000);
-  // }
-
-  // // Generate stars at intervals
-  // setInterval(createStar, 200);
-
-  
 })
 
+
+
 const nodeVersion = process.version
+</script>
+
+<script>
+  // Set career swiper
+  import { Swiper, SwiperSlide } from 'swiper/vue'
+  import { Navigation } from 'swiper/modules'
+  import 'swiper/css'
+  import 'swiper/css/navigation'
+
+  import NextButton from '@/components/buttons/nextButton.vue'
+  import PrevButton from '@/components/buttons/prevButton.vue'
+
+  const modules = [Navigation]
+
+  const swiperInstance = ref({})
+  const onSwiper = (swiper) => {
+    swiperInstance.value = swiper
+  }
+
+  export default {
+    components: {
+      Swiper,
+      SwiperSlide,
+      PrevButton,
+      NextButton
+    },
+    data() {
+      return {
+        modules: modules,
+        swiperInstance: {},
+      };
+    },
+    methods: {
+      onSwiper(swiper) {
+        this.swiperInstance = swiper
+      }
+    }
+    
+  }
+
 </script>
 
 <style scoped>
