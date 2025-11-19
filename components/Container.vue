@@ -13,5 +13,6 @@
   margin-left: auto;
   margin-right: auto;
   max-width: 116rem;
+  width: 90%;
 }
 </style>
