@@ -13,7 +13,8 @@ export default defineNuxtConfig({
     head: {
       title: 'Elementa',
       meta: [
-        { name: 'description', content: 'Elementa' }
+        { name: 'description', content: 'Elementa' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
       ]
     }
   },
