@@ -35,61 +35,37 @@
           <TypographySecondary>게임 출시, 업데이트, 파트너십, 사회적 활동 등 다양한 소식을 투명하고 <br>생생하게 전달하며, 플레이어와 세계를 하나로 연결합니다.</TypographySecondary>
         </p>
 
-          <!-- <ButtonsBasic size="sm" color="yellow">Button Text</ButtonsBasic> -->
-          <!-- <ButtonsBasic @click="sayHi" color="blue">Button Text</ButtonsBasic>
-          <ButtonsBasic target="_blank" href="https://google.com" size="lg">Button Text</ButtonsBasic> -->
-          <!-- <ButtonsBasic href="https://google.com">바로가기</ButtonsBasic> -->
-
+        <client-only>
         <div class="filter-box text-white mt-[5.5rem] py-[3.13rem] px-[7.5rem] flex gap-10 items-end relative">
           <div class="filter-glass"></div>
           <div class="filter-shine"></div>
-          <div class="filter-inner flex flex-col gap-[0.94rem] relative">
-            <label class="text-lg">직군</label>
-            <select class="text-lg">
-              <option>전체</option>
-              <option>직군1</option>
-              <option>직군2</option>
-            </select>
-            <div class="custom-select relative">
-              <div class="selected relative text-lg">전체</div>
-            </div>
-          </div>
-          <div class="filter-inner flex flex-col gap-[0.94rem] relative">
-            <label class="text-lg">고용형태</label>
-            <select class="text-lg">
-              <option>전체</option>
-              <option>고용형태1</option>
-              <option>고용형태2</option>
-            </select>
-            <div class="custom-select relative">
-              <div class="selected relative text-lg">전체</div>
-            </div>
-          </div>
-          <div class="filter-inner flex flex-col gap-[0.94rem] relative">
-            <label class="text-lg">채용상태</label>
-            <select class="text-lg">
-              <option>전체</option>
-              <option>채용상태1</option>
-              <option>채용상태2</option>
-            </select>
-            <div class="custom-select relative">
-              <div class="selected relative text-lg">전체</div>
-            </div>
-          </div>
+          <BlocksCustomSelect 
+          label="직군"
+          :options="['전체','직군1','직군2']" />
+
+          <BlocksCustomSelect
+            label="고용형태"
+            :options="['전체','정규직','계약직']" />
+
+          <BlocksCustomSelect
+            label="채용상태"
+            :options="['전체','채용중','마감']" />
+            
           <div class="flex gap-[10px] grow sch-box relative">
             <input type="text" placeholder="검색어를 입력해주세요." class="input-basic relative text-lg">
-            <button class="sch-btn relative" type="button" role="search"><i class="sch-icon"></i></button>
+            <ButtonsBasic size="lg" color="sch" href="./join_us" role="search"><i class="ico ico-sch bg-white"></i></ButtonsBasic>
           </div>
         </div>
+        </client-only>
       </Container>
 
       <!-- 채용 리스트 -->
       <div class="list-recruit pt-[100px] pb-[190px] relative" ref="listRecruit">
         <div class="list-bg absolute" ref="listBg"></div>
         <Container>
-          <p class="text-2xl list-header pb-[2.5rem] relative">100개의 검색결과</p>
+          <p class="text-2xl list-header mb-[2.5rem] relative overflow-hidden"><span class="block" ref="upText">100개의 검색결과</span></p>
           <ul class="grid grid-cols-4 gap-x-[1.25rem] gap-y-[5.63rem] list relative">
-            <li v-for="(n, index) in 12" :key="index" class="relative">
+            <li v-for="(n, index) in 24" :key="index" class="relative">
               <EffectCardHover>
                 <div class="filter-glass liquid"></div>
                 <a class="cont relative" href="./join_us_detail">
@@ -164,15 +140,21 @@
 
   const { $gsap, $ScrollTrigger } = useNuxtApp()
 
+  // Visual 도형
   const shapeBig = ref(null)
   const shapeSmall = ref(null)
   const pathVisual = ref(null)
+
+  // 텍스트 애니메이션
+  const upText = ref(null)
 
   // 채용 리스트 배경 고정
   const listRecruit = ref(null);
   const listBg = ref(null);
 
-  onMounted(() => {
+  onMounted(async () => {
+    await nextTick()
+
     // Visual Parallax Effect
 
     // 큰 토형
@@ -216,38 +198,38 @@
       },
     })
 
-    // Custom Select
-    document.querySelectorAll('.filter-inner select').forEach(select => {
+    // 텍스트 애니메이션
+    $gsap.timeline({
+      scrollTrigger: {
+        trigger: upText.value,
+        start: 'top 75%',
+        end: 'bottom 75%',
+        // markers: true
+      }
+    }).fromTo(upText.value, 
+      { y: '100%', opacity: 0 }, 
+      { y: '0%', opacity: 1, duration: 1, ease: 'power2.out'   
+    })
 
-      const wrap = select.nextElementSibling;
-      const selected = wrap.querySelector('.selected');
-      selected.className = 'selected';
-      selected.textContent = select.options[select.selectedIndex].text;
+    // 카드 스크롤 애니메이션
+    const cardItem = document.querySelectorAll('.list-recruit .list > li');
 
-      const ul = document.createElement('ul');
+    // 카드 스크롤 애니메이션
+    cardItem.forEach((cardEl) => {
+      $gsap.timeline({
+        scrollTrigger: {
+          trigger: cardEl,
+          start: 'top 90%',
+          end: 'top 90%',
+          // markers: true
+      }
+      }).fromTo(cardEl, 
+        { y: '30%', opacity: 0 }, 
+        { y: '0%', opacity: 1, duration: 1.5, ease: 'ease'   
+      })
+    })
 
-      [...select.options].forEach(opt => {
-        const li = document.createElement('li');
-        li.textContent = opt.text;
-        li.addEventListener('click', () => {
-          selected.textContent = opt.text;
-          select.value = opt.value;
-          wrap.classList.remove('active');
-        });
-        ul.appendChild(li);
-      });
-
-      wrap.appendChild(selected);
-      wrap.appendChild(ul);
-      select.after(wrap);
-
-      selected.addEventListener('click', () => wrap.classList.toggle('active'));
-
-      document.addEventListener('click', e => {
-        if (!wrap.contains(e.target)) wrap.classList.remove('active');
-      });
-    });
-
+    $ScrollTrigger.refresh()
   })
 
   
@@ -256,15 +238,4 @@
 <style scoped>
   .filter-glass {filter: url(#lg-dist); backdrop-filter: blur(12px); width: 100%; height:100%; position: absolute; left: 0;  bottom: 0; z-index: 1; background: url(~/assets/images/sub/otis-redding.png) repeat;}
   .filter-glass.liquid {filter: url(#liquid); background: none; backdrop-filter: blur(4px);}
-  :deep(.filter-box .filter-inner .custom-select) {border-radius: 5px; background: rgba(255, 255, 255, 0.10);
-  box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.25) inset, 0 0 4px 0 rgba(255, 255, 255, 0.60) inset, 0 4px 4px 0 rgba(0, 0, 0, 0.25); width:280px; border: 1px solid rgba(255, 255, 255, 0.2); height: 64px;}
-  :deep(.filter-box .filter-inner .custom-select .selected) {padding: 15px 25px; cursor:pointer; height:100%; display:flex; align-items: center;}
-  :deep(.filter-box .filter-inner .custom-select .selected)::before {content:''; display:block; width:14px; height:14px; background:url(~/assets/images/sub/select-arrow.svg) no-repeat center / cover; position:absolute; right:20px; top:50%; transform: translateY(-50%);}
-  :deep(.filter-box .filter-inner .custom-select.active .selected::after) {content:''; display:block; width:100%; height:1px; background: #555; position:absolute; left:0; bottom:0;}
-  :deep(.filter-box .filter-inner .custom-select ul) {padding: 10px 0; display: none; position:absolute; left:0; border-radius: 0  0 5px 5px; background: rgba(255, 255, 255, 0.10);
-  box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0) inset, 0 0 4px 0 rgba(255, 255, 255, 0.60) inset, 0 4px 4px 0 rgba(0, 0, 0, 0); width:100%;}
-  :deep(.filter-box .filter-inner .custom-select.active){border-radius:5px 5px 0 0;}
-  :deep(.filter-box .filter-inner .custom-select.active ul) {display: block;}
-  :deep(.filter-box .filter-inner .custom-select ul li) {cursor:pointer; padding: 8px 15px;}
-  :deep(.filter-box .filter-inner .custom-select ul li:hover) {background:rgba(0,0,0,0.15)}
 </style>

@@ -1,18 +1,23 @@
 <template>
   <div>
     <section class="subSection logo-bg pt-[180px] relative">
-      <div class="join-us-detail-area pb-[180px]">
+      <div class="join-us-detail-area]">
         <Container class="grid gap-x-[9.4%] grid-cols-[1fr_23.7%] grid-row-[auto 1fr]">
           <div class="detail-title-area col-span-2">
             <ButtonsBadge category="y">Business</ButtonsBadge>
             <h3 class="text-white text-[4.69rem] pb-[90px] font-bold">퍼포먼스 마케터</h3>
           </div>
           <div class="detail-cont" ref="detailCont">
+            <TypographySkewText time="0.0">
             <p class="font-bold text-[1.75rem] text-white leading-[2.63rem] pb-[30px] deco-text flex gap-[10px] relative items-center">신입 ∙ 0년~2년</p>
+            </TypographySkewText>
+            <TypographySkewText time="0.3">
             <span class="text-[var(--text-disabled)] text-[0.94rem]">포지션 소개</span>
-            <p class="text-white text-lg break-keep pt-[10px] pb-[3.75rem] leading-[1.81rem]">퍼포먼스 마케터는 온라인 광고 채널(Google, Meta, Naver, Kakao 등)을 운영하며 KPI 달성을 위한 캠페인을 설계하고 최적화하는 역할을 담당합니다. 데이터 기반으로 예산을 효율적으로 집행하고, 퍼널 분석과 A/B 테스트 등을 통해 신규 유저 유입과 리텐션을 동시에 강화합니다.</p>
-            
-            <div class="detail-glass-box p-[2.25rem] flex justify-between items-center relative overflow-hidden">
+            </TypographySkewText>
+            <TypographySkewText time="0.6" class="mt-[10px] mb-[3.75rem]">
+              <p class="text-white text-lg break-keep leading-[1.81rem]">퍼포먼스 마케터는 온라인 광고 채널(Google, Meta, Naver, Kakao 등)을 운영하며 KPI 달성을 위한 캠페인을 설계하고 최적화하는 역할을 담당합니다. 데이터 기반으로 예산을 효율적으로 집행하고, 퍼널 분석과 A/B 테스트 등을 통해 신규 유저 유입과 리텐션을 동시에 강화합니다.</p>
+            </TypographySkewText>
+            <div class="detail-glass-box p-[2.25rem] flex justify-between items-center relative overflow-hidden" ref="detailGlassBox">
               <div class="filter-glass"></div>
               <div class="filter-shine"></div>
               <p class="text-white grow text-lg font-medium relative z-10">기간</p>
@@ -69,7 +74,8 @@
                   </ul>
                   <div class="divider"></div>
                   <div class="flex gap-[20px] w-full">
-                    <button class="share-btn relative flex items-center justify-center shrink-0"><i class="ico ico-share bg-white"></i></button>
+                    <!-- <button class="share-btn relative flex items-center justify-center shrink-0"><i class="ico ico-share bg-white"></i></button> -->
+                    <ButtonsBasic class="share-btn"><i class="ico ico-share bg-white"></i></ButtonsBasic>
                     <ButtonsBasic color="blue" width="full" class="grow" href="#">지원하기</ButtonsBasic>
                   </div>
                 </div>
@@ -79,7 +85,7 @@
                 <ButtonsBasic size="lg" width="full" href="./join_us">목록으로</ButtonsBasic>
               </div>
 
-              <div class="cursor-pointer">
+              <div class="cursor-pointer" @click="scrollToTarget('#ourOfficeArea')">
                 <div class="w-full bg-white aspect-[2.22] overflow-hidden">
                   <img src="~/assets/images/sub/recruit-img01.png" alt="" class="w-full h-full object-cover object-center">
                 </div>
@@ -91,7 +97,7 @@
         </Container>
       </div>
 
-      <div class="our-office-area pb-[180px] ">
+      <div class="our-office-area py-[180px]" id="ourOfficeArea">
         <Container>
           <p class="text-white twink-point flex gap-[10px] items-center font-bold pb-[32px]">Our office</p>
           <p class="text-white font-bold text-[2.5rem]">Dreaming bigger, <br>Working smarter, Creating together.</p>
@@ -221,20 +227,33 @@
   import { ref, onMounted, onUnmounted } from 'vue'
   import { useNuxtApp } from '#app'
 
-  const { $gsap, $ScrollTrigger } = useNuxtApp()
+  const { $gsap, $ScrollTrigger,  } = useNuxtApp()
 
   const sideInner = ref(null)
   const detailCont = ref(null)
   const imgArea = ref(null)
   const textBg = ref(null)
+  const detailGlassBox = ref(null)
 
   onMounted(() => {
+    // 박스 최초 효과
+    $gsap.fromTo(detailGlassBox.value, {
+      opacity: 0,
+      y: 50
+    }, {
+      ease: 'power2.in',
+      opacity: 1,
+      duration: 0.8,
+      y:0,
+      delay: 0.8
+    });
+
     // 사이드 메뉴 고정
     $gsap.to(detailCont.value, {
       scrollTrigger: {
         trigger: detailCont.value,
         start: '-=150 top',
-        end: 'bottom bottom',
+        end: 'bottom-=15% bottom',
         scrub: 2,
         // markers: true,
         pin: sideInner.value,
@@ -269,4 +288,13 @@
       },
     })
   });
+
+  // 스크롤 이동 함수
+  const scrollToTarget = (selector) => {
+    $gsap.to(window, {
+      duration: 2,
+      scrollTo: selector,
+      ease: "power3.out"
+    })
+  }
 </script>

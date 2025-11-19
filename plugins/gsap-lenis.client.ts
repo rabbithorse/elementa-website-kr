@@ -2,9 +2,10 @@
 import { defineNuxtPlugin } from '#app'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 import Lenis from '@studio-freight/lenis'
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
 export default defineNuxtPlugin((nuxtApp) => {
 

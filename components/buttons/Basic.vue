@@ -84,6 +84,11 @@
   .btn.blue .inner {
     background: linear-gradient(78deg, rgba(0,200,235,0.20), rgba(115,75,215,0.25));
   }
+  .btn.sch .inner {
+    background: linear-gradient(256deg, rgba(115, 75, 215, 0.25) -244.38%, rgba(0, 200, 235, 0.15) 100%);
+    padding: 0; clip-path: polygon(100% 0,100% 33px, calc(100% - 19px) 100%,0 100%,0 0); width: 50px; height:50px;
+  }
+  .btn.sch .lg.inner {width: 64px; height: 64px; clip-path: polygon(100% 0,100% 40px, calc(100% - 20px) 100%,0 100%,0 0);}
 
   /* .btn .inner::after {content:''; display: block; width:100%; height: 100%; background: #fff;} */
 
@@ -205,6 +210,7 @@ const colorClass = computed(() => {
   switch (props.color) {
     case 'yellow': return 'yellow'
     case 'blue': return 'blue'
+    case 'sch': return 'sch'
     default: return 'gray'
   }
 })

@@ -160,7 +160,7 @@
           <Container>
             <div class="list-sch-bar flex gap-[20px]">
               <input type="text" placeholder="검색어를 입력해주세요." class="input-basic relative text-[0.94rem] text-white">
-              <button class="sch-btn relative" type="button" role="search"><i class="sch-icon"></i></button>
+              <ButtonsBasic color="sch" href="./join_us" role="search"><i class="ico ico-sch bg-white"></i></ButtonsBasic>
             </div>
             <ul class="grid grid-cols-4 gap-x-[1.25rem] gap-y-[5.63rem] list pt-[60px] relative">
               <li v-for="(n, index) in 8" :key="index" class="relative card w-full">
