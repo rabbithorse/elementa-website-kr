@@ -50,7 +50,7 @@
               </TypographyPrimary>
             </h2>
             <div class="flex flex-col mt-auto">
-              <div class="text-white lg:text-[2.3rem] text-[5vw] font-normal mb-8 flex flex-col">
+              <div class="text-white md:text-[2.3rem] text-[5vw] font-normal mb-8 flex flex-col">
                 <TypographySecondary>Design the Future of Play,</TypographySecondary>
                 <TypographySecondary>Create a Culture the World Shares</TypographySecondary>
               </div>
@@ -68,7 +68,7 @@
         </Container>
       </div>
       <!-- 두번째 애니메이션 -->
-      <div class="mission-section flex flex-col gap-y-28 justify-center items-center relative" ref="missionSection">
+      <div class="mission-section flex flex-col md:gap-y-28 gap-y-[3.75rem] justify-center items-center relative" ref="missionSection">
         <div class="text-wrap">
           <h2 class="2xl:text-[13.75rem] xl:text-[200px] md:text-[150px] leading-1 font-bold text-white pt-[6.25rem]">
             <div class="top-line">
@@ -81,7 +81,7 @@
                   E
                   </TypographyPrimary>
                 </span>
-                <span class="primary-text ml-8 leading-none 2xl:text-[13.75rem] xl:text-[200px] md:text-[150px]">
+                <span class="primary-text md:ml-8 ml-3 leading-none 2xl:text-[13.75rem] xl:text-[200px] md:text-[150px] text-[20vw]">
                   <TypographyPrimary>
                   C
                   </TypographyPrimary>
@@ -104,7 +104,7 @@
               </div>
             </div>
             <div class="bottom-line relative">
-              <div ref="newParadigm" class="leading-none gradient-text blue text-[length:inherit]" >
+              <div ref="newParadigm" class="leading-none gradient-text blue text-[length:inherit] md:flex-nowrap flex-wrap justify-center pt-1.5" >
                   <TypographyPrimary>
                     <svg xmlns="http://www.w3.org/2000/svg" width="97" height="179" viewBox="0 0 97 179" fill="none" class="aspect-[97/179]">
                       <foreignObject x="-40" y="-40" width="176.8" height="258.2"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_24_1220_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M0 178.2V0H27.72L64.24 85.8V0H96.8V178.2H70.18L33.66 85.8V178.2H0Z" fill="url(#paint0_linear_24_1220)"/>
@@ -141,8 +141,8 @@
                       </defs>
                     </svg>
                   </TypographyPrimary>
-                
-                  <TypographyPrimary class="ml-5" ref="primaryText">
+                  <span class="text-spacer md:inline-block md:p-5 md:w-auto block p-1.5 w-full"></span>
+                  <TypographyPrimary class="" ref="primaryText">
                     <svg xmlns="http://www.w3.org/2000/svg" width="107" height="179" viewBox="0 0 107 179" fill="none" class="aspect-[107/179]">
                       <foreignObject x="-40" y="-40" width="186.7" height="258.2"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_24_1217_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M0 178.2V0H59.84C70.5467 0 79.3467 2.05333 86.24 6.16C93.1333 10.12 98.2666 15.9867 101.64 23.76C105.013 31.3867 106.7 40.7 106.7 51.7C106.7 65.4867 104.427 76.0467 99.88 83.38C95.3333 90.5667 89.1733 95.5533 81.4 98.34C73.6267 101.127 64.9 102.52 55.22 102.52H39.38V178.2H0ZM39.38 75.02H52.58C57.42 75.02 61.0867 74.14 63.58 72.38C66.0733 70.62 67.6867 67.98 68.42 64.46C69.3 60.94 69.74 56.4667 69.74 51.04C69.74 46.4933 69.3733 42.5333 68.64 39.16C68.0533 35.64 66.5133 32.8533 64.02 30.8C61.5267 28.7467 57.64 27.72 52.36 27.72H39.38V75.02Z" fill="url(#paint0_linear_24_1217)"/>
                       <defs>
@@ -405,20 +405,20 @@
             </div>
           </h2>
         </div>
-        <div class="box-wrap max-w-[61rem] mx-auto">
+        <div class="box-wrap max-w-[61rem] mx-auto w-[90%]">
           <EffectGlass>
             <span class="sectionTitle-eng text-white text-base relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] before:w-3 before:h-3 before:rounded-full pl-5">Our Mission</span>
             <div class="text-content gap-x-7 py-[0.9rem]">
-              <p class="text-white md:text-[1.5rem] text-[5vw] leading-[150%]">혁신적 경험으로 게임의 기준을 새롭게 쓰고, 협력과 도전으로 문화를 확장하며, <br>전 세계가 공감할 지속 가능한 감동을 만드는 문화·패러다임의 선도자로 성장하겠습니다.</p>
+              <p class="text-white md:text-[1.5rem] text-[4.1vw] leading-[150%] break-keep">혁신적 경험으로 게임의 기준을 새롭게 쓰고, 협력과 도전으로 문화를 확장하며, <br>전 세계가 공감할 지속 가능한 감동을 만드는 문화·패러다임의 선도자로 성장하겠습니다.</p>
             </div>
-            <ButtonsBasic size="sm" color="white">View more</ButtonsBasic>
+            <ButtonsBasic size="sm" color="white" class="max-md:w-full [&>*]:w-full">View more</ButtonsBasic>
           </EffectGlass>
         </div>
       </div>
        
     </section>
     <section class="accordion-section h-dvh" ref="accordionSection">
-      <div class="accordion-list flex h-full w-full">
+      <div class="accordion-list flex lg:flex-row flex-col h-full w-full">
         <BlocksAccordion class="silver-palace opened" background ref="accordionItem">
           <template #accordionTitle class="accordion-title">
             <span class="text-white">01</span>
@@ -431,25 +431,25 @@
               </video>
             </div>
 
-            <div class="content-text w-fit h-full ml-auto ">
-              <EffectGlass class="h-full">
-                <div class="flex flex-col justify-end gap-y-[3.125rem] pb-[5.625rem] px-8 h-full">
-                  <div class="content-title title-img">
-                    <img src="~assets/images/main/text-game-silverpalace.svg" alt="icon" />
+            <div class="content-text lg:w-fit lg:h-full lg:ml-auto lg:mt-0 mt-auto w-full h-auto ml-0">
+              <EffectGlass class="lg:h-full ">
+                <div class="flex flex-col justify-end lg:gap-y-[3.125rem] gap-y-5 lg:pb-[5.625rem] pt-4 pb-9 lg:px-8 px-7 h-full">
+                  <div class="content-title title-img max-lg:w-56">
+                    <img src="~/assets/images/main/text-game-silverpalace.png" alt="icon" />
                   </div>
-                  <div class="content-detail flex flex-col gap-y-6 ">
-                    <p class="subtitle text-[1.625rem] font-semibold leading-[2rem]">
-                      사건의 진위, <br>
+                  <div class="content-detail flex flex-col lg:gap-y-6">
+                    <p class="subtitle text-[1.625rem] font-semibold leading-[2rem] max-lg:pb-6">
+                      사건의 진위, <br class="max-lg:hidden">
                       무대의 서막
                     </p>
-                    <p class="text-[1.125rem] leading-7">
+                    <p class="lg:text-[1.125rem] text-[0.8rem] lg:leading-6 leading-4 tracking-[-0.26px]">
                       펠리아나 3년, 다시 실버니아로 돌아온 탐정. <br>
-                      그리고 현실과 우화가 뒤섞이고, 번영과 몰락의 경계에 <br>
+                      그리고 현실과 우화가 뒤섞이고, 번영과 몰락의 경계에 <br class="max-lg:hidden">
                       서 있는 실버니아.
                     </p>
-                    <p>
-                      사교와 조사, 판단 그리고 전투, 당신이 그 총알 한 발의 <br>
-                      진실을 찾아낸다면, 자신은 물론, 모든 이들의 운명까지 <br>
+                    <p class="lg:text-[1.125rem] text-[0.8rem] lg:leading-6 leading-4 tracking-[-0.26px]">
+                      사교와 조사, 판단 그리고 전투, 당신이 그 총알 한 발의 <br class="max-lg:hidden">
+                      진실을 찾아낸다면, <br class="lg:hidden">자신은 물론, 모든 이들의 운명까지 <br class="max-lg:hidden">
                       결정짓게 될 것이다.
                     </p>
                   </div>
@@ -490,14 +490,14 @@
     <section class="h-auto" ref="elementaKoreaSection">
       <div class="slider-wrap">
         <div class="slider-text">
-          <h2 class="flex items-center justify-center gap-x-8 2xl:text-[272px] xl:text-[220px] md:text-[180px] text-[25.3vw] leading-1 font-bold text-white pt-[6.25rem]" ref="elementaKorea">
-            <span class="leading-[100%] text-[#9FAEB5] font-[15rem] tracking-[-0.3rem]">
+          <h2 class="flex max-xl:flex-wrap items-center justify-center 3xl:gap-x-8 lg:gap-x-4 gap-x-0 2xl:text-[272px] xl:text-[220px] lg:text-[180px] text-[25.3vw] leading-1 font-bold text-white pt-[6.25rem]" ref="elementaKorea">
+            <span class="leading-[100%] text-[#9FAEB5] 3xl:text-[15rem] 2xl:text-[12rem] lg:text-[10rem] text-[6.25rem] tracking-[-0.3rem] max-xl:w-full max-xl:text-center">
               ELEMENTA
             </span>
             <div class="slider-img flex items-center justify-center mt-3" ref="sliderImg">
-              <img src="~assets/images/main/elementakorea-center-img.png" alt="" class="block">
+              <img src="~assets/images/main/elementakorea-center-img.png" alt="" class="block 3xl:w-auto xl:w-[17vw] lg:w-[22vw] w-[28vw]">
             </div>
-            <span class="leading-[100%] text-[#9FAEB5] font-[15rem] tracking-[-0.3rem]">
+            <span class="leading-[100%] text-[#9FAEB5] 3xl:text-[15rem] 2xl:text-[12rem] lg:text-[10rem] text-[6.25rem] tracking-[-0.3rem]">
               KOREA
             </span>
           </h2>
@@ -520,7 +520,7 @@
             E
           </TypographyPrimary>
         </span>
-        <div class="text-spacer py-5"></div>
+        <div class="text-spacer md:py-5"></div>
         <span ref="theworldText" class="block leading-[100%]">
           <TypographyPrimary>
               T
@@ -531,7 +531,7 @@
             <TypographyPrimary>
               E
             </TypographyPrimary>
-            <span class="text-spacer pl-8"></span>
+            <span class="text-spacer md:pl-8 pl-0 md:inline-block block"></span>
             <TypographyPrimary >
               W
             </TypographyPrimary>
@@ -575,7 +575,7 @@
         <div class="section-heading relative">
           <div class="heading-text flex flex-col gap-y-10">
             <span class="sectionTitle-eng text-white text-base relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] before:w-3 before:h-3 before:rounded-full pl-5 ">NEWSROOM</span>
-            <h6 class="text-white text-[2.3rem] font-normal">
+            <h6 class="text-white md:text-[2.3rem] text-[5vw] font-normal">
               <TypographySecondary>ELEMENTA의 가장 최신 뉴스를 알아보세요. </TypographySecondary> <br />
               <TypographySecondary>New Paradigm, Lasting Impact</TypographySecondary>
             </h6>
@@ -585,7 +585,7 @@
           </div>
         </div>
         <div class="section-content flex">
-          <div class="content-text pt-[5.375rem]">
+          <div class="content-text pt-[5.375rem] max-xl:hidden">
             <p class="text-white relative pl-16">
               New Paradigm, <br>
               Lasting Impact
@@ -776,7 +776,7 @@
         <Container>
           <div class="heading-text flex flex-col gap-y-10">
             <span class="sectionTitle-eng text-white text-base relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] before:w-3 before:h-3 before:rounded-full pl-5 ">CAREERS</span>
-            <h6 class="text-white text-[2.3rem] font-normal">
+            <h6 class="text-white md:text-[2.3rem] text-[5vw] font-normal">
               ELEMENTA와 함께 성장할 동료를 기다립니다. <br>
               Design the Future of Play, Create a Culture the World Shares 
             </h6>
@@ -793,10 +793,19 @@
       <div class="section-content">
         <EffectGlass class="content-glass">
           <swiper
-            :slidesPerView="3"
+            :slidesPerView="1.2"
             :spaceBetween="20"
             @swiper="onSwiper"
             :breakpoints="{
+              480: {
+                slidesPerView: 2,
+              },
+              768: {
+                slidesPerView: 2.4,
+              },
+              1280: {
+                slidesPerView: 3,
+              },
               2000: {
                 slidesPerView: 4,
               }
@@ -950,7 +959,7 @@ onMounted(() => {
       trigger: accordionSection.value,
       start: 'top 80%',
       end: () => "+=" + (accordionSection.value.offsetHeight * 0.6),
-      scrub: 1,
+      //scrub: 1,
     }
   })
   accordionTl.from(accordionArray, {
@@ -1032,20 +1041,44 @@ onMounted(() => {
   
   
 
-  const elementaKoreaTl = $gsap.timeline({
+  
+
+  const mm = $gsap.matchMedia();
+
+  mm.add("(max-width: 1024px)", () => {
+    const elementaKoreaTl = $gsap.timeline({
     scrollTrigger: {
-      trigger: elementaKoreaSection.value,
+      trigger: sliderImg.value,
       start: 'top 80%',
       end: () => "+=" + (elementaKoreaSection.value.offsetHeight * 1.5),
       scrub: 1,
     }
   })
 
-  elementaKoreaTl.to(sliderImg.value, {
-    maxWidth: '30rem',
-    ease: 'power2.out',
-    duration: 5,
-  })
+    elementaKoreaTl.to(sliderImg.value, {
+      maxWidth: '38%',
+      ease: 'power2.out',
+      duration: 5,
+    })
+  });
+
+  mm.add("(min-width: 1025px)", () => {
+    const elementaKoreaTl = $gsap.timeline({
+      scrollTrigger: {
+        trigger: elementaKoreaSection.value,
+        start: 'top 80%',
+        end: () => "+=" + (elementaKoreaSection.value.offsetHeight * 1.5),
+        scrub: 1,
+      }
+    })
+
+    elementaKoreaTl.to(sliderImg.value, {
+      maxWidth: '30rem',
+      ease: 'power2.out',
+      duration: 5,
+    })
+  });
+  
 
   const newsroomTl = $gsap.timeline({
     scrollTrigger: {
@@ -1058,7 +1091,7 @@ onMounted(() => {
   })
 
   newsroomTl.fromTo(flowLeft.value, {
-    x: calcTransform("x", "calc(100% - 100vw)"),
+    x: calcTransform("x", "calc(100% - 80vw)"),
   }, {
     x: calcTransform("x", "calc(100% - 150vw)"),
     ease: 'power2.out',
@@ -1066,7 +1099,7 @@ onMounted(() => {
   }, 0.2)
 
   newsroomTl.fromTo(flowRight.value, {
-    x: calcTransform("x", "calc(-80% + 100vw)"),
+    x: calcTransform("x", "calc(-100% + 40vw)"),
   }, {
     x: calcTransform("x", "calc(-100% + 150vw)"),
     ease: 'power2.out',

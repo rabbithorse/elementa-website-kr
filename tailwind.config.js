@@ -9,7 +9,11 @@ export default {
     "./app.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        '3xl': '1856px',
+      },
+    },
   },
   plugins: [],
 }

@@ -86,19 +86,19 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 
 .mission-section {width: 100svw; height: 100svh; left: 50%; transform: translateX(-50%); text-align: center;}
 .mission-section .gradient-text {display: flex; align-items: center; column-gap: 8px;}
-.mission-section .primary-char-wrap {margin-left: -8px !important;}
+.mission-section .primary-char-wrap {margin-left: -5px !important;}
 .mission-section .primary-char-wrap.ml-5 {margin-left: 1.25rem !important;}
-.mission-section .glass-content {padding: 2rem 4.375rem;}
+.mission-section .glass-content {padding: 2rem 2.2rem;}
 
 .accordion-item:first-child {flex: 1;}
-.accordion-item .accordion-trigger button {display: flex; flex-direction: column; row-gap: 3.125rem; padding: 6.25rem 2.5rem;}
-.accordion-item .accordion-trigger button h3 {writing-mode: vertical-lr; transform: rotate(180deg);}
-.accordion-item.locked button {padding: 6.25rem 1rem;}
-.locked {width: 6.8rem; flex-shrink: 0;}
+.accordion-item .accordion-trigger button {display: flex; flex-direction: row; justify-content: space-between; row-gap: 3.125rem; padding: 1.25rem;}
+.accordion-item .accordion-trigger button h3 {writing-mode: horizontal-tb; transform: rotate(0);}
+.accordion-item.locked button {padding: 0.2rem 1rem; width: 100%;}
+.locked {width: 100%; flex-shrink: 0;}
 .locked .accordion-trigger {width: 100%;}
 .locked button {display: flex; flex-direction: column; align-items: center; row-gap: 2rem;}
-.locked-title-icon {display: inline-block; width: 28px; height: 42px; background: url("~/assets/images/main/icon-lock.svg") no-repeat center/contain; vertical-align: middle; }
-.locked-title-text {display: inline-block; width: 79px; height: 230px; background: url("~/assets/images/main/text-lock.png") no-repeat center/contain; vertical-align: middle; flex-shrink: 0;}
+.locked-title-icon {display: inline-block; width: 20px; height: 29px; background: url("~/assets/images/main/icon-lock.svg") no-repeat center/contain; vertical-align: middle; }
+.locked-title-text {display: inline-block; width: 139px; height: 47px; background: url("~/assets/images/main/text-lock.png") no-repeat center/contain; vertical-align: middle; flex-shrink: 0;}
 .accordion-item .content-bg {z-index: -1;}
 .accordion-item .content-text {}
 .accordion-item .content-text * {color: #fff;}
@@ -123,13 +123,10 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 .newsroom-section .card-title {display: -webkit-box; overflow: hidden; white-space: normal; word-wrap: break-word; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; text-overflow: ellipsis;}
 
 .careers-section {background: url("~/assets/images/main/career-bg.png") no-repeat center top / cover; position: relative; overflow: hidden;}
-.careers-section .glass-content {padding: 5.75rem 1.5rem 5.75rem 2rem; position: relative;}
-.careers-section .glass-content::before, 
-.careers-section .glass-content::after {content: ""; display: inline-block; width: 6.25rem; height: calc(100% - 4px); top: 50%; position: absolute; transform: translateY(-50%); z-index: 1; z-index: 15;}
-.careers-section .glass-content::before {background: linear-gradient(90deg, #04050A 31.73%, rgba(4, 5, 10, 0.00) 100%); left: 0;}
-.careers-section .glass-content::after {background: linear-gradient(90deg, rgba(4, 5, 10, 0.00) 25.48%, #04050A 100%); right: 0;}
+.careers-section .glass-content {padding: 4rem 0 3rem 1.25rem; position: relative;}
+
 .careers-section .swiper {padding: 1rem 0;}
-.careers-section .swiper-slide {width: 100%; height: 510px;}
+.careers-section .swiper-slide {width: 100%; height: 320px;}
 .careers-section .swiper-slide .card-moving {top:0; left:0;}
 .careers-section .swiper-slide .animatedCard {padding: 0;}
 .careers-section .swiper-slide .end-bg {visibility: hidden; left: 0; top: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: rgba(0, 0, 0, 0.70); backdrop-filter: blur(2.5px); z-index: 2;}
@@ -137,10 +134,10 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 .careers-section .swiper-slide .end-bg .inner-circle > * {opacity: 0.4;}
 .careers-section .swiper-slide .end-bg.on {visibility: visible;}
 .careers-section .swiper-slide .cont {background: rgba(0,0,0,0.3); display: block; height:100%; display: grid; grid-template-rows: auto 1fr; box-shadow: 0px 2px 4px 2px rgba(255,255,255,0.5) inset; z-index: 1;}
-.careers-section .swiper-slide .cont figure {min-height: 300px}
+.careers-section .swiper-slide .cont figure {min-height: unset; aspect-ratio: 449/223;}
 .careers-section .swiper-slide .cont figure img {width:100%; height:100%; object-fit: cover; object-position: center;}
 .careers-section .swiper-slide .cont figure::after {content:''; position:absolute; width:100%; height:100%; left:0; top:0;  box-shadow: 0px 2px 4px 2px rgba(255,255,255,0.5) inset}
-.careers-section .swiper-slide .cont .text-box {padding: 1.88rem; min-height: 205px;}
+.careers-section .swiper-slide .cont .text-box {padding: 1.25rem; min-height: 205px;}
 .careers-section .swiper-slide .cont .text-box .info {display: grid; grid-template-rows: auto 1fr; height:100%}
 
 .careers-section .swiper-slide .cont .text-box .info .tit {width: 100%; overflow: hidden;}
@@ -151,12 +148,42 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 
 .careers-section .list-bg {width: 100%; height: 100vh; top:175px; z-index: 1; background: url(~/assets/images/sub/list-bg-a.svg) no-repeat center top / contain; filter: grayscale(1);}
 
-@media (min-width: 1280px) {
-  .gradient-text .primary-char svg {width: auto; height: 150px;}
-  
-}
+.gradient-text .primary-char svg {height: 120px; width: auto; height: 17vw;}
 
 @media (min-width: 768px) {
   .gradient-text .primary-char svg {width: auto; height: 120px;}
+  .careers-section .glass-content::before, 
+  .careers-section .glass-content::after {content: ""; display: inline-block; width: 6.25rem; height: calc(100% - 4px); top: 50%; position: absolute; transform: translateY(-50%); z-index: 1; z-index: 15;}
+  .careers-section .glass-content::before {background: linear-gradient(90deg, #04050A 31.73%, rgba(4, 5, 10, 0.00) 100%); left: 0;}
+  .careers-section .glass-content::after {background: linear-gradient(90deg, rgba(4, 5, 10, 0.00) 25.48%, #04050A 100%); right: 0;}
+
+}
+
+@media (min-width: 1024px) {
+  .mission-section .primary-char-wrap {margin-left: -8px !important;}
+
+  .locked-title-icon {width: 28px; height: 42px;}
+  .locked-title-text {width: 79px; height: 230px; background: url("~/assets/images/main/text-lock-vertical.png") no-repeat center/contain;}
+  .accordion-item .accordion-trigger button {flex-direction: column; justify-content: unset; row-gap: 3.125rem; padding: 6.25rem 2.5rem;}
+  .accordion-item .accordion-trigger button h3 {writing-mode: vertical-lr; transform: rotate(180deg);}
+  .accordion-item.locked button {padding: 6.25rem 1rem; width: auto;}
+  .locked {width: 6.8rem; }
+  .locked-title-text {transform: rotate(0)}
+
+  .careers-section .swiper-slide {width: 100%; height: 415px;} 
+  .careers-section .swiper-slide .cont .text-box {padding: 1.88rem;}
+}
+
+@media (min-width: 1280px) {
+  .gradient-text .primary-char svg {width: auto; height: 150px;}
+  .mission-section .glass-content {padding: 2rem 4.375rem;}
+
+  .careers-section .glass-content {padding: 5.75rem 1.5rem 5.75rem 2rem; }
+}
+
+@media (min-width: 1536px) {
+  .gradient-text .primary-char svg {width: auto; height: 179px;}
   
+  .careers-section .swiper-slide {height: 510px;}
+  .careers-section .swiper-slide .cont figure {min-height: 300px}
 }

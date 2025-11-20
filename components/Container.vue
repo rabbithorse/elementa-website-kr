@@ -1,5 +1,12 @@
 <template>
-  <div class="container justify-between" >
+  <div class="
+    container 
+    justify-between 
+    w-[97%] 
+    max-w-full
+    2xl:max-w-[1856px]
+    mx-auto
+  " >
     <slot></slot>
   </div>
 </template>
@@ -9,10 +16,7 @@
 </script>
 
 <style scoped>
-.container {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 116rem;
-  width: 90%;
-}
+  @media (max-width: 1024px) {
+    .container {width: 90%;}
+  }
 </style>
