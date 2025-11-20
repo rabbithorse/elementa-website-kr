@@ -33,15 +33,29 @@
       <!-- 리스트 -->
       <div class="media-list pb-[190px] relative">
         <Container>
-          <div class="list-header pb-[30px] flex justify-between items-start">
+          <div class="list-header pb-[40px] flex justify-between items-start">
             <p class="font-bold text-3xl text-white deco-text relative pl-[60px]">연관 콘텐츠</p>
-            <div class="flex gap-[6px] slide-btn-wrap">
-              <button class="relative" type="button" aria-label="이전 슬라이드로 이동"><i class="ico big ico-prev bg-white"></i></button>
-              <button class="relative" type="button" aria-label="다음 슬라이드로 이동"><i class="ico big ico-next bg-white"></i></button>
+            <div class="controls flex gap-3 items-center">
+              <PrevButton :swiper="swiperInstance" class="media-prev"/>
+              <NextButton :swiper="swiperInstance" class="media-next"/>
             </div>
           </div>
-          <ul class="grid grid-cols-4 gap-x-[1.25rem] gap-y-[5.63rem] list relative">
-            <li v-for="(n, index) in 8" :key="index" class="relative card w-full">
+          <!-- 슬라이더 -->
+          <Swiper
+            :slidesPerView="4"
+            :grid="{
+              rows: 2,
+              fill: 'row'
+            }"
+            :spaceBetween="20"
+            :navigation="{
+              nextEl: '.media-next',
+              prevEl: '.media-prev'
+            }"
+            :modules="[Navigation, Autoplay, Grid]"
+            class="media-grid-swiper w-full block"
+          >
+            <swiper-slide v-for="(n, index) in 16" :key="index">
               <EffectCardHover>
                 <a class="flex flex-col gap-y-4 w-full h-full justify-start text-white" href="./media_detail">
                   <div class="card-img relative">
@@ -54,8 +68,9 @@
                     </div>
                 </a>
               </EffectCardHover>
-            </li>
-          </ul>
+            </swiper-slide>
+          </Swiper>
+          <!-- //슬라이더 -->
         </Container>
       </div>
       <!-- 리스트 -->
@@ -76,6 +91,18 @@
   import { useNuxtApp } from '#app'
 
   const { $gsap, $ScrollTrigger } = useNuxtApp()
+
+  // swiper settings + grid
+  import { Navigation, Autoplay, Grid } from 'swiper/modules';
+  import { Swiper, SwiperSlide } from 'swiper/vue';
+
+  import 'swiper/css/navigation';
+  import 'swiper/css/grid';
+  import 'swiper/css';
+
+  import NextButton from '@/components/buttons/nextButton.vue'
+  import PrevButton from '@/components/buttons/prevButton.vue'
+  // swiper settings + grid
 
   const movieFrame = ref(null)
   const sideBtnWrap = ref(null)

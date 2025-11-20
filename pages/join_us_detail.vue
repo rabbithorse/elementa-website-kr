@@ -100,7 +100,12 @@
       <div class="our-office-area py-[180px]" id="ourOfficeArea">
         <Container>
           <p class="text-white twink-point flex gap-[10px] items-center font-bold pb-[32px]">Our office</p>
-          <p class="text-white font-bold text-[2.5rem]">Dreaming bigger, <br>Working smarter, Creating together.</p>
+          <TypographySkewText time="0.0">
+          <p class="text-white font-bold text-[2.5rem]">Dreaming bigger,</p>
+          </TypographySkewText>
+          <TypographySkewText time="0.1">
+          <p class="text-white font-bold text-[2.5rem]">Working smarter, Creating together.</p>
+          </TypographySkewText>
           <div class="img_area relative" ref="imgArea">
             <div class="text-bg" ref="textBg"></div>
             <!-- card1 -->

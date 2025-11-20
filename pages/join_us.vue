@@ -53,7 +53,7 @@
             
           <div class="flex gap-[10px] grow sch-box relative">
             <input type="text" placeholder="검색어를 입력해주세요." class="input-basic relative text-lg">
-            <ButtonsBasic size="lg" color="sch" href="./join_us" role="search"><i class="ico ico-sch bg-white"></i></ButtonsBasic>
+            <ButtonsBasic size="lg" color="sch" role="search"><i class="ico ico-sch bg-white"></i></ButtonsBasic>
           </div>
         </div>
         </client-only>
@@ -152,8 +152,7 @@
   const listRecruit = ref(null);
   const listBg = ref(null);
 
-  onMounted(async () => {
-    await nextTick()
+  onMounted(() => {
 
     // Visual Parallax Effect
 
@@ -228,8 +227,6 @@
         { y: '0%', opacity: 1, duration: 1.5, ease: 'ease'   
       })
     })
-
-    $ScrollTrigger.refresh()
   })
 
   

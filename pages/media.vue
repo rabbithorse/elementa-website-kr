@@ -64,86 +64,110 @@
             >
               <swiper-slide data-text="'실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'">
                 <div class="swiper-image">
+                  <EffectCardHover>
                   <a class="image" href="">
                     <img src="~/assets/images/sub/newsroom-slide01.png" alt="">
                   </a>
+                  </EffectCardHover>
                 </div>
               </swiper-slide>
               <swiper-slide data-text="뉴스룸 2번 슬라이드 설명 텍스트">
                 <div class="swiper-image">
+                  <EffectCardHover>
                   <a class="image" href="">
                     <video src="~/assets/videos/main-fly.mp4" alt="" muted autoplay playsinline webkit-playsinline loop></video>
                   </a>
+                  </EffectCardHover>
                 </div>
               </swiper-slide>
               <swiper-slide data-text="뉴스룸 3번 슬라이드 설명 텍스트">
                 <div class="swiper-image">
+                  <EffectCardHover>
                   <a class="image" href="">
                     <img src="~/assets/images/sub/newsroom-slide03.png" alt="">
                   </a>
+                  </EffectCardHover>
                 </div>
               </swiper-slide>
               <swiper-slide data-text="뉴스룸 4번 슬라이드 설명 텍스트">
                 <div class="swiper-image">
+                  <EffectCardHover>
                   <a class="image" href="">
                     <video src="~/assets/videos/main-war.mp4" alt="" muted autoplay playsinline webkit-playsinline loop></video>
                   </a>
+                  </EffectCardHover>
                 </div>
               </swiper-slide>
               <swiper-slide data-text="뉴스룸 5번 슬라이드 설명 텍스트">
                 <div class="swiper-image">
+                  <EffectCardHover>
                   <a class="image" href="">
                     <img src="~/assets/images/sub/newsroom-slide05.png" alt="">
                   </a>
+                  </EffectCardHover>
                 </div>
               </swiper-slide>
               <swiper-slide data-text="뉴스룸 6번 슬라이드 설명 텍스트">
                 <div class="swiper-image">
+                  <EffectCardHover>
                   <a class="image" href="">
                     <video src="~/assets/videos/main-wetheworld.mp4" alt="" muted autoplay playsinline webkit-playsinline loop></video>
                   </a>
+                  </EffectCardHover>
                 </div>
               </swiper-slide>
               <swiper-slide data-text="뉴스룸 7번 슬라이드 설명 텍스트">
                 <div class="swiper-image">
+                  <EffectCardHover>
                   <a class="image" href="">
                     <img src="~/assets/images/sub/newsroom-slide01.png" alt="">
                   </a>
+                  </EffectCardHover>
                 </div>
               </swiper-slide>
               <swiper-slide data-text="뉴스룸 8번 슬라이드 설명 텍스트">
                 <div class="swiper-image">
+                  <EffectCardHover>
                   <a class="image" href="">
                     <img src="~/assets/images/sub/newsroom-slide02.png" alt="">
                   </a>
+                  </EffectCardHover>
                 </div>
               </swiper-slide>
               <swiper-slide data-text="뉴스룸 9번 슬라이드 설명 텍스트">
                 <div class="swiper-image">
+                  <EffectCardHover>
                   <a class="image" href="">
                     <img src="~/assets/images/sub/newsroom-slide03.png" alt="">
                   </a>
+                  </EffectCardHover>
                 </div>
               </swiper-slide>
               <swiper-slide data-text="뉴스룸 10번 슬라이드 설명 텍스트">
                 <div class="swiper-image">
+                  <EffectCardHover>
                   <a class="image" href="">
                     <img src="~/assets/images/sub/newsroom-slide04.png" alt="">
                   </a>
+                  </EffectCardHover>
                 </div>
               </swiper-slide>
               <swiper-slide data-text="뉴스룸 11번 슬라이드 설명 텍스트">
                 <div class="swiper-image">
+                  <EffectCardHover>
                   <a class="image" href="">
                     <img src="~/assets/images/sub/newsroom-slide05.png" alt="">
                   </a>
+                  </EffectCardHover>
                 </div>
               </swiper-slide>
               <swiper-slide data-text="뉴스룸 12번 슬라이드 설명 텍스트">
                 <div class="swiper-image">
+                  <EffectCardHover>
                   <a class="image" href="">
                     <img src="~/assets/images/sub/newsroom-slide06.png" alt="">
                   </a>
+                  </EffectCardHover>
                 </div>
               </swiper-slide>
             </Swiper>
@@ -162,8 +186,8 @@
               <input type="text" placeholder="검색어를 입력해주세요." class="input-basic relative text-[0.94rem] text-white">
               <ButtonsBasic color="sch" href="./join_us" role="search"><i class="ico ico-sch bg-white"></i></ButtonsBasic>
             </div>
-            <ul class="grid grid-cols-4 gap-x-[1.25rem] gap-y-[5.63rem] list pt-[60px] relative">
-              <li v-for="(n, index) in 8" :key="index" class="relative card w-full">
+            <ul class="grid grid-cols-4 gap-x-[1.25rem] gap-y-[3.5rem] list pt-[60px] relative">
+              <li v-for="(n, index) in 16" :key="index" class="relative card w-full">
                 <EffectCardHover>
                   <a class="flex flex-col gap-y-4 w-full h-full justify-start text-white" href="./media_detail">
                     <div class="card-img relative">
@@ -303,6 +327,23 @@
         opacity: 0,
         scale: 0.8,
         duration: 0.2
+      })
+    })
+
+    // 카드 스크롤 애니메이션
+    const cardItem = document.querySelectorAll('.media-list .list .card');
+
+    cardItem.forEach((cardEl) => {
+      $gsap.timeline({
+        scrollTrigger: {
+          trigger: cardEl,
+          start: 'top 90%',
+          end: 'top 90%',
+          // markers: true
+      }
+      }).fromTo(cardEl, 
+        { y: '30%', opacity: 0 }, 
+        { y: '0%', opacity: 1, duration: 1.5, ease: 'ease'   
       })
     })
   })
