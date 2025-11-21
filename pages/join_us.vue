@@ -60,11 +60,11 @@
       </Container>
 
       <!-- 채용 리스트 -->
-      <div class="list-recruit pt-[100px] pb-[190px] relative" ref="listRecruit">
+      <div class="list-recruit lg:pt-[100px] pt-[30px] lg:pb-[190px] pb-[60px] relative" ref="listRecruit">
         <div class="list-bg absolute" ref="listBg"></div>
         <Container>
-          <p class="text-2xl list-header mb-[2.5rem] relative overflow-hidden"><span class="block" ref="upText">100개의 검색결과</span></p>
-          <ul class="grid grid-cols-4 gap-x-[1.25rem] gap-y-[5.63rem] list relative">
+          <p class="lg:text-2xl text-sm list-header lg:mb-[2.5rem] mb-[1.25rem] relative overflow-hidden"><span class="block" ref="upText">100개의 검색결과</span></p>
+          <ul class="grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-x-[1.25rem] lg:gap-y-[5.63rem] gap-y-[1.25rem] list relative">
             <li v-for="(n, index) in 24" :key="index" class="relative">
               <EffectCardHover>
                 <div class="filter-glass liquid"></div>
@@ -76,10 +76,10 @@
                     <div class="info">
                       <div class="tit">
                         <ButtonsBadge class="mb-[10px]">D-10</ButtonsBadge>
-                        <h4 class="text-white text-xl">개발 PM 담당</h4>
-                        <p class="text-white text-[0.88rem]">경력직 ㆍ 경력 2-4년</p>
+                        <h4 class="text-white lg:text-xl text-base">개발 PM 담당</h4>
+                        <p class="text-white lg:text-[0.88rem] text-xs">경력직 ㆍ 경력 2-4년</p>
                       </div>
-                      <p class="text-white date text-[0.88rem]">25.10.01~25.10.30</p>
+                      <p class="text-white date lg:text-[0.88rem] text-xs">25.10.01~25.10.30</p>
                     </div>
                     <div class="apply absolute">
                       <span class="text-xs text-[var(--main-color)]">100명의 지원자가 보고갔어요!</span>
@@ -87,11 +87,14 @@
                     </div>
                   </div>
                 </a>
+                <!-- 채용 마감 시 보임 -->
+                <div class="circle-filter absolute" :class="{ on: index === 7 }"></div>
                 <div class="end-bg absolute" :class="{ on: index === 7 }">
                   <div class="inner-circle">
-                    <p class="text-[2.5rem] text-white font-bold">채용 마감</p>
+                    <p class="lg:text-[2.5rem] text-[1.88rem] text-white font-bold">채용 마감</p>
                   </div>
                 </div>
+                <!-- //채용 마감 시 보임 -->
               </EffectCardHover>
             </li>
           </ul>
@@ -124,8 +127,6 @@
         <feDisplacementMap in="SourceGraphic" in2="softMap" scale="110" xChannelSelector="R" yChannelSelector="G" />
       </filter>
     </svg>
-
-        
   </div>
 </template>
 
@@ -156,33 +157,72 @@
 
     // Visual Parallax Effect
 
-    // 큰 토형
-    $gsap.timeline({
-      scrollTrigger: {
-        trigger: shapeBig.value,
-        start: 'top top',
-        end: 'center top',
-        scrub: true,
-        // markers: true
-      },
-    }).to(shapeBig.value, {
-      backgroundPositionY: '-100px',
-      ease: 'none',
-    })
+    // gsap 미디어 쿼리
+    $ScrollTrigger.matchMedia({
 
-    // 작은 도형
-    $gsap.timeline({
-      scrollTrigger: {
-        trigger: shapeSmall.value,
-        start: '10% 20%',
-        end: '50% top',
-        scrub: true,
-        //markers: true
+      // 1024 이상
+      "(min-width: 1024px)": () => {
+        // 큰 토형
+        $gsap.timeline({
+          scrollTrigger: {
+            trigger: shapeBig.value,
+            start: 'top top',
+            end: 'center top',
+            scrub: true,
+            // markers: true
+          },
+        }).to(shapeBig.value, {
+          backgroundPositionY: '-100px',
+          ease: 'none',
+        })
+
+        // 작은 도형
+        $gsap.timeline({
+          scrollTrigger: {
+            trigger: shapeSmall.value,
+            start: '10% 20%',
+            end: '50% top',
+            scrub: true,
+            //markers: true
+          },
+        }).to(shapeSmall.value, {
+          backgroundPositionY: '-80px',
+          ease: 'none',
+        })
       },
-    }).to(shapeSmall.value, {
-      backgroundPositionY: '-80px',
-      ease: 'none',
+
+      // 1023 이하
+      "(max-width: 1023px)": () => {
+        // 큰 토형
+        $gsap.timeline({
+          scrollTrigger: {
+            trigger: shapeBig.value,
+            start: 'top top',
+            end: 'center top',
+            scrub: true,
+            // markers: true
+          },
+        }).to(shapeBig.value, {
+          backgroundPositionY: '-40px',
+          ease: 'none',
+        })
+
+        // 작은 도형
+        $gsap.timeline({
+          scrollTrigger: {
+            trigger: shapeSmall.value,
+            start: '10% 20%',
+            end: '50% top',
+            scrub: true,
+            //markers: true
+          },
+        }).to(shapeSmall.value, {
+          backgroundPositionY: '-30px',
+          ease: 'none',
+        })
+      },
     })
+    // gsap 미디어 쿼리
 
     // 리스트 고정 배경
     $gsap.timeline({
@@ -235,4 +275,14 @@
 <style scoped>
   .filter-glass {filter: url(#lg-dist); backdrop-filter: blur(12px); width: 100%; height:100%; position: absolute; left: 0;  bottom: 0; z-index: 1; background: url(~/assets/images/sub/otis-redding.png) repeat;}
   .filter-glass.liquid {filter: url(#liquid); background: none; backdrop-filter: blur(4px);}
+  .circle-filter{visibility: hidden; opacity: 0; filter: url(#lg-dist); backdrop-filter: blur(3px); z-index: 1; width: 265px; height: 265px;  left: 50%; top: 50%; transform: translate(-50%, -50%); border-radius: 50%;}
+  .circle-filter.on{visibility: visible; opacity: 1;}
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .circle-filter {width: 217px; height: 217px;}
+  }
+  
+  @media (max-width: 767px) {
+    .circle-filter {width: 217px; height: 217px;}
+  }
 </style>

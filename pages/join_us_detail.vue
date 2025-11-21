@@ -1,21 +1,21 @@
 <template>
   <div>
-    <section class="subSection logo-bg pt-[180px] relative">
-      <div class="join-us-detail-area]">
-        <Container class="grid gap-x-[9.4%] grid-cols-[1fr_23.7%] grid-row-[auto 1fr]">
-          <div class="detail-title-area col-span-2">
+    <section class="subSection logo-bg lg:pt-[180px] pt-[115px] relative">
+      <div class="join-us-detail-area relative">
+        <Container class="grid gap-x-[9.4%] lg:grid-cols-[1fr_23.7%] lg:grid-row-[auto 1fr]">
+          <div class="detail-title-area lg:col-span-2">
             <ButtonsBadge category="y">Business</ButtonsBadge>
-            <h3 class="text-white text-[4.69rem] pb-[90px] font-bold">퍼포먼스 마케터</h3>
+            <h3 class="text-white lg:text-[4.69rem] text-[2.38rem] lg:pb-[90px] pb-[30px] lg:pt-[0px] pt-[5px] font-bold">퍼포먼스 마케터</h3>
           </div>
           <div class="detail-cont" ref="detailCont">
             <TypographySkewText time="0.0">
-            <p class="font-bold text-[1.75rem] text-white leading-[2.63rem] pb-[30px] deco-text flex gap-[10px] relative items-center">신입 ∙ 0년~2년</p>
+            <p class="font-bold lg:text-[1.75rem] text-lg text-white leading-[2.63rem] lg:pb-[30px] pb-[10px] deco-text flex gap-[10px] relative items-center">신입 ∙ 0년~2년</p>
             </TypographySkewText>
             <TypographySkewText time="0.3">
-            <span class="text-[var(--text-disabled)] text-[0.94rem]">포지션 소개</span>
+            <span class="text-[var(--text-disabled)] lg:text-[0.94rem] text-xs">포지션 소개</span>
             </TypographySkewText>
-            <TypographySkewText time="0.6" class="mt-[10px] mb-[3.75rem]">
-              <p class="text-white text-lg break-keep leading-[1.81rem]">퍼포먼스 마케터는 온라인 광고 채널(Google, Meta, Naver, Kakao 등)을 운영하며 KPI 달성을 위한 캠페인을 설계하고 최적화하는 역할을 담당합니다. 데이터 기반으로 예산을 효율적으로 집행하고, 퍼널 분석과 A/B 테스트 등을 통해 신규 유저 유입과 리텐션을 동시에 강화합니다.</p>
+            <TypographySkewText time="0.6" class="lg:mt-[10px] mt-[5px] lg:mb-[3.75rem] mb-[2.5rem]">
+              <p class="text-white lg:text-lg text-sm break-keep lg:leading-[1.81rem] leading-[1.51rem]">퍼포먼스 마케터는 온라인 광고 채널(Google, Meta, Naver, Kakao 등)을 운영하며 KPI 달성을 위한 캠페인을 설계하고 최적화하는 역할을 담당합니다. 데이터 기반으로 예산을 효율적으로 집행하고, 퍼널 분석과 A/B 테스트 등을 통해 신규 유저 유입과 리텐션을 동시에 강화합니다.</p>
             </TypographySkewText>
             <div class="detail-glass-box p-[2.25rem] flex justify-between items-center relative overflow-hidden" ref="detailGlassBox">
               <div class="filter-glass"></div>
@@ -28,7 +28,7 @@
             </div>
 
             <div class="cont">
-              <div class="whitespace-pre-line text-white mt-[3.75rem]" style="height:1000px; background:#444;"><!--내용-->
+              <div class="whitespace-pre-line text-white mt-[3.75rem]" style="height:1200px; background:#444;"><!--내용-->
                 내용 들어가는 곳입니다.
               </div>
             </div>
@@ -254,16 +254,24 @@
     });
 
     // 사이드 메뉴 고정
-    $gsap.to(detailCont.value, {
-      scrollTrigger: {
-        trigger: detailCont.value,
-        start: '-=150 top',
-        end: 'bottom-=15% bottom',
-        scrub: 2,
-        // markers: true,
-        pin: sideInner.value,
-      },
+    // gsap 미디어 쿼리
+    // 1024 이상
+    $ScrollTrigger.matchMedia({
+      "(min-width: 1024px)": () => {
+        $gsap.to(sideInner.value, {
+          scrollTrigger: {
+            trigger: detailCont.value,
+            start: '-=150 top',
+            end: () => "+=" + (detailCont.value.offsetHeight - sideInner.value.offsetHeight),
+            scrub: 2,
+            pin: sideInner.value,
+            pinSpacing: true,
+            // markers: true
+          },
+        })
+      }
     });
+    // gsap 미디어 쿼리
 
     // 오피스 이미지 애니메이션
     const item = document.querySelectorAll('.img-item')

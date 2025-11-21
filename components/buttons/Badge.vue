@@ -5,6 +5,10 @@
 </template>
 
 <style scope>
+/* -------------------------------------- */
+/* 기본값 (1536px 이상) — PC 디자인 원본 */
+/* -------------------------------------- */
+
   /* Badge */
 .badge {color: #734BD7; font-weight: 700; display: inline-flex; padding: 2px 10px; justify-content: center; align-items: center; gap: 10px; border-radius: 50px; background: linear-gradient(100deg, rgba(115, 75, 215, 0.25) 8.3%, rgba(60, 39, 113, 0.25) 98.05%);}
 .badge::before {
@@ -73,6 +77,37 @@
 
 .badge.text-white {color: #FFFFFF;}
 
+/***** responsive, 순서 변경 금지*****/
+
+/* -------------------------------------- */
+/* XL : 1280 ~ 1535 */
+/* -------------------------------------- */
+@media (min-width: 1280px) and (max-width: 1535px) {
+}
+
+/* -------------------------------------- */
+/* LG : 1024 ~ 1279 */
+/* -------------------------------------- */
+@media (min-width: 1024px) and (max-width: 1279px) {
+
+}
+
+/* -------------------------------------- */
+/* MD : 768 ~ 1023  
+/* -------------------------------------- */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .badge.category {padding: 6px 12px;}
+}
+
+/* -------------------------------------- */
+/* MOBILE : 0 ~ 767 */
+/* -------------------------------------- */
+@media (max-width: 767px) {
+  .badge.category {padding: 6px 12px;}
+}
+
+/* 모바일 세부조정 */
+@media (max-width: 375px) {}
 </style>
 
 <script setup>
@@ -85,9 +120,9 @@ const props = defineProps({
 
 const categoryClass = computed(() => {
   if (props.category === 'y') {
-    return 'category text-[1rem]'
+    return 'category lg:text-[1rem] text-[0.69rem]'
   } else {
-    return 'normal text-[0.69rem]'
+    return 'normal lg:text-[0.69rem] text-[0.63rem]'
   }
 })
 
