@@ -1,14 +1,14 @@
 <template>
   <div>
-    <section class="subSection pt-[130px] relative" ref="subSection">
+    <section class="subSection lg:pt-[130px] pt-[95px] relative" ref="subSection">
       <div class="path-visual absolute" ref="pathVisual">
         <div class="inner relative">
           <div class="big shape" ref="shapeBig"></div>
-          <div class="small shape absolute" ref="shapeSmall"></div>
+          <div class="small shape absolute lg:opacity-100 opacity-40" ref="shapeSmall"></div>
         </div>
       </div>
       <Container>
-        <h2 class="text-[11rem] leading-1 font-bold text-white subPageTitle relative">
+        <h2 class="leading-1 font-bold text-white subPageTitle relative">
           <TypographyPrimary>
             J
           </TypographyPrimary>
@@ -28,31 +28,31 @@
             s
           </TypographyPrimary>
         </h2>
-        <h3 class="text-white pt-[200px] text-[2rem] font-semibold relative subPageTitle2">
+        <h3 class="text-white font-semibold relative subPageTitle2">
           <TypographySecondary>우리가 만드는 오늘, 내일의 기록</TypographySecondary>
         </h3>
-        <p class="text-white text-xl pt-[1.25rem] relative subPageTitle3">
-          <TypographySecondary>게임 출시, 업데이트, 파트너십, 사회적 활동 등 다양한 소식을 투명하고 <br>생생하게 전달하며, 플레이어와 세계를 하나로 연결합니다.</TypographySecondary>
+        <p class="text-white relative subPageTitle3">
+          <TypographySecondary>게임 출시, 업데이트, 파트너십, 사회적 활동 등 <br class="lg:hidden block">다양한 소식을 투명하고 <br class="lg:block hidden">생생하게 전달하며, <br class="lg:hidden block">플레이어와 세계를 하나로 연결합니다.</TypographySecondary>
         </p>
 
         <client-only>
-        <div class="filter-box text-white mt-[5.5rem] py-[3.13rem] px-[7.5rem] flex gap-10 items-end relative">
+        <div class="filter-box text-white 2xl:mt-[5.5rem] mt-[3.75rem] flex lg:flex-row flex-col 2xl:gap-10 gap-[0.94rem] items-end relative">
           <div class="filter-glass"></div>
           <div class="filter-shine"></div>
-          <BlocksCustomSelect 
+          <BlocksCustomSelect class="z-30"
           label="직군"
           :options="['전체','직군1','직군2']" />
 
-          <BlocksCustomSelect
+          <BlocksCustomSelect class="z-20"
             label="고용형태"
             :options="['전체','정규직','계약직']" />
 
-          <BlocksCustomSelect
+          <BlocksCustomSelect class="z-10"
             label="채용상태"
             :options="['전체','채용중','마감']" />
             
-          <div class="flex gap-[10px] grow sch-box relative">
-            <input type="text" placeholder="검색어를 입력해주세요." class="input-basic relative text-lg">
+          <div class="flex gap-[10px] grow sch-box lg:w-auto w-full relative">
+            <input type="text" placeholder="검색어를 입력해주세요." class="input-basic relative lg:text-lg text-[0.88rem]">
             <ButtonsBasic size="lg" color="sch" role="search"><i class="ico ico-sch bg-white"></i></ButtonsBasic>
           </div>
         </div>

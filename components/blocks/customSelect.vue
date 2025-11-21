@@ -1,13 +1,13 @@
 <template>
-  <div class="filter-inner flex flex-col gap-[0.94rem] relative" ref="root">
-    <label class="text-lg">{{ label }}</label>
+  <div class="filter-inner flex flex-col lg:gap-[0.94rem] gap-[8px] lg:w-auto w-full relative" ref="root">
+    <label class="lg:text-lg text-[0.94rem]">{{ label }}</label>
 
-    <select class="text-lg">
+    <select class="lg:text-lg text-[0.94rem]">
       <option v-for="item in options" :key="item">{{ item }}</option>
     </select>
 
     <div class="custom-select relative">
-      <div class="selected relative text-lg">전체</div>
+      <div class="selected relative lg:text-lg text-[0.88rem]">전체</div>
     </div>
   </div>
 </template>

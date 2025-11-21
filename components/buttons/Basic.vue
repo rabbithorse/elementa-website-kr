@@ -30,6 +30,10 @@
 </template>
 
 <style scoped>
+  /* -------------------------------------- */
+  /* 기본값 (1536px 이상) — PC 디자인 원본 */
+  /* -------------------------------------- */
+
   .btn {position:relative; display: inline-block;}
 
   .btn .inner {
@@ -186,6 +190,44 @@
 
   .btn:hover .hover_shadow2 {
     opacity: 1;
+  }
+
+  /***** responsive, 순서 변경 금지*****/
+
+  /* pc에서 레이아웃 깨지는 것만 */
+  @media (max-width: 1919px) {
+
+  }
+
+  /* -------------------------------------- */
+  /* XL : 1280 ~ 1535 */
+  /* -------------------------------------- */
+  @media (min-width: 1280px) and (max-width: 1535px) {
+
+  }
+
+  /* -------------------------------------- */
+  /* LG : 1024 ~ 1279 */
+  /* -------------------------------------- */
+  @media (min-width: 1024px) and (max-width: 1279px) {
+  }
+
+  /* -------------------------------------- */
+  /* MD : 768 ~ 1023  
+  /* -------------------------------------- */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .btn.sch .lg.inner {width:50px; height:50px; clip-path: polygon(100% 0,100% 32px, calc(100% - 15px) 100%,0 100%,0 0);}
+    .btn.sch .lg.inner::before {right:4px; transform: rotate(40deg);}
+    .btn.sch .lg.inner .ico {width:20px; height:20px;}
+  }
+
+  /* -------------------------------------- */
+  /* MOBILE : 0 ~ 767 */
+  /* -------------------------------------- */
+  @media (max-width: 767px) {
+    .btn.sch .lg.inner {width:50px; height:50px; clip-path: polygon(100% 0,100% 32px, calc(100% - 15px) 100%,0 100%,0 0);}
+    .btn.sch .lg.inner::before {right:4px; transform: rotate(40deg);}
+    .btn.sch .lg.inner .ico {width:20px; height:20px;}
   }
 </style>
 
