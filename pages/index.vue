@@ -407,7 +407,7 @@
         </div>
         <div class="box-wrap max-w-[61rem] mx-auto w-[90%]">
           <EffectGlass>
-            <span class="sectionTitle-eng text-white text-base relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] before:w-3 before:h-3 before:rounded-full pl-5">Our Mission</span>
+            <span class="sectionTitle-eng text-white text-base relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] md:before:w-3 md:before:h-3 before:w-[0.625rem] before:h-[0.625rem] before:rounded-full pl-5">Our Mission</span>
             <div class="text-content gap-x-7 py-[0.9rem]">
               <p class="text-white md:text-[1.5rem] text-[4.1vw] leading-[150%] break-keep">혁신적 경험으로 게임의 기준을 새롭게 쓰고, 협력과 도전으로 문화를 확장하며, <br>전 세계가 공감할 지속 가능한 감동을 만드는 문화·패러다임의 선도자로 성장하겠습니다.</p>
             </div>
@@ -434,7 +434,7 @@
             <div class="content-text lg:w-fit lg:h-full lg:ml-auto lg:mt-0 mt-auto w-full h-auto ml-0">
               <EffectGlass class="lg:h-full ">
                 <div class="flex flex-col justify-end lg:gap-y-[3.125rem] gap-y-5 lg:pb-[5.625rem] pt-4 pb-9 lg:px-8 px-7 h-full">
-                  <div class="content-title title-img max-lg:w-56">
+                  <div class="content-title title-img lg:w-[52%] w-56 aspect-229/75">
                     <img src="~/assets/images/main/text-game-silverpalace.png" alt="icon" />
                   </div>
                   <div class="content-detail flex flex-col lg:gap-y-6">
@@ -566,25 +566,25 @@
         </span>
       </h2>
     </section>
-    <section class="newsroom-section relative pt-[6.25rem] pb-[6rem] min-h-dvh" ref="newsroomSection">
-      <div class="bg-text absolute bottom-0 left-0 ">
-        <span class="text-[#403B4E] text-[5rem] font-bold">NEW PARADIGM, LASTING IMPACT. ELEMENTA KOREA</span>
-        <h2 class="text-[28rem] gradient-text grey font-bold">ELEMENTA ELEMENTA</h2>
+    <section class="newsroom-section relative md:pt-[6.25rem] pt-[3.25rem] pb-[6rem] min-h-dvh" ref="newsroomSection">
+      <div class="bg-text flex md:flex-col flex-col-reverse absolute md:bottom-0 bottom-[3.75rem] left-0 ">
+        <span class="text-[#403B4E] md:text-[5rem] text-[2.5rem] font-bold font-oswald">NEW PARADIGM, LASTING IMPACT. ELEMENTA KOREA</span>
+        <h2 class="md:text-[28rem] text-[12.5rem] gradient-text grey font-bold">ELEMENTA ELEMENTA</h2>
       </div>
-      <Container class="flex flex-col gap-y-[5rem]">
+      <Container class="flex flex-col md:gap-y-[5rem] gap-y-10">
         <div class="section-heading relative">
-          <div class="heading-text flex flex-col gap-y-10">
-            <span class="sectionTitle-eng text-white text-base relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] before:w-3 before:h-3 before:rounded-full pl-5 ">NEWSROOM</span>
-            <h6 class="text-white md:text-[2.3rem] text-[5vw] font-normal">
+          <div class="heading-text flex flex-col md:gap-y-10 gap-y-4">
+            <span class="sectionTitle-eng text-white md:text-base text-[3.4vw] relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] before:w-3 before:h-3 before:rounded-full pl-5 ">NEWSROOM</span>
+            <h6 class="text-white md:text-[2.3rem] text-[4.3vw] font-normal">
               <TypographySecondary>ELEMENTA의 가장 최신 뉴스를 알아보세요. </TypographySecondary> <br />
               <TypographySecondary>New Paradigm, Lasting Impact</TypographySecondary>
             </h6>
           </div> 
-          <div class="heading-button absolute right-0 bottom-0">
-            <ButtonsBasic size="lg" color="blue">View more</ButtonsBasic>
+          <div class="heading-button absolute right-0 bottom-0 md:block hidden">
+            <ButtonsBasic color="blue">View more</ButtonsBasic>
           </div>
         </div>
-        <div class="section-content flex">
+        <div class="section-content md:flex">
           <div class="content-text pt-[5.375rem] max-xl:hidden">
             <p class="text-white relative pl-16">
               New Paradigm, <br>
@@ -593,8 +593,8 @@
           </div>
           <div class="card-grid flex flex-col gap-y-18">
             <EffectGlass class="card-glass relative after:absolute after:inset-y-0 after:right-0 after:w-80">
-              <div class="card-list flex gap-[3.75rem] justify-center flow-left mb-[4.375rem]" ref="flowLeft">
-                <div class="card w-[28rem]" >
+              <div class="card-list md:gap-[3.75rem] gap-4 justify-center flow-left md:mb-[4.375rem] flex flex-row" ref="flowLeft">
+                <div class="card md:w-[28rem] w-[21rem]" >
                   <EffectCardHover>
                     <div class="flex flex-col gap-y-4 w-full h-full justify-start">
                       <div class="card-img">
@@ -608,7 +608,7 @@
                     </div>
                   </EffectCardHover>
                 </div>
-                <div class="card w-[28rem]" >
+                <div class="card md:w-[28rem] w-[21rem]" >
                   <EffectCardHover>
                     <div class="flex flex-col gap-y-4 w-full h-full justify-start">
                       <div class="card-img">
@@ -622,7 +622,7 @@
                     </div>
                   </EffectCardHover>
                 </div>
-                <div class="card w-[28rem]" >
+                <div class="card md:w-[28rem] w-[21rem]" >
                   <EffectCardHover>
                     <div class="flex flex-col gap-y-4 w-full h-full justify-start">
                       <div class="card-img">
@@ -636,7 +636,7 @@
                     </div>
                   </EffectCardHover>
                 </div>
-                <div class="card w-[28rem]" >
+                <div class="card md:w-[28rem] w-[21rem]" >
                   <EffectCardHover>
                     <div class="flex flex-col gap-y-4 w-full h-full justify-start">
                       <div class="card-img">
@@ -650,7 +650,7 @@
                     </div>
                   </EffectCardHover>
                 </div>
-                <div class="card w-[28rem]" >
+                <div class="card md:w-[28rem] w-[21rem]" >
                   <EffectCardHover>
                     <div class="flex flex-col gap-y-4 w-full h-full justify-start">
                       <div class="card-img">
@@ -664,7 +664,7 @@
                     </div>
                   </EffectCardHover>
                 </div>
-                <div class="card w-[28rem]" >
+                <div class="card md:w-[28rem] w-[21rem]" >
                   <EffectCardHover>
                     <div class="flex flex-col gap-y-4 w-full h-full justify-start">
                       <div class="card-img">
@@ -679,8 +679,8 @@
                   </EffectCardHover>
                 </div>
               </div>
-              <div class="card-list flex gap-[3.75rem] justify-center flow-left rows-reverse" ref="flowRight">
-                <div class="card w-[28rem]" >
+              <div class="card-list gap-[3.75rem] justify-center flow-left rows-reverse md:flex flex-row hidden " ref="flowRight">
+                <div class="card md:w-[28rem] w-[21rem]" >
                   <EffectCardHover>
                     <div class="flex flex-col gap-y-4 w-full h-full justify-start">
                       <div class="card-img">
@@ -694,7 +694,7 @@
                     </div>
                   </EffectCardHover>
                 </div>
-                <div class="card w-[28rem]" >
+                <div class="card md:w-[28rem] w-[21rem]" >
                   <EffectCardHover>
                     <div class="flex flex-col gap-y-4 w-full h-full justify-start">
                       <div class="card-img">
@@ -708,7 +708,7 @@
                     </div>
                   </EffectCardHover>
                 </div>
-                <div class="card w-[28rem]" >
+                <div class="card md:w-[28rem] w-[21rem]" >
                   <EffectCardHover>
                     <div class="flex flex-col gap-y-4 w-full h-full justify-start">
                       <div class="card-img">
@@ -722,7 +722,7 @@
                     </div>
                   </EffectCardHover>
                 </div>
-                <div class="card w-[28rem]" >
+                <div class="card md:w-[28rem] w-[21rem]" >
                   <EffectCardHover>
                     <div class="flex flex-col gap-y-4 w-full h-full justify-start">
                       <div class="card-img">
@@ -736,7 +736,7 @@
                     </div>
                   </EffectCardHover>
                 </div>
-                <div class="card w-[28rem]" >
+                <div class="card md:w-[28rem] w-[21rem]" >
                   <EffectCardHover>
                     <div class="flex flex-col gap-y-4 w-full h-full justify-start">
                       <div class="card-img">
@@ -750,7 +750,7 @@
                     </div>
                   </EffectCardHover>
                 </div>
-                <div class="card w-[28rem]" >
+                <div class="card md:w-[28rem] w-[21rem]" >
                   <EffectCardHover>
                     <div class="flex flex-col gap-y-4 w-full h-full justify-start">
                       <div class="card-img">
@@ -767,38 +767,45 @@
               </div>
             </EffectGlass>
           </div>
+          <div class="content-button md:hidden flex justify-center mt-5">
+            <ButtonsBasic color="blue" class="max-md:w-full [&>*]:w-full">View more</ButtonsBasic>
+          </div>
         </div>
         
       </Container>
     </section>
-    <section class="careers-section pt-[17rem] pb-64 flex flex-col gap-y-[5rem] min-h-dvh">
+    <section class="careers-section md:pt-[17rem] pt-[3.125rem] md:pb-64 pb-24 flex flex-col md:gap-y-[5rem] gap-y-10 min-h-dvh">
       <div class="section-heading">
         <Container>
-          <div class="heading-text flex flex-col gap-y-10">
-            <span class="sectionTitle-eng text-white text-base relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] before:w-3 before:h-3 before:rounded-full pl-5 ">CAREERS</span>
-            <h6 class="text-white md:text-[2.3rem] text-[5vw] font-normal">
+          <div class="heading-text flex flex-col md:gap-y-10 gap-y-4">
+            <span class="sectionTitle-eng text-white md:text-base text-[3.4vw] relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] md:before:w-3 md:before:h-3 before:w-[0.625rem] before:h-[0.625rem] before:rounded-full pl-5 ">CAREERS</span>
+            <h6 class="text-white md:text-[2.3rem] text-[4.3vw] font-normal">
               ELEMENTA와 함께 성장할 동료를 기다립니다. <br>
               Design the Future of Play, Create a Culture the World Shares 
             </h6>
           </div>
-          <div class="heading-button absolute right-0 bottom-0 flex items-center gap-5">
-            <div class="controls flex gap-3 items-center">
+          <div class="heading-button absolute right-0 bottom-0 md:flex items-center gap-5 hidden">
+            <div class="controls gap-3 items-center">
               <PrevButton :swiper="swiperInstance" />
               <NextButton :swiper="swiperInstance" />
             </div>
-            <ButtonsBasic size="lg" color="blue">View more</ButtonsBasic>
+            <ButtonsBasic color="blue">View more</ButtonsBasic>
           </div>
         </Container>
       </div>
       <div class="section-content">
         <EffectGlass class="content-glass">
+          <div class="controls md:hidden flex gap-3 items-center">
+            <PrevButton :swiper="swiperInstance" />
+            <NextButton :swiper="swiperInstance" />
+          </div>
           <swiper
             :slidesPerView="1.2"
             :spaceBetween="20"
             @swiper="onSwiper"
             :breakpoints="{
               480: {
-                slidesPerView: 2,
+                slidesPerView: 1.4,
               },
               768: {
                 slidesPerView: 2.4,
@@ -834,6 +841,10 @@
             </swiper-slide>
           </swiper>
         </EffectGlass>
+
+        <div class="content-button md:hidden flex justify-center mt-5">
+          <ButtonsBasic color="blue" class="max-md:w-full [&>*]:w-full">View more</ButtonsBasic>
+        </div>
       </div>
     </section>
   </div>
@@ -1038,73 +1049,6 @@ onMounted(() => {
   .to(inspireText.value, {
     height: '100%',
   }, "-=0.5")
-  
-  
-
-  
-
-  const mm = $gsap.matchMedia();
-
-  mm.add("(max-width: 1024px)", () => {
-    const elementaKoreaTl = $gsap.timeline({
-    scrollTrigger: {
-      trigger: sliderImg.value,
-      start: 'top 80%',
-      end: () => "+=" + (elementaKoreaSection.value.offsetHeight * 1.5),
-      scrub: 1,
-    }
-  })
-
-    elementaKoreaTl.to(sliderImg.value, {
-      maxWidth: '38%',
-      ease: 'power2.out',
-      duration: 5,
-    })
-  });
-
-  mm.add("(min-width: 1025px)", () => {
-    const elementaKoreaTl = $gsap.timeline({
-      scrollTrigger: {
-        trigger: elementaKoreaSection.value,
-        start: 'top 80%',
-        end: () => "+=" + (elementaKoreaSection.value.offsetHeight * 1.5),
-        scrub: 1,
-      }
-    })
-
-    elementaKoreaTl.to(sliderImg.value, {
-      maxWidth: '30rem',
-      ease: 'power2.out',
-      duration: 5,
-    })
-  });
-  
-
-  const newsroomTl = $gsap.timeline({
-    scrollTrigger: {
-      trigger: newsroomSection.value,
-      start: 'top -20%',
-      pin: true,
-      end: () => "+=" + (newsroomSection.value.offsetHeight * 2),
-      scrub: 1,
-    }
-  })
-
-  newsroomTl.fromTo(flowLeft.value, {
-    x: calcTransform("x", "calc(100% - 80vw)"),
-  }, {
-    x: calcTransform("x", "calc(100% - 150vw)"),
-    ease: 'power2.out',
-    duration: 2,
-  }, 0.2)
-
-  newsroomTl.fromTo(flowRight.value, {
-    x: calcTransform("x", "calc(-100% + 40vw)"),
-  }, {
-    x: calcTransform("x", "calc(-100% + 150vw)"),
-    ease: 'power2.out',
-    duration: 2,
-  }, 0.2)
 
   function calcTransform(property, value) {
     let alias = { y: "translateY", x: "translateX", z: "translateZ", rotation: "rotate" };
@@ -1117,6 +1061,117 @@ onMounted(() => {
       return computed; 
     };
   }
+
+  const mm = $gsap.matchMedia();
+
+  mm.add("(min-width: 1025px)", () => {
+    const elementaKoreaTl = $gsap.timeline({
+      scrollTrigger: {
+        trigger: elementaKoreaSection.value,
+        start: 'top 80%',
+        //end: () => "+=" + (elementaKoreaSection.value.offsetHeight * 1.5),
+        scrub: 1,
+      }
+    })
+
+    elementaKoreaTl.to(sliderImg.value, {
+      maxWidth: '30rem',
+      ease: 'power2.out',
+      duration: 5,
+    })
+
+    const newsroomTl = $gsap.timeline({
+      scrollTrigger: {
+        trigger: newsroomSection.value,
+        start: 'top -20%',
+        pin: true,
+        end: () => "+=" + (newsroomSection.value.offsetHeight * 2),
+        scrub: 1,
+      }
+    })
+
+    newsroomTl.fromTo(flowLeft.value, {
+      x: calcTransform("x", "calc(100% - 100vw)"),
+    }, {
+      x: calcTransform("x", "calc(100% - 150vw)"),
+      ease: 'power2.out',
+      duration: 2,
+    }, 0.2)
+
+    newsroomTl.fromTo(flowRight.value, {
+      x: calcTransform("x", "calc(-100% + 100vw)"),
+    }, {
+      x: calcTransform("x", "calc(-100% + 150vw)"),
+      ease: 'power2.out',
+      duration: 2,
+    }, 0.2)
+  });
+
+  mm.add("(max-width: 1024px)", () => {
+    const elementaKoreaTl = $gsap.timeline({
+      scrollTrigger: {
+        trigger: sliderImg.value,
+        start: 'top 80%',
+        //end: () => "+=" + (elementaKoreaSection.value.offsetHeight * 1.5),
+        scrub: 1,
+      }
+    })
+
+    elementaKoreaTl.to(sliderImg.value, {
+      maxWidth: '38%',
+      ease: 'power2.out',
+      duration: 5,
+    })
+  });
+
+  mm.add("(min-width: 768px) and (max-width: 1023px)", () => {
+    const newsroomTl = $gsap.timeline({
+      scrollTrigger: {
+        trigger: newsroomSection.value,
+        start: 'top -20%',
+        pin: true,
+        end: () => "+=" + (newsroomSection.value.offsetHeight * 2),
+        scrub: 1,
+      }
+    })
+
+    newsroomTl.fromTo(flowLeft.value, {
+      x: calcTransform("x", "5%"),
+    }, {
+      x: calcTransform("x", "60%"),
+      ease: 'power2.out',
+      duration: 2,
+    }, 0.2)
+
+    newsroomTl.fromTo(flowRight.value, {
+      x: calcTransform("x", "3%"),
+    }, {
+      x: calcTransform("x", "-60%"),
+      ease: 'power2.out',
+      duration: 2,
+    }, 0.2)
+  })
+
+  mm.add("(max-width: 769px)", () => {
+    const newsroomTl = $gsap.timeline({
+      scrollTrigger: {
+        trigger: newsroomSection.value,
+        start: 'top 10%',
+        pin: true,
+        end: () => "+=" + (newsroomSection.value.offsetHeight * 3),
+        scrub: 1,
+      }
+    })
+
+    newsroomTl.fromTo(flowLeft.value, {
+      x: calcTransform("x", "1%"),
+    }, {
+      x: calcTransform("x", "-88%"),
+      ease: 'power2.out',
+      duration: 2,
+    }, 0.2)
+  });
+
 })
 
 

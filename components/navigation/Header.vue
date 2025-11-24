@@ -1,16 +1,16 @@
 <template>
-  <header id="header" class="fixed w-screen lg:py-10 py-5 z-50">
+  <header id="header" class="fixed w-full lg:py-10 py-5 z-50">
     <Container class="2xl:px-14 xl:px-10 lg:px-6 px-4">
       <NuxtLink href="/" class="2xl:py-6 py-4 flex items-center max-lg:w-[88px]">
         <Logo class="text-white" />
       </NuxtLink>
-      <NavigationMenu class="hidden lg:flex"/>
+      <Menu class="hidden lg:flex" :menuItems="menuItems" />
     </Container>
     <button
       :class="{
         'opened shadow-md bg-opacity-75 rounded-md': isOpen, '': !isOpen
       }"
-      class="fixed z-[100] text-white transition duration-300 lg:hidden p-[0.95rem] rounded-md top-5 left-[calc(100vw-4.8rem)] hamburger-open "
+      class="fixed z-[100] text-white transition duration-300 lg:hidden p-[0.95rem] rounded-md top-5 right-[5%] hamburger-open"
       @click="toggle"
       :isOpen="isOpen"
     >
@@ -25,15 +25,16 @@
     </button>
     <div :isOpen="isOpen" class="lg:hidden ">
       <Transition name="slide" class="fixed inset-0 z-40">
-        <NavigationMenu v-if="isOpen" @close="closeMenu" class="fixed w-screen right-0 top-0 h-full "/>
+        <MobileMenu :menuItems="menuItems" v-if="isOpen" @close="closeMenu" class="fixed w-full right-0 top-0 h-full "/>
       </Transition>
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
-  import NavigationMenu from './Menu.vue'
   import { ref } from 'vue'
+  import Menu from './Menu.vue'
+  import MobileMenu from './MobileMenu.vue'
 
   const isOpen = ref(false);
   const subMenuOpen = ref(false);
@@ -48,19 +49,19 @@
     console.log("메뉴 닫힘")
   }
 
-  // Watch route changes and close the menu
-  // watch(isOpen, () => {
-  //   if(isOpen.value) {
-  //     alert("열림")
-  //     document.body.style.overflow = 'hidden';
-  //     document.documentElement.style.overflow = 'hidden';
-  //   } else {
-  //     document.body.style.overflow = 'auto';
-  //     document.documentElement.style.overflow = 'auto';
-  //   }
-  // }
-    
-  // );
+  const menuItems = [
+    { name: "Company", path: "/company" },
+    { name: "Games", path: "/games" },
+    { name: "Careers", path: "/join_us",
+      children: [
+        { name: "Join Us", path: "/join_us"},
+        { name: "Culture", path: "/culture"}
+      ]
+    },
+    { name: "Newsroom", path: "/newsroom" },
+    { name: "Media", path: "/media" },
+    { name: "Contact", path: "/contact" },
+  ]
 
   
 </script>

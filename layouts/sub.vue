@@ -10,6 +10,10 @@
   </div>
 </template>
 
+<script setup>
+  import '@/assets/css/sub.css';
+</script>
+
 <style scoped>
 
 </style>
