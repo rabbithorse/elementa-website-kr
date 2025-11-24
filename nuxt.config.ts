@@ -19,8 +19,7 @@ export default defineNuxtConfig({
     }
   },
   css: [
-    '~/assets/css/main.css',
-    '~/assets/css/sub.css',
+    '~/assets/css/base.css',
     '~/assets/css/tailwind.css',
     '~/assets/css/fonts.css'
   ],
