@@ -1,10 +1,10 @@
 <template>
   <div>
-      <section class="subSection media-area pt-[130px] relative" ref="subSection">
+      <section class="subSection media-area lg:pt-[130px] pt-[95px] relative" ref="subSection">
         <div class="path-visual absolute" ref="pathVisual">
           <div class="inner relative">
             <div class="big shape" ref="shapeBig"></div>
-            <div class="small shape absolute" ref="shapeSmall"></div>
+            <div class="small shape absolute lg:opacity-100 opacity-40" ref="shapeSmall"></div>
           </div>
         </div>
         <!-- slider wrap -->
@@ -12,7 +12,7 @@
           <div class="dimmed-yellow absolute"></div>
           <div class="dimmed-glass absolute"></div>
           <Container>
-            <h2 class="text-[11rem] leading-1 font-bold text-white subPageTitle relative">
+            <h2 class="leading-1 font-bold text-white subPageTitle relative">
             <TypographyPrimary>
               N
             </TypographyPrimary>
@@ -38,29 +38,24 @@
               m
             </TypographyPrimary>
             </h2>
-            <h3 class="text-white pt-[200px] text-[2rem] font-semibold relative subPageTitle2">
+            <h3 class="text-white font-semibold relative subPageTitle2">
               <TypographySecondary>우리가 만드는 오늘, 내일의 기록</TypographySecondary>
             </h3>
-            <p class="text-white text-xl pt-[1.25rem] relative subPageTitle3">
-              <TypographySecondary>게임 출시, 업데이트, 파트너십, 사회적 활동 등 다양한 소식을 투명하고 <br>생생하게 전달하며, 플레이어와 세계를 하나로 연결합니다.</TypographySecondary>
+            <p class="text-white relative subPageTitle3">
+              <TypographySecondary>게임 출시, 업데이트, 파트너십, 사회적 활동 등 <br class="lg:hidden block">다양한 소식을 투명하고 <br class="lg:block hidden">생생하게 전달하며, <br class="lg:hidden block">플레이어와 세계를 하나로 연결합니다.</TypographySecondary>
             </p>
           </Container>
           <!-- slider -->
           <div
-          class="media-slider relative mt-[85px]"
+          class="media-slider relative 2xl:mt-[5.5rem] mt-[3.75rem]"
           :class="{ 'swiper-hidden': !isSwiperReady }"
           >
             <div class="float-box absolute"></div>
             <Swiper
               :modules="[Navigation, Autoplay]"
-              :autoplay="{
-                delay: 2000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true
-              }"
-              :slides-per-view="4"
+              :slides-per-view="2"
               :centeredSlides="true"
-              :space-between="20"
+              :space-between="10"
               :loop="true"
               :speed="1500"
               :simulateTouch="true"
@@ -68,6 +63,16 @@
               :grabCursor="true"
               :loopedSlides="12"
               :slideToClickedSlide="true"
+              :breakpoints="{
+                '1280' : {
+                  slidesPerView: 4,
+                  spaceBetween: 20
+                },
+                '768' : {
+                  slidesPerView: 4,
+                  spaceBetween: 10
+                },
+              }"
               @slideChange="onSlideChange"
               @swiper="onSwiper"
             >
@@ -200,8 +205,8 @@
             </Swiper>
           </div>
           <!-- //slider -->
-          <div class="slider-text relative z-20  pt-[2.19rem] pb-[3.75rem]">
-              <p class="text-white text-center text-[1.63rem] font-medium">{{ currentText }}</p>
+          <div class="slider-text relative z-20">
+              <p class="text-white text-center 2xl:text-[1.63rem] text-[1.25rem] font-medium">{{ currentText }}</p>
           </div>
         </div>
         <!-- //slider wrap -->

@@ -2,8 +2,8 @@
   <div>
     <section class="subSection logo-bg lg:pt-[180px] pt-[115px] relative">
       <div class="join-us-detail-area relative">
-        <Container class="grid gap-x-[9.4%] lg:grid-cols-[1fr_23.7%] lg:grid-row-[auto 1fr]">
-          <div class="detail-title-area lg:col-span-2">
+        <Container class="grid 2xl:gap-x-[9.4%] xl:gap-x-[3.4%] xl:grid-cols-[1fr_auto] grid-cols-none lg:grid-row-[auto 1fr]">
+          <div class="detail-title-area xl:col-span-2">
             <ButtonsBadge category="y">Business</ButtonsBadge>
             <h3 class="text-white lg:text-[4.69rem] text-[2.38rem] lg:pb-[90px] pb-[30px] lg:pt-[0px] pt-[5px] font-bold">퍼포먼스 마케터</h3>
           </div>
@@ -17,63 +17,63 @@
             <TypographySkewText time="0.6" class="lg:mt-[10px] mt-[5px] lg:mb-[3.75rem] mb-[2.5rem]">
               <p class="text-white lg:text-lg text-sm break-keep lg:leading-[1.81rem] leading-[1.51rem]">퍼포먼스 마케터는 온라인 광고 채널(Google, Meta, Naver, Kakao 등)을 운영하며 KPI 달성을 위한 캠페인을 설계하고 최적화하는 역할을 담당합니다. 데이터 기반으로 예산을 효율적으로 집행하고, 퍼널 분석과 A/B 테스트 등을 통해 신규 유저 유입과 리텐션을 동시에 강화합니다.</p>
             </TypographySkewText>
-            <div class="detail-glass-box p-[2.25rem] flex justify-between items-center relative overflow-hidden" ref="detailGlassBox">
+            <div class="detail-glass-box lg:p-[2.25rem] px-[1.5rem] py-[1rem] flex justify-between items-center relative overflow-hidden" ref="detailGlassBox">
               <div class="filter-glass"></div>
               <div class="filter-shine"></div>
-              <p class="text-white grow text-lg font-medium relative z-10">기간</p>
-              <div class="date-wrap flex items-center gap-[0.94rem] relative z-10">
+              <p class="text-white grow lg:text-lg text-[0.81rem] font-medium relative z-10">기간</p>
+              <div class="date-wrap flex items-center lg:gap-[0.94rem] gap-[0.63rem] relative z-10">
                 <ButtonsBadge size="md">D-10</ButtonsBadge>
-                <p class="font-bold text-2xl text-white leading-[2.25rem]">25.11.10 ~ 25.12.20 </p>
+                <p class="font-bold lg:text-2xl text-base text-white leading-[2.25rem]">25.11.10 ~ 25.12.20 </p>
               </div>
             </div>
 
             <div class="cont">
-              <div class="whitespace-pre-line text-white mt-[3.75rem]" style="height:1200px; background:#444;"><!--내용-->
+              <div class="whitespace-pre-line text-white lg:mt-[3.75rem] mt-[1.25rem]" style="height:1200px; background:#444;"><!--내용-->
                 내용 들어가는 곳입니다.
               </div>
             </div>
           </div>
 
           <!-- Side -->
-          <div class="side-btn-wrap">
-            <div class="flex w-full flex-col gap-[30px] inner" ref="sideInner">
+          <div class="side-btn-wrap xl:mt-[0px] mt-[1.25rem]">
+            <div class="flex w-full flex-col lg:gap-[1.88rem] gap-[1.25rem] inner" ref="sideInner">
               <div class="detail-glass-box-side overflow-hidden relative rounded-[5px]">
                 <div class="filter-glass"></div>
                 <div class="filter-shine"></div>
-                <div class="inner flex gap-[20px] flex-col px-[40px] pt-[20px] pb-[40px] rounded-[5px] relative z-10">
-                  <p class="text-white twink-point flex gap-[10px] items-center">ELEMENTA KOREA</p>
+                <div class="inner flex lg:gap-[1.25rem] gap-[0.94rem] flex-col lg:px-[2.5rem] px-[1.25rem] lg:pt-[1.25rem] lg:pb-[2.5rem] py-[1.56rem] rounded-[5px] relative z-10">
+                  <p class="text-white lg:text-base text-sm twink-point flex gap-[10px] items-center">ELEMENTA KOREA</p>
                   <div class="divider"></div>
                   <ul class="text-white">
-                    <li class="py-[10px] flex justify-between gap-[10px]">
+                    <li class="py-[10px] flex justify-between gap-[10px] lg:text-base text-sm">
                       <span class="shrink-0">직군</span>
                       <span class="text-right">퍼포먼스 마케터</span>
                     </li>
-                    <li class="py-[10px] flex justify-between gap-[10px]">
+                    <li class="lg:py-[10px] py-[7px] flex justify-between gap-[10px] lg:text-base text-sm">
                       <span class="shrink-0">마감일</span>
                       <div class="flex items-center gap-[10px]">
                         <span>25.11.10 ~ 25.12.20</span>
                         <ButtonsBadge fontColor="white">D-10</ButtonsBadge>
                       </div>
                     </li>
-                    <li class="py-[10px] flex justify-between gap-[10px]">
+                    <li class="lg:py-[10px] py-[7px] flex justify-between gap-[10px] lg:text-base text-sm">
                       <span class="shrink-0">고용형태</span>
                       <span class="text-right">정규직</span>
                     </li>
-                    <li class="py-[10px] flex justify-between gap-[10px]">
+                    <li class="lg:py-[10px] py-[7px] flex justify-between gap-[10px] lg:text-base text-sm">
                       <span class="shrink-0">경력</span>
                       <span class="text-right">신입 ∙ 0~2년</span>
                     </li>
-                    <li class="py-[10px] flex justify-between gap-[10px]">
+                    <li class="lg:py-[10px] py-[7px] flex justify-between gap-[10px] lg:text-base text-sm">
                       <span class="shrink-0">급여</span>
                       <span class="text-right">회사 내규에 따름 (면접 후 결정)</span>
                     </li>
-                    <li class="py-[10px] flex justify-between gap-[10px]">
+                    <li class="lg:py-[10px] py-[7px] flex justify-between gap-[10px] lg:text-base text-sm">
                       <span class="shrink-0">근무 지역</span>
                       <span class="text-right">서울시 강남구</span>
                     </li>
                   </ul>
                   <div class="divider"></div>
-                  <div class="flex gap-[20px] w-full">
+                  <div class="flex lg:gap-[1.25rem] gap-[0.63rem] w-full">
                     <!-- <button class="share-btn relative flex items-center justify-center shrink-0"><i class="ico ico-share bg-white"></i></button> -->
                     <ButtonsBasic class="share-btn"><i class="ico ico-share bg-white"></i></ButtonsBasic>
                     <ButtonsBasic color="blue" width="full" class="grow" href="#">지원하기</ButtonsBasic>
@@ -85,7 +85,7 @@
                 <ButtonsBasic size="lg" width="full" href="./join_us">목록으로</ButtonsBasic>
               </div>
 
-              <div class="cursor-pointer" @click="scrollToTarget('#ourOfficeArea')">
+              <div class="cursor-pointer xl:block hidden" @click="scrollToTarget('#ourOfficeArea')">
                 <div class="w-full bg-white aspect-[2.22] overflow-hidden">
                   <img src="~/assets/images/sub/recruit-img01.png" alt="" class="w-full h-full object-cover object-center">
                 </div>
@@ -97,16 +97,16 @@
         </Container>
       </div>
 
-      <div class="our-office-area py-[180px]" id="ourOfficeArea">
+      <div class="our-office-area lg:py-[180px] pt-[130px]" id="ourOfficeArea">
         <Container>
-          <p class="text-white twink-point flex gap-[10px] items-center font-bold pb-[32px]">Our office</p>
+          <p class="text-white twink-point flex gap-[10px] items-center lg:font-bold font-normal lg:pb-[2rem] pb-[0.94rem] lg:text-base text-sm">Our office</p>
           <TypographySkewText time="0.0">
-          <p class="text-white font-bold text-[2.5rem]">Dreaming bigger,</p>
+          <p class="text-white lg:font-bold font-normal lg:text-[2.5rem] text-[1.25rem]">Dreaming bigger,</p>
           </TypographySkewText>
           <TypographySkewText time="0.1">
-          <p class="text-white font-bold text-[2.5rem]">Working smarter, Creating together.</p>
+          <p class="text-white lg:font-bold font-normal lg:text-[2.5rem] text-[1.25rem]">Working smarter, Creating together.</p>
           </TypographySkewText>
-          <div class="img_area relative" ref="imgArea">
+          <div class="img_area relative lg:mt-[0px] mt-[2.5rem]" ref="imgArea">
             <div class="text-bg" ref="textBg"></div>
             <!-- card1 -->
             <div class="img-item item-01 text-white relative float-right">
@@ -117,9 +117,9 @@
                 <div class="inner-img">
                   <img src="/assets/images/sub/join-us-detail-item01.jpg" alt="">
                 </div>
-                <figcaption class="absolute text-center w-full font-bold text-2xl">Company overview</figcaption>
+                <figcaption class="absolute text-center w-full font-bold 2xl:text-2xl text-[0.81rem]">Company overview</figcaption>
               </figure>
-              <p class="pt-[30px] text-xl">→ Company overview</p>
+              <p class="2xl:pt-[1.88rem] pt-[10px] 2xl:text-xl text-[0.81rem]">→ Company overview</p>
               </EffectCardHover>
             </div>
             <!-- //card1 -->
@@ -131,72 +131,72 @@
                 <div class="inner-img">
                   <img src="/assets/images/sub/join-us-detail-item02.jpg" alt="">
                 </div>
-                <figcaption class="absolute text-center w-full font-bold text-[2.5rem]">Employee break area</figcaption>
+                <figcaption class="absolute text-center w-full font-bold 2xl:text-[2.5rem] text-base">Employee break area</figcaption>
               </figure>
-              <p class="pt-[30px] text-xl">→ Employee break area</p>
+              <p class="2xl:pt-[1.88rem] pt-[10px] 2xl:text-xl text-[0.81rem]">→ Employee break area</p>
               </EffectCardHover>
             </div>
             <!-- //card2 -->
             <!-- card3 -->
-            <div class="img-item item-03 text-white relative float-right mr-[265px]">
+            <div class="img-item item-03 text-white relative lg:float-right">
               <EffectCardHover>
               <figure class="relative overflow-hidden z-20">
                 <span class="dimmed"></span>
                 <div class="inner-img">
                   <img src="/assets/images/sub/join-us-detail-item03.jpg" alt="">
                 </div>
-                <figcaption class="absolute text-center w-full font-bold text-2xl">Employee break area</figcaption>
+                <figcaption class="absolute text-center w-full font-bold 2xl:text-2xl text-[0.81rem]">Employee break area</figcaption>
               </figure>
-              <p class="pt-[30px] text-xl">→ Employee break area</p>
+              <p class="2xl:pt-[1.88rem] pt-[10px] 2xl:text-xl text-[0.81rem]">→ Employee break area</p>
               </EffectCardHover>
             </div>
             <!-- //card3 -->
             <!-- card4 -->
-            <div class="img-item item-04 text-white relative ml-[160px] mt-[560px]">
+            <div class="img-item item-04 text-white relative lg:float-none float-right">
               <EffectCardHover>
               <figure class="relative overflow-hidden z-20">
                 <span class="dimmed"></span>
                 <div class="inner-img">
                   <img src="/assets/images/sub/join-us-detail-item01.jpg" alt="">
                 </div>
-                <figcaption class="absolute text-center w-full font-bold text-2xl">Company overview</figcaption>
+                <figcaption class="absolute text-center w-full font-bold 2xl:text-2xl text-[0.81rem]">Company overview</figcaption>
               </figure>
-              <p class="pt-[30px] text-xl">→ Company overview</p>
+              <p class="2xl:pt-[1.88rem] pt-[10px] 2xl:text-xl text-[0.81rem]">→ Company overview</p>
               </EffectCardHover>
             </div>
             <!-- //card4 -->
             <!-- card5 -->
-            <div class="img-item item-05 text-white relative float-right">
+            <div class="img-item item-05 text-white relative lg:float-right float-none">
               <EffectCardHover>
               <figure class="relative overflow-hidden z-20">
                 <span class="dimmed"></span>
                 <div class="inner-img">
                   <img src="/assets/images/sub/join-us-detail-item04.jpg" alt="">
                 </div>
-                <figcaption class="absolute text-center w-full font-bold text-[2.5rem]">Company overview</figcaption>
+                <figcaption class="absolute text-center w-full font-bold 2xl:text-[2.5rem] text-[0.81rem]">Company overview</figcaption>
               </figure>
-              <p class="pt-[30px] text-xl">→ Company overview</p>
+              <p class="2xl:pt-[1.88rem] pt-[10px] 2xl:text-xl text-[0.81rem]">→ Company overview</p>
               </EffectCardHover>
             </div>
             <!-- //card5 -->
             <!-- card6 -->
-            <div class="img-item item-06 text-white relative mt-[500px]">
+            <div class="img-item item-06 text-white relative">
               <EffectCardHover>
               <figure class="relative overflow-hidden z-20">
                 <span class="dimmed"></span>
                 <div class="inner-img">
                   <img src="/assets/images/sub/join-us-detail-item03.jpg" alt="">
                 </div>
-                <figcaption class="absolute text-center w-full font-bold text-2xl">Employee break area</figcaption>
+                <figcaption class="absolute text-center w-full font-bold 2xl:text-2xl text-base">Employee break area</figcaption>
               </figure>
-              <p class="pt-[30px] text-xl">→ Employee break area</p>
+              <p class="2xl:pt-[1.88rem] pt-[10px] 2xl:text-xl text-[0.81rem]">→ Employee break area</p>
               </EffectCardHover>
             </div>
             <!-- //card6 -->
           </div>
         </Container>
       </div>
-      <div class="h-[600px]"></div>
+      <div class="h-[600px] lg:block hidden"></div>
     </section>
 
     <svg style="display: none">
@@ -255,9 +255,9 @@
 
     // 사이드 메뉴 고정
     // gsap 미디어 쿼리
-    // 1024 이상
+    // 1280 이상
     $ScrollTrigger.matchMedia({
-      "(min-width: 1024px)": () => {
+      "(min-width: 1280px)": () => {
         $gsap.to(sideInner.value, {
           scrollTrigger: {
             trigger: detailCont.value,

@@ -220,8 +220,12 @@
     .btn.sch .lg.inner::before {right:4px; transform: rotate(40deg);}
     .btn.sch .lg.inner .ico {width:20px; height:20px;}
 
+    .btn .md.inner {clip-path: polygon(100% 0,100% 28px, calc(100% - 13px) 100%,0 100%,0 0);}
+    .btn .md.inner::before {right: -2px; transform: rotate(47deg);}
     .btn .sm.inner {clip-path: polygon(100% 0,100% 23px, calc(100% - 13px) 100%,0 100%,0 0);}
     .btn .sm.inner::before {right: 5px; transform: rotate(45deg);}
+    .btn .lg.inner {clip-path: polygon(100% 0,100% 33px, calc(100% - 20px) 100%,0 100%,0 0)}
+    .btn .lg.inner::before {right: 4px; bottom:-4px; transform: rotate(47deg);}
   }
 
   /* -------------------------------------- */
@@ -232,8 +236,12 @@
     .btn.sch .lg.inner::before {right:4px; transform: rotate(40deg);}
     .btn.sch .lg.inner .ico {width:20px; height:20px;}
 
+    .btn .md.inner {clip-path: polygon(100% 0,100% 28px, calc(100% - 13px) 100%,0 100%,0 0);}
+    .btn .md.inner::before {right: -2px; transform: rotate(47deg);}
     .btn .sm.inner {clip-path: polygon(100% 0,100% 23px, calc(100% - 13px) 100%,0 100%,0 0);}
     .btn .sm.inner::before {right: 5px; transform: rotate(45deg);}
+    .btn .lg.inner {clip-path: polygon(100% 0,100% 33px, calc(100% - 20px) 100%,0 100%,0 0);}
+    .btn .lg.inner::before {right: 4px; bottom:-4px; transform: rotate(47deg);}
   }
 </style>
 
@@ -249,8 +257,8 @@ const props = defineProps({
 const sizeClass = computed(() => {
   switch (props.size) {
     case 'sm': return 'sm text-sm px-[1.56rem] font-semibold lg:h-10 h-[2.19rem]'
-    case 'lg': return 'lg text-[1.38rem] px-[1.88rem] font-semibold h-[3.75rem]'
-    default: return 'md text-base px-[1.88rem] font-semibold h-[3.13rem]'
+    case 'lg': return 'lg lg:text-[1.38rem] text-base px-[1.88rem] font-semibold lg:h-[3.75rem] h-[3.25rem]'
+    default: return 'md lg:text-base text-[0.88rem] px-[1.88rem] px-[1.25rem] font-semibold lg:h-[3.13rem] h-[2.5rem]'
   }
 })
 

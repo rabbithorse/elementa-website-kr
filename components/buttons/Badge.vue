@@ -97,6 +97,8 @@
 /* -------------------------------------- */
 @media (min-width: 768px) and (max-width: 1023px) {
   .badge.category {padding: 6px 12px;}
+
+  .badge.md {padding: 4px 12px;}
 }
 
 /* -------------------------------------- */
@@ -104,6 +106,8 @@
 /* -------------------------------------- */
 @media (max-width: 767px) {
   .badge.category {padding: 6px 12px;}
+
+  .badge.md {padding: 4px 12px;}
 }
 
 /* 모바일 세부조정 */
@@ -137,7 +141,7 @@ const colorClass = computed(() => {
 
 const sizeClass = computed(() => {
   if (props.size === 'md') {
-    return 'md text-sm'
+    return 'md lg:text-sm text-[0.69rem]'
   } else {
     return ''
   }
