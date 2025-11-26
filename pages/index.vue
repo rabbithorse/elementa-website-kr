@@ -883,6 +883,16 @@ const godownCurtain = ref([])
 const inspireText = ref(null)
 
 onMounted(() => {
+  setTimeout(() => {
+    let tl = $gsap.timeline({
+      onComplete: function () {
+        lenis.start();
+      },
+    });
+    
+    
+  }, 1000);
+
   const tl = $gsap.timeline({
     scrollTrigger: {
       trigger: visualSection.value,
@@ -962,7 +972,7 @@ onMounted(() => {
 
   
 
-  
+  // 아코디언 섹션
   const accordionItems = accordionSection.value.querySelectorAll('.accordion-list > *');
   const accordionArray = Array.from(accordionItems);
   
@@ -992,6 +1002,7 @@ onMounted(() => {
     }
   })
 
+  // WE THE WORLD 섹션
   const gotopCurtainItems = wetheworldSection.value.querySelectorAll('.gotopCurtain .curtain-item');
   const godownCurtainItems = wetheworldSection.value.querySelectorAll('.godownCurtain .curtain-item');
   const gotopCurtainItemArray = Array.from(gotopCurtainItems);
@@ -1051,6 +1062,8 @@ onMounted(() => {
     height: '100%',
   }, "-=0.5")
 
+
+  // 뉴스룸 섹션
   function calcTransform(property, value) {
     let alias = { y: "translateY", x: "translateX", z: "translateZ", rotation: "rotate" };
     return function (i, target) {

@@ -93,12 +93,40 @@
           
         </Container>
       </div>
+      <div class="pb-72">
+        <EffectMarquee class="text-[#9FAEB5] text-[145px]" >
+          <template #goLeftText >COMMUNICATE COLLABORATE COMMUNICATE COLLABORATE</template>
+          <template #goRightText >CHALLENGE EXPAND CHALLENGE EXPAND CHALLENGE</template>
+        </EffectMarquee>
+      </div>
 
-      <EffectMarquee class="text-[#9FAEB5] text-[145px]" >
-        <template #goLeftText >COMMUNICATE COLLABORATE COMMUNICATE COLLABORATE</template>
-        <template #goRightText >CHALLENGE EXPAND CHALLENGE EXPAND CHALLENGE</template>
-      </EffectMarquee>
-      <!-- //contact info -->
+      <div class="pb-72">
+        <Container>
+          <div>
+          
+          </div>
+        </Container>
+      </div>
+
+      <div class="culture-interview">
+        <EffectGlass>
+          <Container>
+            <div class="section-heading">
+              
+              <div class="heading-text flex flex-col md:gap-y-10 gap-y-4">
+                <span class="sectionTitle-eng text-white md:text-base text-[3.4vw] relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] md:before:w-3 md:before:h-3 before:w-[0.625rem] before:h-[0.625rem] before:rounded-full pl-5 ">Interview</span>
+                <h6 class="text-white md:text-[2.3rem] text-[4.3vw] font-normal">
+                  엘리멘타의 다양한 목소리
+                </h6>
+              </div>
+              
+            </div>
+            <div class="section-content">
+              <BlocksSlider3D />
+            </div>
+          </Container>
+        </EffectGlass>
+      </div>
       
     </section>
   </div>
