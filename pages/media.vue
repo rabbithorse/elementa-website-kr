@@ -1,10 +1,10 @@
 <template>
   <div>
-      <section class="subSection media-area pt-[130px] relative" ref="subSection">
+      <section class="subSection media-area lg:pt-[130px] pt-[95px] relative" ref="subSection">
         <div class="path-visual absolute" ref="pathVisual">
           <div class="inner relative">
             <div class="big shape" ref="shapeBig"></div>
-            <div class="small shape absolute" ref="shapeSmall"></div>
+            <div class="small shape absolute lg:opacity-100 opacity-40" ref="shapeSmall"></div>
           </div>
         </div>
         <!-- slider wrap -->
@@ -12,7 +12,7 @@
           <div class="dimmed-yellow absolute"></div>
           <div class="dimmed-glass absolute"></div>
           <Container>
-            <h2 class="text-[11rem] leading-1 font-bold text-white subPageTitle relative">
+            <h2 class="leading-1 font-bold text-white subPageTitle relative">
               <TypographyPrimary>
                 M
               </TypographyPrimary>
@@ -29,16 +29,16 @@
                 a
               </TypographyPrimary>
             </h2>
-            <h3 class="text-white pt-[200px] text-[2rem] font-semibold relative subPageTitle2">
+            <h3 class="text-white font-semibold relative subPageTitle2">
               <TypographySecondary>문화가 콘텐츠가 되는 순간</TypographySecondary>
             </h3>
-            <p class="text-white text-xl pt-[1.25rem] relative subPageTitle3">
-              <TypographySecondary>게임 트레일러, 음악, 공연, 굿즈까지. 화면과 소리를 넘어, <br>팬덤이 함께 즐기고 공감하는 다채로운 경험을 전합니다.</TypographySecondary>
+            <p class="text-white relative subPageTitle3">
+              <TypographySecondary>게임 트레일러, 음악, 공연, 굿즈까지. <br class="lg:hidden block">화면과 소리를 넘어, <br class="lg:block hidden">팬덤이 함께 즐기고 <br class="lg:hidden block">공감하는 다채로운 경험을 전합니다.</TypographySecondary>
             </p>
           </Container>
           <!-- slider -->
           <div
-          class="media-slider relative mt-[85px]"
+          class="media-slider relative 2xl:mt-[5.5rem] mt-[3.75rem]"
           :class="{ 'swiper-hidden': !isSwiperReady }"
           >
             <div class="float-box absolute"></div>
@@ -49,9 +49,9 @@
                 disableOnInteraction: false,
                 pauseOnMouseEnter: true
               }"
-              :slides-per-view="4"
+              :slides-per-view="2"
               :centeredSlides="true"
-              :space-between="20"
+              :space-between="10"
               :loop="true"
               :speed="1500"
               :simulateTouch="true"
@@ -59,6 +59,16 @@
               :grabCursor="true"
               :loopedSlides="12"
               :slideToClickedSlide="true"
+              :breakpoints="{
+                '1280' : {
+                  slidesPerView: 4,
+                  spaceBetween: 20
+                },
+                '768' : {
+                  slidesPerView: 4,
+                  spaceBetween: 10
+                },
+              }"
               @slideChange="onSlideChange"
               @swiper="onSwiper"
             >
@@ -173,20 +183,20 @@
             </Swiper>
           </div>
           <!-- //slider -->
-          <div class="slider-text relative z-20  pt-[2.19rem] pb-[3.75rem]">
-            <p class="text-white text-center text-[1.63rem] font-medium">{{ currentText }}</p>
+          <div class="slider-text relative z-20">
+            <p class="text-white text-center xl:text-[1.63rem] lg:text-base text-sm font-sm overflow-hidden text-ellipsis w-[80%] whitespace-nowrap mx-auto">{{ currentText }}</p>
           </div>
         </div>
         <!-- //slider wrap -->
         
         <!-- 리스트 -->
-        <div class="media-list pt-[140px] pb-[270px] relative">
+        <div class="media-list lg:pt-[140px] pt-[70px] lg:pb-[270px] pb-[200px] relative">
           <Container>
-            <div class="list-sch-bar flex gap-[20px]">
+            <div class="list-sch-bar flex lg:gap-[20px] gap-[10px]">
               <input type="text" placeholder="검색어를 입력해주세요." class="input-basic relative text-[0.94rem] text-white">
               <ButtonsBasic color="sch" href="./join_us" role="search"><i class="ico ico-sch bg-white"></i></ButtonsBasic>
             </div>
-            <ul class="grid grid-cols-4 gap-x-[1.25rem] gap-y-[3.5rem] list pt-[60px] relative">
+            <ul class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-[1.25rem] gap-y-[5.63rem] list lg:pt-[3.75rem] pt-[1.88rem] relative">
               <li v-for="(n, index) in 16" :key="index" class="relative card w-full">
                 <EffectCardHover>
                   <a class="flex flex-col gap-y-4 w-full h-full justify-start text-white" href="./media_detail">
@@ -234,33 +244,73 @@
   onMounted(() => {
     // Visual Parallax Effect
 
-    // 큰 토형
-    $gsap.timeline({
-      scrollTrigger: {
-        trigger: shapeBig.value,
-        start: 'top top',
-        end: 'center top',
-        scrub: true,
-        // markers: true
-      },
-    }).to(shapeBig.value, {
-      backgroundPositionY: '-100px',
-      ease: 'none',
-    })
+    // gsap 미디어 쿼리
+    $ScrollTrigger.matchMedia({
 
-    // 작은 도형
-    $gsap.timeline({
-      scrollTrigger: {
-        trigger: shapeSmall.value,
-        start: '10% 20%',
-        end: '50% top',
-        scrub: true,
-        //markers: true
+      // 1024 이상
+      "(min-width: 1024px)": () => {
+        // 큰 토형
+        $gsap.timeline({
+          scrollTrigger: {
+            trigger: shapeBig.value,
+            start: 'top top',
+            end: 'center top',
+            scrub: true,
+            // markers: true
+          },
+        }).to(shapeBig.value, {
+          backgroundPositionY: '-100px',
+          ease: 'none',
+        })
+
+        // 작은 도형
+        $gsap.timeline({
+          scrollTrigger: {
+            trigger: shapeSmall.value,
+            start: '10% 20%',
+            end: '50% top',
+            scrub: true,
+            //markers: true
+          },
+        }).to(shapeSmall.value, {
+          backgroundPositionY: '-80px',
+          ease: 'none',
+        })
       },
-    }).to(shapeSmall.value, {
-      backgroundPositionY: '-80px',
-      ease: 'none',
+
+      // 1023 이하
+      "(max-width: 1023px)": () => {
+        // 큰 토형
+        $gsap.timeline({
+          scrollTrigger: {
+            trigger: shapeBig.value,
+            start: 'top top',
+            end: 'center top',
+            scrub: true,
+            // markers: true
+          },
+        }).to(shapeBig.value, {
+          backgroundPositionY: '-40px',
+          ease: 'none',
+        })
+
+        // 작은 도형
+        $gsap.timeline({
+          scrollTrigger: {
+            trigger: shapeSmall.value,
+            start: '10% 20%',
+            end: '50% top',
+            scrub: true,
+            //markers: true
+          },
+        }).to(shapeSmall.value, {
+          backgroundPositionY: '-30px',
+          ease: 'none',
+        })
+      },
     })
+    // gsap 미디어 쿼리
+    
     const floatBox = document.querySelector('.float-box')
     const slider = document.querySelector('.media-slider')
 

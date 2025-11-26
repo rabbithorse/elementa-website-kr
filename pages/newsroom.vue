@@ -53,6 +53,11 @@
             <div class="float-box absolute"></div>
             <Swiper
               :modules="[Navigation, Autoplay]"
+              :autoplay="{
+                delay: 2000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true
+              }"
               :slides-per-view="2"
               :centeredSlides="true"
               :space-between="10"
@@ -206,19 +211,19 @@
           </div>
           <!-- //slider -->
           <div class="slider-text relative z-20">
-              <p class="text-white text-center 2xl:text-[1.63rem] text-[1.25rem] font-medium">{{ currentText }}</p>
+              <p class="text-white text-center xl:text-[1.63rem] lg:text-base text-sm font-sm overflow-hidden text-ellipsis w-[80%] whitespace-nowrap mx-auto">{{ currentText }}</p>
           </div>
         </div>
         <!-- //slider wrap -->
         
         <!-- 채용 리스트 -->
-        <div class="media-list pt-[140px] pb-[270px] relative">
+        <div class="media-list lg:pt-[140px] pt-[70px] lg:pb-[270px] pb-[200px] relative">
           <Container>
-            <div class="list-sch-bar flex gap-[20px]">
+            <div class="list-sch-bar flex lg:gap-[20px] gap-[10px]">
               <input type="text" placeholder="검색어를 입력해주세요." class="input-basic relative text-[0.94rem] text-white">
               <ButtonsBasic color="sch" role="search"><i class="ico ico-sch bg-white"></i></ButtonsBasic>
             </div>
-            <ul class="grid grid-cols-4 gap-x-[1.25rem] gap-y-[5.63rem] list pt-[60px] relative">
+            <ul class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-[1.25rem] gap-y-[5.63rem] list lg:pt-[3.75rem] pt-[1.88rem] relative">
               <li v-for="(n, index) in 16" :key="index" class="relative card w-full">
                 <EffectCardHover>
                   <a class="flex flex-col gap-y-4 w-full h-full justify-start text-white" href="">
@@ -266,33 +271,72 @@
   onMounted(() => {
     // Visual Parallax Effect
 
-    // 큰 토형
-    $gsap.timeline({
-      scrollTrigger: {
-        trigger: shapeBig.value,
-        start: 'top top',
-        end: 'center top',
-        scrub: true,
-        // markers: true
-      },
-    }).to(shapeBig.value, {
-      backgroundPositionY: '-100px',
-      ease: 'none',
-    })
+    // gsap 미디어 쿼리
+    $ScrollTrigger.matchMedia({
 
-    // 작은 도형
-    $gsap.timeline({
-      scrollTrigger: {
-        trigger: shapeSmall.value,
-        start: '10% 20%',
-        end: '50% top',
-        scrub: true,
-        //markers: true
+      // 1024 이상
+      "(min-width: 1024px)": () => {
+        // 큰 토형
+        $gsap.timeline({
+          scrollTrigger: {
+            trigger: shapeBig.value,
+            start: 'top top',
+            end: 'center top',
+            scrub: true,
+            // markers: true
+          },
+        }).to(shapeBig.value, {
+          backgroundPositionY: '-100px',
+          ease: 'none',
+        })
+
+        // 작은 도형
+        $gsap.timeline({
+          scrollTrigger: {
+            trigger: shapeSmall.value,
+            start: '10% 20%',
+            end: '50% top',
+            scrub: true,
+            //markers: true
+          },
+        }).to(shapeSmall.value, {
+          backgroundPositionY: '-80px',
+          ease: 'none',
+        })
       },
-    }).to(shapeSmall.value, {
-      backgroundPositionY: '-80px',
-      ease: 'none',
+
+      // 1023 이하
+      "(max-width: 1023px)": () => {
+        // 큰 토형
+        $gsap.timeline({
+          scrollTrigger: {
+            trigger: shapeBig.value,
+            start: 'top top',
+            end: 'center top',
+            scrub: true,
+            // markers: true
+          },
+        }).to(shapeBig.value, {
+          backgroundPositionY: '-40px',
+          ease: 'none',
+        })
+
+        // 작은 도형
+        $gsap.timeline({
+          scrollTrigger: {
+            trigger: shapeSmall.value,
+            start: '10% 20%',
+            end: '50% top',
+            scrub: true,
+            //markers: true
+          },
+        }).to(shapeSmall.value, {
+          backgroundPositionY: '-30px',
+          ease: 'none',
+        })
+      },
     })
+    // gsap 미디어 쿼리
     
     const floatBox = document.querySelector('.float-box')
     const slider = document.querySelector('.media-slider')

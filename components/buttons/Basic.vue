@@ -216,32 +216,37 @@
   /* MD : 768 ~ 1023  
   /* -------------------------------------- */
   @media (min-width: 768px) and (max-width: 1023px) {
-    .btn.sch .lg.inner {width:50px; height:50px; clip-path: polygon(100% 0,100% 32px, calc(100% - 15px) 100%,0 100%,0 0);}
-    .btn.sch .lg.inner::before {right:4px; transform: rotate(40deg);}
-    .btn.sch .lg.inner .ico {width:20px; height:20px;}
-
     .btn .md.inner {clip-path: polygon(100% 0,100% 28px, calc(100% - 13px) 100%,0 100%,0 0);}
     .btn .md.inner::before {right: -2px; transform: rotate(47deg);}
     .btn .sm.inner {clip-path: polygon(100% 0,100% 23px, calc(100% - 13px) 100%,0 100%,0 0);}
     .btn .sm.inner::before {right: 5px; transform: rotate(45deg);}
     .btn .lg.inner {clip-path: polygon(100% 0,100% 33px, calc(100% - 20px) 100%,0 100%,0 0)}
     .btn .lg.inner::before {right: 4px; bottom:-4px; transform: rotate(47deg);}
+
+    .btn.sch .lg.inner {width:50px; height:50px; clip-path: polygon(100% 0,100% 32px, calc(100% - 15px) 100%,0 100%,0 0);}
+    .btn.sch .lg.inner::before {right:4px; transform: rotate(40deg);}
+    .btn.sch .lg.inner .ico {width:20px; height:20px;}
+    .btn.sch .md.inner {clip-path: polygon(100% 0,100% 32px, calc(100% - 15px) 100%,0 100%,0 0);}
+    .btn.sch .md.inner::before {right:2px; transform: rotate(40deg);}
   }
 
   /* -------------------------------------- */
   /* MOBILE : 0 ~ 767 */
   /* -------------------------------------- */
   @media (max-width: 767px) {
-    .btn.sch .lg.inner {width:50px; height:50px; clip-path: polygon(100% 0,100% 32px, calc(100% - 15px) 100%,0 100%,0 0);}
-    .btn.sch .lg.inner::before {right:4px; transform: rotate(40deg);}
-    .btn.sch .lg.inner .ico {width:20px; height:20px;}
-
     .btn .md.inner {clip-path: polygon(100% 0,100% 28px, calc(100% - 13px) 100%,0 100%,0 0);}
     .btn .md.inner::before {right: -2px; transform: rotate(47deg);}
     .btn .sm.inner {clip-path: polygon(100% 0,100% 23px, calc(100% - 13px) 100%,0 100%,0 0);}
     .btn .sm.inner::before {right: 5px; transform: rotate(45deg);}
     .btn .lg.inner {clip-path: polygon(100% 0,100% 33px, calc(100% - 20px) 100%,0 100%,0 0);}
     .btn .lg.inner::before {right: 4px; bottom:-4px; transform: rotate(47deg);}
+
+    .btn.sch .lg.inner {width:50px; height:50px; clip-path: polygon(100% 0,100% 32px, calc(100% - 15px) 100%,0 100%,0 0);}
+    .btn.sch .lg.inner::before {right:4px; transform: rotate(40deg);}
+    .btn.sch .lg.inner .ico {width:20px; height:20px;}
+    .btn.sch .md.inner {clip-path: polygon(100% 0,100% 32px, calc(100% - 15px) 100%,0 100%,0 0);}
+    .btn.sch .md.inner::before {right:2px; transform: rotate(40deg);}
+
   }
 </style>
 

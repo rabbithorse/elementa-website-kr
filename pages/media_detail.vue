@@ -1,12 +1,12 @@
 <template>
   <div>
-    <section class="subSection pt-[180px] relative">
-      <div class="media-detail-area pb-[250px]">
-        <Container class="grid gap-[9.4%] grid-cols-[1fr_23.7%] grid-row-[auto 1fr]">
-          <div class="detail-title-area col-span-2">
-            <span class="text-[0.94rem] text-[var(--text-disabled)]">2025-09-17</span>
-            <h3 class="text-white text-[2.5rem] font-bold pt-[10px]">'실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'</h3>
-            <p class="text-white pt-[1.88rem] text-lg leading-[1.81rem]">짧은 설명이 들어가는 공간입니다. 짧은 설명이 들어가는 공간입니다.</p>
+    <section class="subSection lg:pt-[180px] pt-[115px] relative">
+      <div class="media-detail-area lg:pb-[250px] pb-[130px]">
+        <Container class="grid 2xl:gap-x-[9.4%] lg:gap-y-[3.75rem] gap-y-[1.25rem] xl:gap-x-[3.4%] xl:grid-cols-[1fr_23.7%] grid-cols-1">
+          <div class="detail-title-area xl:col-span-2">
+            <span class="lg:text-[0.94rem] text-xs text-[var(--text-disabled)]">2025-09-17</span>
+            <h3 class="text-white lg:text-[2.5rem] text-[1.5rem] font-bold lg:pt-[10px]">'실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'</h3>
+            <p class="text-white lg:pt-[1.88rem] lg:text-lg text-sm leading-[1.81rem]">짧은 설명이 들어가는 공간입니다. 짧은 설명이 들어가는 공간입니다.</p>
           </div>
           <div class="movie-frame" ref="movieFrame">
             <div class="w-full mx-auto aspect-video">
@@ -31,10 +31,10 @@
       </div>
 
       <!-- 리스트 -->
-      <div class="media-list pb-[190px] relative">
+      <div class="media-list lg:pb-[190px] pb-[60px] relative">
         <Container>
-          <div class="list-header pb-[40px] flex justify-between items-start">
-            <p class="font-bold text-3xl text-white deco-text relative pl-[60px]">연관 콘텐츠</p>
+          <div class="list-header lg:pb-[2.5rem] pb-[1.25rem] flex justify-between items-start">
+            <p class="font-bold lg:text-3xl text-2xl text-white deco-text relative lg:pl-[60px] pl-[40px]">연관 콘텐츠</p>
             <div class="controls flex gap-3 items-center">
               <PrevButton :swiper="swiperInstance" class="media-prev"/>
               <NextButton :swiper="swiperInstance" class="media-next"/>
@@ -42,12 +42,38 @@
           </div>
           <!-- 슬라이더 -->
           <Swiper
-            :slidesPerView="4"
+            :slidesPerView="1"
             :grid="{
-              rows: 2,
+              rows: 1,
               fill: 'row'
             }"
             :spaceBetween="20"
+            :breakpoints="{
+              '1280' : {
+                slidesPerView: 4,
+                spaceBetween: 20,
+                grid: {
+                  rows: 2,
+                  fill: 'row'
+                },
+              },
+              '1024' : {
+                slidesPerView: 3,
+                spaceBetween: 20,
+                grid: {
+                  rows: 2,
+                  fill: 'row'
+                },
+              },
+              '768' : {
+                slidesPerView: 2,
+                spaceBetween: 20,
+                grid: {
+                  rows: 1,
+                  fill: 'row'
+                },
+              },
+            }"
             :navigation="{
               nextEl: '.media-next',
               prevEl: '.media-prev'
@@ -108,16 +134,21 @@
   const sideBtnWrap = ref(null)
 
   onMounted(() => {
-    $gsap.to(movieFrame.value, {
-      scrollTrigger: {
-        trigger: movieFrame.value,
-        start: '-=150 top',
-        end: 'bottom-=150 25%',
-        scrub: 2,
-        //markers: true,
-        pin: sideBtnWrap.value,
-      },
-    })
+    $ScrollTrigger.matchMedia({
+      "(min-width: 1280px)": () => {
+        $gsap.to(sideBtnWrap.value, {
+          scrollTrigger: {
+            trigger: movieFrame.value,
+            start: '-=150 top',
+            end: () => "+=" + (movieFrame.value.offsetHeight - sideBtnWrap.value.offsetHeight),
+            scrub: 2,
+            //markers: true,
+            pin: sideBtnWrap.value,
+            pinSpacing: true
+          },
+        })
+      }
+    });
   });
 
 

@@ -2,7 +2,7 @@
   <div>
     <section class="subSection logo-bg lg:pt-[180px] pt-[115px] relative">
       <div class="join-us-detail-area relative">
-        <Container class="grid 2xl:gap-x-[9.4%] xl:gap-x-[3.4%] xl:grid-cols-[1fr_auto] grid-cols-none lg:grid-row-[auto 1fr]">
+        <Container class="grid 2xl:gap-x-[9.4%] xl:gap-x-[3.4%] xl:grid-cols-[1fr_auto] grid-cols-1 lg:grid-row-[auto 1fr]">
           <div class="detail-title-area xl:col-span-2">
             <ButtonsBadge category="y">Business</ButtonsBadge>
             <h3 class="text-white lg:text-[4.69rem] text-[2.38rem] lg:pb-[90px] pb-[30px] lg:pt-[0px] pt-[5px] font-bold">퍼포먼스 마케터</h3>
