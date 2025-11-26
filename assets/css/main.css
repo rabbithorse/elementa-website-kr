@@ -199,6 +199,7 @@ section .primary-text, section .primary-text * {line-height: 1em;}
   .newsroom-section .card-img {height: 12rem;}
 
   .careers-section .swiper-slide {height: 365px;}
+  .careers-section .swiper-slide .cont .text-box .apply {right: 1.25rem; bottom: 1.25rem;}
 }
 
 @media (max-width: 480px) {

@@ -434,7 +434,8 @@
             <div class="content-text lg:w-fit lg:h-full lg:ml-auto lg:mt-0 mt-auto w-full h-auto ml-0">
               <EffectGlass class="lg:h-full ">
                 <div class="flex flex-col justify-end lg:gap-y-[3.125rem] gap-y-5 lg:pb-[5.625rem] pt-4 pb-9 lg:px-8 px-7 h-full">
-                  <div class="content-title title-img lg:w-[52%] w-56 aspect-229/75">
+                  <div class="content-title relative title-img lg:w-[52%] w-56 aspect-229/75">
+                    <EffectFloatingDots />
                     <img src="~/assets/images/main/text-game-silverpalace.png" alt="icon" />
                   </div>
                   <div class="content-detail flex flex-col lg:gap-y-6">
@@ -592,7 +593,7 @@
             </p>
           </div>
           <div class="card-grid flex flex-col gap-y-18">
-            <EffectGlass class="card-glass relative after:absolute after:inset-y-0 after:right-0 after:w-80">
+            <EffectGlass class="card-glass relative after:absolute after:inset-y-0 after:right-0 after:w-80 max-md:ml-[-2%]">
               <div class="card-list md:gap-[3.75rem] gap-4 justify-center flow-left md:mb-[4.375rem] flex flex-row" ref="flowLeft">
                 <div class="card md:w-[28rem] w-[21rem]" >
                   <EffectCardHover>
@@ -785,7 +786,7 @@
             </h6>
           </div>
           <div class="heading-button absolute right-0 bottom-0 md:flex items-center gap-5 hidden">
-            <div class="controls gap-3 items-center">
+            <div class="controls flex gap-3 items-center">
               <PrevButton :swiper="swiperInstance" />
               <NextButton :swiper="swiperInstance" />
             </div>
@@ -800,7 +801,7 @@
             <NextButton :swiper="swiperInstance" />
           </div>
           <swiper
-            :slidesPerView="1.2"
+            :slidesPerView="1.15"
             :spaceBetween="20"
             @swiper="onSwiper"
             :breakpoints="{
@@ -882,6 +883,16 @@ const godownCurtain = ref([])
 const inspireText = ref(null)
 
 onMounted(() => {
+  setTimeout(() => {
+    let tl = $gsap.timeline({
+      onComplete: function () {
+        lenis.start();
+      },
+    });
+    
+    
+  }, 1000);
+
   const tl = $gsap.timeline({
     scrollTrigger: {
       trigger: visualSection.value,
@@ -961,7 +972,7 @@ onMounted(() => {
 
   
 
-  
+  // 아코디언 섹션
   const accordionItems = accordionSection.value.querySelectorAll('.accordion-list > *');
   const accordionArray = Array.from(accordionItems);
   
@@ -991,6 +1002,7 @@ onMounted(() => {
     }
   })
 
+  // WE THE WORLD 섹션
   const gotopCurtainItems = wetheworldSection.value.querySelectorAll('.gotopCurtain .curtain-item');
   const godownCurtainItems = wetheworldSection.value.querySelectorAll('.godownCurtain .curtain-item');
   const gotopCurtainItemArray = Array.from(gotopCurtainItems);
@@ -1050,6 +1062,8 @@ onMounted(() => {
     height: '100%',
   }, "-=0.5")
 
+
+  // 뉴스룸 섹션
   function calcTransform(property, value) {
     let alias = { y: "translateY", x: "translateX", z: "translateZ", rotation: "rotate" };
     return function (i, target) {
