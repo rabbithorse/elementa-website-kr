@@ -100,17 +100,57 @@
         </EffectMarquee>
       </div>
 
-      <div class="pb-72">
-        <Container>
-          <div>
-          
+      <div class="mb-72 h-[300vh] culture-vision sticky top-0" ref="visionSection">
+        <div >
+          <img src="~/assets/images/sub/culture-lets-elementa-bg.png" alt="" class="w-full" ref="visionImage">
+        </div>
+        <Container class="h-screen flex items-center absolute top-0 left-1/2 -translate-x-1/2 w-full">
+          <div class="vision-content flex flex-col justify-center gap-y-12" ref="visionContent">
+            <div class="line-mask">
+              <h4 class="text-white text-[2.5rem] font-semibold showText" ref="showText">LET’S ELEMENTA</h4>
+            </div>
+            <div>
+              <div class="line-mask">
+                <p class="text-white text-base leading-[160%] showText">
+                  진정한 즐거움은 창의성과 기술의 깊은 융합에서 시작됩니다.
+                </p>
+              </div>
+              <div class="line-mask">
+                <p class="text-white text-base leading-[160%] showText">
+                  몰입감 넘치는 경험, 영화같은 시청각 효과까지.
+                </p>
+              </div>
+              <br>
+              <div class="line-mask">
+                <p class="text-white text-base leading-[160%] showText">
+                  우리는 게임이라는 매체로 상상의 한계를 넘어
+                </p>
+              </div>
+              <div class="line-mask">
+                <p class="text-white text-base leading-[160%] showText">
+                  전 세계 플레이어에게 지속적인 공명을 만들기 위한 도전을 하고 있습니다.
+                </p>
+              </div>
+              <br>
+              <div class="line-mask">
+                <p class="text-white text-base leading-[160%] showText">
+                  Elementa에서 '즐거움'은 부가적인 요소가 아닌,
+                </p>
+              </div>
+              <div class="line-mask">
+                <p class="text-white text-base leading-[160%] showText">
+                  게임 디자인의 필수적인 존재입니다.
+                </p>
+              </div>
+            </div>
+            
           </div>
         </Container>
       </div>
 
-      <div class="culture-interview">
+      <div class="culture-interview bg-[url('~/assets/images/sub/culture-interview-bg.png')] no-repeat bg-center bg-cover pt-56">
         <EffectGlass>
-          <Container>
+          <Container class="py-[4.5rem]">
             <div class="section-heading">
               
               <div class="heading-text flex flex-col md:gap-y-10 gap-y-4">
@@ -126,7 +166,26 @@
             </div>
           </Container>
         </EffectGlass>
+        <div class="culture-interview-cta py-56" ref="interviewCta">
+          <Container>
+            <div class="cta-text flex flex-col items-center gap-y-20">
+              <h4 class="text-white text-[2.8rem] font-semibold text-center">
+                <TypographySecondary>
+                <span class="inline-block text-inherit font-semibold underline underline-offset-[6px] decoration-2 relative">
+                  새로운 퀘스트
+                  <em class="alarm-button text-[0.875rem] flex items-center justify-center not-italic text-white bg-[url('~/assets/images/sub/icon-alarm-button.png')] no-repeat bg-center bg-contain w-10 h-10 rounded-full no-underline absolute right-0 top-0 translate-x-2/4 translate-y-1/4 opacity-0" ref="alarmButton">10</em>
+                </span>는 언제나 예고 없이 시작됩니다.
+                </TypographySecondary><br>
+                <TypographySecondary>
+                  당신의 도전을 우리와 함께 미래로 이어가 보지 않으시겠습니까?
+                </TypographySecondary>
+              </h4>
+              <ButtonsBasic size="lg-wide" color="blue">채용 바로가기</ButtonsBasic>
+            </div>
+          </Container>
+        </div>
       </div>
+      
       
     </section>
   </div>
@@ -143,6 +202,11 @@
   const { $gsap, $ScrollTrigger } = useNuxtApp()
 
   const subSection = ref(null)
+  const visionSection = ref(null)
+  const visionImage = ref(null)
+  const visionContent = ref(null)
+  const alarmButton = ref(null)
+  const interviewCta = ref(null)
 
   // wide image area
   const wideImageArea = ref(null);
@@ -177,12 +241,72 @@
         markers: true,
       },
     }).to(wideImageArea.value, {
-      backgroundPositionY: '-20%',
+      backgroundPositionY: '60%',
       ease: 'none',
       transformOrigin: "center center",
       duration: 1,
       scale: scaleValue,
     })
+
+    const textRevealItems = visionSection.value.querySelectorAll('.showText');
+    const textRevealArray = Array.from(textRevealItems);
+
+    // let's elementa animation
+    $gsap.timeline({
+      scrollTrigger: {
+        trigger: visionSection.value,
+        start: 'top bottom',
+        end: 'bottom bottom',
+        scrub: true,
+        //markers: true,
+      },
+    }).fromTo(visionImage.value,
+      {
+        clipPath: 'inset(50% 50% 0%)',
+      },
+      {
+        clipPath: 'inset(0%)',
+        ease: 'none',
+        duration: 3,
+      },
+      0.8
+    )
+    .to(visionImage.value,
+      {
+        y: '-6%',
+        ease: "expo.out",
+        duration: 11,
+        scrub: true
+      },
+      ">4"
+    )
+    .to(visionContent.value, {
+      clipPath: "inset(0% 0 0 0)",
+      ease: "expo.out",
+      duration: 3,
+    },
+    4
+    )
+    .to(textRevealArray, {
+      y: '0%',
+      duration: 3,
+      rotateX: 0,
+      stagger: 1,
+    }, ">");
+
+
+    // interview cta alarm button animation
+    $gsap.timeline({
+      scrollTrigger: {
+        trigger: interviewCta.value,
+        start: 'top 80%',
+        //scrub: true,
+      },
+    }).to(alarmButton.value, {
+      y: 0,
+      opacity: 1,
+      ease: 'none',
+    }, "+=0.5")
   })
 
   
@@ -190,4 +314,33 @@
 
 <style scoped>
   .subSection {overflow: unset;}
+
+  .culture-area .wide-image-area {background: url(assets/images/sub/culture-wide-image.png) no-repeat 50% 80% / cover;}
+
+  .vision-content {
+    -webkit-clip-path: inset(100% 0 0 0);
+    clip-path: inset(100% 0 0 0);
+  }
+
+  .vision-content .line-mask {
+    overflow: clip;
+    clip-path: inset(0 0 .06em 0) !important;
+    overflow: unset !important;
+    
+  }
+
+  .vision-content .line-mask > * {
+    transform: translateY(-15%) rotateX(-500deg);
+    clip-path: inset(0 0 .06em 0);
+    transform-origin: center top;
+    will-change: transform;
+    perspective: 1000px;
+
+  }
+
+  .culture-interview .glass-content {padding: 4.5rem 0;}
+
+  .alarm-button {
+    box-shadow: 2px 2px 3px 0 rgba(255, 255, 255, 0.40) inset;
+  }
 </style>

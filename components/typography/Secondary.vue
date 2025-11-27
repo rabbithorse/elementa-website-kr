@@ -15,22 +15,18 @@
     const secondaryTl = $gsap.timeline({
       scrollTrigger: {
         trigger: secondaryCharWrap.value,
-        //once: true,
-        start: "top 80%",
+        start: "top 90%",
         end: "bottom 40%",
-        markers: true,
+        //markers: true,
         scrub: true,
-        onEnter: () => {
-          secondaryTl.resume()
-        }
       },
     });
       secondaryTl.to(secondaryChar.value, {
         y: '0%',
-        duration: 1.5,
-        rotate: 0,
+        duration: 3,
+        rotateX: 0,
         ease: 'power4.out',
-      }, "+=1.5");
+      }, "0.5");
     });
 
 </script>
@@ -44,8 +40,9 @@
   }
 
   .secondary-char {
-    transform: translateY(200%) rotate(12deg);
+    transform: translateY(-15%) rotateX(-500deg);
     clip-path: inset(0 0 .06em 0);
+    transform-origin: center top;
     will-change: transform;
     perspective: 1000px;
 

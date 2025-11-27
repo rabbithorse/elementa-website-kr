@@ -1,25 +1,35 @@
 <template>
-  <div class="slider-container">
+  <div class="slider-container relative">
+    <div class="controls flex gap-3 items-center absolute top-0 right-0 -translate-y-full">
+      <!-- 이전 버튼 -->
+      <button class="slider-btn prev flex items-center justify-center w-9 h-9 cursor-pointer transition duration-300 ease-in-out transform hover:scale-110" @click="prevSlide">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <path d="M24 7.5L12 18.75L24 30" stroke="white" stroke-width="2"/>
+        </svg>
+        <span class="sr-only">Slide to the previous slide</span>
+      </button>
+      <!-- 다음 버튼 -->
+      <button class="slider-btn next" @click="nextSlide">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <path d="M12 30L24 18.75L12 7.5" stroke="white" stroke-width="2"/>
+        </svg>
+        <span class="sr-only">Slide to the next slide</span>
+      </button>
+    </div>
     <div class="slider-wrapper" :style="{ perspective: '2000px' }">
-      <div class="controls flex gap-3 items-center">
-        <!-- 이전 버튼 -->
-        <button class="slider-btn prev flex items-center justify-center w-9 h-9 cursor-pointer transition duration-300 ease-in-out transform hover:scale-110" @click="prevSlide">
-          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
-            <path d="M24 7.5L12 18.75L24 30" stroke="white" stroke-width="2"/>
-          </svg>
-          <span class="sr-only">Slide to the previous slide</span>
-        </button>
-        <!-- 다음 버튼 -->
-        <button class="slider-btn next" @click="nextSlide">
-          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
-            <path d="M12 30L24 18.75L12 7.5" stroke="white" stroke-width="2"/>
-          </svg>
-          <span class="sr-only">Slide to the next slide</span>
-        </button>
-      </div>
 
       <!-- 슬라이드 트랙 -->
-      <div class="slider-track">
+      <div 
+        class="slider-track"
+        :style="{ transform: isDragging ? `translateX(${dragOffset * 0.3}px)` : '' }"
+        @touchstart="handleTouchStart"
+        @touchmove="handleTouchMove"
+        @touchend="handleTouchEnd"
+        @mousedown="handleMouseDown"
+        @mousemove="handleMouseMove"
+        @mouseup="handleMouseUp"
+        @mouseleave="handleMouseUp"
+      >
         <div
           v-for="(card, index) in cards"
           :key="index"
@@ -31,8 +41,8 @@
             <!-- 카드 앞면 -->
             <div class="card-front flex flex-col ">
               <div class="card-heading z-10">
-                <span class="text-[1.5rem] text-bold">{{ card.titleEn }}</span>
-                <h3 class="text-[2.5rem] text-bold">{{ card.title }}</h3>
+                <span class="text-[1.5rem] font-semibold">{{ card.titleEn }}</span>
+                <h3 class="text-[2.5rem] font-semibold">{{ card.title }}</h3>
               </div>
               <div class="card-content mt-auto flex flex-col gap-y-5 z-10">
                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="28" viewBox="0 0 35 28" fill="none">
@@ -50,17 +60,6 @@
       </div>
 
     </div>
-
-    <!-- 인디케이터 -->
-    <div class="indicators">
-      <button
-        v-for="(card, index) in cards"
-        :key="index"
-        class="indicator"
-        :class="{ active: index === currentIndex }"
-        @click="goToSlide(index)"
-      ></button>
-    </div>
   </div>
 </template>
 
@@ -70,6 +69,11 @@ export default {
     return {
       currentIndex: 0,
       isAnimating: false,
+      touchStartX: 0,
+      touchEndX: 0,
+      touchStartTime: 0,
+      isDragging: false,
+      dragOffset: 0,
       cards: [
         {
           title: '비즈니스',
@@ -229,6 +233,97 @@ export default {
       setTimeout(() => {
         this.isAnimating = false;
       }, 600);
+    },
+
+    handleTouchStart(e) {
+      this.touchStartX = e.touches[0].clientX;
+      this.touchEndX = e.touches[0].clientX;
+      this.touchStartTime = Date.now();
+      this.dragOffset = 0;
+    },
+
+    handleTouchMove(e) {
+      this.touchEndX = e.touches[0].clientX;
+      this.dragOffset = this.touchEndX - this.touchStartX;
+    },
+
+    handleTouchEnd() {
+      if (this.isAnimating) return;
+      
+      const swipeDistance = this.touchStartX - this.touchEndX;
+      const swipeTime = Date.now() - this.touchStartTime;
+      const minSwipeDistance = 80;
+      const maxClickTime = 200;
+      
+      // 드래그 오프셋 리셋
+      this.dragOffset = 0;
+      
+      if (swipeTime < maxClickTime && Math.abs(swipeDistance) < 10) {
+        this.touchStartX = 0;
+        this.touchEndX = 0;
+        this.touchStartTime = 0;
+        return;
+      }
+      
+      if (Math.abs(swipeDistance) > minSwipeDistance) {
+        if (swipeDistance > 0) {
+          this.nextSlide();
+        } else {
+          this.prevSlide();
+        }
+      }
+      
+      this.touchStartX = 0;
+      this.touchEndX = 0;
+      this.touchStartTime = 0;
+    },
+
+    handleMouseDown(e) {
+      this.touchStartX = e.clientX;
+      this.touchEndX = e.clientX;
+      this.touchStartTime = Date.now();
+      this.isDragging = true;
+      this.dragOffset = 0;
+    },
+
+    handleMouseMove(e) {
+      if (!this.isDragging) return;
+      this.touchEndX = e.clientX;
+      this.dragOffset = this.touchEndX - this.touchStartX;
+    },
+
+    handleMouseUp() {
+      if (!this.isDragging) return;
+      this.isDragging = false;
+      
+      if (this.isAnimating) return;
+      
+      const swipeDistance = this.touchStartX - this.touchEndX;
+      const swipeTime = Date.now() - this.touchStartTime;
+      const minSwipeDistance = 80;
+      const maxClickTime = 200;
+      
+      // 드래그 오프셋 리셋
+      this.dragOffset = 0;
+      
+      if (swipeTime < maxClickTime && Math.abs(swipeDistance) < 10) {
+        this.touchStartX = 0;
+        this.touchEndX = 0;
+        this.touchStartTime = 0;
+        return;
+      }
+      
+      if (Math.abs(swipeDistance) > minSwipeDistance) {
+        if (swipeDistance > 0) {
+          this.nextSlide();
+        } else {
+          this.prevSlide();
+        }
+      }
+      
+      this.touchStartX = 0;
+      this.touchEndX = 0;
+      this.touchStartTime = 0;
     }
   }
 };
@@ -261,6 +356,13 @@ export default {
   display: flex;
   justify-content: center;
   transform-style: preserve-3d;
+  cursor: grab;
+  user-select: none;
+  transition: transform 0.1s ease-out;
+}
+
+.slider-track:active {
+  cursor: grabbing;
 }
 
 .card {
@@ -315,12 +417,12 @@ export default {
   right: -2.5rem;
   width: 91%;
   height: 92%;
-  opacity: 0.7;
 }
 
 .card .polygon {
   position: absolute;
   bottom: 0;
+  opacity: 0.7;
 }
 
 .card .polygon-big {
@@ -345,7 +447,7 @@ export default {
 }
 
 .card:nth-child(2) .card-front .polygon, .card:nth-child(6) .card-front .polygon {
-  background: linear-gradient(180deg, #00C8EB 22%, rgba(0, 189, 95, 0.00) 97.37%);
+  background: linear-gradient(180deg, #00C8EB 22%, rgba(0, 189, 95, 0.4) 60%, rgba(0, 189, 95, 0.00) );
 }
 
 .card:nth-child(3) .card-front .polygon, .card:nth-child(7) .card-front .polygon {
