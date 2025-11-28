@@ -51,13 +51,13 @@
 
       <div class="culture-work pb-72">
         <Container>
-          <div class="flex justify-between">
+          <div class="flex lg:flex-row flex-col gap-y-8 justify-between">
             <div class="col-title flex-shrink-0 ">
               <h5 class="text-white sticky top-40 text-[1.75rem]">
                 How We Work?
               </h5>
             </div>
-            <div class="col-list work-list w-[66%] flex-shrink-0">
+            <div class="col-list work-list w-[66%] max-lg:w-full  flex-shrink-0">
               <ul class="flex flex-col gap-y-[6.25rem]">
                 <li class="flex flex-col gap-y-[1.875rem]">
                   <h6 class="text-[2.5rem] leading-[150%] font-bold text-white">소통 ∙ Communicate</h6>
@@ -101,7 +101,7 @@
       </div>
 
       <div class="mb-72 h-[300vh] culture-vision sticky top-0" ref="visionSection">
-        <div >
+        <div class="h-screen overflow-hidden">
           <img src="~/assets/images/sub/culture-lets-elementa-bg.png" alt="" class="w-full" ref="visionImage">
         </div>
         <Container class="h-screen flex items-center absolute top-0 left-1/2 -translate-x-1/2 w-full">
@@ -180,7 +180,7 @@
                   당신의 도전을 우리와 함께 미래로 이어가 보지 않으시겠습니까?
                 </TypographySecondary>
               </h4>
-              <ButtonsBasic size="lg-wide" color="blue">채용 바로가기</ButtonsBasic>
+              <ButtonsBasic href="/join_us" size="lg-wide" color="blue">채용 바로가기</ButtonsBasic>
             </div>
           </Container>
         </div>
@@ -273,9 +273,9 @@
     )
     .to(visionImage.value,
       {
-        y: '-6%',
-        ease: "expo.out",
-        duration: 11,
+        y: '-30%',
+        ease: 'none',
+        duration: 8,
         scrub: true
       },
       ">4"
@@ -287,11 +287,20 @@
     },
     4
     )
+
+    $gsap.timeline({
+      scrollTrigger: {
+        trigger: visionContent.value,
+        start: "top 80%",
+        //end: 'bottom bottom',
+        //markers: true,
+      },
+    })
     .to(textRevealArray, {
       y: '0%',
       duration: 3,
       rotateX: 0,
-      stagger: 1,
+      stagger: 0.04,
     }, ">");
 
 
