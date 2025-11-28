@@ -18,7 +18,7 @@
         start: "top 90%",
         end: "bottom 40%",
         //markers: true,
-        scrub: true,
+        //scrub: true,
       },
     });
       secondaryTl.to(secondaryChar.value, {
@@ -26,7 +26,8 @@
         duration: 3,
         rotateX: 0,
         ease: 'power4.out',
-      }, "0.5");
+        stagger: 0.04
+      }, "+=0.5");
     });
 
 </script>

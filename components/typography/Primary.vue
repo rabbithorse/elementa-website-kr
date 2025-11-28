@@ -1,41 +1,60 @@
 <template>
-  <div ref="primaryCharWrap" class="primary-char-wrap inline-block">
+  <div ref="primaryCharWrap" class="primary-char-wrap inline-block 2xl:ml-[-17px] xl:ml-[-15px] md:ml-[-12px] ml-[-1.5vw]">
     <div ref="primaryChar" class="primary-char inline-block">
       <slot></slot>
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
-  const { $gsap, $ScrollTrigger } = useNuxtApp()
-  
+<script setup>
+  import { ref, onMounted, onBeforeUnmount } from 'vue'  
+  import { useNuxtApp } from '#app'
+
+  const { $gsap, $ScrollTrigger } = useNuxtApp();
+
+  const props = defineProps({
+    pinnedContainer: {
+      type: String,
+      default: null
+    }
+  });
+
   const primaryCharWrap = ref([]);
   const primaryChar = ref(null);
+  let scrollTriggerInstance = null;
 
   onMounted(() => {
-    const primaryTl = $gsap.timeline({
-      scrollTrigger: {
-        trigger: primaryChar.value,
-        //once: true,
-        start: "top 10%",
-        //markers: true,
-      },
-    });
-    primaryTl.to(primaryChar.value, {
-      x: '0%',
-      duration: 3,
-      ease: 'power4.out',
-      scrub: 1,
-    }, "+=1");
+    scrollTriggerInstance = $ScrollTrigger.create({
+      trigger: primaryChar.value,
+      once: false,
+      start: "top 80%",
+      markers: true,
+      scroller: window,
+      invalidateOnRefresh: true,
+      onEnter: () => {
+        $gsap.to(primaryChar.value, {
+          x: '0%',
+          duration: 3,
+          ease: 'power4.out',
+        });
+      }
+    })
 
-  
+    if (props.pinnedContainer) {
+      scrollTriggerInstance.pinnedContainer = props.pinnedContainer;
+    }
+  })
+
+  onBeforeUnmount(() => {
+    if (scrollTriggerInstance) {
+      scrollTriggerInstance.kill();
+    }
   });
 </script>
 
 <style scoped>
   .primary-char-wrap {
     overflow: clip;
-    margin-left: -17px;
     clip-path: inset(0 0 -.086em 0) !important;
     overflow: unset !important;
     
