@@ -291,6 +291,50 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 .contact-info .contact-info-inner .info > ul > li ul li i.mail-icon {mask: url(~/assets/images/sub/mail-icon.svg) no-repeat center / contain; -webkit-mask: url(~/assets/images/sub/mail-icon.svg) no-repeat center / contain;}
 .contact-info .contact-info-inner .info > ul > li ul li i.phone-icon {mask: url(~/assets/images/sub/phone-icon.svg) no-repeat center / contain; -webkit-mask: url(~/assets/images/sub/phone-icon.svg) no-repeat center / contain;}
 
+/* game  page */
+/* section 01 */
+  .movie-bg {left: 0; top: 0; z-index: -1; height: calc(100vh + 50vh); inset: 0; animation: fadeIn 2s ease-in-out;}
+  .video-bg {width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;}
+  .panel_01, .panel_02 {width: 100%; height: 50vh;}
+  .panel_02 {height: 1500px;}
+
+  .intro .title-area {height: 100vh; animation: fadeIn 2s ease-in-out;}
+  .intro .title-area img {max-width: 697px;}
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0.2;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  /* section 02 */
+  .cut-scene {height: 100vh;}
+  .cut-scene img {width: 100%;}
+  .cut-scene .title {color: #CDBC79; top: -47px;}
+  .cut-scene .normal,
+  .cut-scene .normal-2 {padding-left: 80px; transform: translateY(-4px); line-height: 1.4;}
+  .cut-scene .normal-2 {transform: translateY(-70px);}
+  .cut-scene .cut_01 .line-box {width:1131px; height: 308px; background: url('~/assets/images/sub/line-box.png') no-repeat center / cover; right:50px; bottom: 50px;}
+  .cut-scene .cut_01 .line-box .line01-1 {padding-left: 298px; height: 165px;}
+  
+  .cut-scene .cut_02 .title {right:300px;}
+  .cut-scene .cut_02 .line-box {width:1131px; height: 308px; background: url('~/assets/images/sub/line-box-2.png') no-repeat center / cover; left:50px; bottom: 50px;}
+  .cut-scene .cut_02 .line-box .line02-1 {padding-right: 298px; height: 165px;}
+  .cut-scene .cut_02 .line-box .line02-1 .normal {transform: translateY(-38px); padding-left: 160px;}
+
+  /* section 03 */
+  .description {height: 100vh;}
+  .description .movie-dimmed {background: #000;}
+  .description .movie-bg-des {height: 100vh;}
+  .description .movie-bg-des video {width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;}
+  .description .text-area {height: 100vh; opacity: 0;}
+  .description .text-area .text-box span {color: #CDBC79; text-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);}
+  .description .text-area .text-box .title {font-family: 'Eulyoo1945'; text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.20), 0 2px 10px rgba(58, 42, 0, 0.70);}
+
+
 /***** responsive, 순서 변경 금지*****/
 
 /* pc에서 레이아웃 깨지는 것만 */

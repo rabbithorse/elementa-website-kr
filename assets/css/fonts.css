@@ -92,3 +92,13 @@
   font-display: swap;
   src: url('/fonts/Oswald-Bold.ttf') format('truetype');
 }
+
+/* Eulyoo1945 */
+@font-face {
+    font-family: 'Eulyoo1945';
+    src: url('/fonts/Eulyoo1945-SemiBold.woff2') format('woff2'),
+        url('/fonts/Eulyoo1945-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
