@@ -5,7 +5,7 @@
         <span ref="videoWrapLayer" class="bg-video-layer"></span>
         <EffectGlass>
           <video autoplay muted loop>
-            <source src="~/assets/videos/main-fly.mp4" type="video/mp4" />
+            <source src="~/assets/videos/main-fly_enc.mp4" type="video/mp4" />
           </video>
         </EffectGlass>
       </div>
@@ -14,7 +14,7 @@
       </div>
       <div class="bg-video">
         <video class="bg-video--content" autoplay muted loop>
-          <source src="~/assets/videos/main-logo-ani.mp4" type="video/mp4" />
+          <source src="~/assets/videos/main-logo-ani_enc.mp4" type="video/mp4" />
         </video>
       </div>
       <div class="intro-section h-full" ref="introSection">
@@ -489,7 +489,7 @@
           <template #accordionContent>
             <div class="content-bg absolute left-0 top-0 w-[100vw] h-full overflow-hidden">
               <video autoplay muted loop class="w-full h-full object-cover">
-                <source src="~/assets/videos/main-game-silverpalace.mp4" type="video/mp4">
+                <source src="~/assets/videos/main-game-silverpalace_enc.mp4" type="video/mp4">
               </video>
             </div>
 
@@ -571,17 +571,17 @@
     <section class="wetheworld-section flex items-center justify-center overflow-hidden h-dvh" ref="wetheworldSection">
       <div class="wetheworldbg-video01 opacity-0 invisible absolute inset-0 z-0" ref="wetheworldbg1">
         <video class="bg-video--content w-full h-full object-cover" autoplay muted loop>
-          <source src="~/assets/videos/main-wetheworld-inspire.mp4" type="video/mp4" />
+          <source src="~/assets/videos/main-wetheworld-inspire_enc.mp4" type="video/mp4" />
         </video>
       </div>
       <div class="wetheworldbg-video02 opacity-0 invisible absolute inset-0 z-0" ref="wetheworldbg2">
         <video class="bg-video--content w-full h-full object-cover" autoplay muted loop>
-          <source src="~/assets/videos/main-wetheworld-connect.mp4" type="video/mp4" />
+          <source src="~/assets/videos/main-wetheworld-connect_enc.mp4" type="video/mp4" />
         </video>
       </div>
       <div class="wetheworldbg-video03 opacity-0 invisible absolute inset-0 z-0" ref="wetheworldbg3">
         <video class="bg-video--content w-full h-full object-cover" autoplay muted loop>
-          <source src="~/assets/videos/main-wetheworld-change.mp4" type="video/mp4" />
+          <source src="~/assets/videos/main-wetheworld-change_enc.mp4" type="video/mp4" />
         </video>
       </div>
       <h2 class="2xl:text-[272px] xl:text-[220px] md:text-[180px] text-[25.3vw] leading-1 font-bold text-white text-center z-10 ">
