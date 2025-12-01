@@ -1,5 +1,5 @@
 <template>
-  <div class="slider-container relative">
+  <div class="slider-container relative lg:py-[60px] md:py-10 py-0">
     <div class="controls flex gap-3 items-center absolute top-0 right-0 -translate-y-full">
       <!-- 이전 버튼 -->
       <button class="slider-btn prev flex items-center justify-center w-9 h-9 cursor-pointer transition duration-300 ease-in-out transform hover:scale-110" @click="prevSlide">
@@ -42,10 +42,10 @@
             <div class="card-front flex flex-col ">
               <div class="card-heading z-10">
                 <span class="text-[1.5rem] font-semibold">{{ card.titleEn }}</span>
-                <h3 class="text-[2.5rem] font-semibold">{{ card.title }}</h3>
+                <h3 class="text-[2.5rem] font-semibold break-keep">{{ card.title }}</h3>
               </div>
-              <div class="card-content mt-auto flex flex-col gap-y-5 z-10">
-                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="28" viewBox="0 0 35 28" fill="none">
+              <div class="card-content mt-auto flex flex-col md:gap-y-5 gap-y-2 z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="28" viewBox="0 0 35 28" fill="none" class="xl:w-9 md:w-8 w-5">
                   <path d="M19.7786 28V17.9808C19.7786 13.508 21.0243 9.6017 23.5156 6.26198C26.0069 2.86262 29.8351 0.77529 35 0V6.53035C32.0226 6.88818 30.0477 7.84239 29.0755 9.39297C28.1033 10.9436 27.6172 13.0011 27.6172 15.5655L22.2396 14.492H34.8177V28H19.7786ZM0 28V17.9808C0 13.508 1.24566 9.6017 3.73698 6.26198C6.2283 2.86262 10.0564 0.77529 15.2214 0V6.53035C12.2439 6.88818 10.2691 7.84239 9.29687 9.39297C8.32465 10.9436 7.83854 13.0011 7.83854 15.5655L2.46094 14.492H15.0391V28H0Z" fill="white"/>
                 </svg>
                 <p class="text-[1.125rem] leading-[160%] font-normal">{{ card.description }}</p>
@@ -74,6 +74,7 @@ export default {
       touchStartTime: 0,
       isDragging: false,
       dragOffset: 0,
+      windowWidth: 0,
       cards: [
         {
           title: '비즈니스',
@@ -119,7 +120,91 @@ export default {
     };
   },
 
+  mounted() {
+    this.updateWindowWidth();
+    window.addEventListener('resize', this.handleResize);
+  },
+
+  beforeUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+  },
+
   methods: {
+    updateWindowWidth() {
+      this.windowWidth = window.innerWidth;
+    },
+
+    handleResize() {
+      this.updateWindowWidth();
+    },
+
+    getResponsiveValues() {
+      const width = this.windowWidth;
+
+      let config = {};
+      
+      // 화면 크기별 설정값
+      if (width >= 1536) {
+        // 데스크톱 대형
+        config = {
+          radius: 1100,
+          angle: 25,
+          arcHeight: 600,
+          zDepth: 300,
+          zCurve: 250,
+          cardScale: 1,
+          rotateYBase: 60
+        };
+      } else if (width >= 1280) {
+        // 데스크톱
+        config = {
+          radius: 800,
+          angle: 28,
+          arcHeight: 450,
+          zDepth: 250,
+          zCurve: 200,
+          cardScale: 0.95,
+          rotateYBase: 60
+        };
+      } else if (width >= 481) {
+        // 태블릿
+        config = {
+          radius: 700,
+          angle: 28,
+          arcHeight: 350,
+          zDepth: 200,
+          zCurve: 150,
+          cardScale: 0.95,
+          rotateYBase: 70
+        };
+      } else if (width >= 400) {
+        // 모바일
+        config = {
+          radius: 580,
+          angle: 30,
+          arcHeight: 280,
+          zDepth: 150,
+          zCurve: 100,
+          cardScale: 0.75,
+          rotateYBase: 120
+        };
+      } else {
+        config = {
+          radius: 450,
+          angle: 30,
+          arcHeight: 280,
+          zDepth: 150,
+          zCurve: 100,
+          cardScale: 0.75,
+          rotateYBase: 120
+        };
+      }
+
+      config.rotateYIncrement = config.rotateYBase * 2;
+      
+      return config;
+    },
+    
     getCardStyle(index) {
       const diff = index - this.currentIndex;
       const totalCards = this.cards.length;
@@ -140,35 +225,49 @@ export default {
         pointerEvents = 'none';
       }
 
-      // 무지개 곡선 계산 (더 넓고 큰 곡선)
-      const angle = adjustedDiff * 25; // 각 카드당 25도씩
-      const radius = 1100; // 더 큰 반지름으로 화면 꽉 채우기
-      const arcHeight = 600; // 더 높은 아치
+      // 반응형 값 가져오기
+      const responsive = this.getResponsiveValues();
+      const { radius, angle, arcHeight, zDepth, zCurve, cardScale, rotateYBase, rotateYIncrement } = responsive;
+
+      // // 무지개 곡선 계산 (더 넓고 큰 곡선)
+      // const angle = adjustedDiff * 25; // 각 카드당 25도씩
+      // const radius = 1100; // 더 큰 반지름으로 화면 꽉 채우기
+      // const arcHeight = 600; // 더 높은 아치
+      
+      // // 무지개 곡선상의 위치 계산
+      // const radian = (angle * Math.PI) / 180;
+      // const x = Math.sin(radian) * radius;
+      // const y = -Math.cos(radian) * arcHeight + arcHeight;
+      
+      // // 깊이감 - 멀리 있을수록 뒤로
+      // const z = -Math.abs(adjustedDiff) * 300 - Math.cos(radian) * 250;
+
+      // 무지개 곡선 계산
+      const cardAngle = adjustedDiff * angle;
       
       // 무지개 곡선상의 위치 계산
-      const radian = (angle * Math.PI) / 180;
+      const radian = (cardAngle * Math.PI) / 180;
       const x = Math.sin(radian) * radius;
       const y = -Math.cos(radian) * arcHeight + arcHeight;
       
       // 깊이감 - 멀리 있을수록 뒤로
-      const z = -Math.abs(adjustedDiff) * 300 - Math.cos(radian) * 250;
+      const z = -Math.abs(adjustedDiff) * zDepth - Math.cos(radian) * zCurve;
       
       // Y축 회전 (정면 기준 양옆 70도)
       let rotateY = 0;
       if (adjustedDiff === 0) {
         rotateY = 0; // 정면
       } else if (adjustedDiff === -1) {
-        rotateY = -60; // 왼쪽 카드
+        rotateY = -rotateYBase; // 왼쪽 카드
       } else if (adjustedDiff === 1) {
-        rotateY = 60; // 오른쪽 카드
+        rotateY = rotateYBase; // 오른쪽 카드
       } else if (adjustedDiff < -1) {
-        rotateY = -120; // 더 왼쪽은 더 회전
+        rotateY = -rotateYBase + (Math.abs(adjustedDiff) - 1) * rotateYIncrement; // 더 왼쪽은 더 회전
       } else if (adjustedDiff > 1) {
-        rotateY = 120; // 더 오른쪽은 더 회전
+        rotateY = rotateYBase + (Math.abs(adjustedDiff) - 1) * rotateYIncrement; // 더 오른쪽은 더 회전
       }
       
-      // 중앙 카드만 약간 크게
-      const scale = adjustedDiff === 0 ? 1 : 0.9;
+      const scale = (adjustedDiff === 0 ? 1 : 0.95)  * cardScale;
       
       let transform = `
         translateX(${x}px) 
@@ -334,7 +433,6 @@ export default {
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
-  padding: 60px 0;
 }
 
 .slider-wrapper {
@@ -368,7 +466,8 @@ export default {
 .card {
   position: absolute;
   width: 510px;
-  height: 632px;
+  /* height: 632px; */
+  aspect-ratio: 510/632;
   transition: all 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
   /* transform-style: preserve-3d; */
   perspective: 150rem;
@@ -472,14 +571,16 @@ export default {
 }
 
 /* 반응형 */
-@media (max-width: 768px) {
-  .slider-wrapper {
-    height: 500px;
+@media (max-width: 1535px) {
+  .card {
+    width: 420px;
   }
 
-  .card {
-    width: 280px;
-    height: 360px;
+}
+
+@media (max-width: 767px) {
+  .slider-wrapper {
+    height: 495px;
   }
 
   .card-front {
@@ -502,5 +603,12 @@ export default {
   .slider-btn span {
     font-size: 28px;
   }
+}
+
+@media (max-width: 480px) { 
+  .card {
+    width: 96%;
+  }
+
 }
 </style>
