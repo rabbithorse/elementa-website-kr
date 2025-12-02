@@ -34,7 +34,39 @@
 </script>
 
 <style scoped>
-  .group:hover .depth1-menu-link {box-shadow: -1px 0 1px 0 rgba(255, 255, 255, 0.20) inset, 2px 2px 2px 0 rgba(255, 255, 255, 0.25) inset; border-bottom-left-radius: 0; border-bottom-right-radius: 0;}
+  /* .group:hover .depth1-menu-link {box-shadow: -1px 0 1px 0 rgba(255, 255, 255, 0.20) inset, 2px 2px 2px 0 rgba(255, 255, 255, 0.25) inset; border-bottom-left-radius: 0; border-bottom-right-radius: 0;}
   .depth1-menu-link:hover {box-shadow: -1px -1px 1px 0 rgba(255, 255, 255, 0.20) inset, 2px 2px 2px 0 rgba(255, 255, 255, 0.25) inset;}
-  .group:hover .depth2-menu-list {background: rgba(255, 255, 255, 0.01); box-shadow: -1px -1px 1px 0 rgba(255, 255, 255, 0.20) inset, 2px -2px 2px 0px rgba(255, 255, 255, 0.20) inset;}
+  .group:hover .depth2-menu-list {background: rgba(255, 255, 255, 0.01); box-shadow: -1px -1px 1px 0 rgba(255, 255, 255, 0.20) inset, 2px -2px 2px 0px rgba(255, 255, 255, 0.20) inset;} */
+
+.depth1-menu-link {
+  position: relative;
+  transition: color .2s ease, background .2s ease;
+}
+.depth1-menu-link:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.08);
+  border-radius: 8px;
+}
+.depth2-menu-list {
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 8px 0;
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.25),
+    inset 0 0 0 rgba(255,255,255,0.05);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: 
+    opacity .25s ease,
+    transform .25s ease;
+}
+
+.group:hover .depth2-menu-list {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
 </style>
