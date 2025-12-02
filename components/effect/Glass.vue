@@ -1,4 +1,74 @@
 <template>
+  <!-- OSJ : 글라스모피즘 UI 변경(임시) -->
+  <div class="glass">
+    <slot />
+  </div>
+</template>
+
+<style scoped>
+.glass {
+  position: relative;
+  padding: 20px;
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25), inset 0 0 1px rgba(255, 255, 255, 0.22);
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+.glass:hover {
+  background: rgba(255, 255, 255, 0.10);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.28),
+    inset 0 0 2px rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+.glass-deep::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.16) 0%,
+    rgba(255,255,255,0.05) 30%,
+    rgba(0, 132, 255, 0.03) 60%,
+    transparent 90%
+  );
+
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.glass-deep::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.18), transparent 70%),
+    url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGD4DwABBAEAqf0XWQAAAABJRU5ErkJggg==");
+
+  background-repeat: repeat;
+  opacity: 0.08;
+
+  mix-blend-mode: overlay;
+  pointer-events: none;
+} 
+
+.glass > * {
+  position: relative;
+  z-index: 2;
+}
+</style>
+<!-- 
+<template>
   <div>
     <div class="glass-container">
       <div class="glass-filter"></div>
@@ -7,52 +77,6 @@
         <slot></slot>
       </div>
     </div>
-
-    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" style="display: none;">
-      <g filter="url(#glass-distortion)">
-        <rect x="-40" width="100%" height="100%" rx="5" fill="black" fill-opacity="0.15" shape-rendering="crispEdges"/>
-      </g>
-      <defs>
-        <filter id="glass-distortion" x="-43" y="-3" width="100%" height="100%" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-          <feOffset dx="20" dy="20"/>
-          <feGaussianBlur stdDeviation="10"/>
-          <feComposite in2="hardAlpha" operator="out"/>
-          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-          <feBlend mode="multiply" in2="BackgroundImageFix" result="effect1_dropShadow_406_2570"/>
-          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-          <feOffset dx="3" dy="3"/>
-          <feGaussianBlur stdDeviation="1.5"/>
-          <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-          <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.3 0"/>
-          <feBlend mode="plus-lighter" in2="shape" result="effect2_innerShadow_406_2570"/>
-          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-          <feOffset dx="-3" dy="-3"/>
-          <feGaussianBlur stdDeviation="1.5"/>
-          <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-          <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0"/>
-          <feBlend mode="plus-lighter" in2="effect2_innerShadow_406_2570" result="effect3_innerShadow_406_2570"/>
-          <feTurbulence type="fractalNoise" baseFrequency="2 2" stitchTiles="stitch" numOctaves="3" result="noise" seed="6569"/>
-          <feComponentTransfer in="noise" result="coloredNoise1">
-            <feFuncR type="linear" slope="2" intercept="-0.5"/>
-            <feFuncG type="linear" slope="2" intercept="-0.5"/>
-            <feFuncB type="linear" slope="2" intercept="-0.5"/>
-            <feFuncA type="discrete" tableValues="0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
-          </feComponentTransfer>
-          <feComposite operator="in" in2="effect3_innerShadow_406_2570" in="coloredNoise1" result="noise1Clipped"/>
-          <feComponentTransfer in="noise1Clipped" result="color1">
-            <feFuncA type="table" tableValues="0 0.4"/>
-          </feComponentTransfer>
-          <feMerge result="effect4_noise_406_2570">
-            <feMergeNode in="effect3_innerShadow_406_2570"/>
-            <feMergeNode in="color1"/>
-          </feMerge>
-          <feBlend mode="normal" in="effect4_noise_406_2570" in2="effect1_dropShadow_406_2570" result="effect4_noise_406_2570"/>
-        </filter>
-      </defs>
-    </svg> -->
   </div>
 </template>
 
@@ -107,4 +131,4 @@
   height: 100%;
   z-index: 3;
 }
-</style>
+</style> -->
