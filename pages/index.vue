@@ -665,7 +665,7 @@
         </div>
         <div class="section-content md:flex">
           <div class="content-text pt-[5.375rem] max-xl:hidden">
-            <p class="text-white relative pl-16">
+            <p class="text-white relative pr-20 break-keep">
               New Paradigm, <br>
               Lasting Impact
             </p>
