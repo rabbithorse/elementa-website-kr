@@ -25,7 +25,7 @@
             e
           </TypographyPrimary>
         </h2>
-        <p class="text-white text-xl pt-[1.25rem] text-[2.5rem] relative subPageTitle3">
+        <p class="text-white text-xl pt-[1.25rem] text-[2.5rem] relative subPageTitle3 break-keep lg:leading-[1.81rem] leading-[1.51rem]">
           <TypographySecondary>플레이어의 경험을 넘어, 우리의 문화를 만들어갈 동료를 찾습니다.</TypographySecondary>
         </p>
 
@@ -40,9 +40,9 @@
 
       <div class="culture-slogan lg:pb-72 md:pb-36 pb-16">
         <Container>
-          <h3 class="text-white lg:pt-[200px] md:pt-[100px] pt- 2xl:text-[5.625rem] xl:text-[4rem] lg:text-[3.6rem] text-[5vw] font-semibold relative text-center">
+          <h3 class="text-white lg:pt-[200px] md:pt-[100px] pt- 2xl:text-[5.625rem] xl:text-[4rem] lg:text-[3.6rem] text-[6.8vw] font-semibold relative text-center">
             <TypographySecondary>Design the Future of Play,</TypographySecondary>
-            <TypographySecondary>Create a Culture the World Shares</TypographySecondary>
+            <TypographySecondary>Create a Culture <br class="md:hidden block">the World Shares</TypographySecondary>
           </h3>
         </Container>
       </div>
@@ -51,36 +51,36 @@
         <Container>
           <div class="flex lg:flex-row flex-col gap-y-8 justify-between">
             <div class="col-title flex-shrink-0 ">
-              <h5 class="text-white sticky top-40 text-[1.75rem]">
+              <h5 class="text-white sticky top-40 lg:text-[1.75rem] text-xl">
                 How We Work?
               </h5>
             </div>
             <div class="col-list work-list w-[66%] max-lg:w-full  flex-shrink-0">
-              <ul class="flex flex-col gap-y-[6.25rem]">
-                <li class="flex flex-col gap-y-[1.875rem]">
-                  <h6 class="text-[2.5rem] leading-[150%] font-bold text-white">소통 ∙ Communicate</h6>
-                  <p class="text-2xl text-white">
+              <ul class="flex flex-col lg:gap-y-[6.25rem] gap-y-16">
+                <li class="flex flex-col lg:gap-y-[1.875rem] gap-y-4">
+                  <h6 class="lg:text-[2.5rem] text-[2rem] leading-[150%] font-bold text-white">소통 ∙ Communicate</h6>
+                  <p class="lg:text-2xl text-md text-white">
                     생각을 나누면, 새로운 가능성이 열린다. <br>
                     우리는 아이디어와 피드백을 자유롭게 공유하며, 투명한 대화를 통해 더 나은 해답을 찾습니다.
                   </p>
                 </li>
-                <li class="flex flex-col gap-y-[1.875rem]">
-                  <h6 class="text-[2.5rem] leading-[150%] font-bold text-white">협력 ∙ Collaborate</h6>
-                  <p class="text-2xl text-white">
+                <li class="flex flex-col lg:gap-y-[1.875rem] gap-y-4">
+                  <h6 class="lg:text-[2.5rem] text-[2rem] leading-[150%] font-bold text-white">협력 ∙ Collaborate</h6>
+                  <p class="lg:text-2xl text-md text-white">
                     혼자보다 함께일 때, 더 큰 세계가 만들어진다.<br>
                     서로의 전문성을 존중하고 신뢰를 바탕으로 협력하며, 유저에게 최고의 경험을 전달합니다.
                   </p>    
                 </li>
-                <li class="flex flex-col gap-y-[1.875rem]">
-                  <h6 class="text-[2.5rem] leading-[150%] font-bold text-white">도전 ∙ Challenge</h6>
-                  <p class="text-2xl text-white">
+                <li class="flex flex-col lg:gap-y-[1.875rem] gap-y-4">
+                  <h6 class="lg:text-[2.5rem] text-[2rem] leading-[150%] font-bold text-white">도전 ∙ Challenge</h6>
+                  <p class="lg:text-2xl text-md text-white">
                     새로운 모험은 두려움이 아니라 기회의 시작이다.<br>
                     우리는 익숙한 틀을 깨고 끊임없이 도전하며, 실패조차 학습과 성장의 자산으로 여깁니다.
                   </p>
                 </li>
-                <li class="flex flex-col gap-y-[1.875rem]">
-                  <h6 class="text-[2.5rem] leading-[150%] font-bold text-white">확장 ∙ Expand</h6>
-                  <p class="text-2xl text-white">
+                <li class="flex flex-col lg:gap-y-[1.875rem] gap-y-4">
+                  <h6 class="lg:text-[2.5rem] text-[2rem] leading-[150%] font-bold text-white">확장 ∙ Expand</h6>
+                  <p class="lg:text-2xl text-md text-white">
                     경험은 나눌수록 커지고, 세계는 연결될수록 넓어진다.<br>
                     우리는 유저의 경험과 우리의 가능성을 한계 없이 확장하며, 글로벌 무대에서 더 큰 가치를 창출합니다.
                   </p>
@@ -92,13 +92,13 @@
         </Container>
       </div>
       <div class="lg:pb-72 md:pb-36 pb-16">
-        <EffectMarquee class="text-[#9FAEB5] text-[145px]" >
+        <EffectMarquee class="text-[#9FAEB5] lg:text-[145px] text-7xl" >
           <template #goLeftText >COMMUNICATE COLLABORATE COMMUNICATE COLLABORATE</template>
           <template #goRightText >CHALLENGE EXPAND CHALLENGE EXPAND CHALLENGE</template>
         </EffectMarquee>
       </div>
 
-      <div class="mb-72 h-[300vh] culture-vision sticky top-0" ref="visionSection">
+      <div class="h-screen culture-vision mb-72" ref="visionSection">
         <div class="h-screen overflow-hidden">
           <img src="~/assets/images/sub/culture-lets-elementa-bg.png" alt="" class="w-full" ref="visionImage">
         </div>
@@ -146,7 +146,7 @@
         </Container>
       </div>
 
-      <div class="culture-interview bg-[url('~/assets/images/sub/culture-interview-bg.png')] no-repeat bg-center bg-cover pt-56">
+      <div class="culture-interview bg-[url('~/assets/images/sub/culture-interview-bg.png')] bg-[#05060B] no-repeat bg-center bg-cover pt-56 relative z-10">
         <EffectGlass>
           <Container class="md:py-[4.5rem] py-9">
             <div class="section-heading">
@@ -255,53 +255,49 @@
     $gsap.timeline({
       scrollTrigger: {
         trigger: visionSection.value,
-        start: 'top bottom',
-        end: 'bottom bottom',
-        scrub: true,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 0.8,
+        pin: true,
         //markers: true,
       },
     }).fromTo(visionImage.value,
       {
-        clipPath: 'inset(50% 50% 0%)',
+        clipPath: 'inset(50% 95% 0%)',
       },
       {
         clipPath: 'inset(0%)',
         ease: 'none',
-        duration: 3,
-      },
-      0.8
+        duration: 4,
+      }
     )
-    .to(visionImage.value,
-      {
-        y: '-30%',
-        ease: 'none',
-        duration: 8,
-        scrub: true
-      },
-      ">4"
-    )
+    .to(visionImage.value, {
+      y: '-30%',
+      ease: 'none',
+      duration: 2.5,
+    }, ">")
     .to(visionContent.value, {
       clipPath: "inset(0% 0 0 0)",
       ease: "expo.out",
-      duration: 3,
-    },
-    4
+      duration: 1.5,
+    }, "<"
     )
-
-    $gsap.timeline({
-      scrollTrigger: {
-        trigger: visionContent.value,
-        start: "top 80%",
-        //end: 'bottom bottom',
-        //markers: true,
-      },
-    })
     .to(textRevealArray, {
       y: '0%',
-      duration: 3,
+      duration: 1,
       rotateX: 0,
-      stagger: 0.04,
-    }, ">");
+      stagger: 0.3,
+    }, ">")
+
+    // $gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: visionContent.value,
+    //     start: "top bottom",
+    //     //end: 'bottom bottom',
+    //     //markers: true,
+    //   },
+    // })
+    // ;
 
 
     // interview cta alarm button animation
