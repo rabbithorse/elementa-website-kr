@@ -4,12 +4,34 @@
   --text-disabled: #999;
 }
 
+/***** 모달 *****/
+/* 나타날 때 */
+.fade-enter-from {
+  opacity: 0;
+}
+.fade-enter-active {
+  transition: opacity 0.25s ease;
+}
+.fade-enter-to {
+  opacity: 1;
+}
+
+/* 사라질 때 */
+.fade-leave-from {
+  opacity: 1;
+}
+.fade-leave-active {
+  transition: opacity 0.25s ease;
+}
+.fade-leave-to {
+  opacity: 0;
+}
+
 /* -------------------------------------- */
 /* 기본값 (1536px 이상) — PC 디자인 원본 */
 /* -------------------------------------- */
 
-/* 임시 : 업로드 시 지울것*/
-/* footer {display: none;} */
+
 
 /* Buttton width icon */
 .ico {display: block; width: 24px; height: 24px;}
@@ -333,7 +355,115 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
   .description .text-area {height: 100vh; opacity: 0;}
   .description .text-area .text-box span {color: #CDBC79; text-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);}
   .description .text-area .text-box .title {font-family: 'Eulyoo1945'; text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.20), 0 2px 10px rgba(58, 42, 0, 0.70);}
+  .description .text-area .text-box .title span {background: url('~/assets/images/sub/text-light.png') no-repeat center / cover; z-index: -1; mask-image: radial-gradient(black 50%, transparent 70%); -webkit-mask-image: radial-gradient(black 50%, transparent 70%)}
+  .description .text-area .text-box .sub-text {max-width:1280px; width:100%; 
+    background: url('~/assets/images/sub/game-dec-textbox-light01.png') 
+    no-repeat center top,
+    url('~/assets/images/sub/game-dec-textbox-light02.png') 
+    no-repeat center top,
+    url('~/assets/images/sub/game-dec-textbox-line01.png') 
+    no-repeat center -5px,
+    url('~/assets/images/sub/game-dec-textbox-line02.png') 
+    no-repeat center -8px,
+    url('~/assets/images/sub/game-dec-textbox-line01-bottom.png') 
+    no-repeat center calc(100% + 8px),
+    url('~/assets/images/sub/game-dec-textbox-light01-bottom.png') 
+    no-repeat center calc(100% + 8px),
+  linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.00) 0%,
+    rgba(0, 0, 0, 0.50) 25%,
+    rgba(0, 0, 0, 0.50) 75%,
+    rgba(0, 0, 0, 0.00) 100%
+  ); backdrop-filter: blur(0px); }
+.description .text-area .text-box .sub-text::after {content:''; display:block; width: 74px; height: 74px; background: url(~/assets/images/sub/text-box-symbol.png) no-repeat center / cover; position:absolute; left:50%; transform: translateX(-50%); top:-35px;}
 
+.description .text-area .text-box .sub-text.type2 {background: url('~/assets/images/sub/game-dec-textbox-light01.png') 
+    no-repeat center top,
+    url('~/assets/images/sub/game-dec-textbox-light02.png') 
+    no-repeat center top,
+    url('~/assets/images/sub/game-dec-textbox-line01.png') 
+    no-repeat center -5px,
+    url('~/assets/images/sub/game-dec-textbox-line02.png') 
+    no-repeat center -8px,
+  linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.00) 0%,
+    rgba(0, 0, 0, 0.50) 25%,
+    rgba(0, 0, 0, 0.50) 75%,
+    rgba(0, 0, 0, 0.00) 100%
+  ); backdrop-filter: blur(0px);}
+.description .text-area.sec01 #openChar {position:absolute; right:30px; bottom: 90px;}
+.description .text-area.sec01 .inner {width: 350px;}
+
+/* 캐릭터 모달 */
+.character-intro-modal .modal-inner {scrollbar-width: none;   /* Firefox */}
+.character-intro-modal .modal-inner::-webkit-scrollbar {display: none; /* Chrome, Safari, Opera */}
+
+/* 모달 기본 레이아웃 */
+.character-intro-modal .modal-inner {width: 100%; height: 100%; overflow-y: auto; background: #000; position: relative;}
+
+/* 가로 아코디언 */
+.char-accordion {position: sticky; top: 0; background: #000; display: flex; width: 100%; height: 100vh; z-index: 20; border-bottom: 2px solid #ddd;}
+
+/* 각 아코디언 박스 */
+.acc-box {flex: 0 0 90px; display:grid; grid-template-columns: 90px 1fr; border-right: 2px solid #000; position:relative; overflow: hidden; align-items: center; justify-content: center; font-size: 32px; font-weight: 600; transition: flex .75s cubic-bezier(.25,.8,.25,1), background .35s ease; cursor: pointer;}
+.acc-box::before {content:''; display:block; width:100%; height:100%; background: #000; position:absolute; left:0; top:0; transition: background .35s ease;}
+
+/* 마지막 박스 오른쪽 border 제거 */
+.acc-box:last-child {border-right: none;}
+
+/* open된 박스만 확장 */
+.acc-box.open {flex: 1; grid-template-columns: 90px 1fr; }
+.acc-box.open:first-child::before {background: url(~/assets/images/sub/character_bg01.png) no-repeat center / cover;}
+.acc-box.open:nth-child(2)::before {background: url(~/assets/images/sub/character_bg02.png) no-repeat center / cover;}
+.acc-box.open:nth-child(3)::before {background: url(~/assets/images/sub/character_bg03.png) no-repeat center / cover;}
+.acc-box.open:nth-child(4)::before {background: url(~/assets/images/sub/character_bg04.png) no-repeat center / cover;}
+.acc-box.open::after {content:''; width: 15.78vw; height:100%; background: url(~/assets/images/sub/char-bg-paper.png) no-repeat center / cover; position: absolute; left: 0; bottom:0;}
+.acc-box .char-name {width: 100%; height: 100%; padding:80px 0; background: rgba(0, 0, 0, 0.20); position: relative; z-index: 2; transition: all .3s ease;}
+.acc-box .char-name .num {color: #CDBC79;}
+.acc-box .char-name .name-tit {color: transparent; background: linear-gradient(261deg, #CDBC79 63.74%, #FFECA1 76.02%, #CDBC79 87.46%);
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent; font-family: 'Eulyoo1945'; transform: rotate(-90deg);
+    transform-origin: center center;
+    white-space: nowrap;
+    text-align: right;
+    min-width: 140px;     position: absolute;
+    top: 200px;
+    left: -25px; font-size: 32px;}
+.acc-box.open .char-name {background: transparent;}
+.acc-box.open .char-name .name-tit {font-size: 40px;}
+
+/* ============================ */
+/* 세로 스텝 (스크롤되는 실제 콘텐츠) */
+/* ============================ */
+
+.char-steps {
+  width: 100%;
+  margin-top: -100vh;
+}
+
+.char-step {
+  width: 100%;
+  height: 26.04vw;
+  background: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  border: 1px solid #ccc;
+  transition: background .3s;
+}
+
+.char-step.open {
+  background: #ffe8c8;
+  border-color: #e0a14f;
+}
+
+
+
+/* .character-wrap {position: fixed;  left: 0; top: 0;} */
 
 /***** responsive, 순서 변경 금지*****/
 

@@ -72,21 +72,78 @@
       <div class="text-area sec02 flex w-full justify-center items-center z-40 absolute top-0 left-0">
         <div class="text-box text-center">
           <span class="text-2xl font-semibold">독창적 세계관</span>
-          <p class="text-white text-[3.44rem] title tracking-[-1.65px]">탐정 서사와 흑동화로 완성된 미스터리 판타지</p>
+          <div class="text-white text-2xl leading-[1.7] py-[25px] mt-[30px] sub-text type2 relative">
+            <p class="text-white text-[3.44rem] title tracking-[-1.65px] relative font-semibold">
+            <span class="absolute w-full h-full left-0 top-0 block"></span>
+            탐정 서사와 흑동화로 완성된 미스터리 판타지</p>
+          </div>
         </div>
       </div>
       <!-- text 1 -->
       <div class="text-area sec01 flex w-full justify-center items-center z-40 absolute top-0 left-0">
         <div class="text-box text-center">
           <span class="text-2xl font-semibold">Intro</span>
-          <p class="text-white text-[3.44rem] title tracking-[-1.65px]">사건의 진위, 그 무대의 서막</p>
-          <p class="text-white text-2xl">펠리아나 3년, 다시 실버니아로 돌아온 탐정. 그리고 현실과 우화가 뒤섞이고, 번영과 몰락의 경계에 서 있는 실버니아. <br>
-          사교와 조사, 판단 그리고 전투, 당신이 그 총알 한 발의 진실을 찾아낸다면, 자신은 물론, 모든 이들의 운명까지 결정짓게 될 것이다.</p>
+          <p class="text-white text-[3.44rem] title tracking-[-1.65px] relative font-semibold">
+            <span class="absolute w-full h-full left-0 top-0 block"></span>
+            사건의 진위, 그 무대의 서막
+          </p>
+          <div class="text-white text-2xl leading-[1.7] py-[60px] sub-text mt-[40px] relative">펠리아나 3년, 다시 실버니아로 돌아온 탐정. 그리고 현실과 우화가 뒤섞이고, 번영과 몰락의 경계에 서 있는 실버니아. <br>
+          사교와 조사, 판단 그리고 전투, 당신이 그 총알 한 발의 진실을 찾아낸다면, 자신은 물론, 모든 이들의 운명까지 결정짓게 될 것이다.</div>
         </div>
+        <ButtonsBasic color="yellow" size="lg" id="openChar" @click="openModal">캐릭터 소개</ButtonsBasic>
       </div>
     </section>
 
     <section class="h-[1000px]"></section>
+
+    <!-- 캐릭터 소개 모달 -->
+    <Transition name="fade">
+    <section class="character-intro-modal fixed inset-0 z-50" v-show="showCharModal">
+      <div class="modal-inner bg-white w-full h-full relative overflow-y-auto" ref="modalContentRef">
+        <button class="modal-close fixed top-[15px] right-[15px] w-[30px] h-[30px] flex justify-center items-center text-black text-2xl font-bold" @click="closeModal" style="z-index:100;">
+          &times;
+        </button>
+         <!-- Sticky 가로 아코디언 -->
+        <div class="char-accordion sticky top-0 flex" ref="accordionRef">
+          <div class="acc-box" @click="jumpTo(0)">
+            <div class="char-name">
+              <p class="num text-2xl font-medium text-center">01</p>
+              <p class="name-tit font-normal">탐정</p>
+            </div>
+            <div></div>
+          </div>
+          <div class="acc-box" @click="jumpTo(1)">
+            <div class="char-name">
+              <p class="num text-2xl font-medium text-center">02</p>
+              <p class="name-tit font-normal">탐정</p>
+            </div>
+            <div></div>
+          </div>
+          <div class="acc-box" @click="jumpTo(2)">
+            <div class="char-name">
+              <p class="num text-2xl font-medium text-center">03</p>
+              <p class="name-tit font-normal">알프</p>
+            </div>
+            <div></div>
+          </div>
+          <div class="acc-box" @click="jumpTo(3)">
+            <div class="char-name">
+              <p class="num text-2xl font-medium text-center">04</p>
+              <p class="name-tit font-normal">아르고스</p>
+            </div>
+            <div></div>
+          </div>
+        </div>
+
+        <!-- 세로 step들: 실제 스크롤 트리거 -->
+        <div class="char-steps" ref="stepsRef">
+          <div class="char-step" v-for="i in 4" :key="i"></div>
+        </div>
+      </div>
+    </section>
+    </Transition>
+    <!-- //캐릭터 소개 모달 -->
+
   </div>
 </template>
 
@@ -96,14 +153,15 @@
   })
 
   import Container from '~/components/Container.vue';
-  import { ref, onMounted, onUnmounted } from 'vue'
+  import { ref, onMounted, onUnmounted, nextTick } from 'vue'
   import { useNuxtApp } from '#app'
 
-  const { $gsap, $ScrollTrigger } = useNuxtApp()
+  const { $gsap, $ScrollTrigger, $lenis } = useNuxtApp()
 
   // section 01 refs
   const introSection = ref(null)
   const movieBg = ref(null)
+  const bgVideo = ref(null)
   const panel02 = ref(null)
   const titleArea = ref(null)
 
@@ -117,6 +175,9 @@
   const cutLine02 = ref(null)
   const line02_1 = ref(null)
   const cutBg02 = ref(null)
+
+  // 캐릭터 소개 모달 열기 함수
+  const showCharModal = ref(false)
 
   // section 03 refs
   const descriptionSec = ref(null)
@@ -152,10 +213,19 @@
     // 02. intro 섹션 - title 스크롤 효과
     /*-----------------------*/
     // title 효과 - intro 섹션 고정 + 스크롤시 타이틀 사라짐
+    let restartIntroVideo = false;
+
     const scrollIntro = $gsap.timeline()
     .to(titleArea.value, { opacity: 1, duration: 0 })   // 시작값
     .to(titleArea.value, { opacity: 0, duration: 1 })   // 끝으로 갈수록 점점 사라짐
 
+    .add(() => {
+      if (!restartIntroVideo) {
+        bgVideo.value.currentTime = 0;
+        bgVideo.value.play();
+        restartIntroVideo = true;
+      }
+    }, "videoIntroRestart")  // label
     // movieBg 어두워짐 (밝기 감소)
     .fromTo(
       movieBg.value,
@@ -167,11 +237,22 @@
     $ScrollTrigger.create({
       trigger: introSection.value,
       start: 'top top',
-      end: 'bottom bottom',
+      end: "+=" + scrollIntro.duration() * 600,
       pin: titleArea.value,
       scrub: 2,
       animation: scrollIntro,
       // markers: true,
+
+      onUpdate(self) {
+        const progress = self.progress;
+        const currentTime = scrollIntro.totalDuration() * progress;
+
+        const t1 = scrollIntro.labels["videoIntroRestart"];
+
+        if (currentTime < t1) {
+          restartIntroVideo = false;
+        }
+      }
     })
     
     /*-----------------------*/
@@ -277,31 +358,54 @@
       animation: cutSceneTimeline
     })
 
-    /************************************/
-
+    /*-----------------------*/
+    // 05. 게임소개 섹션 - 게임소개 타임라인 애니메이션
+    /*-----------------------*/
     const movieDimmed = descriptionSec.value.querySelector(".movie-dimmed");
     const videoDes1 = descriptionSec.value.querySelector(".movie-bg-des.sec01");
     const videoDes2 = descriptionSec.value.querySelector(".movie-bg-des.sec02");
+    const video1 = videoDes1.querySelector("video");
+    const video2 = videoDes2.querySelector("video");
     const textDes1 = descriptionSec.value.querySelector(".text-area.sec01");
     const textDes1inner = textDes1.querySelector(".text-box");
     const textDes2 = descriptionSec.value.querySelector(".text-area.sec02");
     const textDes2inner = textDes2.querySelector(".text-box");
 
+    let restarted1 = false; // sec01
+    let restarted2 = false; // sec02
+
     const desBgTimeline = $gsap.timeline()
     // (01) 비디오 딤드 투명해지면서 첫번째 비디오 밝아짐, 첫번째 텍스트 나타남
     .fromTo(movieDimmed, { opacity: 1 }, { opacity: .5, duration: 4 })
-    .to(textDes1, { opacity: 1, duration: 3}, ">-1") // 이전 효과 진행 후 바로 실행
-    .fromTo(textDes1inner, { y: "30px" }, { y: "0px", duration: 1, ease:"ease"}, "<") // 동시 진행
+    .to(textDes1, { opacity: 1, duration: 3}, "<") // 동시 진행
+    .fromTo(textDes1inner, { y: "30px", "mask-image": "radial-gradient(circle, black -30%, transparent 60%);" }, { "mask-image": "radial-gradient(circle, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
+    // 첫 번째 비디오 리셋
+    .add(() => {
+    if (!restarted1) {
+      video1.currentTime = 0;
+      video1.play();
+      restarted1 = true;
+    }
+    }, "videoRestart1")  // label #1
     // (02) 첫번째 비디오 서서히 사라짐, 첫번째 텍스트 사라짐
     .to(videoDes1, { opacity: 0, duration: 4 })
-    .to(textDes1inner, { y: "30px", duration: 1, ease:"ease"}, ">-2") // 이전 효과 후 바로 실행
+    .to(textDes1inner, { "mask-image": "radial-gradient(circle, black -30%, transparent 60%);",y: "30px", duration: 1, ease:"ease"}, ">-2") // 이전 효과 후 바로 실행
     .to(textDes1, { opacity: 0, duration: 1.5 }, ">-2") // 이전 효과 후 바로 실행
     .to(textDes1, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
     // (03) 두번째 비디오 서서히 나타남, 두번째 텍스트 나타남
-    .fromTo(videoDes2, { opacity: 0 }, { opacity: 1, duration: 3 },">-1") // 이전 효과 진행 후 바로 실행
-    .to(textDes2, { opacity: 1, duration: 3 }, ">-1") 
-    .fromTo(textDes2inner, { y: "30px" }, { y: "0px", duration: 1, ease:"ease"}, "<") // 동시 진행
-
+    .fromTo(videoDes2, { opacity: 0 }, { opacity: 1, duration: 4 },">-1") // 이전 효과 진행 후 바로 실행
+    
+    .to(textDes2, { opacity: 1, duration: 3 }, "<") //동시 진행
+    .fromTo(textDes2inner, { y: "30px", "mask-image": "radial-gradient(circle, black -30%, transparent 60%);"}, { "mask-image": "radial-gradient(circle, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
+    // 두 번째 비디오 리셋
+    .add(() => {
+    if (!restarted2) {
+      video2.currentTime = 0;
+      video2.play();
+      restarted2 = true;
+    }
+    }, "videoRestart2")  // label #2
+    
     $ScrollTrigger.create({
       trigger: descriptionSec.value,
       start: 'top top',
@@ -310,10 +414,144 @@
       scrub: 2,
       animation: desBgTimeline,
       // markers: true,
+
+      onUpdate(self) {
+        const progress = self.progress;
+        const currentTime = desBgTimeline.totalDuration() * progress;
+
+        const t1 = desBgTimeline.labels["videoRestart1"];
+        const t2 = desBgTimeline.labels["videoRestart2"];
+
+        // 첫 번째 비디오 재실행 가능하도록
+        if (currentTime < t1) {
+          restarted1 = false;
+        }
+
+        // 두 번째 비디오 재실행 가능하도록
+        if (currentTime < t2) {
+          restarted2 = false;
+        }
+      }
+    })
+  });
+
+  /*-----------------------
+  other. 캐릭터 소개 섹션
+-----------------------*/
+
+  // refs
+  const modalContentRef = ref(null)
+  const accordionRef = ref(null)
+  const stepsRef = ref(null)
+
+  // 상태값
+  const modalTriggers = []
+
+  // (A) 현재 페이지에서 실행 중인 ScrollTrigger 수집
+  const getPageTriggers = () => {
+    return $ScrollTrigger.getAll().filter(st => !modalTriggers.includes(st))
+  }
+
+  // (B) 세로 step 스크롤 트리거 만들기
+  const initStepsTriggers = () => {
+    const steps = stepsRef.value.querySelectorAll('.char-step')
+
+    steps.forEach((step, index) => {
+      const st = $ScrollTrigger.create({
+        trigger: step,
+        scroller: modalContentRef.value,
+        start: "top 50%", 
+        end: "bottom 50%",
+        onEnter: () => {
+          if (!isScrollingByClick) setActive(index)
+        },
+        onEnterBack: () => {
+          if (!isScrollingByClick) setActive(index)
+        },
+        // markers: true,
+      })
+
+      modalTriggers.push(st)
+    })
+  }
+
+
+  // (C) 모달 열기
+  const openModal = async () => {
+    showCharModal.value = true
+    document.body.style.overflow = "hidden"
+
+    // Lenis off
+    $lenis.options.smoothWheel = false
+    $lenis.options.smoothTouch = false
+
+    // 페이지 scrollTrigger 중지
+    getPageTriggers().forEach(st => st.disable(false))
+
+    await nextTick()
+    initStepsTriggers()
+    setActive(0)
+  }
+
+  // (D) 모달 닫기
+  const closeModal = () => {
+    showCharModal.value = false
+    document.body.style.overflow = ""
+
+    // Lenis on
+    $lenis.options.smoothWheel = true
+    $lenis.options.smoothTouch = true
+
+    // 모달 트리거 제거
+    modalTriggers.forEach(st => st.kill())
+    modalTriggers.length = 0
+
+    // 페이지 트리거 다시 활성화
+    getPageTriggers().forEach(st => st.enable(false))
+
+    $ScrollTrigger.refresh()
+  }
+
+  // (E) active index 반영
+  const setActive = (index) => {
+
+    // 1) 가로 아코디언
+    const acc = accordionRef.value.querySelectorAll('.acc-box')
+    acc.forEach((box, i) => {
+      box.classList.toggle('open', i === index)
     })
 
-  
-  });
+    // 2) 세로 step
+    const steps = stepsRef.value.querySelectorAll('.char-step')
+    steps.forEach((step, i) => {
+      step.classList.toggle('open', i === index)
+    })
+  }
+
+
+  // (F) 아코디언 클릭 → 해당 step으로 스크롤
+  let isScrollingByClick = false
+
+  const jumpTo = (index) => {
+    const steps = stepsRef.value.querySelectorAll('.char-step')
+    const target = steps[index]
+
+    isScrollingByClick = true
+
+    $gsap.to(modalContentRef.value, {
+      scrollTo: target.offsetTop,
+      duration: 0.3,
+      ease: "power2.out",
+      onComplete: () => {
+        setActive(index)
+        isScrollingByClick = false
+
+        // 스크롤 위치 계산을 다시 맞춰야 불안정함 사라짐
+        $ScrollTrigger.refresh()
+      }
+    })
+  }
+
 </script>
 
 <style scoped>
