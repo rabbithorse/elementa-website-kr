@@ -248,6 +248,29 @@
     .btn.sch .md.inner::before {right:2px; transform: rotate(40deg);}
 
   }
+
+  /* OSJ : 버튼 스타일 덮기(임시) */
+  .btn:hover .inner {
+    box-shadow:
+      0 -3px 6px rgba(255,255,255,0.25) inset,
+      inset 0 0 15px rgba(0,0,0,0.35),
+      inset 0 0 3px rgba(255,255,255,0.35),
+      0 6px 14px rgba(0,0,0,0.35),
+      0 0 12px rgba(0,200,235,0.35);
+    transform: translateY(-1px);
+  }
+  .btn:hover .inner::before {
+    opacity: 0.45;
+  }
+
+  .btn .hover_shadow::before,
+  .btn .hover_shadow::after,
+  .btn .hover_shadow2 {
+    background: rgba(0,200,235,0.25);
+    filter: blur(6px);
+    box-shadow: 0 0 6px rgba(80,114,222,0.35);
+  }
+
 </style>
 
 <script setup>

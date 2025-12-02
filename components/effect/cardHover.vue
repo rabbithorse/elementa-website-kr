@@ -105,5 +105,8 @@
     box-sizing: border-box;
     cursor: pointer;
     transform-style: preserve-3d;
+
+    /* OSJ : 그림자 윤곽 추가 */
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px 0px;
   }
 </style>

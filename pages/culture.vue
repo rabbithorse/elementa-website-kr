@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="subSection culture-area pt-[130px] relative" ref="subSection">
+     <section class="subSection culture-area lg:pt-[130px] pt-[95px] relative" ref="subSection">
       <Container>
         <h2 class="text-[11rem] leading-1 font-bold text-white subPageTitle relative">
           <TypographyPrimary>
@@ -31,25 +31,23 @@
 
       </Container>
 
-      <div class="wide-image-container w-full overflow-hidden">
+      <div class="wide-image-container w-full overflow-hidden 2xl:mt-[228px] xl:mt-[148px] mt-[3.5rem]">
         <Container>
         <!-- wide image -->
-        <div class="wide-image-area h-[600px] mt-[228px] relative " ref="wideImageArea"></div> 
+        <div class="wide-image-area xl:h-[600px] lg:h-[450px] h-[400px] relative " ref="wideImageArea"></div> 
         </Container>
       </div>      
-        
-      
 
-      <div class="culture-slogan pb-72">
+      <div class="culture-slogan lg:pb-72 md:pb-36 pb-16">
         <Container>
-          <h3 class="text-white pt-[200px] text-[5.625rem] font-semibold relative text-center">
+          <h3 class="text-white lg:pt-[200px] md:pt-[100px] pt- 2xl:text-[5.625rem] xl:text-[4rem] lg:text-[3.6rem] text-[5vw] font-semibold relative text-center">
             <TypographySecondary>Design the Future of Play,</TypographySecondary>
             <TypographySecondary>Create a Culture the World Shares</TypographySecondary>
           </h3>
         </Container>
       </div>
 
-      <div class="culture-work pb-72">
+      <div class="culture-work lg:pb-72 md:pb-36 pb-16">
         <Container>
           <div class="flex lg:flex-row flex-col gap-y-8 justify-between">
             <div class="col-title flex-shrink-0 ">
@@ -93,7 +91,7 @@
           
         </Container>
       </div>
-      <div class="pb-72">
+      <div class="lg:pb-72 md:pb-36 pb-16">
         <EffectMarquee class="text-[#9FAEB5] text-[145px]" >
           <template #goLeftText >COMMUNICATE COLLABORATE COMMUNICATE COLLABORATE</template>
           <template #goRightText >CHALLENGE EXPAND CHALLENGE EXPAND CHALLENGE</template>
@@ -150,7 +148,7 @@
 
       <div class="culture-interview bg-[url('~/assets/images/sub/culture-interview-bg.png')] no-repeat bg-center bg-cover pt-56">
         <EffectGlass>
-          <Container class="py-[4.5rem]">
+          <Container class="md:py-[4.5rem] py-9">
             <div class="section-heading">
               
               <div class="heading-text flex flex-col md:gap-y-10 gap-y-4">
@@ -161,15 +159,17 @@
               </div>
               
             </div>
+          </Container>
+          <Container class="slider-container">
             <div class="section-content">
               <BlocksSlider3D />
             </div>
           </Container>
         </EffectGlass>
-        <div class="culture-interview-cta py-56" ref="interviewCta">
+        <div class="culture-interview-cta lg:py-56 py-28 overflow-hidden" ref="interviewCta">
           <Container>
             <div class="cta-text flex flex-col items-center gap-y-20">
-              <h4 class="text-white text-[2.8rem] font-semibold text-center">
+              <h4 class="text-white lg:text-[2.8rem] lg:leading-[1.3em] text-3xl font-semibold text-center">
                 <TypographySecondary>
                 <span class="inline-block text-inherit font-semibold underline underline-offset-[6px] decoration-2 relative">
                   새로운 퀘스트
@@ -177,7 +177,7 @@
                 </span>는 언제나 예고 없이 시작됩니다.
                 </TypographySecondary><br>
                 <TypographySecondary>
-                  당신의 도전을 우리와 함께 미래로 이어가 보지 않으시겠습니까?
+                  당신의 도전을 우리와 함께 <br class="lg:hidden">미래로 이어가 보지 않으시겠습니까?
                 </TypographySecondary>
               </h4>
               <ButtonsBasic href="/join_us" size="lg-wide" color="blue">채용 바로가기</ButtonsBasic>
@@ -235,7 +235,7 @@
     $gsap.timeline({
       scrollTrigger: {
         trigger: subSection.value,
-        start: 'top top',
+        start: 'top 0',
         end: '+=60%',
         scrub: 1,
         markers: true,
@@ -315,7 +315,7 @@
       y: 0,
       opacity: 1,
       ease: 'none',
-    }, "+=0.5")
+    }, "+=1.5")
   })
 
   
@@ -348,8 +348,19 @@
   }
 
   .culture-interview .glass-content {padding: 4.5rem 0;}
+  
+  .culture-interview .glass-container {
+    width: 103vw;
+    margin-left: -1vw;
+  }
 
   .alarm-button {
     box-shadow: 2px 2px 3px 0 rgba(255, 255, 255, 0.40) inset;
+  }
+
+  @media (max-width: 767px) {
+    .slider-container {
+      width: 100%;
+    }
   }
 </style>
