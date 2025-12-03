@@ -353,10 +353,11 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
   .description .movie-bg-des {height: 100vh;}
   .description .movie-bg-des video {width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;}
   .description .text-area {height: 100vh; opacity: 0;}
+  .description .text-area .text-box {max-width:1280px; width:100%; inset:0;}
   .description .text-area .text-box span {color: #CDBC79; text-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);}
   .description .text-area .text-box .title {font-family: 'Eulyoo1945'; text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.20), 0 2px 10px rgba(58, 42, 0, 0.70);}
   .description .text-area .text-box .title span {background: url('~/assets/images/sub/text-light.png') no-repeat center / cover; z-index: -1; mask-image: radial-gradient(black 50%, transparent 70%); -webkit-mask-image: radial-gradient(black 50%, transparent 70%)}
-  .description .text-area .text-box .sub-text {max-width:1280px; width:100%; 
+  .description .text-area .text-box .sub-text {
     background: url('~/assets/images/sub/game-dec-textbox-light01.png') 
     no-repeat center top,
     url('~/assets/images/sub/game-dec-textbox-light02.png') 
@@ -385,14 +386,14 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
     url('~/assets/images/sub/game-dec-textbox-line01.png') 
     no-repeat center -5px,
     url('~/assets/images/sub/game-dec-textbox-line02.png') 
-    no-repeat center -8px,
-  linear-gradient(
+    no-repeat center -8px;}
+.description .text-area .text-box .sub-text.type2::before {width: 100%; height:100%; position: absolute; left:0; top:0; background: linear-gradient(
     180deg,
     rgba(0, 0, 0, 0.00) 0%,
     rgba(0, 0, 0, 0.50) 25%,
     rgba(0, 0, 0, 0.50) 75%,
     rgba(0, 0, 0, 0.00) 100%
-  ); backdrop-filter: blur(0px);}
+  ); backdrop-filter: blur(30px); content: ''; inset: 0; mask-image: linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);}
 .description .text-area.sec01 #openChar {position:absolute; right:30px; bottom: 90px;}
 .description .text-area.sec01 .inner {width: 350px;}
 
@@ -401,39 +402,71 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 .character-intro-modal .modal-inner::-webkit-scrollbar {display: none; /* Chrome, Safari, Opera */}
 
 /* 모달 기본 레이아웃 */
-.character-intro-modal .modal-inner {width: 100%; height: 100%; overflow-y: auto; background: #000; position: relative;}
+.character-intro-modal .modal-inner {width: 100%; height: calc(100vh + 2px); overflow-y: auto; background: #000; position: relative;}
 
 /* 가로 아코디언 */
-.char-accordion {position: sticky; top: 0; background: #000; display: flex; width: 100%; height: 100vh; z-index: 20; border-bottom: 2px solid #ddd;}
+.char-accordion {position: sticky; top: 0; background: #000; display: flex; width: 100%; height: 100%; z-index: 20; border-bottom: 2px solid #ddd;}
 
 /* 각 아코디언 박스 */
-.acc-box {flex: 0 0 90px; display:grid; grid-template-columns: 90px 1fr; border-right: 2px solid #000; position:relative; overflow: hidden; align-items: center; justify-content: center; font-size: 32px; font-weight: 600; transition: flex .75s cubic-bezier(.25,.8,.25,1), background .35s ease; cursor: pointer;}
-.acc-box::before {content:''; display:block; width:100%; height:100%; background: #000; position:absolute; left:0; top:0; transition: background .35s ease;}
+.acc-box {flex: 0 0 90px; display:grid; grid-template-columns: 90px 1fr; position:relative; overflow: hidden; align-items: center; justify-content: center; font-size: 32px; font-weight: 600; transition: flex .75s cubic-bezier(.25,.8,.25,1), background .35s ease; cursor: pointer;}
+.acc-box::before {content:''; display:block; width:100%; height:100%; position:absolute; left:0; top:0; transition: background .35s ease;}
+/* .acc-box .char-cont {display: none;} */
 
-/* 마지막 박스 오른쪽 border 제거 */
-.acc-box:last-child {border-right: none;}
-
-/* open된 박스만 확장 */
-.acc-box.open {flex: 1; grid-template-columns: 90px 1fr; }
-.acc-box.open:first-child::before {background: url(~/assets/images/sub/character_bg01.png) no-repeat center / cover;}
-.acc-box.open:nth-child(2)::before {background: url(~/assets/images/sub/character_bg02.png) no-repeat center / cover;}
-.acc-box.open:nth-child(3)::before {background: url(~/assets/images/sub/character_bg03.png) no-repeat center / cover;}
-.acc-box.open:nth-child(4)::before {background: url(~/assets/images/sub/character_bg04.png) no-repeat center / cover;}
+.acc-box.open {flex: 1; cursor: default;}
+.acc-box:first-child::before {background: url(~/assets/images/sub/character_bg01.png) no-repeat center / cover;}
+.acc-box:nth-child(2)::before {background: url(~/assets/images/sub/character_bg02.png) no-repeat center / cover;}
+.acc-box:nth-child(3)::before {background: url(~/assets/images/sub/character_bg03.png) no-repeat center / cover;}
+.acc-box:nth-child(4)::before {background: url(~/assets/images/sub/character_bg04.png) no-repeat center / cover;}
 .acc-box.open::after {content:''; width: 15.78vw; height:100%; background: url(~/assets/images/sub/char-bg-paper.png) no-repeat center / cover; position: absolute; left: 0; bottom:0;}
 .acc-box .char-name {width: 100%; height: 100%; padding:80px 0; background: rgba(0, 0, 0, 0.20); position: relative; z-index: 2; transition: all .3s ease;}
 .acc-box .char-name .num {color: #CDBC79;}
-.acc-box .char-name .name-tit {color: transparent; background: linear-gradient(261deg, #CDBC79 63.74%, #FFECA1 76.02%, #CDBC79 87.46%);
-background-clip: text;
--webkit-background-clip: text;
--webkit-text-fill-color: transparent; font-family: 'Eulyoo1945'; transform: rotate(-90deg);
-    transform-origin: center center;
-    white-space: nowrap;
-    text-align: right;
-    min-width: 140px;     position: absolute;
-    top: 200px;
-    left: -25px; font-size: 32px;}
+.acc-box .char-name .name-tit {color: transparent; z-index:2; background: linear-gradient(261deg, #CDBC79 63.74%, #FFECA1 76.02%, #CDBC79 87.46%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: 'Eulyoo1945'; transform: rotate(-90deg); transform-origin: center center; white-space: nowrap; text-align: right; min-width: 140px; position: absolute; top: 200px; left: -25px; font-size: 32px;}
+.acc-box .char-name .char-thumb {margin-top: 195px; transition: opacity .3s ease;}
+.acc-box .char-name .char-thumb img {width: 100%;}
+.acc-box .modal-close {display: none; background:url('~/assets/images/sub/char-close.png') no-repeat center / cover; font-size: 0; transition: all .3s ease;}
+.acc-box .modal-close:hover {background: url('~/assets/images/sub/char-close-hover.png') no-repeat center / cover;}
+
 .acc-box.open .char-name {background: transparent;}
-.acc-box.open .char-name .name-tit {font-size: 40px;}
+.acc-box.open .char-name .name-tit {font-size: 40px; text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.70); color: #CDBC79 ; background: none; background-clip: initial; -webkit-background-clip: initial; -webkit-text-fill-color: initial;}
+.acc-box.open .char-name .name-tit::after {content:''; display: block; width: 42px; height: 42px; background: url('~/assets/images/sub/char-symbol.svg') no-repeat center / cover; position: absolute; top: 50%; transform: translate(-20px, -50%);}
+.acc-box.open .char-name .name-light {display:block; width:542px; height:69px; background:url('~/assets/images/sub/text-light.png') no-repeat center / cover; position: absolute; left: -230px; top: 172px; transform: rotate(-90deg); z-index: 1;}
+.acc-box.open:last-child .char-name .name-tit {left: -32px;}
+.acc-box.open:last-child .char-name .name-tit::after {transform: translate(-80px, -50%);}
+.acc-box.open:last-child .char-name .name-light {width:512px; height: 39px; left: -212px; top: 192px;}
+.acc-box.open .char-name .char-thumb {opacity: 0;}
+.acc-box.open .char-cont .inner {display: flex; align-items: flex-end; justify-content: flex-end; height: 100%; margin-left: 17.19vw;}
+.acc-box .char-cont .char-thumb {opacity: 0;}
+.acc-box .char-cont .info {opacity: 0;}
+.acc-box:nth-child(1) .char-cont .char-thumb {width: 62.42vw; max-width:62.42vw;}
+.acc-box:nth-child(2) .char-cont .char-thumb {width: 54.40vw; max-width:54.40vw;}
+.acc-box:nth-child(3) .char-cont .char-thumb {width: 51.40vw; max-width:51.40vw;}
+.acc-box:nth-child(4) .char-cont .char-thumb {width: 54.04vw; max-width:54.04vw;}
+
+.acc-box .char-cont .info {left:0; bottom: 12.24vw;}
+.acc-box .char-cont .info .info-tit {font-family: 'Cinzel'; background: url('~/assets/images/sub/char-info-tit-bg.svg') no-repeat center / contain; padding-top: 64px; line-height: 0.6;}
+.acc-box .char-cont .info .info-wrap {padding:0 25px; background: url('~/assets/images/sub/char-info-tit-bg02.svg') no-repeat top / contain, url('~/assets/images/sub/char-info-tit-bg03.svg') no-repeat bottom / contain;}
+.acc-box .char-cont .info .info-wrap::before {content:''; z-index:-1; display: block; width: 100%; height:100%; opacity: 0.6; background: #000; filter: blur(35px); position: absolute; left: 0; top: 0;}
+.acc-box .char-cont .info .info-wrap .tit-wrap {padding: 25px 0 20px; background: url('~/assets/images/sub/char-info-tit-bg04.svg') no-repeat bottom / contain;}
+.acc-box .char-cont .info .info-wrap .tit-wrap .tit {font-family: 'Eulyoo1945';}
+.acc-box .char-cont .info .info-wrap .tit-wrap + p {padding: 30px 0 45px;}
+
+.acc-box.open .char-cont.open .char-thumb {animation: appear 1s ease forwards; transform-origin: bottom; position: relative;}
+.acc-box.open .char-cont.open .info {animation: appear 2s ease forwards; max-width: 488px; width: 100%;}
+
+.acc-box.open .modal-close {display: block;}
+                                                                                                             
+@keyframes appear {
+  0% {
+    opacity: 0;
+    right: 80px;
+  }
+  100% {
+    opacity: 1;
+    right: 0;
+  }
+}
+
+.acc-box .acc-line {position: absolute; left: 0; top: 0; width: 6px; height: 100%; background: url('~/assets/images/sub/character-acc-line.png') no-repeat center / cover;}
 
 /* ============================ */
 /* 세로 스텝 (스크롤되는 실제 콘텐츠) */

@@ -68,12 +68,23 @@
         </video>
       </div>
 
+      <!-- text 3 -->
+      <div class="text-area sec03 flex w-full justify-center items-center z-40 absolute top-0 left-0">
+        <div class="text-box text-center">
+          <span class="text-2xl font-semibold">독창적 세계관</span>
+          <div class="text-white text-2xl leading-[1.7] py-[25px] mt-[30px] sub-text type2 relative">
+            <p class="text-white text-[3.44rem] title tracking-[-1.65px] relative font-semibold z-10">
+            <span class="absolute w-full h-full left-0 top-0 block"></span>
+            독창적 세계관 내용입니다</p>
+          </div>
+        </div>
+      </div>
       <!-- text 2 -->
       <div class="text-area sec02 flex w-full justify-center items-center z-40 absolute top-0 left-0">
         <div class="text-box text-center">
           <span class="text-2xl font-semibold">독창적 세계관</span>
           <div class="text-white text-2xl leading-[1.7] py-[25px] mt-[30px] sub-text type2 relative">
-            <p class="text-white text-[3.44rem] title tracking-[-1.65px] relative font-semibold">
+            <p class="text-white text-[3.44rem] title tracking-[-1.65px] relative font-semibold z-10">
             <span class="absolute w-full h-full left-0 top-0 block"></span>
             탐정 서사와 흑동화로 완성된 미스터리 판타지</p>
           </div>
@@ -100,41 +111,153 @@
     <Transition name="fade">
     <section class="character-intro-modal fixed inset-0 z-50" v-show="showCharModal">
       <div class="modal-inner bg-white w-full h-full relative overflow-y-auto" ref="modalContentRef">
-        <button class="modal-close fixed top-[15px] right-[15px] w-[30px] h-[30px] flex justify-center items-center text-black text-2xl font-bold" @click="closeModal" style="z-index:100;">
-          &times;
-        </button>
-         <!-- Sticky 가로 아코디언 -->
+        <!-- Sticky 가로 아코디언 -->
         <div class="char-accordion sticky top-0 flex" ref="accordionRef">
+          <!-- 탐정 : 여 -->
           <div class="acc-box" @click="jumpTo(0)">
-            <div class="char-name">
+            <!-- 캐릭터 이름 -->
+            <div class="char-name overflow-hidden">
               <p class="num text-2xl font-medium text-center">01</p>
+              <span class="name-light"></span>
               <p class="name-tit font-normal">탐정</p>
+              <span class="char-thumb block"><img src="~/assets/images/sub/acc-char-thumb01.png" alt="탐정"></span>
+              <span class="acc-line"></span>
             </div>
-            <div></div>
+            <!-- 캐릭터 콘텐츠 -->
+            <div class="char-cont relative z-10 w-full h-full overflow-hidden">
+              <div class="inner relative">
+                <div class="info text-white absolute z-10">
+                  <p class="info-tit text-center text-3xl opacity-[.7] font-bold z-10 relative">Character</p>
+                  <div class="info-wrap relative">
+                    <div class="tit-wrap relative z-10">
+                      <p class="tit text-[1.75rem] font-normal">탐정</p>
+                      <p class="opacity-[.5] text-[0.94rem] font-normal">주인공</p>
+                    </div>
+                    <p class="text-[1.06rem] font-normal relative z-10 leading-[1.6]">두뇌가 명석하고 능률적인 일처리를 선보이는 <br>
+                    이성적이며 신뢰할 수 있는 탐정. <br>
+                    현재 가족의 죽음을 둘러싼 진상을 밝히기 위해 분투하고 있다. <br>
+                    파국적인 사건 이후 줄곧 실버니아를 더나 있었지만, <br>
+                    3년이 지난 지금 다시 이곳에 돌아왔다.</p>
+                  </div>
+                </div>
+                <img src="~/assets/images/sub/char-cont-image01.png" alt="탐정 캐릭터" class="char-thumb">
+              </div>
+            </div>
+            <button class="modal-close absolute bottom-[50px] left-[20px] w-[126px] h-[145px] flex justify-center items-center z-[100]" @click="closeModal">
+              &times;
+            </button>
           </div>
+          <!-- //탐정 : 여 -->
+          <!-- 탐정 : 남 -->
           <div class="acc-box" @click="jumpTo(1)">
-            <div class="char-name">
+            <!-- 캐릭터 이름 -->
+            <div class="char-name overflow-hidden">
               <p class="num text-2xl font-medium text-center">02</p>
+              <span class="name-light"></span>
               <p class="name-tit font-normal">탐정</p>
+              <span class="char-thumb block"><img src="~/assets/images/sub/acc-char-thumb02.png" alt="탐정"></span>
+              <span class="acc-line"></span>
             </div>
-            <div></div>
+            <!-- 캐릭터 콘텐츠 -->
+            <div class="char-cont relative z-10 w-full h-full overflow-hidden">
+              <div class="inner relative">
+                <div class="info text-white absolute z-10">
+                  <p class="info-tit text-center text-3xl opacity-[.7] font-bold z-10 relative">Character</p>
+                  <div class="info-wrap relative">
+                    <div class="tit-wrap relative z-10">
+                      <p class="tit text-[1.75rem] font-normal">탐정</p>
+                      <p class="opacity-[.5] text-[0.94rem] font-normal">주인공</p>
+                    </div>
+                    <p class="text-[1.06rem] font-normal relative z-10 leading-[1.6]">
+                      두뇌가 명석하고 능률적인 일처리를 선보이는 <br>
+                      이성적이며 신뢰할 수 있는 탐정. <br>
+                      현재 가족의 죽음을 둘러싼 진상을 밝히기 위해 분투하고 있다. <br>
+                      파국적인 사건 이후 줄곧 실버니아를 더나 있었지만, <br>
+                      3년이 지난 지금 다시 이곳에 돌아왔다.
+                    </p>
+                  </div>
+                </div>
+                <img src="~/assets/images/sub/char-cont-image02.png" alt="탐정 캐릭터" class="char-thumb">
+              </div>
+            </div>
+            <button class="modal-close absolute bottom-[50px] left-[20px] w-[126px] h-[145px] flex justify-center items-center z-[100]" @click="closeModal">
+              &times;
+            </button>
           </div>
+          <!-- //탐정 : 남 -->
+          <!-- 알프 -->
           <div class="acc-box" @click="jumpTo(2)">
-            <div class="char-name">
+            <!-- 캐릭터 이름 -->
+            <div class="char-name overflow-hidden">
               <p class="num text-2xl font-medium text-center">03</p>
+              <span class="name-light"></span>
               <p class="name-tit font-normal">알프</p>
+              <span class="char-thumb block"><img src="~/assets/images/sub/acc-char-thumb03.png" alt="알프"></span>
+              <span class="acc-line"></span>
             </div>
-            <div></div>
+            <!-- 캐릭터 콘텐츠 -->
+            <div class="char-cont relative z-10 w-full h-full overflow-hidden">
+              <div class="inner relative">
+                <div class="info text-white absolute z-10">
+                  <p class="info-tit text-center text-3xl opacity-[.7] font-bold z-10 relative">Character</p>
+                  <div class="info-wrap relative">
+                    <div class="tit-wrap relative z-10">
+                      <p class="tit text-[1.75rem] font-normal">알프</p>
+                      <p class="opacity-[.5] text-[0.94rem] font-normal">주인공</p>
+                    </div>
+                    <p class="text-[1.06rem] font-normal relative z-10 leading-[1.6]">
+                      메이드 협회의 49번 메이드로, 덤벙대고 고집스러운 소녀. <br>
+                      탐정의 선한 본성을 본능적으로 느꼈는지, 항상 그 곁을 떠나려 <br>
+                      하지 않는다. 상식이 없고 가산ㄴ 미숙하며, 또 눈치도 없다. <br>
+                      그녀는 세상 모든 것이 신선한 듯하다.
+                    </p>
+                  </div>
+                </div>
+                <img src="~/assets/images/sub/char-cont-image03.png" alt="알프 캐릭터" class="char-thumb">
+              </div>
+            </div>
+            <button class="modal-close absolute bottom-[50px] left-[20px] w-[126px] h-[145px] flex justify-center items-center z-[100]" @click="closeModal">
+              &times;
+            </button>
           </div>
+          <!-- //알프 -->
+          <!-- 아르고스 -->
           <div class="acc-box" @click="jumpTo(3)">
-            <div class="char-name">
+            <!-- 캐릭터 이름 -->
+            <div class="char-name overflow-hidden">
               <p class="num text-2xl font-medium text-center">04</p>
+              <span class="name-light"></span>
               <p class="name-tit font-normal">아르고스</p>
+              <span class="char-thumb block"><img src="~/assets/images/sub/acc-char-thumb04.png" alt="아르고스"></span>
+              <span class="acc-line"></span>
             </div>
-            <div></div>
+            <!-- 캐릭터 콘텐츠 -->
+            <div class="char-cont relative z-10 w-full h-full overflow-hidden">
+              <div class="inner relative">
+                <div class="info text-white absolute z-10">
+                  <p class="info-tit text-center text-3xl opacity-[.7] font-bold z-10 relative">Character</p>
+                  <div class="info-wrap relative">
+                    <div class="tit-wrap relative z-10">
+                      <p class="tit text-[1.75rem] font-normal">아르고스</p>
+                      <p class="opacity-[.5] text-[0.94rem] font-normal">주인공</p>
+                    </div>
+                    <p class="text-[1.06rem] font-normal relative z-10 leading-[1.6]">
+                      말재간 좋은 바텐더 청년. 성공을 꿈꾸며 야심 차게 메이드 <br>
+                      협회에 가입했으나, 현실은 생각처럼 녹록치 않았다. 그래도 <br>
+                      일은 해야 했기에, 아르코스는 바 카운터 뒤에서 오가는 말에 <br>
+                      귀를 기울이며 때를…… 기다리고 있다.
+                    </p>
+                  </div>
+                </div>
+                <img src="~/assets/images/sub/char-cont-image04.png" alt="아르고스 캐릭터" class="char-thumb">
+              </div>
+            </div>
+            <button class="modal-close absolute bottom-[50px] left-[20px] w-[126px] h-[145px] flex justify-center items-center z-[100]" @click="closeModal">
+              &times;
+            </button>
           </div>
+          <!-- //아르고스 -->
         </div>
-
         <!-- 세로 step들: 실제 스크롤 트리거 -->
         <div class="char-steps" ref="stepsRef">
           <div class="char-step" v-for="i in 4" :key="i"></div>
@@ -370,6 +493,8 @@
     const textDes1inner = textDes1.querySelector(".text-box");
     const textDes2 = descriptionSec.value.querySelector(".text-area.sec02");
     const textDes2inner = textDes2.querySelector(".text-box");
+    const textDes3 = descriptionSec.value.querySelector(".text-area.sec03");
+    const textDes3inner = textDes3.querySelector(".text-box");
 
     let restarted1 = false; // sec01
     let restarted2 = false; // sec02
@@ -397,6 +522,17 @@
     
     .to(textDes2, { opacity: 1, duration: 3 }, "<") //동시 진행
     .fromTo(textDes2inner, { y: "30px", "mask-image": "radial-gradient(circle, black -30%, transparent 60%);"}, { "mask-image": "radial-gradient(circle, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
+    
+    // (04) 두번째 텍스트 사라짐
+    .to(textDes2, { opacity: 0, duration: 4 })
+    .to(textDes2inner, { "mask-image": "radial-gradient(circle, black -30%, transparent 60%);",y: "30px", duration: 1, ease:"ease"}, ">-2")
+
+    // (05) 세번째 텍스트 나타남
+    .to(textDes3, { opacity: 1, duration: 3 }, ">+0.01") //이전 효과 후 바로 실행
+    .fromTo(textDes3inner, { y: "30px", "mask-image": "radial-gradient(circle, black -30%, transparent 60%);"}, { "mask-image": "radial-gradient(circle, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
+
+
+    
     // 두 번째 비디오 리셋
     .add(() => {
     if (!restarted2) {
@@ -519,6 +655,9 @@
     const acc = accordionRef.value.querySelectorAll('.acc-box')
     acc.forEach((box, i) => {
       box.classList.toggle('open', i === index)
+      setTimeout(() => {
+        box.querySelector('.char-cont').classList.toggle('open', i === index)
+      }, 500)
     })
 
     // 2) 세로 step
