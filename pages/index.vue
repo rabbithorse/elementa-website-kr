@@ -965,6 +965,14 @@ const inspireText = ref(null)
 const connectText = ref(null)
 const changeText = ref(null)
 
+/* [OSJ : 2025-12-03] Gsap 초기화 안됨 대응. */
+let ctx
+onBeforeUnmount(() => {
+  if (ctx) {
+    ctx.revert();
+  }
+})
+
 onMounted(() => {
 
   const characterRevealItems = missionSection.value.querySelectorAll('.primary-character');
@@ -974,365 +982,365 @@ onMounted(() => {
   const characterDelayItems = missionSection.value.querySelectorAll('.primary-character--delay');
   const characterDelayArray = Array.from(characterDelayItems);
 
-  const tl = $gsap.timeline({
-    scrollTrigger: {
-      trigger: visualSection.value,
-      start: "top top",
-      pin: true, 
-      //pinSpacing: true,
-      //markers: true,
-      end: () => "+=" + (visualSection.value.offsetHeight * 6),
-    }
-  });
-  tl.to(videoWrap.value,
+  ctx = $gsap.context(() => {
+    const tl = $gsap.timeline({
+      scrollTrigger: {
+        trigger: visualSection.value,
+        start: "top top",
+        pin: true, 
+        //pinSpacing: true,
+        //markers: true,
+        end: () => "+=" + (visualSection.value.offsetHeight * 6),
+      }
+    });
+    tl.to(videoWrap.value,
+      {
+        clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+        scale: 1.4,
+        
+        scrollTrigger: {
+          end: () => "+=" + visualSection.value.offsetHeight,
+          scrub: 1,
+          ease: 'none',
+          pin: true,
+        },
+      }, 0)
+    .to(visualTitle.value, 
     {
-      clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-      scale: 1.4,
-      
+      xPercent: -150,
       scrollTrigger: {
         end: () => "+=" + visualSection.value.offsetHeight,
         scrub: 1,
-        ease: 'none',
-        pin: true,
-      },
+      }
     }, 0)
-  .to(visualTitle.value, 
-  {
-    xPercent: -150,
-    scrollTrigger: {
-      end: () => "+=" + visualSection.value.offsetHeight,
-      scrub: 1,
-    }
-  }, 0)
-  .to(videoSubWrap.value, 
-  {
-    xPercent: 100,
-    clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-    scrollTrigger: {
-      end: () => "+=" + visualSection.value.offsetHeight,
-      scrub: 1,
-    }
-  }, 0)
-  .fromTo(videoWrapLayer.value, {
-    opacity: 0,
-    zIndex: 5,
-    visibility: 'hidden',
-  },
-  {
-    opacity: 0.5,
-    zIndex: 5,
-    visibility: 'visible',
-    ease: 'none',
-    scrollTrigger: {
-      //trigger: videoWrapLayer.value,
-      start: () => "+=" + visualSection.value.offsetHeight,
-      end: () => "+=" + (visualSection.value.offsetHeight * 0.5),
-      scrub: 1,
-    }
-  })
-
-  $gsap.timeline({
-    scrollTrigger: {
-      pin: true,
-      trigger: missionSection.value,
-      start: () => "+=" + (visualSection.value.offsetHeight * 2),
-      scrub: 10,
+    .to(videoSubWrap.value, 
+    {
+      xPercent: 100,
+      clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+      scrollTrigger: {
+        end: () => "+=" + visualSection.value.offsetHeight,
+        scrub: 1,
+      }
+    }, 0)
+    .fromTo(videoWrapLayer.value, {
+      opacity: 0,
+      zIndex: 5,
+      visibility: 'hidden',
     },
-  })
-  .to(missionSection.value, 
-  {
-    yPercent: -100,
-    ease: 'none',
-    scrollTrigger: {
-      start: () => "+=" + (visualSection.value.offsetHeight * 2),
-      end: () => "+=" + (visualSection.value.offsetHeight * 2.5),
+    {
+      opacity: 0.5,
+      zIndex: 5,
+      visibility: 'visible',
+      ease: 'none',
+      scrollTrigger: {
+        //trigger: videoWrapLayer.value,
+        start: () => "+=" + visualSection.value.offsetHeight,
+        end: () => "+=" + (visualSection.value.offsetHeight * 0.5),
+        scrub: 1,
+      }
+    })
+
+    $gsap.timeline({
+      scrollTrigger: {
+        pin: true,
+        trigger: missionSection.value,
+        start: () => "+=" + (visualSection.value.offsetHeight * 2),
+        scrub: 10,
+      },
+    })
+    .to(missionSection.value, 
+    {
+      yPercent: -100,
+      ease: 'none',
+      scrollTrigger: {
+        start: () => "+=" + (visualSection.value.offsetHeight * 2),
+        end: () => "+=" + (visualSection.value.offsetHeight * 2.5),
+        
+      }
+    })
+    .to(characterRevealArray, {
+      x: 0,
+      start: "top top",
+      opacity: 1,
+      duration: 2,
       
-    }
-  })
-  .to(characterRevealArray, {
-    x: 0,
-    start: "top top",
-    opacity: 1,
-    duration: 2,
+    }, "+=0.5")
+    .to(characterDisappearArray, {
+      x: 150,
+      start: "top top",
+      duration: 3,
+      ease: "power2.out",
+    })
+    .to(characterDelayArray, {
+      x: 0,
+      opacity: 1,
+      visibility: 'visible',
+      start: "top top",
+      ease: "power2.out",
+      duration: 3,
+    })
+    .fromTo(missionBox.value, 
+      { yPercent: 100, opacity: 0 },
+      { yPercent: 0, opacity: 1, duration: 0.6, stagger: 0.05, ease: "power2.out" }, ">-0.25"
+    )
+
     
-  }, "+=0.5")
-  .to(characterDisappearArray, {
-    x: 150,
-    start: "top top",
-    duration: 3,
-    ease: "power2.out",
-  })
-  .to(characterDelayArray, {
-    x: 0,
-    opacity: 1,
-    visibility: 'visible',
-    start: "top top",
-    ease: "power2.out",
-    duration: 3,
-  })
-  .fromTo(missionBox.value, 
-    { yPercent: 100, opacity: 0 },
-    { yPercent: 0, opacity: 1, duration: 0.6, stagger: 0.05, ease: "power2.out" }, ">-0.25"
-  )
 
-  
-
-  // 아코디언 섹션
-  const accordionItems = accordionSection.value.querySelectorAll('.accordion-list > *');
-  const accordionArray = Array.from(accordionItems);
-  
-  const accordionTl = $gsap.timeline({
-    scrollTrigger: {
-      trigger: accordionSection.value,
-      start: 'top 80%',
-      end: () => "+=" + (accordionSection.value.offsetHeight * 0.6),
-      //scrub: 1,
-    }
-  })
-  accordionTl.from(accordionArray, {
-    x: 100,
-    y: 50,
-    opacity: 0,
-    stagger: 0.1,
-  })
-
-  const wetheworldTl = $gsap.timeline({
-    scrollTrigger: {
-      trigger: wetheworldSection.value,
-      pin: true,
-      pinSpacing: true,
-      end: () => "+=" + (wetheworldSection.value.offsetHeight * 11),
-      scrub: 1,
-      //markers: true
-    }
-  })
-
-  // WE THE WORLD 섹션
-  const gotopCurtainItems = wetheworldSection.value.querySelectorAll('.gotopCurtain .curtain-item');
-  const godownCurtainItems = wetheworldSection.value.querySelectorAll('.godownCurtain .curtain-item');
-  const gotopCurtainItemArray = Array.from(gotopCurtainItems);
-  const godownCurtainItemArray = Array.from(godownCurtainItems);
-
-  wetheworldTl.to(wetheworldbg1.value, {
-    opacity: 1,
-    visibility: 'visible',
-    start: 'top top',
-    end: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
-  }, 0)
-  .to(weText.value, {
-    color: 'black',
-    start: 'top top',
-    end: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
-  }, 0)
-  .to(theworldText.value, {
-    color: 'black',
-    start: 'top top',
-    end: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
-  }, 0)
-  .to(gotopCurtainItemArray,
-  {
-    start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
-    duration: 0.05,
-    opacity: 0.4,
-    backdropFilter: 'blur(25px)'
-  })
-  .to(godownCurtainItemArray, 
-  {
-    start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
-    duration: 0.05,
-    opacity: 0.4,
-    backdropFilter: 'blur(25px)'
-  }, "<")
-  .to(weText.value, {
-    y: '-80vh',
-    start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
-    end: () => "+=" + (wetheworldSection.value.offsetHeight * 2.5),
-    scrub: 8,
-  })
-  .to(theworldText.value, {
-    y: '80vh',
-    start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
-    end: () => "+=" + (wetheworldSection.value.offsetHeight * 2.5),
-    scrub: 8,
-  }, "<")
-  .to(gotopCurtainItemArray, {
-    yPercent: -100,
-    stagger: 0.03,
-  }, "<")
-  .to(godownCurtainItemArray, {
-    yPercent: 100,
-    stagger: 0.03,
-  }, "<")
-  .to(wetheworldSlogan.value, {
-    height: '100%',
-  }, "-=0.5")
-  .to(inspireText.value, {
-    opacity: 0,
-  }, ">")
-  .to(connectText.value, {
-    opacity: 1,
-    filter: "blur(0px)",
-    duration: 1,
-  })
-  .to(wetheworldbg2.value, {
-    opacity: 1,
-    visibility: 'visible',
-  }, "<")
-  .to(connectText.value, {
-    opacity: 0,
-  }, ">1")
-  .to(changeText.value, {
-    opacity: 1,
-    filter: "blur(0px)",
-    duration: 1,
-  })
-  .to(wetheworldbg3.value, {
-    opacity: 1,
-    visibility: 'visible',
-  }, "<")
-
-
-  // 뉴스룸 섹션
-  function calcTransform(property, value) {
-    let alias = { y: "translateY", x: "translateX", z: "translateZ", rotation: "rotate" };
-    return function (i, target) {
-      let transform = target.style.transform;
-      target.style.transform = (alias[property] || property) + "(" + value + ")";
-      let computed = parseFloat($gsap.getProperty(target, property, property.substr(0, 3) === "rot" ? "deg" : "px", true));
-      target.style.transform = transform;
-      $gsap.getProperty(target, property, "px", true);
-      return computed; 
-    };
-  }
-
-  const mm = $gsap.matchMedia();
-
-  mm.add("(min-width: 1025px)", () => {
-    const elementaKoreaTl = $gsap.timeline({
+    // 아코디언 섹션
+    const accordionItems = accordionSection.value.querySelectorAll('.accordion-list > *');
+    const accordionArray = Array.from(accordionItems);
+    
+    const accordionTl = $gsap.timeline({
       scrollTrigger: {
-        trigger: elementaKoreaSection.value,
+        trigger: accordionSection.value,
         start: 'top 80%',
-        //end: () => "+=" + (elementaKoreaSection.value.offsetHeight * 1.5),
-        scrub: 1,
+        end: () => "+=" + (accordionSection.value.offsetHeight * 0.6),
+        //scrub: 1,
       }
     })
-
-    elementaKoreaTl.to(sliderImg.value, {
-      maxWidth: '30rem',
-      ease: 'power2.out',
-      duration: 5,
+    accordionTl.from(accordionArray, {
+      x: 100,
+      y: 50,
+      opacity: 0,
+      stagger: 0.1,
     })
 
-    const newsroomTl = $gsap.timeline({
+    const wetheworldTl = $gsap.timeline({
       scrollTrigger: {
-        trigger: newsroomSection.value,
-        start: 'top -20%',
+        trigger: wetheworldSection.value,
         pin: true,
-        end: () => "+=" + (newsroomSection.value.offsetHeight * 2),
+        pinSpacing: true,
+        end: () => "+=" + (wetheworldSection.value.offsetHeight * 11),
         scrub: 1,
+        //markers: true
       }
     })
 
-    newsroomTl.fromTo(flowLeft.value, {
-      x: calcTransform("x", "calc(100% - 100vw)"),
-    }, {
-      x: calcTransform("x", "calc(100% - 150vw)"),
-      ease: 'power2.out',
-      duration: 2,
-    }, 0.2)
+    // WE THE WORLD 섹션
+    const gotopCurtainItems = wetheworldSection.value.querySelectorAll('.gotopCurtain .curtain-item');
+    const godownCurtainItems = wetheworldSection.value.querySelectorAll('.godownCurtain .curtain-item');
+    const gotopCurtainItemArray = Array.from(gotopCurtainItems);
+    const godownCurtainItemArray = Array.from(godownCurtainItems);
 
-    newsroomTl.fromTo(flowRight.value, {
-      x: calcTransform("x", "calc(-100% + 100vw)"),
-    }, {
-      x: calcTransform("x", "calc(-100% + 150vw)"),
-      ease: 'power2.out',
-      duration: 2,
-    }, 0.2)
-  });
+    wetheworldTl.to(wetheworldbg1.value, {
+      opacity: 1,
+      visibility: 'visible',
+      start: 'top top',
+      end: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
+    }, 0)
+    .to(weText.value, {
+      color: 'black',
+      start: 'top top',
+      end: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
+    }, 0)
+    .to(theworldText.value, {
+      color: 'black',
+      start: 'top top',
+      end: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
+    }, 0)
+    .to(gotopCurtainItemArray,
+    {
+      start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
+      duration: 0.05,
+      opacity: 0.4,
+      backdropFilter: 'blur(25px)'
+    })
+    .to(godownCurtainItemArray, 
+    {
+      start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
+      duration: 0.05,
+      opacity: 0.4,
+      backdropFilter: 'blur(25px)'
+    }, "<")
+    .to(weText.value, {
+      y: '-80vh',
+      start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
+      end: () => "+=" + (wetheworldSection.value.offsetHeight * 2.5),
+      scrub: 8,
+    })
+    .to(theworldText.value, {
+      y: '80vh',
+      start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
+      end: () => "+=" + (wetheworldSection.value.offsetHeight * 2.5),
+      scrub: 8,
+    }, "<")
+    .to(gotopCurtainItemArray, {
+      yPercent: -100,
+      stagger: 0.03,
+    }, "<")
+    .to(godownCurtainItemArray, {
+      yPercent: 100,
+      stagger: 0.03,
+    }, "<")
+    .to(wetheworldSlogan.value, {
+      height: '100%',
+    }, "-=0.5")
+    .to(inspireText.value, {
+      opacity: 0,
+    }, ">")
+    .to(connectText.value, {
+      opacity: 1,
+      filter: "blur(0px)",
+      duration: 1,
+    })
+    .to(wetheworldbg2.value, {
+      opacity: 1,
+      visibility: 'visible',
+    }, "<")
+    .to(connectText.value, {
+      opacity: 0,
+    }, ">1")
+    .to(changeText.value, {
+      opacity: 1,
+      filter: "blur(0px)",
+      duration: 1,
+    })
+    .to(wetheworldbg3.value, {
+      opacity: 1,
+      visibility: 'visible',
+    }, "<")
 
-  mm.add("(max-width: 1024px)", () => {
-    const elementaKoreaTl = $gsap.timeline({
+
+    // 뉴스룸 섹션
+    function calcTransform(property, value) {
+      let alias = { y: "translateY", x: "translateX", z: "translateZ", rotation: "rotate" };
+      return function (i, target) {
+        let transform = target.style.transform;
+        target.style.transform = (alias[property] || property) + "(" + value + ")";
+        let computed = parseFloat($gsap.getProperty(target, property, property.substr(0, 3) === "rot" ? "deg" : "px", true));
+        target.style.transform = transform;
+        $gsap.getProperty(target, property, "px", true);
+        return computed; 
+      };
+    }
+
+    const mm = $gsap.matchMedia();
+
+    mm.add("(min-width: 1025px)", () => {
+      const elementaKoreaTl = $gsap.timeline({
+        scrollTrigger: {
+          trigger: elementaKoreaSection.value,
+          start: 'top 80%',
+          //end: () => "+=" + (elementaKoreaSection.value.offsetHeight * 1.5),
+          scrub: 1,
+        }
+      })
+
+      elementaKoreaTl.to(sliderImg.value, {
+        maxWidth: '30rem',
+        ease: 'power2.out',
+        duration: 5,
+      })
+
+      const newsroomTl = $gsap.timeline({
+        scrollTrigger: {
+          trigger: newsroomSection.value,
+          start: 'top -20%',
+          pin: true,
+          end: () => "+=" + (newsroomSection.value.offsetHeight * 2),
+          scrub: 1,
+        }
+      })
+
+      newsroomTl.fromTo(flowLeft.value, {
+        x: calcTransform("x", "calc(100% - 100vw)"),
+      }, {
+        x: calcTransform("x", "calc(100% - 150vw)"),
+        ease: 'power2.out',
+        duration: 2,
+      }, 0.2)
+
+      newsroomTl.fromTo(flowRight.value, {
+        x: calcTransform("x", "calc(-100% + 100vw)"),
+      }, {
+        x: calcTransform("x", "calc(-100% + 150vw)"),
+        ease: 'power2.out',
+        duration: 2,
+      }, 0.2)
+    });
+
+    mm.add("(max-width: 1024px)", () => {
+      const elementaKoreaTl = $gsap.timeline({
+        scrollTrigger: {
+          trigger: sliderImg.value,
+          start: 'top 80%',
+          //end: () => "+=" + (elementaKoreaSection.value.offsetHeight * 1.5),
+          scrub: 1,
+        }
+      })
+
+      elementaKoreaTl.to(sliderImg.value, {
+        maxWidth: '38%',
+        ease: 'power2.out',
+        duration: 5,
+      })
+    });
+
+    mm.add("(min-width: 768px) and (max-width: 1023px)", () => {
+      const newsroomTl = $gsap.timeline({
+        scrollTrigger: {
+          trigger: newsroomSection.value,
+          start: 'top -20%',
+          pin: true,
+          end: () => "+=" + (newsroomSection.value.offsetHeight * 2),
+          scrub: 1,
+        }
+      })
+
+      newsroomTl.fromTo(flowLeft.value, {
+        x: calcTransform("x", "5%"),
+      }, {
+        x: calcTransform("x", "60%"),
+        ease: 'power2.out',
+        duration: 2,
+      }, 0.2)
+
+      newsroomTl.fromTo(flowRight.value, {
+        x: calcTransform("x", "3%"),
+      }, {
+        x: calcTransform("x", "-60%"),
+        ease: 'power2.out',
+        duration: 2,
+      }, 0.2)
+    })
+
+    mm.add("(max-width: 769px)", () => {
+      const newsroomTl = $gsap.timeline({
+        scrollTrigger: {
+          trigger: newsroomSection.value,
+          start: 'top 10%',
+          pin: true,
+          end: () => "+=" + (newsroomSection.value.offsetHeight * 3),
+          scrub: 1,
+        }
+      })
+
+      newsroomTl.fromTo(flowLeft.value, {
+        x: calcTransform("x", "1%"),
+      }, {
+        x: calcTransform("x", "-88%"),
+        ease: 'power2.out',
+        duration: 2,
+      }, 0.2)
+    });
+
+    // 카드 스크롤 애니메이션
+    const cardList = document.querySelectorAll('.careers-section .swiper');
+
+    // 카드 스크롤 애니메이션
+    $gsap.timeline({
       scrollTrigger: {
-        trigger: sliderImg.value,
-        start: 'top 80%',
-        //end: () => "+=" + (elementaKoreaSection.value.offsetHeight * 1.5),
-        scrub: 1,
-      }
-    })
-
-    elementaKoreaTl.to(sliderImg.value, {
-      maxWidth: '38%',
-      ease: 'power2.out',
-      duration: 5,
+        trigger: cardList,
+        start: 'top 90%',
+        end: 'top 90%',
+        // markers: true
+    }
+    }).fromTo(cardList, 
+      { y: '30%', opacity: 0 }, 
+      { y: '0%', opacity: 1, duration: 1.5, ease: 'ease'   
     })
   });
-
-  mm.add("(min-width: 768px) and (max-width: 1023px)", () => {
-    const newsroomTl = $gsap.timeline({
-      scrollTrigger: {
-        trigger: newsroomSection.value,
-        start: 'top -20%',
-        pin: true,
-        end: () => "+=" + (newsroomSection.value.offsetHeight * 2),
-        scrub: 1,
-      }
-    })
-
-    newsroomTl.fromTo(flowLeft.value, {
-      x: calcTransform("x", "5%"),
-    }, {
-      x: calcTransform("x", "60%"),
-      ease: 'power2.out',
-      duration: 2,
-    }, 0.2)
-
-    newsroomTl.fromTo(flowRight.value, {
-      x: calcTransform("x", "3%"),
-    }, {
-      x: calcTransform("x", "-60%"),
-      ease: 'power2.out',
-      duration: 2,
-    }, 0.2)
-  })
-
-  mm.add("(max-width: 769px)", () => {
-    const newsroomTl = $gsap.timeline({
-      scrollTrigger: {
-        trigger: newsroomSection.value,
-        start: 'top 10%',
-        pin: true,
-        end: () => "+=" + (newsroomSection.value.offsetHeight * 3),
-        scrub: 1,
-      }
-    })
-
-    newsroomTl.fromTo(flowLeft.value, {
-      x: calcTransform("x", "1%"),
-    }, {
-      x: calcTransform("x", "-88%"),
-      ease: 'power2.out',
-      duration: 2,
-    }, 0.2)
-  });
-
-  // 카드 스크롤 애니메이션
-  const cardList = document.querySelectorAll('.careers-section .swiper');
-
-  // 카드 스크롤 애니메이션
-  $gsap.timeline({
-    scrollTrigger: {
-      trigger: cardList,
-      start: 'top 90%',
-      end: 'top 90%',
-      // markers: true
-  }
-  }).fromTo(cardList, 
-    { y: '30%', opacity: 0 }, 
-    { y: '0%', opacity: 1, duration: 1.5, ease: 'ease'   
-  })
-
 })
-
 
 
 const nodeVersion = process.version
