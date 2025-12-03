@@ -34,7 +34,7 @@
       onEnter: () => {
         $gsap.to(primaryChar.value, {
           x: '0%',
-          duration: 3,
+          duration: 2,
           ease: 'power4.out',
         });
       }

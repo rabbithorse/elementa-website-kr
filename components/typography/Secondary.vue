@@ -27,7 +27,7 @@
         rotateX: 0,
         ease: 'power4.out',
         stagger: 0.04
-      }, "+=0.5");
+      }, "+=");
     });
 
 </script>
