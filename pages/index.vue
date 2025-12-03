@@ -1062,26 +1062,26 @@ onMounted(() => {
       x: 0,
       start: "top top",
       opacity: 1,
-      duration: 2,
+      duration: 0.2,
       
     }, "+=0.5")
     .to(characterDisappearArray, {
       x: 150,
       start: "top top",
-      duration: 3,
+      duration: 0.2,
       ease: "power2.out",
-    })
+    }, ">0.1")
     .to(characterDelayArray, {
       x: 0,
       opacity: 1,
       visibility: 'visible',
       start: "top top",
       ease: "power2.out",
-      duration: 3,
-    })
+      duration: 0.2,
+    }, ">-0.05")
     .fromTo(missionBox.value, 
       { yPercent: 100, opacity: 0 },
-      { yPercent: 0, opacity: 1, duration: 0.6, stagger: 0.05, ease: "power2.out" }, ">-0.25"
+      { yPercent: 0, opacity: 1, duration: 0.2, stagger: 0.05, ease: "power2.out" }, ">-0.25"
     )
 
     

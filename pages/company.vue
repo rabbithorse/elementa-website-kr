@@ -156,8 +156,48 @@
       </div>
       <div class="h-screen flex items-center">
         <div class="section-heading">
-          <p>혁신적 경험으로 게임의 기준을 새로 쓰고, <br>협력과 도전으로 문화를 확장하며, <br>전 세계가 공감할 지속 가능한 감동을 만드는 문화·패러다임의 선도자로 성장하겠습니다.</p>
-          <h2>ELEMENTA</h2>
+          <p class="text-white">혁신적 경험으로 게임의 기준을 새로 쓰고, <br>협력과 도전으로 문화를 확장하며, <br>전 세계가 공감할 지속 가능한 감동을 만드는 문화·패러다임의 선도자로 성장하겠습니다.</p>
+          <h2 class="text-white">ELEMENTA</h2>
+        </div>
+      </div>
+      <div class="company-scroll " ref="scrollSection">
+        <div class="heading flex items-center justify-center w-full gap-x-7" ref="scrollFixedHeading">
+          <div class="heading-wrap w-full h-screen flex flex-col justify-center items-center">
+            <h2 class="heading-title text-white text-[6.25rem] font-black leading-[1em] -mt-3">WE</h2>
+            <span class="inline-block w-[25px]"><img src="@/assets/images/sub/company-scrollsection-slash.png" alt=""></span>
+            <p class="text-white text-[1.125rem] text-left">
+              <TypographySecondary>우리는 플레이를 통해 세상을 새롭게 정의합니다.</TypographySecondary> <br>
+              <TypographySecondary>게임을 넘어, 모두가 공유할 수 있는 문화와 경험을 만들어갑니다.</TypographySecondary> <br>
+              <TypographySecondary>끊임없는 도전과 창의적인 시도로 플레이의 미래를 디자인하고,</TypographySecondary> <br>
+              <TypographySecondary>그 여정을 전 세계 유저와 함께 나눕니다.</TypographySecondary>
+            </p>
+          </div>
+        </div>
+        <div class="content-scroll-area flex flex-col gap-y-4" ref="contentScrollArea">
+          <figure class="content-card w-fit">
+            <div class="inner-img"><img src="@/assets/images/sub/company-scroll-card01.png" alt=""></div>
+          </figure>
+          <figure class="content-card w-fit">
+            <div class="inner-img"><img src="@/assets/images/sub/company-scroll-card02.png" alt=""></div>
+          </figure>
+          <figure class="content-card w-fit">
+            <div class="inner-img"><img src="@/assets/images/sub/company-scroll-card03.png" alt=""></div>
+          </figure>
+          <figure class="content-card w-fit">
+            <div class="inner-img"><img src="@/assets/images/sub/company-scroll-card04.png" alt=""></div>
+          </figure>
+          <figure class="content-card w-fit">
+            <div class="inner-img"><img src="@/assets/images/sub/company-scroll-card01.png" alt=""></div>
+          </figure>
+          <figure class="content-card w-fit">
+            <div class="inner-img"><img src="@/assets/images/sub/company-scroll-card02.png" alt=""></div>
+          </figure>
+          <figure class="content-card w-fit">
+            <div class="inner-img"><img src="@/assets/images/sub/company-scroll-card03.png" alt=""></div>
+          </figure>
+          <figure class="content-card w-fit">
+            <div class="inner-img"><img src="@/assets/images/sub/company-scroll-card04.png" alt=""></div>
+          </figure>
         </div>
       </div>
     </section>
@@ -174,6 +214,9 @@
   const bgTitle = ref(null);
   const missionImgWrap = ref(null);
   const missionTextWrap = ref(null);
+  const scrollSection = ref(null);
+  const scrollFixedHeading = ref(null);
+  const contentScrollArea = ref(null);
 
   onMounted(() => {
     let cards = missionSection.value.querySelectorAll('.mission-img-wrapper .card');
@@ -203,7 +246,7 @@
         scrub: true,
         onUpdate: (self) => {
           const p = self.progress;   
-          console.log(self.progress);
+          //console.log(self.progress);
           if (p < 0.2) return;    
           const local = p / 0.9;               // 0 ~ 1
           const idx = Math.min(
@@ -246,8 +289,80 @@
 
     function updateZIndex(active, direction) {
       // 원하는 패턴에 맞춰 넣으면 됨
-      console.log("현재 카드:", active, "방향:", direction);
+      //console.log("현재 카드:", active, "방향:", direction);
     }
+
+    
+
+    $gsap.timeline({
+      scrollTrigger: {
+        trigger: scrollSection.value,
+        start: 'top top',
+        end: "+=800%",
+        scrub: 2,
+        // markers: true,
+        pin: scrollFixedHeading.value,
+        pinSpacing: false
+      },
+    })
+
+    const item = document.querySelectorAll('.content-card')
+
+    item.forEach((el, i) => {
+      // $gsap.to(el, {
+      //   scrollTrigger: {
+      //     trigger: el,
+      //     start: '40% bottom',
+      //     end: '40% top',
+      //     // markers: true,
+      //     onEnter: () => el.classList.add('on'),
+      //   }
+      // })
+
+      const cardTl = $gsap.timeline({
+        scrollTrigger: {
+          trigger: el,
+          start: "top 90%",
+          duration: 1,
+          scrub: true,
+        }
+      });
+
+      const isOdd = (i % 2 === 1);
+      const xOffset = isOdd ? ((window.innerWidth / 2.3) + 600) : ((window.innerWidth / 2.3) - 600); // 포물선 좌우 이동량
+      const midX = isOdd ? ((window.innerWidth / 2.3) + 100) : ((window.innerWidth / 2.3) - 300);    // 중간 위치 살짝 이동
+
+      // 포물선 궤적 만들기
+      cardTl.set(el,
+        {
+          x: (window.innerWidth) / 2,           // 화면 중앙 정렬되어 있다고 가정
+          opacity: 0,
+          
+        })
+      .to(el, 
+        {
+          x: xOffset,     // 좌우로 벌어지기
+          opacity: 1,
+          ease: "power2.out",
+          duration: 0.9
+        })
+      .to(el, 
+        {
+          x: (window.innerWidth) / 2,        // 위로 상승
+          ease: "none",
+        }, 0.9)
+
+    })
+
+    // const scrollTl = $gsap.timeline({
+    //   scrollTrigger: {
+    //     pin: true,
+    //     trigger: scrollSection.value,
+    //     start: 'top top',
+    //     end: "+=300%",
+    //     scrub: true,
+    //   }
+    // })
     
   })
 
@@ -262,5 +377,10 @@
     position: absolute;
     left: 0; 
     top: 0;
+  }
+
+  .company-scroll .content-card {
+
+
   }
 </style>
