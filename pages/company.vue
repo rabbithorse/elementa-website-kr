@@ -572,14 +572,13 @@
         }, 1)
     })
 
-    $gsap.fromTo(companyCiSection, 
-      { y: '30%', opacity: 0 }, 
+    $gsap.fromTo(companyCiSection.value, 
+      { y: '20%', opacity: 0 }, 
       { y: '0%', opacity: 1, duration: 1.5, ease: 'ease',
         scrollTrigger: {
           trigger: companyCiSection.value,
-          start: 'top 90%',
-          end: 'top 90%',
-          scrub: true,
+          start: 'top 80%',
+          end: 'top 80%',
       }
     });
 
