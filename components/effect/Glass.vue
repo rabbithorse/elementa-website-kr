@@ -16,7 +16,7 @@
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25), inset 0 0 1px rgba(255, 255, 255, 0.22);
   overflow: hidden;
-  transition: all 0.25s ease;
+  /* transition: all 0.25s ease; */
 }
 
 .glass:hover {
@@ -24,7 +24,7 @@
   box-shadow:
     0 10px 24px rgba(0, 0, 0, 0.28),
     inset 0 0 2px rgba(255, 255, 255, 0.35);
-  transform: translateY(-2px);
+  /* transform: translateY(-2px); */
 }
 
 .glass-deep::before {
