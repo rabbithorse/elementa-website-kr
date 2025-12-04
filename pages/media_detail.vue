@@ -12,7 +12,7 @@
             <div class="w-full mx-auto aspect-video">
               <iframe
                 class="w-full h-full"
-                src="https://www.youtube.com/embed/M7AHYpILIsc"
+                src="https://www.youtube.com/embed/iFXoYNc9-vA?si=KRehctRQC7wTU-39"
                 title="YouTube video player"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

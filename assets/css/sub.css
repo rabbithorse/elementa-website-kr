@@ -397,7 +397,18 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 .description .text-area.sec01 #openChar {position:absolute; right:30px; bottom: 90px;}
 .description .text-area.sec01 .inner {width: 350px;}
 
-/* 캐릭터 모달 */
+/* 게임 설명 */
+.description .text-area .text-box.game-info {max-width: 500px; width: 100%; margin-right: 50px; margin-top: 160px; background: url('~/assets/images/sub/des-game-info-line01.svg') no-repeat top / contain, url('~/assets/images/sub/des-game-info-line02.svg') no-repeat bottom / contain;}
+.description .text-area .text-box.game-info.left {margin-right:0; margin-left: 50px;}
+.description .text-area .text-box.game-info.bottom {margin-top: 0; margin-bottom: 80px;}
+.description .text-area .text-box.game-info::before {content:''; display:block; width: 100%; height: 100%; opacity: 0.6; background: #000; filter: blur(35px); position: absolute; left: 0; top: 0; mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);}
+.description .text-area .text-box.game-info .game-info-title {background: url('~/assets/images/sub/des-game-info-line03.svg') no-repeat bottom / contain; padding: 14px 0 8px 80px;}
+.description .text-area .text-box.game-info .game-info-title span {background: url('/_nuxt/assets/images/sub/char-info-tit-bg04.svg') no-repeat bottom / contain; padding: 0 0 5px 12px;}
+.description .text-area .text-box.game-info .game-info-title p {font-family: 'Eulyoo1945'; padding: 3px 0 0 12px; line-height: 1.3;}
+.description .text-area .text-box.game-info .game-info-title::before {content:''; display:block; width: 84px; height: 84px; background: url('~/assets/images/sub/game-info-symbol.svg') no-repeat center / cover; position: absolute; left: 0; top: 50%; transform: translateY(-50%);}
+.description .text-area .text-box.game-info .game-info-cont p {line-height: 1.5;}
+
+/*** 캐릭터 모달 ***/
 .character-intro-modal .modal-inner {scrollbar-width: none;   /* Firefox */}
 .character-intro-modal .modal-inner::-webkit-scrollbar {display: none; /* Chrome, Safari, Opera */}
 
@@ -494,9 +505,19 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
   border-color: #e0a14f;
 }
 
-
-
 /* .character-wrap {position: fixed;  left: 0; top: 0;} */
+
+
+/* section 04 */
+.youtube-area .video-wrap {height: 100vh;}
+.youtube-area .video-wrap .inner-video::before,
+.youtube-area .video-wrap .inner-video::after {content:''; display: block; width: 7px; height: 958px; background: url('~/assets/images/sub/trailer-line-ver-left.svg') no-repeat center / cover; position: absolute; left: 0; top: 0;}
+.youtube-area .video-wrap .inner-video::after {left: auto; right: 0;}
+.youtube-area .video-wrap .inner-video .video-box {max-width: 1050px; width:100%; padding: 2px;}
+.youtube-area .video-wrap .inner-video .video-box::before {content:''; position: absolute; inset: 0;  padding: 2px; border-radius: inherit; background: linear-gradient(180deg, rgba(179, 149, 85, 0.90) 0%, rgba(204, 183, 99, 0.90) 49.99%, rgba(183, 149, 69, 0.90) 50%, rgba(204, 181, 112, 0.90) 100%),  rgba(179, 149, 85, 0.90); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude;}
+.youtube-area .video-wrap .inner-video .dumy-box-left,
+.youtube-area .video-wrap .inner-video .dumy-box-right {width: 331px; height: 25px; background: url('~/assets/images/sub/trailer-line-left.svg') no-repeat center / cover;}
+.youtube-area .video-wrap .inner-video .dumy-box-right {background: url('~/assets/images/sub/trailer-line-right.svg') no-repeat center / cover;}
 
 /***** responsive, 순서 변경 금지*****/
 

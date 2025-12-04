@@ -58,27 +58,107 @@
       <!-- video 1 -->
       <div class="movie-bg-des absolute sec01 w-full top-0 left-0 z-20">
         <video class="video-bg" autoplay loop muted playsinline preload="auto">
-          <source src="~/assets/videos/main-fly.mp4" type="video/mp4" />
+          <source src="~/assets/videos/game_visuals_01.mp4" type="video/mp4" />
         </video>
       </div>
       <!-- video 2 -->
       <div class="movie-bg-des absolute sec02 w-full top-0 left-0 z-10">
         <video class="video-bg" autoplay loop muted playsinline preload="auto">
-          <source src="~/assets/videos/main-game-silverpalace.mp4" type="video/mp4" />
+          <source src="~/assets/videos/game_visuals_02.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <!-- video 3 -->
+      <div class="movie-bg-des absolute sec03 w-full top-0 left-0 z-10">
+        <video class="video-bg" autoplay loop muted playsinline preload="auto">
+          <source src="~/assets/videos/game_visuals_03.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <!-- video 4 -->
+      <div class="movie-bg-des absolute sec04 w-full top-0 left-0 z-10">
+        <video class="video-bg" autoplay loop muted playsinline preload="auto">
+          <source src="~/assets/videos/game_visuals_04.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <!-- video 5 -->
+      <div class="movie-bg-des absolute sec05 w-full top-0 left-0 z-10">
+        <video class="video-bg" autoplay loop muted playsinline preload="auto">
+          <source src="~/assets/videos/game_visuals_05.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <!-- video 6 -->
+      <div class="movie-bg-des absolute sec06 w-full top-0 left-0 z-10">
+        <video class="video-bg" autoplay loop muted playsinline preload="auto">
+          <source src="~/assets/videos/game_visuals_06.mp4" type="video/mp4" />
         </video>
       </div>
 
-      <!-- text 3 -->
-      <div class="text-area sec03 flex w-full justify-center items-center z-40 absolute top-0 left-0">
-        <div class="text-box text-center">
-          <span class="text-2xl font-semibold">독창적 세계관</span>
-          <div class="text-white text-2xl leading-[1.7] py-[25px] mt-[30px] sub-text type2 relative">
-            <p class="text-white text-[3.44rem] title tracking-[-1.65px] relative font-semibold z-10">
-            <span class="absolute w-full h-full left-0 top-0 block"></span>
-            독창적 세계관 내용입니다</p>
+      <!-- text 6 -->
+      <Container>
+      <div class="text-area sec06 flex w-full justify-end items-end z-40 absolute top-0 left-0">
+        <div class="text-box game-info bottom relative">
+          <div class="game-info-title relative z-10 left">
+            <span class="block text-lg">강력한 액션과 짜릿한 쾌감</span>
+            <p class="text-white text-[1.75rem] font-normal">스타일리시 배틀</p>
+          </div>
+          <div class="game-info-cont relative z-10 py-[2.5rem] px-[1.88rem]">
+            <p class="text-white text-[1.06rem]">각기 다른 개성을 가진 동료들과 함께 싸우고, <br>속도감 넘치는 액션과 타격감으로 전장을 지배하라.</p>
+            <p class="text-white text-[1.06rem] pt-[1.25rem]">한 발의 총성과 한 번의 선택이 역사를 다시 쓰는 <br>짜릿한 경험이 펼쳐진다.</p>
           </div>
         </div>
       </div>
+      </Container>
+      <!-- text 5 -->
+      <div class="text-area sec05 flex w-full justify-center items-center z-40 absolute top-0 left-0">
+        <div class="text-box text-center">
+          <span class="text-2xl font-semibold">강력한 액션과 짜릿한 쾌감</span>
+          <div class="text-white text-2xl leading-[1.7] py-[25px] mt-[30px] sub-text type2 relative">
+            <p class="text-white text-[3.44rem] title tracking-[-1.65px] relative font-semibold z-10">
+            <span class="absolute w-full h-full left-0 top-0 block"></span>
+            콤보와 QTE로 완성되는 스타일리시 배틀</p>
+          </div>
+        </div>
+      </div>
+      <!-- text 4_2 -->
+      <Container>
+      <div class="text-area sec04_2 flex w-full items-start z-40 absolute top-0 left-0">
+        <div class="text-box game-info left relative">
+          <div class="game-info-title relative z-10 left">
+            <span class="block text-lg">압도적 비주얼과 시대적 배경</span>
+            <p class="text-white text-[1.75rem] font-normal">살아 숨 쉬는 배경</p>
+          </div>
+          <div class="game-info-cont relative z-10 py-[2.5rem] px-[1.88rem]">
+            <p class="text-white text-[1.06rem]">언리얼 엔진 5로 구현된 빅토리아풍의 대도시 실버니아.</p>
+            <p class="text-white text-[1.06rem] pt-[1.25rem]">찬란한 번영과 몰락의 그림자가 교차하는 실버니아에서 <br>압도적 스케일의 드라마가 펼쳐진다.</p>
+          </div>
+        </div>
+      </div>
+      </Container>
+      <!-- text 4 -->
+      <div class="text-area sec04 flex w-full justify-center items-center z-40 absolute top-0 left-0">
+        <div class="text-box text-center">
+          <span class="text-2xl font-semibold">압도적 비주얼과 시대적 배경</span>
+          <div class="text-white text-2xl leading-[1.7] py-[25px] mt-[30px] sub-text type2 relative">
+            <p class="text-white text-[3.44rem] title tracking-[-1.65px] relative font-semibold z-10">
+            <span class="absolute w-full h-full left-0 top-0 block"></span>
+            압도적 스케일의 살아 숨 쉬는 배경</p>
+          </div>
+        </div>
+      </div>
+      <!-- text 3 -->
+      <Container>
+      <div class="text-area sec03 flex w-full justify-end items-start z-40 absolute top-0 left-0">
+        <div class="text-box game-info relative">
+          <div class="game-info-title relative z-10">
+            <span class="block text-lg">독창적 세계관</span>
+            <p class="text-white text-[1.75rem] font-normal">미스터리 판타지</p>
+          </div>
+          <div class="game-info-cont relative z-10 py-[2.5rem] px-[1.88rem]">
+            <p class="text-white text-[1.06rem]">숨 막히는 사건, 교차하는 음모, <br>그리고 3년 만에 돌아온 탐정.</p>
+            <p class="text-white text-[1.06rem] pt-[1.25rem]">현실과 우화가 겹쳐진 실버니아에서, <br>플레이어는 진실을 찾아내고 도시의 운명을 뒤바꾼다. <br>누구도 예상치 못한 반전과 깊이 있는 스토리가 당신을 기다린다.</p>
+          </div>
+        </div>
+      </div>
+      </Container>
       <!-- text 2 -->
       <div class="text-area sec02 flex w-full justify-center items-center z-40 absolute top-0 left-0">
         <div class="text-box text-center">
@@ -102,6 +182,31 @@
           사교와 조사, 판단 그리고 전투, 당신이 그 총알 한 발의 진실을 찾아낸다면, 자신은 물론, 모든 이들의 운명까지 결정짓게 될 것이다.</div>
         </div>
         <ButtonsBasic color="yellow" size="lg" id="openChar" @click="openModal">캐릭터 소개</ButtonsBasic>
+      </div>
+    </section>
+    <!-- section04 : 유튜브 영상-->
+    <section class="youtube-area relative overflow-hidden" ref="youtubeArea">
+      <div class="video-wrap w-full flex justify-center items-center">
+        <Container>
+        <div class="inner-video w-full h-full flex justify-center items-center relative">
+          <div class="dumy-box-left"></div>
+          <div class="video-box relative">
+            <div class="movie-frame relative z-10">
+              <div class="w-full mx-auto aspect-video">
+                <iframe
+                  class="w-full h-full"
+                  src="https://www.youtube.com/embed/iFXoYNc9-vA?si=KRehctRQC7wTU-39"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="dumy-box-right"></div>
+        </div>
+        </Container>
       </div>
     </section>
 
@@ -281,14 +386,14 @@
 
   const { $gsap, $ScrollTrigger, $lenis } = useNuxtApp()
 
-  // section 01 refs
+  // section 01 refs - 인트로
   const introSection = ref(null)
   const movieBg = ref(null)
   const bgVideo = ref(null)
   const panel02 = ref(null)
   const titleArea = ref(null)
 
-  // section 02 refs
+  // section 02 refs - 컷신
   const cutScene = ref(null)
 
   const cutLine01 = ref(null)
@@ -302,8 +407,11 @@
   // 캐릭터 소개 모달 열기 함수
   const showCharModal = ref(false)
 
-  // section 03 refs
+  // section 03 refs - 게임소개
   const descriptionSec = ref(null)
+
+  // section 04 refs - 유튜브 영상
+  const youtubeArea = ref(null)
 
   // 내부 텍스트를 글자 단위로 분리하는 함수
   const splitText = (element) => {
@@ -487,61 +595,99 @@
     const movieDimmed = descriptionSec.value.querySelector(".movie-dimmed");
     const videoDes1 = descriptionSec.value.querySelector(".movie-bg-des.sec01");
     const videoDes2 = descriptionSec.value.querySelector(".movie-bg-des.sec02");
-    const video1 = videoDes1.querySelector("video");
-    const video2 = videoDes2.querySelector("video");
+    const videoDes3 = descriptionSec.value.querySelector(".movie-bg-des.sec03");
+    const videoDes4 = descriptionSec.value.querySelector(".movie-bg-des.sec04");
+    const videoDes5 = descriptionSec.value.querySelector(".movie-bg-des.sec05");
+    const videoDes6 = descriptionSec.value.querySelector(".movie-bg-des.sec06");
     const textDes1 = descriptionSec.value.querySelector(".text-area.sec01");
     const textDes1inner = textDes1.querySelector(".text-box");
     const textDes2 = descriptionSec.value.querySelector(".text-area.sec02");
     const textDes2inner = textDes2.querySelector(".text-box");
     const textDes3 = descriptionSec.value.querySelector(".text-area.sec03");
     const textDes3inner = textDes3.querySelector(".text-box");
-
-    let restarted1 = false; // sec01
-    let restarted2 = false; // sec02
+    const textDes4 = descriptionSec.value.querySelector(".text-area.sec04"); 
+    const textDes4inner = textDes4.querySelector(".text-box");
+    const textDes4_2 = descriptionSec.value.querySelector(".text-area.sec04_2");
+    const textDes4inner_2 = textDes4_2.querySelector(".text-box");
+    const textDes5 = descriptionSec.value.querySelector(".text-area.sec05"); 
+    const textDes5inner = textDes5.querySelector(".text-box");
+    const textDes6 = descriptionSec.value.querySelector(".text-area.sec06"); 
+    const textDes6inner = textDes6.querySelector(".text-box");
 
     const desBgTimeline = $gsap.timeline()
     // (01) 비디오 딤드 투명해지면서 첫번째 비디오 밝아짐, 첫번째 텍스트 나타남
-    .fromTo(movieDimmed, { opacity: 1 }, { opacity: .5, duration: 4 })
+    .fromTo(movieDimmed, { opacity: 1 }, { opacity: 0, duration: 4 })
     .to(textDes1, { opacity: 1, duration: 3}, "<") // 동시 진행
     .fromTo(textDes1inner, { y: "30px", "mask-image": "radial-gradient(circle, black -30%, transparent 60%);" }, { "mask-image": "radial-gradient(circle, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
-    // 첫 번째 비디오 리셋
-    .add(() => {
-    if (!restarted1) {
-      video1.currentTime = 0;
-      video1.play();
-      restarted1 = true;
-    }
-    }, "videoRestart1")  // label #1
+  
     // (02) 첫번째 비디오 서서히 사라짐, 첫번째 텍스트 사라짐
     .to(videoDes1, { opacity: 0, duration: 4 })
     .to(textDes1inner, { "mask-image": "radial-gradient(circle, black -30%, transparent 60%);",y: "30px", duration: 1, ease:"ease"}, ">-2") // 이전 효과 후 바로 실행
     .to(textDes1, { opacity: 0, duration: 1.5 }, ">-2") // 이전 효과 후 바로 실행
     .to(textDes1, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
-    // (03) 두번째 비디오 서서히 나타남, 두번째 텍스트 나타남
-    .fromTo(videoDes2, { opacity: 0 }, { opacity: 1, duration: 4 },">-1") // 이전 효과 진행 후 바로 실행
     
+    // (03) 두번째 비디오 서서히 나타남, 두번째 텍스트 나타남
+    .fromTo(videoDes2, { opacity: 0 }, { opacity: 1, duration: 4 },">-2") // 이전 효과 진행 후 바로 실행
     .to(textDes2, { opacity: 1, duration: 3 }, "<") //동시 진행
     .fromTo(textDes2inner, { y: "30px", "mask-image": "radial-gradient(circle, black -30%, transparent 60%);"}, { "mask-image": "radial-gradient(circle, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
     
-    // (04) 두번째 텍스트 사라짐
-    .to(textDes2, { opacity: 0, duration: 4 })
+    // (04) 두번째 비디오 서서히 사라짐. 두번째 텍스트 사라짐
+    .to(videoDes2, { opacity: 0, duration: 4 })
     .to(textDes2inner, { "mask-image": "radial-gradient(circle, black -30%, transparent 60%);",y: "30px", duration: 1, ease:"ease"}, ">-2")
-
-    // (05) 세번째 텍스트 나타남
-    .to(textDes3, { opacity: 1, duration: 3 }, ">+0.01") //이전 효과 후 바로 실행
-    .fromTo(textDes3inner, { y: "30px", "mask-image": "radial-gradient(circle, black -30%, transparent 60%);"}, { "mask-image": "radial-gradient(circle, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
-
-
+    .to(textDes2, { opacity: 0, duration: 1.5 }, ">-2") // 이전 효과 후 바로 실행
+    .to(textDes2, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
     
-    // 두 번째 비디오 리셋
-    .add(() => {
-    if (!restarted2) {
-      video2.currentTime = 0;
-      video2.play();
-      restarted2 = true;
-    }
-    }, "videoRestart2")  // label #2
+    // (05) 세번째 비디오 서서히 나타남, 세번째 텍스트 나타남
+    .fromTo(videoDes3, { opacity: 0 }, { opacity: 1, duration: 4 },">-2") // 이전 효과 진행 후 바로 실행
+    .to(textDes3, { opacity: 1, duration: 3 }, "<") //동시 진행
+    .fromTo(textDes3inner, { y: "30px", "mask-image": "linear-gradient(to right, black -30%, transparent 60%);"}, { "mask-image": "linear-gradient(to right, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
     
+    // (06) 세번째 비디오 서서히 사라짐, 세번째 텍스트 사라짐
+    .to(videoDes3, { opacity: 0, duration: 4 })
+    .to(textDes3inner, { "mask-image": "linear-gradient(to right, black -30%, transparent 60%);",y: "30px", duration: 1, ease:"ease"}, ">-2")
+    .to(textDes3, { opacity: 0, duration: 1.5 }, ">-2") // 이전 효과 후 바로 실행
+    .to(textDes3, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
+
+    // (07) 네번째 비디오 서서히 나타남, 네번째 텍스트 나타남
+    .fromTo(videoDes4, { opacity: 0 }, { opacity: 1, duration: 4 },">-2") // 이전 효과 진행 후 바로 실행
+    .to(textDes4, { opacity: 1, duration: 3 }, "<") //동시 진행
+    .fromTo(textDes4inner, { y: "30px", "mask-image": "radial-gradient(circle, black -30%, transparent 60%);"}, { "mask-image": "radial-gradient(circle, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
+    
+    // (08) 네번째(4_1) 텍스트 사라짐
+    .to(textDes4inner, { "mask-image": "radial-gradient(circle, black -30%, transparent 60%);",y: "30px", duration: 1, ease:"ease"})
+    .to(textDes4, { opacity: 0, duration: 1.5 }, ">-2") // 이전 효과 후 바로 실행
+    .to(textDes4, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
+
+    // (09) 네번째(4_2) 텍스트 나타남
+    .to(textDes4_2, { opacity: 1, duration: 3 }, ">-2") //이전 효과 후 바로 실행
+    .fromTo(textDes4inner_2, { y: "30px", "mask-image": "linear-gradient(to right, black -30%, transparent 60%);"}, { "mask-image": "linear-gradient(to right, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
+
+    // (10) 네번째 비디오 서서히 사라짐, 네번째(4-2) 텍스트 사라짐
+    .to(videoDes4, { opacity: 0, duration: 4 })
+    .to(textDes4inner_2, { "mask-image": "linear-gradient(to right, black -30%, transparent 60%);",y: "30px", duration: 1, ease:"ease"}, ">-2")
+    .to(textDes4_2, { opacity: 0, duration: 1.5 }, ">-2") // 이전 효과 후 바로 실행
+    .to(textDes4_2, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
+
+    // (11) 다섯번째 비디오 서서히 나타남, 다섯번째 텍스트 나타남
+    .fromTo(videoDes5, { opacity: 0 }, { opacity: 1, duration: 4 },">-2") // 이전 효과 진행 후 바로 실행
+    .to(textDes5, { opacity: 1, duration: 3 }, "<") //동시 진행
+    .fromTo(textDes5inner, { y: "30px", "mask-image": "radial-gradient(circle, black -30%, transparent 60%);"}, { "mask-image": "radial-gradient(circle, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
+
+    // (12) 다섯번째 비디오 서서히 사라짐. 다섯번째 텍스트 사라짐
+    .to(videoDes5, { opacity: 0, duration: 4 })
+    .to(textDes5inner, { "mask-image": "radial-gradient(circle, black -30%, transparent 60%);",y: "30px", duration: 1, ease:"ease"}, ">-2")
+    .to(textDes5, { opacity: 0, duration: 1.5 }, ">-2") // 이전 효과 후 바로 실행
+    .to(textDes5, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
+
+    // (13) 여섯번째 비디오 서서히 나타남, 여섯번째 텍스트 나타남
+    .fromTo(videoDes6, { opacity: 0 }, { opacity: 1, duration: 4 },">-2") // 이전 효과 진행 후 바로 실행
+    .to(textDes6, { opacity: 1, duration: 3 }, "<") //동시 진행
+    .fromTo(textDes6inner, { y: "30px", "mask-image": "linear-gradient(to right, black -30%, transparent 60%);"}, { "mask-image": "linear-gradient(to right, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
+    
+    // (14) 여섯번째 비디오 서서히 사라짐, 여섯번째 텍스트 사라짐
+    .to(videoDes6, { opacity: 0, duration: 2 })
+    .to(textDes6, { opacity: 0, duration: 2 }, ">-2") // 이전 효과 후 바로 실행
+
     $ScrollTrigger.create({
       trigger: descriptionSec.value,
       start: 'top top',
@@ -550,24 +696,37 @@
       scrub: 2,
       animation: desBgTimeline,
       // markers: true,
+    })
 
-      onUpdate(self) {
-        const progress = self.progress;
-        const currentTime = desBgTimeline.totalDuration() * progress;
+    /*-----------------------*/
+    // 06. 유튜브 영상 섹션
+    /*-----------------------*/
+    const dumyBoxLeft = youtubeArea.value.querySelector(".dumy-box-left");
+    const dumyBoxRight = youtubeArea.value.querySelector(".dumy-box-right");
+    const videoBox = youtubeArea.value.querySelector(".video-box");
 
-        const t1 = desBgTimeline.labels["videoRestart1"];
-        const t2 = desBgTimeline.labels["videoRestart2"];
+    const youtubeTimeline = $gsap.timeline()
+    .fromTo(dumyBoxLeft, { y: "300px"}, { y: "0px", duration: 4, ease: "power3.out" }) // 동시 진행
+    .fromTo(dumyBoxRight, { y: "-300px"}, { y: "0px", duration: 4, ease: "power3.out" }, "<") // 동시 진행
 
-        // 첫 번째 비디오 재실행 가능하도록
-        if (currentTime < t1) {
-          restarted1 = false;
-        }
+    // 섹션 고정 전담 - 고정이 살짝 늦게 풀림
+    $ScrollTrigger.create({
+      trigger: youtubeArea.value,
+      start: 'top top',
+      end: "+=" + youtubeTimeline.duration() * 900 + " bottom",
+      scrub: true,
+      pin: youtubeArea.value,
+      // markers: true,
+    })
 
-        // 두 번째 비디오 재실행 가능하도록
-        if (currentTime < t2) {
-          restarted2 = false;
-        }
-      }
+    // 애니메이션 재생 전담 - 타임라인 애니메이션만큼 end 지점 설정해서 애니메이션만큼 진행
+    $ScrollTrigger.create({
+      trigger: videoBox,
+      start: 'top bottom',
+      end: "+=" + youtubeTimeline.duration() * 700 + " top",
+      markers: true,
+      scrub: true,
+      animation: youtubeTimeline,
     })
   });
 
