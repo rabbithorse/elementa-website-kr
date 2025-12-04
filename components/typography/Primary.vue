@@ -61,7 +61,7 @@
   }
 
   .primary-char {
-    transform: translateX(-100%);
+    transform: translateX(-103%);
     clip-path: inset(0 0 -.086em 0);
     will-change: transform;
     perspective: 1000px;

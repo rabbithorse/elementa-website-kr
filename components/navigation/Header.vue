@@ -1,5 +1,5 @@
 <template>
-  <header id="header" class="fixed w-full lg:py-10 py-5 z-50">
+  <header id="header" :scrollDirection="scrollDirection" :class="['fixed w-full lg:py-10 py-5 z-50', headerClass]">
     <Container class="2xl:px-14 xl:px-10 lg:px-6 px-4">
       <NuxtLink href="/" class="2xl:py-6 py-4 flex items-center max-lg:w-[88px]">
         <Logo class="text-white" />
@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
   import Menu from './Menu.vue'
   import MobileMenu from './MobileMenu.vue'
 
@@ -63,7 +63,47 @@
     { name: "Contact", path: "/contact" },
   ]
 
-  
+  // header on scroll direction
+  const scrollDirection = ref(0)   // 1: up, -1: down
+const lastScroll = ref(0)
+const waiting = ref(false)
+
+function handleScroll() {
+  if (waiting.value) return
+  waiting.value = true
+
+  const current = window.scrollY
+
+  if (current > lastScroll.value) {
+    scrollDirection.value = -1   // down
+  } else if (current < lastScroll.value) {
+    scrollDirection.value = 1    // up
+  }
+
+  lastScroll.value = current
+
+  setTimeout(() => {
+    waiting.value = false
+  }, 100)
+}
+
+// mount
+onMounted(() => {
+  lastScroll.value = window.scrollY
+  window.addEventListener('scroll', handleScroll)
+})
+
+// unmount
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
+
+// header class
+const headerClass = computed(() => {
+  if (scrollDirection.value === -1) return 'header-hide'
+  if (scrollDirection.value === 1) return 'header-show'
+  return ''
+})
 </script>
 
 <style scoped>
@@ -89,5 +129,17 @@
   .hamburger-open.opened {
     background: linear-gradient(78deg, rgba(255, 255, 255, 0.20) -4.53%, rgba(255, 255, 255, 0.15) 113.59%);
     box-shadow: -1.5px -1.5px 1.5px 0 rgba(255, 255, 255, 0.20) inset, 1px 1px 1px 0 rgba(255, 255, 255, 0.20) inset;
+  }
+
+  #header {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  #header.header-hide {
+    transform: translateY(-100%);
+  }
+
+  #header.header-show {
+    transform: translateY(0);
   }
 </style>
