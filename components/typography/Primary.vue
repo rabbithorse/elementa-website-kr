@@ -1,5 +1,5 @@
 <template>
-  <div ref="primaryCharWrap" class="primary-char-wrap inline-block 2xl:ml-[-17px] xl:ml-[-15px] md:ml-[-12px] ml-[-1.5vw]">
+  <div ref="primaryCharWrap" class="primary-char-wrap inline-block 2xl:ml-[-17px] md:ml-[-12px] ml-[-1.5vw]">
     <div ref="primaryChar" class="primary-char inline-block">
       <slot></slot>
     </div>

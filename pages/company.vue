@@ -247,7 +247,7 @@
                 <div class="heading flex items-baseline gap-x-4 pl-[3.25rem] relative">
                   <h2 class="font-paperlogy text-7xl font-bold text-white z-10">CI</h2>
                   <p class="text-white">로고는 일관된 커뮤니케이션을 위해 형태나 색상, 스타일의 변형, 타 그래픽 요소와의 결합 없이 그대로 사용해야 합니다.</p>
-                  <ButtonsBasic href="/assets/images/sub/company-ci-download.zip" size="md" color="white" outline class="ml-auto">
+                  <ButtonsBasic href="/assets/images/sub/company-ci-download.zip" size="md-narrow" color="blue" outline class="ml-auto px-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                       <path d="M17.5 12.5V15.8333C17.5 16.2754 17.3244 16.6993 17.0118 17.0118C16.6993 17.3244 16.2754 17.5 15.8333 17.5H4.16667C3.72464 17.5 3.30072 17.3244 2.98816 17.0118C2.67559 16.6993 2.5 16.2754 2.5 15.8333V12.5" stroke="#734BD7" stroke-width="2"/>
                       <path d="M5.83325 8.33203L9.99992 12.4987L14.1666 8.33203" stroke="#734BD7" stroke-width="2"/>
@@ -659,10 +659,6 @@
 
   .ci-box--black {
     box-shadow: inset 0 0 0 1px #333;
-  }
-
-  .company-ci .btn .inner {
-    padding: 0 14.5px;
   }
 
   .company-banner {

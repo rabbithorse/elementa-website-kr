@@ -1,7 +1,7 @@
 <template>
-  <header id="header" :scrollDirection="scrollDirection" :class="['fixed w-full lg:py-10 py-5 z-50', headerClass]">
-    <Container class="2xl:px-14 xl:px-10 lg:px-6 px-4">
-      <NuxtLink href="/" class="2xl:py-6 py-4 flex items-center max-lg:w-[88px]">
+  <header id="header" :scrollDirection="scrollDirection" :class="['fixed w-full lg:py-[1.55rem] py-5 z-50', headerClass]">
+    <Container class="2xl:px-8 lg:px-6 px-4 py-[11px]">
+      <NuxtLink href="/" class="flex items-center max-lg:w-[88px]">
         <Logo class="text-white" />
       </NuxtLink>
       <Menu class="hidden lg:flex" :menuItems="menuItems" />
@@ -35,7 +35,7 @@
   import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
   import Menu from './Menu.vue'
   import MobileMenu from './MobileMenu.vue'
-
+  
   const isOpen = ref(false);
   const subMenuOpen = ref(false);
 
@@ -54,8 +54,8 @@
     { name: "Games", path: "/games" },
     { name: "Careers", path: "/join_us",
       children: [
-        { name: "Join Us", path: "/join_us"},
-        { name: "Culture", path: "/culture"}
+        { name: "Join Us", path: "/join_us", detail: "Looking for Talent to Grow Together"},
+        { name: "Culture", path: "/culture", detail: "Introducing our team culture."}
       ]
     },
     { name: "Newsroom", path: "/newsroom" },
@@ -107,7 +107,19 @@ const headerClass = computed(() => {
 </script>
 
 <style scoped>
-  #header .container {display: flex; align-items: center; border-radius: 5px; border: 1px solid rgba(255, 255, 255, 0.20); background: rgba(255, 255, 255, 0.08); box-shadow: 20px 20px 10px 0 rgba(0, 0, 0, 0.10); backdrop-filter: blur(40px);}
+  #header {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  #header.header-hide {
+    transform: translateY(-100%);
+  }
+
+  #header.header-show {
+    transform: translateY(0);
+  }
+
+  #header .container {display: flex; align-items: center; border-radius: 5px; border: 0.5px solid rgba(255, 255, 255, 0.20); background: rgba(255, 255, 255, 0.08); box-shadow: 20px 20px 10px 0 rgba(0, 0, 0, 0.10); backdrop-filter: blur(40px);}
 
   .slide-enter-from {
     transform: translateX(100%);
@@ -129,17 +141,5 @@ const headerClass = computed(() => {
   .hamburger-open.opened {
     background: linear-gradient(78deg, rgba(255, 255, 255, 0.20) -4.53%, rgba(255, 255, 255, 0.15) 113.59%);
     box-shadow: -1.5px -1.5px 1.5px 0 rgba(255, 255, 255, 0.20) inset, 1px 1px 1px 0 rgba(255, 255, 255, 0.20) inset;
-  }
-
-  #header {
-    transition: transform 0.3s ease-in-out;
-  }
-
-  #header.header-hide {
-    transform: translateY(-100%);
-  }
-
-  #header.header-show {
-    transform: translateY(0);
   }
 </style>
