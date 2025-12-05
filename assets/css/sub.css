@@ -509,15 +509,22 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 
 
 /* section 04 */
-.youtube-area .video-wrap {height: 100vh;}
+.youtube-area .video-wrap {height: 100vh; /*border: 1px solid red;*/}
 .youtube-area .video-wrap .inner-video::before,
-.youtube-area .video-wrap .inner-video::after {content:''; display: block; width: 7px; height: 958px; background: url('~/assets/images/sub/trailer-line-ver-left.svg') no-repeat center / cover; position: absolute; left: 0; top: 0;}
-.youtube-area .video-wrap .inner-video::after {left: auto; right: 0;}
-.youtube-area .video-wrap .inner-video .video-box {max-width: 1050px; width:100%; padding: 2px;}
+.youtube-area .video-wrap .inner-video::after {content:''; display: block; width: 7px; height: 958px; background: url('~/assets/images/sub/trailer-line-ver-left.svg') no-repeat center / cover;}
+.youtube-area .video-wrap .inner-video .video-box {max-width: 1050px; width:100%; padding: 2px; box-shadow: 0 30px 30px 0 rgba(0, 0, 0, 0.70);}
 .youtube-area .video-wrap .inner-video .video-box::before {content:''; position: absolute; inset: 0;  padding: 2px; border-radius: inherit; background: linear-gradient(180deg, rgba(179, 149, 85, 0.90) 0%, rgba(204, 183, 99, 0.90) 49.99%, rgba(183, 149, 69, 0.90) 50%, rgba(204, 181, 112, 0.90) 100%),  rgba(179, 149, 85, 0.90); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude;}
 .youtube-area .video-wrap .inner-video .dumy-box-left,
 .youtube-area .video-wrap .inner-video .dumy-box-right {width: 331px; height: 25px; background: url('~/assets/images/sub/trailer-line-left.svg') no-repeat center / cover;}
 .youtube-area .video-wrap .inner-video .dumy-box-right {background: url('~/assets/images/sub/trailer-line-right.svg') no-repeat center / cover;}
+.youtube-area .video-wrap .inner-video .dumy-box-left span {color: #CDBC79; position: absolute; left: 35px; top: -20px;}
+
+.youtube-area .video-wrap .bg-text {position: absolute; left:50%; top:50%; transform: translate(-50%, -50%); gap: 260px;}
+.youtube-area .video-wrap .bg-text p {background: linear-gradient(137deg, rgba(150, 137, 86, 0.40) 6.02%, rgba(244, 228, 163, 0.40) 80.67%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 280px;}
+
+/* section 05 */
+.inv-board .in-camera {height: 100vh; margin:0 auto; max-width: 5760px; width: 100%;}
+.inv-board .in-camera .bg {background: url('~/assets/images/sub/board_bg.png') no-repeat center / cover; width:5760px; height:5040px; will-change: transform;}
 
 /***** responsive, 순서 변경 금지*****/
 

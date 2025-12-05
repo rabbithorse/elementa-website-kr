@@ -185,11 +185,15 @@
       </div>
     </section>
     <!-- section04 : 유튜브 영상-->
-    <section class="youtube-area relative overflow-hidden" ref="youtubeArea">
-      <div class="video-wrap w-full flex justify-center items-center">
+    <section class="youtube-area relative overflow-visible" ref="youtubeArea">
+      <div class="video-wrap w-full flex justify-center items-center relative">
+        <div class="bg-text flex flex-col justify-center items-center">
+          <p class="font-extrabold">SILVER</p>
+          <p class="font-extrabold">PALACE</p>
+        </div>
         <Container>
         <div class="inner-video w-full h-full flex justify-center items-center relative">
-          <div class="dumy-box-left"></div>
+          <div class="dumy-box-left relative"><span class="font-bold text-base">Official Trailer</span></div>
           <div class="video-box relative">
             <div class="movie-frame relative z-10">
               <div class="w-full mx-auto aspect-video">
@@ -209,8 +213,22 @@
         </Container>
       </div>
     </section>
+    <!-- 위 영역과 간격 -->
+    <section class="h-[500px]"></section>
+    <!-- section05 : 수사보드 -->
+    <section class="inv-board overflow-hidden" ref="invBoard">
+      <div class="in-camera w-full overflow-hidden">
+        <div class="bg relative">
+          <div class="line absolute w-full h-full top-0 left-0">
+            <img src="~/assets/images/sub/inv-board-line-sub01.png" alt="investigation board line sub 01" class="block sub-line-01 absolute">
+            <img src="~/assets/images/sub/inv-board-line-sub02.png" alt="investigation board line sub 02" class="block sub-line-02 absolute">
+            <img src="~/assets/images/sub/inv-board-line.png" alt="investigation board line" class="block main-line absolute">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="h-[600px]"></section>
 
-    <section class="h-[1000px]"></section>
 
     <!-- 캐릭터 소개 모달 -->
     <Transition name="fade">
@@ -412,6 +430,9 @@
 
   // section 04 refs - 유튜브 영상
   const youtubeArea = ref(null)
+
+  // section 05 refs - 수사보드
+  const invBoard = ref(null)
 
   // 내부 텍스트를 글자 단위로 분리하는 함수
   const splitText = (element) => {
@@ -704,18 +725,21 @@
     const dumyBoxLeft = youtubeArea.value.querySelector(".dumy-box-left");
     const dumyBoxRight = youtubeArea.value.querySelector(".dumy-box-right");
     const videoBox = youtubeArea.value.querySelector(".video-box");
+    const bgText = youtubeArea.value.querySelector(".bg-text");
 
     const youtubeTimeline = $gsap.timeline()
-    .fromTo(dumyBoxLeft, { y: "300px"}, { y: "0px", duration: 4, ease: "power3.out" }) // 동시 진행
-    .fromTo(dumyBoxRight, { y: "-300px"}, { y: "0px", duration: 4, ease: "power3.out" }, "<") // 동시 진행
+    .fromTo(dumyBoxLeft, { y: "300px"}, { y: "38px", duration: 4, ease: "power3.out" }) // 동시 진행
+    .fromTo(dumyBoxRight, { y: "-300px"}, { y: "38px", duration: 4, ease: "power3.out" }, "<") // 동시 진행
+    .fromTo(bgText, {transform: "translate(-50%, -45%)"}, {duration: 2, ease: "power3.out", transform: "translate(-50%, -50%)"}, "<") // 동시 진행
 
     // 섹션 고정 전담 - 고정이 살짝 늦게 풀림
     $ScrollTrigger.create({
       trigger: youtubeArea.value,
       start: 'top top',
-      end: "+=" + youtubeTimeline.duration() * 900 + " bottom",
+      end: "+=" + youtubeTimeline.duration() * 900,
       scrub: true,
       pin: youtubeArea.value,
+      anticipatePin: 1,
       // markers: true,
     })
 
@@ -724,11 +748,44 @@
       trigger: videoBox,
       start: 'top bottom',
       end: "+=" + youtubeTimeline.duration() * 700 + " top",
-      markers: true,
+      // markers: true,
       scrub: true,
       animation: youtubeTimeline,
     })
+
+    // 유튜브 섹션 사라짐 효과
+    $gsap.timeline({
+      scrollTrigger: {
+        trigger: youtubeArea.value,
+        start: 'bottom center',
+        end: 'bottom top',
+        scrub: true,
+        //markers: true,
+      }
+    }).to(youtubeArea.value, { opacity: 0, duration: 1})
+
+    /*-----------------------*/
+  // 07. 수사보드 섹션
+  /*-----------------------*/
+  
+  const bgInvBoard = invBoard.value.querySelector(".bg");
+
+  const invBoardTimeline = $gsap.timeline()
+  .fromTo(invBoard.value, {opacity: 0}, {opacity: 1, duration: 2, ease: "power3.out" })
+  .to(bgInvBoard, {x:-800, y:-800 , duration: 3, ease: "power3.out" })
+
+  $ScrollTrigger.create({
+    trigger: invBoard.value,
+    start: 'top top',
+    end: "+=" + invBoardTimeline.duration() * 1000,
+    scrub: 1,
+    pin: true,
+    markers: true,
+    animation: invBoardTimeline,
+  })
   });
+
+  
 
   /*-----------------------
   other. 캐릭터 소개 섹션
@@ -849,6 +906,12 @@
       }
     })
   }
+
+  onUnmounted(() => {
+  // 1) 모든 ScrollTrigger 정리
+  $ScrollTrigger.getAll().forEach(st => st.kill());
+  });
+
 
 </script>
 
