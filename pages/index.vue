@@ -1,7 +1,13 @@
 <template>
   <div>
     <section ref="visualSection" class="visual-section h-dvh relative overflow-hidden">
-      <div ref="videoWrap" class="video-layer video-layer--main">
+      <EffectGlassTest />
+      <div class="bg-video">
+        <video class="bg-video--content" autoplay muted loop>
+          <source src="~/assets/videos/main-logo-ani_enc.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div ref="videoWrap" class="video-layer video-layer--main z-[1]">
         <span ref="videoWrapLayer" class="bg-video-layer"></span>
         <EffectGlass>
           <video autoplay muted loop>
@@ -9,19 +15,14 @@
           </video>
         </EffectGlass>
       </div>
-      <div ref="videoSubWrap" class="video-layer video-layer--sub">
+      <div ref="videoSubWrap" class="video-layer video-layer--sub z-[1]">
         <img src="~/assets/images/main/main-war.jpg" alt="">
-      </div>
-      <div class="bg-video">
-        <video class="bg-video--content" autoplay muted loop>
-          <source src="~/assets/videos/main-logo-ani_enc.mp4" type="video/mp4" />
-        </video>
       </div>
       <div class="intro-section h-full" ref="introSection">
         <Container class="h-full">
           <!-- 첫번째 애니메이션 -->
           <div class="flex flex-col h-full pb-[6.25rem]" ref="visualTitle">
-            <h2 class="2xl:text-[272px] xl:text-[220px] md:text-[180px] text-[25.3vw] leading-1 font-bold text-white pt-[6.25rem] primary-text whitespace-nowrap" >
+            <h2 class="3xl:text-[272px] 2xl:text-[240px] xl:text-[180px] md:text-[160px] text-[25.3vw] leading-1 font-bold text-white pt-[6.25rem] primary-text whitespace-nowrap" >
               <TypographyPrimary>
                 E
               </TypographyPrimary>
@@ -48,7 +49,7 @@
               </TypographyPrimary>
             </h2>
             <div class="flex flex-col mt-auto">
-              <div class="text-white md:text-[2.3rem] text-[5vw] font-normal mb-8 flex flex-col">
+              <div class="text-white xl:text-[2.3rem] md:text-[1.8rem] text-[5vw] font-normal mb-8 flex flex-col">
                 <TypographySecondary>Design the Future of Play,</TypographySecondary>
                 <TypographySecondary>Create a Culture the World Shares</TypographySecondary>
               </div>
@@ -66,9 +67,9 @@
         </Container>
       </div>
       <!-- 두번째 애니메이션 -->
-      <div class="mission-section flex flex-col md:gap-y-28 gap-y-[3.75rem] justify-center items-center relative" ref="missionSection">
-        <div class="text-wrap">
-          <h2 class="2xl:text-[13.75rem] xl:text-[200px] md:text-[150px] leading-1 font-bold text-white pt-[6.25rem]">
+      <div class="mission-section flex flex-col xl:gap-y-28 md:gap-y-10 gap-y-[3.75rem] justify-center items-center relative" ref="missionSection">
+        <div class="text-wrap w-full">
+          <h2 class="2xl:text-[13.75rem] xl:text-[185px] md:text-[150px] leading-1 font-bold text-white pt-[6.25rem]">
             <div class="top-line">
               <div ref="weCreate" class="leading-none text-[length:inherit]" >
                 <span class="primary-text leading-none 2xl:text-[13.75rem] xl:text-[200px] md:text-[150px] text-[20vw]">
@@ -276,7 +277,7 @@
                   </div>
                 
               </div>
-              <div ref="lastingImpact" class="text-absolute absolute inset-0 text-center leading-none" >
+              <div ref="lastingImpact" class="leading-none gradient-text text-absolute inset-0 text-center" >
                 <span class="primary-text">
                   <div class="character-wrap inline-block overflow-clip ">
                     <div class="primary-character--delay">
@@ -557,8 +558,11 @@
             <span class="leading-[100%] text-[#9FAEB5] 3xl:text-[15rem] 2xl:text-[12rem] lg:text-[10rem] text-[6.25rem] tracking-[-0.3rem] max-xl:w-full max-xl:text-center">
               ELEMENTA
             </span>
-            <div class="slider-img flex items-center justify-center mt-3" ref="sliderImg">
-              <img src="~assets/images/main/elementakorea-center-img.png" alt="" class="block 3xl:w-auto xl:w-[17vw] lg:w-[22vw] w-[28vw]">
+            <div class="slider-img flex items-center justify-center mt-3 rounded-[10px]" ref="sliderImg">
+              <!-- <img src="~assets/images/main/elementakorea-center-img.png" alt="" class="block 3xl:w-auto xl:w-[17vw] lg:w-[22vw] w-[28vw]"> -->
+              <video autoplay muted loop class="block 3xl:w-auto xl:w-[17vw] lg:w-[22vw] w-[28vw] max-w-none">
+                <source src="~assets/videos/main-face.mp4" type="video/mp4" >
+              </video>
             </div>
             <span class="leading-[100%] text-[#9FAEB5] 3xl:text-[15rem] 2xl:text-[12rem] lg:text-[10rem] text-[6.25rem] tracking-[-0.3rem]">
               KOREA
@@ -990,7 +994,7 @@ onMounted(() => {
         pin: true, 
         //pinSpacing: true,
         //markers: true,
-        end: () => "+=" + (visualSection.value.offsetHeight * 6),
+        end: () => "+=700%",
       }
     });
     tl.to(videoWrap.value,
@@ -999,7 +1003,7 @@ onMounted(() => {
         scale: 1.4,
         
         scrollTrigger: {
-          end: () => "+=" + visualSection.value.offsetHeight,
+          end: () => "+=100%",
           scrub: 1,
           ease: 'none',
           pin: true,
@@ -1009,7 +1013,7 @@ onMounted(() => {
     {
       xPercent: -150,
       scrollTrigger: {
-        end: () => "+=" + visualSection.value.offsetHeight,
+        end: () => "+=100%",
         scrub: 1,
       }
     }, 0)
@@ -1018,7 +1022,7 @@ onMounted(() => {
       xPercent: 100,
       clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
       scrollTrigger: {
-        end: () => "+=" + visualSection.value.offsetHeight,
+        end: () => "+=100%",
         scrub: 1,
       }
     }, 0)
@@ -1034,8 +1038,8 @@ onMounted(() => {
       ease: 'none',
       scrollTrigger: {
         //trigger: videoWrapLayer.value,
-        start: () => "+=" + visualSection.value.offsetHeight,
-        end: () => "+=" + (visualSection.value.offsetHeight * 0.5),
+        end: () => "+=100%",
+        //end: () => "+=" + (visualSection.value.offsetHeight * 0.1),
         scrub: 1,
       }
     })
@@ -1044,8 +1048,7 @@ onMounted(() => {
       scrollTrigger: {
         pin: true,
         trigger: missionSection.value,
-        start: () => "+=" + (visualSection.value.offsetHeight * 2),
-        scrub: 10,
+        start: () => "+=150%",
       },
     })
     .to(missionSection.value, 
@@ -1053,23 +1056,24 @@ onMounted(() => {
       yPercent: -100,
       ease: 'none',
       scrollTrigger: {
-        start: () => "+=" + (visualSection.value.offsetHeight * 2),
-        end: () => "+=" + (visualSection.value.offsetHeight * 2.5),
-        
+        start: () => "+=" + visualSection.value.offsetHeight - 100,
+        end: () => "+=" + (visualSection.value.offsetHeight * 1.2),
+        scrub: 1,
       }
     })
     .to(characterRevealArray, {
       x: 0,
       start: "top top",
       opacity: 1,
-      duration: 0.2,
-      
+      duration: 0.3,
+      scrub: 1,
     }, "+=0.5")
     .to(characterDisappearArray, {
       x: 150,
       start: "top top",
-      duration: 0.2,
+      duration: 0.3,
       ease: "power2.out",
+      scrub: 1,
     }, ">0.1")
     .to(characterDelayArray, {
       x: 0,
@@ -1077,11 +1081,12 @@ onMounted(() => {
       visibility: 'visible',
       start: "top top",
       ease: "power2.out",
-      duration: 0.2,
+      duration: 0.3,
+      scrub: 1,
     }, ">-0.05")
     .fromTo(missionBox.value, 
       { yPercent: 100, opacity: 0 },
-      { yPercent: 0, opacity: 1, duration: 0.2, stagger: 0.05, ease: "power2.out" }, ">-0.25"
+      { yPercent: 0, opacity: 1, duration: 0.5, stagger: 0.05, ease: "power2.out", scrub: 1 }, ">-0.1"
     )
 
     
@@ -1181,7 +1186,7 @@ onMounted(() => {
     .to(connectText.value, {
       opacity: 1,
       filter: "blur(0px)",
-      duration: 1,
+      duration: 0.5,
     })
     .to(wetheworldbg2.value, {
       opacity: 1,
@@ -1189,15 +1194,16 @@ onMounted(() => {
     }, "<")
     .to(connectText.value, {
       opacity: 0,
-    }, ">1")
+    }, ">0.5")
     .to(changeText.value, {
       opacity: 1,
       filter: "blur(0px)",
-      duration: 1,
+      duration: 0.5,
     })
     .to(wetheworldbg3.value, {
       opacity: 1,
       visibility: 'visible',
+      duration: 1,
     }, "<")
 
 
@@ -1235,7 +1241,7 @@ onMounted(() => {
       const newsroomTl = $gsap.timeline({
         scrollTrigger: {
           trigger: newsroomSection.value,
-          start: 'top -20%',
+          start: 'top top',
           pin: true,
           end: () => "+=" + (newsroomSection.value.offsetHeight * 2),
           scrub: 1,

@@ -18,7 +18,7 @@
         start: "top 90%",
         end: "bottom 40%",
         markers: true,
-        scrub: true,
+        //scrub: true,
         scroller: window,
         invalidateOnRefresh: true,
       },

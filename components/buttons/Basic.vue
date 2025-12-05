@@ -287,6 +287,7 @@ const sizeClass = computed(() => {
     case 'sm': return 'sm text-sm px-[1.56rem] font-semibold lg:h-10 h-[2.19rem]'
     case 'lg': return 'lg lg:text-[1.38rem] text-base px-[1.88rem] font-semibold lg:h-[3.75rem] h-[3.25rem]'
     case 'lg-wide': return 'lg wide lg:text-[1.38rem] text-base px-20 font-semibold lg:h-[3.75rem] h-[3.25rem]'
+    case 'md-narrow': return 'md lg:text-base text-[0.88rem] font-semibold px-4 lg:h-[3.13rem] h-[2.5rem]'
     default: return 'md lg:text-base text-[0.88rem] px-[1.88rem] px-[1.25rem] font-semibold lg:h-[3.13rem] h-[2.5rem]'
   }
 })
