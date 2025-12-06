@@ -67,9 +67,9 @@
         </Container>
       </div>
       <!-- 두번째 애니메이션 -->
-      <div class="mission-section flex flex-col xl:gap-y-28 md:gap-y-10 gap-y-[3.75rem] justify-center items-center relative" ref="missionSection">
+      <div class="mission-section flex flex-col xl:gap-y-16 md:gap-y-10 gap-y-[3.75rem] justify-center items-center relative" ref="missionSection">
         <div class="text-wrap w-full">
-          <h2 class="2xl:text-[13.75rem] xl:text-[185px] md:text-[150px] leading-1 font-bold text-white pt-[6.25rem]">
+          <h2 class="2xl:text-[13.75rem] xl:text-[185px] md:text-[150px] leading-1 font-bold text-white">
             <div class="top-line">
               <div ref="weCreate" class="leading-none text-[length:inherit]" >
                 <span class="primary-text leading-none 2xl:text-[13.75rem] xl:text-[200px] md:text-[150px] text-[20vw]">
@@ -163,7 +163,7 @@
                     </div>
                   </div>
                   <span class="text-spacer md:inline-block md:p-5 md:w-auto block p-1.5 w-full"></span>
-                    <div class="character-wrap inline-block overflow-clip ">
+                  <div class="character-wrap inline-block overflow-clip ">
                       <div class="primary-character primary-character--disappear">
                       <svg xmlns="http://www.w3.org/2000/svg" width="107" height="179" viewBox="0 0 107 179" fill="none" class="aspect-[107/179]">
                         <foreignObject x="-40" y="-40" width="186.7" height="258.2"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_24_1217_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M0 178.2V0H59.84C70.5467 0 79.3467 2.05333 86.24 6.16C93.1333 10.12 98.2666 15.9867 101.64 23.76C105.013 31.3867 106.7 40.7 106.7 51.7C106.7 65.4867 104.427 76.0467 99.88 83.38C95.3333 90.5667 89.1733 95.5533 81.4 98.34C73.6267 101.127 64.9 102.52 55.22 102.52H39.38V178.2H0ZM39.38 75.02H52.58C57.42 75.02 61.0867 74.14 63.58 72.38C66.0733 70.62 67.6867 67.98 68.42 64.46C69.3 60.94 69.74 56.4667 69.74 51.04C69.74 46.4933 69.3733 42.5333 68.64 39.16C68.0533 35.64 66.5133 32.8533 64.02 30.8C61.5267 28.7467 57.64 27.72 52.36 27.72H39.38V75.02Z" fill="url(#paint0_linear_24_1217)"/>
@@ -281,14 +281,14 @@
                 <span class="primary-text">
                   <div class="character-wrap inline-block overflow-clip ">
                     <div class="primary-character--delay">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="83" height="181" viewBox="0 0 83 181" fill="none" class="aspect-[83/179]">
-                        <foreignObject x="-40" y="-40" width="162.3" height="260.2"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_39_2053_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M40.8799 0.5V152.08H81.7998V179.7H0.5V0.5H40.8799Z" fill="url(#paint0_linear_39_2053)" stroke="black"/>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="81" height="179" viewBox="0 0 81 179" fill="none" class="aspect-[81/179]">
+                        <foreignObject x="-40" y="-40" width="160.3" height="258.2"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_304_2920_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M0 178.2V0H39.38V151.58H80.3V178.2H0Z" fill="url(#paint0_linear_304_2920)"/>
                         <defs>
-                        <clipPath id="bgblur_0_39_2053_clip_path" transform="translate(40 40)"><path d="M40.8799 0.5V152.08H81.7998V179.7H0.5V0.5H40.8799Z"/>
-                        </clipPath><linearGradient id="paint0_linear_39_2053" x1="1.91428" y1="179.2" x2="2046.79" y2="179.2" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#0AD9FE"/>
-                        <stop offset="1" stop-color="#7D4FF0"/>
-                        </linearGradient>
+                          <clipPath id="bgblur_0_304_2920_clip_path" transform="translate(40 40)"><path d="M0 178.2V0H39.38V151.58H80.3V178.2H0Z"/>
+                          </clipPath><linearGradient id="paint0_linear_304_2920" x1="0.914282" y1="178.2" x2="2045.79" y2="178.2" gradientUnits="userSpaceOnUse">
+                          <stop stop-color="#0AD9FE"/>
+                          <stop offset="1" stop-color="#7D4FF0"/>
+                          </linearGradient>
                         </defs>
                       </svg>
                     </div>
@@ -378,7 +378,8 @@
                     </div>
                   </div>
                 </span>
-                <span class="primary-text ml-8">
+                <span class="text-spacer md:inline-block md:p-5 md:w-auto block p-1.5 w-full"></span>
+                <span class="primary-text md:ml-8">
                   <div class="character-wrap inline-block overflow-clip ">
                     <div class="primary-character--delay">
                       <svg xmlns="http://www.w3.org/2000/svg" width="40" height="179" viewBox="0 0 40 179" fill="none" class="aspect-[40/179]">
@@ -482,72 +483,7 @@
     </section>
     <section class="accordion-section h-dvh" ref="accordionSection">
       <div class="accordion-list flex lg:flex-row flex-col h-full w-full">
-        <BlocksAccordion class="silver-palace opened" background ref="accordionItem">
-          <template #accordionTitle class="accordion-title">
-            <span class="text-white">01</span>
-            <h3 class="text-white">SILVER PALACE</h3>
-          </template>
-          <template #accordionContent>
-            <div class="content-bg absolute left-0 top-0 w-[100vw] h-full overflow-hidden">
-              <video autoplay muted loop class="w-full h-full object-cover">
-                <source src="~/assets/videos/main-game-silverpalace_enc.mp4" type="video/mp4">
-              </video>
-            </div>
-
-            <div class="content-text lg:w-fit lg:h-full lg:ml-auto lg:mt-0 mt-auto w-full h-auto ml-0">
-              <EffectGlass class="lg:h-full ">
-                <div class="flex flex-col justify-end lg:gap-y-[3.125rem] gap-y-5 lg:pb-[5.625rem] pt-4 pb-9 lg:px-8 px-7 h-full">
-                  <div class="content-title relative title-img lg:w-[52%] w-56 aspect-229/75">
-                    <EffectFloatingDots />
-                    <img src="~/assets/images/main/text-game-silverpalace.png" alt="icon" />
-                  </div>
-                  <div class="content-detail flex flex-col lg:gap-y-6">
-                    <p class="subtitle text-[1.625rem] font-semibold leading-[2rem] max-lg:pb-6">
-                      사건의 진위, <br class="max-lg:hidden">
-                      무대의 서막
-                    </p>
-                    <p class="lg:text-[1.125rem] text-[0.8rem] lg:leading-6 leading-4 tracking-[-0.26px]">
-                      펠리아나 3년, 다시 실버니아로 돌아온 탐정. <br>
-                      그리고 현실과 우화가 뒤섞이고, 번영과 몰락의 경계에 <br class="max-lg:hidden">
-                      서 있는 실버니아.
-                    </p>
-                    <p class="lg:text-[1.125rem] text-[0.8rem] lg:leading-6 leading-4 tracking-[-0.26px]">
-                      사교와 조사, 판단 그리고 전투, 당신이 그 총알 한 발의 <br class="max-lg:hidden">
-                      진실을 찾아낸다면, <br class="lg:hidden">자신은 물론, 모든 이들의 운명까지 <br class="max-lg:hidden">
-                      결정짓게 될 것이다.
-                    </p>
-                  </div>
-                  <div class="content-button">
-                    <ButtonsBasic size="sm" color="yellow ">View more</ButtonsBasic>
-                  </div>
-                </div>
-              </EffectGlass>
-            </div>
-          </template>
-        </BlocksAccordion>
-        <BlocksAccordion class="locked" ref="accordionItem">
-          <template #accordionTitle >
-            <span class="locked-title-icon">
-            </span>
-            <span class="locked-title-text">
-              
-            </span>
-          </template>
-          <template #accordionContent></template>
-        </BlocksAccordion>
-        <BlocksAccordion class="locked" ref="accordionItem">
-          <template #accordionTitle >
-            <span class="locked-title-icon"></span>
-            <span class="locked-title-text"></span>
-          </template>
-          <template #accordionContent></template>
-        </BlocksAccordion>
-        <BlocksAccordion class="locked" ref="accordionItem">
-          <template #accordionTitle>
-            <span class="locked-title-icon"></span>
-            <span class="locked-title-text"></span>
-          </template>
-          <template #accordionContent></template>
+        <BlocksAccordion ref="accordionItem">
         </BlocksAccordion>
       </div>
     </section>
@@ -898,6 +834,12 @@
               },
               2000: {
                 slidesPerView: 4,
+              },
+              2600: {
+                slidesPerView: 5,
+              },
+              3000: {
+                slidesPerView: 6,
               }
             }"
           >
@@ -1096,19 +1038,21 @@ onMounted(() => {
     const accordionArray = Array.from(accordionItems);
     
     const accordionTl = $gsap.timeline({
-      scrollTrigger: {
-        trigger: accordionSection.value,
-        start: 'top 80%',
-        end: () => "+=" + (accordionSection.value.offsetHeight * 0.6),
-        //scrub: 1,
-      }
+      
     })
-    accordionTl.from(accordionArray, {
-      x: 100,
-      y: 50,
-      opacity: 0,
-      stagger: 0.1,
-    })
+    accordionArray.forEach((item, i) => {
+      $gsap.from(item, {
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 60%',
+          //scrub: 1,
+        },
+        x: 100,
+        y: 50,
+        opacity: 0,
+        stagger: 0.1,
+      })
+    });
 
     const wetheworldTl = $gsap.timeline({
       scrollTrigger: {
@@ -1418,6 +1362,12 @@ const nodeVersion = process.version
   clip-path: inset(0 0 -.086em 0);
   will-change: transform;
   perspective: 1000px;
+}
+
+@media (max-width: 767px) {
+  .character-wrap:not(:last-child) {
+    margin-right: 0.2rem;
+  }
 }
 
 </style>
