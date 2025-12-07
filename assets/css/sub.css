@@ -523,9 +523,21 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 .youtube-area .video-wrap .bg-text p {background: linear-gradient(137deg, rgba(150, 137, 86, 0.40) 6.02%, rgba(244, 228, 163, 0.40) 80.67%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 280px;}
 
 /* section 05 */
-.inv-board .in-camera {height: 100vh; margin:0 auto; max-width: 5760px; width: 100%;}
+.inv-board .inv-dimmed{background: #000;}
+.inv-board .in-camera {height: 100vh; margin:0 auto; max-width: 5760px; width: 100%; /*border: 1px solid red;*/}
 .inv-board .in-camera .bg {background: url('~/assets/images/sub/board_bg.png') no-repeat center / cover; width:5760px; height:5040px; will-change: transform;}
+.inv-board .in-camera .bg .line .main-line {left: 428px; top: 146px;}
+.inv-board .in-camera .bg .line .sub-line-01 {left: 450px; top: 166px;}
+.inv-board .in-camera .bg .line .sub-line-02 {left:-1500px; top:190px;}
 
+.inv-board .in-camera .bg .picbox-01 {/*border: 1px solid red;*/ height: 831px; left: 0; top: 0;}
+.inv-board .in-camera .bg .picbox-02 {/*border: 1px solid red;*/ height: 777px; left: 0; top: 831px;}
+.inv-board .in-camera .bg .picbox-03 {/*border: 1px solid red;*/ height: 356px; left: 0; top: 2789px;}
+.inv-board .in-camera .bg .picbox-04 {/*border: 1px solid red;*/ height: 760px; left: 0; top: 3368px;}
+
+.inv-board .in-camera .bg .picbox-04 .box12 {transform: translateX(-50%);}
+
+.last-scene {height: 100vh; border: 1px solid blue;}
 /***** responsive, 순서 변경 금지*****/
 
 /* pc에서 레이아웃 깨지는 것만 */

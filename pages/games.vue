@@ -212,13 +212,40 @@
         </div>
         </Container>
       </div>
+      <section class="h-[1000px]"></section>
     </section>
     <!-- 위 영역과 간격 -->
-    <section class="h-[500px]"></section>
     <!-- section05 : 수사보드 -->
-    <section class="inv-board overflow-hidden" ref="invBoard">
+    <section class="inv-board overflow-hidden relative" ref="invBoard">
+      <div class="inv-dimmed absolute z-10 w-full h-full top-0 left-0"></div>
       <div class="in-camera w-full overflow-hidden">
         <div class="bg relative">
+          <!-- 처음 ~ 두번째 지점 사진 -->
+          <div class="picbox-01 w-full absolute">
+            <div class="box1 absolute left-[334px] top-[225px] bg-white w-[100px] h-[100px]"></div>
+            <div class="box2 absolute left-[487px] top-[327px] bg-yellow-500 w-[100px] h-[100px]"></div>
+            <div class="box3 absolute left-[1865px] bottom-[162px] bg-white w-[100px] h-[100px]"></div>
+            <div class="box4 absolute left-[2019px] bottom-[62px] bg-yellow-500 w-[100px] h-[100px]"></div>
+          </div>
+          <!-- 세번째 ~ 네번째 지점 사진 -->
+          <div class="picbox-02 w-full absolute">
+            <div class="box5 absolute left-[901px] bottom-[305px] bg-white w-[100px] h-[100px]"></div>
+            <div class="box6 absolute left-[3253px] bottom-[115px] bg-white w-[100px] h-[100px]"></div>
+          </div>
+          <!-- 다섯번째 ~ 여섯번째 지점 사진 -->
+          <div class="picbox-03 w-full absolute">
+            <div class="box7 absolute left-[2205px] top-[44px] bg-white w-[100px] h-[100px]"></div>
+            <div class="box8 absolute left-[2313px] top-[97px] bg-yellow-500 w-[100px] h-[100px]"></div>
+            <div class="box9 absolute left-[3380px] bottom-[80px] bg-white w-[100px] h-[100px]"></div>
+          </div>
+          <!-- 일곱번째 ~ 여덟번째 지점 사진 -->
+          <div class="picbox-04 w-full absolute">
+            <div class="box10 absolute left-[4809px] top-[0px] bg-white w-[100px] h-[100px]"></div>
+            <div class="box11 absolute right-[0px] bottom-[200px] bg-yellow-500 w-[100px] h-[100px]"></div>
+            <div class="box12 absolute right-[50%] bottom-[-200px] bg-white w-[100px] h-[100px]"></div>
+            <div class="box13 absolute left-[1845px] bottom-[200px] bg-yellow-500 w-[100px] h-[100px]"></div>
+          </div>
+
           <div class="line absolute w-full h-full top-0 left-0">
             <img src="~/assets/images/sub/inv-board-line-sub01.png" alt="investigation board line sub 01" class="block sub-line-01 absolute">
             <img src="~/assets/images/sub/inv-board-line-sub02.png" alt="investigation board line sub 02" class="block sub-line-02 absolute">
@@ -226,6 +253,11 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- section06 : 마지막 영역 -->
+    <section class="last-scene w-full flex items-center justify-center" ref="lastScene">
+      <p class="text-white text-[120px]">실버 팰리스</p>
     </section>
     <section class="h-[600px]"></section>
 
@@ -433,6 +465,9 @@
 
   // section 05 refs - 수사보드
   const invBoard = ref(null)
+
+  // section 06 refs - 마지막 영역
+  const lastScene = ref(null)
 
   // 내부 텍스트를 글자 단위로 분리하는 함수
   const splitText = (element) => {
@@ -736,8 +771,8 @@
     $ScrollTrigger.create({
       trigger: youtubeArea.value,
       start: 'top top',
-      end: "+=" + youtubeTimeline.duration() * 900,
-      scrub: true,
+      end: "+=1000",
+      scrub: 2,
       pin: youtubeArea.value,
       anticipatePin: 1,
       // markers: true,
@@ -747,7 +782,7 @@
     $ScrollTrigger.create({
       trigger: videoBox,
       start: 'top bottom',
-      end: "+=" + youtubeTimeline.duration() * 700 + " top",
+      end: "+=" + youtubeTimeline.duration() * 400 + " top",
       // markers: true,
       scrub: true,
       animation: youtubeTimeline,
@@ -757,32 +792,119 @@
     $gsap.timeline({
       scrollTrigger: {
         trigger: youtubeArea.value,
-        start: 'bottom center',
-        end: 'bottom top',
+        start: 'center-=500 top',
+        end: "+=699",
         scrub: true,
-        //markers: true,
+        anticipatePin: 1,
+        // markers: true,
       }
-    }).to(youtubeArea.value, { opacity: 0, duration: 1})
+    }).to(youtubeArea.value, { opacity: 0, duration: 0.5, ease: "power3.out" })
 
     /*-----------------------*/
-  // 07. 수사보드 섹션
-  /*-----------------------*/
-  
-  const bgInvBoard = invBoard.value.querySelector(".bg");
+    // 07. 수사보드 섹션
+    /*-----------------------*/
+    const invDimmed = invBoard.value.querySelector(".inv-dimmed");
+    const bgInvBoard = invBoard.value.querySelector(".bg");
+    const box1 = invBoard.value.querySelector(".box1");
+    const box2 = invBoard.value.querySelector(".box2");
+    const box3 = invBoard.value.querySelector(".box3");
+    const box4 = invBoard.value.querySelector(".box4");
+    const box5 = invBoard.value.querySelector(".box5");
+    const box6 = invBoard.value.querySelector(".box6");
+    const box7 = invBoard.value.querySelector(".box7");
+    const box8 = invBoard.value.querySelector(".box8");
+    const box9 = invBoard.value.querySelector(".box9");
+    const box10 = invBoard.value.querySelector(".box10");
+    const box11 = invBoard.value.querySelector(".box11");
+    const box12 = invBoard.value.querySelector(".box12");
+    const box13 = invBoard.value.querySelector(".box13");
 
-  const invBoardTimeline = $gsap.timeline()
-  .fromTo(invBoard.value, {opacity: 0}, {opacity: 1, duration: 2, ease: "power3.out" })
-  .to(bgInvBoard, {x:-800, y:-800 , duration: 3, ease: "power3.out" })
+    // 수사보드 사진 타임라인
+    const pic01 = $gsap.timeline()
+    .fromTo(box1, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" })
+    .fromTo(box2, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" }, ">-0.9")
 
-  $ScrollTrigger.create({
-    trigger: invBoard.value,
-    start: 'top top',
-    end: "+=" + invBoardTimeline.duration() * 1000,
-    scrub: 1,
-    pin: true,
-    markers: true,
-    animation: invBoardTimeline,
-  })
+    const pic02 = $gsap.timeline()
+    .fromTo(box3, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" })
+    .fromTo(box4, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" }, ">-0.9")
+
+    const pic03 = $gsap.timeline()
+    .fromTo(box5, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" }, "<")
+
+    const pic04 = $gsap.timeline()
+    .fromTo(box6, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" }, "<")
+    
+    const pic05 = $gsap.timeline()
+    .fromTo(box7, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" })
+    .fromTo(box8, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" }, ">-0.9")
+
+    const pic06 = $gsap.timeline()
+    .fromTo(box9, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" }, "<")
+
+    const pic07 = $gsap.timeline()
+    .fromTo(box10, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" })
+    .fromTo(box11, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" }, ">-0.9")
+
+    const pic08 = $gsap.timeline()
+    .fromTo(box12, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" })
+    .fromTo(box13, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" }, ">-0.9")
+
+    const invBoardTimeline = $gsap.timeline()
+    .to(invDimmed, {opacity: 0, duration: 0.5, ease: "none" }) 
+    .to(invDimmed, {visibility: "hidden", duration: 0.5, ease: "none" }, ">+0.01")
+    .addLabel("startMove", "<")
+    .to(bgInvBoard, {x:-998, y:-413 , duration: 2, ease: "power3.out" }, ">+0.25")
+    .addLabel("movePoint_01", ">-1")
+    .to(bgInvBoard, {x:-450, y:-799 , duration: 2, ease: "power3.out" }, ">+0.25")
+    .addLabel("movePoint_02", ">-1")
+    .to(bgInvBoard, {x:-2316, y:-1100 , duration: 2, ease: "power3.out" }, ">+0.25")
+    .addLabel("movePoint_03", ">-1")
+    .to(bgInvBoard, {x:-1437, y:-2466 , duration: 2, ease: "power3.out" }, ">+0.25")
+    .addLabel("movePoint_04", ">-1")
+    .to(bgInvBoard, {x:-2568, y:-2797 , duration: 2, ease: "power3.out" }, ">+0.25")
+    .addLabel("movePoint_05", ">-1")
+    .to(bgInvBoard, {x:-3432, y:-2951 , duration: 2, ease: "power3.out" }, ">+0.25")
+    .addLabel("movePoint_06", ">-1")
+    .to(bgInvBoard, {x:() => (window.innerWidth - bgInvBoard.offsetWidth) / 2, y: -3612, duration: 2, ease: "power3.out" }, ">+0.25")
+    .addLabel("movePoint_07", ">-1")
+    .to(bgInvBoard, {x:() => (window.innerWidth - bgInvBoard.offsetWidth) / 2, y: () => (-bgInvBoard.offsetHeight), duration: 2, ease: "power3.out" }, ">+0.25")
+
+
+    // 수사보드 라인 시점에 사진 등장
+    invBoardTimeline.add(pic01, "startMove+=0.2");
+    invBoardTimeline.add(pic02, "movePoint_01+=0.2");
+    invBoardTimeline.add(pic03, "movePoint_02+=0.2");
+    invBoardTimeline.add(pic04, "movePoint_03+=0.2");
+    invBoardTimeline.add(pic05, "movePoint_04+=0.2");
+    invBoardTimeline.add(pic06, "movePoint_05+=0.2");
+    invBoardTimeline.add(pic07, "movePoint_06+=0.2");
+    invBoardTimeline.add(pic08, "movePoint_07+=0.2");
+
+    $ScrollTrigger.create({
+      trigger: invBoard.value,
+      start: 'top+=1 top',
+      end: "+=" + invBoardTimeline.duration() * 1500,
+      scrub: 1,
+      pin: true,
+      // markers: true,
+      animation: invBoardTimeline,
+      anticipatePin: 1
+    })
+
+     /*-----------------------*/
+    // 08. 에필로그 섹션
+    /*-----------------------*/
+    $ScrollTrigger.create({
+      trigger: lastScene.value,
+      start: 'top top',
+      end: "+=3000",
+      scrub: true,
+      // markers: true,
+      pin: lastScene.value,
+      anticipatePin: 1
+    })
+
+
   });
 
   
