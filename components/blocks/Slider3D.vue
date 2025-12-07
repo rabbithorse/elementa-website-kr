@@ -51,8 +51,28 @@
                 <p class="text-[1.125rem] leading-[160%] font-normal">{{ card.description }}</p>
               </div>
               <div class="card-figures">
-                <div class="polygon-big polygon"></div>
-                <div class="polygon-small polygon"></div>
+                <div class="polygon-big polygon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="406" height="583" viewBox="0 0 406 583" fill="none">
+                    <path d="M201.794 0H405.485L203.691 582.282H0L201.794 0Z" :fill="`url(#${card.fillUrl1})`"/>
+                    <defs>
+                      <linearGradient :id="`${card.fillUrl1}`" x1="134.286" y1="0" x2="134.286" y2="566.975" gradientUnits="userSpaceOnUse">
+                      <stop offset="0.225962" :stop-color="`${card.color1}`"/>
+                      <stop offset="1" :stop-color="`${card.color2}`" stop-opacity="0"/>
+                    </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+                <div class="polygon-small polygon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="201" height="300" viewBox="0 0 201 300" fill="none">
+                    <path d="M103.955 0H240.319L136.364 299.407H0L103.955 0Z" :fill="`url(#${card.fillUrl2})`"/>
+                    <defs>
+                      <linearGradient :id="`${card.fillUrl2}`" x1="162.964" y1="-3.73614e-06" x2="162.964" y2="278.896" gradientUnits="userSpaceOnUse">
+                        <stop offset="0.201923" :stop-color="`${card.color1}`"/>
+                        <stop offset="1" :stop-color="`${card.color2}`" stop-opacity="0"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
               </div>
             </div>
           </div>
@@ -79,42 +99,74 @@ export default {
         {
           title: '비즈니스',
           titleEn: 'Business',
-          description: '안정적인 서버는 게임의 기본이자 유저 신뢰의 시작이라고 생각합니다. 늘 보이지 않는 곳에서 최고의 환경을 유지하는 데 집중하고 있습니다.'
+          description: '안정적인 서버는 게임의 기본이자 유저 신뢰의 시작이라고 생각합니다. 늘 보이지 않는 곳에서 최고의 환경을 유지하는 데 집중하고 있습니다.',
+          color1: '#734BD7',
+          color2: '#00C8EB',
+          fillUrl1: 'paint0_linear_252_1396',
+          fillUrl2: 'paint0_linear_252_1397'
         },
         {
           title: '클라이언트 프로그래머',
           titleEn: 'Tech',
-          description: '유저가 직접 만나는 화면과 기능을 구현합니다. 제 코드 한 줄이 플레이의 몰입감을 좌우한다고 생각하면 늘 긴장되면서도 즐겁습니다.'
+          description: '유저가 직접 만나는 화면과 기능을 구현합니다. 제 코드 한 줄이 플레이의 몰입감을 좌우한다고 생각하면 늘 긴장되면서도 즐겁습니다.',
+          color1: '#00C8EB',
+          color2: '#00BD5F',
+          fillUrl1: 'paint0_linear_252_1406',
+          fillUrl2: 'paint0_linear_252_1407'
         },
         {
           title: '디자인',
           titleEn: 'Design',
-          description: '안정적인 서버는 게임의 기본이자 유저 신뢰의 시작이라고 생각합니다. 늘 보이지 않는 곳에서 최고의 환경을 유지하는 데 집중하고 있습니다.'
+          description: '안정적인 서버는 게임의 기본이자 유저 신뢰의 시작이라고 생각합니다. 늘 보이지 않는 곳에서 최고의 환경을 유지하는 데 집중하고 있습니다.',
+          color1: '#2B9D5D',
+          color2: '#00C8EB',
+          fillUrl1: 'paint0_linear_252_1416',
+          fillUrl2: 'paint0_linear_252_1417'
         },
         {
           title: '마케팅',
           titleEn: 'Marketing',
-          description: '유저가 직접 만나는 화면과 기능을 구현합니다. 제 코드 한 줄이 플레이의 몰입감을 좌우한다고 생각하면 늘 긴장되면서도 즐겁습니다.'
+          description: '유저가 직접 만나는 화면과 기능을 구현합니다. 제 코드 한 줄이 플레이의 몰입감을 좌우한다고 생각하면 늘 긴장되면서도 즐겁습니다.',
+          color1: '#9D892B',
+          color2: '#BD7400',
+          fillUrl1: 'paint0_linear_252_1426',
+          fillUrl2: 'paint0_linear_252_1427'
         },
         {
           title: '비즈니스',
           titleEn: 'Business',
-          description: '안정적인 서버는 게임의 기본이자 유저 신뢰의 시작이라고 생각합니다. 늘 보이지 않는 곳에서 최고의 환경을 유지하는 데 집중하고 있습니다.'
+          description: '안정적인 서버는 게임의 기본이자 유저 신뢰의 시작이라고 생각합니다. 늘 보이지 않는 곳에서 최고의 환경을 유지하는 데 집중하고 있습니다.',
+          color1: '#734BD7',
+          color2: '#00C8EB',
+          fillUrl1: 'paint0_linear_252_1396',
+          fillUrl2: 'paint0_linear_252_1397'
         },
         {
           title: '클라이언트 프로그래머',
           titleEn: 'Tech',
-          description: '유저가 직접 만나는 화면과 기능을 구현합니다. 제 코드 한 줄이 플레이의 몰입감을 좌우한다고 생각하면 늘 긴장되면서도 즐겁습니다.'
+          description: '유저가 직접 만나는 화면과 기능을 구현합니다. 제 코드 한 줄이 플레이의 몰입감을 좌우한다고 생각하면 늘 긴장되면서도 즐겁습니다.',
+          color1: '#00C8EB',
+          color2: '#00BD5F',
+          fillUrl1: 'paint0_linear_252_1406',
+          fillUrl2: 'paint0_linear_252_1407'
         },
         {
           title: '디자인',
           titleEn: 'Design',
-          description: '안정적인 서버는 게임의 기본이자 유저 신뢰의 시작이라고 생각합니다. 늘 보이지 않는 곳에서 최고의 환경을 유지하는 데 집중하고 있습니다.'
+          description: '안정적인 서버는 게임의 기본이자 유저 신뢰의 시작이라고 생각합니다. 늘 보이지 않는 곳에서 최고의 환경을 유지하는 데 집중하고 있습니다.',
+          color1: '#2B9D5D',
+          color2: '#00C8EB',
+          fillUrl: 'paint0_linear_252_1416',
+          fillUrl2: 'paint0_linear_252_1417'
         },
         {
           title: '마케팅',
           titleEn: 'Marketing',
-          description: '유저가 직접 만나는 화면과 기능을 구현합니다. 제 코드 한 줄이 플레이의 몰입감을 좌우한다고 생각하면 늘 긴장되면서도 즐겁습니다.'
+          description: '유저가 직접 만나는 화면과 기능을 구현합니다. 제 코드 한 줄이 플레이의 몰입감을 좌우한다고 생각하면 늘 긴장되면서도 즐겁습니다.',
+          color1: '#9D892B',
+          color2: '#BD7400',
+          fillUrl1: 'paint0_linear_252_1426',
+          fillUrl2: 'paint0_linear_252_1427'
         }
       ]
     };
@@ -147,7 +199,7 @@ export default {
       if (width >= 1536) {
         // 데스크톱 대형
         config = {
-          radius: 1100,
+          radius: 1300,
           angle: 25,
           arcHeight: 600,
           zDepth: 300,
@@ -261,10 +313,10 @@ export default {
         rotateY = -rotateYBase; // 왼쪽 카드
       } else if (adjustedDiff === 1) {
         rotateY = rotateYBase; // 오른쪽 카드
-      } else if (adjustedDiff < -1) {
-        rotateY = -rotateYBase + (Math.abs(adjustedDiff) - 1) * rotateYIncrement; // 더 왼쪽은 더 회전
-      } else if (adjustedDiff > 1) {
-        rotateY = rotateYBase + (Math.abs(adjustedDiff) - 1) * rotateYIncrement; // 더 오른쪽은 더 회전
+      } else if (adjustedDiff === -2) {
+        rotateY = -rotateYIncrement; // 더 왼쪽은 더 회전
+      } else if (adjustedDiff === 2) {
+        rotateY = rotateYIncrement; // 더 오른쪽은 더 회전
       }
       
       const scale = (adjustedDiff === 0 ? 1 : 0.95)  * cardScale;
@@ -541,7 +593,7 @@ export default {
   clip-path: polygon(45% 0%, 100% 0%, 55% 100%, 0% 100%);
 }
 
-.card:nth-child(1) .card-front .polygon, .card:nth-child(5) .card-front .polygon {
+/* .card:nth-child(1) .card-front .polygon, .card:nth-child(5) .card-front .polygon {
   background: linear-gradient(180deg, #734BD7 22%, rgba(0, 200, 235, 0.00) 97.37%);
 }
 
@@ -555,7 +607,7 @@ export default {
 
 .card:nth-child(4) .card-front .polygon, .card:nth-child(8) .card-front .polygon {
   background: linear-gradient(180deg, #9D892B 22%, rgba(189, 116, 0, 0.00) 97.37%);
-}
+} */
 
 /* 버튼 스타일 */
 .slider-btn {

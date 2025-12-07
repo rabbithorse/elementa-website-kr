@@ -2,7 +2,7 @@
   <div>
     <NavigationHeader />
 
-    <main>
+    <main class="main">
       <slot></slot>
     </main>
 

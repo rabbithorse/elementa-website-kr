@@ -5,8 +5,8 @@ h2 {font-family: "Oswald";}
 .primaryWrap {position: relative; }
 
 /* 컴포넌트 */
-.polygon {position:relative; display: inline-block; transform: translateX(-15%)}
-.polygon .inner {
+.visual-section .polygon {position:relative; display: inline-block; transform: translateX(-15%)}
+.visual-section .polygon .inner {
   fill: rgba(255, 255, 255, 0.50);
   mix-blend-mode: hard-light;
   /* box-shadow: -1px -1px 1px 0 rgba(255, 255, 255, 0.25) inset, 2px 2px 2px 0 rgba(255, 255, 255, 0.25) inset; */
@@ -29,7 +29,7 @@ h2 {font-family: "Oswald";}
   padding-left: 4rem;
   padding-right: 2.75rem;
 }
-.polygon .inner::before {
+.visual-section .polygon .inner::before {
   content: '';
   position: absolute;
   top: 0;
@@ -39,7 +39,7 @@ h2 {font-family: "Oswald";}
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
   clip-path: polygon(100% 0, calc(100% - 20px) 100%, 0 100%, 0 0);
 }
-.polygon .inner::after {
+.visual-section .polygon .inner::after {
   content: "";
   position: absolute;
   right: 11px;
@@ -68,7 +68,7 @@ h2 {font-family: "Oswald";}
 /* 섹션 공통 */
 section {position: relative; overflow: hidden;}
 section .primary-text, section .primary-text * {line-height: 1em;}
-/* .gradient-text {display: inline-block; position: relative; color: transparent; -webkit-text-fill-color: transparent;} */
+.main .gradient-text {display: inline-block; position: relative; color: transparent; -webkit-text-fill-color: transparent;} 
 .gradient-text.grey {background: linear-gradient(90deg, rgba(154, 177, 188, 0.30) 1.75%, rgba(154, 177, 188, 0.10) 98.07%); line-height: 1; -webkit-background-clip: text; background-clip: text;}
 .gradient-text.blue {background: linear-gradient(90deg, #0AD9FE 1.03%, #7D4FF0 147.83%); -webkit-background-clip: text; background-clip: text;}
 .gradient-text * {background: none !important; color: inherit; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;}
@@ -80,7 +80,7 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 .mission-section .gradient-text.text-absolute {position: absolute;}
 .mission-section .primary-char-wrap {margin-left: -5px !important;}
 .mission-section .primary-char-wrap.ml-5 {margin-left: 1.25rem !important;}
-.mission-section .glass-content {padding: 2rem 2.2rem;}
+.mission-section .box-wrap .glass {padding: 35px 0 40px;}
 
 .accordion-item.opened {flex: 1;}
 .locked .accordion-trigger {width: 100%;}
@@ -89,9 +89,9 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 .accordion-item .content-text {}
 .accordion-item .content-text * {color: #fff;}
 .accordion-item.opened .accordion-content {width: 100%;}
-.locked-title-icon {display: inline-block; width: 28px; height: 42px;}
+.locked-title-icon {display: inline-block; width: 28px; height: 42px; background: url("~/assets/images/main/icon-lock.svg") no-repeat center/contain; z-index: 1;}
 .locked-title-text {display: inline-block; width: 79px; height: 230px; background: url("~/assets/images/main/text-lock-vertical.png") no-repeat center/contain; flex-shrink: 0;}
-.accordion-item .accordion-trigger button {flex-direction: column; justify-content: unset; row-gap: 3.125rem; padding: 6.25rem 2.5rem;}
+.accordion-item .accordion-trigger button {display: flex; flex-direction: column; justify-content: unset; row-gap: 3.125rem; padding: 6.25rem 2.5rem; height: 100%;}
 .accordion-item .accordion-trigger button h3 {writing-mode: vertical-lr; transform: rotate(180deg);}
 .accordion-item.locked button {padding: 6.25rem 1rem; width: auto;}
 .locked {width: 6.8rem; flex-shrink: 0;}
@@ -157,8 +157,11 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 
 .gradient-text .character-wrap svg {height: 120px; width: auto; height: 17vw;}
 
-@media (min-width: 2580px) {
+@media (min-width: 3441px) {
   .video-layer {height: 2100px;}
+}
+@media (min-width: 2580px) and (max-width: 3440px) {
+  .video-layer {height: 1920px;}
 }
 
 @media (min-width: 2001px) and (max-width: 2500px) {
@@ -204,15 +207,19 @@ section .primary-text, section .primary-text * {line-height: 1em;}
   .careers-section .swiper-slide {width: 100%; height: 415px;} 
   .careers-section .swiper-slide .cont .text-box {padding: 1.88rem;}
 }
+@media (max-width: 1279px) {
+  .video-layer {height: 100vh; right: auto; left: 24%;}
+}
 
 /* -------------------------------------- */
 /* 1023px 이하 공통 스타일 */
 /* -------------------------------------- */
 @media (max-width: 1023px) {
-  .accordion-item .accordion-trigger button {display: flex; flex-direction: row; justify-content: space-between; row-gap: 3.125rem; padding: 1.25rem; width: 100%}
-  .accordion-item .accordion-trigger button h3 {writing-mode: horizontal-tb; transform: rotate(0);}
-  .locked {width: 100%; }
-  .accordion-item.locked button {padding: 0.2rem 0 0.2rem 1rem; width: 100%;}
+  .bg-video {top: auto; left: -22%; height: 108%; bottom: -13%;}
+  .accordion-item.opened .accordion-trigger button {display: flex; flex-direction: row; justify-content: space-between; row-gap: 3.125rem; padding: 1.25rem; width: 100%}
+  .accordion-item.opened .accordion-trigger button h3 {writing-mode: horizontal-tb; transform: rotate(0);}
+  .locked { width: 100%; }
+  .accordion-item.locked button {flex-direction: row; padding: 0.2rem 0 0.2rem 1rem; width: 100%;}
   .locked-title-icon {width: 20px; height: 29px; background: url("~/assets/images/main/icon-lock.svg") no-repeat center/contain; vertical-align: middle; }
   .locked-title-text {width: 139px; height: 47px; background: url("~/assets/images/main/text-lock.png") no-repeat center/contain; vertical-align: middle; }
   .careers-section .swiper-slide {width: 100%; height: 415px;} 
@@ -226,7 +233,6 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 }
 
 @media (min-width: 768px) {
-  
   .careers-section .glass-content::before, 
   .careers-section .glass-content::after {content: ""; display: inline-block; width: 6.25rem; height: calc(100% - 4px); top: 50%; position: absolute; transform: translateY(-50%); z-index: 1; z-index: 15;}
   .careers-section .glass-content::before {background: linear-gradient(90deg, #04050A 31.73%, rgba(4, 5, 10, 0.00) 100%); left: 0;}
@@ -237,6 +243,8 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 /* MOBILE : 0 ~ 767 */
 /* -------------------------------------- */
 @media (max-width: 767px) {
+  .mission-section .box-wrap .glass {padding: 25px 20px 30px;}
+
   .newsroom-section::after {width: 14.5rem; height: 15rem; right: -2.5rem; top: 2rem;}
   .newsroom-section .glass-content {padding: 3.25rem 0 2.625rem}
   .newsroom-section .card {height: 16rem;}

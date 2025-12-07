@@ -148,7 +148,7 @@
 
       <div class="culture-interview bg-[url('~/assets/images/sub/culture-interview-bg.png')] bg-[#05060B] no-repeat bg-center bg-cover pt-56 relative z-10">
         <EffectGlass>
-          <Container class="md:py-[4.5rem] py-9">
+          <Container class="md:pt-[4.5rem] pt-9">
             <div class="section-heading">
               
               <div class="heading-text flex flex-col md:gap-y-10 gap-y-4">
@@ -255,39 +255,47 @@
     $gsap.timeline({
       scrollTrigger: {
         trigger: visionSection.value,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 0.8,
+        start: "top 80%",
+        end: "+=100",
         pin: true,
+        pinSpacing: false,
+        scrub: 8,
         //markers: true,
       },
-    }).fromTo(visionImage.value,
+    })
+    .fromTo(visionImage.value,
       {
         clipPath: 'inset(50% 95% 0%)',
       },
       {
         clipPath: 'inset(0%)',
         ease: 'none',
-        duration: 4,
+        duration: 3,
       }
     )
-    .to(visionImage.value, {
-      y: '-30%',
-      ease: 'none',
-      duration: 2.5,
-    }, ">")
     .to(visionContent.value, {
       clipPath: "inset(0% 0 0 0)",
       ease: "expo.out",
-      duration: 1.5,
-    }, "<"
+      duration: 1,
+    }, ">"
     )
     .to(textRevealArray, {
       y: '0%',
       duration: 1,
       rotateX: 0,
       stagger: 0.3,
-    }, ">")
+    }, "<")
+
+    $gsap.to(visionImage.value, {
+      yPercent: -30,   // 이 값을 조절하면 속도 달라짐
+      ease: "none",
+      scrollTrigger: {
+        trigger: visionSection.value,
+        start: "top 50%",
+        end: "bottom 20%",
+        scrub: true
+      }
+    });
 
     // $gsap.timeline({
     //   scrollTrigger: {
