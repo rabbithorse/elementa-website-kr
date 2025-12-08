@@ -469,14 +469,13 @@
             </div>
           </h2>
         </div>
-        <div class="box-wrap max-w-[61rem] mx-auto w-[90%]" ref="missionBox">
-          <EffectGlass>
+        <div class="box-wrap max-w-[61rem] mx-auto w-[90%] pt-[2.15rem] pb-[2.5rem]" ref="missionBox">
+          <EffectGlassTest class="shimmer" />
             <span class="sectionTitle-eng text-white text-base relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] md:before:w-3 md:before:h-3 before:w-[0.625rem] before:h-[0.625rem] before:rounded-full pl-5">Our Mission</span>
-            <div class="text-content gap-x-7 py-[0.9rem]">
+            <div class="text-content gap-x-7 py-[0.9rem] z-[1] relative">
               <p class="text-white md:text-[1.5rem] text-[4.1vw] leading-[150%] break-keep">혁신적 경험으로 게임의 기준을 새롭게 쓰고, 협력과 도전으로 문화를 확장하며, <br>전 세계가 공감할 지속 가능한 감동을 만드는 문화·패러다임의 선도자로 성장하겠습니다.</p>
             </div>
-            <ButtonsBasic size="sm" color="white" class="max-md:w-full [&>*]:w-full">View more</ButtonsBasic>
-          </EffectGlass>
+            <ButtonsBasic href="/company" size="sm" color="white" class="max-md:w-full [&>*]:w-full">View more</ButtonsBasic>
         </div>
       </div>
        
@@ -591,7 +590,7 @@
         <h2 class="md:text-[28rem] text-[12.5rem] gradient-text grey font-bold">ELEMENTA ELEMENTA</h2>
       </div>
       <Container class="flex flex-col md:gap-y-[5rem] gap-y-10">
-        <div class="section-heading relative">
+        <div class="section-heading relative" ref="newsroomHeading">
           <div class="heading-text flex flex-col md:gap-y-10 gap-y-4">
             <span class="sectionTitle-eng text-white md:text-base text-[3.4vw] relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] before:w-3 before:h-3 before:rounded-full pl-5 ">NEWSROOM</span>
             <h6 class="text-white md:text-[2.3rem] text-[4.3vw] font-normal">
@@ -600,7 +599,7 @@
             </h6>
           </div> 
           <div class="heading-button absolute right-0 bottom-0 md:block hidden">
-            <ButtonsBasic color="blue">View more</ButtonsBasic>
+            <ButtonsBasic href="/newsroom" color="blue">View more</ButtonsBasic>
           </div>
         </div>
         <div class="section-content md:flex">
@@ -894,6 +893,7 @@ const lastingImpact = ref(null)
 const elementaKoreaSection = ref(null)
 const sliderImg = ref(null)
 const newsroomSection = ref(null)
+const newsroomHeading = ref(null)
 const flowLeft = ref(null)
 const flowRight = ref(null)
 const accordionSection = ref(null)
@@ -936,7 +936,7 @@ onMounted(() => {
         pin: true, 
         //pinSpacing: true,
         //markers: true,
-        end: () => "+=700%",
+        end: () => "+=620%",
       }
     });
     tl.to(videoWrap.value,
@@ -990,7 +990,7 @@ onMounted(() => {
       scrollTrigger: {
         pin: true,
         trigger: missionSection.value,
-        start: () => "+=150%",
+        start: () => "+=120%",
       },
     })
     .to(missionSection.value, 
@@ -998,7 +998,7 @@ onMounted(() => {
       yPercent: -100,
       ease: 'none',
       scrollTrigger: {
-        start: () => "+=" + visualSection.value.offsetHeight - 100,
+        start: () => "+=" + visualSection.value.offsetHeight - 120,
         end: () => "+=" + (visualSection.value.offsetHeight * 1.2),
         scrub: 1,
       }
@@ -1009,7 +1009,7 @@ onMounted(() => {
       opacity: 1,
       duration: 0.3,
       scrub: 1,
-    }, "+=0.5")
+    })
     .to(characterDisappearArray, {
       x: 150,
       start: "top top",
@@ -1028,7 +1028,7 @@ onMounted(() => {
     }, ">-0.05")
     .fromTo(missionBox.value, 
       { yPercent: 100, opacity: 0 },
-      { yPercent: 0, opacity: 1, duration: 0.5, stagger: 0.05, ease: "power2.out", scrub: 1 }, ">-0.1"
+      { yPercent: 0, opacity: 1, duration: 1, stagger: 0.05, ease: "power2.out", scrub: 1 }, ">-0.1"
     )
 
     
@@ -1185,7 +1185,7 @@ onMounted(() => {
       const newsroomTl = $gsap.timeline({
         scrollTrigger: {
           trigger: newsroomSection.value,
-          start: 'top top',
+          start: 'center 35%',
           pin: true,
           end: () => "+=" + (newsroomSection.value.offsetHeight * 2),
           scrub: 1,
@@ -1193,17 +1193,19 @@ onMounted(() => {
       })
 
       newsroomTl.fromTo(flowLeft.value, {
-        x: calcTransform("x", "calc(100% - 100vw)"),
+        x: "10%",
       }, {
-        x: calcTransform("x", "calc(100% - 150vw)"),
+        //x: calcTransform("x", "calc(100% - 150vw)"),
+        x: "-43%",
         ease: 'power2.out',
         duration: 2,
       }, 0.2)
 
       newsroomTl.fromTo(flowRight.value, {
-        x: calcTransform("x", "calc(-100% + 100vw)"),
+        x: "-47%",
       }, {
-        x: calcTransform("x", "calc(-100% + 150vw)"),
+        //x: calcTransform("x", "calc(-100% + 150vw)"),
+        x: "3%",
         ease: 'power2.out',
         duration: 2,
       }, 0.2)

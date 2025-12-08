@@ -21,8 +21,35 @@
 </template>
 
 <style>
-  .filter-glass {width: 100%; height:100%; position: absolute; left: 0;  bottom: 0; z-index: -0; background: rgba(0, 0, 0, 0.15);}
-  .filter-glass.liquid {filter: url(#liquid) saturate(100%); backdrop-filter: blur(12px);}
+  .filter-glass {width: 100%; height:100%; position: absolute; left: 0;  bottom: 0; z-index: 0; box-shadow: 12px 10px 20px 0 rgba(0, 0, 0, 0.08), 1px 1px 3px 0 rgba(255, 255, 255, 0.25) inset; overflow: hidden;}
+
+  .filter-glass.liquid {
+    filter: url(#liquid) saturate(100%); 
+    backdrop-filter: blur(12px);
+  }
+
+  .filter-glass.shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, 0.1) 50%, transparent 60%);
+    animation: shimmer 7s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    50% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
 </style>
 
 <script>
