@@ -198,8 +198,10 @@
             <div class="movie-frame relative z-10">
               <div class="w-full mx-auto aspect-video">
                 <iframe
-                  class="w-full h-full"
-                  src="https://www.youtube.com/embed/iFXoYNc9-vA?si=KRehctRQC7wTU-39"
+                  class="w-full h-full js-youtube"
+                  src="https://www.youtube.com/embed/iFXoYNc9-vA?controls=1&rel=0&playsinline=1"
+                  data-src-play="https://www.youtube.com/embed/iFXoYNc9-vA?autoplay=1&mute=1&controls=1&rel=0&playsinline=1"
+                  data-src-stop="https://www.youtube.com/embed/iFXoYNc9-vA?controls=1&rel=0&playsinline=1"
                   title="YouTube video player"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -219,11 +221,13 @@
     <section class="inv-board overflow-hidden relative" ref="invBoard">
       <div class="inv-dimmed absolute z-10 w-full h-full top-0 left-0"></div>
       <div class="in-camera w-full overflow-hidden">
-        <div class="bg relative">
+        <div class="bg relative flex items-end justify-center">
           <!-- 처음 ~ 두번째 지점 사진 -->
           <div class="picbox-01 w-full absolute">
-            <div class="box1 absolute left-[334px] top-[225px] bg-white w-[100px] h-[100px]"></div>
-            <div class="box2 absolute left-[487px] top-[327px] bg-yellow-500 w-[100px] h-[100px]"></div>
+            <div class="box1 absolute z-20"><img src="~/assets/images/sub/inv-board-box1.png" alt="point 1 image"></div>
+            <div class="box2 absolute z-10"><img src="~/assets/images/sub/inv-board-box2.png" alt="point1 image 2"></div>
+            <div class="box2-5 absolute z-10"><img src="~/assets/images/sub/inv-board-box2-5.png" alt="point1~2 image"></div>
+
             <div class="box3 absolute left-[1865px] bottom-[162px] bg-white w-[100px] h-[100px]"></div>
             <div class="box4 absolute left-[2019px] bottom-[62px] bg-yellow-500 w-[100px] h-[100px]"></div>
           </div>
@@ -245,8 +249,16 @@
             <div class="box12 absolute right-[50%] bottom-[-200px] bg-white w-[100px] h-[100px]"></div>
             <div class="box13 absolute left-[1845px] bottom-[200px] bg-yellow-500 w-[100px] h-[100px]"></div>
           </div>
+          <!-- 마지막 제작사 리스트 -->
+          <ul class="text-white text-center flex flex-col gap-[195px] text-4xl" ref="creditList">
+            <li><span>제작사, 배급사</span>엘리멘타</li>
+            <li><span>장르</span>서브컬처 빅월드 ARPG</li>
+            <li><span>진출 국가</span>글로벌</li>
+            <li><span>언어</span>다국어 지원</li>
+            <li><span>실버팰리스 알아보기</span></li>
+          </ul>
 
-          <div class="line absolute w-full h-full top-0 left-0">
+          <div class="line absolute w-full h-full top-0 left-0 z-50">
             <img src="~/assets/images/sub/inv-board-line-sub01.png" alt="investigation board line sub 01" class="block sub-line-01 absolute">
             <img src="~/assets/images/sub/inv-board-line-sub02.png" alt="investigation board line sub 02" class="block sub-line-02 absolute">
             <img src="~/assets/images/sub/inv-board-line.png" alt="investigation board line" class="block main-line absolute">
@@ -763,15 +775,15 @@
     const bgText = youtubeArea.value.querySelector(".bg-text");
 
     const youtubeTimeline = $gsap.timeline()
-    .fromTo(dumyBoxLeft, { y: "300px"}, { y: "38px", duration: 4, ease: "power3.out" }) // 동시 진행
-    .fromTo(dumyBoxRight, { y: "-300px"}, { y: "38px", duration: 4, ease: "power3.out" }, "<") // 동시 진행
+    .fromTo(dumyBoxLeft, { y: "300px"}, { y: "0", duration: 4, ease: "power3.out" }) // 동시 진행
+    .fromTo(dumyBoxRight, { y: "-300px"}, { y: "0", duration: 4, ease: "power3.out" }, "<") // 동시 진행
     .fromTo(bgText, {transform: "translate(-50%, -45%)"}, {duration: 2, ease: "power3.out", transform: "translate(-50%, -50%)"}, "<") // 동시 진행
 
     // 섹션 고정 전담 - 고정이 살짝 늦게 풀림
     $ScrollTrigger.create({
       trigger: youtubeArea.value,
       start: 'top top',
-      end: "+=1000",
+      end: "+=" + youtubeTimeline.duration() * 150,
       scrub: 2,
       pin: youtubeArea.value,
       anticipatePin: 1,
@@ -782,11 +794,42 @@
     $ScrollTrigger.create({
       trigger: videoBox,
       start: 'top bottom',
-      end: "+=" + youtubeTimeline.duration() * 400 + " top",
+      end: "+=" + youtubeTimeline.duration() * 100 + " top",
       // markers: true,
       scrub: true,
       animation: youtubeTimeline,
     })
+
+    // 유튜브 영상 재생/일시정지 제어
+
+    const iframe = youtubeArea.value.querySelector('.js-youtube');
+
+    if (iframe) {
+      const playSrc = iframe.dataset.srcPlay;
+      const stopSrc = iframe.dataset.srcStop;
+
+      $ScrollTrigger.create({
+        trigger: videoBox,
+        start: 'center center',   // 비디오 박스가 화면 중앙에 왔을 때
+        end: 'bottom top',        // 화면 위로 빠져나갈 때까지
+        onEnter: () => {
+          iframe.src = playSrc;
+        },
+        onEnterBack: () => {
+          iframe.src = playSrc;
+        },
+        onLeave: () => {
+          iframe.src = stopSrc;   // 재생 중지 + 썸네일 상태로 초기화
+        },
+        onLeaveBack: () => {
+          iframe.src = stopSrc;
+        },
+        // markers: true,
+      });
+    }
+
+
+
 
     // 유튜브 섹션 사라짐 효과
     $gsap.timeline({
@@ -807,6 +850,7 @@
     const bgInvBoard = invBoard.value.querySelector(".bg");
     const box1 = invBoard.value.querySelector(".box1");
     const box2 = invBoard.value.querySelector(".box2");
+    const box2_5 = invBoard.value.querySelector(".box2-5");
     const box3 = invBoard.value.querySelector(".box3");
     const box4 = invBoard.value.querySelector(".box4");
     const box5 = invBoard.value.querySelector(".box5");
@@ -822,7 +866,8 @@
     // 수사보드 사진 타임라인
     const pic01 = $gsap.timeline()
     .fromTo(box1, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" })
-    .fromTo(box2, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" }, ">-0.9")
+    .fromTo(box2, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" }, ">-0.7")
+    .fromTo(box2_5, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" })
 
     const pic02 = $gsap.timeline()
     .fromTo(box3, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" })
@@ -850,9 +895,9 @@
     .fromTo(box13, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" }, ">-0.9")
 
     const invBoardTimeline = $gsap.timeline()
-    .to(invDimmed, {opacity: 0, duration: 0.5, ease: "none" }) 
-    .to(invDimmed, {visibility: "hidden", duration: 0.5, ease: "none" }, ">+0.01")
-    .addLabel("startMove", "<")
+    .to(invDimmed, {opacity: 0, duration: 0.3, ease: "none" }) 
+    .to(invDimmed, {visibility: "hidden", duration: 0.3, ease: "none" }, ">+0.01")
+    .addLabel("startMove", ">-1")
     .to(bgInvBoard, {x:-998, y:-413 , duration: 2, ease: "power3.out" }, ">+0.25")
     .addLabel("movePoint_01", ">-1")
     .to(bgInvBoard, {x:-450, y:-799 , duration: 2, ease: "power3.out" }, ">+0.25")
@@ -871,7 +916,7 @@
 
 
     // 수사보드 라인 시점에 사진 등장
-    invBoardTimeline.add(pic01, "startMove+=0.2");
+    invBoardTimeline.add(pic01, "startMove");
     invBoardTimeline.add(pic02, "movePoint_01+=0.2");
     invBoardTimeline.add(pic03, "movePoint_02+=0.2");
     invBoardTimeline.add(pic04, "movePoint_03+=0.2");
@@ -1033,7 +1078,6 @@
   // 1) 모든 ScrollTrigger 정리
   $ScrollTrigger.getAll().forEach(st => st.kill());
   });
-
 
 </script>
 
