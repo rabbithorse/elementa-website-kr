@@ -273,7 +273,8 @@
 </script>
 
 <style scoped>
-  .filter-glass {filter: url(#lg-dist); backdrop-filter: blur(12px); width: 100%; height:100%; position: absolute; left: 0;  bottom: 0; z-index: 1; background: url(~/assets/images/sub/otis-redding.png) repeat;}
+  /* [KSR 2025.12.08] 쭈굴거리는 선이 보이는 이슈로 일시 숨김 */
+  .filter-glass {/*filter: url(#lg-dist);*/ backdrop-filter: blur(12px); width: 100%; height:100%; position: absolute; left: 0;  bottom: 0; z-index: 1; background: url(~/assets/images/sub/otis-redding.png) repeat;}
   .filter-glass.liquid {filter: url(#liquid); background: none; backdrop-filter: blur(4px);}
   .circle-filter{visibility: hidden; opacity: 0; filter: url(#lg-dist); backdrop-filter: blur(3px); z-index: 1; width: 265px; height: 265px;  left: 50%; top: 50%; transform: translate(-50%, -50%); border-radius: 50%;}
   .circle-filter.on{visibility: visible; opacity: 1;}
