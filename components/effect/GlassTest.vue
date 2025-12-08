@@ -1,7 +1,7 @@
 <template>
   <div class="filter-glass liquid">
     <slot></slot>
-    <svg style="display: none">
+    <svg width="0" height="0">
       <filter id="liquid" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox" >
         <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="1" result="turbulence" />
         <feComponentTransfer in="turbulence" result="mapped">
@@ -24,7 +24,7 @@
   .filter-glass {width: 100%; height:100%; position: absolute; left: 0;  bottom: 0; z-index: 0; box-shadow: 12px 10px 20px 0 rgba(0, 0, 0, 0.08), 1px 1px 3px 0 rgba(255, 255, 255, 0.25) inset; overflow: hidden;}
 
   .filter-glass.liquid {
-    filter: url(#liquid) saturate(100%); 
+    /* filter: url(#liquid) saturate(100%);  */
     backdrop-filter: blur(12px);
   }
 
