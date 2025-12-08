@@ -119,7 +119,7 @@ const headerClass = computed(() => {
     transform: translateY(0);
   }
 
-  #header .container {display: flex; align-items: center; border-radius: 5px; border: 0.5px solid rgba(255, 255, 255, 0.20); background: rgba(255, 255, 255, 0.08); box-shadow: 20px 20px 10px 0 rgba(0, 0, 0, 0.10); backdrop-filter: blur(40px);}
+  #header .container {display: flex; align-items: center; border-radius: 5px; border: 0.5px solid rgba(255, 255, 255, 0.20); background: rgba(0, 0, 0, 0.60); box-shadow: 20px 20px 10px 0 rgba(0, 0, 0, 0.10); backdrop-filter: blur(40px);}
 
   .slide-enter-from {
     transform: translateX(100%);

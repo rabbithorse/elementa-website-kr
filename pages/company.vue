@@ -90,12 +90,12 @@
         <div class="absolute right-0 inset-y-0 h-full w-[11.6rem] z-20">
           <EffectGlass class="w-full h-full" />
         </div>
-        <Container class="h-full">
-          <div class="section-heading absolute">
-            <div class="heading-text flex flex-col md:gap-y-10 gap-y-4">
-              <span class="sectionTitle-eng text-white md:text-base text-[3.4vw] relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] md:before:w-3 md:before:h-3 before:w-[0.625rem] before:h-[0.625rem] before:rounded-full pl-5">Our Mission</span>
-            </div>
+        <div class="section-heading absolute left-[15.2rem] top-[3.75rem]">
+          <div class="heading-text flex flex-col md:gap-y-10 gap-y-4">
+            <span class="sectionTitle-eng text-white md:text-base text-[3.4vw] relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] md:before:w-3 md:before:h-3 before:w-[0.625rem] before:h-[0.625rem] before:rounded-full pl-5">Our Mission</span>
           </div>
+        </div>
+        <Container class="h-full">
           <div class="section-content pt-[8.75rem]">
             <div class="mission-wrap grid items-center grid-cols-12 gap-x-4 relative">
               <div class="bgtitle absolute left-0">
@@ -174,16 +174,18 @@
           </div>
         </Container>
       </div>
-      <div class="h-screen flex items-center relative overflow-hidden" ref="visionSection">
-        <div class="section-heading flex flex-col gap-y-8 text-center w-full z-10">
+      <div class="h-screen flex items-center justify-center overflow-hidden" ref="visionSection">
+        <div class="section-heading flex flex-col gap-y-8 text-center size-fit z-10 relative">
           <p class="text-white text-2xl leading-[160%]" ref="visionText">혁신적 경험으로 게임의 기준을 새로 쓰고, <br>협력과 도전으로 문화를 확장하며, <br>전 세계가 공감할 지속 가능한 감동을 만드는 문화·패러다임의 선도자로 성장하겠습니다.</p>
           <h2 class="text-white font-paperlogy text-[10rem] font-extrabold" ref="visionTitle">ELEMENTA</h2>
-        </div>
-        <div class="figure-wrap absolute bottom-0 right-[31rem] z-0" ref="visionFigureWrap"> 
-          <div class="figure ">
-            <img src="@/assets/images/sub/company-vision-figure.png" alt="">
+
+          <div class="figure-wrap absolute top-0 -right-[18rem] -z-[1]" ref="visionFigureWrap"> 
+            <div class="figure ">
+              <img src="@/assets/images/sub/company-vision-figure.png" alt="">
+            </div>
           </div>
         </div>
+        
       </div>
       <div class="company-scroll mb-40" ref="scrollSection">
         <div class="heading flex items-center justify-center w-full z-10" ref="scrollFixedHeading">
@@ -544,6 +546,7 @@
           start: "top 110%",
           duration: 1,
           scrub: true,
+          onEnter: () => el.classList.add('on'),
         }
       });
 
@@ -641,6 +644,25 @@
   }
 
   .culture-area .wide-image-area {background: url(assets/images/sub/company-scroll-bottom-bg.png) no-repeat 50% 50% / cover;}
+
+  .company-scroll .content-card {
+    clip-path: inset(50% 30% 20% 30% round 15%); 
+    transition: clip-path 1.4s ease 0.2s;
+  }
+
+  .company-scroll .content-card img {
+    transform: scale(1.4); 
+    transition: transform 1.6s ease; 
+    width: 100%;
+  }
+
+  .company-scroll .content-card.on {
+    clip-path: inset(0% 0% 0% 0% round 0%);
+  }
+
+  .company-scroll .content-card.on img {
+    transform: scale(1);
+  }
 
   .company-ci .heading::before {
     content: ""; 
