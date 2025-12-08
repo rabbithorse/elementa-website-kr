@@ -11,7 +11,7 @@
         <span ref="videoWrapLayer" class="bg-video-layer"></span>
         <EffectGlass>
           <video autoplay muted loop>
-            <source src="~/assets/videos/main-fly_enc.mp4" type="video/mp4" />
+            <source src="~/assets/videos/main-fly.mp4" type="video/mp4" />
           </video>
         </EffectGlass>
       </div>

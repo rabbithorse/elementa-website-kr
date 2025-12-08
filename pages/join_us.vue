@@ -103,7 +103,7 @@
       <!-- 채용 리스트 -->
     </section>
 
-    <svg style="display: none">
+    <svg width="0" height="0">
       <filter id="lg-dist" x="0%" y="0%" width="100%" height="100%">
         <feTurbulence type="fractalNoise" baseFrequency="0.009 0.009" numOctaves="2" seed="92" result="noise" />
         <feGaussianBlur in="noise" stdDeviation="2" result="blurred" />
@@ -111,7 +111,7 @@
       </filter>
     </svg>
 
-    <svg style="display: none">
+    <svg width="0" height="0">
       <filter id="liquid" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox" >
         <feTurbulence type="fractalNoise" baseFrequency="0.002 0.002" numOctaves="2" seed="9" result="turbulence" />
         <feComponentTransfer in="turbulence" result="mapped">
