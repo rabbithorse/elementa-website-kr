@@ -228,8 +228,9 @@
             <div class="box2 absolute z-10"><img src="~/assets/images/sub/inv-board-box2.png" alt="point1 image 2"></div>
             <div class="box2-5 absolute z-10"><img src="~/assets/images/sub/inv-board-box2-5.png" alt="point1~2 image"></div>
 
-            <div class="box3 absolute left-[1865px] bottom-[162px] bg-white w-[100px] h-[100px]"></div>
-            <div class="box4 absolute left-[2019px] bottom-[62px] bg-yellow-500 w-[100px] h-[100px]"></div>
+            <div class="box3 absolute z-20"><img src="~/assets/images/sub/inv-board-box3.png" alt="point 2 image"></div>
+            <div class="box4 absolute z-20"><img src="~/assets/images/sub/inv-board-box4.png" alt="point 2 image 2"></div>
+            <div class="box4-5 absolute z-10"><img src="~/assets/images/sub/inv-board-box4-5.png" alt="point 2 image 2"></div>
           </div>
           <!-- 세번째 ~ 네번째 지점 사진 -->
           <div class="picbox-02 w-full absolute">
@@ -783,7 +784,7 @@
     $ScrollTrigger.create({
       trigger: youtubeArea.value,
       start: 'top top',
-      end: "+=" + youtubeTimeline.duration() * 150,
+      end: "+=" + youtubeTimeline.duration() * 200,
       scrub: 2,
       pin: youtubeArea.value,
       anticipatePin: 1,
@@ -853,6 +854,7 @@
     const box2_5 = invBoard.value.querySelector(".box2-5");
     const box3 = invBoard.value.querySelector(".box3");
     const box4 = invBoard.value.querySelector(".box4");
+    const box4_5 = invBoard.value.querySelector(".box4-5");
     const box5 = invBoard.value.querySelector(".box5");
     const box6 = invBoard.value.querySelector(".box6");
     const box7 = invBoard.value.querySelector(".box7");
@@ -865,41 +867,57 @@
 
     // 수사보드 사진 타임라인
     const pic01 = $gsap.timeline()
-    .fromTo(box1, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" })
-    .fromTo(box2, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" }, ">-0.9")
-    .fromTo(box2_5, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" })
+    .fromTo(box1, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" })
+    .fromTo(box2, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, ">-0.4")
+    .fromTo(box2_5, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, ">+0.5")
+
+    const parrall01 = $gsap.timeline()
+    .fromTo(box1,
+    { x: 0, y: 0 },
+    { x: -40, y: -40, duration: 2, ease: "power3.out" },
+    ">"
+  )
+
+  // 동시에 box2 이동 (3초지만 어차피 독립)
+  .fromTo(box2,
+    { x: 0, y: 0 },
+    { x: 40, y: 0, duration: 2, ease: "power3.out" },
+    ">"
+  )
+
 
     const pic02 = $gsap.timeline()
-    .fromTo(box3, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" })
-    .fromTo(box4, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" }, ">-0.9")
+    .fromTo(box3, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" })
+    .fromTo(box4, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" })
+    .fromTo(box4_5, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, "<")
 
     const pic03 = $gsap.timeline()
-    .fromTo(box5, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" }, "<")
+    .fromTo(box5, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, "<")
 
     const pic04 = $gsap.timeline()
-    .fromTo(box6, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" }, "<")
+    .fromTo(box6, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, "<")
     
     const pic05 = $gsap.timeline()
-    .fromTo(box7, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" })
-    .fromTo(box8, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" }, ">-0.9")
+    .fromTo(box7, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" })
+    .fromTo(box8, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, ">-0.9")
 
     const pic06 = $gsap.timeline()
-    .fromTo(box9, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" }, "<")
-
+    .fromTo(box9, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, "<")
     const pic07 = $gsap.timeline()
-    .fromTo(box10, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" })
-    .fromTo(box11, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" }, ">-0.9")
+    .fromTo(box10, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" })
+    .fromTo(box11, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, ">-0.9")
 
     const pic08 = $gsap.timeline()
-    .fromTo(box12, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" })
-    .fromTo(box13, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" }, ">-0.9")
-
+    .fromTo(box12, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" })
+    .fromTo(box13, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, ">-0.9")
+    
     const invBoardTimeline = $gsap.timeline()
-    .to(invDimmed, {opacity: 0, duration: 0.3, ease: "none" }) 
-    .to(invDimmed, {visibility: "hidden", duration: 0.3, ease: "none" }, ">+0.01")
-    .addLabel("startMove", ">-1")
-    .to(bgInvBoard, {x:-998, y:-413 , duration: 2, ease: "power3.out" }, ">+0.25")
-    .addLabel("movePoint_01", ">-1")
+    .to(invDimmed, {opacity: 0, duration: 0.3, ease: "none" }) // tntk
+    .to(invDimmed, {visibility: "hidden", duration: 0.3, ease: "none" })
+    .addLabel("startMove")
+    .to(bgInvBoard, {x:-998, y:-513 , duration: 2, ease: "power3.out" }, "startMove+=1")
+
+    .addLabel("movePoint_01")    
     .to(bgInvBoard, {x:-450, y:-799 , duration: 2, ease: "power3.out" }, ">+0.25")
     .addLabel("movePoint_02", ">-1")
     .to(bgInvBoard, {x:-2316, y:-1100 , duration: 2, ease: "power3.out" }, ">+0.25")
@@ -917,6 +935,8 @@
 
     // 수사보드 라인 시점에 사진 등장
     invBoardTimeline.add(pic01, "startMove");
+    invBoardTimeline.add(parrall01, "startMove+=1");
+
     invBoardTimeline.add(pic02, "movePoint_01+=0.2");
     invBoardTimeline.add(pic03, "movePoint_02+=0.2");
     invBoardTimeline.add(pic04, "movePoint_03+=0.2");

@@ -542,6 +542,10 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 .inv-board .in-camera .bg .box2 {left: 15px; bottom: -60px;}
 .inv-board .in-camera .bg .box2-5 {left: 1124px; bottom: 46px;}
 
+.inv-board .in-camera .bg .box3 {left: 1573px; bottom: calc(-100% + -50px);}
+.inv-board .in-camera .bg .box4 {left: 2415px; bottom: -45px;}
+.inv-board .in-camera .bg .box4-5 {left: 2047px; bottom: -410px;}
+
 .last-scene {height: 100vh; border: 1px solid blue;}
 /***** responsive, 순서 변경 금지*****/
 
