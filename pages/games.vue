@@ -866,7 +866,7 @@
     // 수사보드 사진 타임라인
     const pic01 = $gsap.timeline()
     .fromTo(box1, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" })
-    .fromTo(box2, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" }, ">-0.7")
+    .fromTo(box2, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" }, ">-0.9")
     .fromTo(box2_5, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" })
 
     const pic02 = $gsap.timeline()
@@ -928,7 +928,7 @@
     $ScrollTrigger.create({
       trigger: invBoard.value,
       start: 'top+=1 top',
-      end: "+=" + invBoardTimeline.duration() * 1500,
+      end: "+=" + invBoardTimeline.duration() * 2000,
       scrub: 1,
       pin: true,
       // markers: true,
