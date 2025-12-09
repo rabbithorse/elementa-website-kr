@@ -210,6 +210,13 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 }
 @media (max-width: 1279px) {
   .video-layer {height: 100vh; right: auto; left: 24%;}
+
+  .accordion-item.opened .accordion-trigger button {display: flex; flex-direction: row; justify-content: space-between; row-gap: 3.125rem; padding: 1.25rem; width: 100%}
+  .accordion-item.opened .accordion-trigger button h3 {writing-mode: horizontal-tb; transform: rotate(0);}
+  .locked { width: 100%; }
+  .accordion-item.locked button {flex-direction: row; justify-content: space-between; padding: 0.2rem 0 0.2rem 1rem; width: 100%;}
+  .locked-title-icon {width: 20px; height: 29px; background: url("~/assets/images/main/icon-lock.svg") no-repeat center/contain; vertical-align: middle; }
+  .locked-title-text {width: 139px; height: 47px; background: url("~/assets/images/main/text-lock.png") no-repeat center/contain; vertical-align: middle; }
 }
 
 /* -------------------------------------- */
@@ -217,12 +224,7 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 /* -------------------------------------- */
 @media (max-width: 1023px) {
   .bg-video {top: auto; left: -22%; height: 108%; bottom: -13%;}
-  .accordion-item.opened .accordion-trigger button {display: flex; flex-direction: row; justify-content: space-between; row-gap: 3.125rem; padding: 1.25rem; width: 100%}
-  .accordion-item.opened .accordion-trigger button h3 {writing-mode: horizontal-tb; transform: rotate(0);}
-  .locked { width: 100%; }
-  .accordion-item.locked button {flex-direction: row; padding: 0.2rem 0 0.2rem 1rem; width: 100%;}
-  .locked-title-icon {width: 20px; height: 29px; background: url("~/assets/images/main/icon-lock.svg") no-repeat center/contain; vertical-align: middle; }
-  .locked-title-text {width: 139px; height: 47px; background: url("~/assets/images/main/text-lock.png") no-repeat center/contain; vertical-align: middle; }
+  
   .careers-section .swiper-slide {width: 100%; height: 415px;} 
 }
 
@@ -244,6 +246,8 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 /* MOBILE : 0 ~ 767 */
 /* -------------------------------------- */
 @media (max-width: 767px) {
+  .visual-section .polygon .inner::after {transform: skew(-23deg); right: 9px;}
+
   .mission-section .box-wrap .glass {padding: 25px 20px 30px;}
 
   .newsroom-section::after {width: 14.5rem; height: 15rem; right: -2.5rem; top: 2rem;}

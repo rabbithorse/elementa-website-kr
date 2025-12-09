@@ -4,13 +4,13 @@
       <NuxtLink href="/" class="flex items-center max-lg:w-[88px]">
         <Logo class="text-white" />
       </NuxtLink>
-      <Menu class="hidden lg:flex" :menuItems="menuItems" />
+      <Menu class="xl:flex hidden" :menuItems="menuItems" />
     </Container>
     <button
       :class="{
         'opened shadow-md bg-opacity-75 rounded-md': isOpen, '': !isOpen
       }"
-      class="fixed z-[100] text-white transition duration-300 lg:hidden p-3 rounded-md top-5 right-[5%] hamburger-open"
+      class="fixed z-[100] text-white transition duration-300 xl:hidden md:p-[1.1rem] p-3 rounded-md md:top-[1.55rem] top-5 right-[5%] hamburger-open"
       @click="toggle"
       :isOpen="isOpen"
     >
@@ -23,7 +23,7 @@
         </div>
       </div>
     </button>
-    <div :isOpen="isOpen" class="lg:hidden ">
+    <div :isOpen="isOpen" class="xlg:hidden ">
       <Transition name="slide" class="fixed inset-0 z-40">
         <MobileMenu :menuItems="menuItems" v-if="isOpen" @close="closeMenu" class="fixed w-full right-0 top-0 h-full "/>
       </Transition>

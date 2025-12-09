@@ -1,6 +1,6 @@
 <template>
   <div 
-    class="accordion-item flex lg:flex-row flex-col relative"
+    class="accordion-item flex xl:flex-row flex-col relative"
     v-for="(accordionItem, index) in accordionItems" :key="index"
     :class="{'opened': accordionItem.isOpen, 'locked': accordionItem.locked }"
   >
@@ -16,8 +16,8 @@
       <span class="locked-title-text z-[1]"></span>
     </button>
     <div 
-      class="accordion-content max-lg:flex max-lg:h-full"
-      :class="{'w-0 max-lg:h-0': accordionItem.locked }"
+      class="accordion-content xl:flex xl:mt-0 mt-auto"
+      :class="{'w-0 max-xl:h-0 hidden': accordionItem.locked }"
     >
       <div class="content-bg absolute left-0 top-0 w-[100vw] h-full overflow-hidden">
         <video autoplay muted loop class="w-full h-full object-cover">
@@ -25,17 +25,17 @@
         </video>
       </div>
 
-      <div class="content-text lg:w-fit lg:h-full lg:ml-auto lg:mt-0 mt-auto w-full h-auto ml-0">
-        <EffectGlass class="lg:h-full ">
-          <div class="flex flex-col justify-end lg:gap-y-[3.125rem] gap-y-5 lg:pb-[5.625rem] pt-4 pb-9 lg:px-8 px-7 h-full">
-            <div class="content-title relative title-img lg:w-[52%] w-56 aspect-229/75">
+      <div class="content-text xl:w-fit xl:h-full xl:ml-auto xl:mt-0 mt-auto w-full h-auto ml-0">
+        <EffectGlass class="xl:h-full ">
+          <div class="flex flex-col justify-end xl:gap-y-[3.125rem] gap-y-5 xl:pb-[5.625rem] pt-4 pb-9 xl:px-8 px-7 h-full">
+            <div class="content-title relative title-img xl:w-[52%] w-56 aspect-229/75">
               <EffectFloatingDots />
               <img src="~/assets/images/main/text-game-silverpalace.png" alt="icon" />
             </div>
-            <div class="content-detail flex flex-col lg:gap-y-6">
-              <p class="subtitle text-[1.625rem] font-semibold leading-[2rem] max-lg:pb-6" v-html="accordionItem.subtitle"></p>
-              <p class="lg:text-[1.125rem] text-[0.8rem] lg:leading-6 leading-4 tracking-[-0.26px]" v-html="accordionItem.content1"></p>
-              <p class="lg:text-[1.125rem] text-[0.8rem] lg:leading-6 leading-4 tracking-[-0.26px]" v-html="accordionItem.content2"></p>
+            <div class="content-detail flex flex-col xl:gap-y-6">
+              <p class="subtitle text-[1.625rem] font-semibold leading-[2rem] max-xl:pb-6" v-html="accordionItem.subtitle"></p>
+              <p class="xl:text-[1.125rem] text-[0.8rem] xl:leading-6 leading-4 tracking-[-0.26px]" v-html="accordionItem.content1"></p>
+              <p class="xl:text-[1.125rem] text-[0.8rem] xl:leading-6 leading-4 tracking-[-0.26px]" v-html="accordionItem.content2"></p>
             </div>
             <div class="content-button">
               <ButtonsBasic size="sm" color="yellow" :href="`${accordionItem.href}`">View more</ButtonsBasic>
