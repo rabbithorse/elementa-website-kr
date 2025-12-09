@@ -525,12 +525,25 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 
 /* section 05 */
 .inv-board .inv-dimmed{background: #000;}
-.inv-board .in-camera {height: 100vh; margin:0 auto; max-width: 4760px; width: 100%; /*border: 1px solid red;*/}
-.inv-board .in-camera .bg {background: url('~/assets/images/sub/board_bg.webp') no-repeat center / cover; width:5760px; height:5040px; will-change: transform, opacity; transform: translate3d(0,0,0);}
-.inv-board .in-camera .bg .line {will-change: transform, opacity; transform: translate3d(0,0,0);}
+.inv-board .in-camera {height: 100vh; margin:0 auto; max-width: 5760px; width: 100%; /*border: 1px solid red;*/}
+.inv-board .in-camera .bg {width:5760px; height:5040px; will-change: transform, opacity; transform: translate3d(0,0,0);}
+.inv-board .in-camera .bg .bg-canvas {position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  will-change: transform;}
+  .inv-board .in-camera .bg-line {width:5760px; height:6527px; will-change: transform, opacity; transform: translate3d(0,0,0);}
+  .inv-board .in-camera .bg .bg-line .line {position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    will-change: transform;}
+/* .inv-board .in-camera .bg .line {will-change: transform, opacity; transform: translate3d(0,0,0);}
 .inv-board .in-camera .bg .line .main-line {left: 428px; top: 146px; will-change: transform, opacity; transform: translate3d(0,0,0);}
 .inv-board .in-camera .bg .line .sub-line-01 {left: 450px; top: 166px; will-change: transform, opacity; transform: translate3d(0,0,0);}
-.inv-board .in-camera .bg .line .sub-line-02 {left:-1500px; top:190px; will-change: transform, opacity; transform: translate3d(0,0,0);}
+.inv-board .in-camera .bg .line .sub-line-02 {left:-1500px; top:190px; will-change: transform, opacity; transform: translate3d(0,0,0);} */
 
 .inv-board .in-camera .bg .picbox-01 {/*border: 1px solid red;*/ height: 831px; left: 0; top: 0;}
 .inv-board .in-camera .bg .picbox-02 {/*border: 1px solid red;*/ height: 777px; left: 0; top: 831px;}
@@ -551,8 +564,22 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 .inv-board .in-camera .bg .box2-5 {left: 1124px; bottom: 46px;}
 
 .inv-board .in-camera .bg .box3 {left: 1573px; bottom: calc(-100% + -50px);}
-.inv-board .in-camera .bg .box4 {left: 2415px; bottom: -45px;}
-.inv-board .in-camera .bg .box4-5 {left: 2047px; bottom: -410px;}
+.inv-board .in-camera .bg .box4 {left: 2055px; bottom: -405px;}
+
+.inv-board .in-camera .bg .box5 {left: 520px; bottom: -220px;}
+.inv-board .in-camera .bg .box5-5 {left: 660px; bottom: -280px;}
+
+.inv-board .in-camera .bg .box6 {left: 53%; bottom: -56%;}
+.inv-board .in-camera .bg .box6-5 {left: 2290px; bottom: -54%;}
+
+.inv-board .in-camera .bg .box7 {left: 1809px; top: -50px;}
+.inv-board .in-camera .bg .box8 {left: 3136px; bottom: -280px;}
+
+.inv-board .in-camera .bg .box9 {right: 0px; bottom: calc(-100% + 110px);}
+
+
+.inv-board .in-camera .bg [class^="box"] span,
+.inv-board .in-camera .bg [class*=" box"] span {will-change: transform, opacity; transform: translate3d(0,0,0); color: rgba(255, 255, 255, 1); font-family: Eulyoo1945;}
 
 .last-scene {height: 100vh; border: 1px solid blue;}
 /***** responsive, 순서 변경 금지*****/
