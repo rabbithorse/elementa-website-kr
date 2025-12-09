@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="company-page">
     <section class="subSection relative" ref="subSection">
       <div class="intro-section h-screen flex items-center" ref="introSection">
         <Container>
-          <div class="heading text-center">
-            <h2 class="text-[11rem] leading-1 font-bold text-white subPageTitle relative justify-center">
+          <div class="heading flex flex-col gap-y-12 text-center">
+            <h2 class="flex items-end gap-x-4 leading-1 font-bold text-white relative justify-center">
               <TypographyPrimary>
                 <svg xmlns="http://www.w3.org/2000/svg" width="92" height="131" viewBox="0 0 92 131" fill="none">
                   <path d="M20.0946 71.5054H85.196V53.4375H20.0946V18.004H90.2672V0H0V130.817H91.7886V112.685H20.0946V71.5054Z" fill="white"/>
@@ -77,7 +77,7 @@
               </TypographyPrimary>
               
             </h2>
-            <p class="text-white pt-[1.25rem] text-[3.125rem] relative opacity-0" ref="introText">
+            <p class="text-white pt-[1.25rem] xl:text-[3.125rem] md:text-4xl text-3xl relative opacity-0" ref="introText">
               게임의 미래를 설계하고, 세계가 함께 공감하는 문화를 만든다
             </p>
           </div>
@@ -95,11 +95,11 @@
             <span class="sectionTitle-eng text-white md:text-base text-[3.4vw] relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] md:before:w-3 md:before:h-3 before:w-[0.625rem] before:h-[0.625rem] before:rounded-full pl-5">Our Mission</span>
           </div>
         </div>
-        <Container class="h-full">
-          <div class="section-content pt-[8.75rem]">
+        <Container class="flex items-center h-full">
+          <div class="section-content">
             <div class="mission-wrap grid items-center grid-cols-12 gap-x-4 relative">
-              <div class="bgtitle absolute left-0">
-                <h2 class="text-[#9FAEB5] text-[10rem] font-paperlogy font-extrabold text-center" ref="bgTitle">
+              <div class="bgtitle absolute left-1/2 -translate-x-1/2 ">
+                <h2 class="text-[#9FAEB5] 2xl:text-[10rem] text-[8rem] font-paperlogy font-extrabold text-center" ref="bgTitle">
                   <TypographyPrimary>
                     O
                   </TypographyPrimary>
@@ -137,20 +137,20 @@
               <div class="mission-text-wrapper absolute">
                 <div class="flex items-center flex-row-reverse gap-x-52" ref="missionTextWrap">
                   <div class="flex flex-col items-baseline">
-                    <span class="text-[#7B728F] text-[3.125rem] whitespace-nowrap">게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다 게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다.</span>
+                    <span class="text-[#7B728F] xl:text-[3.125rem] md:text-4xl text-3xl whitespace-nowrap">게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다 게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다.</span>
                     <h2 class="text-[#7B728F] text-[16.25rem] font-paperlogy font-extrabold leading-[130%]">INNOVATION</h2>
                   </div>
                   <div class="flex flex-col items-center">
-                    <span class="text-[#728D8F] text-[3.125rem] whitespace-nowrap">게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다 게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다.</span>
-                    <h2 class="text-[#728D8F] text-[18.75rem] font-paperlogy font-extrabold leading-[130%]">Trust Trust</h2>
+                    <span class="text-[#728D8F] xl:text-[3.125rem] md:text-4xl text-3xl whitespace-nowrap">게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다 게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다.</span>
+                    <h2 class="text-[#728D8F] text-[16.25rem] font-paperlogy font-extrabold leading-[130%]">Trust Trust</h2>
                   </div>
                   <div class="flex flex-col items-center">
-                    <span class="text-[#728F7F] text-[3.125rem] whitespace-nowrap">게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다 게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다.</span>
-                    <h2 class="text-[#728F7F] text-[18.75rem] font-paperlogy font-extrabold leading-[130%]">Culture</h2>
+                    <span class="text-[#728F7F] xl:text-[3.125rem] md:text-4xl text-3xl whitespace-nowrap">게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다 게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다.</span>
+                    <h2 class="text-[#728F7F] text-[16.25rem] font-paperlogy font-extrabold leading-[130%]">Culture</h2>
                   </div>
                   <div class="flex flex-col items-center">
-                    <span class="text-[#8F8872] text-[3.125rem] whitespace-nowrap">게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다 게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다.</span>
-                    <h2 class="text-[#8F8872] text-[18.75rem] font-paperlogy font-extrabold leading-[130%]">Experience</h2>
+                    <span class="text-[#8F8872] xl:text-[3.125rem] md:text-4xl text-3xl whitespace-nowrap">게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다 게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다.</span>
+                    <h2 class="text-[#8F8872] text-[16.25rem] font-paperlogy font-extrabold leading-[130%]">Experience</h2>
                   </div>
                 </div>
               </div>
@@ -189,7 +189,7 @@
       </div>
       <div class="company-scroll mb-40" ref="scrollSection">
         <div class="heading flex items-center justify-center w-full z-10" ref="scrollFixedHeading">
-          <div class="heading-wrap w-full h-screen flex justify-center items-center gap-x-7" ref="scrollFixedHeadingInner">
+          <div class="heading-wrap w-fit h-screen flex justify-center items-center gap-x-7" ref="scrollFixedHeadingInner">
             <h2 class="heading-title text-white text-[6.25rem] font-black leading-[1em] -mt-3 font-paperlogy" ref="scrollTitle">WE</h2>
             <span class="inline-block w-[25px]"><img src="@/assets/images/sub/company-scrollsection-slash.png" alt=""></span>
             <div class="heading-content">
@@ -402,13 +402,13 @@
           const p = self.progress;   
           //console.log(self.progress);
           if (p < 0.2) return;    
-          const local = p / 0.9;               // 0 ~ 1
+          const local = p / 0.9;
           const idx = Math.min(
             3, Math.floor(local * 4)
           );  // 0~3 (1~4번)
           updateZIndex(idx, self.direction);
 
-          const dir = self.direction;                  // 1=down, -1=up
+          const dir = self.direction;
           
           const pattern = dir === 1 ? zDown[idx] : zUp[idx];
 
@@ -421,11 +421,11 @@
     })
 
     missionTl.fromTo(bgTitle.value, {
-      x: '80%'
+      x: '0%'
     }, {
-      x: '-150%',
-      duration: 0.05
-    }, 0)
+      x: '-250%',
+      duration: 0.08
+    }, 0.005)
     .fromTo(missionImgWrap.value, {
       x: '300%'
     }, {
@@ -448,9 +448,9 @@
     const visionTl = $gsap.timeline({
       scrollTrigger: {
         trigger: visionSection.value,
-        start: 'top 80%',
-        //end: 'bottom top',
-        //scrub: true,
+        start: 'top center',
+        end: 'bottom center',
+        //scrub: 1,
       }
     })
 
@@ -502,7 +502,7 @@
       duration: 0.5,
       scrollTrigger: {
         trigger: scrollSection.value,
-        start: 'top center',
+        start: 'top 40%',
         // end: 'bottom top',
         // scrub: true,
       }
@@ -548,12 +548,12 @@
           scrub: true,
           onEnter: () => el.classList.add('on'),
         }
-      });
+      });      
 
       const isOdd = (i % 2 === 1);
-      const defaultX = isOdd ? (window.innerWidth) / 2.5 : (window.innerWidth) / 2;
-      const xOffset = isOdd ? ((window.innerWidth / 2.5) + 600) : ((window.innerWidth / 2.3) - 600);
-      const midX = isOdd ? ((window.innerWidth / 2.5) + 550) : ((window.innerWidth / 2.3) - 550);
+      const defaultX = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2));
+      const xOffset = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2) + ((scrollFixedHeadingInner.value.offsetWidth) / 1.2)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2) - ((scrollFixedHeadingInner.value.offsetWidth) / 1.2));
+      const midX = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2) + ((scrollFixedHeadingInner.value.offsetWidth) / 1.5)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2) - ((scrollFixedHeadingInner.value.offsetWidth) / 1.5));
 
       cardTl.set(el,
         {
@@ -647,7 +647,7 @@
 
   .company-scroll .content-card {
     clip-path: inset(50% 30% 20% 30% round 15%); 
-    transition: clip-path 1.4s ease 0.2s;
+    transition: clip-path 1s ease 0.2s;
   }
 
   .company-scroll .content-card img {
