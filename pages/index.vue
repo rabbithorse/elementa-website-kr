@@ -55,10 +55,10 @@
               </div>
               <div class="w-fit polygon">
                 <div class="inner">
-                  <div class="text-list flex gap-x-7 py-[0.9rem]">
-                    <span class="text-lg text-white">Innovation</span>
-                    <span class="text-lg text-white">Trust</span>
-                    <span class="text-lg text-white">Culture</span>
+                  <div class="text-list flex gap-x-7 md:py-[0.9rem] py-[0.7rem]">
+                    <span class="md:text-lg text-base text-white">Innovation</span>
+                    <span class="md:text-lg text-base text-white">Trust</span>
+                    <span class="md:text-lg text-base text-white">Culture</span>
                     </div>
                 </div>
               </div>
@@ -67,10 +67,10 @@
         </Container>
       </div>
       <!-- 두번째 애니메이션 -->
-      <div class="mission-section flex flex-col xl:gap-y-16 md:gap-y-10 gap-y-[3.75rem] justify-center items-center relative" ref="missionSection">
+      <div class="mission-section flex flex-col xl:gap-y-16 md:gap-y-10 gap-y-8 justify-center items-center relative" ref="missionSection">
         <div class="text-wrap w-full">
           <h2 class="2xl:text-[13.75rem] xl:text-[185px] md:text-[150px] leading-1 font-bold text-white">
-            <div class="top-line">
+            <div class="top-line md:pb-0 pb-[6px]">
               <div ref="weCreate" class="leading-none text-[length:inherit]" >
                 <span class="primary-text leading-none 2xl:text-[13.75rem] xl:text-[200px] md:text-[150px] text-[20vw]">
                   <div class="character-wrap inline-block 2xl:ml-[-17px] xl:ml-[-15px] md:ml-[-12px] ml-[-1.5vw] overflow-clip ">
@@ -162,7 +162,7 @@
                       </svg>
                     </div>
                   </div>
-                  <span class="text-spacer md:inline-block md:p-5 md:w-auto block p-1.5 w-full"></span>
+                  <span class="text-spacer p-5 max-md:block max-md:p-1.5 max-md:w-full"></span>
                   <div class="character-wrap inline-block overflow-clip ">
                       <div class="primary-character primary-character--disappear">
                       <svg xmlns="http://www.w3.org/2000/svg" width="107" height="179" viewBox="0 0 107 179" fill="none" class="aspect-[107/179]">
@@ -378,8 +378,8 @@
                     </div>
                   </div>
                 </span>
-                <span class="text-spacer md:inline-block md:p-5 md:w-auto block p-1.5 w-full"></span>
-                <span class="primary-text md:ml-8">
+                <span class="text-spacer p-5 max-md:block max-md:p-1.5 max-md:w-full"></span>
+                <span class="primary-text">
                   <div class="character-wrap inline-block overflow-clip ">
                     <div class="primary-character--delay">
                       <svg xmlns="http://www.w3.org/2000/svg" width="40" height="179" viewBox="0 0 40 179" fill="none" class="aspect-[40/179]">
@@ -469,7 +469,7 @@
             </div>
           </h2>
         </div>
-        <div class="box-wrap max-w-[61rem] mx-auto w-[90%] pt-[2.15rem] pb-[2.5rem]" ref="missionBox">
+        <div class="box-wrap max-w-[61rem] mx-auto w-[90%] md:pt-[2.15rem] pt-7 md:pb-[2.5rem] pb-8 px-5" ref="missionBox">
           <EffectGlassTest class="shimmer" />
             <span class="sectionTitle-eng text-white text-base relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] md:before:w-3 md:before:h-3 before:w-[0.625rem] before:h-[0.625rem] before:rounded-full pl-5">Our Mission</span>
             <div class="text-content gap-x-7 py-[0.9rem] z-[1] relative">
@@ -481,7 +481,7 @@
        
     </section>
     <section class="accordion-section h-dvh" ref="accordionSection">
-      <div class="accordion-list flex lg:flex-row flex-col h-full w-full">
+      <div class="accordion-list flex xl:flex-row flex-col h-full w-full">
         <BlocksAccordion ref="accordionItem">
         </BlocksAccordion>
       </div>
@@ -585,7 +585,7 @@
       </h2>
     </section>
     <section class="newsroom-section relative md:pt-[6.25rem] pt-[3.25rem] pb-[6rem] min-h-dvh" ref="newsroomSection">
-      <div class="bg-text flex md:flex-col flex-col-reverse absolute md:bottom-0 bottom-[3.75rem] left-0 ">
+      <div class="bg-text flex xl:flex-col flex-col-reverse absolute xl:bottom-0 bottom-[3.75rem] left-0 ">
         <span class="text-[#403B4E] md:text-[5rem] text-[2.5rem] font-bold font-oswald">NEW PARADIGM, LASTING IMPACT. ELEMENTA KOREA</span>
         <h2 class="md:text-[28rem] text-[12.5rem] gradient-text grey font-bold">ELEMENTA ELEMENTA</h2>
       </div>
@@ -802,7 +802,7 @@
               Design the Future of Play, Create a Culture the World Shares 
             </h6>
           </div>
-          <div class="heading-button absolute right-0 bottom-0 md:flex items-center gap-5 hidden">
+          <div class="heading-button absolute right-0 bottom-0 xl:flex items-center gap-5 hidden">
             <div class="controls flex gap-3 items-center">
               <PrevButton :swiper="swiperInstance" />
               <NextButton :swiper="swiperInstance" />
@@ -813,7 +813,7 @@
       </div>
       <div class="section-content">
         <EffectGlass class="content-glass">
-          <div class="controls md:hidden flex gap-3 items-center">
+          <div class="controls xl:hidden flex gap-3 items-center justify-end">
             <PrevButton :swiper="swiperInstance" />
             <NextButton :swiper="swiperInstance" />
           </div>
@@ -866,8 +866,8 @@
           </swiper>
         </EffectGlass>
 
-        <div class="content-button md:hidden flex justify-center mt-5">
-          <ButtonsBasic color="blue" class="max-md:w-full [&>*]:w-full">View more</ButtonsBasic>
+        <div class="content-button xl:hidden flex justify-center md:mt-10 mt-5">
+          <ButtonsBasic color="blue" class="md:w-1/2 w-full [&>*]:w-full">View more</ButtonsBasic>
         </div>
       </div>
     </section>
@@ -1036,16 +1036,13 @@ onMounted(() => {
     // 아코디언 섹션
     const accordionItems = accordionSection.value.querySelectorAll('.accordion-list > *');
     const accordionArray = Array.from(accordionItems);
-    
-    const accordionTl = $gsap.timeline({
-      
-    })
+  
     accordionArray.forEach((item, i) => {
       $gsap.from(item, {
         scrollTrigger: {
           trigger: item,
-          start: 'top 60%',
-          //scrub: 1,
+          start: 'top 80%',
+          scrub: 1,
         },
         x: 100,
         y: 50,
@@ -1166,7 +1163,7 @@ onMounted(() => {
 
     const mm = $gsap.matchMedia();
 
-    mm.add("(min-width: 1025px)", () => {
+    mm.add("(min-width: 1024px)", () => {
       const elementaKoreaTl = $gsap.timeline({
         scrollTrigger: {
           trigger: elementaKoreaSection.value,
