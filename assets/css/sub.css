@@ -525,11 +525,12 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 
 /* section 05 */
 .inv-board .inv-dimmed{background: #000;}
-.inv-board .in-camera {height: 100vh; margin:0 auto; max-width: 5760px; width: 100%; /*border: 1px solid red;*/}
-.inv-board .in-camera .bg {background: url('~/assets/images/sub/board_bg.png') no-repeat center / cover; width:5760px; height:5040px; will-change: transform;}
-.inv-board .in-camera .bg .line .main-line {left: 428px; top: 146px;}
-.inv-board .in-camera .bg .line .sub-line-01 {left: 450px; top: 166px;}
-.inv-board .in-camera .bg .line .sub-line-02 {left:-1500px; top:190px;}
+.inv-board .in-camera {height: 100vh; margin:0 auto; max-width: 4760px; width: 100%; /*border: 1px solid red;*/}
+.inv-board .in-camera .bg {background: url('~/assets/images/sub/board_bg.webp') no-repeat center / cover; width:5760px; height:5040px; will-change: transform, opacity; transform: translate3d(0,0,0);}
+.inv-board .in-camera .bg .line {will-change: transform, opacity; transform: translate3d(0,0,0);}
+.inv-board .in-camera .bg .line .main-line {left: 428px; top: 146px; will-change: transform, opacity; transform: translate3d(0,0,0);}
+.inv-board .in-camera .bg .line .sub-line-01 {left: 450px; top: 166px; will-change: transform, opacity; transform: translate3d(0,0,0);}
+.inv-board .in-camera .bg .line .sub-line-02 {left:-1500px; top:190px; will-change: transform, opacity; transform: translate3d(0,0,0);}
 
 .inv-board .in-camera .bg .picbox-01 {/*border: 1px solid red;*/ height: 831px; left: 0; top: 0;}
 .inv-board .in-camera .bg .picbox-02 {/*border: 1px solid red;*/ height: 777px; left: 0; top: 831px;}
@@ -538,6 +539,13 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 
 .inv-board .in-camera .bg .picbox-04 .box12 {transform: translateX(-50%);}
 
+.inv-board .in-camera .bg [class^="picbox"],
+.inv-board .in-camera .bg [class*=" picbox"],
+.inv-board .in-camera .bg [class^="box"],
+.inv-board .in-camera .bg [class*=" box"],
+.inv-board .in-camera .bg [class^="box"] img,
+.inv-board .in-camera .bg [class*=" box"] img {
+  will-change: transform, opacity; transform: translate3d(0,0,0);}
 .inv-board .in-camera .bg .box1 {left: 160px; top: 76px;}
 .inv-board .in-camera .bg .box2 {left: 15px; bottom: -60px;}
 .inv-board .in-camera .bg .box2-5 {left: 1124px; bottom: 46px;}

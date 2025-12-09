@@ -224,13 +224,21 @@
         <div class="bg relative flex items-end justify-center">
           <!-- 처음 ~ 두번째 지점 사진 -->
           <div class="picbox-01 w-full absolute">
-            <div class="box1 absolute z-20"><img src="~/assets/images/sub/inv-board-box1.png" alt="point 1 image"></div>
-            <div class="box2 absolute z-10"><img src="~/assets/images/sub/inv-board-box2.png" alt="point1 image 2"></div>
-            <div class="box2-5 absolute z-10"><img src="~/assets/images/sub/inv-board-box2-5.png" alt="point1~2 image"></div>
+            <div class="box1 absolute z-20"><img src="~/assets/images/sub/inv-board-box1.webp" alt="point 1 image"></div>
+            <div class="box2 absolute z-10"><img src="~/assets/images/sub/inv-board-box2.webp" alt="point1 image 2"></div>
+            <div class="box2-5 absolute z-10"><img src="~/assets/images/sub/inv-board-box2-5.webp" alt="point1~2 image"></div>
 
-            <div class="box3 absolute z-20"><img src="~/assets/images/sub/inv-board-box3.png" alt="point 2 image"></div>
-            <div class="box4 absolute z-20"><img src="~/assets/images/sub/inv-board-box4.png" alt="point 2 image 2"></div>
-            <div class="box4-5 absolute z-10"><img src="~/assets/images/sub/inv-board-box4-5.png" alt="point 2 image 2"></div>
+            <div class="box3 absolute z-20"><img src="~/assets/images/sub/inv-board-box3.webp" alt="point 2 image"></div>
+            <div class="box4 absolute z-20"><img src="~/assets/images/sub/inv-board-box4.webp" alt="point 2 image 2"></div>
+            <div class="box4-5 absolute z-10"><img src="~/assets/images/sub/inv-board-box4-5.webp" alt="point 2 image 2"></div>
+
+            <!-- <div class="box1 absolute z-20 text-white">1</div>
+            <div class="box2 absolute z-10 text-white">2</div>
+            <div class="box2-5 absolute z-10 text-white">3</div>
+
+            <div class="box3 absolute z-20 text-white">4</div>
+            <div class="box4 absolute z-20 text-white">5</div>
+            <div class="box4-5 absolute z-10 text-white">6</div> -->
           </div>
           <!-- 세번째 ~ 네번째 지점 사진 -->
           <div class="picbox-02 w-full absolute">
@@ -260,9 +268,9 @@
           </ul>
 
           <div class="line absolute w-full h-full top-0 left-0 z-50">
-            <img src="~/assets/images/sub/inv-board-line-sub01.png" alt="investigation board line sub 01" class="block sub-line-01 absolute">
-            <img src="~/assets/images/sub/inv-board-line-sub02.png" alt="investigation board line sub 02" class="block sub-line-02 absolute">
-            <img src="~/assets/images/sub/inv-board-line.png" alt="investigation board line" class="block main-line absolute">
+            <img src="~/assets/images/sub/inv-board-line-sub01.webp" alt="investigation board line sub 01" class="block sub-line-01 absolute">
+            <img src="~/assets/images/sub/inv-board-line-sub02.webp" alt="investigation board line sub 02" class="block sub-line-02 absolute">
+            <img src="~/assets/images/sub/inv-board-line.webp" alt="investigation board line" class="block main-line absolute">
           </div>
         </div>
       </div>
@@ -847,6 +855,7 @@
     /*-----------------------*/
     // 07. 수사보드 섹션
     /*-----------------------*/
+
     const invDimmed = invBoard.value.querySelector(".inv-dimmed");
     const bgInvBoard = invBoard.value.querySelector(".bg");
     const box1 = invBoard.value.querySelector(".box1");
@@ -865,79 +874,83 @@
     const box12 = invBoard.value.querySelector(".box12");
     const box13 = invBoard.value.querySelector(".box13");
 
+    // GPU 레이어 고정
+    $gsap.set([bgInvBoard, box1, box2, box2_5, box3, box4, box4_5, box5, box6, box7, box8, box9, box10, box11, box12, box13], {
+      force3D: true,
+      transform: "translate3d(0,0,0)"
+    });
+
     // 수사보드 사진 타임라인
     const pic01 = $gsap.timeline()
-    .fromTo(box1, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" })
-    .fromTo(box2, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, ">-0.4")
-    .fromTo(box2_5, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, ">+0.5")
+    .fromTo(box1, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" })
+    .fromTo(box2, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" })
+    .fromTo(box2_5, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" })
 
     const parrall01 = $gsap.timeline()
-    .fromTo(box1,
-    { x: 0, y: 0 },
-    { x: -40, y: -40, duration: 2, ease: "power3.out" },
-    ">"
-  )
-
-  // 동시에 box2 이동 (3초지만 어차피 독립)
-  .fromTo(box2,
-    { x: 0, y: 0 },
-    { x: 40, y: 0, duration: 2, ease: "power3.out" },
-    ">"
-  )
-
+    .fromTo(box1, { x: 0, y: 0 }, { x: -40, y: -40, duration: 2, ease: "none" },"<")
+    .fromTo(box2, { x: 0, y: 0 }, { x: 40, y: 0, duration: 2, ease: "none" },"<")
+    .fromTo(box2_5, { x: 0, y: 0 }, { x: -40, y: -40, duration: 2, ease: "none" },"<")
 
     const pic02 = $gsap.timeline()
-    .fromTo(box3, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" })
-    .fromTo(box4, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" })
-    .fromTo(box4_5, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, "<")
+    .fromTo(box3, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" })
+    .fromTo(box4, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" })
+    .fromTo(box4_5, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" })
+
+    const parrall02 = $gsap.timeline()
+    .fromTo(box3, { x: 0, y: 0 }, { x: 40, y: -20, duration: 2, ease: "none" },"<")
+    .fromTo(box4, { x: 0, y: 0 }, { x: 40, y: -40, duration: 2, ease: "none" },"<")
+     .fromTo(box4_5, { x: 0, y: 0 }, { x: -40, y: 40, duration: 2, ease: "none" },"<")
 
     const pic03 = $gsap.timeline()
-    .fromTo(box5, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, "<")
+    .fromTo(box5, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" }, "<")
 
     const pic04 = $gsap.timeline()
-    .fromTo(box6, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, "<")
+    .fromTo(box6, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" }, "<")
     
     const pic05 = $gsap.timeline()
-    .fromTo(box7, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" })
-    .fromTo(box8, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, ">-0.9")
+    .fromTo(box7, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" })
+    .fromTo(box8, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" }, ">-0.9")
 
     const pic06 = $gsap.timeline()
-    .fromTo(box9, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, "<")
+    .fromTo(box9, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" }, "<")
     const pic07 = $gsap.timeline()
-    .fromTo(box10, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" })
-    .fromTo(box11, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, ">-0.9")
+    .fromTo(box10, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" })
+    .fromTo(box11, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" }, ">-0.9")
 
     const pic08 = $gsap.timeline()
-    .fromTo(box12, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" })
-    .fromTo(box13, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, ">-0.9")
+    .fromTo(box12, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" })
+    .fromTo(box13, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" }, ">-0.9")
     
     const invBoardTimeline = $gsap.timeline()
-    .to(invDimmed, {opacity: 0, duration: 0.3, ease: "none" }) // tntk
+    .to(invDimmed, {opacity: 0, duration: 0.3, ease: "none" })
     .to(invDimmed, {visibility: "hidden", duration: 0.3, ease: "none" })
     .addLabel("startMove")
-    .to(bgInvBoard, {x:-998, y:-513 , duration: 2, ease: "power3.out" }, "startMove+=1")
+    .to(bgInvBoard, {x:-998, y:-513 , duration: 2, ease: "none" , force3D: true}, "startMove+=1")
 
     .addLabel("movePoint_01")    
-    .to(bgInvBoard, {x:-450, y:-799 , duration: 2, ease: "power3.out" }, ">+0.25")
-    .addLabel("movePoint_02", ">-1")
-    .to(bgInvBoard, {x:-2316, y:-1100 , duration: 2, ease: "power3.out" }, ">+0.25")
-    .addLabel("movePoint_03", ">-1")
-    .to(bgInvBoard, {x:-1437, y:-2466 , duration: 2, ease: "power3.out" }, ">+0.25")
-    .addLabel("movePoint_04", ">-1")
-    .to(bgInvBoard, {x:-2568, y:-2797 , duration: 2, ease: "power3.out" }, ">+0.25")
-    .addLabel("movePoint_05", ">-1")
-    .to(bgInvBoard, {x:-3432, y:-2951 , duration: 2, ease: "power3.out" }, ">+0.25")
-    .addLabel("movePoint_06", ">-1")
-    .to(bgInvBoard, {x:() => (window.innerWidth - bgInvBoard.offsetWidth) / 2, y: -3612, duration: 2, ease: "power3.out" }, ">+0.25")
-    .addLabel("movePoint_07", ">-1")
-    .to(bgInvBoard, {x:() => (window.innerWidth - bgInvBoard.offsetWidth) / 2, y: () => (-bgInvBoard.offsetHeight), duration: 2, ease: "power3.out" }, ">+0.25")
+    .to(bgInvBoard, {x:-450, y:-799 , duration: 2, ease: "none", force3D: true }, ">movePoint_01+=1")
+
+    .addLabel("movePoint_02")
+    .to(bgInvBoard, {x:-2316, y:-1100 , duration: 2, ease: "none", force3D: true }, ">+0.25")
+    .addLabel("movePoint_03")
+    .to(bgInvBoard, {x:-1437, y:-2466 , duration: 2, ease: "none", force3D: true }, ">+0.25")
+    .addLabel("movePoint_04")
+    .to(bgInvBoard, {x:-2568, y:-2797 , duration: 2, ease: "none", force3D: true }, ">+0.25")
+    .addLabel("movePoint_05")
+    .to(bgInvBoard, {x:-3432, y:-2951 , duration: 2, ease: "none", force3D: true }, ">+0.25")
+    .addLabel("movePoint_06")
+    .to(bgInvBoard, {x:() => (window.innerWidth - bgInvBoard.offsetWidth) / 2, y: -3612, duration: 2, ease: "none", force3D: true }, ">+0.25")
+    .addLabel("movePoint_07")
+    .to(bgInvBoard, {x:() => (window.innerWidth - bgInvBoard.offsetWidth) / 2, y: () => (-bgInvBoard.offsetHeight), duration: 2, ease: "none", force3D: true }, ">+0.25")
 
 
     // 수사보드 라인 시점에 사진 등장
     invBoardTimeline.add(pic01, "startMove");
     invBoardTimeline.add(parrall01, "startMove+=1");
 
-    invBoardTimeline.add(pic02, "movePoint_01+=0.2");
+    invBoardTimeline.add(pic02, "startMove+=2");
+    invBoardTimeline.add(parrall02, "movePoint_01+=1");
+
     invBoardTimeline.add(pic03, "movePoint_02+=0.2");
     invBoardTimeline.add(pic04, "movePoint_03+=0.2");
     invBoardTimeline.add(pic05, "movePoint_04+=0.2");
@@ -945,15 +958,20 @@
     invBoardTimeline.add(pic07, "movePoint_06+=0.2");
     invBoardTimeline.add(pic08, "movePoint_07+=0.2");
 
+    // invBoardTimeline 세팅 끝난 직후에 추가
+    invBoardTimeline.progress(1);
+    invBoardTimeline.progress(0);
+
     $ScrollTrigger.create({
       trigger: invBoard.value,
       start: 'top+=1 top',
-      end: "+=" + invBoardTimeline.duration() * 2000,
+      end: "+=" + invBoardTimeline.duration() * 1000,
       scrub: 1,
+      smooth: 1,
       pin: true,
       // markers: true,
       animation: invBoardTimeline,
-      anticipatePin: 1
+      anticipatePin: 3
     })
 
      /*-----------------------*/
