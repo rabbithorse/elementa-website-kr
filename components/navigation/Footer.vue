@@ -40,10 +40,6 @@
 
           <!-- Terms + Socials -->
           <div class="flex gap-x-[6.25rem] mt-auto max-lg:w-full justify-between">
-            <div class="flex items-center gap-x-12">
-              <NuxtLink href="#" class="text-base font-bold relative after:content-['⁄'] after:absolute after:-right-6 after:top-1/2 after:translate-x-1/2 after:-translate-y-1/2 after:text-[10px] after:text-[#404D58]">Privacy</NuxtLink>
-              <NuxtLink href="#" class="text-base">Terms</NuxtLink>
-            </div>
             <div class="flex">
               <div class="flex items-center justify-center gap-4 lg:order-last lg:mb-0">
 				        <NuxtLink href="" v-for="social in footerSocials" :key="social.name">

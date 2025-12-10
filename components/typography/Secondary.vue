@@ -17,7 +17,7 @@
         trigger: secondaryCharWrap.value,
         start: "top 90%",
         end: "bottom 40%",
-        markers: true,
+        //markers: true,
         //scrub: true,
         scroller: window,
         invalidateOnRefresh: true,

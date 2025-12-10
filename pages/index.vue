@@ -493,7 +493,7 @@
             <span class="leading-[100%] text-[#9FAEB5] 3xl:text-[15rem] 2xl:text-[12rem] lg:text-[10rem] text-[6.25rem] tracking-[-0.3rem] max-xl:w-full max-xl:text-center">
               ELEMENTA
             </span>
-            <div class="slider-img flex items-center justify-center mt-3 rounded-[10px]" ref="sliderImg">
+            <div class="slider-img flex items-center justify-center mt-3 md:rounded-[10px] rounded-md" ref="sliderImg">
               <!-- <img src="~assets/images/main/elementakorea-center-img.png" alt="" class="block 3xl:w-auto xl:w-[17vw] lg:w-[22vw] w-[28vw]"> -->
               <video autoplay muted loop class="block 3xl:w-auto xl:w-[17vw] lg:w-[22vw] w-[28vw] max-w-none">
                 <source src="~assets/videos/main-face.mp4" type="video/mp4" >
@@ -792,7 +792,7 @@
         
       </Container>
     </section>
-    <section class="careers-section md:pt-[17rem] pt-[3.125rem] md:pb-64 pb-24 flex flex-col md:gap-y-[5rem] gap-y-10 min-h-dvh">
+    <section class="careers-section md:pt-[17rem] pt-[3.125rem] md:pb-64 pb-24 flex flex-col md:gap-y-[5rem] gap-y-10 sm:min-h-dvh">
       <div class="section-heading">
         <Container>
           <div class="heading-text flex flex-col md:gap-y-10 gap-y-4">
@@ -819,7 +819,7 @@
           </div>
           <swiper
             :slidesPerView="1.15"
-            :spaceBetween="20"
+            :spaceBetween="15"
             @swiper="onSwiper"
             :breakpoints="{
               480: {
@@ -867,7 +867,7 @@
         </EffectGlass>
 
         <div class="content-button xl:hidden flex justify-center md:mt-10 mt-5">
-          <ButtonsBasic color="blue" class="md:w-1/2 w-full [&>*]:w-full">View more</ButtonsBasic>
+          <ButtonsBasic color="blue" class="md:w-1/2 w-full [&>*]:w-[90%]">View more</ButtonsBasic>
         </div>
       </div>
     </section>
@@ -1041,8 +1041,8 @@ onMounted(() => {
       $gsap.from(item, {
         scrollTrigger: {
           trigger: item,
-          start: 'top 80%',
-          scrub: 1,
+          start: 'top 90%',
+          //scrub: 1,
         },
         x: 100,
         y: 50,
@@ -1259,7 +1259,7 @@ onMounted(() => {
           trigger: newsroomSection.value,
           start: 'top 10%',
           pin: true,
-          end: () => "+=" + (newsroomSection.value.offsetHeight * 3),
+          end: () => "+=" + (newsroomSection.value.offsetHeight * 2.5),
           scrub: 1,
         }
       })
@@ -1267,7 +1267,7 @@ onMounted(() => {
       newsroomTl.fromTo(flowLeft.value, {
         x: calcTransform("x", "1%"),
       }, {
-        x: calcTransform("x", "-88%"),
+        x: calcTransform("x", "-84%"),
         ease: 'power2.out',
         duration: 2,
       }, 0.2)

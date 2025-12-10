@@ -188,7 +188,7 @@
             start: 'top 80%',
             end: 'top top',
             scrub: true,
-            markers: true,
+            //markers: true,
             duration: 2,
           },
         }).to(wideImageArea.value, {
@@ -204,7 +204,7 @@
         start: 'top top',
         end: 'bottom top',
         scrub: 1,
-        markers: true,
+        //markers: true,
       },
     }).to(wideImageArea.value, {
      backgroundPositionY: '-20%',

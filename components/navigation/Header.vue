@@ -1,7 +1,7 @@
 <template>
   <header id="header" :scrollDirection="scrollDirection" :class="['fixed w-full lg:py-[1.55rem] py-5 z-50', headerClass]">
     <Container class="2xl:px-8 lg:px-6 px-4 py-[12px]">
-      <NuxtLink href="/" class="flex items-center max-lg:w-[88px]">
+      <NuxtLink href="/" class="flex items-center 2xl:w-auto md:w-32 w-[88px]">
         <Logo class="text-white" />
       </NuxtLink>
       <Menu class="xl:flex hidden" :menuItems="menuItems" />
@@ -10,7 +10,7 @@
       :class="{
         'opened shadow-md bg-opacity-75 rounded-md': isOpen, '': !isOpen
       }"
-      class="fixed z-[100] text-white transition duration-300 xl:hidden md:p-[1.1rem] p-3 rounded-md md:top-[1.55rem] top-5 right-[5%] hamburger-open"
+      class="fixed z-[100] text-white transition duration-300 xl:hidden lg:p-[1.1rem] md:p-[1rem] p-3 rounded-md lg:top-[1.55rem] top-5 lg:right-[2%] right-[5%] hamburger-open"
       @click="toggle"
       :isOpen="isOpen"
     >
@@ -23,7 +23,7 @@
         </div>
       </div>
     </button>
-    <div :isOpen="isOpen" class="xlg:hidden ">
+    <div :isOpen="isOpen" class="xl:hidden ">
       <Transition name="slide" class="fixed inset-0 z-40">
         <MobileMenu :menuItems="menuItems" v-if="isOpen" @close="closeMenu" class="fixed w-full right-0 top-0 h-full "/>
       </Transition>

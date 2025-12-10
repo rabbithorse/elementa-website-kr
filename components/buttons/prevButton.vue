@@ -1,7 +1,7 @@
 <template>
   <button
     @click="slidePrev"
-    :class="['slide-arrow slide-arrow--prev flex items-center justify-center w-9 h-9 cursor-pointer transition duration-300 ease-in-out transform hover:scale-110 relative', disabled ? 'opacity-30 pointer-events-none' : 'opacity-100 pointer-events-auto']"
+    :class="['slide-arrow slide-arrow--prev flex items-center justify-center md:w-9 md:h-9 w-[1.875rem] h-[1.875rem] cursor-pointer transition duration-300 ease-in-out transform hover:scale-110 relative', disabled ? 'opacity-30 pointer-events-none' : 'opacity-100 pointer-events-auto']"
   >
     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
       <path d="M24 7.5L12 18.75L24 30" stroke="white" stroke-width="2"/>

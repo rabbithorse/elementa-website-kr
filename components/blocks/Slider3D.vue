@@ -2,7 +2,7 @@
   <div class="slider-container relative lg:py-[60px] md:py-10 py-0">
     <div class="controls flex gap-3 items-center absolute top-0 right-0 -translate-y-full">
       <!-- 이전 버튼 -->
-      <button class="slider-btn prev flex items-center justify-center w-9 h-9 cursor-pointer transition duration-300 ease-in-out transform hover:scale-110" @click="prevSlide">
+      <button class="slider-btn prev flex items-center justify-center md:w-9 md:h-9 w-[1.875rem] h-[1.875rem] cursor-pointer transition duration-300 ease-in-out transform hover:scale-110" @click="prevSlide">
         <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
           <path d="M24 7.5L12 18.75L24 30" stroke="white" stroke-width="2"/>
         </svg>
@@ -21,7 +21,6 @@
       <!-- 슬라이드 트랙 -->
       <div 
         class="slider-track"
-        :style="{ transform: isDragging ? `translateX(${dragOffset * 0.3}px)` : '' }"
         @touchstart="handleTouchStart"
         @touchmove="handleTouchMove"
         @touchend="handleTouchEnd"
@@ -229,13 +228,13 @@ export default {
           cardScale: 0.95,
           rotateYBase: 70
         };
-      } else if (width >= 400) {
+      } else if (width <= 480) {
         // 모바일
         config = {
-          radius: 580,
+          radius: 520,
           angle: 30,
           arcHeight: 280,
-          zDepth: 150,
+          zDepth: 100,
           zCurve: 100,
           cardScale: 0.75,
           rotateYBase: 120
@@ -403,13 +402,13 @@ export default {
       
       const swipeDistance = this.touchStartX - this.touchEndX;
       const swipeTime = Date.now() - this.touchStartTime;
-      const minSwipeDistance = 80;
-      const maxClickTime = 200;
+      const minSwipeDistance = 50;
+      const maxClickTime = 100;
       
       // 드래그 오프셋 리셋
       this.dragOffset = 0;
       
-      if (swipeTime < maxClickTime && Math.abs(swipeDistance) < 10) {
+      if (swipeTime < maxClickTime && Math.abs(swipeDistance) < 5) {
         this.touchStartX = 0;
         this.touchEndX = 0;
         this.touchStartTime = 0;
@@ -435,12 +434,16 @@ export default {
       this.touchStartTime = Date.now();
       this.isDragging = true;
       this.dragOffset = 0;
+
+      e.preventDefault()
     },
 
     handleMouseMove(e) {
       if (!this.isDragging) return;
       this.touchEndX = e.clientX;
       this.dragOffset = this.touchEndX - this.touchStartX;
+
+      e.preventDefault()
     },
 
     handleMouseUp() {
@@ -497,6 +500,12 @@ export default {
   perspective: 2500px;
   perspective-origin: center center;
   overflow: hidden;
+  user-select: none;
+    touch-action: pan-y;
+}
+
+.slider-wrapper * {
+  user-select: none;
 }
 
 .slider-track {
@@ -508,7 +517,6 @@ export default {
   transform-style: preserve-3d;
   cursor: grab;
   user-select: none;
-  transition: transform 0.1s ease-out;
 }
 
 .slider-track:active {
@@ -518,12 +526,11 @@ export default {
 .card {
   position: absolute;
   width: 510px;
-  /* height: 632px; */
   aspect-ratio: 510/632;
   transition: all 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
-  /* transform-style: preserve-3d; */
   perspective: 150rem;
   cursor: pointer;
+  pointer-events: none;
 }
 
 .card-inner {
@@ -593,22 +600,6 @@ export default {
   clip-path: polygon(45% 0%, 100% 0%, 55% 100%, 0% 100%);
 }
 
-/* .card:nth-child(1) .card-front .polygon, .card:nth-child(5) .card-front .polygon {
-  background: linear-gradient(180deg, #734BD7 22%, rgba(0, 200, 235, 0.00) 97.37%);
-}
-
-.card:nth-child(2) .card-front .polygon, .card:nth-child(6) .card-front .polygon {
-  background: linear-gradient(180deg, #00C8EB 22%, rgba(0, 189, 95, 0.4) 60%, rgba(0, 189, 95, 0.00) );
-}
-
-.card:nth-child(3) .card-front .polygon, .card:nth-child(7) .card-front .polygon {
-  background: linear-gradient(180deg, #2B9D5D 22%, rgba(0, 200, 235, 0.00) 97.37%);
-}
-
-.card:nth-child(4) .card-front .polygon, .card:nth-child(8) .card-front .polygon {
-  background: linear-gradient(180deg, #9D892B 22%, rgba(189, 116, 0, 0.00) 97.37%);
-} */
-
 /* 버튼 스타일 */
 .slider-btn {
   cursor: pointer;
@@ -625,7 +616,7 @@ export default {
 /* 반응형 */
 @media (max-width: 1535px) {
   .card {
-    width: 420px;
+    width: 350px;
   }
 
 }
@@ -659,7 +650,7 @@ export default {
 
 @media (max-width: 480px) { 
   .card {
-    width: 96%;
+    width: 90%;
   }
 
 }

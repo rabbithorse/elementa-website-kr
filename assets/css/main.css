@@ -224,8 +224,11 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 /* -------------------------------------- */
 @media (max-width: 1023px) {
   .bg-video {top: auto; left: -22%; height: 108%; bottom: -13%;}
+
+  .accordion-item .content-text .glass {padding: 0 !important;}
   
   .careers-section .swiper-slide {width: 100%; height: 415px;} 
+  .careers-section .content-glass {padding: 15px; padding-right: 0;}
 }
 
 /* -------------------------------------- */
@@ -261,7 +264,8 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 }
 
 @media (max-width: 480px) {
-  .careers-section .swiper-slide {height: 320px;}
+  .careers-section .swiper-slide {aspect-ratio: 340/322; height: auto;}
+  .careers-section .swiper-slide .cont .text-box {min-height: unset; padding: 15px;}
 }
 
 

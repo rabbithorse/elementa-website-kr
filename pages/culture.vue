@@ -47,7 +47,7 @@
         </Container>
       </div>
 
-      <div class="culture-work lg:pb-72 md:pb-36 pb-16">
+      <div class="culture-work lg:pb-72 md:pb-36 pb-20">
         <Container>
           <div class="flex lg:flex-row flex-col gap-y-8 justify-between">
             <div class="col-title flex-shrink-0 ">
@@ -56,31 +56,31 @@
               </h5>
             </div>
             <div class="col-list work-list w-[66%] max-lg:w-full  flex-shrink-0">
-              <ul class="flex flex-col lg:gap-y-[6.25rem] gap-y-16">
-                <li class="flex flex-col lg:gap-y-[1.875rem] gap-y-4">
-                  <h6 class="lg:text-[2.5rem] text-[2rem] leading-[150%] font-bold text-white">소통 ∙ Communicate</h6>
-                  <p class="lg:text-2xl text-md text-white">
+              <ul class="flex flex-col xl:gap-y-[6.25rem] md:gap-y-16 gap-y-12">
+                <li class="flex flex-col xl:gap-y-[1.875rem] md:gap-y-4 gap-y-3">
+                  <h6 class="lg:text-[2.5rem] md:text-[2rem] text-2xl leading-[150%] font-bold text-white">소통 ∙ Communicate</h6>
+                  <p class="lg:text-2xl md:text-base text-sm text-white">
                     생각을 나누면, 새로운 가능성이 열린다. <br>
                     우리는 아이디어와 피드백을 자유롭게 공유하며, 투명한 대화를 통해 더 나은 해답을 찾습니다.
                   </p>
                 </li>
-                <li class="flex flex-col lg:gap-y-[1.875rem] gap-y-4">
-                  <h6 class="lg:text-[2.5rem] text-[2rem] leading-[150%] font-bold text-white">협력 ∙ Collaborate</h6>
-                  <p class="lg:text-2xl text-md text-white">
+                <li class="flex flex-col xl:gap-y-[1.875rem] md:gap-y-4 gap-y-3">
+                  <h6 class="lg:text-[2.5rem] md:text-[2rem] text-2xl leading-[150%] font-bold text-white">협력 ∙ Collaborate</h6>
+                  <p class="lg:text-2xl md:text-base text-sm text-white">
                     혼자보다 함께일 때, 더 큰 세계가 만들어진다.<br>
                     서로의 전문성을 존중하고 신뢰를 바탕으로 협력하며, 유저에게 최고의 경험을 전달합니다.
                   </p>    
                 </li>
-                <li class="flex flex-col lg:gap-y-[1.875rem] gap-y-4">
-                  <h6 class="lg:text-[2.5rem] text-[2rem] leading-[150%] font-bold text-white">도전 ∙ Challenge</h6>
-                  <p class="lg:text-2xl text-md text-white">
+                <li class="flex flex-col xl:gap-y-[1.875rem] md:gap-y-4 gap-y-3">
+                  <h6 class="lg:text-[2.5rem] md:text-[2rem] text-2xl leading-[150%] font-bold text-white">도전 ∙ Challenge</h6>
+                  <p class="lg:text-2xl md:text-base text-sm text-white">
                     새로운 모험은 두려움이 아니라 기회의 시작이다.<br>
                     우리는 익숙한 틀을 깨고 끊임없이 도전하며, 실패조차 학습과 성장의 자산으로 여깁니다.
                   </p>
                 </li>
-                <li class="flex flex-col lg:gap-y-[1.875rem] gap-y-4">
-                  <h6 class="lg:text-[2.5rem] text-[2rem] leading-[150%] font-bold text-white">확장 ∙ Expand</h6>
-                  <p class="lg:text-2xl text-md text-white">
+                <li class="flex flex-col xl:gap-y-[1.875rem] md:gap-y-4 gap-y-3">
+                  <h6 class="lg:text-[2.5rem] md:text-[2rem] text-2xl leading-[150%] font-bold text-white">확장 ∙ Expand</h6>
+                  <p class="lg:text-2xl md:text-base text-sm text-white">
                     경험은 나눌수록 커지고, 세계는 연결될수록 넓어진다.<br>
                     우리는 유저의 경험과 우리의 가능성을 한계 없이 확장하며, 글로벌 무대에서 더 큰 가치를 창출합니다.
                   </p>
@@ -98,16 +98,16 @@
         </EffectMarquee>
       </div>
 
-      <div class="h-screen culture-vision mb-72" ref="visionSection">
-        <div class="h-screen overflow-hidden">
-          <img src="~/assets/images/sub/culture-lets-elementa-bg.png" alt="" class="w-full" ref="visionImage">
+      <div class="h-screen culture-vision xl:mb-72 mb-40" ref="visionSection">
+        <div class="flex justify-center h-screen overflow-hidden">
+          <img src="~/assets/images/sub/culture-lets-elementa-bg.png" alt="" class="lg:w-full max-w-none lg:h-[125%] h-[110%]" ref="visionImage">
         </div>
-        <Container class="h-screen flex items-center absolute top-0 left-1/2 -translate-x-1/2 w-full">
-          <div class="vision-content flex flex-col justify-center gap-y-12" ref="visionContent">
+        <Container class="h-screen flex items-center absolute top-0 left-1/2 -translate-x-1/2">
+          <div class="vision-content flex flex-col justify-center gap-y-12 md:mt-0 -mt-20" ref="visionContent">
             <div class="line-mask">
-              <h4 class="text-white text-[2.5rem] font-semibold showText" ref="showText">LET’S ELEMENTA</h4>
+              <h4 class="text-white md:text-[2.5rem] text-4xl font-semibold showText" ref="showText">LET’S ELEMENTA</h4>
             </div>
-            <div>
+            <div class="break-keep">
               <div class="line-mask">
                 <p class="text-white text-base leading-[160%] showText">
                   진정한 즐거움은 창의성과 기술의 깊은 융합에서 시작됩니다.
@@ -146,9 +146,9 @@
         </Container>
       </div>
 
-      <div class="culture-interview bg-[url('~/assets/images/sub/culture-interview-bg.png')] bg-[#05060B] no-repeat bg-center bg-cover pt-56 relative z-10">
+      <div class="culture-interview bg-[url('~/assets/images/sub/culture-interview-bg.png')] bg-[#05060B] no-repeat bg-center bg-cover xl:pt-56 pt-32 relative z-10">
         <EffectGlass>
-          <Container class="md:pt-[4.5rem] pt-9">
+          <Container class="xl:pt-[4.5rem] md:pt-10 pt-6">
             <div class="section-heading">
               
               <div class="heading-text flex flex-col md:gap-y-10 gap-y-4">
@@ -168,13 +168,13 @@
         </EffectGlass>
         <div class="culture-interview-cta lg:py-56 py-28 overflow-hidden" ref="interviewCta">
           <Container>
-            <div class="cta-text flex flex-col items-center gap-y-20">
-              <h4 class="text-white lg:text-[2.8rem] lg:leading-[1.3em] text-3xl font-semibold text-center">
+            <div class="cta-text flex flex-col items-center md:gap-y-20 gap-y-12">
+              <h4 class="text-white lg:text-[2.8rem] lg:leading-[1.3em] md:text-3xl text-2xl font-semibold text-center">
                 <TypographySecondary>
-                <span class="inline-block text-inherit font-semibold underline underline-offset-[6px] decoration-2 relative">
+                <span class="inline-block text-inherit font-semibold underline md:underline-offset-[6px] underline-offset-[3px] md:decoration-2 decoration-1 relative md:pt-0 pt-3">
                   새로운 퀘스트
-                  <em class="alarm-button text-[0.875rem] flex items-center justify-center not-italic text-white bg-[url('~/assets/images/sub/icon-alarm-button.png')] no-repeat bg-center bg-contain w-10 h-10 rounded-full no-underline absolute right-0 top-0 translate-x-2/4 translate-y-1/4 opacity-0" ref="alarmButton">10</em>
-                </span>는 언제나 예고 없이 시작됩니다.
+                  <em class="alarm-button md:text-[0.875rem] text-xs flex items-center justify-center not-italic text-white bg-[url('~/assets/images/sub/icon-alarm-button.png')] no-repeat bg-center bg-contain md:w-10 md:h-10 w-7 h-7 rounded-full no-underline absolute right-0 top-0 translate-x-2/4 translate-y-1/4 opacity-0" ref="alarmButton">10</em>
+                </span>는 <br class="block md:hidden"/>언제나 예고 없이 시작됩니다.
                 </TypographySecondary><br>
                 <TypographySecondary>
                   당신의 도전을 우리와 함께 <br class="lg:hidden">미래로 이어가 보지 않으시겠습니까?
@@ -220,7 +220,7 @@
         start: 'top 60%',
         end: 'top top',
         scrub: true,
-        markers: true,
+        //markers: true,
         duration: 1,
       },
     }).to(wideImageArea.value, {
@@ -238,7 +238,7 @@
         start: 'top 0',
         end: '+=60%',
         scrub: 1,
-        markers: true,
+        //markers: true,
       },
     }).to(wideImageArea.value, {
       backgroundPositionY: '60%',
@@ -259,7 +259,7 @@
         end: "+=100",
         pin: true,
         pinSpacing: false,
-        scrub: 8,
+        scrub: 6,
         //markers: true,
       },
     })
@@ -270,7 +270,7 @@
       {
         clipPath: 'inset(0%)',
         ease: 'none',
-        duration: 3,
+        duration: 2.5,
       }
     )
     .to(visionContent.value, {
@@ -283,7 +283,7 @@
       y: '0%',
       duration: 1,
       rotateX: 0,
-      stagger: 0.3,
+      stagger: 0.1,
     }, "<")
 
     $gsap.to(visionImage.value, {
@@ -365,6 +365,10 @@
   @media (max-width: 767px) {
     .slider-container {
       width: 100%;
+    }
+
+    .culture-interview .glass {
+      padding: 16px 0;
     }
   }
 </style>

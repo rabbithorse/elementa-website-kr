@@ -12,9 +12,9 @@
             <div class="tit">
               <ButtonsBadge class="mb-[10px]">D-10</ButtonsBadge>
               <h4 class="text-white md:text-xl text-base">개발 PM 담당</h4>
-              <p class="text-white md:text-[0.88rem] text-sm">경력직 ㆍ 경력 2-4년</p>
+              <p class="text-white md:text-[0.88rem] text-xs">경력직 ㆍ 경력 2-4년</p>
             </div>
-            <p class="text-white date md:text-[0.88rem] text-sm">25.10.01~25.10.30</p>
+            <p class="text-white date md:text-[0.88rem] text-xs">25.10.01~25.10.30</p>
           </div>
           <div class="apply absolute">
             <span class="text-xs text-[#00C8EB]">100명의 지원자가 보고갔어요!</span>

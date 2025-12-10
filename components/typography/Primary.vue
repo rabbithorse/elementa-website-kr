@@ -28,13 +28,13 @@
       trigger: primaryChar.value,
       once: false,
       start: "top 80%",
-      markers: true,
+      //markers: true,
       scroller: window,
       invalidateOnRefresh: true,
       onEnter: () => {
         $gsap.to(primaryChar.value, {
           x: '0%',
-          duration: 2,
+          duration: 1,
           ease: 'power4.out',
         });
       }
@@ -66,5 +66,23 @@
     will-change: transform;
     perspective: 1000px;
 
+  }
+
+  @media screen and (max-width: 1023px) {
+    .subPageTitle .primary-char-wrap {
+      margin-left: -2vw;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .subPageTitle .primary-char-wrap {
+      margin-left: -2.5vw;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .subPageTitle .primary-char-wrap {
+      margin-left: -3.5vw;
+    }
   }
 </style>
