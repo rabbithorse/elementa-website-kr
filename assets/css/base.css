@@ -1,4 +1,5 @@
 #nuxt-devtools-container {display: none;}
+body ::-webkit-scrollbar,html ::-webkit-scrollbar {display: none}
 .container {position: relative;}
 
 body {background: #05060B; font-family: 'Paperlogy', sans-serif;}

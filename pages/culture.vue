@@ -100,7 +100,7 @@
 
       <div class="h-screen culture-vision xl:mb-72 mb-40" ref="visionSection">
         <div class="flex justify-center h-screen overflow-hidden">
-          <img src="~/assets/images/sub/culture-lets-elementa-bg.png" alt="" class="lg:w-full max-w-none lg:h-auto h-[110%]" ref="visionImage">
+          <img src="~/assets/images/sub/culture-lets-elementa-bg.png" alt="" class="lg:w-full max-w-none lg:h-[125%] h-[110%]" ref="visionImage">
         </div>
         <Container class="h-screen flex items-center absolute top-0 left-1/2 -translate-x-1/2">
           <div class="vision-content flex flex-col justify-center gap-y-12 md:mt-0 -mt-20" ref="visionContent">
