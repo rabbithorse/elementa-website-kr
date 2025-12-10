@@ -525,15 +525,15 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 
 /* section 05 */
 .inv-board .inv-dimmed{background: #000;}
-.inv-board .in-camera {height: 100vh; margin:0 auto; max-width: 5760px; width: 100%; /*border: 1px solid red;*/}
-.inv-board .in-camera .bg {width:5760px; height:5040px; will-change: transform, opacity; transform: translate3d(0,0,0);}
+.inv-board .in-camera {height: 100vh; margin:0 auto; max-width: 5760px; width: 100%; /*border: 1px solid red;*/ background: url('~/assets/images/sub/camera-bg-line.png') repeat-y calc(50% + 9px) / contain;}
+.inv-board .in-camera .bg {width:5760px; height:6492px; will-change: transform, opacity; transform: translate3d(0,0,0); background: #000;}
 .inv-board .in-camera .bg .bg-canvas {position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   will-change: transform;}
-  .inv-board .in-camera .bg-line {width:5760px; height:6527px; will-change: transform, opacity; transform: translate3d(0,0,0);}
+  .inv-board .in-camera .bg-line {width:5760px; height:6492px; will-change: transform, opacity; transform: translate3d(0,0,0);}
   .inv-board .in-camera .bg .bg-line .line {position: absolute;
     top: 0;
     left: 0;
@@ -575,13 +575,23 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 .inv-board .in-camera .bg .box7 {left: 1809px; top: -50px;}
 .inv-board .in-camera .bg .box8 {left: 3136px; bottom: -280px;}
 
-.inv-board .in-camera .bg .box9 {right: 0px; bottom: calc(-100% + 110px);}
+.inv-board .in-camera .bg .box9 {right: -420px; bottom: calc(-100% + 190px);}
+.inv-board .in-camera .bg .box9-5 {right:1313px; bottom:0;}
+
+.inv-board .in-camera .bg .box10 {left: 43%; bottom: calc(-100% + 240px);}
+.inv-board .in-camera .bg .box11 {left: 1264px; bottom: -900px;}
+
+.inv-board .in-camera .bg .box12 {right: 1939px; bottom: -1230px;}
 
 
 .inv-board .in-camera .bg [class^="box"] span,
 .inv-board .in-camera .bg [class*=" box"] span {will-change: transform, opacity; transform: translate3d(0,0,0); color: rgba(255, 255, 255, 1); font-family: Eulyoo1945;}
 
-.last-scene {height: 100vh; border: 1px solid blue;}
+.inv-board .in-camera .bg .credit-list span{color: #CDBC79; display: block; text-align: center;}
+
+.inv-board .in-camera .last-scene {height: 100vh;}
+.inv-board .in-camera .last-scene .last-scene-inner::before {content:''; background: #000; width: 100%; height: 60%; background: #000; position: absolute; left: 0; bottom: 0;}
+.inv-board .in-camera .last-scene .text-mask-wrap {mask-image: url('~/assets/images/sub/game-logo01.png'); mask-repeat: no-repeat; mask-position: center; mask-size: 697px;}
 /***** responsive, 순서 변경 금지*****/
 
 /* pc에서 레이아웃 깨지는 것만 */

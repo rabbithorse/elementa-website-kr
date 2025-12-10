@@ -220,8 +220,8 @@
     <!-- section05 : 수사보드 -->
     <section class="inv-board overflow-hidden relative" ref="invBoard">
       <div class="inv-dimmed absolute z-10 w-full h-full top-0 left-0"></div>
-      <div class="in-camera w-full overflow-hidden">
-        <div class="bg relative flex items-end justify-center overflow-visible">
+      <div class="in-camera w-full overflow-hidden relative">
+        <div class="bg relative flex flex-col items-center justify-end overflow-visible">
           <!-- 배경 캔버스 -->
           <canvas class="bg-canvas absolute top-0 left-0 w-full h-full" id="boardCanvas"></canvas>
           <!-- 처음 ~ 두번째 지점 사진 -->
@@ -248,30 +248,45 @@
           <!-- 일곱번째 ~ 여덟번째 지점 사진 -->
           <div class="picbox-04 w-full absolute">
             <div class="box9 absolute"><img src="~/assets/images/sub/inv-board-box9.webp" alt="point 7 image 1"></div>
-            <div class="box10 absolute"><img src="" alt="point 7 image 1"></div>
-            <div class="box11 absolute right-[0px] bottom-[200px] bg-yellow-500 w-[100px] h-[100px]"></div>
-            <div class="box12 absolute right-[50%] bottom-[-200px] bg-white w-[100px] h-[100px]"></div>
-            <div class="box13 absolute left-[1845px] bottom-[200px] bg-yellow-500 w-[100px] h-[100px]"></div>
+            <div class="box9-5 absolute text-center"><span class="text-[100px] font-normal text-center leading-[1.2]">당신이 그 총알 <br>한 발의 진실을 찾아낸다면,</span></div>
+            
+            <div class="box10 absolute"><img src="~/assets/images/sub/inv-board-box10.webp" alt="point 8 image 1"></div>
+            <div class="box11 absolute"><img src="~/assets/images/sub/inv-board-box11.webp" alt="point 8 image 2"></div>
+
+            <div class="box12 absolute"><img src="~/assets/images/sub/inv-board-box12.webp" alt="last image"></div>
           </div>
           <!-- 마지막 제작사 리스트 -->
-          <ul class="text-white text-center flex flex-col gap-[195px] text-4xl" ref="creditList">
-            <li><span>제작사, 배급사</span>엘리멘타</li>
-            <li><span>장르</span>서브컬처 빅월드 ARPG</li>
-            <li><span>진출 국가</span>글로벌</li>
-            <li><span>언어</span>다국어 지원</li>
-            <li><span>실버팰리스 알아보기</span></li>
+          <ul class="text-white text-center flex flex-col gap-[195px] text-4xl z-30 credit-list" ref="creditList">
+            <li class="credit-list-item"><span class="text-[0.94rem]">제작사, 배급사</span><img src="~/assets/images/sub/credit-logo.svg" alt="엘리멘타 로고"></li>
+            <li class="credit-list-item"><span class="text-[0.94rem]">장르</span>서브컬처 빅월드 ARPG</li>
+            <li class="credit-list-item"><span class="text-[0.94rem]">진출 국가</span>글로벌</li>
+            <li class="credit-list-item"><span class="text-[0.94rem]">언어</span>다국어 지원</li>
+            <li class="credit-list-item"><span class="text-xl">실버팰리스 알아보기</span></li>
+          </ul>
+          <ul class="z-40 pb-[600px] pt-[30px] flex justify-center items-center gap-[65px] credit-list-links">
+            <li class="text-white text-lg"><a href="" role="button" aria-label="공유하기" class="block"><img src="~/assets/images/sub/credit-icon-share.svg" alt="공유"></a></li>
+            <li class="text-white text-lg"><a href="" role="button" aria-label="유튜브" class="block"><img src="~/assets/images/sub/credit-icon-youtube.svg" alt="유튜브"></a></li>
+            <li class="text-white text-lg"><a href="" role="button" aria-label="인스타그램" class="block"><img src="~/assets/images/sub/credit-icon-insta.svg" alt="인스타그램"></a></li>
+            <li class="text-white text-lg"><a href="" role="button" aria-label="x" class="block"><img src="~/assets/images/sub/credit-icon-x.svg" alt="x"></a></li>
+            <li class="text-white text-lg"><a href="" role="button" aria-label="다운로드" class="block"><img src="~/assets/images/sub/credit-icon-dwn.svg" alt="다운로드"></a></li>
           </ul>
           <div class="bg-line absolute top-0 left-0 z-30">
             <canvas class="line absolute w-full h-full top-0 left-0 z-50" id="boardLine"></canvas>
           </div>
         </div>
+        <!-- 에필로그 영역 -->
+        <div class="last-scene w-full flex items-center justify-center absolute bottom-0 left-0 overflow-hidden" ref="lastScene">
+          <div class="last-scene-inner w-full h-full relative">
+            <div class="text-mask-wrap w-full h-full relative z-30">
+              <div class="w-full h-full bg-cyan-500 z-20 absolute inner-mask"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- section06 : 마지막 영역 -->
-    <section class="last-scene w-full flex items-center justify-center" ref="lastScene">
-      <p class="text-white text-[120px]">실버 팰리스</p>
-    </section>
+    
+    
     <section class="h-[600px]"></section>
 
 
@@ -478,6 +493,7 @@
 
   // section 05 refs - 수사보드
   const invBoard = ref(null)
+  const creditList = ref(null)
 
   // section 06 refs - 마지막 영역
   const lastScene = ref(null)
@@ -852,20 +868,21 @@
     const canvas = document.getElementById("boardCanvas");
     const ctx = canvas.getContext("2d");
     canvas.width = 5760;
-    canvas.height = 5040;
+    canvas.height = 6492;
 
     const bgImg = new Image();
     bgImg.src = new URL('@/assets/images/sub/board_bg_new.webp', import.meta.url).href;
 
     bgImg.onload = () => {
       ctx.drawImage(bgImg, 0, 0, canvas.width, canvas.height);
+      
     };
 
     // 라인 캔버스 생성
     const canvasLine = document.getElementById("boardLine");
     const ctxLine = canvasLine.getContext("2d");
     canvasLine.width = 5760;
-    canvasLine.height = 6527;
+    canvasLine.height = 6492;
 
     const bgImgLine = new Image();
     bgImgLine.src = new URL('@/assets/images/sub/inv-board-line-new.webp', import.meta.url).href;
@@ -874,9 +891,7 @@
       ctxLine.drawImage(bgImgLine, 0, 0, canvasLine.width, canvasLine.height);
     };
 
-
-
-
+    // 수사보드 변수
     const invDimmed = invBoard.value.querySelector(".inv-dimmed");
     const bgInvBoard = invBoard.value.querySelector(".bg");
 
@@ -895,51 +910,59 @@
 
     const box7 = invBoard.value.querySelector(".box7"); //5지점 사진들
 
-    const box8 = invBoard.value.querySelector(".box8"); //66지점 사진들
+    const box8 = invBoard.value.querySelector(".box8"); //6지점 사진들
 
-    const box9 = invBoard.value.querySelector(".box9"); //7지점 사진들
+    const box9 = invBoard.value.querySelector(".box9"); //7지점 사진들과 텍스트
+    const box9_5 = invBoard.value.querySelector(".box9-5");
 
-    const box10 = invBoard.value.querySelector(".box10");
+    const box10 = invBoard.value.querySelector(".box10"); //8지점 사진들
     const box11 = invBoard.value.querySelector(".box11");
+
     const box12 = invBoard.value.querySelector(".box12");
-    const box13 = invBoard.value.querySelector(".box13");
+
+    const creditListItems = creditList.value.querySelectorAll("li");
+
+    // 에필로그 영역 변수
+    const epilogueBox = lastScene.value.querySelector(".text-mask-wrap");
+    const epilogueBoxInner = epilogueBox.querySelector(".inner-mask");
 
     // GPU 레이어 고정
-    $gsap.set([bgInvBoard, box1, box2, box2_5, box3, box4, box5, box5_5], {
+    $gsap.set([bgInvBoard, box1, box2, box2_5, box3, box4, box5, box5_5, box6, box6_5, box7, box8, box9, box9_5, box10, box11, box12], {
       force3D: true,
       transform: "translate3d(0,0,0)" 
     });
 
     // 수사보드 사진 타임라인
     const pic01 = $gsap.timeline()
-    .fromTo(box1, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" }) //1지점 사진들
-    .fromTo(box2, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" })
-    .fromTo(box2_5, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" })
+    .fromTo(box1, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "none" }) //1지점 사진들
+    .fromTo(box2, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "none" })
+    .fromTo(box2_5, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "none" })
 
     const pic02 = $gsap.timeline()
-    .fromTo(box3, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" }) //2지점 사진들
-    .fromTo(box4, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" })
+    .fromTo(box3, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "none" }) //2지점 사진들
+    .fromTo(box4, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "none" })
 
     const pic03 = $gsap.timeline()
-    .fromTo(box5, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" }) //3지점 사진들
-    .fromTo(box5_5, { opacity: 0 }, { scale: 1, opacity: 0.05, duration: 0.5, ease: "none" })
-
+    .fromTo(box5, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "none" }) //3지점 사진들
+    .fromTo(box5_5, { opacity: 0 }, { opacity: 0.05, duration: 0.5, ease: "none" })
+    
     const pic04 = $gsap.timeline()
-    .fromTo(box6, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" }) //4지점 사진들
-    .fromTo(box6_5, { opacity: 0 }, { scale: 1, opacity: 0.05, duration: 0.5, ease: "none" })
+    .fromTo(box6, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "none" }) //4지점 사진들
+    .fromTo(box6_5, { opacity: 0 }, { opacity: 0.05, duration: 0.5, ease: "none" })
 
     const pic05 = $gsap.timeline()
-    .fromTo(box7, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" }) //5지점 사진들
+    .fromTo(box7, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "none" }) //5지점 사진들
 
     const pic06 = $gsap.timeline()
-    .fromTo(box8, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" }) //6지점 사진들
+    .fromTo(box8, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "none" }) //6지점 사진들
 
     const pic07 = $gsap.timeline()
-    .fromTo(box9, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" })
-
+    .fromTo(box9, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "none" }) //7지점 사진들
+    .fromTo(box9_5, { opacity: 0 }, { opacity: 0.05, duration: 0.5, ease: "none" },">+2")
+    
     const pic08 = $gsap.timeline()
-    .fromTo(box12, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" })
-    .fromTo(box13, { opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "none" }, ">-0.9")
+    .fromTo(box10, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "none" })
+    .fromTo(box11, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "none" }, ">+0.5")
     
     const invBoardTimeline = $gsap.timeline()
     .to(invDimmed, {opacity: 0, duration: 0.3, ease: "none" })
@@ -962,10 +985,20 @@
     .addLabel("movePoint_05") //6지점
     .to(bgInvBoard, {x:-3432, y:-2951 , duration: 2, ease: "none", force3D: true }, "movePoint_05+=1") //여섯번째 구간 이동
 
-    .addLabel("movePoint_06")
-    .to(bgInvBoard, {x:() => (window.innerWidth - bgInvBoard.offsetWidth) / 2, y: -3612, duration: 2, ease: "none", force3D: true }, "movePoint_06+=1")
-    .addLabel("movePoint_07")
-    .to(bgInvBoard, {x:() => (window.innerWidth - bgInvBoard.offsetWidth) / 2, y: () => (-bgInvBoard.offsetHeight), duration: 2, ease: "none", force3D: true }, ">+0.25")
+    .addLabel("movePoint_06") //7지점
+    .to(bgInvBoard, {x:() => (window.innerWidth - bgInvBoard.offsetWidth) / 2, y: -3812, duration: 2, ease: "none", force3D: true }, "movePoint_06+=1") //일곱번째 구간 이동
+
+    .addLabel("movePoint_07") //8지점
+    .to(bgInvBoard, {x:() => (window.innerWidth - bgInvBoard.offsetWidth) / 2, y: -6527, duration: 5, ease: "none", force3D: true }, "movePoint_07+=1") // 마지막 구간으로 이동
+    .fromTo(box12, { opacity: 0 }, { opacity: 0.6, duration: 0.5, ease: "none" }, "movePoint_07+=1.3")
+    .fromTo(creditListItems, { opacity: 0 }, { opacity: 1, duration: 1.5, ease: "none", stagger: 0.2 }, "movePoint_07+=1") //크레딧 리스트 나타남
+
+    /*-----------------------*/
+    // 08. 에필로그 섹션 - 흐름상 같은 수사보드 섹션 타임라인에 포함
+    /*-----------------------*/
+    .fromTo(lastScene.value, { opacity: 0, visibility: "hidden" }, { opacity: 1, duration: 1.5, ease: "none", visibility: "visible" }, "movePoint_07+=5") //에필로그 박스 나타남
+    .to(epilogueBoxInner, { backgroundColor : "red",  duration: 5, ease: "none"}, "movePoint_07+=6") //에필로그 박스 나타남
+    .to(lastScene.value, { backgroundColor : "black", duration: 3, ease: "none"}, "<") //에필로그 박스 나타남
 
 
     // 수사보드 라인 시점에 사진 등장
@@ -983,7 +1016,7 @@
 
     invBoardTimeline.add(pic07, "movePoint_05+=2"); //7지점 사진 등장
 
-    invBoardTimeline.add(pic08, "movePoint_07+=0.2");
+    invBoardTimeline.add(pic08, "movePoint_06+=2"); //8지점 사진 등장
 
     // invBoardTimeline 세팅 끝난 직후에 추가
     invBoardTimeline.progress(1);
@@ -996,25 +1029,10 @@
       scrub: 1,
       smooth: 1,
       pin: true,
-      // markers: true,
+      //markers: true,
       animation: invBoardTimeline,
-      anticipatePin: 3
+      anticipatePin: 3,
     })
-
-     /*-----------------------*/
-    // 08. 에필로그 섹션
-    /*-----------------------*/
-    $ScrollTrigger.create({
-      trigger: lastScene.value,
-      start: 'top top',
-      end: "+=3000",
-      scrub: true,
-      // markers: true,
-      pin: lastScene.value,
-      anticipatePin: 1
-    })
-
-
   });
 
   
