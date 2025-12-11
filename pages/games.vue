@@ -264,23 +264,33 @@
             <li class="credit-list-item"><span class="text-xl">실버팰리스 알아보기</span></li>
           </ul>
           <ul class="z-40 pb-[600px] pt-[30px] flex justify-center items-center gap-[65px] credit-list-links">
-            <li class="text-white text-lg"><a href="" role="button" aria-label="공유하기" class="block"><img src="~/assets/images/sub/credit-icon-share.svg" alt="공유"></a></li>
-            <li class="text-white text-lg"><a href="" role="button" aria-label="유튜브" class="block"><img src="~/assets/images/sub/credit-icon-youtube.svg" alt="유튜브"></a></li>
-            <li class="text-white text-lg"><a href="" role="button" aria-label="인스타그램" class="block"><img src="~/assets/images/sub/credit-icon-insta.svg" alt="인스타그램"></a></li>
-            <li class="text-white text-lg"><a href="" role="button" aria-label="x" class="block"><img src="~/assets/images/sub/credit-icon-x.svg" alt="x"></a></li>
-            <li class="text-white text-lg"><a href="" role="button" aria-label="다운로드" class="block"><img src="~/assets/images/sub/credit-icon-dwn.svg" alt="다운로드"></a></li>
+            <li class="text-white text-lg"><a href="" role="button" aria-label="공유하기" class="block w-[80px] h-[80px]"></a></li>
+            <li class="text-white text-lg"><a href="" role="button" aria-label="유튜브" class="block w-[80px] h-[80px]"></a></li>
+            <li class="text-white text-lg"><a href="" role="button" aria-label="인스타그램" class="block w-[80px] h-[80px]"></a></li>
+            <li class="text-white text-lg"><a href="" role="button" aria-label="x" class="block w-[80px] h-[80px]"></a></li>
+            <li class="text-white text-lg"><a href="" role="button" aria-label="다운로드" class="block w-[80px] h-[80px]"></a></li>
           </ul>
           <div class="bg-line absolute top-0 left-0 z-30">
             <canvas class="line absolute w-full h-full top-0 left-0 z-50" id="boardLine"></canvas>
           </div>
+        </div>        
+      </div>
+    </section>
+    <!-- section06 : 에필로그 -->
+    <section class="last-scene w-full overflow-hidden" ref="lastScene">
+      <div class="last-scene-inner w-full h-full relative">
+        <div class="w-full h-full z-20 absolute epilogue-video text-white">
+          <video class="e-video-bg" autoplay loop muted playsinline preload="auto">
+            <source src="~/assets/videos/epilogue.mp4" type="video/mp4" />
+          </video>
         </div>
-        <!-- 에필로그 영역 -->
-        <div class="last-scene w-full flex items-center justify-center absolute bottom-0 left-0 overflow-hidden" ref="lastScene">
-          <div class="last-scene-inner w-full h-full relative">
-            <div class="text-mask-wrap w-full h-full relative z-30">
-              <div class="w-full h-full bg-cyan-500 z-20 absolute inner-mask"></div>
-            </div>
-          </div>
+        <!-- 비디오 커버 -->
+        <div class="w-full h-full bg-white z-20 absolute video-cover"></div>
+        <!-- 로고 홀더 -->
+        <div class="text-mask-wrap w-full h-full relative z-30">
+          <div class="logo-hole w-full h-full absolute left-0 top-0"></div>
+          <div class="rec-hole w-full h-full absolute left-0 top-0"></div>
+          <div class="mask-bg-line absolute left-0 top-0 w-full"></div>
         </div>
       </div>
     </section>
@@ -521,6 +531,7 @@
       end: 'bottom bottom',
       pinspacing: true,
       pin: movieBg.value,
+      pinType: "transform",
       scrub: 2,
       // markers: true,
     })
@@ -555,6 +566,7 @@
       start: 'top top',
       end: "+=" + scrollIntro.duration() * 600,
       pin: titleArea.value,
+      pinType: "transform",
       scrub: 2,
       animation: scrollIntro,
       // markers: true,
@@ -803,6 +815,7 @@
       end: "+=" + youtubeTimeline.duration() * 200,
       scrub: 2,
       pin: youtubeArea.value,
+      pinType: "transform",
       anticipatePin: 1,
       // markers: true,
     })
@@ -922,10 +935,6 @@
 
     const creditListItems = creditList.value.querySelectorAll("li");
 
-    // 에필로그 영역 변수
-    const epilogueBox = lastScene.value.querySelector(".text-mask-wrap");
-    const epilogueBoxInner = epilogueBox.querySelector(".inner-mask");
-
     // GPU 레이어 고정
     $gsap.set([bgInvBoard, box1, box2, box2_5, box3, box4, box5, box5_5, box6, box6_5, box7, box8, box9, box9_5, box10, box11, box12], {
       force3D: true,
@@ -989,17 +998,9 @@
     .to(bgInvBoard, {x:() => (window.innerWidth - bgInvBoard.offsetWidth) / 2, y: -3812, duration: 2, ease: "none", force3D: true }, "movePoint_06+=1") //일곱번째 구간 이동
 
     .addLabel("movePoint_07") //8지점
-    .to(bgInvBoard, {x:() => (window.innerWidth - bgInvBoard.offsetWidth) / 2, y: -6527, duration: 5, ease: "none", force3D: true }, "movePoint_07+=1") // 마지막 구간으로 이동
+    .to(bgInvBoard, {x:() => (window.innerWidth - bgInvBoard.offsetWidth) / 2, y: -6092, duration: 3, ease: "none", force3D: true }, "movePoint_07+=1") // 마지막 구간으로 이동
     .fromTo(box12, { opacity: 0 }, { opacity: 0.6, duration: 0.5, ease: "none" }, "movePoint_07+=1.3")
-    .fromTo(creditListItems, { opacity: 0 }, { opacity: 1, duration: 1.5, ease: "none", stagger: 0.2 }, "movePoint_07+=1") //크레딧 리스트 나타남
-
-    /*-----------------------*/
-    // 08. 에필로그 섹션 - 흐름상 같은 수사보드 섹션 타임라인에 포함
-    /*-----------------------*/
-    .fromTo(lastScene.value, { opacity: 0, visibility: "hidden" }, { opacity: 1, duration: 1.5, ease: "none", visibility: "visible" }, "movePoint_07+=5") //에필로그 박스 나타남
-    .to(epilogueBoxInner, { backgroundColor : "red",  duration: 5, ease: "none"}, "movePoint_07+=6") //에필로그 박스 나타남
-    .to(lastScene.value, { backgroundColor : "black", duration: 3, ease: "none"}, "<") //에필로그 박스 나타남
-
+    .fromTo(creditListItems, { opacity: 0 }, { opacity: 1, duration: 1, ease: "none", stagger: 0.2 }, "movePoint_07+=1") //크레딧 리스트 나타남
 
     // 수사보드 라인 시점에 사진 등장
     invBoardTimeline.add(pic01, "startMove"); //1지점 사진 등장
@@ -1032,7 +1033,62 @@
       //markers: true,
       animation: invBoardTimeline,
       anticipatePin: 3,
+      invalidateOnRefresh: true, //리사이즈 시 트윈 리셋
     })
+
+
+    /*-----------------------*/
+    // 08. 에필로그 섹션
+    /*-----------------------*/
+
+    const logoHoleWrap = lastScene.value.querySelector(".text-mask-wrap");
+    const logoHole = logoHoleWrap.querySelector(".logo-hole");
+    const recHole = logoHoleWrap.querySelector(".rec-hole");
+    const videoCover = lastScene.value.querySelector(".video-cover");
+    const maskBgLine = logoHoleWrap.querySelector(".mask-bg-line");
+    const eVideo = lastScene.value.querySelector(".e-video-bg");
+
+    $gsap.set([logoHole, recHole], {
+      force3D: true,       
+    });
+
+    const EpilogueTimeline = $gsap.timeline({
+      defaults: {
+        ease: "none",
+        overwrite: "auto"           
+      }
+    })
+    .to(videoCover, { opacity: 0, duration: 1, ease: "power2.out",
+      onComplete: () => {
+    eVideo.currentTime = 0;  // 반드시 처음부터
+    eVideo.play();
+  }
+     })
+    .to(maskBgLine, {opacity: 0, duration: 1, ease: "power2.out" }, "<") // 동시 진행
+    .to([logoHole, recHole], { scale: 40.5, duration: 1.5, ease: "none" }, ">+0.5")
+    .to([logoHole, recHole], { opacity: 0, duration: 0.3, ease: "none" }, ">+0.01")
+
+
+    $ScrollTrigger.create({
+      trigger: lastScene.value,
+      start: "top+=1 top",
+      end: "+=" + EpilogueTimeline.duration() * 700,  
+      animation: EpilogueTimeline,
+      scrub: 2,
+      pin: true,
+      pinType: "transform",        
+      anticipatePin: 1,            
+      fastScrollEnd: true,         // 빠르게 스크롤 시 '튐' 방지
+      invalidateOnRefresh: true,   // 리사이즈 시 값 재계산 (와이드 대응)
+    })
+
+
+    /*-----------------------*/
+    // 09. 리사이즈 시 ScrollTrigger 전체 재계산
+    /*-----------------------*/
+    window.addEventListener("resize", () => {
+      $ScrollTrigger.refresh()   // 전체 재계산
+    });
   });
 
   
@@ -1161,6 +1217,7 @@
   // 1) 모든 ScrollTrigger 정리
   $ScrollTrigger.getAll().forEach(st => st.kill());
   });
+  
 
 </script>
 
