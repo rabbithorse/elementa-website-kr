@@ -12,44 +12,39 @@
 
   const { $gsap, $ScrollTrigger } = useNuxtApp();
 
-  const props = defineProps({
-    pinnedContainer: {
-      type: String,
-      default: null
-    }
-  });
 
   const primaryCharWrap = ref([]);
   const primaryChar = ref(null);
   let scrollTriggerInstance = null;
 
-  onMounted(() => {
-    scrollTriggerInstance = $ScrollTrigger.create({
-      trigger: primaryChar.value,
-      once: false,
-      start: "top 80%",
-      //markers: true,
-      scroller: window,
-      invalidateOnRefresh: true,
-      onEnter: () => {
-        $gsap.to(primaryChar.value, {
-          x: '0%',
-          duration: 1,
-          ease: 'power4.out',
-        });
-      }
-    })
-
-    if (props.pinnedContainer) {
-      scrollTriggerInstance.pinnedContainer = props.pinnedContainer;
-    }
-  })
-
+  let ctx;
   onBeforeUnmount(() => {
-    if (scrollTriggerInstance) {
-      scrollTriggerInstance.kill();
+    if (ctx) {
+      ctx.revert();
+      $ScrollTrigger.getAll().forEach(t => t.kill());
+      $ScrollTrigger.refresh();
     }
   });
+
+  onMounted(() => {    
+    ctx = $gsap.context(() => {
+      scrollTriggerInstance = $ScrollTrigger.create({
+        trigger: primaryChar.value,
+        once: false,
+        start: "top 80%",
+        //markers: true,
+        scroller: window,
+        invalidateOnRefresh: true,
+        onEnter: () => {
+          $gsap.to(primaryChar.value, {
+            x: '0%',
+            duration: 1,
+            ease: 'power4.out',
+          });
+        }
+      })
+    });
+  })
 </script>
 
 <style scoped>

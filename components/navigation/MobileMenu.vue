@@ -16,13 +16,22 @@
           </button>
           <NuxtLink 
             v-else :to="item.path" 
+            @click.prevent="goToLink(item.path)"
+            :isOpen="!isOpen"
             class="menu-link depth1-menu-link flex items-center xl:justify-center justify-start text-white 2xl:py-4 xl:py-3 py-4 xl:px-7 px-5 xl:text-base text-2xl leading-[130%] rounded-md after:absolute after:content-[''] after:w-full after:h-full after:bg-white/0 after:transition after:duration-300 after:ease-in-out ">
             {{ item.name }}
           </NuxtLink>
           <div v-accordion="subMenuOpen">
             <ul v-if="item.children && item.children.length" class="depth2-menu-list px-6">
               <li v-for="child in item.children" :key="child.name" class="text-white flex items-center gap-x-2 px-3 text-lg">
-                <NuxtLink :to="child.path" class="menu-link depth2-menu-link inline-block w-full text-white py-2 leading-[130%] xl:hover:bg-black/10 transition text-left">{{ child.name }}</NuxtLink>
+                <NuxtLink 
+                  :to="child.path" 
+                  @click.prevent="goToLink(child.path)"
+                  :isOpen="!isOpen"
+                  class="menu-link depth2-menu-link inline-block w-full text-white py-2 leading-[130%] xl:hover:bg-black/10 transition text-left"
+                  >
+                  {{ child.name }}  
+                </NuxtLink>
               </li>
             </ul>
           </div>
@@ -33,7 +42,8 @@
 </template>
 
 <script setup lang="ts">
-  defineProps<{
+  const props =defineProps<{
+    closeMenu: Function,
     menuItems: Array<{ 
       name: string; 
       path: string; 
@@ -41,9 +51,15 @@
         name: string; 
         path: string 
       }> 
-    }>;
+    }>
   }>();
 
+  const goToLink = (url: string) => {
+    props.closeMenu()
+    navigateTo(url)
+  }
+
+  const isOpen = ref(false);
   const subMenuOpen = ref(false);
 </script>
 

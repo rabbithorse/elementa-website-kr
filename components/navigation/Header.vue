@@ -25,7 +25,7 @@
     </button>
     <div :isOpen="isOpen" class="xl:hidden ">
       <Transition name="slide" class="fixed inset-0 z-40">
-        <MobileMenu :menuItems="menuItems" v-if="isOpen" @close="closeMenu" class="fixed w-full right-0 top-0 h-full "/>
+        <MobileMenu :menuItems="menuItems" :closeMenu="closeMenu" v-if="isOpen" class="fixed w-full right-0 top-0 h-screen "/>
       </Transition>
     </div>
   </header>
@@ -36,17 +36,29 @@
   import Menu from './Menu.vue'
   import MobileMenu from './MobileMenu.vue'
   
+  const { $lenis } = useNuxtApp()
+
   const isOpen = ref(false);
   const subMenuOpen = ref(false);
 
   const toggle = () => {
     isOpen.value = !isOpen.value;
     subMenuOpen.value = false;
+    
+    if (isOpen.value) {
+      $lenis.stop();
+      document.body.classList.add('gnb-open');
+    } else {
+      $lenis.start();
+      document.body.classList.remove('gnb-open');
+    }
   };
 
   const closeMenu = () => {
-    isOpen.value = false
-    console.log("메뉴 닫힘")
+    isOpen.value = false;
+    console.log("메뉴 닫힘");
+    $lenis.start();
+    document.body.classList.remove('gnb-open');
   }
 
   const menuItems = [
@@ -65,45 +77,45 @@
 
   // header on scroll direction
   const scrollDirection = ref(0)   // 1: up, -1: down
-const lastScroll = ref(0)
-const waiting = ref(false)
+  const lastScroll = ref(0)
+  const waiting = ref(false)
 
-function handleScroll() {
-  if (waiting.value) return
-  waiting.value = true
+  function handleScroll() {
+    if (waiting.value) return
+    waiting.value = true
 
-  const current = window.scrollY
+    const current = window.scrollY
 
-  if (current > lastScroll.value) {
-    scrollDirection.value = -1   // down
-  } else if (current < lastScroll.value) {
-    scrollDirection.value = 1    // up
+    if (current > lastScroll.value) {
+      scrollDirection.value = -1   // down
+    } else if (current < lastScroll.value) {
+      scrollDirection.value = 1    // up
+    }
+
+    lastScroll.value = current
+
+    setTimeout(() => {
+      waiting.value = false
+    }, 100)
   }
 
-  lastScroll.value = current
+  // mount
+  onMounted(() => {
+    lastScroll.value = window.scrollY
+    window.addEventListener('scroll', handleScroll)
+  })
 
-  setTimeout(() => {
-    waiting.value = false
-  }, 100)
-}
+  // unmount
+  onBeforeUnmount(() => {
+    window.removeEventListener('scroll', handleScroll)
+  })
 
-// mount
-onMounted(() => {
-  lastScroll.value = window.scrollY
-  window.addEventListener('scroll', handleScroll)
-})
-
-// unmount
-onBeforeUnmount(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
-
-// header class
-const headerClass = computed(() => {
-  if (scrollDirection.value === -1) return 'header-hide'
-  if (scrollDirection.value === 1) return 'header-show'
-  return ''
-})
+  // header class
+  const headerClass = computed(() => {
+    if (scrollDirection.value === -1) return 'header-hide'
+    if (scrollDirection.value === 1) return 'header-show'
+    return ''
+  })
 </script>
 
 <style scoped>
@@ -119,7 +131,15 @@ const headerClass = computed(() => {
     transform: translateY(0);
   }
 
-  #header .container {display: flex; align-items: center; border-radius: 5px; border: 0.5px solid rgba(255, 255, 255, 0.20); background: rgba(0, 0, 0, 0.60); box-shadow: 20px 20px 10px 0 rgba(0, 0, 0, 0.10); backdrop-filter: blur(40px);}
+  #header .container {
+    display: flex; 
+    align-items: center; 
+    border-radius: 5px; 
+    border: 0.5px solid rgba(255, 255, 255, 0.20); 
+    background: rgba(0, 0, 0, 0.60); 
+    box-shadow: 20px 20px 10px 0 rgba(0, 0, 0, 0.10); 
+    backdrop-filter: blur(40px);
+  }
 
   .slide-enter-from {
     transform: translateX(100%);

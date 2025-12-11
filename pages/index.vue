@@ -878,7 +878,7 @@
 import { EffectGlass } from '#components';
 import Container from '~/components/Container.vue';
 
-const { $gsap, $ScrollTrigger } = useNuxtApp()
+const { $gsap, $ScrollTrigger, $lenis } = useNuxtApp()
 const introSection = ref(null)
 const videoWrap = ref(null)
 const videoWrapLayer = ref(null)
@@ -916,10 +916,13 @@ let ctx
 onBeforeUnmount(() => {
   if (ctx) {
     ctx.revert();
+    $ScrollTrigger.getAll().forEach(t => t.kill());
+    $ScrollTrigger.refresh();
   }
+  console.log('Gsap context reverted');
 })
 
-onMounted(() => {
+onMounted(async () => {
 
   const characterRevealItems = missionSection.value.querySelectorAll('.primary-character');
   const characterRevealArray = Array.from(characterRevealItems);
@@ -1288,6 +1291,15 @@ onMounted(() => {
       { y: '30%', opacity: 0 }, 
       { y: '0%', opacity: 1, duration: 1.5, ease: 'ease'   
     })
+  });
+
+  await nextTick();
+  requestAnimationFrame(() => {
+    $lenis.scrollTo(0, { immediate: true });
+
+    requestAnimationFrame(() => {
+      $ScrollTrigger.refresh();
+    });
   });
 })
 
