@@ -94,6 +94,8 @@ export default {
       isDragging: false,
       dragOffset: 0,
       windowWidth: 0,
+      dragThreshold: 40,
+      accumulatedDrag: 0,
       cards: [
         {
           title: '비즈니스',
@@ -360,7 +362,7 @@ export default {
       
       setTimeout(() => {
         this.isAnimating = false;
-      }, 600);
+      }, 400);
     },
 
     nextSlide() {
@@ -371,7 +373,7 @@ export default {
       
       setTimeout(() => {
         this.isAnimating = false;
-      }, 600);
+      }, 400);
     },
 
     goToSlide(index) {
@@ -390,42 +392,37 @@ export default {
       this.touchEndX = e.touches[0].clientX;
       this.touchStartTime = Date.now();
       this.dragOffset = 0;
+      this.accumulatedDrag = 0;
     },
 
     handleTouchMove(e) {
       this.touchEndX = e.touches[0].clientX;
       this.dragOffset = this.touchEndX - this.touchStartX;
+      
+      // 실시간으로 카드 넘기기
+      this.handleRealtimeDrag();
     },
 
     handleTouchEnd() {
-      if (this.isAnimating) return;
-      
-      const swipeDistance = this.touchStartX - this.touchEndX;
       const swipeTime = Date.now() - this.touchStartTime;
-      const minSwipeDistance = 50;
-      const maxClickTime = 100;
+      const maxClickTime = 200;
       
-      // 드래그 오프셋 리셋
-      this.dragOffset = 0;
-      
-      if (swipeTime < maxClickTime && Math.abs(swipeDistance) < 5) {
+      // 클릭 감지
+      if (swipeTime < maxClickTime && Math.abs(this.dragOffset) < 10) {
         this.touchStartX = 0;
         this.touchEndX = 0;
         this.touchStartTime = 0;
+        this.dragOffset = 0;
+        this.accumulatedDrag = 0;
         return;
       }
       
-      if (Math.abs(swipeDistance) > minSwipeDistance) {
-        if (swipeDistance > 0) {
-          this.nextSlide();
-        } else {
-          this.prevSlide();
-        }
-      }
-      
+      // 초기화
       this.touchStartX = 0;
       this.touchEndX = 0;
       this.touchStartTime = 0;
+      this.dragOffset = 0;
+      this.accumulatedDrag = 0;
     },
 
     handleMouseDown(e) {
@@ -434,50 +431,57 @@ export default {
       this.touchStartTime = Date.now();
       this.isDragging = true;
       this.dragOffset = 0;
-
-      e.preventDefault()
+      this.accumulatedDrag = 0;
     },
 
     handleMouseMove(e) {
       if (!this.isDragging) return;
+      
       this.touchEndX = e.clientX;
       this.dragOffset = this.touchEndX - this.touchStartX;
-
-      e.preventDefault()
+      
+      // 실시간으로 카드 넘기기
+      this.handleRealtimeDrag();
     },
 
     handleMouseUp() {
       if (!this.isDragging) return;
       this.isDragging = false;
       
-      if (this.isAnimating) return;
-      
-      const swipeDistance = this.touchStartX - this.touchEndX;
       const swipeTime = Date.now() - this.touchStartTime;
-      const minSwipeDistance = 80;
       const maxClickTime = 200;
       
-      // 드래그 오프셋 리셋
-      this.dragOffset = 0;
-      
-      if (swipeTime < maxClickTime && Math.abs(swipeDistance) < 10) {
+      // 클릭 감지
+      if (swipeTime < maxClickTime && Math.abs(this.dragOffset) < 10) {
         this.touchStartX = 0;
         this.touchEndX = 0;
         this.touchStartTime = 0;
+        this.dragOffset = 0;
+        this.accumulatedDrag = 0;
         return;
       }
       
-      if (Math.abs(swipeDistance) > minSwipeDistance) {
-        if (swipeDistance > 0) {
-          this.nextSlide();
-        } else {
-          this.prevSlide();
-        }
-      }
-      
+      // 초기화
       this.touchStartX = 0;
       this.touchEndX = 0;
       this.touchStartTime = 0;
+      this.dragOffset = 0;
+      this.accumulatedDrag = 0;
+    },
+
+    handleRealtimeDrag() {
+      // 임계값을 넘으면 카드 넘기기
+      if (Math.abs(this.dragOffset - this.accumulatedDrag) >= this.dragThreshold) {
+        if (this.dragOffset - this.accumulatedDrag > 0) {
+          // 오른쪽으로 드래그 -> 이전 슬라이드
+          this.prevSlide();
+          this.accumulatedDrag += this.dragThreshold;
+        } else {
+          // 왼쪽으로 드래그 -> 다음 슬라이드
+          this.nextSlide();
+          this.accumulatedDrag -= this.dragThreshold;
+        }
+      }
     }
   }
 };
