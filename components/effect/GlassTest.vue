@@ -3,7 +3,7 @@
     <slot></slot>
     <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute; overflow:hidden">
         <defs>
-            <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%">
+            <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
                 <feTurbulence type="fractalNoise" baseFrequency="0.004 0.004" numOctaves="2" seed="92" result="noise"></feTurbulence>
                 <feGaussianBlur in="noise" stdDeviation="2" result="blurred"></feGaussianBlur>
                 <feDisplacementMap in="SourceGraphic" in2="blurred" scale="105" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
@@ -15,14 +15,15 @@
 
 <style>
   .distortion-glass {
-    width: 140%; 
-    height:140%; 
+    width: 100%; 
+    height:100%; 
     position: absolute; 
-    left: -20%;  
-    bottom: -20%; 
+    left: 0;  
+    bottom: 0; 
     z-index: 0; 
     overflow: hidden; 
     filter: url(#glass-distortion);
+    background: linear-gradient(transparent, transparent);
     backdrop-filter: blur(4px);
   }
 

@@ -25,8 +25,8 @@
 .glass {
   position: relative;
   border-radius: 0;
-  background: rgba(255, 255, 255, 0.03);
-  /* border: 1px solid rgba(255, 255, 255, 0.15); */
+  /*background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15); */
   /* box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25), inset 0 0 1px rgba(255, 255, 255, 0.22); */
   overflow: hidden;
   /* transition: all 0.25s ease; */

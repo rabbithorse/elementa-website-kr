@@ -10,13 +10,13 @@
       <div ref="videoWrap" class="video-layer video-layer--main z-[1]">
         <span ref="videoWrapLayer" class="bg-video-layer"></span>
         <EffectGlass>
-          <video autoplay muted loop>
+          <video autoplay muted loop ref="videoBigShape">
             <source src="~/assets/videos/main-fly.mp4" type="video/mp4" />
           </video>
         </EffectGlass>
       </div>
       <div ref="videoSubWrap" class="video-layer video-layer--sub z-[1]">
-        <img src="~/assets/images/main/main-war.jpg" alt="">
+        <img src="~/assets/images/main/main-war.jpg" alt="" ref="videosmallShape">
       </div>
       <div class="intro-section h-full" ref="introSection">
         <Container class="h-full">
@@ -885,6 +885,8 @@ const { $gsap, $ScrollTrigger, $lenis } = useNuxtApp()
 const introSection = ref(null)
 const videoWrap = ref(null)
 const videoWrapLayer = ref(null)
+const videoBigShape = ref(null)
+const videoSmallShape = ref(null)
 const visualSection = ref(null)
 const videoSubWrap = ref(null)
 const visualTitle = ref(null)
@@ -926,6 +928,71 @@ onBeforeUnmount(() => {
 })
 
 onMounted(async () => {
+
+  $ScrollTrigger.matchMedia({
+
+    // 1024 이상
+    "(min-width: 1024px)": () => {
+      // 큰 토형
+      $gsap.timeline({
+        scrollTrigger: {
+          trigger: videoBigShape.value,
+          start: 'top top',
+          end: 'center top',
+          scrub: true,
+          // markers: true
+        },
+      }).to(videoBigShape.value, {
+        y: '-100px',
+        ease: 'none',
+      })
+
+      // 작은 도형
+      $gsap.timeline({
+        scrollTrigger: {
+          trigger: videoSmallShape.value,
+          start: '10% 20%',
+          end: '50% top',
+          scrub: true,
+          //markers: true
+        },
+      }).to(videoSmallShape.value, {
+        y: '-80px',
+        ease: 'none',
+      })
+    },
+
+    // 1023 이하
+    "(max-width: 1023px)": () => {
+      // 큰 토형
+      $gsap.timeline({
+        scrollTrigger: {
+          trigger: videoBigShape.value,
+          start: 'top top',
+          end: 'center top',
+          scrub: true,
+          // markers: true
+        },
+      }).to(videoBigShape.value, {
+        y: '-40px',
+        ease: 'none',
+      })
+
+      // 작은 도형
+      $gsap.timeline({
+        scrollTrigger: {
+          trigger: videoSmallShape.value,
+          start: '10% 20%',
+          end: '50% top',
+          scrub: true,
+          //markers: true
+        },
+      }).to(videoSmallShape.value, {
+        y: '-30px',
+        ease: 'none',
+      })
+    },
+  })
 
   const characterRevealItems = missionSection.value.querySelectorAll('.primary-character');
   const characterRevealArray = Array.from(characterRevealItems);
