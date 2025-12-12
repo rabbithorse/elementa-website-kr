@@ -279,11 +279,35 @@
     <!-- section06 : 에필로그 -->
     <section class="last-scene w-full overflow-hidden" ref="lastScene">
       <div class="last-scene-inner w-full h-full relative">
-        <div class="w-full h-full z-20 absolute epilogue-video text-white">
-          <video class="e-video-bg" autoplay loop muted playsinline preload="auto">
+        <!-- 비디오 -->
+        <div class="w-full h-full top-0 left-0 z-20 absolute epilogue-video text-white">
+          <video class="e-video-bg" muted playsinline preload="auto">
             <source src="~/assets/videos/epilogue.mp4" type="video/mp4" />
           </video>
         </div>
+        <!-- 엔딩 문구 -->
+        <div class="epilogue-dimmed absolute  top-0 left-0 z-20 w-full"></div>
+        <!-- 엔딩 text 1 -->
+        <div class="e-text sec01 flex w-full justify-center items-center z-20 absolute top-0 left-0">
+          <div class="text-box text-center">
+            <span class="text-2xl font-semibold block pb-[10px]">탐정</span>
+            <p class="text-white text-[3.44rem] title tracking-[-1.65px] relative font-semibold z-10 leadding-[1.25]">우리는 운명에서 벗어날 수 없단 걸, <br>전 이미 깨달았죠.</p>
+          </div>
+        </div>
+        <!-- 엔딩 text 2 -->
+        <div class="e-text sec02 flex w-full justify-center items-center z-20 absolute top-0 left-0">
+          <div class="text-box text-center">
+            <span class="text-2xl font-semibold block pb-[10px]">탐정</span>
+            <p class="text-white text-[3.44rem] title tracking-[-1.65px] relative font-semibold z-10 leadding-[1.25]">당신이 다시 써줄 수 있다면</p>
+            <div class="btn-wrap relative mt-[40px]">
+              <ButtonsBasic color="yellow" size="lg-wide" id="dwnGame" href="">실버팰리스 다운로드</ButtonsBasic>
+            </div>
+          </div>
+        </div>
+        <Container class="absolute left-1/2 -translate-x-1/2 transform top-[120px] z-20 e-side-text">
+          <p class="relative text-white font-bold text-[1.75rem] opacity-[0.8] pl-[3.13rem]">Epilogue</p>
+          <span class="smoke"></span>
+        </Container>
         <!-- 비디오 커버 -->
         <div class="w-full h-full bg-white z-20 absolute video-cover"></div>
         <!-- 로고 홀더 -->
@@ -294,11 +318,6 @@
         </div>
       </div>
     </section>
-
-    
-    
-    <section class="h-[600px]"></section>
-
 
     <!-- 캐릭터 소개 모달 -->
     <Transition name="fade">
@@ -464,6 +483,20 @@
 </template>
 
 <script setup>
+  // ===== GSAP / ScrollTrigger 관리용 =====
+  const timelines = []
+  const scrollTriggers = []
+
+  const addTimeline = (tl) => {
+    timelines.push(tl)
+    return tl
+  }
+
+  const addST = (st) => {
+    scrollTriggers.push(st)
+    return st
+  }
+
   definePageMeta({
     layout: 'sub', 
   })
@@ -525,16 +558,18 @@
     /*-----------------------*/
     // 01. intro 섹션 - movieBg 고정
     /*-----------------------*/
-    $ScrollTrigger.create({
-      trigger: introSection.value,
-      start:  panel02.value.offsetTop + 'top',
-      end: 'bottom bottom',
-      pinspacing: true,
-      pin: movieBg.value,
-      pinType: "transform",
-      scrub: 2,
-      // markers: true,
-    })
+    const introPinST = addST(
+      $ScrollTrigger.create({
+        trigger: introSection.value,
+        start:  panel02.value.offsetTop + 'top',
+        end: 'bottom bottom',
+        pinspacing: true,
+        pin: movieBg.value,
+        pinType: "transform",
+        scrub: 2,
+        // markers: true,
+      })
+    )
 
     /*-----------------------*/
     // 02. intro 섹션 - title 스크롤 효과
@@ -676,15 +711,17 @@
     // (12) 컷 신 두번째 배경 서서히 사라짐
     .to(cutBg02.value, { opacity: 0, duration: 1}, ">+1")//동시 실행
 
-    $ScrollTrigger.create({
-      trigger: cutScene.value,
-      start: 'top top',
-      end: "+=" + cutSceneTimeline.duration() * 700, // timeline 길이에 자동 매칭
-      // markers: true,
-      scrub: 1,
-      pin: true,
-      animation: cutSceneTimeline
-    })
+    addST(
+      $ScrollTrigger.create({
+        trigger: cutScene.value,
+        start: 'top top',
+        end: "+=" + cutSceneTimeline.duration() * 700, // timeline 길이에 자동 매칭
+        // markers: true,
+        scrub: 1,
+        pin: true,
+        animation: cutSceneTimeline
+      })
+    )
 
     /*-----------------------*/
     // 05. 게임소개 섹션 - 게임소개 타임라인 애니메이션
@@ -785,15 +822,17 @@
     .to(videoDes6, { opacity: 0, duration: 2 })
     .to(textDes6, { opacity: 0, duration: 2 }, ">-2") // 이전 효과 후 바로 실행
 
-    $ScrollTrigger.create({
-      trigger: descriptionSec.value,
-      start: 'top top',
-      end: "+=" + desBgTimeline.duration() * 700, // timeline 길이에 자동 매칭
-      pin: true,
-      scrub: 2,
-      animation: desBgTimeline,
-      // markers: true,
-    })
+    addST(
+      $ScrollTrigger.create({
+        trigger: descriptionSec.value,
+        start: 'top top',
+        end: "+=" + desBgTimeline.duration() * 700, // timeline 길이에 자동 매칭
+        pin: true,
+        scrub: 2,
+        animation: desBgTimeline,
+        // markers: true,
+      })
+    )
 
     /*-----------------------*/
     // 06. 유튜브 영상 섹션
@@ -1001,6 +1040,7 @@
     .to(bgInvBoard, {x:() => (window.innerWidth - bgInvBoard.offsetWidth) / 2, y: -6092, duration: 3, ease: "none", force3D: true }, "movePoint_07+=1") // 마지막 구간으로 이동
     .fromTo(box12, { opacity: 0 }, { opacity: 0.6, duration: 0.5, ease: "none" }, "movePoint_07+=1.3")
     .fromTo(creditListItems, { opacity: 0 }, { opacity: 1, duration: 1, ease: "none", stagger: 0.2 }, "movePoint_07+=1") //크레딧 리스트 나타남
+    .to(invBoard.value, {opacity: 0.5, duration: 0.3, ease: "none" })
 
     // 수사보드 라인 시점에 사진 등장
     invBoardTimeline.add(pic01, "startMove"); //1지점 사진 등장
@@ -1041,12 +1081,19 @@
     // 08. 에필로그 섹션
     /*-----------------------*/
 
+    // 로고 애니메이션, 비디오 재생 제어
     const logoHoleWrap = lastScene.value.querySelector(".text-mask-wrap");
     const logoHole = logoHoleWrap.querySelector(".logo-hole");
     const recHole = logoHoleWrap.querySelector(".rec-hole");
     const videoCover = lastScene.value.querySelector(".video-cover");
     const maskBgLine = logoHoleWrap.querySelector(".mask-bg-line");
-    const eVideo = lastScene.value.querySelector(".e-video-bg");
+    const eVideoWrap = lastScene.value.querySelector(".epilogue-video");
+    const eVideo = eVideoWrap.querySelector(".e-video-bg");
+
+    // 에필로그 문구
+    const eDimmed = lastScene.value.querySelector(".epilogue-dimmed");
+    const eText1 = lastScene.value.querySelector(".e-text.sec01");
+    const eText2 = lastScene.value.querySelector(".e-text.sec02");
 
     $gsap.set([logoHole, recHole], {
       force3D: true,       
@@ -1060,35 +1107,55 @@
     })
     .to(videoCover, { opacity: 0, duration: 1, ease: "power2.out",
       onComplete: () => {
-    eVideo.currentTime = 0;  // 반드시 처음부터
-    eVideo.play();
-  }
+        eVideo.currentTime = 0;  // 반드시 처음부터
+        eVideo.play();
+      }
      })
-    .to(maskBgLine, {opacity: 0, duration: 1, ease: "power2.out" }, "<") // 동시 진행
+    // (01) 에필로그 로고 및 비디오 등장 애니메이션
+    .fromTo(maskBgLine, {opacity: 0.5}, {opacity: 0, duration: 1, ease: "power2.out" }, "<") // 동시 진행
     .to([logoHole, recHole], { scale: 40.5, duration: 1.5, ease: "none" }, ">+0.5")
-    .to([logoHole, recHole], { opacity: 0, duration: 0.3, ease: "none" }, ">+0.01")
+    .to([logoHole, recHole], { opacity: 0, duration: 1, ease: "none" }, ">+0.01")
+    .to(maskBgLine, { "visibility": "hidden", duration: 0.01 }, ">+0.01") // 레이어 순서 때문에 뒤에 둠
+    .to(logoHoleWrap, { "visibility": "hidden", duration: 0.01 }, "<") // 동시 진행
+    .to(videoCover, {"visibility": "hidden", duration: 0.01 }, "<") // 동시 진행
 
+    // (02) 에필로그 문구 애니메이션
+    .fromTo(eDimmed, { opacity: 0 }, { opacity: 1, duration: 1, ease: "none" }, "<") // 에필로그 딤드 나타남, 동시 진행
 
-    $ScrollTrigger.create({
-      trigger: lastScene.value,
-      start: "top+=1 top",
-      end: "+=" + EpilogueTimeline.duration() * 700,  
-      animation: EpilogueTimeline,
-      scrub: 2,
-      pin: true,
-      pinType: "transform",        
-      anticipatePin: 1,            
-      fastScrollEnd: true,         // 빠르게 스크롤 시 '튐' 방지
-      invalidateOnRefresh: true,   // 리사이즈 시 값 재계산 (와이드 대응)
-    })
+    .fromTo(eText1, { opacity: 0 }, { opacity: 1, duration: 3, ease:"power1.in" }, "<") // 에필로그 문구1 나타남
+    .to(eText1, { opacity: 0, duration: 1, ease:"power1.out" }, "+=0.2") // 에필로그 문구1 사라짐
+    .to(eText1, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
+
+    .fromTo(eText2, { opacity: 0, y: 20 }, { y:0, opacity: 1, duration: 1.5, ease:"power1.in",onReverseComplete: () => {
+      // 역스크롤로 이 구간을 벗어날 때
+      eVideo.play();
+    }, }, "+=0.1") // 에필로그 문구2 나타남
+    .to(eVideoWrap, { opacity: 0, duration: 2, ease: "power2.out",
+    }, "+=1") // 비디오 서서히 사라짐
+
+    addST(
+      $ScrollTrigger.create({
+        trigger: lastScene.value,
+        start: "top+=1 top",
+        end: "+=" + EpilogueTimeline.duration() * 700,  
+        animation: EpilogueTimeline,
+        scrub: 2,
+        pin: true,
+        anticipatePin: 1,            
+        fastScrollEnd: true,         // 빠르게 스크롤 시 '튐' 방지
+        invalidateOnRefresh: true,   // 리사이즈 시 값 재계산 (와이드 대응)
+      })
+    )
 
 
     /*-----------------------*/
     // 09. 리사이즈 시 ScrollTrigger 전체 재계산
     /*-----------------------*/
-    window.addEventListener("resize", () => {
-      $ScrollTrigger.refresh()   // 전체 재계산
-    });
+    const handleResize = () => {
+      $ScrollTrigger.refresh()
+    }
+
+    window.addEventListener("resize", handleResize)
   });
 
   
@@ -1214,8 +1281,28 @@
   }
 
   onUnmounted(() => {
-  // 1) 모든 ScrollTrigger 정리
-  $ScrollTrigger.getAll().forEach(st => st.kill());
+    // 1️. ScrollTrigger kill
+    scrollTriggers.forEach(st => st.kill())
+    scrollTriggers.length = 0
+
+    // 2️. GSAP timeline kill
+    timelines.forEach(tl => tl.kill())
+    timelines.length = 0
+
+    // 3️. Lenis 원상복구
+    if ($lenis) {
+      $lenis.options.smoothWheel = true
+      $lenis.options.smoothTouch = true
+    }
+
+    // 4️. resize 이벤트 제거
+    window.removeEventListener('resize', handleResize)
+
+    // 5️. canvas / image 정리
+    // ctx = null
+    // ctxLine = null
+    // bgImg.onload = null
+    // bgImgLine.onload = null
   });
   
 
