@@ -25,11 +25,11 @@
           <!-- Family Site -->
           <div class="max-lg:w-full">
             <div class="familySite custom-select relative lg:w-[15.6rem] w-full cursor-pointer">
-              <div class="selected lg:py-3 py-2 px-5 relative after:content-[''] after:absolute after:right-5 after:top-1/2 after:-translate-y-1/2 after:bg-(image: url('/images/main/icon-select.svg')) bg-no-repeat bg-contain" @click="familySiteOpen = !familySiteOpen">
+              <div class="selected lg:py-3 py-2 px-5 relative" @click="familySiteOpen = !familySiteOpen" :class="{ 'opened': familySiteOpen }">
                 <span class="selected-text text-[0.875rem]">Family site</span>
               </div>
-              <div v-accordion="familySiteOpen" class="absolute w-full left-0 top-full z-10">
-                <ul class="options py-2.5 transition-all duration-300 ">
+              <div v-accordion="familySiteOpen" class="absolute w-full left-0 z-10 origin-top">
+                <ul class="options transition-all duration-300 ">
                   <li v-for="family in familySites" :key="family.name">
                     <a :href="family.link" class="option-text text-4 leading-[1.4em] py-[0.7rem] px-8 block hover:bg-[#191919]">{{ family.name }}</a>
                   </li>
@@ -87,9 +87,32 @@
   .selected {
     border: 1px solid rgba(236, 249, 255, 0.20);
   }
+
+  .selected::after {
+    content: "";
+    display: inline-block;
+    width: 1.25rem;
+    height: 1.25rem;
+    background: url('~/assets/images/main/icon-select.svg') no-repeat center;
+    position: absolute;
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+    transition: transform 0.17s ease;
+  }
+
+  .selected.opened::after {
+    transform: translateY(-50%) rotate(180deg);
+  }
+
   .custom-select .options {
-    border-left: 1px solid #383838;
-    border-right: 1px solid #383838;
-    border-bottom: 1px solid #383838;
+    border-left: 1px solid #35383A;
+    border-right: 1px solid #35383A;
+    border-bottom: 1px solid #35383A;
+    background: #141217;
+  }
+
+  .custom-select .option-text {
+    backdrop-filter: blur(10px);
   }
 </style>

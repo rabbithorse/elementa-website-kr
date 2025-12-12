@@ -3,4 +3,5 @@ body ::-webkit-scrollbar,html ::-webkit-scrollbar {display: none}
 .container {position: relative;}
 
 body {background: #05060B; font-family: 'Paperlogy', sans-serif;}
+body.gnb-open {overflow: hidden;}
 .font-paperlogy {font-family: 'Paperlogy', sans-serif;}

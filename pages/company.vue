@@ -3,45 +3,45 @@
     <section class="subSection relative" ref="subSection">
       <div class="intro-section h-screen flex items-center" ref="introSection">
         <Container>
-          <div class="heading flex flex-col lg:gap-y-12 gap-y-6 text-center">
-            <h2 class="flex items-end lg:gap-x-4 md:gap-x-2 leading-1 font-bold text-white relative justify-center">
+          <div class="heading flex flex-col lg:gap-y-12 md:gap-y-6 gap-y-2 text-center">
+            <h2 class="flex items-end lg:gap-x-4 md:gap-x-2 gap-x-1 leading-1 font-bold text-white relative justify-center">
               <TypographyPrimary>
-                <svg xmlns="http://www.w3.org/2000/svg" width="92" height="131" viewBox="0 0 92 131" fill="none" class="aspect-[92/131] lg:h-[131px] md:h-[110px] w-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="92" height="131" viewBox="0 0 92 131" fill="none" class="aspect-[92/131] lg:h-[131px] md:h-[110px] sm:h-[90px] h-[50px] w-auto">
                   <path d="M20.0946 71.5054H85.196V53.4375H20.0946V18.004H90.2672V0H0V130.817H91.7886V112.685H20.0946V71.5054Z" fill="white"/>
                 </svg>
               </TypographyPrimary>
               <TypographyPrimary>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="131" viewBox="0 0 20 131" fill="none" class="aspect-[20/131] lg:h-[131px] md:h-[110px] w-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="131" viewBox="0 0 20 131" fill="none" class="aspect-[20/131] lg:h-[131px] md:h-[110px] sm:h-[90px] h-[50px] w-auto">
                   <path d="M19.2705 0H0V130.817H19.2705V0Z" fill="white"/>
                 </svg>
               </TypographyPrimary>
               <TypographyPrimary>
-                <svg xmlns="http://www.w3.org/2000/svg" width="87" height="97" viewBox="0 0 87 97" fill="none" class="aspect-[87/97] lg:h-[97px] md:h-[76px] w-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="87" height="97" viewBox="0 0 87 97" fill="none" class="aspect-[87/97] lg:h-[97px] md:h-[76px] sm:h-[56px] h-[36px] w-auto">
                   <path d="M65.1648 5.04368C58.6357 1.72379 51.5994 0 43.9926 0C35.4984 0 27.955 1.97917 21.299 5.87366C14.7065 9.76814 9.44511 15.3226 5.7051 22.4731C1.90171 29.6237 0 37.9872 0 47.5C0 57.1404 1.83831 66.6532 5.51493 73.8038C9.19154 80.9543 14.3261 86.5087 20.9821 90.4032C27.5746 94.2977 35.3082 96.2769 44.1828 96.2769C54.2618 96.2769 62.756 93.8508 69.7289 89.1263C76.7018 84.338 81.7096 77.5706 84.7523 68.6962L85.8933 64.0995H67.954H66.5594C62.8194 74.8891 55.6563 79.9966 44.4363 79.9966C37.3367 79.9966 30.8075 77.8898 26.4336 73.293C21.9963 68.6324 19.2705 63.0141 18.7 54.5867H86.0835C86.4004 52.0968 86.5906 49.6069 86.5906 47.1169C86.5906 37.2211 84.6255 27.006 80.7587 20.2386C76.8286 13.4073 71.6306 8.36357 65.1648 5.04368ZM18.5732 39.7749C19.841 31.4751 23.8346 25.5376 27.8916 21.6431C31.9485 17.8125 37.2733 15.8333 43.8658 15.8333C50.5218 15.8333 55.8465 17.7487 59.8401 21.6431C63.7703 25.5376 67.954 31.7305 68.6513 39.7749H18.5732Z" fill="white"/>
                 </svg>
               </TypographyPrimary>
               <TypographyPrimary>
-                <svg xmlns="http://www.w3.org/2000/svg" width="133" height="96" viewBox="0 0 133 96" fill="none" class="aspect-[133/96] lg:h-[96px] md:h-[75px] w-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="133" height="96" viewBox="0 0 133 96" fill="none" class="aspect-[133/96] lg:h-[96px] md:h-[75px] sm:h-[55px] h-[35px] w-auto">
                   <path d="M94.451 0C83.231 0 73.0886 4.97984 66.1791 12.8327C59.2062 4.97984 49.1272 0 37.9072 0C12.9949 0 0 17.1102 0 38.1788V95.3831H19.9044V35.8165C19.9044 25.4738 27.638 17.1102 37.9072 17.1102C48.1763 17.1102 56.4804 25.5376 56.4804 35.8165V95.3831H56.5438H75.8143H75.8777V35.8165C75.8777 25.4738 84.2452 17.1102 94.451 17.1102C104.72 17.1102 112.454 25.5376 112.454 35.8165V95.3831H132.358V38.1788C132.422 17.1102 115.37 0 94.451 0Z" fill="white"/>
                 </svg>
               </TypographyPrimary>
               <TypographyPrimary>
-                <svg xmlns="http://www.w3.org/2000/svg" width="87" height="97" viewBox="0 0 87 97" fill="none" class="aspect-[87/97] lg:h-[97px] md:h-[76px] w-auto" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="87" height="97" viewBox="0 0 87 97" fill="none" class="aspect-[87/97] lg:h-[97px] md:h-[76px] sm:h-[56px] h-[36px] w-auto" >
                   <path d="M65.1648 5.04368C58.6357 1.72379 51.5994 0 43.9926 0C35.4984 0 27.955 1.97917 21.299 5.87366C14.7065 9.76814 9.44511 15.3226 5.7051 22.4731C1.90171 29.6237 0 37.9872 0 47.5C0 57.1404 1.83831 66.6532 5.51493 73.8038C9.19154 80.9543 14.3261 86.5087 20.9821 90.4032C27.5746 94.2977 35.3082 96.2769 44.1828 96.2769C54.2618 96.2769 62.756 93.8508 69.7289 89.1263C76.7018 84.338 81.7096 77.5706 84.7523 68.6962L85.8933 64.0995H67.954H66.5594C62.8194 74.8891 55.6563 79.9966 44.4363 79.9966C37.3367 79.9966 30.8075 77.8898 26.4336 73.293C21.9963 68.6324 19.2705 63.0141 18.7 54.5867H86.0835C86.4004 52.0968 86.5906 49.6069 86.5906 47.1169C86.5906 37.2211 84.6255 27.006 80.7587 20.2386C76.8286 13.4073 71.6306 8.36357 65.1648 5.04368ZM18.5732 39.7749C19.841 31.4751 23.8346 25.5376 27.8916 21.6431C31.9485 17.8125 37.2733 15.8333 43.8658 15.8333C50.5218 15.8333 55.8465 17.7487 59.8401 21.6431C63.7703 25.5376 67.954 31.7305 68.6513 39.7749H18.5732Z" fill="white"/>
                 </svg>
               </TypographyPrimary>
               <TypographyPrimary>
-                <svg xmlns="http://www.w3.org/2000/svg" width="76" height="96" viewBox="0 0 76 96" fill="none" class="aspect-[76/96] lg:h-[96px] md:h-[75px] w-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="76" height="96" viewBox="0 0 76 96" fill="none" class="aspect-[76/96] lg:h-[96px] md:h-[75px] sm:h-[55px] h-[35px] w-auto">
                   <path d="M37.9072 0C13.3753 0 0 17.1102 0 38.1788V95.3831H19.3339V35.8165C19.3339 25.4738 27.7014 17.1102 37.9072 17.1102C48.1764 17.1102 55.9099 25.5376 55.9099 35.8165V95.3831H75.8143V38.1788C75.8143 17.1102 58.8259 0 37.9072 0Z" fill="white"/>
                 </svg>
               </TypographyPrimary>
               <TypographyPrimary>
-                <svg xmlns="http://www.w3.org/2000/svg" width="59" height="122" viewBox="0 0 59 122" fill="none" class="aspect-[59/122] lg:h-[122px] md:h-[101px] w-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="59" height="122" viewBox="0 0 59 122" fill="none" class="aspect-[59/122] lg:h-[122px] md:h-[101px] sm:h-[81px] h-[41px] w-auto">
                   <path d="M38.1608 101.831C35.8153 101.831 33.9136 100.044 33.9136 97.8091V42.8394H56.6706V26.2399H33.9136V0H14.5797V26.2399H0V42.8394H14.5797V97.8091C14.5797 110.769 25.1658 121.304 38.0974 121.304H58.3187V101.831H38.1608Z" fill="white"/>
                 </svg>
               </TypographyPrimary>
               <TypographyPrimary class="ml-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="128" height="131" viewBox="0 0 128 131" fill="none" class="aspect-[128/131] lg:h-[131px] md:h-[110px] w-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="128" height="131" viewBox="0 0 128 131" fill="none" class="aspect-[128/131] lg:h-[131px] md:h-[110px] sm:h-[90px] h-[50px] w-auto">
                   <mask id="mask0_1935_891" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="34" y="63" width="46" height="68">
                   <path d="M34.2905 130.624H56.0333L79.8045 63.5234H57.9983L34.2905 130.624Z" fill="white"/>
                   </mask>
@@ -77,29 +77,29 @@
               </TypographyPrimary>
               
             </h2>
-            <p class="text-white pt-[1.25rem] xl:text-[3.125rem] md:text-[2.25rem] text-[1.875rem] relative opacity-0 leading-[130%]" ref="introText">
+            <p class="text-white pt-[1.25rem] xl:text-[3.125rem] md:text-[2rem] sm:text-[1.75rem] text-[1rem] relative opacity-0 leading-[130%]" ref="introText">
               게임의 미래를 설계하고, <br class="lg:hidden block"/>세계가 함께 공감하는 문화를 만든다
             </p>
           </div>
         </Container>
       </div>
       <div class="h-screen flex items-center pt-[3.75rem] relative" ref="missionSection">
-        <div class="absolute left-0 inset-y-0 h-full 2xl:w-[11.6rem] lg:w-[8rem] w-14 z-20">
+        <div class="absolute left-0 inset-y-0 h-full 2xl:w-[11.6rem] lg:w-[8rem] sm:w-14 w-9 z-20">
           <EffectGlass class="w-full h-full" />
         </div>
-        <div class="absolute right-0 inset-y-0 h-full 2xl:w-[11.6rem] lg:w-[8rem] w-14 z-20">
+        <div class="absolute right-0 inset-y-0 h-full 2xl:w-[11.6rem] lg:w-[8rem] sm:w-14 w-9 z-20">
           <EffectGlass class="w-full h-full" />
         </div>
-        <div class="section-heading absolute 2xl:left-[15.2rem] lg:left-[10.6rem] left-20 top-[3.75rem]">
+        <div class="section-heading absolute 2xl:left-[15.2rem] lg:left-[10.6rem] sm:left-20 left-14 top-[3.75rem]">
           <div class="heading-text flex flex-col md:gap-y-10 gap-y-4">
-            <span class="sectionTitle-eng text-white md:text-base text-[3.4vw] relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] md:before:w-3 md:before:h-3 before:w-[0.625rem] before:h-[0.625rem] before:rounded-full pl-5">Our Mission</span>
+            <span class="sectionTitle-eng text-white md:text-base text-sm relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] md:before:w-3 md:before:h-3 before:w-[0.625rem] before:h-[0.625rem] before:rounded-full pl-5">Our Mission</span>
           </div>
         </div>
         <Container class="flex items-center h-full">
           <div class="section-content">
             <div class="mission-wrap grid items-center grid-cols-12 gap-x-4 relative">
               <div class="bgtitle absolute left-1/2 -translate-x-1/2 w-full">
-                <h2 class="text-[#9FAEB5] 2xl:text-[10rem] text-[8rem] font-paperlogy font-extrabold text-center" ref="bgTitle">
+                <h2 class="text-[#9FAEB5] 2xl:text-[10rem] md:text-[8rem] sm:text-[7rem] text-[3.5rem] font-paperlogy font-extrabold text-center" ref="bgTitle">
                   <TypographyPrimary>
                     O
                   </TypographyPrimary>
@@ -136,25 +136,25 @@
               </div>
               <div class="mission-text-wrapper absolute">
                 <div class="flex items-center flex-row-reverse gap-x-52" ref="missionTextWrap">
-                  <div class="flex flex-col items-baseline">
-                    <span class="text-[#7B728F] xl:text-[3.125rem] md:text-4xl text-3xl whitespace-nowrap">게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다 게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다.</span>
-                    <h2 class="text-[#7B728F] 3xl:text-[16.25rem] text-[12rem] font-paperlogy font-extrabold leading-[130%]">INNOVATION</h2>
+                  <div class="flex flex-col items-center">
+                    <span class="text-[#7B728F] xl:text-[3.125rem] md:text-4xl text-xl whitespace-nowrap">게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다 게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다.</span>
+                    <h2 class="text-[#7B728F] 3xl:text-[16.25rem] xl:text-[12rem] md:text-[10rem] sm:text-[8rem] text-[5rem] font-paperlogy font-extrabold leading-[130%]">INNOVATION</h2>
                   </div>
                   <div class="flex flex-col items-center">
-                    <span class="text-[#728D8F] xl:text-[3.125rem] md:text-4xl text-3xl whitespace-nowrap">게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다 게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다.</span>
-                    <h2 class="text-[#728D8F] 3xl:text-[16.25rem] text-[12rem] font-paperlogy font-extrabold leading-[130%]">Trust Trust</h2>
+                    <span class="text-[#728D8F] xl:text-[3.125rem] md:text-4xl text-xl whitespace-nowrap">게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다 게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다.</span>
+                    <h2 class="text-[#728D8F] 3xl:text-[16.25rem] xl:text-[12rem] md:text-[10rem] sm:text-[8rem] text-[5rem] font-paperlogy font-extrabold leading-[130%]">Trust Trust</h2>
                   </div>
                   <div class="flex flex-col items-center">
-                    <span class="text-[#728F7F] xl:text-[3.125rem] md:text-4xl text-3xl whitespace-nowrap">게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다 게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다.</span>
-                    <h2 class="text-[#728F7F] 3xl:text-[16.25rem] text-[12rem] font-paperlogy font-extrabold leading-[130%]">Culture</h2>
+                    <span class="text-[#728F7F] xl:text-[3.125rem] md:text-4xl text-xl whitespace-nowrap">게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다 게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다.</span>
+                    <h2 class="text-[#728F7F] 3xl:text-[16.25rem] xl:text-[12rem] md:text-[10rem] sm:text-[8rem] text-[5rem] font-paperlogy font-extrabold leading-[130%]">Culture</h2>
                   </div>
                   <div class="flex flex-col items-center">
-                    <span class="text-[#8F8872] xl:text-[3.125rem] md:text-4xl text-3xl whitespace-nowrap">게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다 게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다.</span>
-                    <h2 class="text-[#8F8872] 3xl:text-[16.25rem] text-[12rem] font-paperlogy font-extrabold leading-[130%]">Experience</h2>
+                    <span class="text-[#8F8872] xl:text-[3.125rem] md:text-4xl text-xl whitespace-nowrap">게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다 게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다.</span>
+                    <h2 class="text-[#8F8872] 3xl:text-[16.25rem] xl:text-[12rem] md:text-[10rem] sm:text-[8rem] text-[5rem] font-paperlogy font-extrabold leading-[130%]">Experience</h2>
                   </div>
                 </div>
               </div>
-              <div class="mission-img-wrapper 2xl:col-start-5 2xl:col-end-9 xl:col-start-4 xl:col-end-10 col-start-3 col-end-11">
+              <div class="mission-img-wrapper 2xl:col-start-5 2xl:col-end-9 lg:col-start-4 lg:col-end-10 sm:col-start-3 sm:col-end-11 col-start-2 col-end-12">
                 <div class="flex relative" ref="missionImgWrap">
                   <div class="card z-[1]">
                     <img src="@/assets/images/sub/company-mission-card01.png" alt="">
@@ -175,35 +175,36 @@
         </Container>
       </div>
       <div class="h-screen flex items-center justify-center overflow-hidden" ref="visionSection">
-        <div class="section-heading flex flex-col gap-y-8 text-center size-fit z-10 relative">
-          <p class="text-white lg:text-2xl md:text-lg leading-[160%]" ref="visionText">혁신적 경험으로 게임의 기준을 새로 쓰고, <br>협력과 도전으로 문화를 확장하며, <br>전 세계가 공감할 지속 가능한 감동을 만드는 문화·패러다임의 선도자로 성장하겠습니다.</p>
-          <h2 class="text-white font-paperlogy xl:text-[10rem] lg:text-[8.25rem] md:text-[7rem] text-6xl font-extrabold" ref="visionTitle">ELEMENTA</h2>
+        <Container class="w-full">
+          <div class="section-heading flex flex-col gap-y-8 text-center size-fit ml-auto mr-auto z-10 relative">
+            <p class="text-white lg:text-2xl md:text-lg sm:text-base text-sm leading-[160%] break-keep" ref="visionText">혁신적 경험으로 게임의 기준을 새로 쓰고, <br>협력과 도전으로 문화를 확장하며, <br>전 세계가 공감할 지속 가능한 감동을 만드는 문화·패러다임의 선도자로 성장하겠습니다.</p>
+            <h2 class="text-white font-paperlogy xl:text-[10rem] lg:text-[8.25rem] md:text-[7rem] sm:text-[5rem] text-6xl font-extrabold" ref="visionTitle">ELEMENTA</h2>
 
-          <div class="figure-wrap absolute top-0 lg:-right-[18rem] -right-[10rem] -z-[1] lg:w-auto md:w-[260px] w-200px" ref="visionFigureWrap"> 
-            <div class="figure ">
-              <img src="@/assets/images/sub/company-vision-figure.png" alt="">
+            <div class="figure-wrap absolute top-0 lg:-right-[18rem] md:-right-[10rem] -right-[-5.5rem] -z-[1] lg:w-auto md:w-[260px] sm:w-[200px]" ref="visionFigureWrap"> 
+              <div class="figure ">
+                <img src="@/assets/images/sub/company-vision-figure.png" alt="">
+              </div>
             </div>
           </div>
-        </div>
-        
+        </Container>
       </div>
-      <div class="company-scroll mb-40" ref="scrollSection">
+      <div class="company-scroll md:mb-40 mb-20" ref="scrollSection">
         <div class="heading flex items-center justify-center w-full z-10" ref="scrollFixedHeading">
           <div class="heading-wrap w-fit h-screen flex justify-center items-center gap-x-7 xl:flex-row flex-col z-[1]" ref="scrollFixedHeadingInner">
-            <h2 class="heading-title text-white xl:text-[6.25rem] md:text-[5rem] text-6xl font-black leading-[1em] -mt-3 font-paperlogy" ref="scrollTitle">WE</h2>
-            <span class="inline-block w-[25px] xl:rotate-0 rotate-90 xl:mt-0 xl:mb-0 -mt-5 -mb-5"><img src="@/assets/images/sub/company-scrollsection-slash.png" alt=""></span>
+            <h2 class="heading-title text-white xl:text-[6.25rem] md:text-[5rem] text-5xl font-black leading-[1em] -mt-3 font-paperlogy" ref="scrollTitle">WE</h2>
+            <span class="inline-block w-[25px] xl:rotate-0 rotate-[84deg] xl:mt-0 xl:mb-0 md:-mt-5 md:-mb-5 -mt-6 -mb-6"><img src="@/assets/images/sub/company-scrollsection-slash.png" alt=""></span>
             <div class="heading-content xl:text-left text-center">
               <div class="line-mask">
-                <p class="text-white text-base leading-[160%] showText">우리는 플레이를 통해 세상을 새롭게 정의합니다.</p> 
+                <p class="text-white md:text-base sm:text-sm text-xs leading-[160%] showText break-keep">우리는 플레이를 통해 세상을 새롭게 정의합니다.</p> 
               </div>
               <div class="line-mask">
-                <p class="text-white text-base leading-[160%] showText">게임을 넘어, 모두가 공유할 수 있는 문화와 경험을 만들어갑니다.</p>
+                <p class="text-white md:text-base sm:text-sm text-xs leading-[160%] showText break-keep">게임을 넘어, 모두가 공유할 수 있는 문화와 경험을 만들어갑니다.</p>
               </div>
               <div class="line-mask">
-                <p class="text-white text-base leading-[160%] showText">끊임없는 도전과 창의적인 시도로 플레이의 미래를 디자인하고,</p>
+                <p class="text-white md:text-base sm:text-sm text-xs leading-[160%] showText break-keep">끊임없는 도전과 창의적인 시도로 플레이의 미래를 디자인하고,</p>
               </div>
               <div class="line-mask">
-                <p class="text-white text-base leading-[160%] showText">그 여정을 전 세계 유저와 함께 나눕니다.</p>
+                <p class="text-white md:text-base sm:text-sm text-xs leading-[160%] showText break-keep">그 여정을 전 세계 유저와 함께 나눕니다.</p>
               </div>
             </div>
           </div>
@@ -237,19 +238,19 @@
         <div class="wide-image-container w-full overflow-hidden 2xl:mt-[228px] xl:mt-[148px] mt-[3.5rem]">
           <Container>
           <!-- wide image -->
-          <div class="wide-image-area xl:h-[600px] lg:h-[400px] h-[350px] relative " ref="wideImageArea"></div> 
+          <div class="wide-image-area xl:h-[600px] lg:h-[400px] md:h-[350px] sm:h-[300px] h-[255px] relative " ref="wideImageArea"></div> 
           </Container>
         </div>
       </div>
-      <div class="company-ci mb-40" >
+      <div class="company-ci md:mb-40 mb-20 z-10 relative">
         <Container>
           <div class="cibox-wrap" ref="companyCiSection">
             <EffectGlass>
-              <div class="glass-box flex flex-col flex-wrap gap-y-12 xl:pt-24 xl:pb-[4.5rem] xl:pl-[4.5rem] xl:pr-[4.5rem] md:pt-12 md:pb-[2.5rem] md:pl-[2.5rem] md:pr-[2.5rem]">
-                <div class="heading flex items-end gap-x-4 pl-[3.25rem] relative">
-                  <h2 class="font-paperlogy text-7xl font-bold text-white z-10">CI</h2>
-                  <p class="text-white">로고는 일관된 커뮤니케이션을 위해 형태나 색상, 스타일의 변형, 타 그래픽 요소와의 결합 없이 그대로 사용해야 합니다.</p>
-                  <ButtonsBasic href="/assets/images/sub/company-ci-download.zip" size="md-narrow" color="blue" outline class="ml-auto px-3 lg:w-auto w-full">
+              <div class="glass-box flex flex-col xl:gap-y-12 md:gap-y-8 gap-y-6 xl:pt-24 xl:pb-[4.5rem] 2xl:px-[4.5rem] md:pt-[4.125rem] md:pb-[2.5rem] lg:px-[2.5rem] sm:px-5 sm:pt-[3.8rem] pt-10 pb-5 px-3">
+                <div class="heading flex lg:flex-nowrap flex-wrap items-end gap-x-4 gap-y-2 xl:pl-[3.25rem] md:pl-[2.8rem] relative lg:pb-0 pb-12">
+                  <h2 class="font-paperlogy xl:text-7xl md:text-5xl text-4xl font-bold text-white z-10 flex-shrink-0 sm:pl-0 pl-[1.5rem]">CI</h2>
+                  <p class="text-white lg:text-[19px] md:text-[1rem] text-sm break-keep z-[1] w-full">로고는 일관된 커뮤니케이션을 위해 형태나 색상, 스타일의 변형, 타 그래픽 요소와의 결합 없이 그대로 사용해야 합니다.</p>
+                  <ButtonsBasic href="/assets/images/sub/company-ci-download.zip" size="md-narrow" color="blue" outline class="download-btn ml-auto px-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                       <path d="M17.5 12.5V15.8333C17.5 16.2754 17.3244 16.6993 17.0118 17.0118C16.6993 17.3244 16.2754 17.5 15.8333 17.5H4.16667C3.72464 17.5 3.30072 17.3244 2.98816 17.0118C2.67559 16.6993 2.5 16.2754 2.5 15.8333V12.5" stroke="#734BD7" stroke-width="2"/>
                       <path d="M5.83325 8.33203L9.99992 12.4987L14.1666 8.33203" stroke="#734BD7" stroke-width="2"/>
@@ -257,13 +258,13 @@
                     </svg>
                   </ButtonsBasic>
                 </div>
-                <ul class="flex gap-x-5 ">
-                  <li class="ci-box ci-box--black py-20 flex items-center justify-center">
+                <ul class="flex gap-x-5 sm:flex-row flex-col gap-y-2">
+                  <li class="ci-box ci-box--black xl:py-20 md:py-14 py-8 flex items-center justify-center">
                     <div class="w-[66%]">
                       <img src="@/assets/images/sub/ci-white.png" alt="">
                     </div>
                   </li>
-                  <li class="ci-box ci-box--white py-20 flex items-center justify-center bg-white">
+                  <li class="ci-box ci-box--white xl:py-20 md:py-14 py-8 flex items-center justify-center bg-white">
                     <div class="w-[66%]">
                       <img src="@/assets/images/sub/ci-black.png" alt="">
                     </div>
@@ -274,23 +275,23 @@
           </div>
         </Container>
       </div>
-      <div class="company-banner py-36 relative overflow-hidden" ref="companyBanner">
-        <Container class="flex items-center justify-between gap-x-8 gap-y-3">
-          <div class="heading flex flex-col gap-y-[1.25rem]">
+      <div class="company-banner xl:py-36 md:py-28 py-12 relative overflow-hidden" ref="companyBanner">
+        <Container class="flex md:flex-row flex-col items-center justify-between gap-x-8 gap-y-8">
+          <div class="heading flex flex-col md:gap-y-[1.25rem] gap-y-2 z-[1] md:text-left text-center">
             <div class="line-mask">
-              <h2 class="text-white text-[3.125rem] font-semibold showText font-paperlogy">
+              <h2 class="text-white xl:text-[3.125rem] md:text-[2.5rem] sm:text-[2rem] text-[1.6rem] font-semibold showText font-paperlogy">
                 엘리멘타와 함께하고 싶다면
               </h2>
             </div>
             <div class="line-mask">
-              <p class="text-white text-base leading-[160%] showText">
-                우리가 만드는 수많은 모험의 순간을 당신과 함께 하고 싶습니다.
+              <p class="text-white sm:text-base text-sm leading-[160%] showText">
+                우리가 만드는 수많은 모험의 순간을 <br class="sm:hidden block" />당신과 함께 하고 싶습니다.
               </p>
             </div>
           </div>
-          <div class="banner-figure-wrap absolute right-[16rem] flex items-center w-[586px]">
-            <div class="bg-figure big absolute left-0" ref="bannerFigureBig">
-              <svg xmlns="http://www.w3.org/2000/svg" width="509" height="731" viewBox="0 0 509 731" fill="none">
+          <div class="banner-figure-wrap absolute lg:right-[16rem] -right-[1rem] flex items-center xl:w-[586px] lg:w-[420px] sm:w-[320px] w-[65vw] md:bottom-auto bottom-1/2">
+            <div class="bg-figure big absolute left-0 xl:w-auto w-[86%] xl:opacity-100 opacity-75" ref="bannerFigureBig">
+              <svg xmlns="http://www.w3.org/2000/svg" width="509" height="731" viewBox="0 0 509 731" fill="none" class="aspect-[509/731] xl:w-[509px] w-[100%] h-auto">
                 <path d="M253.082 0H508.542L255.46 730.274H0L253.082 0Z" fill="url(#paint0_linear_256_1595)"/>
                 <defs>
                   <linearGradient id="paint0_linear_256_1595" x1="168.415" y1="0" x2="168.415" y2="711.076" gradientUnits="userSpaceOnUse">
@@ -300,8 +301,8 @@
                 </defs>
               </svg>
             </div>
-            <div class="bg-figure small absolute right-0 top-1/2" ref="bannerFigureSmall">
-              <svg xmlns="http://www.w3.org/2000/svg" width="302" height="376" viewBox="0 0 302 376" fill="none">
+            <div class="bg-figure small absolute right-0 top-1/2 xl:w-auto w-[51.5%]" ref="bannerFigureSmall">
+              <svg xmlns="http://www.w3.org/2000/svg" width="302" height="376" viewBox="0 0 302 376" fill="none" class="aspect-[302/376] xl:w-[302px] w-[100%] h-auto">
                 <path d="M130.375 0H301.397L171.022 375.504H0L130.375 0Z" fill="url(#paint0_linear_256_1596)"/>
                 <defs>
                   <linearGradient id="paint0_linear_256_1596" x1="204.383" y1="-4.6857e-06" x2="204.383" y2="349.779" gradientUnits="userSpaceOnUse">
@@ -312,8 +313,8 @@
               </svg>
             </div>
           </div>
-          <div class="banner-action">
-            <ButtonsBasic href="/join_us" size="lg" color="blue">채용공고 보러가기</ButtonsBasic>
+          <div class="banner-action md:w-auto w-full">
+            <ButtonsBasic href="/join_us" size="lg" color="blue" class="md:w-auto w-full [&>*]:w-full">채용공고 보러가기</ButtonsBasic>
           </div>
         </Container>
       </div>
@@ -555,9 +556,27 @@
 
       const isOdd = (i % 2 === 1);
       const defaultX = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2));
-      const xOffset = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2) + ((scrollFixedHeadingInner.value.offsetWidth) / 1.2)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2) - ((scrollFixedHeadingInner.value.offsetWidth) / 1.2));
-      const midX = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2) + ((scrollFixedHeadingInner.value.offsetWidth) / 1.5)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2) - ((scrollFixedHeadingInner.value.offsetWidth) / 1.5));
+      let xOffset = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2) + ((scrollFixedHeadingInner.value.offsetWidth) / 1.2)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2) - ((scrollFixedHeadingInner.value.offsetWidth) / 1.2));
+      let midX = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2) + ((scrollFixedHeadingInner.value.offsetWidth) / 1.5)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2) - ((scrollFixedHeadingInner.value.offsetWidth) / 1.5));
+      let mobileXOffset = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2) + ((scrollFixedHeadingInner.value.offsetWidth) / 2.3)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2) - ((scrollFixedHeadingInner.value.offsetWidth) / 2.3));
+      let mobileMidX = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2) + ((scrollFixedHeadingInner.value.offsetWidth) / 2.3)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2) - ((scrollFixedHeadingInner.value.offsetWidth) / 2.3));
 
+      const mmCompany = $gsap.matchMedia("");
+
+      mmCompany.add({
+        isMobile: "(max-width: 768px)",
+        isDesktop: "(min-width: 769px)",
+      }, (context) => {
+        let { isMobile } = context.conditions;
+
+        if (isMobile) {
+          xOffset = mobileXOffset;
+          midX = mobileMidX;
+        } else {
+          xOffset = xOffset;
+          midX = midX;
+        }
+      });
       cardTl.set(el,
         {
           x: defaultX,
@@ -650,7 +669,9 @@
     top: 0;
   }
 
-  .culture-area .wide-image-area {background: url(assets/images/sub/company-scroll-bottom-bg.png) no-repeat 50% 50% / cover;}
+  .company-scroll .wide-image-area {
+    background: url(assets/images/sub/company-scroll-bottom-bg.png) no-repeat 50% 50% / cover;
+  }
 
   .company-scroll .content-card {
     clip-path: inset(50% 30% 20% 30% round 15%); 
@@ -683,7 +704,7 @@
   }
 
   .ci-box {
-    width: calc(100% - 20px) / 2;
+    width: calc((100% - 20px) / 2);
   }
 
   .ci-box--black {
@@ -710,14 +731,26 @@
 
   }
 
-  @media screen and (min-width: 1024px) and (max-width: 1535px) {
+  @media (min-width: 1024px) and (max-width: 1535px) {
     .company-scroll .content-card .inner-img {
       transform: scale(0.85);
       overflow: hidden;
     }
   }
 
-  @media (max-width: 1024px) {
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    .company-ci .heading::before {
+      width: 63px;
+      height: 142px;
+      bottom: 0;
+    }
+  }
+
+  @media (max-width: 1279px) {
+    
+  }
+
+  @media (max-width: 1023px) {
     .company-scroll .heading {
       position: relative;
     }
@@ -725,12 +758,12 @@
     .company-scroll .heading::after {
       content: "";
       display: block;
-      background: linear-gradient(to bottom,#0000,#0003,#0006,#000000b3,#000000e6 40%,#000000e6 60%,#000000b3,#0006,#0003,#0000);
+      background: linear-gradient(to bottom,#0000,#0003,#0006,#000000b3,#000000e6 45%,#000000e6 55%,#000000b3,#0004,#0002,#0000);
       position: absolute;
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 83%;
+      height: 87%;
       opacity: 0;
     }
 
@@ -741,6 +774,36 @@
     .company-scroll .content-card .inner-img {
       transform: scale(0.7);
       overflow: hidden;
+    }
+
+    .company-ci .heading::before {
+      bottom: 3rem;
+    }
+
+    .company-ci .download-btn {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .bgtitle .primary-char-wrap {
+      margin-left: -2px;
+    }
+
+    .company-scroll .content-card .inner-img {
+      transform: scale(0.45);
+    }
+
+    .ci-box {
+      width: 100%;
+    }
+
+    .company-ci .heading[data-v-8936dc8b]::before {
+      bottom: 5rem;
+      width: 35px;
+      height: 115px;
     }
   }
   

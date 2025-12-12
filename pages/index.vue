@@ -1,7 +1,7 @@
 <template>
   <div>
     <section ref="visualSection" class="visual-section h-dvh relative overflow-hidden">
-      <EffectGlassTest />
+      <EffectGlass class="glass-blurred"/>
       <div class="bg-video">
         <video class="bg-video--content" autoplay muted loop>
           <source src="~/assets/videos/main-logo-ani_enc.mp4" type="video/mp4" />
@@ -10,13 +10,13 @@
       <div ref="videoWrap" class="video-layer video-layer--main z-[1]">
         <span ref="videoWrapLayer" class="bg-video-layer"></span>
         <EffectGlass>
-          <video autoplay muted loop>
+          <video autoplay muted loop ref="videoBigShape">
             <source src="~/assets/videos/main-fly.mp4" type="video/mp4" />
           </video>
         </EffectGlass>
       </div>
       <div ref="videoSubWrap" class="video-layer video-layer--sub z-[1]">
-        <img src="~/assets/images/main/main-war.jpg" alt="">
+        <img src="~/assets/images/main/main-war.jpg" alt="" ref="videosmallShape">
       </div>
       <div class="intro-section h-full" ref="introSection">
         <Container class="h-full">
@@ -162,7 +162,7 @@
                       </svg>
                     </div>
                   </div>
-                  <span class="text-spacer p-5 max-md:block max-md:p-1.5 max-md:w-full"></span>
+                  <span class="text-spacer p-5 max-lg:block max-lg:p-0 max-lg:w-full max-sm:p-[5px]"></span>
                   <div class="character-wrap inline-block overflow-clip ">
                       <div class="primary-character primary-character--disappear">
                       <svg xmlns="http://www.w3.org/2000/svg" width="107" height="179" viewBox="0 0 107 179" fill="none" class="aspect-[107/179]">
@@ -378,7 +378,7 @@
                     </div>
                   </div>
                 </span>
-                <span class="text-spacer p-5 max-md:block max-md:p-1.5 max-md:w-full"></span>
+                <span class="text-spacer p-5 max-lg:block max-lg:p-0 max-lg:w-full max-sm:p-[5px]"></span>
                 <span class="primary-text">
                   <div class="character-wrap inline-block overflow-clip ">
                     <div class="primary-character--delay">
@@ -469,8 +469,8 @@
             </div>
           </h2>
         </div>
-        <div class="box-wrap max-w-[61rem] mx-auto w-[90%] md:pt-[2.15rem] pt-7 md:pb-[2.5rem] pb-8 px-5" ref="missionBox">
-          <EffectGlassTest class="shimmer" />
+        <div class="box-wrap max-w-[61rem] mx-auto w-[90%] md:pt-[2.15rem] pt-7 md:pb-[2.5rem] pb-8 px-5 overflow-hidden relative" ref="missionBox">
+          <EffectGlassTest />
             <span class="sectionTitle-eng text-white text-base relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] md:before:w-3 md:before:h-3 before:w-[0.625rem] before:h-[0.625rem] before:rounded-full pl-5">Our Mission</span>
             <div class="text-content gap-x-7 py-[0.9rem] z-[1] relative">
               <p class="text-white md:text-[1.5rem] text-[4.1vw] leading-[150%] break-keep">혁신적 경험으로 게임의 기준을 새롭게 쓰고, 협력과 도전으로 문화를 확장하며, <br>전 세계가 공감할 지속 가능한 감동을 만드는 문화·패러다임의 선도자로 성장하겠습니다.</p>
@@ -584,7 +584,7 @@
         </span>
       </h2>
     </section>
-    <section class="newsroom-section relative md:pt-[6.25rem] pt-[3.25rem] pb-[6rem] min-h-dvh" ref="newsroomSection">
+    <section class="newsroom-section relative md:pt-[6.25rem] pt-[3.25rem] pb-[6rem]" ref="newsroomSection">
       <div class="bg-text flex xl:flex-col flex-col-reverse absolute xl:bottom-0 bottom-[3.75rem] left-0 ">
         <span class="text-[#403B4E] md:text-[5rem] text-[2.5rem] font-bold font-oswald">NEW PARADIGM, LASTING IMPACT. ELEMENTA KOREA</span>
         <h2 class="md:text-[28rem] text-[12.5rem] gradient-text grey font-bold">ELEMENTA ELEMENTA</h2>
@@ -593,7 +593,7 @@
         <div class="section-heading relative" ref="newsroomHeading">
           <div class="heading-text flex flex-col md:gap-y-10 gap-y-4">
             <span class="sectionTitle-eng text-white md:text-base text-[3.4vw] relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] before:w-3 before:h-3 before:rounded-full pl-5 ">NEWSROOM</span>
-            <h6 class="text-white md:text-[2.3rem] text-[4.3vw] font-normal">
+            <h6 class="text-white xl:text-[2.3rem] md:text-[2rem] text-[4.3vw] font-normal">
               <TypographySecondary>ELEMENTA의 가장 최신 뉴스를 알아보세요. </TypographySecondary> <br />
               <TypographySecondary>New Paradigm, Lasting Impact</TypographySecondary>
             </h6>
@@ -792,12 +792,12 @@
         
       </Container>
     </section>
-    <section class="careers-section md:pt-[17rem] pt-[3.125rem] md:pb-64 pb-24 flex flex-col md:gap-y-[5rem] gap-y-10 sm:min-h-dvh">
+    <section class="careers-section md:pt-[17rem] pt-[3.125rem] md:pb-64 pb-24 flex flex-col md:gap-y-[5rem] gap-y-10">
       <div class="section-heading">
         <Container>
           <div class="heading-text flex flex-col md:gap-y-10 gap-y-4">
             <span class="sectionTitle-eng text-white md:text-base text-[3.4vw] relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] md:before:w-3 md:before:h-3 before:w-[0.625rem] before:h-[0.625rem] before:rounded-full pl-5 ">CAREERS</span>
-            <h6 class="text-white md:text-[2.3rem] text-[4.3vw] font-normal">
+            <h6 class="text-white xl:text-[2.3rem] md:text-[2rem] text-[4.3vw] font-normal">
               ELEMENTA와 함께 성장할 동료를 기다립니다. <br>
               Design the Future of Play, Create a Culture the World Shares 
             </h6>
@@ -826,6 +826,9 @@
                 slidesPerView: 1.4,
               },
               768: {
+                slidesPerView: 1.8,
+              },
+              1024: {
                 slidesPerView: 2.4,
               },
               1280: {
@@ -878,10 +881,12 @@
 import { EffectGlass } from '#components';
 import Container from '~/components/Container.vue';
 
-const { $gsap, $ScrollTrigger } = useNuxtApp()
+const { $gsap, $ScrollTrigger, $lenis } = useNuxtApp()
 const introSection = ref(null)
 const videoWrap = ref(null)
 const videoWrapLayer = ref(null)
+const videoBigShape = ref(null)
+const videoSmallShape = ref(null)
 const visualSection = ref(null)
 const videoSubWrap = ref(null)
 const visualTitle = ref(null)
@@ -916,10 +921,78 @@ let ctx
 onBeforeUnmount(() => {
   if (ctx) {
     ctx.revert();
+    $ScrollTrigger.getAll().forEach(t => t.kill());
+    $ScrollTrigger.refresh();
   }
+  console.log('Gsap context reverted');
 })
 
-onMounted(() => {
+onMounted(async () => {
+
+  $ScrollTrigger.matchMedia({
+
+    // 1024 이상
+    "(min-width: 1024px)": () => {
+      // 큰 토형
+      $gsap.timeline({
+        scrollTrigger: {
+          trigger: videoBigShape.value,
+          start: 'top top',
+          end: 'center top',
+          scrub: true,
+          // markers: true
+        },
+      }).to(videoBigShape.value, {
+        y: '-100px',
+        ease: 'none',
+      })
+
+      // 작은 도형
+      $gsap.timeline({
+        scrollTrigger: {
+          trigger: videoSmallShape.value,
+          start: '10% 20%',
+          end: '50% top',
+          scrub: true,
+          //markers: true
+        },
+      }).to(videoSmallShape.value, {
+        y: '-80px',
+        ease: 'none',
+      })
+    },
+
+    // 1023 이하
+    "(max-width: 1023px)": () => {
+      // 큰 토형
+      $gsap.timeline({
+        scrollTrigger: {
+          trigger: videoBigShape.value,
+          start: 'top top',
+          end: 'center top',
+          scrub: true,
+          // markers: true
+        },
+      }).to(videoBigShape.value, {
+        y: '-40px',
+        ease: 'none',
+      })
+
+      // 작은 도형
+      $gsap.timeline({
+        scrollTrigger: {
+          trigger: videoSmallShape.value,
+          start: '10% 20%',
+          end: '50% top',
+          scrub: true,
+          //markers: true
+        },
+      }).to(videoSmallShape.value, {
+        y: '-30px',
+        ease: 'none',
+      })
+    },
+  })
 
   const characterRevealItems = missionSection.value.querySelectorAll('.primary-character');
   const characterRevealArray = Array.from(characterRevealItems);
@@ -1147,28 +1220,16 @@ onMounted(() => {
       duration: 1,
     }, "<")
 
+    const newsroomSliderWrap = document.querySelectorAll('.newsroom-section .card-glass');
 
     // 뉴스룸 섹션
-    function calcTransform(property, value) {
-      let alias = { y: "translateY", x: "translateX", z: "translateZ", rotation: "rotate" };
-      return function (i, target) {
-        let transform = target.style.transform;
-        target.style.transform = (alias[property] || property) + "(" + value + ")";
-        let computed = parseFloat($gsap.getProperty(target, property, property.substr(0, 3) === "rot" ? "deg" : "px", true));
-        target.style.transform = transform;
-        $gsap.getProperty(target, property, "px", true);
-        return computed; 
-      };
-    }
+    $ScrollTrigger.matchMedia({
 
-    const mm = $gsap.matchMedia();
-
-    mm.add("(min-width: 1024px)", () => {
+    "(min-width: 1024px)": function() {
       const elementaKoreaTl = $gsap.timeline({
         scrollTrigger: {
           trigger: elementaKoreaSection.value,
           start: 'top 80%',
-          //end: () => "+=" + (elementaKoreaSection.value.offsetHeight * 1.5),
           scrub: 1,
         }
       })
@@ -1192,7 +1253,6 @@ onMounted(() => {
       newsroomTl.fromTo(flowLeft.value, {
         x: "10%",
       }, {
-        //x: calcTransform("x", "calc(100% - 150vw)"),
         x: "-43%",
         ease: 'power2.out',
         duration: 2,
@@ -1201,14 +1261,13 @@ onMounted(() => {
       newsroomTl.fromTo(flowRight.value, {
         x: "-47%",
       }, {
-        //x: calcTransform("x", "calc(-100% + 150vw)"),
         x: "3%",
         ease: 'power2.out',
         duration: 2,
       }, 0.2)
-    });
+    },
 
-    mm.add("(max-width: 1024px)", () => {
+    "(max-width: 1024px)": function() {
       const elementaKoreaTl = $gsap.timeline({
         scrollTrigger: {
           trigger: sliderImg.value,
@@ -1223,9 +1282,9 @@ onMounted(() => {
         ease: 'power2.out',
         duration: 5,
       })
-    });
+    },
 
-    mm.add("(min-width: 768px) and (max-width: 1023px)", () => {
+    "(min-width: 768px) and (max-width: 1023px)": function() {
       const newsroomTl = $gsap.timeline({
         scrollTrigger: {
           trigger: newsroomSection.value,
@@ -1237,23 +1296,23 @@ onMounted(() => {
       })
 
       newsroomTl.fromTo(flowLeft.value, {
-        x: calcTransform("x", "5%"),
+        x: "3%",
       }, {
-        x: calcTransform("x", "60%"),
+        x: "-78%",
         ease: 'power2.out',
         duration: 2,
       }, 0.2)
 
       newsroomTl.fromTo(flowRight.value, {
-        x: calcTransform("x", "3%"),
+        x: "-78%",
       }, {
-        x: calcTransform("x", "-60%"),
+        x: "0%",
         ease: 'power2.out',
         duration: 2,
       }, 0.2)
-    })
+    },
 
-    mm.add("(max-width: 769px)", () => {
+    "(max-width: 767px)": function() {
       const newsroomTl = $gsap.timeline({
         scrollTrigger: {
           trigger: newsroomSection.value,
@@ -1265,12 +1324,13 @@ onMounted(() => {
       })
 
       newsroomTl.fromTo(flowLeft.value, {
-        x: calcTransform("x", "1%"),
+        x: "1%",
       }, {
-        x: calcTransform("x", "-84%"),
+        x: "-84%",
         ease: 'power2.out',
         duration: 2,
       }, 0.2)
+    }
     });
 
     // 카드 스크롤 애니메이션
@@ -1288,6 +1348,15 @@ onMounted(() => {
       { y: '30%', opacity: 0 }, 
       { y: '0%', opacity: 1, duration: 1.5, ease: 'ease'   
     })
+  });
+
+  await nextTick();
+  requestAnimationFrame(() => {
+    $lenis.scrollTo(0, { immediate: true });
+
+    requestAnimationFrame(() => {
+      $ScrollTrigger.refresh();
+    });
   });
 })
 

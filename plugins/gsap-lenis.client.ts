@@ -5,9 +5,22 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 import Lenis from '@studio-freight/lenis'
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
-
 export default defineNuxtPlugin((nuxtApp) => {
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
+
+  const router = useRouter();
+
+  router.afterEach(async () => {
+    await nextTick();
+
+    const { $lenis } = useNuxtApp();
+
+    if (!$lenis) return;
+
+    requestAnimationFrame(() => {
+      $lenis.scrollTo(0, { immediate: true });
+    });
+  });
 
   // Lenis 초기화
   const lenis = new Lenis({

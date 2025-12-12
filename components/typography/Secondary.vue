@@ -6,23 +6,36 @@
   </div>
 </template>
 
-<script setup lang="ts">
-  const { $gsap } = useNuxtApp()
+<script setup>
+  import { ref, onMounted, onBeforeUnmount } from 'vue'
+  import { useNuxtApp } from '#app'
+
+  const { $gsap, $ScrollTrigger } = useNuxtApp()
   const secondaryCharWrap = ref(null);
   const secondaryChar = ref(null);
 
+  let ctx;
+  onBeforeUnmount(() => {
+    if (ctx) {
+      ctx.revert();
+      $ScrollTrigger.getAll().forEach(t => t.kill());
+      $ScrollTrigger.refresh();
+    }
+  });
+
   onMounted(() => {
-    const secondaryTl = $gsap.timeline({
-      scrollTrigger: {
-        trigger: secondaryCharWrap.value,
-        start: "top 90%",
-        end: "bottom 40%",
-        //markers: true,
-        //scrub: true,
-        scroller: window,
-        invalidateOnRefresh: true,
-      },
-    });
+    ctx = $gsap.context(() => {
+      const secondaryTl = $gsap.timeline({
+        scrollTrigger: {
+          trigger: secondaryCharWrap.value,
+          start: "top 90%",
+          end: "bottom 40%",
+          //markers: true,
+          //scrub: true,
+          scroller: window,
+          invalidateOnRefresh: true,
+        },
+      });
       secondaryTl.to(secondaryChar.value, {
         y: '0%',
         duration: 3,
@@ -31,6 +44,7 @@
         stagger: 0.04
       }, "+=");
     });
+  });
 
 </script>
 
