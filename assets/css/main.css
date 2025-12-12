@@ -80,13 +80,16 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 .mission-section .gradient-text.text-absolute {position: absolute;}
 .mission-section .primary-char-wrap {margin-left: -5px !important;}
 .mission-section .primary-char-wrap.ml-5 {margin-left: 1.25rem !important;}
+.mission-section .box-wrap::after {content: ""; display: block; width: 100%; height: 100%; box-shadow: 20px 20px 20px 0 rgba(0, 0, 0, 0.08), 2px 1px 3px 0 rgba(255, 255, 255, 0.40) inset; position: absolute; top: 0; left: 0;}
 .mission-section .box-wrap .glass {padding: 35px 0 40px;}
 
 .accordion-item.opened {flex: 1;}
-.locked .accordion-trigger {width: 100%;}
+.locked .accordion-trigger {width: 100%; backdrop-filter: blur(22.5px)}
+.locked.locked1 .accordion-trigger {background: rgba(0, 0, 0, 0.10);}
+.locked.locked2 .accordion-trigger {background: rgba(0, 0, 0, 0.40);}
+.locked.locked3 .accordion-trigger {background: rgba(0, 0, 0, 0.80);}
 .locked button {display: flex; flex-direction: column; align-items: center; row-gap: 2rem;}
 .accordion-item .content-bg {z-index: -1;}
-.accordion-item .content-text {}
 .accordion-item .content-text * {color: #fff;}
 .accordion-item.opened .accordion-content {width: 100%;}
 .locked-title-icon {display: inline-block; width: 28px; height: 42px; background: url("~/assets/images/main/icon-lock.svg") no-repeat center/contain; z-index: 1;}
@@ -209,7 +212,7 @@ section .primary-text, section .primary-text * {line-height: 1em;}
   .careers-section .swiper-slide .cont .text-box {padding: 1.88rem;}
 }
 @media (max-width: 1279px) {
-  .video-layer {height: 100vh; right: auto; left: 24%;}
+  .video-layer {height: 100vh; right: auto; left: 30%;}
 
   .accordion-item.opened .accordion-trigger button {display: flex; flex-direction: row; justify-content: space-between; row-gap: 3.125rem; padding: 1.25rem; width: 100%}
   .accordion-item.opened .accordion-trigger button h3 {writing-mode: horizontal-tb; transform: rotate(0);}
