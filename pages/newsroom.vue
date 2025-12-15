@@ -68,6 +68,7 @@
               :grabCursor="true"
               :loopedSlides="12"
               :slideToClickedSlide="true"
+              :allowTouchMove="false"
               :breakpoints="{
                 '1280' : {
                   slidesPerView: 4,

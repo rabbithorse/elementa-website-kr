@@ -315,19 +315,20 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 
 /***** 게임 소개 *****/
 /* section 01 : 인트로 */
-  .movie-bg {left: 0; top: 0; z-index: -1; height: calc(100vh + 50vh); inset: 0; animation: fadeIn 2s ease-in-out;}
+  .movie-bg {left: 0; top: 0; z-index: -1; height: calc(100vh + 60vh);}
   .video-bg {width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;}
-  .panel_01, .panel_02 {width: 100%; height: 50vh;}
-  .panel_02 {height: 1500px;}
+  .panel_01, .panel_02 {width: 100%; height: 60vh;}
+  .panel_02 {height: 1200px;}
 
-  .intro .title-area {height: 100vh; animation: fadeIn 2s ease-in-out;}
+  .intro .title-area {height: 100vh; opacity: 0.2;}
+  .intro.is-intro-done .title-area {opacity: 1;}
   .intro .title-area img {max-width: 697px;}
 
   @keyframes fadeIn {
-    0% {
+    from {
       opacity: 0.2;
     }
-    100% {
+    to {
       opacity: 1;
     }
   }
@@ -357,7 +358,6 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
   .description .text-area .text-box {max-width:1280px; width:100%; inset:0;}
   .description .text-area .text-box span {color: #CDBC79; text-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);}
   .description .text-area .text-box .title {font-family: 'Eulyoo1945'; text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.20), 0 2px 10px rgba(58, 42, 0, 0.70);}
-  .description .text-area .text-box .title span {background: url('~/assets/images/sub/text-light.png') no-repeat center / cover; z-index: -1; mask-image: radial-gradient(black 50%, transparent 70%); -webkit-mask-image: radial-gradient(black 50%, transparent 70%)}
   .description .text-area .text-box .sub-text {
     background: url('~/assets/images/sub/game-dec-textbox-light01.png') 
     no-repeat center top,
@@ -624,7 +624,7 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
   mask-repeat: no-repeat;}
 
 .last-scene .text-mask-wrap .mask-bg-line {height: 41%; background: url(~/assets/images/sub/camera-bg-line.png) repeat-y calc(50% + 1px) / 9px; opacity: 0.3;}
-
+.last-scene .last-scene-inner {background: url('~/assets/images/sub/last-inner-bg.png') no-repeat top / cover;}
 .last-scene .e-video-bg {width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;}
 .last-scene .epilogue-dimmed {height: 100vh; background: linear-gradient(180deg, rgba(5, 6, 11, 0.30) 46.63%, #05060B 100%);}
 .last-scene .e-text {height: 100vh;}
@@ -632,6 +632,8 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 .last-scene .e-text p {font-family: 'Eulyoo1945'; text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.20), 0 2px 10px rgba(58, 42, 0, 0.70);}
 .last-scene .e-text .btn .inner {height: 5rem; font-size: 1.88rem; clip-path: polygon(100% 0,100% 50px, calc(100% - 25px) 100%,0 100%,0 0); position: relative;}
 .last-scene .e-text .btn .inner::before {right: 13px;}
+.last-scene .e-text .bottom-dwn-link {background: url('~/assets/images/sub/bottom-dwn-link.svg') no-repeat center / contain; transition: .3s ease;}
+.last-scene .e-text .bottom-dwn-link:hover {box-shadow: 1.5px 1.5px 1.5px 0 rgba(255, 255, 255, 0.40) inset, 1.5px 1.5px 1.5px 0 rgba(255, 255, 255, 0.40), -1.5px -1.5px 1.5px 0 rgba(0, 0, 0, 0.40) inset, 10px 10px 20px 0 rgba(250, 250, 68, 0.20), 5px 5px 10px 0 rgba(250, 250, 68, 0.20), 1px 1px 4px 0 rgba(250, 250, 68, 0.40), 0 0 10px 0 rgba(250, 250, 68, 0.20), -10px -5px 20px 0 rgba(255, 174, 104, 0.20);}
 
 .last-scene .e-side-text::before{content:''; display:block; width: 445px; height: 127px; background:url('~/assets/images/sub/e-side-text-bg.svg') no-repeat center / contain; position:absolute; left:0; top: 50%; transform: translateY(-50%); z-index:-1;}
 .last-scene .e-side-text p {z-index: 2;}

@@ -6,6 +6,7 @@
         <video ref="bgVideo" class="video-bg" autoplay loop muted playsinline preload="auto">
           <source src="~/assets/videos/main-war.mp4" type="video/mp4" />
         </video>
+        <div class="intro-vid-cover absolute w-full h-full top-0 left-0 bg-black"></div>
       </div>
       <div class="panel_01"></div>
       <div class="panel_02" ref="panel02"></div>
@@ -113,7 +114,7 @@
           <span class="text-2xl font-semibold">강력한 액션과 짜릿한 쾌감</span>
           <div class="text-white text-2xl leading-[1.7] py-[25px] mt-[30px] sub-text type2 relative">
             <p class="text-white text-[3.44rem] title tracking-[-1.65px] relative font-semibold z-10">
-            <span class="absolute w-full h-full left-0 top-0 block"></span>
+            <EffectFlotingDotsOther />
             콤보와 QTE로 완성되는 스타일리시 배틀</p>
           </div>
         </div>
@@ -139,7 +140,7 @@
           <span class="text-2xl font-semibold">압도적 비주얼과 시대적 배경</span>
           <div class="text-white text-2xl leading-[1.7] py-[25px] mt-[30px] sub-text type2 relative">
             <p class="text-white text-[3.44rem] title tracking-[-1.65px] relative font-semibold z-10">
-            <span class="absolute w-full h-full left-0 top-0 block"></span>
+            <EffectFlotingDotsOther />
             압도적 스케일의 살아 숨 쉬는 배경</p>
           </div>
         </div>
@@ -165,7 +166,7 @@
           <span class="text-2xl font-semibold">독창적 세계관</span>
           <div class="text-white text-2xl leading-[1.7] py-[25px] mt-[30px] sub-text type2 relative">
             <p class="text-white text-[3.44rem] title tracking-[-1.65px] relative font-semibold z-10">
-            <span class="absolute w-full h-full left-0 top-0 block"></span>
+            <EffectFlotingDotsOther />
             탐정 서사와 흑동화로 완성된 미스터리 판타지</p>
           </div>
         </div>
@@ -175,7 +176,7 @@
         <div class="text-box text-center">
           <span class="text-2xl font-semibold">Intro</span>
           <p class="text-white text-[3.44rem] title tracking-[-1.65px] relative font-semibold">
-            <span class="absolute w-full h-full left-0 top-0 block"></span>
+            <EffectFlotingDotsOther />
             사건의 진위, 그 무대의 서막
           </p>
           <div class="text-white text-2xl leading-[1.7] py-[60px] sub-text mt-[40px] relative">펠리아나 3년, 다시 실버니아로 돌아온 탐정. 그리고 현실과 우화가 뒤섞이고, 번영과 몰락의 경계에 서 있는 실버니아. <br>
@@ -302,6 +303,16 @@
             <div class="btn-wrap relative mt-[40px]">
               <ButtonsBasic color="yellow" size="lg-wide" id="dwnGame" href="">실버팰리스 다운로드</ButtonsBasic>
             </div>
+          </div>
+          <div class="bottom-link flex justify-between absolute w-full bottom-0 left-0 px-[3.13rem] pb-[5.63em] z-30">
+            <ul class="flex justify-center items-center credit-list-links gap-[30px]">
+              <li class="text-white text-lg"><a href="" role="button" aria-label="공유하기" class="block w-[60px] h-[60px]"></a></li>
+              <li class="text-white text-lg"><a href="" role="button" aria-label="유튜브" class="block w-[60px] h-[60px]"></a></li>
+              <li class="text-white text-lg"><a href="" role="button" aria-label="인스타그램" class="block w-[60px] h-[60px]"></a></li>
+              <li class="text-white text-lg"><a href="" role="button" aria-label="x" class="block w-[60px] h-[60px]"></a></li>
+              <li class="text-white text-lg"><a href="" role="button" aria-label="다운로드" class="block w-[60px] h-[60px]"></a></li>
+            </ul>
+            <a href="" class="bottom-dwn-link block w-[270px] h-[60px] rounded-[3.75rem]" aria-label="실버팰리스 다운로드"></a>
           </div>
         </div>
         <Container class="absolute left-1/2 -translate-x-1/2 transform top-[120px] z-20 e-side-text">
@@ -500,10 +511,12 @@
   definePageMeta({
     layout: 'sub', 
   })
-
+  import { onBeforeRouteLeave } from 'vue-router'
   import Container from '~/components/Container.vue';
   import { ref, onMounted, onUnmounted, nextTick } from 'vue'
   import { useNuxtApp } from '#app'
+
+  let handleResize = null
 
   const { $gsap, $ScrollTrigger, $lenis } = useNuxtApp()
 
@@ -553,33 +566,81 @@
     });
   };
 
-  onMounted(() => {
+  /*-----------------------*/
+    // 00. intro 섹션 - 초기 동작 애니메이션 세팅
+  /*-----------------------*/
+
+  onMounted(async () => {
+  await nextTick()
+
+  const introVidDim = movieBg.value.querySelector('.intro-vid-cover')
+  const video = bgVideo.value
+  const introEl = introSection.value
+
+  let faded = false
+
+  const fadeOut = () => {
+    if (faded) return
+    faded = true
+
+    $gsap.timeline({
+      onComplete: () => {
+        // CSS 최종 상태로 전환
+        introEl.classList.add('is-intro-done')
+      }
+    })
+    .to(introVidDim, {
+      opacity: 0,
+      duration: 0.9,
+      ease: 'none'
+    })
+    .to(titleArea.value, {
+      opacity: 1,
+      duration: 0.9,
+      ease: 'none'
+    }, "<")
+    .fromTo(
+      movieBg.value,
+      { scale: 1.5 },
+      {
+        scale: 1,
+        duration: 4,
+        ease: "power3.out"
+      }, "<"
+    )
+  }
+
+  video.addEventListener('loadeddata', fadeOut, { once: true })
+  setTimeout(fadeOut, 800)
+})
+
+
+onMounted(() => {
 
     /*-----------------------*/
     // 01. intro 섹션 - movieBg 고정
     /*-----------------------*/
+
     const introPinST = addST(
       $ScrollTrigger.create({
         trigger: introSection.value,
         start:  panel02.value.offsetTop + 'top',
-        end: 'bottom bottom',
+        end: 'bottom top',
         pinspacing: true,
         pin: movieBg.value,
         pinType: "transform",
         scrub: 2,
-        // markers: true,
+        //markers: true,
       })
     )
 
     /*-----------------------*/
     // 02. intro 섹션 - title 스크롤 효과
     /*-----------------------*/
-    // title 효과 - intro 섹션 고정 + 스크롤시 타이틀 사라짐
+    // title 효과 - intro 섹션 고정 + 인트로 섹션  사라짐
     let restartIntroVideo = false;
 
     const scrollIntro = $gsap.timeline()
-    .to(titleArea.value, { opacity: 1, duration: 0 })   // 시작값
-    .to(titleArea.value, { opacity: 0, duration: 1 })   // 끝으로 갈수록 점점 사라짐
 
     .add(() => {
       if (!restartIntroVideo) {
@@ -591,9 +652,12 @@
     // movieBg 어두워짐 (밝기 감소)
     .fromTo(
       movieBg.value,
-      { filter: "brightness(1)" },
-      { filter: "brightness(0)", duration: 1, ease: "none" },
-      0 // titleArea와 같은 타이밍에서 시작
+      { opacity: 1 },
+      { opacity: 0, duration: 0.4, ease: "none" },
+    )
+    .to(
+      introSection.value,
+      { opacity: 0, duration: 0.4, ease: "none" }, ">"
     )
 
     $ScrollTrigger.create({
@@ -619,20 +683,7 @@
     })
     
     /*-----------------------*/
-    // 03. intro 섹션 - 초기화면 movieBg 확대 축소 효과
-    /*-----------------------*/
-    $gsap.fromTo(
-      movieBg.value,
-      { scale: 1.5 },
-      {
-        scale: 1,
-        duration: 3,
-        ease: "power3.out"
-      }
-    )
-
-    /*-----------------------*/
-    // 04. 컷신 섹션 - 컷신 타임라인 애니메이션
+    // 03. 컷신 섹션 - 컷신 타임라인 애니메이션
     /*-----------------------*/
 
     // 첫번째 씬 - 첫번째 대사 텍스트 분리
@@ -662,7 +713,7 @@
     // **컷신 타임라인 애니메이션**
     const cutSceneTimeline = $gsap.timeline()
     // (01) 컷 신 나옴
-    .fromTo(cutScene.value, { opacity: 0 }, { opacity: 1, duration: 2 })
+    .fromTo(cutScene.value, { opacity: 0 }, { opacity: 1, duration: 1 })
 
     // (02) 컷 신 텍스트 첫번째 박스 선명하게 나옴
     .fromTo(cutLine01.value, { "filter": "blur(50px)" }, { "filter": "blur(0px)", duration: 2 },"<")//동시 실행
@@ -697,7 +748,7 @@
     .to(cutBg01.value, { "visibility": "hidden", duration: 3}, ">+0.01")//이전 효과 후 0.5초 뒤 실행
 
     // (09) 컷 신 텍스트 박스 선명하게 나옴
-    .fromTo(cutLine02.value, { "filter": "blur(50px)", "transform": "translateX(100px)" }, { "filter": "blur(0px)", "transform": "translateX(0px)", duration: 2 },"<")//동시 실행
+    .fromTo(cutLine02.value, { "filter": "blur(50px)", "transform": "translateX(100px)" }, { "filter": "blur(0px)", "transform": "translateX(0px)", duration: 1 },"<")//동시 실행
 
     // (10) 컷 신 텍스트 박스 안의 문장들 서서히 나타남
     .fromTo(cut02Title, { opacity: 0 }, { opacity: 1, duration: 3 },"<")//동시 실행
@@ -761,7 +812,7 @@
     .to(textDes1, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
     
     // (03) 두번째 비디오 서서히 나타남, 두번째 텍스트 나타남
-    .fromTo(videoDes2, { opacity: 0 }, { opacity: 1, duration: 4 },">-2") // 이전 효과 진행 후 바로 실행
+    .fromTo(videoDes2, { opacity: 0 }, { opacity: 1, duration: 4 },">-3") // 이전 효과 진행 후 바로 실행
     .to(textDes2, { opacity: 1, duration: 3 }, "<") //동시 진행
     .fromTo(textDes2inner, { y: "30px", "mask-image": "radial-gradient(circle, black -30%, transparent 60%);"}, { "mask-image": "radial-gradient(circle, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
     
@@ -772,7 +823,7 @@
     .to(textDes2, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
     
     // (05) 세번째 비디오 서서히 나타남, 세번째 텍스트 나타남
-    .fromTo(videoDes3, { opacity: 0 }, { opacity: 1, duration: 4 },">-2") // 이전 효과 진행 후 바로 실행
+    .fromTo(videoDes3, { opacity: 0 }, { opacity: 1, duration: 4 },">-3") // 이전 효과 진행 후 바로 실행
     .to(textDes3, { opacity: 1, duration: 3 }, "<") //동시 진행
     .fromTo(textDes3inner, { y: "30px", "mask-image": "linear-gradient(to right, black -30%, transparent 60%);"}, { "mask-image": "linear-gradient(to right, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
     
@@ -783,7 +834,7 @@
     .to(textDes3, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
 
     // (07) 네번째 비디오 서서히 나타남, 네번째 텍스트 나타남
-    .fromTo(videoDes4, { opacity: 0 }, { opacity: 1, duration: 4 },">-2") // 이전 효과 진행 후 바로 실행
+    .fromTo(videoDes4, { opacity: 0 }, { opacity: 1, duration: 4 },">-3") // 이전 효과 진행 후 바로 실행
     .to(textDes4, { opacity: 1, duration: 3 }, "<") //동시 진행
     .fromTo(textDes4inner, { y: "30px", "mask-image": "radial-gradient(circle, black -30%, transparent 60%);"}, { "mask-image": "radial-gradient(circle, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
     
@@ -803,7 +854,7 @@
     .to(textDes4_2, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
 
     // (11) 다섯번째 비디오 서서히 나타남, 다섯번째 텍스트 나타남
-    .fromTo(videoDes5, { opacity: 0 }, { opacity: 1, duration: 4 },">-2") // 이전 효과 진행 후 바로 실행
+    .fromTo(videoDes5, { opacity: 0 }, { opacity: 1, duration: 4 },">-3") // 이전 효과 진행 후 바로 실행
     .to(textDes5, { opacity: 1, duration: 3 }, "<") //동시 진행
     .fromTo(textDes5inner, { y: "30px", "mask-image": "radial-gradient(circle, black -30%, transparent 60%);"}, { "mask-image": "radial-gradient(circle, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
 
@@ -814,7 +865,7 @@
     .to(textDes5, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
 
     // (13) 여섯번째 비디오 서서히 나타남, 여섯번째 텍스트 나타남
-    .fromTo(videoDes6, { opacity: 0 }, { opacity: 1, duration: 4 },">-2") // 이전 효과 진행 후 바로 실행
+    .fromTo(videoDes6, { opacity: 0 }, { opacity: 1, duration: 4 },">-3") // 이전 효과 진행 후 바로 실행
     .to(textDes6, { opacity: 1, duration: 3 }, "<") //동시 진행
     .fromTo(textDes6inner, { y: "30px", "mask-image": "linear-gradient(to right, black -30%, transparent 60%);"}, { "mask-image": "linear-gradient(to right, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
     
@@ -868,37 +919,6 @@
       scrub: true,
       animation: youtubeTimeline,
     })
-
-    // 유튜브 영상 재생/일시정지 제어
-
-    const iframe = youtubeArea.value.querySelector('.js-youtube');
-
-    if (iframe) {
-      const playSrc = iframe.dataset.srcPlay;
-      const stopSrc = iframe.dataset.srcStop;
-
-      $ScrollTrigger.create({
-        trigger: videoBox,
-        start: 'center center',   // 비디오 박스가 화면 중앙에 왔을 때
-        end: 'bottom top',        // 화면 위로 빠져나갈 때까지
-        onEnter: () => {
-          iframe.src = playSrc;
-        },
-        onEnterBack: () => {
-          iframe.src = playSrc;
-        },
-        onLeave: () => {
-          iframe.src = stopSrc;   // 재생 중지 + 썸네일 상태로 초기화
-        },
-        onLeaveBack: () => {
-          iframe.src = stopSrc;
-        },
-        // markers: true,
-      });
-    }
-
-
-
 
     // 유튜브 섹션 사라짐 효과
     $gsap.timeline({
@@ -1130,8 +1150,7 @@
       // 역스크롤로 이 구간을 벗어날 때
       eVideo.play();
     }, }, "+=0.1") // 에필로그 문구2 나타남
-    .to(eVideoWrap, { opacity: 0, duration: 2, ease: "power2.out",
-    }, "+=1") // 비디오 서서히 사라짐
+    .to(eVideoWrap, { opacity: 0, duration: 2, ease: "power2.out"}, "+=0.01") // 비디오 서서히 사라짐
 
     addST(
       $ScrollTrigger.create({
@@ -1156,6 +1175,10 @@
     }
 
     window.addEventListener("resize", handleResize)
+
+    requestAnimationFrame(() => {
+      $ScrollTrigger.refresh()
+    })
   });
 
   
@@ -1279,6 +1302,11 @@
       }
     })
   }
+
+  onBeforeRouteLeave(() => {
+    // 1. ScrollTrigger 즉시 전부 제거
+    $ScrollTrigger.getAll().forEach(st => st.kill())
+  })
 
   onUnmounted(() => {
     // 1️. ScrollTrigger kill
