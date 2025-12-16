@@ -19,17 +19,18 @@
       <!-- 씬 1 -->
       <div class="cut_01 w-full h-full flex items-end absolute z-20" ref="cutBg01">
         <!-- 씬 1 배경 -->
-        <div class="cut_01_inner absolute bottom-0 left-0 w-full">
-            <img src="~/assets/images/sub/cut-scene-01.png" alt="scene image 1" class="block">
+        <div class="cut_01_inner absolute sm:bottom-0 left-0 w-full">
+            <img src="~/assets/images/sub/cut-scene-01.png" alt="scene image 1" class="sm:block hidden">
+            <img src="~/assets/images/sub/cut-scene-01-m.jpg" alt="scene image 1" class="sm:hidden block">
         </div>
         <!-- 씬 1 대사 -->
         <Container>
           <div class="line-box absolute flex items-end" ref="cutLine01">
             <div class="line01-1 grow flex flex-col justify-center relative" ref="line01_1">
-              <p class="title text-2xl font-semibold absolute z-10">실버니아</p>
-              <p class="text-white normal text-2xl">큰 화재가 있었어.</p>
-              <p class="text-white normal text-2xl">많은 사상자가 나왔고.. 모두 잿더미가 됐지.</p>
-              <p class="text-white normal-2 text-2xl">그래서 최고의 탐정이 필요해.</p>
+              <p class="title lg:text-2xl sm:text-lg text-[0.94rem] font-semibold absolute z-10">실버니아</p>
+              <p class="text-white normal lg:text-2xl sm:text-[0.94rem] text-sm">큰 화재가 있었어.</p>
+              <p class="text-white normal lg:text-2xl sm:text-[0.94rem] text-sm">많은 사상자가 나왔고.. 모두 잿더미가 됐지.</p>
+              <p class="text-white normal-2 lg:text-2xl sm:text-[0.94rem] text-sm">그래서 최고의 탐정이 필요해.</p>
             </div>
           </div>
         </Container>
@@ -39,14 +40,15 @@
       <div class="cut_02 w-full h-full flex items-end absolute z-10" ref="cutBg02">
         <!-- 씬 2 배경 -->
         <div class="cut_02_inner absolute bottom-0 left-0 w-full">
-            <img src="~/assets/images/sub/cut-scene-02.png" alt="scene image 2" class="block">
+            <img src="~/assets/images/sub/cut-scene-02.png" alt="scene image 2" class="sm:block hidden">
+            <img src="~/assets/images/sub/cut-scene-02-m.jpg" alt="scene image 2" class="sm:hidden block">
         </div>
         <!-- 씬 2 대사 -->
         <Container>
           <div class="line-box absolute flex items-end" ref="cutLine02">
             <div class="line02-1 grow flex flex-col justify-center relative" ref="line02_1">
-              <p class="title text-2xl font-semibold absolute">탐정</p>
-              <p class="text-white normal text-2xl">하지만 실버니아는 최고의 도시가 아니지.</p>
+              <p class="title lg:text-2xl sm:text-lg text-[0.94rem] font-semibold absolute">탐정</p>
+              <p class="text-white normal lg:text-2xl sm:text-[0.94rem] text-sm">하지만 실버니아는 최고의 도시가 아니지.</p>
             </div>
           </div>
         </Container>
@@ -95,15 +97,15 @@
 
       <!-- text 6 -->
       <Container>
-      <div class="text-area sec06 flex w-full justify-end items-end z-40 absolute top-0 left-0">
+      <div class="text-area sec06 flex w-full lg:justify-end justify-center items-end z-40 absolute top-0 left-0">
         <div class="text-box game-info bottom relative">
           <div class="game-info-title relative z-10 left">
-            <span class="block text-lg">강력한 액션과 짜릿한 쾌감</span>
-            <p class="text-white text-[1.75rem] font-normal">스타일리시 배틀</p>
+            <span class="block lg:text-lg text-xs">강력한 액션과 짜릿한 쾌감</span>
+            <p class="text-white lg:text-[1.75rem] text-lg font-normal">스타일리시 배틀</p>
           </div>
-          <div class="game-info-cont relative z-10 py-[2.5rem] px-[1.88rem]">
-            <p class="text-white text-[1.06rem]">각기 다른 개성을 가진 동료들과 함께 싸우고, <br>속도감 넘치는 액션과 타격감으로 전장을 지배하라.</p>
-            <p class="text-white text-[1.06rem] pt-[1.25rem]">한 발의 총성과 한 번의 선택이 역사를 다시 쓰는 <br>짜릿한 경험이 펼쳐진다.</p>
+          <div class="game-info-cont relative z-10 lg:py-[2.5rem] py-[1.88rem] lg:px-[1.88rem] px-[1.25rem]">
+            <p class="text-white lg:text-[1.06rem] text-sm break-keep">각기 다른 개성을 가진 동료들과 함께 싸우고, <br>속도감 넘치는 액션과 타격감으로 전장을 지배하라.</p>
+            <p class="text-white lg:text-[1.06rem] text-sm pt-[1.25rem] break-keep">한 발의 총성과 한 번의 선택이 역사를 다시 쓰는 <br>짜릿한 경험이 펼쳐진다.</p>
           </div>
         </div>
       </div>
@@ -111,25 +113,25 @@
       <!-- text 5 -->
       <div class="text-area sec05 flex w-full justify-center items-center z-40 absolute top-0 left-0">
         <div class="text-box text-center">
-          <span class="text-2xl font-semibold">강력한 액션과 짜릿한 쾌감</span>
-          <div class="text-white text-2xl leading-[1.7] py-[25px] mt-[30px] sub-text type2 relative">
-            <p class="text-white text-[3.44rem] title tracking-[-1.65px] relative font-semibold z-10">
+          <span class="lg:text-2xl text-lg font-semibold relative">강력한 액션과 짜릿한 쾌감</span>
+          <div class="text-white text-2xl lg:leading-[1.7] xl:py-[55px] py-[35px] mt-[30px] sub-text type2 relative">
+            <p class="text-white xl:text-[3.44rem] lg:text-4xl sm:text-[1.63rem] text-[1.53rem] title tracking-[-1.75px] relative font-semibold z-10">
             <EffectFlotingDotsOther />
-            콤보와 QTE로 완성되는 스타일리시 배틀</p>
+            콤보와 QTE로 완성되는 <br class="lg:hidden block">스타일리시 배틀</p>
           </div>
         </div>
       </div>
       <!-- text 4_2 -->
       <Container>
-      <div class="text-area sec04_2 flex w-full items-start z-40 absolute top-0 left-0">
+      <div class="text-area sec04_2 flex w-full lg:justify-start justify-center lg:items-start items-end z-40 absolute top-0 left-0">
         <div class="text-box game-info left relative">
           <div class="game-info-title relative z-10 left">
-            <span class="block text-lg">압도적 비주얼과 시대적 배경</span>
-            <p class="text-white text-[1.75rem] font-normal">살아 숨 쉬는 배경</p>
+            <span class="block lg:text-lg text-xs">압도적 비주얼과 시대적 배경</span>
+            <p class="text-white lg:text-[1.75rem] text-lg font-normal">살아 숨 쉬는 배경</p>
           </div>
-          <div class="game-info-cont relative z-10 py-[2.5rem] px-[1.88rem]">
-            <p class="text-white text-[1.06rem]">언리얼 엔진 5로 구현된 빅토리아풍의 대도시 실버니아.</p>
-            <p class="text-white text-[1.06rem] pt-[1.25rem]">찬란한 번영과 몰락의 그림자가 교차하는 실버니아에서 <br>압도적 스케일의 드라마가 펼쳐진다.</p>
+          <div class="game-info-cont relative z-10 lg:py-[2.5rem] py-[1.88rem] lg:px-[1.88rem] px-[1.25rem]">
+            <p class="text-white lg:text-[1.06rem] text-sm break-keep">언리얼 엔진 5로 구현된 빅토리아풍의 대도시 실버니아.</p>
+            <p class="text-white lg:text-[1.06rem] text-sm pt-[1.25rem] break-keep">찬란한 번영과 몰락의 그림자가 교차하는 실버니아에서 <br>압도적 스케일의 드라마가 펼쳐진다.</p>
           </div>
         </div>
       </div>
@@ -137,9 +139,9 @@
       <!-- text 4 -->
       <div class="text-area sec04 flex w-full justify-center items-center z-40 absolute top-0 left-0">
         <div class="text-box text-center">
-          <span class="text-2xl font-semibold">압도적 비주얼과 시대적 배경</span>
-          <div class="text-white text-2xl leading-[1.7] py-[25px] mt-[30px] sub-text type2 relative">
-            <p class="text-white text-[3.44rem] title tracking-[-1.65px] relative font-semibold z-10">
+          <span class="lg:text-2xl text-lg font-semibold relative">압도적 비주얼과 시대적 배경</span>
+          <div class="text-white text-2xl lg:leading-[1.7] xl:py-[55px] py-[35px] mt-[30px] sub-text type2 relative">
+            <p class="text-white xl:text-[3.44rem] lg:text-4xl sm:text-[1.63rem] text-[1.53rem] title tracking-[-1.75px] relative font-semibold z-10">
             <EffectFlotingDotsOther />
             압도적 스케일의 살아 숨 쉬는 배경</p>
           </div>
@@ -147,15 +149,15 @@
       </div>
       <!-- text 3 -->
       <Container>
-      <div class="text-area sec03 flex w-full justify-end items-start z-40 absolute top-0 left-0">
+      <div class="text-area sec03 flex w-full lg:justify-end justify-center lg:items-start items-end z-40 absolute top-0 left-0">
         <div class="text-box game-info relative">
           <div class="game-info-title relative z-10">
-            <span class="block text-lg">독창적 세계관</span>
-            <p class="text-white text-[1.75rem] font-normal">미스터리 판타지</p>
+            <span class="block lg:text-lg text-xs">독창적 세계관</span>
+            <p class="text-white lg:text-[1.75rem] text-lg font-normal">미스터리 판타지</p>
           </div>
-          <div class="game-info-cont relative z-10 py-[2.5rem] px-[1.88rem]">
-            <p class="text-white text-[1.06rem]">숨 막히는 사건, 교차하는 음모, <br>그리고 3년 만에 돌아온 탐정.</p>
-            <p class="text-white text-[1.06rem] pt-[1.25rem]">현실과 우화가 겹쳐진 실버니아에서, <br>플레이어는 진실을 찾아내고 도시의 운명을 뒤바꾼다. <br>누구도 예상치 못한 반전과 깊이 있는 스토리가 당신을 기다린다.</p>
+          <div class="game-info-cont relative z-10 lg:py-[2.5rem] py-[1.88rem] lg:px-[1.88rem] px-[1.25rem]">
+            <p class="text-white lg:text-[1.06rem] text-sm break-keep">숨 막히는 사건, 교차하는 음모, <br>그리고 3년 만에 돌아온 탐정.</p>
+            <p class="text-white lg:text-[1.06rem] text-sm pt-[1.25rem] break-keep">현실과 우화가 겹쳐진 실버니아에서, <br>플레이어는 진실을 찾아내고 도시의 운명을 뒤바꾼다. <br>누구도 예상치 못한 반전과 깊이 있는 스토리가 당신을 기다린다.</p>
           </div>
         </div>
       </div>
@@ -163,24 +165,24 @@
       <!-- text 2 -->
       <div class="text-area sec02 flex w-full justify-center items-center z-40 absolute top-0 left-0">
         <div class="text-box text-center">
-          <span class="text-2xl font-semibold">독창적 세계관</span>
-          <div class="text-white text-2xl leading-[1.7] py-[25px] mt-[30px] sub-text type2 relative">
-            <p class="text-white text-[3.44rem] title tracking-[-1.65px] relative font-semibold z-10">
+          <span class="lg:text-2xl text-lg font-semibold relative">독창적 세계관</span>
+          <div class="text-white text-2xl lg:leading-[1.7] xl:py-[55px] py-[35px] mt-[30px] sub-text type2 relative">
+            <p class="text-white xl:text-[3.44rem] lg:text-4xl sm:text-[1.63rem] text-[1.53rem] title tracking-[-1.65px] relative font-semibold z-10">
             <EffectFlotingDotsOther />
-            탐정 서사와 흑동화로 완성된 미스터리 판타지</p>
+            탐정 서사와 흑동화로 완성된 <br class="lg:hidden block">미스터리 판타지</p>
           </div>
         </div>
       </div>
       <!-- text 1 -->
-      <div class="text-area sec01 flex w-full justify-center items-center z-40 absolute top-0 left-0">
+      <div class="text-area sec01 flex flex-col w-full justify-center items-center z-40 absolute top-0 left-0">
         <div class="text-box text-center">
-          <span class="text-2xl font-semibold">Intro</span>
-          <p class="text-white text-[3.44rem] title tracking-[-1.65px] relative font-semibold">
+          <span class="lg:text-2xl text-lg font-semibold">Intro</span>
+          <p class="text-white xl:text-[3.44rem] lg:text-4xl sm:text-[1.63rem] text-[1.53rem] lg:pt-[20px] pt-[5px] title tracking-[-1.65px] relative font-semibold">
             <EffectFlotingDotsOther />
             사건의 진위, 그 무대의 서막
           </p>
-          <div class="text-white text-2xl leading-[1.7] py-[60px] sub-text mt-[40px] relative">펠리아나 3년, 다시 실버니아로 돌아온 탐정. 그리고 현실과 우화가 뒤섞이고, 번영과 몰락의 경계에 서 있는 실버니아. <br>
-          사교와 조사, 판단 그리고 전투, 당신이 그 총알 한 발의 진실을 찾아낸다면, 자신은 물론, 모든 이들의 운명까지 결정짓게 될 것이다.</div>
+          <div class="text-white xl:text-[1.5rem] lg:text-[1.125rem] text-[0.94rem] leading-[1.6] xl:py-[60px] py-[40px] sub-text lg:mt-[40px] mt-[30px] lg:mx-[0px] mx-[15px] relative">펠리아나 3년, 다시 실버니아로 돌아온 탐정. <br class="lg:hidden block">그리고 현실과 우화가 뒤섞이고, <br class="lg:hidden block">번영과 몰락의 경계에 서 있는 실버니아. <br>
+          사교와 조사, 판단 그리고 전투, <br class="lg:hidden block">당신이 그 총알 한 발의 진실을 찾아낸다면, <br class="lg:hidden block">자신은 물론, 모든 이들의 운명까지 결정짓게 될 것이다.</div>
         </div>
         <ButtonsBasic color="yellow" size="lg" id="openChar" @click="openModal">캐릭터 소개</ButtonsBasic>
       </div>
@@ -335,7 +337,7 @@
     <section class="character-intro-modal fixed inset-0 z-50" v-show="showCharModal">
       <div class="modal-inner bg-white w-full h-full relative overflow-y-auto" ref="modalContentRef">
         <!-- Sticky 가로 아코디언 -->
-        <div class="char-accordion sticky top-0 flex" ref="accordionRef">
+        <div class="char-accordion sticky top-0 flex lg:flex-row flex-col" ref="accordionRef">
           <!-- 탐정 : 여 -->
           <div class="acc-box" @click="jumpTo(0)">
             <!-- 캐릭터 이름 -->
@@ -350,13 +352,13 @@
             <div class="char-cont relative z-10 w-full h-full overflow-hidden">
               <div class="inner relative">
                 <div class="info text-white absolute z-10">
-                  <p class="info-tit text-center text-3xl opacity-[.7] font-bold z-10 relative">Character</p>
+                  <p class="info-tit text-center 2xl:text-3xl text-2xl opacity-[.7] font-bold z-10 relative">Character</p>
                   <div class="info-wrap relative">
                     <div class="tit-wrap relative z-10">
-                      <p class="tit text-[1.75rem] font-normal">탐정</p>
+                      <p class="tit 2xl:text-[1.75rem] text-xl font-normal">탐정</p>
                       <p class="opacity-[.5] text-[0.94rem] font-normal">주인공</p>
                     </div>
-                    <p class="text-[1.06rem] font-normal relative z-10 leading-[1.6]">두뇌가 명석하고 능률적인 일처리를 선보이는 <br>
+                    <p class="2xl:text-[1.06rem] text-sm font-normal relative z-10 leading-[1.6]">두뇌가 명석하고 능률적인 일처리를 선보이는 <br>
                     이성적이며 신뢰할 수 있는 탐정. <br>
                     현재 가족의 죽음을 둘러싼 진상을 밝히기 위해 분투하고 있다. <br>
                     파국적인 사건 이후 줄곧 실버니아를 더나 있었지만, <br>
@@ -385,13 +387,13 @@
             <div class="char-cont relative z-10 w-full h-full overflow-hidden">
               <div class="inner relative">
                 <div class="info text-white absolute z-10">
-                  <p class="info-tit text-center text-3xl opacity-[.7] font-bold z-10 relative">Character</p>
+                  <p class="info-tit text-center 2xl:text-3xl text-2xl opacity-[.7] font-bold z-10 relative">Character</p>
                   <div class="info-wrap relative">
                     <div class="tit-wrap relative z-10">
-                      <p class="tit text-[1.75rem] font-normal">탐정</p>
+                      <p class="tit 2xl:text-[1.75rem] text-xl font-normal">탐정</p>
                       <p class="opacity-[.5] text-[0.94rem] font-normal">주인공</p>
                     </div>
-                    <p class="text-[1.06rem] font-normal relative z-10 leading-[1.6]">
+                    <p class="2xl:text-[1.06rem] text-sm font-normal relative z-10 leading-[1.6]">
                       두뇌가 명석하고 능률적인 일처리를 선보이는 <br>
                       이성적이며 신뢰할 수 있는 탐정. <br>
                       현재 가족의 죽음을 둘러싼 진상을 밝히기 위해 분투하고 있다. <br>
@@ -422,13 +424,13 @@
             <div class="char-cont relative z-10 w-full h-full overflow-hidden">
               <div class="inner relative">
                 <div class="info text-white absolute z-10">
-                  <p class="info-tit text-center text-3xl opacity-[.7] font-bold z-10 relative">Character</p>
+                  <p class="info-tit text-center 2xl:text-3xl text-2xl opacity-[.7] font-bold z-10 relative">Character</p>
                   <div class="info-wrap relative">
                     <div class="tit-wrap relative z-10">
-                      <p class="tit text-[1.75rem] font-normal">알프</p>
+                      <p class="tit 2xl:text-[1.75rem] text-xl font-normal">알프</p>
                       <p class="opacity-[.5] text-[0.94rem] font-normal">주인공</p>
                     </div>
-                    <p class="text-[1.06rem] font-normal relative z-10 leading-[1.6]">
+                    <p class="2xl:text-[1.06rem] text-sm font-normal relative z-10 leading-[1.6]">
                       메이드 협회의 49번 메이드로, 덤벙대고 고집스러운 소녀. <br>
                       탐정의 선한 본성을 본능적으로 느꼈는지, 항상 그 곁을 떠나려 <br>
                       하지 않는다. 상식이 없고 가산ㄴ 미숙하며, 또 눈치도 없다. <br>
@@ -458,13 +460,13 @@
             <div class="char-cont relative z-10 w-full h-full overflow-hidden">
               <div class="inner relative">
                 <div class="info text-white absolute z-10">
-                  <p class="info-tit text-center text-3xl opacity-[.7] font-bold z-10 relative">Character</p>
+                  <p class="info-tit text-center 2xl:text-3xl text-2xl opacity-[.7] font-bold z-10 relative">Character</p>
                   <div class="info-wrap relative">
                     <div class="tit-wrap relative z-10">
-                      <p class="tit text-[1.75rem] font-normal">아르고스</p>
+                      <p class="tit 2xl:text-[1.75rem] text-xl font-normal">아르고스</p>
                       <p class="opacity-[.5] text-[0.94rem] font-normal">주인공</p>
                     </div>
-                    <p class="text-[1.06rem] font-normal relative z-10 leading-[1.6]">
+                    <p class="2xl:text-[1.06rem] text-sm font-normal relative z-10 leading-[1.6]">
                       말재간 좋은 바텐더 청년. 성공을 꿈꾸며 야심 차게 메이드 <br>
                       협회에 가입했으나, 현실은 생각처럼 녹록치 않았다. 그래도 <br>
                       일은 해야 했기에, 아르코스는 바 카운터 뒤에서 오가는 말에 <br>
@@ -1210,6 +1212,7 @@ onMounted(() => {
         scroller: modalContentRef.value,
         start: "top 50%", 
         end: "bottom 50%",
+        //markers: true,
         onEnter: () => {
           if (!isScrollingByClick) setActive(index)
         },

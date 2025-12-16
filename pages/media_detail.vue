@@ -133,23 +133,39 @@
   const movieFrame = ref(null)
   const sideBtnWrap = ref(null)
 
+  let sidePinST = null
+  let mm = null
+
   onMounted(() => {
-    $ScrollTrigger.matchMedia({
+    mm = $ScrollTrigger.matchMedia({
       "(min-width: 1280px)": () => {
-        $gsap.to(sideBtnWrap.value, {
-          scrollTrigger: {
-            trigger: movieFrame.value,
-            start: '-=150 top',
-            end: () => "+=" + (movieFrame.value.offsetHeight - sideBtnWrap.value.offsetHeight),
-            scrub: 2,
-            //markers: true,
-            pin: sideBtnWrap.value,
-            pinSpacing: true
+        sidePinST = $ScrollTrigger.create({
+          trigger: movieFrame.value,
+          start: "-=150 top",
+          end: () => {
+            const len = movieFrame.value.offsetHeight - sideBtnWrap.value.offsetHeight
+            return "+=" + Math.max(1, len)
           },
+          scrub: 2,
+          pin: sideBtnWrap.value,
+          pinSpacing: true,
+          invalidateOnRefresh: true,
         })
       }
-    });
-  });
+    })
+  })
+
+onUnmounted(() => {
+  if (sidePinST) {
+    sidePinST.kill()
+    sidePinST = null
+  }
+  if (mm) {
+    mm.kill()     // matchMedia로 만든 컨텍스트 정리 (이게 다음 페이지 깨짐 방지에 꽤 중요)
+    mm = null
+  }
+})
+
 
 
 </script>

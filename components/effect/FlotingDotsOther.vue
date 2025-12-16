@@ -1,6 +1,6 @@
 <template>
   <!-- 부모가 relative + height를 가져야 함 -->
-  <span class="absolute inset-0 block pointer-events-none">
+  <span class="absolute inset-0 block pointer-events-none max-w-[100%] mx-auto">
     <canvas ref="canvasRef"></canvas>
   </span>
 </template>
@@ -153,12 +153,30 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-  .description .text-area .text-box .title span {background: url('~/assets/images/sub/text-light.png') no-repeat center / cover; z-index: -1; mask-image: radial-gradient(black 50%, transparent 70%); -webkit-mask-image: radial-gradient(black 50%, transparent 70%)}
-
+  .description .text-area .text-box .title span {background: url('~/assets/images/sub/text-light.png') no-repeat center / cover; z-index: -1; height: 70px; mask-image: radial-gradient(black 50%, transparent 70%); -webkit-mask-image: radial-gradient(black 50%, transparent 70%)}
+  .description .text-area .text-box .sub-text .title span {transform: translateY(-18px);}
 canvas {
   width: 100%;
   height: 100%;
   mix-blend-mode: screen;
   opacity: 0.9;
+}
+
+/* -------------------------------------- */
+/* MD : 768 ~ 1023  
+/* -------------------------------------- */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .description .text-area .text-box .title span {height: 50px;}
+  .description .text-area .text-box .sub-text .title span {transform: translateY(0px);}
+}
+  
+
+
+/* -------------------------------------- */
+/* MOBILE : 0 ~ 767 */
+/* -------------------------------------- */
+@media (max-width: 767px) {
+  .description .text-area .text-box .title span {height: 50px;}
+  .description .text-area .text-box .sub-text .title span {transform: translateY(0px);}
 }
 </style>

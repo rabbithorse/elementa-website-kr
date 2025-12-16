@@ -231,6 +231,7 @@
   import Container from '~/components/Container.vue';
   import { ref, onMounted, onUnmounted } from 'vue'
   import { useNuxtApp } from '#app'
+  import { onBeforeRouteLeave } from 'vue-router'
 
   const { $gsap, $ScrollTrigger,  } = useNuxtApp()
 
@@ -310,4 +311,11 @@
       ease: "power3.out"
     })
   }
+
+  onBeforeRouteLeave(() => {
+    if ($ScrollTrigger) {
+      $ScrollTrigger.getAll().forEach(st => st.kill())
+    }
+  })
+
 </script>

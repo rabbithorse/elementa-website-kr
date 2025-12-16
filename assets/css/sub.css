@@ -395,8 +395,8 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
     rgba(0, 0, 0, 0.50) 75%,
     rgba(0, 0, 0, 0.00) 100%
   ); backdrop-filter: blur(30px); content: ''; inset: 0; mask-image: linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);}
-.description .text-area.sec01 #openChar {position:absolute; right:30px; bottom: 90px;}
-.description .text-area.sec01 .inner {width: 350px;}
+.description .text-area.sec01 .btn {position:absolute; right:30px; bottom: 90px;}
+.description .text-area.sec01 .btn .inner {width: 350px; background: linear-gradient(78deg, rgba(250,250,68,0.40), rgba(255,174,104,0.50));}
 
 /* 게임 설명 */
 .description .text-area .text-box.game-info {max-width: 500px; width: 100%; margin-right: 50px; margin-top: 160px; background: url('~/assets/images/sub/des-game-info-line01.svg') no-repeat top / contain, url('~/assets/images/sub/des-game-info-line02.svg') no-repeat bottom / contain;}
@@ -638,8 +638,8 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 .last-scene .e-side-text::before{content:''; display:block; width: 445px; height: 127px; background:url('~/assets/images/sub/e-side-text-bg.svg') no-repeat center / contain; position:absolute; left:0; top: 50%; transform: translateY(-50%); z-index:-1;}
 .last-scene .e-side-text p {z-index: 2;}
 .last-scene .e-side-text .smoke {content: ''; width:246px; height:69px; position: absolute; left:-20px; top:50%; transform: translateY(-50%); display: block; overflow: hidden; z-index: 1; mask-image: linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%), linear-gradient(to left, transparent 0%, black 20%, black 80%, transparent 100%); -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%), linear-gradient(to left, transparent 0%, black 20%, black 80%, transparent 100%);}
-.last-scene .e-side-text .smoke::after {content:''; display:block; width:100%; height:100%; background: url('~/assets/images/sub/smoke01.svg') no-repeat center / contain; animation: smoke-move 1.5s linear infinite; position: absolute; left:-50px; top:0; animation-delay: 1s; animation-fill-mode: both;}
-.last-scene .e-side-text .smoke::before {content:''; display:block; width:202px; height:57px; background: url('~/assets/images/sub/smoke01.svg') no-repeat center / contain; animation: smoke-move 1.6s linear infinite; position: absolute; left:-50px; top:0; animation-delay: 1.5s; animation-fill-mode: both;}
+.last-scene .e-side-text .smoke::after {content:''; display:block; width:100%; height:100%; background: url('~/assets/images/sub/smoke01.svg') no-repeat center / contain; animation: smoke-move 2s linear infinite; position: absolute; left:-50px; top:0; animation-delay: 1s; animation-fill-mode: both;}
+.last-scene .e-side-text .smoke::before {content:''; display:block; width:202px; height:57px; background: url('~/assets/images/sub/smoke01.svg') no-repeat center / contain; animation: smoke-move 2.2s linear infinite; position: absolute; left:-50px; top:0; animation-delay: 1.5s; animation-fill-mode: both;}
 
 
 @keyframes smoke-move {
@@ -756,7 +756,24 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
   /* media detail page */
   .media-grid-swiper .swiper-slide,
   .media-grid-swiper .swiper-slide .card-moving .animatedCard {min-height: 19vw;}
-  
+
+  /***** 게임 소개 *****/
+
+  /* section02 : 대사 씬 */
+  .cut-scene .cut_01 .line-box,
+  .cut-scene .cut_02 .line-box {width: 905px; height: 246px;}
+  .cut-scene .cut_01 .line-box .line01-1 {padding-left: 228px; height: 117px;}
+  .cut-scene .cut_02 .line-box .line02-1 {height: 117px; padding-right: 228px;}
+  .cut-scene .title {top: -57px;}
+  .cut-scene .cut_02 .title {right: 230px;}
+
+  /* section03 : 게임 설명 intro */
+  .acc-box {flex: 0 0 70px; grid-template-columns: 70px 1fr;}
+  .acc-box.open .char-cont .inner {margin-left: 7.19vw;}
+  .acc-box .char-name .name-tit {font-size: 28px; left: -35px;}
+  .acc-box.open .char-name .name-tit {font-size: 36px;}
+  .acc-box .char-cont .info {bottom: 7.24vw;}
+  .acc-box.open .char-cont.open .info {max-width: 388px;}
 }
 
 /* -------------------------------------- */
@@ -784,7 +801,27 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
   .media-grid-swiper .swiper-slide .card-moving .animatedCard {min-height: 24vw;}
 
   /* contact- wide-image-area */
-  
+
+  /***** 게임 소개 *****/
+
+  /* section02 : 대사 씬 */
+  .cut-scene .cut_01 .line-box,
+  .cut-scene .cut_02 .line-box {width: 905px; height: 246px;}
+  .cut-scene .cut_01 .line-box .line01-1 {padding-left: 228px; height: 117px;}
+  .cut-scene .cut_02 .line-box .line02-1 {height: 117px; padding-right: 228px;}
+  .cut-scene .title {top: -57px;}
+  .cut-scene .cut_02 .title {right: 230px;}
+
+  /* section03 : 게임 설명 intro */
+  .description .text-area .text-box.game-info {margin-top: 110px; margin-right:0;}
+  .description .text-area .text-box.game-info.left {margin-left: 0;}
+
+  .acc-box {flex: 0 0 70px; grid-template-columns: 70px 1fr;}
+  .acc-box.open .char-cont .inner {margin-left: 7.19vw;}
+  .acc-box .char-name .name-tit {font-size: 28px; left: -35px;}
+  .acc-box.open .char-name .name-tit {font-size: 36px;}
+  .acc-box .char-cont .info {bottom: 7.24vw;}
+  .acc-box.open .char-cont.open .info {max-width: 388px;}
 }
 
 /* -------------------------------------- */
@@ -895,6 +932,57 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
   .media-list .deco-text::before {width: 58px; height: 108px;}
   .media-grid-swiper .swiper-slide,
   .media-grid-swiper .swiper-slide .card-moving .animatedCard {min-height: 34vw;}
+
+  /***** 게임 소개 *****/
+
+  /* section01 : 인트로 */
+  .intro .title-area img {max-width:467px;}
+  .movie-bg {height: calc(100vh + 40vh);}
+  .panel_01, .panel_02 {width: 100%; height: 40vh;}
+  .panel_02 {height: 1000px;}
+
+  /* section02 : 대사 씬 */
+  .cut-scene .cut_01 .line-box,
+  .cut-scene .cut_02 .line-box {width: 905px; height: 246px;}
+  .cut-scene .cut_01 .line-box .line01-1 {padding-left: 228px; height: 117px;}
+  .cut-scene .cut_02 .line-box .line02-1 {height: 117px; padding-right: 228px;}
+  .cut-scene .title {top: -39px; left:  75px;}
+  .cut-scene .cut_02 .title {right: 69px; left: auto}
+
+  .cut-scene .cut_01 .line-box {background: url('~/assets/images/sub/line-box-m.png') no-repeat center / cover; width: 428px; height: 223px; right: auto;}
+  .cut-scene .cut_01 .line-box .line01-1 {padding-left: 38px;}
+  .cut-scene .cut_02 .line-box {background: url('~/assets/images/sub/line-box-2-m.png') no-repeat center / cover; width: 428px; height: 223px; left: auto; right: 0}
+  .cut-scene .cut_02 .line-box .line02-1 {padding-right: 0;}
+  .cut-scene .normal-2 {transform: translateY(-45px);}
+  .cut-scene .cut_02 .line-box .line02-1 .normal {transform: translateY(-24px); padding-left: 80px;}
+
+  /* section03 : 게임 설명 intro */
+  .description .text-area .text-box .sub-text {mask-image: radial-gradient(circle, black 95%, transparent 100%);}
+  .description .text-area .text-box .sub-text::after {display: none;}
+  .description .text-area .text-box .title::after,
+  .description .text-area .text-box span:has(+ .sub-text)::after {content: ''; display: block; width: 62px; height: 62px; background: url(/_nuxt/assets/images/sub/text-box-symbol.png) no-repeat center / cover; position: absolute; left: 50%; transform: translateX(-50%); bottom: -63px; z-index: 3;}
+  .description .text-area .text-box .sub-text .title::after {display: none;}
+  
+  .description .text-area.sec01 .btn {right: 20px; bottom: 50px;}
+  .description .text-area.sec01 .btn .inner {width: auto; height: 40px; clip-path: polygon(100% 0,100% 28px, calc(100% - 15px) 100%,0 100%,0 0);}
+  .description .text-area.sec01 .btn .inner::before {right: 0; bottom: -6px; transform: rottate(50deg);}
+
+  .description .text-area .text-box.game-info {margin-top: 0; margin-right: 0; margin-bottom: 45px;}
+  .description .text-area .text-box.game-info .game-info-title {padding: 14px 0 8px 41px;}
+  .description .text-area .text-box.game-info .game-info-title::before {width: 55px; height: 56px;}
+  .description .text-area .text-box.game-info .game-info-title span {padding: 0 0 5px 20px;}
+  .description .text-area .text-box.game-info .game-info-title p {padding: 3px 0 0 20px;}
+
+  .description .text-area .text-box.game-info.left {margin-left: 0;}
+
+  .description .text-area .text-box.game-info.bottom {margin-bottom: 45px;}
+  
+  .acc-box {grid-template-columns: 100%; grid-template-rows: 50px 1fr; flex: 0 0 50px;}
+  .acc-box .acc-line {left:0; top: 56px; width: 100%; height: 5px; background: url('~/assets/images/sub/character-acc-line-m.svg') repeat-x;}
+  .acc-box:first-child .acc-line {display: none;}
+  .acc-box.open::after {bottom: auto; top: 0; width: 100%; height: 32.68vw; background: url('~/assets/images/sub/char-bg-paper-m.svg') no-repeat top / cover;}
+  .char-step {height: 56.04vw;}
+  
 }
 
 /* -------------------------------------- */
@@ -1015,10 +1103,71 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 
   /* contact- contact information */
   .contact-info .contact-info-inner .deco-text::before {width: 58px; height: 114px;}
+
+  /***** 게임 소개 *****/
+
+  /* section01 : 인트로 */
+  .intro .title-area img {max-width:299px;}
+  .movie-bg {height: calc(100vh + 40vh);}
+  .panel_01, .panel_02 {width: 100%; height: 40vh;}
+  .panel_02 {height: 1000px;}
+
+  /* section02 : 대사 씬 */
+  .cut-scene [class*="cut_"] {mask-image: linear-gradient(transparent 0%, black 10%);}
+  .cut-scene .cut_01 .line-box,
+  .cut-scene .cut_02 .line-box {width: 905px; height: 246px;}
+  .cut-scene .cut_01 .line-box .line01-1 {padding-left: 228px; height: 117px;}
+  .cut-scene .cut_02 .line-box .line02-1 {height: 117px; padding-right: 228px;}
+  .cut-scene .title {top: -39px; left:  75px;}
+  .cut-scene .cut_02 .title {right: 69px; left: auto}
+
+  .cut-scene .cut_01 .line-box {background: url('~/assets/images/sub/line-box-m.png') no-repeat center / cover; width: 428px; height: 223px; right: auto;}
+  .cut-scene .cut_01 .line-box .line01-1 {padding-left: 38px;}
+  .cut-scene .cut_01 .cut_01_inner {top: 50%; transform: translateY(-50%);}
+  .cut-scene .cut_02 .line-box {background: url('~/assets/images/sub/line-box-2-m.png') no-repeat center / cover; width: 428px; height: 223px; left: auto;}
+  .cut-scene .cut_02 .line-box .line02-1 {padding-right: 0;}
+  .cut-scene .cut_02 .cut_02_inner {top: 50%; transform: translateY(-50%);}
+  .cut-scene .normal-2 {transform: translateY(-45px);}
+  .cut-scene .cut_02 .line-box .line02-1 .normal {transform: translateY(-24px); padding-left: 80px;}
+
+  /* section03 : 게임 설명 intro */
+  .description .text-area .text-box .sub-text {mask-image: radial-gradient(circle, black 95%, transparent 100%);}
+  .description .text-area .text-box .sub-text::after {display: none;}
+  .description .text-area .text-box .title::after,
+  .description .text-area .text-box span:has(+ .sub-text)::after {content: ''; display: block; width: 62px; height: 62px; background: url(/_nuxt/assets/images/sub/text-box-symbol.png) no-repeat center / cover; position: absolute; left: 50%; transform: translateX(-50%); bottom: -63px; z-index: 3;}
+  .description .text-area .text-box .sub-text .title::after {display: none;}
+
+  .description .text-area.sec01 .btn {position: relative; right: 0; bottom: 0; margin-top: 65px;}
+  .description .text-area.sec01 .btn .inner {width: auto; height: 40px; clip-path: polygon(100% 0,100% 28px, calc(100% - 15px) 100%,0 100%,0 0);}
+  .description .text-area.sec01 .btn .inner::before {right: 0; bottom: -6px; transform: rottate(50deg);}
+
+  .description .text-area .text-box.game-info {margin-top: 0; margin-right: 0; margin-bottom: 45px;}
+  .description .text-area .text-box.game-info .game-info-title {padding: 14px 0 8px 41px;}
+  .description .text-area .text-box.game-info .game-info-title::before {width: 55px; height: 56px;}
+  .description .text-area .text-box.game-info .game-info-title span {padding: 0 0 5px 20px; background: url('/_nuxt/assets/images/sub/char-info-tit-bg04.svg') no-repeat bottom / 90%;}
+  .description .text-area .text-box.game-info .game-info-title p {padding: 3px 0 0 20px;}
+
+  .description .text-area .text-box.game-info.left {margin-left: 0;}
+
+  .description .text-area .text-box.game-info.bottom {margin-bottom: 45px;}
 }
 
 
 /* 모바일 세부조정 */
+@media (max-width: 640px) {
+    /***** 게임 소개 *****/
+
+    /* section02 : 대사 씬 */
+    .cut-scene .cut_01 .line-box {width: 358px; height: 173px; left: -20px;}
+    .cut-scene .cut_01 .line-box .line01-1 {height: 81px; padding-left:0;}
+    .cut-scene .title {top: -42px; left: 65px;}
+    .cut-scene .normal-2 {transform: translateY(-43px);}
+    .cut-scene .cut_02 .line-box {width: 358px; height: 173px; right: -20px;}
+    .cut-scene .cut_02 .title {right: 64px; left: auto;}
+    .cut-scene .cut_02 .line-box .line02-1 {height: 81px;}
+    .cut-scene .cut_02 .line-box .line02-1 .normal {padding-left: 55px;}
+}
+
 @media (max-width: 375px) {
  /* join us list recruit */
   .list-recruit .list .cont .text-box .apply .btn .inner{padding: 0 1.5rem!important;}
