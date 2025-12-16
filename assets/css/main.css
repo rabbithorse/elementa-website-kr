@@ -53,6 +53,7 @@ h2 {font-family: "Oswald";}
 
 }
 
+.visual-section > .glass {position: absolute;}
 .bg-video {position: absolute; top: -27%; left: 0; height: 150%; width: 100%; z-index: -1; opacity: 1;}
 .bg-video video {max-width: unset; height: 100%;}
 .bg-video-layer {position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: #000; z-index: -1; opacity: 0; visibility: hidden;}
@@ -64,6 +65,26 @@ h2 {font-family: "Oswald";}
 .video-layer > div {height: 100%;}
 .video-layer--main {top: 4rem; right: -16.2vw;}
 .video-layer--sub {top: 19rem; right: -42.5vw;}
+.video-layer--sub img {display: block;}
+
+/* shape motion */
+.video-layer--main {animation: main-shape-move 2s forwards;}
+
+.video-layer--sub {animation: main-shape-move-small 2s forwards;}
+
+@keyframes main-shape-move {
+  0% {right: -20vw;}
+  100% {right: -16.2vw;}
+}
+@keyframes main-shape-move-small {
+  0% {right: -46.5vw;}
+  100% {right: -42.5vw;}
+}
+
+/* @keyframes shape-move-small {
+  0% {width: 796px; right: calc(-100% + 348px);}
+  100% {width: 896px; right: calc(-100% + 398px);}
+} */
 
 /* 섹션 공통 */
 section {position: relative; overflow: hidden;}

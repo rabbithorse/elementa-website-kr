@@ -584,7 +584,7 @@
         </span>
       </h2>
     </section>
-    <section class="newsroom-section relative md:pt-[6.25rem] pt-[3.25rem] pb-[6rem]" ref="newsroomSection">
+    <section class="newsroom-section relative md:pt-[6.25rem] pt-[3.25rem] pb-[6rem] min-h-dvh" ref="newsroomSection">
       <div class="bg-text flex xl:flex-col flex-col-reverse absolute xl:bottom-0 bottom-[3.75rem] left-0 ">
         <span class="text-[#403B4E] md:text-[5rem] text-[2.5rem] font-bold font-oswald">NEW PARADIGM, LASTING IMPACT. ELEMENTA KOREA</span>
         <h2 class="md:text-[28rem] text-[12.5rem] gradient-text grey font-bold">ELEMENTA ELEMENTA</h2>
@@ -610,7 +610,7 @@
             </p>
           </div>
           <div class="card-grid flex flex-col gap-y-18">
-            <EffectGlass class="card-glass relative after:absolute after:inset-y-0 after:right-0 after:w-80 max-md:ml-[-2%]">
+            <EffectGlass class="card-glass relative after:absolute after:inset-y-0 after:right-0 after:w-80 max-md:ml-[-2%] py-5">
               <div class="card-list md:gap-[3.75rem] gap-4 justify-center flow-left md:mb-[4.375rem] flex flex-row" ref="flowLeft">
                 <div class="card md:w-[28rem] w-[21rem]" >
                   <EffectCardHover>
@@ -929,71 +929,6 @@ onBeforeUnmount(() => {
 
 onMounted(async () => {
 
-  $ScrollTrigger.matchMedia({
-
-    // 1024 이상
-    "(min-width: 1024px)": () => {
-      // 큰 토형
-      $gsap.timeline({
-        scrollTrigger: {
-          trigger: videoBigShape.value,
-          start: 'top top',
-          end: 'center top',
-          scrub: true,
-          // markers: true
-        },
-      }).to(videoBigShape.value, {
-        y: '-100px',
-        ease: 'none',
-      })
-
-      // 작은 도형
-      $gsap.timeline({
-        scrollTrigger: {
-          trigger: videoSmallShape.value,
-          start: '10% 20%',
-          end: '50% top',
-          scrub: true,
-          //markers: true
-        },
-      }).to(videoSmallShape.value, {
-        y: '-80px',
-        ease: 'none',
-      })
-    },
-
-    // 1023 이하
-    "(max-width: 1023px)": () => {
-      // 큰 토형
-      $gsap.timeline({
-        scrollTrigger: {
-          trigger: videoBigShape.value,
-          start: 'top top',
-          end: 'center top',
-          scrub: true,
-          // markers: true
-        },
-      }).to(videoBigShape.value, {
-        y: '-40px',
-        ease: 'none',
-      })
-
-      // 작은 도형
-      $gsap.timeline({
-        scrollTrigger: {
-          trigger: videoSmallShape.value,
-          start: '10% 20%',
-          end: '50% top',
-          scrub: true,
-          //markers: true
-        },
-      }).to(videoSmallShape.value, {
-        y: '-30px',
-        ease: 'none',
-      })
-    },
-  })
-
   const characterRevealItems = missionSection.value.querySelectorAll('.primary-character');
   const characterRevealArray = Array.from(characterRevealItems);
   const characterDisappearItems = missionSection.value.querySelectorAll('.primary-character--disappear');
@@ -1243,7 +1178,7 @@ onMounted(async () => {
       const newsroomTl = $gsap.timeline({
         scrollTrigger: {
           trigger: newsroomSection.value,
-          start: 'center 35%',
+          start: 'top 5%',
           pin: true,
           end: () => "+=" + (newsroomSection.value.offsetHeight * 2),
           scrub: 1,

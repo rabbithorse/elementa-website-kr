@@ -1,5 +1,5 @@
 <template>
-  <header id="header" :scrollDirection="scrollDirection" :class="['fixed w-full lg:py-[1.55rem] py-5 z-50', headerClass]">
+  <header id="header" :scrollDirection="scrollDirection" :class="['fixed w-full lg:py-[1.55rem] sm:py-5 py-3 z-50', headerClass]">
     <Container class="2xl:px-8 lg:px-6 px-4 py-[12px]">
       <NuxtLink href="/" class="flex items-center 2xl:w-auto md:w-32 w-[88px]">
         <Logo class="text-white" />
@@ -10,7 +10,7 @@
       :class="{
         'opened shadow-md bg-opacity-75 rounded-md': isOpen, '': !isOpen
       }"
-      class="fixed z-[100] text-white transition duration-300 xl:hidden lg:p-[1.1rem] md:p-[1rem] p-3 rounded-md lg:top-[1.55rem] top-5 lg:right-[2%] right-[5%] hamburger-open"
+      class="fixed z-[100] text-white transition duration-300 xl:hidden lg:p-[1.1rem] md:p-[1rem] p-3 rounded-md lg:top-[1.55rem] sm:top-5 top-3 lg:right-[2%] right-[5%] hamburger-open"
       @click="toggle"
       :isOpen="isOpen"
     >

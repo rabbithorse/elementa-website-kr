@@ -81,5 +81,6 @@ import silverpalace from '@/assets/videos/main-game-silverpalace_enc.mp4';
 
   .opened .accordion-glass {
     opacity: 0;
+    z-index: -10;
   }
 </style>
