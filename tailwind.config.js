@@ -11,6 +11,9 @@ export default {
   theme: {
     extend: {
       screens: {
+        '6xl': '2880px',
+        '5xl': '2560px',
+        '4xl': '1920px',
         '3xl': '1856px',
       },
     },

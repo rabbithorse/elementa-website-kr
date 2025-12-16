@@ -90,7 +90,7 @@
         <div class="absolute right-0 inset-y-0 h-full 2xl:w-[11.6rem] lg:w-[8rem] sm:w-14 w-9 z-20">
           <EffectGlass class="w-full h-full" />
         </div>
-        <div class="section-heading absolute 2xl:left-[15.2rem] lg:left-[10.6rem] sm:left-20 left-14 top-[3.75rem]">
+        <div class="section-heading absolute 2xl:left-[15.2rem] lg:left-[10.6rem] sm:left-20 left-14 6xl:top-[9.25rem] top-[3.75rem]">
           <div class="heading-text flex flex-col md:gap-y-10 gap-y-4">
             <span class="sectionTitle-eng text-white md:text-base text-sm relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] md:before:w-3 md:before:h-3 before:w-[0.625rem] before:h-[0.625rem] before:rounded-full pl-5">Our Mission</span>
           </div>
