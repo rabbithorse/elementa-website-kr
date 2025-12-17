@@ -20,8 +20,8 @@
       <div class="cut_01 w-full h-full flex items-end absolute z-20" ref="cutBg01">
         <!-- 씬 1 배경 -->
         <div class="cut_01_inner absolute sm:bottom-0 left-0 w-full">
-            <img src="~/assets/images/sub/cut-scene-01.png" alt="scene image 1" class="sm:block hidden">
-            <img src="~/assets/images/sub/cut-scene-01-m.jpg" alt="scene image 1" class="sm:hidden block">
+            <img src="~/assets/images/sub/cut-scene-01.png" alt="scene image 1" class="pc-scene">
+            <img src="~/assets/images/sub/cut-scene-01-m.jpg" alt="scene image 1" class="m-scene">
         </div>
         <!-- 씬 1 대사 -->
         <Container>
@@ -40,8 +40,8 @@
       <div class="cut_02 w-full h-full flex items-end absolute z-10" ref="cutBg02">
         <!-- 씬 2 배경 -->
         <div class="cut_02_inner absolute bottom-0 left-0 w-full">
-            <img src="~/assets/images/sub/cut-scene-02.png" alt="scene image 2" class="sm:block hidden">
-            <img src="~/assets/images/sub/cut-scene-02-m.jpg" alt="scene image 2" class="sm:hidden block">
+            <img src="~/assets/images/sub/cut-scene-02.png" alt="scene image 2" class="pc-scene">
+            <img src="~/assets/images/sub/cut-scene-02-m.jpg" alt="scene image 2" class="m-scene">
         </div>
         <!-- 씬 2 대사 -->
         <Container>
@@ -337,28 +337,29 @@
     <section class="character-intro-modal fixed inset-0 z-50" v-show="showCharModal">
       <div class="modal-inner bg-white w-full h-full relative overflow-y-auto" ref="modalContentRef">
         <!-- Sticky 가로 아코디언 -->
-        <div class="char-accordion sticky top-0 flex lg:flex-row flex-col" ref="accordionRef">
+        <div class="char-accordion sticky top-0 flex md:flex-row flex-col" ref="accordionRef">
           <!-- 탐정 : 여 -->
           <div class="acc-box" @click="jumpTo(0)">
             <!-- 캐릭터 이름 -->
-            <div class="char-name overflow-hidden">
-              <p class="num text-2xl font-medium text-center">01</p>
+            <div class="char-name lg:overflow-hidden">
+              <p class="num lg:text-2xl text-[0.94rem] font-medium md:text-center">01</p>
               <span class="name-light"></span>
               <p class="name-tit font-normal">탐정</p>
-              <span class="char-thumb block"><img src="~/assets/images/sub/acc-char-thumb01.png" alt="탐정"></span>
+              <span class="char-thumb md:block hidden"><img src="~/assets/images/sub/acc-char-thumb01.png" alt="탐정"></span>
+              <span class="char-thumb md:hidden block"><img src="~/assets/images/sub/acc-char-thumb01-m.png" alt="탐정"></span>
               <span class="acc-line"></span>
             </div>
             <!-- 캐릭터 콘텐츠 -->
             <div class="char-cont relative z-10 w-full h-full overflow-hidden">
               <div class="inner relative">
                 <div class="info text-white absolute z-10">
-                  <p class="info-tit text-center 2xl:text-3xl text-2xl opacity-[.7] font-bold z-10 relative">Character</p>
+                  <p class="info-tit text-center 2xl:text-3xl lg:text-2xl text-lg opacity-[.7] font-bold z-10 relative">Character</p>
                   <div class="info-wrap relative">
                     <div class="tit-wrap relative z-10">
                       <p class="tit 2xl:text-[1.75rem] text-xl font-normal">탐정</p>
-                      <p class="opacity-[.5] text-[0.94rem] font-normal">주인공</p>
+                      <p class="opacity-[.5] lg:text-[0.94rem] text-xs font-normal">주인공</p>
                     </div>
-                    <p class="2xl:text-[1.06rem] text-sm font-normal relative z-10 leading-[1.6]">두뇌가 명석하고 능률적인 일처리를 선보이는 <br>
+                    <p class="2xl:text-[1.06rem] lg:text-sm text-xs font-normal relative z-10 leading-[1.6] break-keep">두뇌가 명석하고 능률적인 일처리를 선보이는 <br>
                     이성적이며 신뢰할 수 있는 탐정. <br>
                     현재 가족의 죽음을 둘러싼 진상을 밝히기 위해 분투하고 있다. <br>
                     파국적인 사건 이후 줄곧 실버니아를 더나 있었지만, <br>
@@ -368,7 +369,7 @@
                 <img src="~/assets/images/sub/char-cont-image01.png" alt="탐정 캐릭터" class="char-thumb">
               </div>
             </div>
-            <button class="modal-close absolute bottom-[50px] left-[20px] w-[126px] h-[145px] flex justify-center items-center z-[100]" @click="closeModal">
+            <button class="modal-close absolute lg:w-[126px] lg:h-[145px] w-[63px] h-[68px] flex justify-center items-center z-[100]" @click="closeModal">
               &times;
             </button>
           </div>
@@ -376,24 +377,25 @@
           <!-- 탐정 : 남 -->
           <div class="acc-box" @click="jumpTo(1)">
             <!-- 캐릭터 이름 -->
-            <div class="char-name overflow-hidden">
-              <p class="num text-2xl font-medium text-center">02</p>
+            <div class="char-name lg:overflow-hidden">
+              <p class="num lg:text-2xl text-[0.94rem] font-medium md:text-center">02</p>
               <span class="name-light"></span>
               <p class="name-tit font-normal">탐정</p>
-              <span class="char-thumb block"><img src="~/assets/images/sub/acc-char-thumb02.png" alt="탐정"></span>
+              <span class="char-thumb md:block hidden"><img src="~/assets/images/sub/acc-char-thumb02.png" alt="탐정"></span>
+              <span class="char-thumb md:hidden block"><img src="~/assets/images/sub/acc-char-thumb02-m.png" alt="탐정"></span>
               <span class="acc-line"></span>
             </div>
             <!-- 캐릭터 콘텐츠 -->
             <div class="char-cont relative z-10 w-full h-full overflow-hidden">
               <div class="inner relative">
                 <div class="info text-white absolute z-10">
-                  <p class="info-tit text-center 2xl:text-3xl text-2xl opacity-[.7] font-bold z-10 relative">Character</p>
+                  <p class="info-tit text-center 2xl:text-3xl lg:text-2xl text-lg opacity-[.7] font-bold z-10 relative">Character</p>
                   <div class="info-wrap relative">
                     <div class="tit-wrap relative z-10">
                       <p class="tit 2xl:text-[1.75rem] text-xl font-normal">탐정</p>
-                      <p class="opacity-[.5] text-[0.94rem] font-normal">주인공</p>
+                      <p class="opacity-[.5] lg:text-[0.94rem] text-xs font-normal">주인공</p>
                     </div>
-                    <p class="2xl:text-[1.06rem] text-sm font-normal relative z-10 leading-[1.6]">
+                    <p class="2xl:text-[1.06rem] lg:text-sm  text-xs font-normal relative z-10 leading-[1.6] break-keep">
                       두뇌가 명석하고 능률적인 일처리를 선보이는 <br>
                       이성적이며 신뢰할 수 있는 탐정. <br>
                       현재 가족의 죽음을 둘러싼 진상을 밝히기 위해 분투하고 있다. <br>
@@ -405,7 +407,7 @@
                 <img src="~/assets/images/sub/char-cont-image02.png" alt="탐정 캐릭터" class="char-thumb">
               </div>
             </div>
-            <button class="modal-close absolute bottom-[50px] left-[20px] w-[126px] h-[145px] flex justify-center items-center z-[100]" @click="closeModal">
+            <button class="modal-close absolute lg:w-[126px] lg:h-[145px] w-[63px] h-[68px] flex justify-center items-center z-[100]" @click="closeModal">
               &times;
             </button>
           </div>
@@ -413,26 +415,27 @@
           <!-- 알프 -->
           <div class="acc-box" @click="jumpTo(2)">
             <!-- 캐릭터 이름 -->
-            <div class="char-name overflow-hidden">
-              <p class="num text-2xl font-medium text-center">03</p>
+            <div class="char-name lg:overflow-hidden">
+              <p class="num lg:text-2xl text-[0.94rem] font-medium md:text-center">03</p>
               <span class="name-light"></span>
               <p class="name-tit font-normal">알프</p>
-              <span class="char-thumb block"><img src="~/assets/images/sub/acc-char-thumb03.png" alt="알프"></span>
+              <span class="char-thumb md:block hidden"><img src="~/assets/images/sub/acc-char-thumb03.png" alt="알프"></span>
+              <span class="char-thumb md:hidden block"><img src="~/assets/images/sub/acc-char-thumb03-m.png" alt="알프"></span>
               <span class="acc-line"></span>
             </div>
             <!-- 캐릭터 콘텐츠 -->
             <div class="char-cont relative z-10 w-full h-full overflow-hidden">
               <div class="inner relative">
                 <div class="info text-white absolute z-10">
-                  <p class="info-tit text-center 2xl:text-3xl text-2xl opacity-[.7] font-bold z-10 relative">Character</p>
+                  <p class="info-tit text-center 2xl:text-3xl lg:text-2xl text-lg opacity-[.7] font-bold z-10 relative">Character</p>
                   <div class="info-wrap relative">
                     <div class="tit-wrap relative z-10">
                       <p class="tit 2xl:text-[1.75rem] text-xl font-normal">알프</p>
-                      <p class="opacity-[.5] text-[0.94rem] font-normal">주인공</p>
+                      <p class="opacity-[.5] lg:text-[0.94rem] text-xs font-normal">주인공</p>
                     </div>
-                    <p class="2xl:text-[1.06rem] text-sm font-normal relative z-10 leading-[1.6]">
+                    <p class="2xl:text-[1.06rem] lg:text-sm  text-xs font-normal relative z-10 leading-[1.6] break-keep">
                       메이드 협회의 49번 메이드로, 덤벙대고 고집스러운 소녀. <br>
-                      탐정의 선한 본성을 본능적으로 느꼈는지, 항상 그 곁을 떠나려 <br>
+                      탐정의 선한 본성을 본능적으로 느꼈는지, 항상 그 곁을 떠나려 <br class="sm:block hidden">
                       하지 않는다. 상식이 없고 가산ㄴ 미숙하며, 또 눈치도 없다. <br>
                       그녀는 세상 모든 것이 신선한 듯하다.
                     </p>
@@ -441,7 +444,7 @@
                 <img src="~/assets/images/sub/char-cont-image03.png" alt="알프 캐릭터" class="char-thumb">
               </div>
             </div>
-            <button class="modal-close absolute bottom-[50px] left-[20px] w-[126px] h-[145px] flex justify-center items-center z-[100]" @click="closeModal">
+            <button class="modal-close absolute lg:w-[126px] lg:h-[145px] w-[63px] h-[68px] flex justify-center items-center z-[100]" @click="closeModal">
               &times;
             </button>
           </div>
@@ -449,8 +452,8 @@
           <!-- 아르고스 -->
           <div class="acc-box" @click="jumpTo(3)">
             <!-- 캐릭터 이름 -->
-            <div class="char-name overflow-hidden">
-              <p class="num text-2xl font-medium text-center">04</p>
+            <div class="char-name lg:overflow-hidden">
+              <p class="num lg:text-2xl text-[0.94rem] font-medium md:text-center">04</p>
               <span class="name-light"></span>
               <p class="name-tit font-normal">아르고스</p>
               <span class="char-thumb block"><img src="~/assets/images/sub/acc-char-thumb04.png" alt="아르고스"></span>
@@ -460,13 +463,13 @@
             <div class="char-cont relative z-10 w-full h-full overflow-hidden">
               <div class="inner relative">
                 <div class="info text-white absolute z-10">
-                  <p class="info-tit text-center 2xl:text-3xl text-2xl opacity-[.7] font-bold z-10 relative">Character</p>
+                  <p class="info-tit text-center 2xl:text-3xl lg:text-2xl text-lg opacity-[.7] font-bold z-10 relative">Character</p>
                   <div class="info-wrap relative">
                     <div class="tit-wrap relative z-10">
                       <p class="tit 2xl:text-[1.75rem] text-xl font-normal">아르고스</p>
-                      <p class="opacity-[.5] text-[0.94rem] font-normal">주인공</p>
+                      <p class="opacity-[.5] lg:text-[0.94rem] text-xs font-normal">주인공</p>
                     </div>
-                    <p class="2xl:text-[1.06rem] text-sm font-normal relative z-10 leading-[1.6]">
+                    <p class="2xl:text-[1.06rem] lg:text-sm  text-xs font-normal relative z-10 leading-[1.6] break-keep">
                       말재간 좋은 바텐더 청년. 성공을 꿈꾸며 야심 차게 메이드 <br>
                       협회에 가입했으나, 현실은 생각처럼 녹록치 않았다. 그래도 <br>
                       일은 해야 했기에, 아르코스는 바 카운터 뒤에서 오가는 말에 <br>
@@ -477,7 +480,7 @@
                 <img src="~/assets/images/sub/char-cont-image04.png" alt="아르고스 캐릭터" class="char-thumb">
               </div>
             </div>
-            <button class="modal-close absolute bottom-[50px] left-[20px] w-[126px] h-[145px] flex justify-center items-center z-[100]" @click="closeModal">
+            <button class="modal-close absolute lg:w-[126px] lg:h-[145px] w-[63px] h-[68px] flex justify-center items-center z-[100]" @click="closeModal">
               &times;
             </button>
           </div>
@@ -1135,8 +1138,8 @@ onMounted(() => {
      })
     // (01) 에필로그 로고 및 비디오 등장 애니메이션
     .fromTo(maskBgLine, {opacity: 0.5}, {opacity: 0, duration: 1, ease: "power2.out" }, "<") // 동시 진행
-    .to([logoHole, recHole], { scale: 40.5, duration: 1.5, ease: "none" }, ">+0.5")
-    .to([logoHole, recHole], { opacity: 0, duration: 1, ease: "none" }, ">+0.01")
+    .to([logoHole, recHole], { scale: 40.5, duration: 2, ease: "none" }, ">+0.5")
+    .to([logoHole, recHole], { opacity: 0, duration: 1, ease: "none" }, "<")
     .to(maskBgLine, { "visibility": "hidden", duration: 0.01 }, ">+0.01") // 레이어 순서 때문에 뒤에 둠
     .to(logoHoleWrap, { "visibility": "hidden", duration: 0.01 }, "<") // 동시 진행
     .to(videoCover, {"visibility": "hidden", duration: 0.01 }, "<") // 동시 진행
