@@ -67,20 +67,6 @@ h2 {font-family: "Oswald";}
 .video-layer--sub {top: 19rem; right: -42.5vw;}
 .video-layer--sub img {display: block;}
 
-/* shape motion */
-.video-layer--main {animation: main-shape-move 2s forwards;}
-
-.video-layer--sub {animation: main-shape-move-small 2s forwards;}
-
-@keyframes main-shape-move {
-  0% {right: -20vw;}
-  100% {right: -16.2vw;}
-}
-@keyframes main-shape-move-small {
-  0% {right: -46.5vw;}
-  100% {right: -42.5vw;}
-}
-
 /* @keyframes shape-move-small {
   0% {width: 796px; right: calc(-100% + 348px);}
   100% {width: 896px; right: calc(-100% + 398px);}
@@ -111,6 +97,9 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 .locked.locked3 .accordion-trigger {background: rgba(0, 0, 0, 0.80);}
 .locked button {display: flex; flex-direction: column; align-items: center; row-gap: 2rem;}
 .accordion-item .content-bg {z-index: -1;}
+/* .accordion-item .content-text {box-shadow: -30px 0 30px 0 rgba(255, 174, 0, 0.10) inset, 20px 0 50px 0 rgba(255, 187, 0, 0.05) inset, 50px 4px 100px 0 rgba(0, 0, 0, 0.25), 100px 0 200px 0 rgba(255, 174, 0, 0.05) inset, 3px 0 3px 0 rgba(255, 255, 255, 0.40) inset;} */
+.accordion-item .content-text {position: relative;}
+.accordion-item .content-text::before {content: ""; display: block; inset: 0; box-shadow: -30px 0 30px 0 rgba(255, 174, 0, 0.10) inset, 20px 0 50px 0 rgba(255, 187, 0, 0.05) inset, 50px 4px 100px 0 rgba(0, 0, 0, 0.25), 100px 0 200px 0 rgba(255, 174, 0, 0.05) inset, 3px 0 3px 0 rgba(255, 255, 255, 0.40) inset; position: absolute; z-index: 1;}
 .accordion-item .content-text * {color: #fff;}
 .accordion-item.opened .accordion-content {width: 100%;}
 .locked-title-icon {display: inline-block; width: 28px; height: 42px; background: url("~/assets/images/main/icon-lock.svg") no-repeat center/contain; z-index: 1;}
@@ -122,6 +111,8 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 .locked-title-text {transform: rotate(0)}
 
 .curtain-item {opacity: 0; background: rgba(0, 0, 0, 0.20); box-shadow: -2px -3px 3px 0 rgba(255, 255, 255, 0.25) inset, 5px 3px 5px 0 rgba(255, 255, 255, 0.40) inset;}
+.curtain-item:nth-child(1) {z-index: 2;}
+.curtain-item:nth-child(2) {z-index: 1;}
 
 .slider-img {/*clip-path: polygon(7% 0, 100% 0%, 92% 100%, 0% 100%);*/ transform: skewX(-6deg); max-width: 0; overflow: hidden; position: relative;}
 .slider-img video {}

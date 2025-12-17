@@ -16,7 +16,7 @@
         </EffectGlass>
       </div>
       <div ref="videoSubWrap" class="video-layer video-layer--sub z-[1]">
-        <img src="~/assets/images/main/main-war.jpg" alt="" ref="videosmallShape">
+        <img src="~/assets/images/main/main-war.jpg" alt="" ref="videoSmallShape">
       </div>
       <div class="intro-section h-full" ref="introSection">
         <Container class="h-full">
@@ -937,6 +937,47 @@ onMounted(async () => {
   const characterDelayArray = Array.from(characterDelayItems);
 
   ctx = $gsap.context(() => {
+    const introTl = $gsap.timeline({
+      scrollTrigger: {
+        trigger: visualSection.value,
+        start: "top 80%",
+      }
+    })
+
+    introTl.fromTo(videoWrap.value, {
+      x: '3%',
+      opacity: 0,
+    }, {
+      x: '0%',
+      opacity: 1,
+      duration: 2,
+      ease: 'none',
+    }, 0)
+    .fromTo(videoBigShape.value, {
+      x: '8%',
+    }, {
+      x: '0%',
+      duration: 2,
+      ease: 'none',
+    },0)
+    .fromTo(videoSubWrap.value, {
+      x: '3%',
+      opacity: 0,
+    }, {
+      x: '0%',
+      opacity: 1,
+      duration: 2,
+      ease: 'none',
+    }, 0)
+    .fromTo(videoSmallShape.value, {
+      x: '5%',
+    }, {
+      x: '0%',
+      duration: 2,
+      ease: 'none',
+    }, "<")
+    
+
     const tl = $gsap.timeline({
       scrollTrigger: {
         trigger: visualSection.value,
@@ -1020,23 +1061,23 @@ onMounted(async () => {
     })
     .to(characterDisappearArray, {
       x: 150,
-      start: "top top",
+      //start: "top top",
       duration: 0.3,
       ease: "power2.out",
-      scrub: 1,
-    }, ">0.1")
+      scrub: true,
+    })
     .to(characterDelayArray, {
       x: 0,
       opacity: 1,
       visibility: 'visible',
-      start: "top top",
+      //start: "top top",
       ease: "power2.out",
       duration: 0.3,
-      scrub: 1,
-    }, ">-0.05")
+      scrub: true,
+    })
     .fromTo(missionBox.value, 
       { yPercent: 100, opacity: 0 },
-      { yPercent: 0, opacity: 1, duration: 1, stagger: 0.05, ease: "power2.out", scrub: 1 }, ">-0.1"
+      { yPercent: 0, opacity: 1, duration: 1, stagger: 0.05, ease: "power2.out", scrub: 1 }, ">"
     )
 
     
@@ -1075,6 +1116,9 @@ onMounted(async () => {
     const godownCurtainItems = wetheworldSection.value.querySelectorAll('.godownCurtain .curtain-item');
     const gotopCurtainItemArray = Array.from(gotopCurtainItems);
     const godownCurtainItemArray = Array.from(godownCurtainItems);
+    const blurValues = [150, 80, 25];
+    const opacityValues = [0.45, 0.425, 0.4];
+    const goYValues = ['82%', '75%', '66%'];
 
     wetheworldTl.to(wetheworldbg1.value, {
       opacity: 1,
@@ -1096,15 +1140,15 @@ onMounted(async () => {
     {
       start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
       duration: 0.05,
-      opacity: 0.4,
-      backdropFilter: 'blur(25px)'
+      opacity: (i) => `${opacityValues[i]}`,
+      backdropFilter: (i) => `blur(${blurValues[i]}px)`,
     })
     .to(godownCurtainItemArray, 
     {
       start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
       duration: 0.05,
-      opacity: 0.4,
-      backdropFilter: 'blur(25px)'
+      opacity: (i) => `${opacityValues[i]}`,
+      backdropFilter: (i) => `blur(${blurValues[i]}px)`,
     }, "<")
     .to(weText.value, {
       y: '-80vh',
@@ -1119,11 +1163,11 @@ onMounted(async () => {
       scrub: 8,
     }, "<")
     .to(gotopCurtainItemArray, {
-      yPercent: -100,
+      y: (i) => `-${goYValues[i]}`,
       stagger: 0.03,
     }, "<")
     .to(godownCurtainItemArray, {
-      yPercent: 100,
+      y: (i) => `${goYValues[i]}`,
       stagger: 0.03,
     }, "<")
     .to(wetheworldSlogan.value, {
@@ -1159,26 +1203,11 @@ onMounted(async () => {
 
     // 뉴스룸 섹션
     $ScrollTrigger.matchMedia({
-
-    "(min-width: 1024px)": function() {
-      const elementaKoreaTl = $gsap.timeline({
-        scrollTrigger: {
-          trigger: elementaKoreaSection.value,
-          start: 'top 80%',
-          scrub: 1,
-        }
-      })
-
-      elementaKoreaTl.to(sliderImg.value, {
-        maxWidth: '30rem',
-        ease: 'power2.out',
-        duration: 5,
-      })
-
+    "(min-width: 2560px)": function() {
       const newsroomTl = $gsap.timeline({
         scrollTrigger: {
           trigger: newsroomSection.value,
-          start: 'top 5%',
+          start: 'top 0%',
           pin: true,
           end: () => "+=" + (newsroomSection.value.offsetHeight * 2),
           scrub: 1,
@@ -1200,6 +1229,50 @@ onMounted(async () => {
         ease: 'power2.out',
         duration: 2,
       }, 0.2)
+    },
+
+    "(min-width: 1920px) and (max-width: 2559px)": function() {
+        const newsroomTl = $gsap.timeline({
+        scrollTrigger: {
+          trigger: newsroomSection.value,
+          start: 'top -35%',
+          pin: true,
+          end: () => "+=" + (newsroomSection.value.offsetHeight * 2),
+          scrub: 1,
+        }
+      })
+
+      newsroomTl.fromTo(flowLeft.value, {
+        x: "10%",
+      }, {
+        x: "-43%",
+        ease: 'power2.out',
+        duration: 2,
+      }, 0.2)
+
+      newsroomTl.fromTo(flowRight.value, {
+        x: "-47%",
+      }, {
+        x: "3%",
+        ease: 'power2.out',
+        duration: 2,
+      }, 0.2)
+    },
+
+    "(min-width: 1024px)": function() {
+      const elementaKoreaTl = $gsap.timeline({
+        scrollTrigger: {
+          trigger: elementaKoreaSection.value,
+          start: 'top 80%',
+          scrub: 1,
+        }
+      })
+
+      elementaKoreaTl.to(sliderImg.value, {
+        maxWidth: '30rem',
+        ease: 'power2.out',
+        duration: 5,
+      })
     },
 
     "(max-width: 1024px)": function() {
