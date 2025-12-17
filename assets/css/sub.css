@@ -337,6 +337,7 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
   .cut-scene {height: 100vh;}
   .cut-scene [class*="cut_"] {mask-image: linear-gradient(transparent 0%, black 43%);}
   .cut-scene img {width: 100%;}
+  .cut-scene img.m-scene {display: none;}
   .cut-scene .title {color: #CDBC79; top: -47px;}
   .cut-scene .normal,
   .cut-scene .normal-2 {padding-left: 80px; transform: translateY(-4px); line-height: 1.4;}
@@ -465,7 +466,7 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 .acc-box.open .char-cont.open .char-thumb {animation: appear 1s ease forwards; transform-origin: bottom; position: relative;}
 .acc-box.open .char-cont.open .info {animation: appear 2s ease forwards; max-width: 488px; width: 100%;}
 
-.acc-box.open .modal-close {display: block;}
+.acc-box.open .modal-close {display: block; bottom:50px; left: 20px;}
                                                                                                              
 @keyframes appear {
   0% {
@@ -769,6 +770,7 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 
   /* section03 : 게임 설명 intro */
   .acc-box {flex: 0 0 70px; grid-template-columns: 70px 1fr;}
+  .acc-box.open::after {width: 19.78vw;}
   .acc-box.open .char-cont .inner {margin-left: 7.19vw;}
   .acc-box .char-name .name-tit {font-size: 28px; left: -35px;}
   .acc-box.open .char-name .name-tit {font-size: 36px;}
@@ -817,6 +819,7 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
   .description .text-area .text-box.game-info.left {margin-left: 0;}
 
   .acc-box {flex: 0 0 70px; grid-template-columns: 70px 1fr;}
+  .acc-box.open::after {width: 19.78vw;}
   .acc-box.open .char-cont .inner {margin-left: 7.19vw;}
   .acc-box .char-name .name-tit {font-size: 28px; left: -35px;}
   .acc-box.open .char-name .name-tit {font-size: 36px;}
@@ -942,6 +945,7 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
   .panel_02 {height: 1000px;}
 
   /* section02 : 대사 씬 */
+  .cut-scene [class*="cut_"] {mask-image: linear-gradient(transparent 0%, black 10%);}
   .cut-scene .cut_01 .line-box,
   .cut-scene .cut_02 .line-box {width: 905px; height: 246px;}
   .cut-scene .cut_01 .line-box .line01-1 {padding-left: 228px; height: 117px;}
@@ -977,13 +981,44 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 
   .description .text-area .text-box.game-info.bottom {margin-bottom: 45px;}
   
-  .acc-box {grid-template-columns: 100%; grid-template-rows: 50px 1fr; flex: 0 0 50px;}
-  .acc-box .acc-line {left:0; top: 56px; width: 100%; height: 5px; background: url('~/assets/images/sub/character-acc-line-m.svg') repeat-x;}
-  .acc-box:first-child .acc-line {display: none;}
-  .acc-box.open::after {bottom: auto; top: 0; width: 100%; height: 32.68vw; background: url('~/assets/images/sub/char-bg-paper-m.svg') no-repeat top / cover;}
+  .acc-box {grid-template-columns: 50px 1fr; flex: 0 0 50px;}
+  .acc-box .char-name {padding: 20px 0;}
+  .acc-box .char-name .num {text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.50);}
+  .acc-box .char-name .name-tit {font-size: 20px; left: -41px; top: 130px;}
+  .acc-box .char-name .char-thumb {margin-top:0; transform: translateY(40px);}
+  .acc-box.open .char-name .name-tit {font-size: 20px;}
+  .acc-box.open .char-name .name-tit::after {transform: translate(10px, -50%);}
+  .acc-box.open .char-name .name-light {width: 512px; height: 39px;}
+  .acc-box.open:last-child .char-name .name-tit {left: -41px;}
+  .acc-box.open:last-child .char-name .name-tit::after {transform: translate(-25px, -50%);}
+  .acc-box.open:last-child .char-name .name-light {left: -230px;}
+
+  .acc-box.open .char-cont .inner {margin-left:0;}
+  .acc-box .char-cont .info {left: 40px; bottom: 7vw; max-width: 428px;}
+  .acc-box .char-cont .info .info-tit {padding-top: 48px;}
+  .acc-box .char-cont .info .info-wrap .tit-wrap {padding: 15px 0 10px;}
+  .acc-box .char-cont .info .info-wrap .tit-wrap + p {padding: 15px 0 20px;}
+
+  .acc-box.open .modal-close {bottom: auto; left: auto; top: 4px; right: 10px;}
+
   .char-step {height: 56.04vw;}
   
 }
+
+/*** 컷신 & 캐릭터 소개 모바일 가로세로 반응형 조절 ***/
+@media (min-height: 413px) and (max-height: 1280px) and (max-width: 915px) {
+  .acc-box:nth-child(1) .char-cont .char-thumb {width: 102.42vw; max-width: 102.42vw; transform: translateX(80px);}
+  .acc-box:nth-child(2) .char-cont .char-thumb {width: 84.4vw; max-width: 84.4vw;}
+  .acc-box:nth-child(3) .char-cont .char-thumb {width: 81.4VW; max-width: 81.4vw;}
+  .acc-box:nth-child(4) .char-cont .char-thumb {width: 94.04vw; max-width: 94.04vw;}
+  .acc-box.open::after {width: 40.78vw;}
+}
+@media (min-height: 413px) and (max-height: 1280px) and (max-width: 915px) {
+  .cut-scene img.m-scene {display: block;}
+  .cut-scene img.pc-scene {display: none;}
+}
+/*** 컷신 & 캐릭터 소개 모바일 가로세로 반응형 조절 ***/
+
 
 /* -------------------------------------- */
 /* MOBILE : 0 ~ 767 */
@@ -1150,22 +1185,61 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
   .description .text-area .text-box.game-info.left {margin-left: 0;}
 
   .description .text-area .text-box.game-info.bottom {margin-bottom: 45px;}
+
+  .acc-box {grid-template-columns: 100%; grid-template-rows: 80px 1fr; flex: 0 0 50px;}
+  .acc-box::before {opacity: 0.6;}
+  .acc-box .acc-line {left:0; top: 0; width: 100%; height: 5px; background: url('~/assets/images/sub/character-acc-line-m.svg') repeat-x;}
+  .acc-box:first-child .acc-line {display: none;}
+  .acc-box.open::after {bottom: auto; top: 0; width: 100%; height: 180px; background: url('~/assets/images/sub/char-bg-paper-m.svg') no-repeat top / cover;}
+  .acc-box .char-name {padding: 20px; display: flex; align-items: center; gap: 10px;}
+  .acc-box .char-name .num {text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.50);}
+  .acc-box .char-name .name-tit {transform: rotate(0deg); text-align: left; min-width: auto; position: relative; top: 0; left: 0; font-size: 20px;}
+  .acc-box.open .char-name .name-tit {font-size: 20px;}
+  .acc-box.open .char-name .name-tit::after {width: 36px; height: 36px; transform: translate(88px, -50%);}
+  .acc-box.open .char-name .name-light,
+  .acc-box.open:last-child .char-name .name-light {width: 310px; height: 61px; left:-35px; top:8px; transform: rotate(0deg);}
+  .acc-box.open:last-child .char-name .name-light {left: 5px;}
+  .acc-box.open:last-child .char-name .name-tit {left: 0;}
+  .acc-box.open:last-child .char-name .name-tit::after {transform: translate(125px, -50%);}
+
+  .acc-box .char-cont .info {left: 0px; bottom: 40px;}
+  .acc-box .char-cont .info .info-tit {padding-top: 40px;}
+  .acc-box .char-cont::after {content:''; width: 100%; height: 40vw; background: linear-gradient(to top, #09090b 30%, transparent 100%); z-index: 2; display: block; position: absolute; bottom: 0;}
+  .acc-box .char-cont .info .info-wrap .tit-wrap {background: url('/_nuxt/assets/images/sub/char-info-tit-bg04.svg') no-repeat bottom / 100%; padding: 20px 0 12px;}
+  .acc-box .char-cont .info .info-wrap .tit-wrap + p {padding: 15px 0;}
+  .acc-box.open .char-cont .inner {margin-left:0;}
+  .acc-box.open .char-cont.open .info {max-width: 94%; margin: 0 auto;}
+
+  .acc-box:not(.open) .char-name .num {transform: translateY(-13px);}
+  .acc-box:not(.open) .char-name .name-tit {transform: translateY(-13px);}
+  .acc-box:not(.open) .char-name .name-light {display: none;}
+
+  .acc-box .char-name .char-thumb {margin-top: 0; position: absolute; opacity: 0.5; max-width: 136px; right: 0; top: -18px;}
+
+  .acc-box.open .modal-close {bottom: auto; left: auto; top: 4px; right: 10px;}
+
+  .char-step {height: 56.04vw;}
 }
 
 
 /* 모바일 세부조정 */
 @media (max-width: 640px) {
-    /***** 게임 소개 *****/
+  /***** 게임 소개 *****/
+  /* section02 : 대사 씬 */
+  .cut-scene .cut_01 .line-box {width: 358px; height: 173px; left: -20px;}
+  .cut-scene .cut_01 .line-box .line01-1 {height: 81px; padding-left:0;}
+  .cut-scene .title {top: -42px; left: 65px;}
+  .cut-scene .normal-2 {transform: translateY(-43px);}
+  .cut-scene .cut_02 .line-box {width: 358px; height: 173px; right: -20px;}
+  .cut-scene .cut_02 .title {right: 64px; left: auto;}
+  .cut-scene .cut_02 .line-box .line02-1 {height: 81px;}
+  .cut-scene .cut_02 .line-box .line02-1 .normal {padding-left: 55px;}
 
-    /* section02 : 대사 씬 */
-    .cut-scene .cut_01 .line-box {width: 358px; height: 173px; left: -20px;}
-    .cut-scene .cut_01 .line-box .line01-1 {height: 81px; padding-left:0;}
-    .cut-scene .title {top: -42px; left: 65px;}
-    .cut-scene .normal-2 {transform: translateY(-43px);}
-    .cut-scene .cut_02 .line-box {width: 358px; height: 173px; right: -20px;}
-    .cut-scene .cut_02 .title {right: 64px; left: auto;}
-    .cut-scene .cut_02 .line-box .line02-1 {height: 81px;}
-    .cut-scene .cut_02 .line-box .line02-1 .normal {padding-left: 55px;}
+  /* section03 : 게임 설명 intro */
+  .acc-box:nth-child(1) .char-cont .char-thumb {width: 172.42vw; max-width: 172.42vw;}
+  .acc-box:nth-child(2) .char-cont .char-thumb {width: 154.4vw; max-width: 154.4vw; transform: translateX(9%);}
+  .acc-box:nth-child(3) .char-cont .char-thumb {width: 141.4VW; max-width: 141.4vw; transform: translateX(5%);}
+  .acc-box:nth-child(4) .char-cont .char-thumb {width: 154.04VW; max-width: 154.04vw; transform: translateX(11%);}
 }
 
 @media (max-width: 375px) {
