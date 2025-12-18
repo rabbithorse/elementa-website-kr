@@ -68,7 +68,7 @@
       </div>
       <!-- 두번째 애니메이션 -->
       <div class="mission-section flex flex-col xl:gap-y-16 md:gap-y-10 gap-y-8 justify-center items-center relative" ref="missionSection">
-        <div class="text-wrap w-full">
+        <div class="text-wrap w-full" ref="missionContentWrap">
           <h2 class="2xl:text-[13.75rem] xl:text-[185px] md:text-[150px] leading-1 font-bold text-white">
             <div class="top-line md:pb-0 pb-[6px]">
               <div ref="weCreate" class="leading-none text-[length:inherit]" >
@@ -812,7 +812,7 @@
         </Container>
       </div>
       <div class="section-content">
-        <EffectGlass class="content-glass">
+        <EffectGlass class="content-glass py-[108px]">
           <div class="controls xl:hidden flex gap-3 items-center justify-end">
             <PrevButton :swiper="swiperInstance" />
             <NextButton :swiper="swiperInstance" />
@@ -983,9 +983,10 @@ onMounted(async () => {
         trigger: visualSection.value,
         start: "top top",
         pin: true, 
+        scrub: 1,
         //pinSpacing: true,
-        //markers: true,
-        end: () => "+=620%",
+        markers: true,
+        end: () => "+=800%",
       }
     });
     tl.to(videoWrap.value,
@@ -1034,69 +1035,132 @@ onMounted(async () => {
         scrub: 1,
       }
     })
-
-    $gsap.timeline({
-      scrollTrigger: {
-        pin: true,
-        trigger: missionSection.value,
-        start: () => "+=120%",
-      },
-    })
-    .to(missionSection.value, 
-    {
+    .to(missionSection.value, {
       yPercent: -100,
-      ease: 'none',
+      ease: "none",
+      scrub: 1,
       scrollTrigger: {
-        start: () => "+=" + visualSection.value.offsetHeight - 120,
-        end: () => "+=" + (visualSection.value.offsetHeight * 1.2),
+        //trigger: missionSection.value,
+        start: () => "+=" + (visualSection.value.offsetHeight * 0.3),
+        end: () => "+=100%",
         scrub: 1,
       }
-    })
-    .to(characterRevealArray, {
-      x: 0,
-      start: "top top",
-      opacity: 1,
-      duration: 0.3,
-      scrub: 1,
-    })
-    .to(characterDisappearArray, {
-      x: 150,
-      //start: "top top",
-      duration: 0.3,
-      ease: "power2.out",
-      scrub: true,
-    })
-    .to(characterDelayArray, {
-      x: 0,
-      opacity: 1,
-      visibility: 'visible',
-      //start: "top top",
-      ease: "power2.out",
-      duration: 0.3,
-      scrub: true,
-    })
-    .fromTo(missionBox.value, 
-      { yPercent: 100, opacity: 0 },
-      { yPercent: 0, opacity: 1, duration: 1, stagger: 0.05, ease: "power2.out", scrub: 1 }, ">"
-    )
+    }, ">1")
+    
+
+
+    
+    
+
+    let currentStep = -1
+const animations = []
+
+// 각 애니메이션을 개별 타임라인으로 생성 (paused 상태)
+const anim1 = $gsap.timeline({ paused: true })
+  .to(characterRevealArray, {
+    x: 0,
+    opacity: 1,
+    duration: 0.5, // 실제 애니메이션 시간
+    ease: "none"
+  })
+  .fromTo(missionBox.value, 
+    { yPercent: 100, opacity: 0 },
+    { yPercent: 0, opacity: 1, duration: 0.4, stagger: 0.05, ease: "power2.out" }, 0
+  )
+
+const anim2 = $gsap.timeline({ paused: true })
+  .to(characterDisappearArray, {
+    x: 0,
+    opacity: 1,
+    duration: 0.5, // 실제 애니메이션 시간
+    ease: "none"
+  })
+  .to(characterDisappearArray, {
+    x: 150,
+    duration: 0.6,
+    ease: "none",
+  })
+
+const anim3 = $gsap.timeline({ paused: true })
+  .to(characterDelayArray, {
+    x: 0,
+    opacity: 1,
+    visibility: 'visible',
+    ease: "none",
+    duration: 0.5,
+  })
+
+  //const anim4 =  $gsap.timeline({ paused: true })
+  
+
+animations.push(anim1, anim2, anim3);
+
+
+$ScrollTrigger.create({
+  trigger: missionSection.value,
+  //pin: true,
+   start: "top top",
+  end: "+=600%",
+  scrub: 1,
+  anticipatePin: 1,
+  onEnter: () => {
+    // pin이 시작될 때 y 위치 초기화
+    // $gsap.set(missionSection.value, { 
+    //   yPercent: 0,
+    //   clearProps: 'transform' // 기존 transform 제거
+    // })
+  },
+  onUpdate: (self) => {
+    const margin = 0.3; 
+    if (self.progress < margin) return;
+
+    // progress를 (margin ~ 1) 사이에서 (0 ~ 1)로 재계산
+    const adjustedProgress = (self.progress - margin) / (1 - margin);
+    const newStep = Math.floor(adjustedProgress * 3);
+
+    if (newStep !== currentStep && newStep > currentStep) {
+      for (let i = currentStep + 1; i <= newStep; i++) {
+        if (i >= 0 && i < animations.length) {
+          animations[i].play();
+        }
+      }
+      currentStep = newStep;
+    }
+  },
+  
+})
+
+    
 
     
 
     // 아코디언 섹션
     const accordionItems = accordionSection.value.querySelectorAll('.accordion-list > *');
     const accordionArray = Array.from(accordionItems);
+
+    $gsap.timeline({
+      scrollTrigger: {
+        trigger: accordionSection.value,
+        start: 'top top',
+        pin: true,
+        pinSpacing: true,
+        end: () => "+=" + (accordionSection.value.offsetHeight * 1.5),
+        //scrub: 1,
+      }
+    })
   
     accordionArray.forEach((item, i) => {
       $gsap.from(item, {
         scrollTrigger: {
           trigger: item,
-          start: 'top 90%',
+          start: 'top 50%',
+          duration: 0.15,
           //scrub: 1,
         },
         x: 100,
         y: 50,
         opacity: 0,
-        stagger: 0.1,
+        stagger: 0.2,
       })
     });
 
