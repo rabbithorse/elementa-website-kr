@@ -196,7 +196,7 @@
         </div>
         <Container>
         <div class="inner-video w-full h-full flex justify-center items-center relative">
-          <div class="dumy-box-left relative"><span class="font-bold text-base">Official Trailer</span></div>
+          <div class="dumy-box-left relative"><span class="font-bold">Official Trailer</span></div>
           <div class="video-box relative">
             <div class="movie-frame relative z-10">
               <div class="w-full mx-auto aspect-video">
@@ -217,11 +217,11 @@
         </div>
         </Container>
       </div>
-      <section class="h-[500px]"></section>
+      <section class="xl:h-[500px] h-[300px]"></section>
     </section>
     <!-- 위 영역과 간격 -->
     <!-- section05 : 수사보드 -->
-    <section class="inv-board overflow-hidden relative" ref="invBoard">
+    <section class="inv-board overflow-hidden relative xl:block hidden" ref="invBoard">
       <div class="inv-dimmed absolute z-10 w-full h-full top-0 left-0"></div>
       <div class="in-camera w-full overflow-hidden relative">
         <div class="bg relative flex flex-col items-center justify-end overflow-visible">
@@ -280,7 +280,7 @@
       </div>
     </section>
     <!-- section06 : 에필로그 -->
-    <section class="last-scene w-full overflow-hidden" ref="lastScene">
+    <section class="last-scene w-full overflow-hidden xl:block hidden" ref="lastScene">
       <div class="last-scene-inner w-full h-full relative">
         <!-- 비디오 -->
         <div class="w-full h-full top-0 left-0 z-20 absolute epilogue-video text-white">
@@ -293,15 +293,15 @@
         <!-- 엔딩 text 1 -->
         <div class="e-text sec01 flex w-full justify-center items-center z-20 absolute top-0 left-0">
           <div class="text-box text-center">
-            <span class="text-2xl font-semibold block pb-[10px]">탐정</span>
-            <p class="text-white text-[3.44rem] title tracking-[-1.65px] relative font-semibold z-10 leadding-[1.25]">우리는 운명에서 벗어날 수 없단 걸, <br>전 이미 깨달았죠.</p>
+            <span class="lg:text-2xl text-lg font-semibold block">탐정</span>
+            <p class="text-white xl:text-[3.44rem] lg:text-4xl sm:text-[1.63rem] text-[1.53rem] lg:pt-[20px] pt-[5px] title tracking-[-1.65px] relative font-semibold">우리는 운명에서 벗어날 수 없단 걸, <br>전 이미 깨달았죠.</p>
           </div>
         </div>
         <!-- 엔딩 text 2 -->
         <div class="e-text sec02 flex w-full justify-center items-center z-20 absolute top-0 left-0">
           <div class="text-box text-center">
-            <span class="text-2xl font-semibold block pb-[10px]">탐정</span>
-            <p class="text-white text-[3.44rem] title tracking-[-1.65px] relative font-semibold z-10 leadding-[1.25]">당신이 다시 써줄 수 있다면</p>
+            <span class="lg:text-2xl text-lg font-semibold block">탐정</span>
+            <p class="text-white xl:text-[3.44rem] lg:text-4xl sm:text-[1.63rem] text-[1.53rem] lg:pt-[20px] pt-[5px] title tracking-[-1.65px] relative font-semibold">당신이 다시 써줄 수 있다면</p>
             <div class="btn-wrap relative mt-[40px]">
               <ButtonsBasic color="yellow" size="lg-wide" id="dwnGame" href="">실버팰리스 다운로드</ButtonsBasic>
             </div>
@@ -330,6 +330,14 @@
           <div class="mask-bg-line absolute left-0 top-0 w-full"></div>
         </div>
       </div>
+    </section>
+    <!-- section 06 : 에필로그 모바일 -->
+    <section class="last-scene-m w-full overflow-hidden xl:hidden block relative" ref="lastSceneMobile">
+      <div class="epilogue-dimmed absolute  top-0 left-0 z-20 w-full"></div>
+      <Container class="absolute left-1/2 -translate-x-1/2 transform top-[100px] z-20 e-side-text">
+        <p class="relative text-white font-bold text-xl opacity-[0.8] pl-[3.13rem]">Epilogue</p>
+        <span class="smoke"></span>
+      </Container>
     </section>
 
     <!-- 캐릭터 소개 모달 -->
@@ -456,7 +464,8 @@
               <p class="num lg:text-2xl text-[0.94rem] font-medium md:text-center">04</p>
               <span class="name-light"></span>
               <p class="name-tit font-normal">아르고스</p>
-              <span class="char-thumb block"><img src="~/assets/images/sub/acc-char-thumb04.png" alt="아르고스"></span>
+              <span class="char-thumb md:block hidden"><img src="~/assets/images/sub/acc-char-thumb04.png" alt="아르고스"></span>
+              <span class="char-thumb md:hidden block"><img src="~/assets/images/sub/acc-char-thumb04-m.png" alt="아르고스"></span>
               <span class="acc-line"></span>
             </div>
             <!-- 캐릭터 콘텐츠 -->
@@ -499,19 +508,7 @@
 </template>
 
 <script setup>
-  // ===== GSAP / ScrollTrigger 관리용 =====
-  const timelines = []
-  const scrollTriggers = []
-
-  const addTimeline = (tl) => {
-    timelines.push(tl)
-    return tl
-  }
-
-  const addST = (st) => {
-    scrollTriggers.push(st)
-    return st
-  }
+  
 
   definePageMeta({
     layout: 'sub', 
@@ -521,6 +518,7 @@
   import { ref, onMounted, onUnmounted, nextTick } from 'vue'
   import { useNuxtApp } from '#app'
 
+  // 리사이즈 핸들러
   let handleResize = null
 
   const { $gsap, $ScrollTrigger, $lenis } = useNuxtApp()
@@ -558,6 +556,7 @@
 
   // section 06 refs - 마지막 영역
   const lastScene = ref(null)
+  const lastSceneMobile = ref(null)
 
   // 내부 텍스트를 글자 단위로 분리하는 함수
   const splitText = (element) => {
@@ -626,7 +625,6 @@ onMounted(() => {
     // 01. intro 섹션 - movieBg 고정
     /*-----------------------*/
 
-    const introPinST = addST(
       $ScrollTrigger.create({
         trigger: introSection.value,
         start:  panel02.value.offsetTop + 'top',
@@ -637,7 +635,7 @@ onMounted(() => {
         scrub: 2,
         //markers: true,
       })
-    )
+    
 
     /*-----------------------*/
     // 02. intro 섹션 - title 스크롤 효과
@@ -767,7 +765,6 @@ onMounted(() => {
     // (12) 컷 신 두번째 배경 서서히 사라짐
     .to(cutBg02.value, { opacity: 0, duration: 1}, ">+1")//동시 실행
 
-    addST(
       $ScrollTrigger.create({
         trigger: cutScene.value,
         start: 'top top',
@@ -777,7 +774,7 @@ onMounted(() => {
         pin: true,
         animation: cutSceneTimeline
       })
-    )
+    
 
     /*-----------------------*/
     // 05. 게임소개 섹션 - 게임소개 타임라인 애니메이션
@@ -878,7 +875,6 @@ onMounted(() => {
     .to(videoDes6, { opacity: 0, duration: 2 })
     .to(textDes6, { opacity: 0, duration: 2 }, ">-2") // 이전 효과 후 바로 실행
 
-    addST(
       $ScrollTrigger.create({
         trigger: descriptionSec.value,
         start: 'top top',
@@ -888,7 +884,7 @@ onMounted(() => {
         animation: desBgTimeline,
         // markers: true,
       })
-    )
+    
 
     /*-----------------------*/
     // 06. 유튜브 영상 섹션
@@ -920,27 +916,60 @@ onMounted(() => {
       trigger: videoBox,
       start: 'top bottom',
       end: "+=" + youtubeTimeline.duration() * 100 + " top",
-      // markers: true,
+      //markers: true,
       scrub: true,
       animation: youtubeTimeline,
     })
 
-    // 유튜브 섹션 사라짐 효과
-    $gsap.timeline({
-      scrollTrigger: {
-        trigger: youtubeArea.value,
-        start: 'center-=500 top',
-        end: "+=699",
-        scrub: true,
-        anticipatePin: 1,
-        // markers: true,
+    
+    // 유튜브 섹션 사라짐 효과 (최소 수정 버전)
+    $ScrollTrigger.matchMedia({
+
+      // 1024px 이상
+      "(min-width: 1280px)": () => {
+        $gsap.timeline({
+          scrollTrigger: {
+            trigger: youtubeArea.value,
+            start: "center-=500 top",
+            end: "+=699",
+            scrub: true,
+            anticipatePin: 1,
+            // markers: true,
+          }
+        }).to(youtubeArea.value, {
+          opacity: 0,
+          duration: 0.5,
+          ease: "power3.out"
+        })
+      },
+
+      // 1024px 미만
+      "(max-width: 1279px)": () => {
+        $gsap.timeline({
+          scrollTrigger: {
+            trigger: youtubeArea.value,
+            start: "center-=300 top",
+            end: "+=399",
+            scrub: true,
+            anticipatePin: 1,
+            // markers: true,
+          }
+        }).to(youtubeArea.value, {
+          opacity: 0,
+          duration: 0.5,
+          ease: "power3.out"
+        })
       }
-    }).to(youtubeArea.value, { opacity: 0, duration: 0.5, ease: "power3.out" })
+
+    });
+
+
 
     /*-----------------------*/
     // 07. 수사보드 섹션
     /*-----------------------*/
 
+    
     // 배경 캔버스 생성
     const canvas = document.getElementById("boardCanvas");
     const ctx = canvas.getContext("2d");
@@ -951,8 +980,7 @@ onMounted(() => {
     bgImg.src = new URL('@/assets/images/sub/board_bg_new.webp', import.meta.url).href;
 
     bgImg.onload = () => {
-      ctx.drawImage(bgImg, 0, 0, canvas.width, canvas.height);
-      
+      ctx.drawImage(bgImg, 0, 0, canvas.width, canvas.height);      
     };
 
     // 라인 캔버스 생성
@@ -1018,7 +1046,7 @@ onMounted(() => {
     const pic03 = $gsap.timeline()
     .fromTo(box5, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "none" }) //3지점 사진들
     .fromTo(box5_5, { opacity: 0 }, { opacity: 0.05, duration: 0.5, ease: "none" })
-    
+        
     const pic04 = $gsap.timeline()
     .fromTo(box6, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "none" }) //4지점 사진들
     .fromTo(box6_5, { opacity: 0 }, { opacity: 0.05, duration: 0.5, ease: "none" })
@@ -1032,11 +1060,11 @@ onMounted(() => {
     const pic07 = $gsap.timeline()
     .fromTo(box9, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "none" }) //7지점 사진들
     .fromTo(box9_5, { opacity: 0 }, { opacity: 0.05, duration: 0.5, ease: "none" },">+2")
-    
+        
     const pic08 = $gsap.timeline()
     .fromTo(box10, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "none" })
     .fromTo(box11, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "none" }, ">+0.5")
-    
+        
     const invBoardTimeline = $gsap.timeline()
     .to(invDimmed, {opacity: 0, duration: 0.3, ease: "none" })
     .to(invDimmed, {visibility: "hidden", duration: 0.3, ease: "none" })
@@ -1068,43 +1096,40 @@ onMounted(() => {
     .to(invBoard.value, {opacity: 0.5, duration: 0.3, ease: "none" })
 
     // 수사보드 라인 시점에 사진 등장
-    invBoardTimeline.add(pic01, "startMove"); //1지점 사진 등장
-
-    invBoardTimeline.add(pic02, "startMove+=2"); //2지점 사진 등장
-
-    invBoardTimeline.add(pic03, "movePoint_01+=2"); //3지점 사진 등장
-
-    invBoardTimeline.add(pic04, "movePoint_02+=2"); //4지점 사진 등장 (3,4지점 사이)
-
-    invBoardTimeline.add(pic05, "movePoint_03+=2.5"); //5지점 사진 등장
-
-    invBoardTimeline.add(pic06, "movePoint_04+=2"); //6지점 사진 등장
-
-    invBoardTimeline.add(pic07, "movePoint_05+=2"); //7지점 사진 등장
-
+    invBoardTimeline.add(pic01, "startMove"); //1지점 사진 등
+    invBoardTimeline.add(pic02, "startMove+=2"); //2지점 사진 등
+    invBoardTimeline.add(pic03, "movePoint_01+=2"); //3지점 사진 등
+    invBoardTimeline.add(pic04, "movePoint_02+=2"); //4지점 사진 등장 (3,4지점 사이
+    invBoardTimeline.add(pic05, "movePoint_03+=2.5"); //5지점 사진 등
+    invBoardTimeline.add(pic06, "movePoint_04+=2"); //6지점 사진 등
+    invBoardTimeline.add(pic07, "movePoint_05+=2"); //7지점 사진 등
     invBoardTimeline.add(pic08, "movePoint_06+=2"); //8지점 사진 등장
 
     // invBoardTimeline 세팅 끝난 직후에 추가
     invBoardTimeline.progress(1);
     invBoardTimeline.progress(0);
 
-    $ScrollTrigger.create({
-      trigger: invBoard.value,
-      start: 'top+=1 top',
-      end: "+=" + invBoardTimeline.duration() * 700,
-      scrub: 1,
-      smooth: 1,
-      pin: true,
-      //markers: true,
-      animation: invBoardTimeline,
-      anticipatePin: 3,
-      invalidateOnRefresh: true, //리사이즈 시 트윈 리셋
+    $ScrollTrigger.matchMedia({
+      "(min-width: 1280px)": () => {
+        $ScrollTrigger.create({
+          trigger: invBoard.value,
+          start: 'top+=1 top',
+          end: "+=" + invBoardTimeline.duration() * 700,
+          scrub: 1,
+          smooth: 1,
+          pin: true,
+          //markers: true,
+          animation: invBoardTimeline,
+          anticipatePin: 3,
+          invalidateOnRefresh: true, //리사이즈 시 트윈 리셋
+        })
+      }
     })
-
-
+        
     /*-----------------------*/
     // 08. 에필로그 섹션
     /*-----------------------*/
+
 
     // 로고 애니메이션, 비디오 재생 제어
     const logoHoleWrap = lastScene.value.querySelector(".text-mask-wrap");
@@ -1122,8 +1147,8 @@ onMounted(() => {
 
     $gsap.set([logoHole, recHole], {
       force3D: true,       
-    });
-
+    })
+    
     const EpilogueTimeline = $gsap.timeline({
       defaults: {
         ease: "none",
@@ -1135,7 +1160,8 @@ onMounted(() => {
         eVideo.currentTime = 0;  // 반드시 처음부터
         eVideo.play();
       }
-     })
+    })
+    
     // (01) 에필로그 로고 및 비디오 등장 애니메이션
     .fromTo(maskBgLine, {opacity: 0.5}, {opacity: 0, duration: 1, ease: "power2.out" }, "<") // 동시 진행
     .to([logoHole, recHole], { scale: 40.5, duration: 2, ease: "none" }, ">+0.5")
@@ -1152,30 +1178,49 @@ onMounted(() => {
     .to(eText1, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
 
     .fromTo(eText2, { opacity: 0, y: 20 }, { y:0, opacity: 1, duration: 1.5, ease:"power1.in",onReverseComplete: () => {
-      // 역스크롤로 이 구간을 벗어날 때
+    // 역스크롤로 이 구간을 벗어날 때
       eVideo.play();
     }, }, "+=0.1") // 에필로그 문구2 나타남
     .to(eVideoWrap, { opacity: 0, duration: 2, ease: "power2.out"}, "+=0.01") // 비디오 서서히 사라짐
 
-    addST(
-      $ScrollTrigger.create({
-        trigger: lastScene.value,
-        start: "top+=1 top",
-        end: "+=" + EpilogueTimeline.duration() * 700,  
-        animation: EpilogueTimeline,
-        scrub: 2,
-        pin: true,
-        anticipatePin: 1,            
-        fastScrollEnd: true,         // 빠르게 스크롤 시 '튐' 방지
-        invalidateOnRefresh: true,   // 리사이즈 시 값 재계산 (와이드 대응)
-      })
-    )
+    $ScrollTrigger.matchMedia({
+      "(min-width: 1280px)": () => {
+        $ScrollTrigger.create({
+          trigger: lastScene.value,
+          start: "top+=1 top",
+          end: "+=" + EpilogueTimeline.duration() * 700,  
+          animation: EpilogueTimeline,
+          scrub: 2,
+          pin: true,
+          anticipatePin: 1,            
+          fastScrollEnd: true,         // 빠르게 스크롤 시 '튐' 방지
+          invalidateOnRefresh: true,   // 리사이즈 시 값 재계산 (와이드 대응)
+        })
+      }
+    })
 
-
+    /*-----------------------*/
+    // 08_2. 에필로그 섹션 모바일
+    /*-----------------------*/
+    $ScrollTrigger.matchMedia({
+      "(max-width: 1279px)": () => {
+        $ScrollTrigger.create({
+          trigger: lastSceneMobile.value,
+          start: "top+=1 top",
+          end: "+=1000",  
+          scrub: 2,
+          pin: true,
+          anticipatePin: 1,            
+          fastScrollEnd: true,         // 빠르게 스크롤 시 '튐' 방지
+          invalidateOnRefresh: true,   // 리사이즈 시 값 재계산 (와이드 대응)
+        })
+      }
+    })
+        
     /*-----------------------*/
     // 09. 리사이즈 시 ScrollTrigger 전체 재계산
     /*-----------------------*/
-    const handleResize = () => {
+    handleResize = () => {
       $ScrollTrigger.refresh()
     }
 
@@ -1315,28 +1360,8 @@ onMounted(() => {
   })
 
   onUnmounted(() => {
-    // 1️. ScrollTrigger kill
-    scrollTriggers.forEach(st => st.kill())
-    scrollTriggers.length = 0
-
-    // 2️. GSAP timeline kill
-    timelines.forEach(tl => tl.kill())
-    timelines.length = 0
-
-    // 3️. Lenis 원상복구
-    if ($lenis) {
-      $lenis.options.smoothWheel = true
-      $lenis.options.smoothTouch = true
-    }
-
-    // 4️. resize 이벤트 제거
+    // resize 이벤트 제거
     window.removeEventListener('resize', handleResize)
-
-    // 5️. canvas / image 정리
-    // ctx = null
-    // ctxLine = null
-    // bgImg.onload = null
-    // bgImgLine.onload = null
   });
   
 
