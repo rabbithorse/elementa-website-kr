@@ -1,7 +1,7 @@
 <template>
   <div>
     <section ref="visualSection" class="visual-section h-dvh relative overflow-hidden">
-      <EffectGlass class="glass-blurred"/>
+      <EffectGlass class="glass-blur"/>
       <div class="bg-video">
         <video class="bg-video--content" autoplay muted loop>
           <source src="~/assets/videos/main-logo-ani_enc.mp4" type="video/mp4" />
@@ -470,7 +470,7 @@
           </h2>
         </div>
         <div class="box-wrap max-w-[61rem] mx-auto w-[90%] md:pt-[2.15rem] pt-7 md:pb-[2.5rem] pb-8 px-5 overflow-hidden relative" ref="missionBox">
-          <EffectGlassTest />
+          <EffectGlassLiquid />
             <span class="sectionTitle-eng text-white text-base relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] md:before:w-3 md:before:h-3 before:w-[0.625rem] before:h-[0.625rem] before:rounded-full pl-5">Our Mission</span>
             <div class="text-content gap-x-7 py-[0.9rem] z-[1] relative">
               <p class="text-white md:text-[1.5rem] text-[4.1vw] leading-[150%] break-keep">혁신적 경험으로 게임의 기준을 새롭게 쓰고, 협력과 도전으로 문화를 확장하며, <br>전 세계가 공감할 지속 가능한 감동을 만드는 문화·패러다임의 선도자로 성장하겠습니다.</p>
@@ -610,7 +610,7 @@
             </p>
           </div>
           <div class="card-grid flex flex-col gap-y-18">
-            <EffectGlass class="card-glass relative after:absolute after:inset-y-0 after:right-0 after:w-80 max-md:ml-[-2%] py-5">
+            <EffectGlass class="card-glass glass-blur relative after:absolute after:inset-y-0 after:right-0 after:w-80 max-md:ml-[-2%] py-5">
               <div class="card-list md:gap-[3.75rem] gap-4 justify-center flow-left md:mb-[4.375rem] flex flex-row" ref="flowLeft">
                 <div class="card md:w-[28rem] w-[21rem]" >
                   <EffectCardHover>
@@ -812,62 +812,66 @@
         </Container>
       </div>
       <div class="section-content">
-        <EffectGlass class="content-glass py-[108px]">
-          <div class="controls xl:hidden flex gap-3 items-center justify-end">
-            <PrevButton :swiper="swiperInstance" />
-            <NextButton :swiper="swiperInstance" />
-          </div>
-          <swiper
-            :slidesPerView="1.15"
-            :spaceBetween="15"
-            @swiper="onSwiper"
-            :breakpoints="{
-              480: {
-                slidesPerView: 1.4,
-              },
-              768: {
-                slidesPerView: 1.8,
-              },
-              1024: {
-                slidesPerView: 2.4,
-              },
-              1280: {
-                slidesPerView: 3,
-              },
-              2000: {
-                slidesPerView: 4,
-              },
-              2600: {
-                slidesPerView: 5,
-              },
-              3000: {
-                slidesPerView: 6,
-              }
-            }"
-          >
-            <swiper-slide>
-              <BlocksJoinCard />
-            </swiper-slide>
-            <swiper-slide>
-              <BlocksJoinCard />
-            </swiper-slide>
-            <swiper-slide>
-              <BlocksJoinCard />
-            </swiper-slide>
-            <swiper-slide>
-              <BlocksJoinCard />
-            </swiper-slide>
-            <swiper-slide>
-              <BlocksJoinCard />
-            </swiper-slide>
-            <swiper-slide>
-              <BlocksJoinCard />
-            </swiper-slide>
-            <swiper-slide>
-              <BlocksJoinCard />
-            </swiper-slide>
-          </swiper>
-        </EffectGlass>
+        <div class="content-glass py-[108px]">
+          <EffectGlass class="glass-blur absolute left-0 top-0 w-full h-full" />
+          <div class="px-8"> 
+            <div class="controls xl:hidden flex gap-3 items-center justify-end">
+              <PrevButton :swiper="swiperInstance" />
+              <NextButton :swiper="swiperInstance" />
+            </div>
+            <swiper
+              :slidesPerView="1.15"
+              :spaceBetween="15"
+              @swiper="onSwiper"
+              :breakpoints="{
+                480: {
+                  slidesPerView: 1.4,
+                },
+                768: {
+                  slidesPerView: 1.8,
+                },
+                1024: {
+                  slidesPerView: 2.4,
+                },
+                1280: {
+                  slidesPerView: 3,
+                  spaceBetween: 20
+                },
+                2000: {
+                  slidesPerView: 4,
+                },
+                2600: {
+                  slidesPerView: 5,
+                },
+                3000: {
+                  slidesPerView: 6,
+                }
+              }"
+            >
+              <swiper-slide>
+                <BlocksJoinCard />
+              </swiper-slide>
+              <swiper-slide>
+                <BlocksJoinCard />
+              </swiper-slide>
+              <swiper-slide>
+                <BlocksJoinCard />
+              </swiper-slide>
+              <swiper-slide>
+                <BlocksJoinCard />
+              </swiper-slide>
+              <swiper-slide>
+                <BlocksJoinCard />
+              </swiper-slide>
+              <swiper-slide>
+                <BlocksJoinCard />
+              </swiper-slide>
+              <swiper-slide>
+                <BlocksJoinCard />
+              </swiper-slide>
+            </swiper>
+          </div>  
+        </div>
 
         <div class="content-button xl:hidden flex justify-center md:mt-10 mt-5">
           <ButtonsBasic color="blue" class="md:w-1/2 w-full [&>*]:w-[90%]">View more</ButtonsBasic>
@@ -878,6 +882,7 @@
 </template>
 
 <script setup>
+import { onBeforeRouteLeave } from 'vue-router'
 import { EffectGlass } from '#components';
 import Container from '~/components/Container.vue';
 
@@ -915,6 +920,7 @@ const wetheworldSlogan = ref(null)
 const inspireText = ref(null)
 const connectText = ref(null)
 const changeText = ref(null)
+let handleResize = null
 
 /* [OSJ : 2025-12-03] Gsap 초기화 안됨 대응. */
 let ctx
@@ -928,6 +934,10 @@ onBeforeUnmount(() => {
 })
 
 onMounted(async () => {
+  window.scrollTo(0, 0);
+
+  $ScrollTrigger.clearScrollMemory();
+  $ScrollTrigger.refresh();
 
   const characterRevealItems = missionSection.value.querySelectorAll('.primary-character');
   const characterRevealArray = Array.from(characterRevealItems);
@@ -1060,19 +1070,19 @@ const anim1 = $gsap.timeline({ paused: true })
   .to(characterRevealArray, {
     x: 0,
     opacity: 1,
-    duration: 0.5, // 실제 애니메이션 시간
+    duration: 0.2, // 실제 애니메이션 시간
     ease: "none"
   })
   .fromTo(missionBox.value, 
     { yPercent: 100, opacity: 0 },
-    { yPercent: 0, opacity: 1, duration: 0.4, stagger: 0.05, ease: "power2.out" }, 0
+    { yPercent: 0, opacity: 1, duration: 0.4, stagger: 0.05, ease: "power2.out" }, ">"
   )
 
 const anim2 = $gsap.timeline({ paused: true })
   .to(characterDisappearArray, {
     x: 0,
     opacity: 1,
-    duration: 0.5, // 실제 애니메이션 시간
+    duration: 0.2, // 실제 애니메이션 시간
     ease: "none"
   })
   .to(characterDisappearArray, {
@@ -1087,7 +1097,7 @@ const anim3 = $gsap.timeline({ paused: true })
     opacity: 1,
     visibility: 'visible',
     ease: "none",
-    duration: 0.5,
+    duration: 0.2,
   })
 
   //const anim4 =  $gsap.timeline({ paused: true })
@@ -1181,8 +1191,8 @@ $ScrollTrigger.create({
     const gotopCurtainItemArray = Array.from(gotopCurtainItems);
     const godownCurtainItemArray = Array.from(godownCurtainItems);
     const blurValues = [150, 80, 25];
-    const opacityValues = [0.45, 0.425, 0.4];
-    const goYValues = ['82%', '75%', '66%'];
+    const opacityValues = [0.42, 0.41, 0.4];
+    const goYValues = ['84%', '78%', '72.5%'];
 
     wetheworldTl.to(wetheworldbg1.value, {
       opacity: 1,
@@ -1422,16 +1432,22 @@ $ScrollTrigger.create({
     })
   });
 
-  await nextTick();
+  handleResize = () => {
+    $ScrollTrigger.refresh()
+  }
+
+  window.addEventListener("resize", handleResize)
+
   requestAnimationFrame(() => {
     $lenis.scrollTo(0, { immediate: true });
-
-    requestAnimationFrame(() => {
-      $ScrollTrigger.refresh();
-    });
+    $ScrollTrigger.refresh();
   });
+
 })
 
+onUnmounted(() => {
+  window.removeEventListener("resize", handleResize)
+})
 
 const nodeVersion = process.version
 </script>

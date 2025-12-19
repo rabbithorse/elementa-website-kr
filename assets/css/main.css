@@ -137,7 +137,13 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 .newsroom-section .card-title {display: -webkit-box; overflow: hidden; white-space: normal; word-wrap: break-word; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; text-overflow: ellipsis;}
 
 
-.careers-section {background: url("~/assets/images/main/career-bg.png") no-repeat center top / cover; position: relative; overflow: hidden;}
+.careers-section {position: relative; overflow: hidden; background: url("~/assets/images/main/career-bg.png") no-repeat center top / cover;}
+.careers-section .section-bg { position: absolute; inset: 0; z-index: 0;}
+.careers-section .content-glass {position: relative;}
+.careers-section .content-glass .glass {position: absolute;}
+.careers-section .content-glass::before, .careers-section .content-glass::after {content: ""; display: inline-block; width: 100px; height: 100%; position: absolute; top: 0; z-index: 3;}
+.careers-section .content-glass::before {left: 0; background: linear-gradient(90deg, #04050A 31.73%, rgba(4, 5, 10, 0.00) 100%);}
+.careers-section .content-glass::after {right: 0; background: linear-gradient(90deg, #04050A 25.48%, rgba(4, 5, 10, 0.00) 100%); transform: rotate(180deg);}
 .careers-section .glass-content {padding: 4rem 0 3rem 1.25rem; position: relative;}
 
 .careers-section .swiper {padding: 1rem 0;}
@@ -145,23 +151,19 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 .careers-section .swiper-slide {width: 100%; height: 510px;}
 .careers-section .swiper-slide .card-moving {top:0; left:0;}
 .careers-section .swiper-slide .animatedCard {padding: 0;}
-.careers-section .swiper-slide .end-bg {visibility: hidden; left: 0; top: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: rgba(0, 0, 0, 0.70); backdrop-filter: blur(2.5px); z-index: 2;}
-.careers-section .swiper-slide .end-bg .inner-circle {display: inline-flex; width: 265px; height: 265px; justify-content: center; align-items: center; flex-shrink: 0; border-radius: 500px; background: rgba(0, 0, 0, 0.10); box-shadow: 2px 2px 3px 0 rgba(255, 255, 255, 0.40) inset, -2px -4px 1px -3px rgba(255, 255, 255, 0.30) inset;}
-.careers-section .swiper-slide .end-bg .inner-circle > * {opacity: 0.4;}
-.careers-section .swiper-slide .end-bg.on {visibility: visible;}
 /* .careers-section .swiper-slide .cont {background: rgba(0,0,0,0.3); display: block; height:100%; display: grid; grid-template-rows: auto 1fr; box-shadow: 0px 2px 4px 2px rgba(255,255,255,0.5) inset; z-index: 1;} */
 .careers-section .swiper-slide .cont {
   display: block; height:100%; display: grid; grid-template-rows: auto 1fr; z-index: 1;
-  backdrop-filter: blur(16px) saturate(180%);
+  /* backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   background-color: rgba(17, 25, 40, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.125);
+  border: 1px solid rgba(255, 255, 255, 0.125); */
 }
 .careers-section .swiper-slide .cont figure {min-height: unset; }
 .careers-section .swiper-slide .cont figure img {width:100%; height:100%; object-fit: cover; object-position: center;}
 /* .careers-section .swiper-slide .cont figure::after {content:''; position:absolute; width:100%; height:100%; left:0; top:0;  box-shadow: 0px 2px 4px 2px rgba(255,255,255,0.5) inset} */
-.careers-section .swiper-slide .cont figure::after { content:''; position:absolute; width:100%; height:100%; left:0; top:0; }
-.careers-section .swiper-slide .cont .text-box {padding: 1.25rem; min-height: 205px;}
+.careers-section .swiper-slide .cont figure::after { content:''; position:absolute; width:100%; height:100%; left:0; top:0; box-shadow: -1.5px -1.5px 2px 0 rgba(255, 255, 255, 0.20) inset, 2px 2px 3px 0 rgba(255, 255, 255, 0.40) inset; }
+.careers-section .swiper-slide .cont .text-box {padding: 1.875rem; min-height: 205px; background: rgba(0, 0, 0, 0.30); box-shadow: inset 0 1px 1px 0 rgba(255,255,255,0.15);}
 .careers-section .swiper-slide .cont .text-box .info {display: grid; grid-template-rows: auto 1fr; height:100%}
 
 .careers-section .swiper-slide .cont .text-box .info .tit {width: 100%; overflow: hidden;}
@@ -233,6 +235,8 @@ section .primary-text, section .primary-text * {line-height: 1em;}
   .accordion-item.locked button {flex-direction: row; justify-content: space-between; padding: 0.2rem 0 0.2rem 1rem; width: 100%;}
   .locked-title-icon {width: 20px; height: 29px; background: url("~/assets/images/main/icon-lock.svg") no-repeat center/contain; vertical-align: middle; }
   .locked-title-text {width: 139px; height: 47px; background: url("~/assets/images/main/text-lock.png") no-repeat center/contain; vertical-align: middle; }
+
+  .careers-section .swiper-slide .cont .text-box {padding: 1.25rem;}
 }
 
 /* -------------------------------------- */

@@ -42,7 +42,8 @@
     inset: 0;
     z-index: -1;
     backdrop-filter: blur(4px);
-    filter: url(#glass-distortion);
+    -webkit-backdrop-filter: url(#glass-distortion);
+    backdrop-filter: url(#glass-distortion);
     isolation: isolate;
     /* -webkit-backdrop-filter: blur(4px);
     -webkit-filter: url(#glass-distortion); */
