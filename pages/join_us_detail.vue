@@ -18,7 +18,8 @@
               <p class="text-white lg:text-lg text-sm break-keep lg:leading-[1.81rem] leading-[1.51rem]">퍼포먼스 마케터는 온라인 광고 채널(Google, Meta, Naver, Kakao 등)을 운영하며 KPI 달성을 위한 캠페인을 설계하고 최적화하는 역할을 담당합니다. 데이터 기반으로 예산을 효율적으로 집행하고, 퍼널 분석과 A/B 테스트 등을 통해 신규 유저 유입과 리텐션을 동시에 강화합니다.</p>
             </TypographySkewText>
             <div class="detail-glass-box lg:p-[2.25rem] px-[1.5rem] py-[1rem] flex justify-between items-center relative overflow-hidden" ref="detailGlassBox">
-              <div class="filter-glass"></div>
+              <EffectGlassTest />
+              <div class="filter-noise"></div>
               <div class="filter-shine"></div>
               <p class="text-white grow lg:text-lg text-[0.81rem] font-medium relative z-10">기간</p>
               <div class="date-wrap flex items-center lg:gap-[0.94rem] gap-[0.63rem] relative z-10">
@@ -38,9 +39,10 @@
           <div class="side-btn-wrap xl:mt-[0px] mt-[1.25rem]">
             <div class="flex w-full flex-col lg:gap-[1.88rem] gap-[1.25rem] inner" ref="sideInner">
               <div class="detail-glass-box-side overflow-hidden relative rounded-[5px]">
-                <div class="filter-glass"></div>
+                <EffectGlassTest />
+                <div class="filter-noise"></div>
                 <div class="filter-shine"></div>
-                <div class="inner flex lg:gap-[1.25rem] gap-[0.94rem] flex-col lg:px-[2.5rem] px-[1.25rem] lg:pt-[1.25rem] lg:pb-[2.5rem] py-[1.56rem] rounded-[5px] relative z-10">
+                <div class="inner flex lg:gap-[1.25rem] gap-[0.94rem] flex-col lg:px-[2.5rem] px-[1.25rem] lg:pt-[1.25rem] lg:pb-[1.88rem] py-[1.56rem] rounded-[5px] relative z-10">
                   <p class="text-white lg:text-base text-sm twink-point flex gap-[10px] items-center">ELEMENTA KOREA</p>
                   <div class="divider"></div>
                   <ul class="text-white">
@@ -48,26 +50,26 @@
                       <span class="shrink-0">직군</span>
                       <span class="text-right">퍼포먼스 마케터</span>
                     </li>
-                    <li class="lg:py-[10px] py-[7px] flex justify-between gap-[10px] lg:text-base text-sm">
+                    <li class="lg:py-[8px] py-[7px] flex justify-between gap-[10px] lg:text-base text-sm">
                       <span class="shrink-0">마감일</span>
                       <div class="flex items-center gap-[10px]">
                         <span>25.11.10 ~ 25.12.20</span>
                         <ButtonsBadge fontColor="white">D-10</ButtonsBadge>
                       </div>
                     </li>
-                    <li class="lg:py-[10px] py-[7px] flex justify-between gap-[10px] lg:text-base text-sm">
+                    <li class="lg:py-[8px] py-[7px] flex justify-between gap-[10px] lg:text-base text-sm">
                       <span class="shrink-0">고용형태</span>
                       <span class="text-right">정규직</span>
                     </li>
-                    <li class="lg:py-[10px] py-[7px] flex justify-between gap-[10px] lg:text-base text-sm">
+                    <li class="lg:py-[8px] py-[7px] flex justify-between gap-[10px] lg:text-base text-sm">
                       <span class="shrink-0">경력</span>
                       <span class="text-right">신입 ∙ 0~2년</span>
                     </li>
-                    <li class="lg:py-[10px] py-[7px] flex justify-between gap-[10px] lg:text-base text-sm">
+                    <li class="lg:py-[8px] py-[7px] flex justify-between gap-[10px] lg:text-base text-sm">
                       <span class="shrink-0">급여</span>
                       <span class="text-right">회사 내규에 따름 (면접 후 결정)</span>
                     </li>
-                    <li class="lg:py-[10px] py-[7px] flex justify-between gap-[10px] lg:text-base text-sm">
+                    <li class="lg:py-[8px] py-[7px] flex justify-between gap-[10px] lg:text-base text-sm">
                       <span class="shrink-0">근무 지역</span>
                       <span class="text-right">서울시 강남구</span>
                     </li>
@@ -86,8 +88,9 @@
               </div>
 
               <div class="cursor-pointer xl:block hidden" @click="scrollToTarget('#ourOfficeArea')">
-                <div class="w-full bg-white aspect-[2.22] overflow-hidden">
-                  <img src="~/assets/images/sub/recruit-img01.png" alt="" class="w-full h-full object-cover object-center">
+                <div class="w-full bg-white aspect-[449/160] overflow-hidden relative office-link">
+                  <img src="~/assets/images/sub/recruit-img01.png" alt="" class="w-full h-full object-cover object-[center_-110px]">
+                  <span class="text-white text-base font-bold absolute right-[25px] bottom-0 z-10">오피스 둘러보기</span>
                 </div>
                 <p class="text-white text-right text-sm pt-[10px]">An Office Built for Your Dreams</p>
               </div>
@@ -198,30 +201,8 @@
       </div>
       <div class="h-[600px] lg:block hidden"></div>
     </section>
-
-    <svg style="display: none">
-      <filter id="liquid" x="0%" y="0%" width="140%" height="140%" filterUnits="objectBoundingBox" >
-        <feTurbulence type="fractalNoise" baseFrequency="0.005 0.005" numOctaves="2" seed="9" result="turbulence" />
-        <feComponentTransfer in="turbulence" result="mapped">
-          <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
-          <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
-          <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
-        </feComponentTransfer>
-        <feGaussianBlur in="turbulence" stdDeviation="5" result="softMap" />
-        <feSpecularLighting in="softMap" surfaceScale="5" specularConstant="1" specularExponent="100" lighting-color="white" result="specLight" >
-          <fePointLight x="-200" y="-200" z="300" />
-        </feSpecularLighting>
-        <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage" />
-        <feDisplacementMap in="SourceGraphic" in2="softMap" scale="110" xChannelSelector="R" yChannelSelector="G" />
-      </filter>
-    </svg>
-
   </div>
 </template>
-
-<style scoped>
-  .filter-glass {filter: url(#liquid); backdrop-filter: blur(20px); width: 160%; height:160%; position: absolute; left: 50%;  top: 50%; transform: translate(-50%, -50%); z-index: 1; background: url(~/assets/images/sub/otis-redding.png) repeat;}
-</style>
 
 <script setup>
   definePageMeta({
@@ -240,6 +221,9 @@
   const imgArea = ref(null)
   const textBg = ref(null)
   const detailGlassBox = ref(null)
+
+  // 리사이즈 핸들러
+  let handleResize = null
 
   onMounted(() => {
     // 박스 최초 효과
@@ -262,7 +246,7 @@
         $gsap.to(sideInner.value, {
           scrollTrigger: {
             trigger: detailCont.value,
-            start: '-=150 top',
+            start: '-=130 top',
             end: () => "+=" + (detailCont.value.offsetHeight - sideInner.value.offsetHeight),
             scrub: 2,
             pin: sideInner.value,
@@ -301,6 +285,15 @@
         pinSpacing: false
       },
     })
+
+    /*-----------------------*/
+    // 리사이즈 시 ScrollTrigger 전체 재계산
+    /*-----------------------*/
+    handleResize = () => {
+      $ScrollTrigger.refresh()
+    }
+
+    window.addEventListener("resize", handleResize)
   });
 
   // 스크롤 이동 함수
@@ -317,5 +310,10 @@
       $ScrollTrigger.getAll().forEach(st => st.kill())
     }
   })
+
+  onUnmounted(() => {
+    // resize 이벤트 제거
+    window.removeEventListener('resize', handleResize)
+  });
 
 </script>

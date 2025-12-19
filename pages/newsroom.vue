@@ -53,11 +53,7 @@
             <div class="float-box absolute"></div>
             <Swiper
               :modules="[Navigation, Autoplay]"
-              :autoplay="{
-                delay: 2000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true
-              }"
+              
               :slides-per-view="2"
               :centeredSlides="true"
               :space-between="10"

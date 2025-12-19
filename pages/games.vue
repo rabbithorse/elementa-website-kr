@@ -290,13 +290,6 @@
         </div>
         <!-- 엔딩 문구 -->
         <div class="epilogue-dimmed absolute  top-0 left-0 z-20 w-full"></div>
-        <!-- 엔딩 text 1 -->
-        <div class="e-text sec01 flex w-full justify-center items-center z-20 absolute top-0 left-0">
-          <div class="text-box text-center">
-            <span class="lg:text-2xl text-lg font-semibold block">탐정</span>
-            <p class="text-white xl:text-[3.44rem] lg:text-4xl sm:text-[1.63rem] text-[1.53rem] lg:pt-[20px] pt-[5px] title tracking-[-1.65px] relative font-semibold">우리는 운명에서 벗어날 수 없단 걸, <br>전 이미 깨달았죠.</p>
-          </div>
-        </div>
         <!-- 엔딩 text 2 -->
         <div class="e-text sec02 flex w-full justify-center items-center z-20 absolute top-0 left-0">
           <div class="text-box text-center">
@@ -317,6 +310,13 @@
             <a href="" class="bottom-dwn-link block w-[270px] h-[60px] rounded-[3.75rem]" aria-label="실버팰리스 다운로드"></a>
           </div>
         </div>
+         <!-- 엔딩 text 1 -->
+        <div class="e-text sec01 flex w-full justify-center items-center z-20 absolute top-0 left-0">
+          <div class="text-box text-center">
+            <span class="lg:text-2xl text-lg font-semibold block">탐정</span>
+            <p class="text-white xl:text-[3.44rem] lg:text-4xl sm:text-[1.63rem] text-[1.53rem] lg:pt-[20px] pt-[5px] title tracking-[-1.65px] relative font-semibold">우리는 운명에서 벗어날 수 없단 걸, <br>전 이미 깨달았죠.</p>
+          </div>
+        </div>
         <Container class="absolute left-1/2 -translate-x-1/2 transform top-[120px] z-20 e-side-text">
           <p class="relative text-white font-bold text-[1.75rem] opacity-[0.8] pl-[3.13rem]">Epilogue</p>
           <span class="smoke"></span>
@@ -333,11 +333,46 @@
     </section>
     <!-- section 06 : 에필로그 모바일 -->
     <section class="last-scene-m w-full overflow-hidden xl:hidden block relative" ref="lastSceneMobile">
+      <div class="last-scene-m cover-dimmed absolute top-0 left-0 z-40 w-full h-full"></div>
       <div class="epilogue-dimmed absolute  top-0 left-0 z-20 w-full"></div>
       <Container class="absolute left-1/2 -translate-x-1/2 transform top-[100px] z-20 e-side-text">
-        <p class="relative text-white font-bold text-xl opacity-[0.8] pl-[3.13rem]">Epilogue</p>
+        <p class="relative text-white font-bold text-xl opacity-[0.8] xl:pl-[3.13rem] sm:pl-[1.88rem] pl-[0px]">Epilogue</p>
         <span class="smoke"></span>
       </Container>
+
+      
+      <!-- 엔딩 text 2 -->
+      <div class="e-text sec02 flex w-full justify-center items-center z-20 absolute top-0 left-0">
+        <div class="text-box text-center">
+          <span class="lg:text-2xl text-lg font-semibold block">탐정</span>
+          <p class="text-white xl:text-[3.44rem] lg:text-4xl sm:text-[1.63rem] text-[1.53rem] lg:pt-[20px] pt-[5px] title tracking-[-1.65px] relative font-semibold">당신이 다시 써줄 수 있다면</p>
+          <div class="btn-wrap relative mt-[20px]">
+            <ButtonsBasic color="yellow" size="sm" id="dwnGame" href="">실버팰리스 다운로드</ButtonsBasic>
+          </div>
+        </div>
+      </div>
+      <!-- 엔딩 text 1 -->
+      <div class="e-text sec01 flex w-full justify-center items-center z-20 absolute top-0 left-0">
+        <div class="text-box text-center">
+          <span class="lg:text-2xl text-lg font-semibold block">탐정</span>
+          <p class="text-white xl:text-[3.44rem] lg:text-4xl sm:text-[1.63rem] text-[1.53rem] lg:pt-[20px] pt-[5px] title tracking-[-1.65px] relative font-semibold">우리는 운명에서 벗어날 수 없단 걸, <br>전 이미 깨달았죠.</p>
+        </div>
+      </div>
+
+      <!-- 하단 링크 및 게임 다운로드 -->
+      <div class="bottom-link flex items-center absolute w-full bottom-0 left-0 px-[10px] z-30">
+        <div class="f-logo">
+          <img src="~/assets/images/sub/game-logo01.png" alt="실버 팰리스" class="block">
+        </div>
+        <ul class="flex justify-center items-center credit-list-links">
+          <li class="text-white text-lg"><a href="" role="button" aria-label="공유하기" class="block"></a></li>
+          <li class="text-white text-lg"><a href="" role="button" aria-label="유튜브" class="block"></a></li>
+          <li class="text-white text-lg"><a href="" role="button" aria-label="인스타그램" class="block"></a></li>
+          <li class="text-white text-lg"><a href="" role="button" aria-label="x" class="block"></a></li>
+          <li class="text-white text-lg"><a href="" role="button" aria-label="다운로드" class="block"></a></li>
+        </ul>
+        <a href="" class="bottom-dwn-link block rounded-[3.13rem]" aria-label="실버팰리스 다운로드"></a>
+      </div>
     </section>
 
     <!-- 캐릭터 소개 모달 -->
@@ -912,20 +947,25 @@ onMounted(() => {
     })
 
     // 애니메이션 재생 전담 - 타임라인 애니메이션만큼 end 지점 설정해서 애니메이션만큼 진행
-    $ScrollTrigger.create({
-      trigger: videoBox,
-      start: 'top bottom',
-      end: "+=" + youtubeTimeline.duration() * 100 + " top",
-      //markers: true,
-      scrub: true,
-      animation: youtubeTimeline,
-    })
+    $ScrollTrigger.matchMedia({
+      // 1024px 이상
+      "(min-width: 1024px)": () => {
+        $ScrollTrigger.create({
+          trigger: videoBox,
+          start: 'top bottom',
+          end: "+=" + youtubeTimeline.duration() * 100 + " top",
+          //markers: true,
+          scrub: true,
+          animation: youtubeTimeline,
+        })
+      }
+    });
 
     
-    // 유튜브 섹션 사라짐 효과 (최소 수정 버전)
+    // 유튜브 섹션 사라짐 효과
     $ScrollTrigger.matchMedia({
 
-      // 1024px 이상
+      // 1280px 이상
       "(min-width: 1280px)": () => {
         $gsap.timeline({
           scrollTrigger: {
@@ -943,7 +983,7 @@ onMounted(() => {
         })
       },
 
-      // 1024px 미만
+      // 1280px 미만
       "(max-width: 1279px)": () => {
         $gsap.timeline({
           scrollTrigger: {
@@ -1179,6 +1219,7 @@ onMounted(() => {
 
     .fromTo(eText2, { opacity: 0, y: 20 }, { y:0, opacity: 1, duration: 1.5, ease:"power1.in",onReverseComplete: () => {
     // 역스크롤로 이 구간을 벗어날 때
+      eVideo.currentTime = 0; // 비디오를 처음부터 재생 준비
       eVideo.play();
     }, }, "+=0.1") // 에필로그 문구2 나타남
     .to(eVideoWrap, { opacity: 0, duration: 2, ease: "power2.out"}, "+=0.01") // 비디오 서서히 사라짐
@@ -1202,12 +1243,26 @@ onMounted(() => {
     /*-----------------------*/
     // 08_2. 에필로그 섹션 모바일
     /*-----------------------*/
+
+    const eCoverDimmedMobile = lastSceneMobile.value.querySelector(".cover-dimmed");
+    const eText1Mobile = lastSceneMobile.value.querySelector(".e-text.sec01");
+    const eText2Mobile = lastSceneMobile.value.querySelector(".e-text.sec02");
+
+    const EpilogueMobileTimeline = $gsap.timeline()
+    .to(eCoverDimmedMobile, { opacity: 0, duration: 1, ease: "power2.out"})
+    .to(eCoverDimmedMobile, { visibility: "hidden"}, ">+0.01")
+    .fromTo(eText1Mobile, { opacity: 0 }, { opacity: 1, duration: 1, ease:"power1.in" }) // 에필로그 문구1 나타남
+    .to(eText1Mobile, { opacity: 0, duration: 1, ease:"power1.out" }, "+=1") // 에필로그 문구1 사라짐
+    .to(eText1Mobile, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
+    .fromTo(eText2Mobile, { opacity: 0, y: 20 }, { y:0, opacity: 1, duration: 1, ease:"power1.in" }, "+=0.1") // 에필로그 문구2 나타남
+    
     $ScrollTrigger.matchMedia({
       "(max-width: 1279px)": () => {
         $ScrollTrigger.create({
           trigger: lastSceneMobile.value,
           start: "top+=1 top",
-          end: "+=1000",  
+          end: "+=" + EpilogueMobileTimeline.duration() * 700,  
+          animation: EpilogueMobileTimeline,  
           scrub: 2,
           pin: true,
           anticipatePin: 1,            
@@ -1354,15 +1409,21 @@ onMounted(() => {
     })
   }
 
-  onBeforeRouteLeave(() => {
-    // 1. ScrollTrigger 즉시 전부 제거
-    $ScrollTrigger.getAll().forEach(st => st.kill())
-  })
-
   onUnmounted(() => {
     // resize 이벤트 제거
     window.removeEventListener('resize', handleResize)
   });
+
+
+  let ctx
+  onBeforeUnmount(() => {
+    if (ctx) {
+      ctx.revert();
+      $ScrollTrigger.getAll().forEach(t => t.kill());
+      $ScrollTrigger.refresh();
+    }
+    console.log('Gsap context reverted');
+  })
   
 
 </script>

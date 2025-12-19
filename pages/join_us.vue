@@ -37,7 +37,8 @@
 
         <client-only>
         <div class="filter-box text-white 2xl:mt-[5.5rem] mt-[3.75rem] flex lg:flex-row flex-col 2xl:gap-10 gap-[0.94rem] items-end relative">
-          <div class="filter-glass"></div>
+          <div class="filter-noise"></div>
+          <EffectGlassTest />
           <div class="filter-shine"></div>
           <BlocksCustomSelect class="z-30"
           label="직군"
@@ -67,7 +68,7 @@
           <ul class="grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-x-[1.25rem] lg:gap-y-[5.63rem] gap-y-[1.25rem] list relative">
             <li v-for="(n, index) in 24" :key="index" class="relative">
               <EffectCardHover>
-                <div class="filter-glass liquid"></div>
+                <div class="filter-glass"></div>
                 <a class="cont relative" href="./join_us_detail">
                   <figure>
                     <img src="~/assets/images/sub/join-us-img01.png" alt="대표 이미지">
@@ -102,30 +103,15 @@
       </div>
       <!-- 채용 리스트 -->
     </section>
-
-    <svg width="0" height="0">
-      <filter id="lg-dist" x="0%" y="0%" width="100%" height="100%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.009 0.009" numOctaves="2" seed="92" result="noise" />
-        <feGaussianBlur in="noise" stdDeviation="2" result="blurred" />
-        <feDisplacementMap in="SourceGraphic" in2="blurred" scale="70" xChannelSelector="R" yChannelSelector="G" />
-      </filter>
-    </svg>
-
-    <svg width="0" height="0">
-      <filter id="liquid" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox" >
-        <feTurbulence type="fractalNoise" baseFrequency="0.002 0.002" numOctaves="2" seed="9" result="turbulence" />
-        <feComponentTransfer in="turbulence" result="mapped">
-          <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
-          <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
-          <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
-        </feComponentTransfer>
-        <feGaussianBlur in="turbulence" stdDeviation="5" result="softMap" />
-        <feSpecularLighting in="softMap" surfaceScale="5" specularConstant="1" specularExponent="100" lighting-color="white" result="specLight" >
-          <fePointLight x="-200" y="-200" z="300" />
-        </feSpecularLighting>
-        <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage" />
-        <feDisplacementMap in="SourceGraphic" in2="softMap" scale="110" xChannelSelector="R" yChannelSelector="G" />
-      </filter>
+    <!-- SVG Filter -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute; overflow:hidden">
+      <defs>
+        <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.004 0.004" numOctaves="2" seed="1000" result="noise"></feTurbulence>
+            <feGaussianBlur in="noise" stdDeviation="2" result="blurred"></feGaussianBlur>
+            <feDisplacementMap in="SourceGraphic" in2="blurred" scale="91" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+        </filter>
+      </defs>
     </svg>
   </div>
 </template>
@@ -273,9 +259,8 @@
 </script>
 
 <style scoped>
-  .filter-glass {box-shadow: none; filter: url(#lg-dist); backdrop-filter: blur(12px); width: 100%; height:100%; position: absolute; left: 0;  bottom: 0; z-index: 1; background: url(~/assets/images/sub/otis-redding.png) repeat;}
-  .filter-glass.liquid {filter: url(#liquid); background: none; backdrop-filter: blur(4px);}
-  .circle-filter{visibility: hidden; opacity: 0; filter: url(#lg-dist); backdrop-filter: blur(3px); z-index: 1; width: 265px; height: 265px;  left: 50%; top: 50%; transform: translate(-50%, -50%); border-radius: 50%;}
+  .filter-glass {filter: url(#glass-distortion); background: none; backdrop-filter: blur(6px); width: 100%; height:100%; position: absolute; left: 0;  bottom: 0; z-index: 1;}
+  .circle-filter{visibility: hidden; opacity: 0; filter: url(#glass-distortion); backdrop-filter: blur(3px); z-index: 1; width: 265px; height: 265px;  left: 50%; top: 50%; transform: translate(-50%, -50%); border-radius: 50%;}
   .circle-filter.on{visibility: visible; opacity: 1;}
 
   @media (min-width: 768px) and (max-width: 1023px) {
