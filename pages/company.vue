@@ -83,8 +83,8 @@
           </div>
         </Container>
       </div>
-      <div class="h-screen flex items-center pt-[3.75rem] relative" ref="missionSection">
-        <div class="missiont-content h-screen w-full flex items-center mt-[340px] relative">
+      <div class="h-svh flex items-center pt-[3.75rem] relative" ref="missionSection">
+        <div class="missiont-content h-svh w-full flex items-center mt-[340px] relative">
           <div class="absolute left-0 inset-y-0 h-full 2xl:w-[11.6rem] lg:w-[8rem] sm:w-14 w-9 z-20">
             <EffectGlass class="w-full h-full glass-blur" />
           </div>
@@ -304,7 +304,7 @@
       </div>
       <div class="company-scroll md:mb-40 mb-20" ref="scrollSection">
         <div class="heading flex items-center justify-center w-full z-10" ref="scrollFixedHeading">
-          <div class="heading-wrap w-fit h-screen flex justify-center items-center gap-x-7 xl:flex-row flex-col z-[1]" ref="scrollFixedHeadingInner">
+          <div class="heading-wrap w-fit h-svh flex justify-center items-center gap-x-7 xl:flex-row flex-col z-[1]" ref="scrollFixedHeadingInner">
             <h2 class="heading-title text-white xl:text-[6.25rem] md:text-[5rem] text-5xl font-black leading-[1em] -mt-3 font-paperlogy" ref="scrollTitle">WE</h2>
             <span class="inline-block w-[25px] xl:rotate-0 rotate-[84deg] xl:mt-0 xl:mb-0 md:-mt-5 md:-mb-5 -mt-6 -mb-6"><img src="@/assets/images/sub/company-scrollsection-slash.png" alt=""></span>
             <div class="heading-content xl:text-left text-center">
@@ -437,9 +437,9 @@
 </template>
 
 <script setup>
-  import { ref, onMounted, onBeforeUnmount } from 'vue';
+  import { ref, onMounted, onUnmounted, nextTick } from 'vue';
 
-  const { $gsap, $ScrollTrigger } = useNuxtApp();
+  const { $gsap, $ScrollTrigger, $lenis } = useNuxtApp();
   // Intro Section Refs
   const introSection = ref(null);
   const introText = ref(null);
@@ -472,353 +472,387 @@
   const bannerFigureBig = ref(null);
   const bannerFigureSmall = ref(null);
 
-  let ctx
-  onBeforeUnmount(() => {
-    if (ctx) {
-      ctx.revert();
-      $ScrollTrigger.getAll().forEach(t => t.kill());
-      $ScrollTrigger.refresh();
-    }
-    console.log('Gsap context reverted');
-  })
+  let ctx;
+  let resizeTimeout;
+  let isFirstLoad = true;
+  // onBeforeUnmount(() => {
+  //   if (ctx) {
+  //     ctx.revert();
+  //     $ScrollTrigger.getAll().forEach(t => t.kill());
+  //   }
+  //   console.log('Gsap context reverted');
+  // })
 
-  onMounted(() => {
-    window.scrollTo(0, 0);
+  onMounted(async () => {
+    
+    const initAnimation = () => {
+      ctx?.revert();
+      ctx = $gsap.context(() => { 
+        $gsap.fromTo(introText.value, {
+          opacity: 0,
+          y: '30%'
+        }, {
+          opacity: 1,
+          y: '0%',
+          ease: 'none',
+          duration: 0.5,
+          delay: 0.5,
+          scrollTrigger: {
+            trigger: introSection.value,
+            start: 'top 80%',
+          }
+        })
 
-    $ScrollTrigger.clearScrollMemory();
-    $ScrollTrigger.refresh();
+        let cards = missionSection.value.querySelectorAll('.mission-img-wrapper .card');
+        let cardsArray = Array.from(cards);
+        
+        const zDown = [
+          [2, 0, 0, 0],   // 활성 1
+          [1, 2, 0, 0],   // 활성 2
+          [0, 1, 2, 0],    // 활성 3
+          [0, 0, 1, 2]      // 활성 4
+        ];
 
-    ctx = $gsap.context(() => { 
-      $gsap.fromTo(introText.value, {
-        opacity: 0,
-        y: '30%'
-      }, {
-        opacity: 1,
-        y: '0%',
-        ease: 'none',
-        duration: 0.5,
-        delay: 0.5,
-        scrollTrigger: {
-          trigger: introSection.value,
-          start: 'top 80%',
-        }
-      })
+        // 스크롤 UP(-1)일 때 z-index 패턴
+        const zUp = [
+          [2, 1, 0, 0],   // 활성 1
+          [0, 2, 1, 0],    // 활성 2
+          [0, 0, 2, 1],     // 활성 3
+          [0, 0, 1, 2]      // 활성 4
+        ];
 
-      let cards = missionSection.value.querySelectorAll('.mission-img-wrapper .card');
-      let cardsArray = Array.from(cards);
-      
-      const zDown = [
-        [2, 0, 0, 0],   // 활성 1
-        [1, 2, 0, 0],   // 활성 2
-        [0, 1, 2, 0],    // 활성 3
-        [0, 0, 1, 2]      // 활성 4
-      ];
+        let prevIdx = -1;
 
-      // 스크롤 UP(-1)일 때 z-index 패턴
-      const zUp = [
-        [2, 1, 0, 0],   // 활성 1
-        [0, 2, 1, 0],    // 활성 2
-        [0, 0, 2, 1],     // 활성 3
-        [0, 0, 1, 2]      // 활성 4
-      ];
+        const missionTl = $gsap.timeline({
+          scrollTrigger: {
+            pin: true,
+            trigger: missionSection.value,
+            start: 'top top-=200',
+            end: "+=1000%",
+            scrub: true,
+            onUpdate: (self) => {
+              const p = self.progress;
 
-      let prevIdx = -1;
+              const wait = 0.18;
+              if (p < wait) return;
 
-      const missionTl = $gsap.timeline({
-        scrollTrigger: {
-          pin: true,
-          trigger: missionSection.value,
-          start: 'top top-=200',
-          end: "+=1000%",
-          scrub: true,
-          onUpdate: (self) => {
-            const p = self.progress;
+              const local = (p - wait) / (1 - wait);
+              const idx = Math.min(
+                3, Math.floor(local * 4)
+              );  // 0~3 (1~4번)
+              updateZIndex(idx, self.direction);
 
-            const wait = 0.18;
-            if (p < wait) return;
+              const dir = self.direction;
+              
+              const pattern = dir === 1 ? zDown[idx] : zUp[idx];
 
-            const local = (p - wait) / (1 - wait);
-            const idx = Math.min(
-              3, Math.floor(local * 4)
-            );  // 0~3 (1~4번)
-            updateZIndex(idx, self.direction);
+              // 패턴을 곧바로 z-index에 대입
+              pattern.forEach((z, i) => {
+                cardsArray[i].style.zIndex = z;
+              });
 
-            const dir = self.direction;
-            
-            const pattern = dir === 1 ? zDown[idx] : zUp[idx];
-
-            // 패턴을 곧바로 z-index에 대입
-            pattern.forEach((z, i) => {
-              cardsArray[i].style.zIndex = z;
-            });
-
-            if (idx !== prevIdx) {
-              animateFigures(idx, dir);
-              prevIdx = idx;
+              if (idx !== prevIdx) {
+                animateFigures(idx, dir);
+                prevIdx = idx;
+              }
             }
           }
+        })
+
+        missionTl.fromTo(bgTitle.value, {
+          x: '0%'
+        }, {
+          x: '-250%',
+          duration: 0.6
+        }, 0.05)
+        .fromTo(missionImgWrap.value, {
+          x: '300%'
+        }, {
+          x: '0',
+          duration: 0.2
+        }, 0)
+        .fromTo(missionTextWrap.value, {
+          x: '-103%'
+        }, {
+          x: '-2%',
+          duration: 0.5
+        }, "<0.15");
+
+        function updateZIndex(active, direction) {
+          // 원하는 패턴에 맞춰 넣으면 됨
+          //console.log("현재 카드:", active, "방향:", direction);
         }
-      })
 
-      missionTl.fromTo(bgTitle.value, {
-        x: '0%'
-      }, {
-        x: '-250%',
-        duration: 0.6
-      }, 0.05)
-      .fromTo(missionImgWrap.value, {
-        x: '300%'
-      }, {
-        x: '0',
-        duration: 0.2
-      }, 0)
-      .fromTo(missionTextWrap.value, {
-        x: '-103%'
-      }, {
-        x: '-2%',
-        duration: 0.5
-      }, "<0.15");
+        function animateFigures(idx, direction) {
+          const card = cardsArray[idx];
+          if (!card) return;
 
-      function updateZIndex(active, direction) {
-        // 원하는 패턴에 맞춰 넣으면 됨
-        //console.log("현재 카드:", active, "방향:", direction);
-      }
+          const large = card.querySelector('.card-figure-big');
+          const small = card.querySelector('.card-figure-small');
 
-      function animateFigures(idx, direction) {
-        const card = cardsArray[idx];
-        if (!card) return;
+          // 이전 카드들 figure 리셋
+          cardsArray.forEach((c, i) => {
+            if (i !== idx) {
+              $gsap.set(c.querySelector('.card-figure-big'), {
+                y: "-100%", x: "45%"
+              });
+              $gsap.set(c.querySelector('.card-figure-small'), {
+                y: "100%", x: "-45%"
+              });
+            }
+          });
 
-        const large = card.querySelector('.card-figure-big');
-        const small = card.querySelector('.card-figure-small');
+          $gsap.fromTo(
+            large,
+            { y: "-100%", x: "45%" },
+            { y: "0%", x: "0%", duration: 1, ease: 'power2.out', delay: 0.1 }
+          );
 
-        // 이전 카드들 figure 리셋
-        cardsArray.forEach((c, i) => {
-          if (i !== idx) {
-            $gsap.set(c.querySelector('.card-figure-big'), {
-              y: "-100%", x: "45%"
-            });
-            $gsap.set(c.querySelector('.card-figure-small'), {
-              y: "100%", x: "-45%"
-            });
+          $gsap.fromTo(
+            small,
+            { y: "100%", x: "-45%" },
+            { y: "0%", x: "0%", duration: 1, ease: 'power2.out', delay: 0.1 }
+          );
+        }
+
+        // vision section animation
+        const visionTl = $gsap.timeline({
+          scrollTrigger: {
+            trigger: visionSection.value,
+            start: 'top center',
+            end: 'bottom center',
+            //scrub: 1,
+          }
+        })
+
+        visionTl.fromTo(visionText.value, {
+          opacity: 0,
+          y: '30%'
+        }, {
+          opacity: 1,
+          y: '0%',
+          ease: 'none',
+          duration: 1,
+        })
+        .fromTo(visionTitle.value, {
+          opacity: 0,
+          y: '30%'
+        }, {
+          opacity: 1,
+          y: '0%',
+          ease: 'none',
+          duration: 1,
+        }, ">-0.8")
+        .fromTo(visionFigureWrap.value, {
+          opacity: 0
+        }, {
+          opacity: 1,
+          ease: 'none',
+          duration: 1,
+        }, ">-0.8");
+
+        const visualViewportHeight = window.visualViewport?.height || window.innerHeight;
+
+        document.documentElement.style.setProperty('--vh', `${visualViewportHeight * 0.01}px`);
+
+        $gsap.timeline({
+          scrollTrigger: {
+            trigger: scrollSection.value,
+            start: 'top top',
+            end: () => "+=" + ( scrollSection.value.offsetHeight - window.visualViewport.height - (wideImageArea.value.offsetHeight / 2) + (scrollFixedHeadingInner.value.offsetHeight / 2) ),
+            scrub: 2,
+            // markers: true,
+            pin: scrollFixedHeading.value,
+            pinSpacing: false,
+            onEnter: () => {
+              scrollFixedHeading.value.classList.add('visible');
+            },
+          },
+        })
+
+        $gsap.fromTo(scrollTitle.value, {
+          opacity: 0,
+          y: '30%'
+        }, {
+          opacity: 1,
+          y: '0%',
+          ease: 'none',
+          duration: 0.5,
+          scrollTrigger: {
+            trigger: scrollSection.value,
+            start: 'top 40%',
+            // end: 'bottom top',
+            // scrub: true,
+          }
+        })
+        
+
+        const scrollTextItems = scrollSection.value.querySelectorAll('.showText');
+        const scrollTextArray = Array.from(scrollTextItems);
+
+        scrollTextArray.forEach((text, i) => {
+          $gsap.to(text, {
+            y: '0%',
+            duration: 1.5,
+            rotateX: 0,
+            ease: 'power4.out',
+            scrollTrigger: {
+              trigger: scrollSection.value,
+              start: () => (i * 100) + 'px center',
+              end: () => (i * 100) + 50 + 'px center',
+              //scrub: true,
+            }
+          });
+        });
+
+        const item = document.querySelectorAll('.content-card')
+
+        item.forEach((el, i) => {
+          // $gsap.to(el, {
+          //   scrollTrigger: {
+          //     trigger: el,
+          //     start: '40% bottom',
+          //     end: '40% top',
+          //     // markers: true,
+          //     onEnter: () => el.classList.add('on'),
+          //   }
+          // })
+
+          const cardTl = $gsap.timeline({
+            scrollTrigger: {
+              trigger: el,
+              start: "top bottom",
+              duration: 1,
+              scrub: true,
+              onEnter: () => el.classList.add('on'),
+            }
+          });      
+
+          const isOdd = (i % 2 === 1);
+          const defaultX = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2));
+          let xOffset = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2) + ((scrollFixedHeadingInner.value.offsetWidth) / 1.2)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2) - ((scrollFixedHeadingInner.value.offsetWidth) / 1.2));
+          let midX = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2) + ((scrollFixedHeadingInner.value.offsetWidth) / 1.5)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2) - ((scrollFixedHeadingInner.value.offsetWidth) / 1.5));
+          let mobileXOffset = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2) + ((scrollFixedHeadingInner.value.offsetWidth) / 2.8)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2) - ((scrollFixedHeadingInner.value.offsetWidth) / 2.8));
+          let mobileMidX = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2) + ((scrollFixedHeadingInner.value.offsetWidth) / 2.8)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2) - ((scrollFixedHeadingInner.value.offsetWidth) / 2.8));
+
+          const mmCompany = $gsap.matchMedia("");
+
+          mmCompany.add({
+            isMobile: "(max-width: 768px)",
+            isDesktop: "(min-width: 769px)",
+          }, (context) => {
+            let { isMobile } = context.conditions;
+
+            if (isMobile) {
+              xOffset = mobileXOffset;
+              midX = mobileMidX;
+            } else {
+              xOffset = xOffset;
+              midX = midX;
+            }
+          });
+          cardTl.set(el,
+            {
+              x: defaultX,
+              opacity: 0,
+              
+            })
+          .to(el, 
+            {
+              x: xOffset,     // 좌우로 벌어지기
+              opacity: 1,
+              ease: "power2.out",
+              duration: 1
+            })
+          .to(el, 
+            {
+              x: midX,        // 위로 상승
+              ease: "none",
+            }, 1)
+        })
+
+        $gsap.fromTo(companyCiSection.value, 
+          { y: '20%', opacity: 0 }, 
+          { y: '0%', opacity: 1, duration: 1.5, ease: 'ease',
+            scrollTrigger: {
+              trigger: companyCiSection.value,
+              start: 'top 80%',
+              end: 'top 80%',
           }
         });
 
-        $gsap.fromTo(
-          large,
-          { y: "-100%", x: "45%" },
-          { y: "0%", x: "0%", duration: 1, ease: 'power2.out', delay: 0.1 }
-        );
+        const bannerTextItems = companyBanner.value.querySelectorAll('.showText');
+        const bannerTextArray = Array.from(bannerTextItems);
 
-        $gsap.fromTo(
-          small,
-          { y: "100%", x: "-45%" },
-          { y: "0%", x: "0%", duration: 1, ease: 'power2.out', delay: 0.1 }
-        );
-      }
-
-      // vision section animation
-      const visionTl = $gsap.timeline({
-        scrollTrigger: {
-          trigger: visionSection.value,
-          start: 'top center',
-          end: 'bottom center',
-          //scrub: 1,
-        }
-      })
-
-      visionTl.fromTo(visionText.value, {
-        opacity: 0,
-        y: '30%'
-      }, {
-        opacity: 1,
-        y: '0%',
-        ease: 'none',
-        duration: 1,
-      })
-      .fromTo(visionTitle.value, {
-        opacity: 0,
-        y: '30%'
-      }, {
-        opacity: 1,
-        y: '0%',
-        ease: 'none',
-        duration: 1,
-      }, ">-0.8")
-      .fromTo(visionFigureWrap.value, {
-        opacity: 0
-      }, {
-        opacity: 1,
-        ease: 'none',
-        duration: 1,
-      }, ">-0.8");
-
-      $gsap.timeline({
-        scrollTrigger: {
-          trigger: scrollSection.value,
-          start: 'top top',
-          end: () => "+=" + ( scrollSection.value.offsetHeight - window.innerHeight - (wideImageArea.value.offsetHeight / 2) + (scrollFixedHeadingInner.value.offsetHeight / 2) ),
-          scrub: 2,
-          // markers: true,
-          pin: scrollFixedHeading.value,
-          pinSpacing: false,
-          onEnter: () => {
-            scrollFixedHeading.value.classList.add('visible');
-          },
-        },
-      })
-
-      $gsap.fromTo(scrollTitle.value, {
-        opacity: 0,
-        y: '30%'
-      }, {
-        opacity: 1,
-        y: '0%',
-        ease: 'none',
-        duration: 0.5,
-        scrollTrigger: {
-          trigger: scrollSection.value,
-          start: 'top 40%',
-          // end: 'bottom top',
-          // scrub: true,
-        }
-      })
-      
-
-      const scrollTextItems = scrollSection.value.querySelectorAll('.showText');
-      const scrollTextArray = Array.from(scrollTextItems);
-
-      scrollTextArray.forEach((text, i) => {
-        $gsap.to(text, {
-          y: '0%',
-          duration: 1.5,
-          rotateX: 0,
-          ease: 'power4.out',
+        const bannerTl = $gsap.timeline({
           scrollTrigger: {
-            trigger: scrollSection.value,
-            start: () => (i * 100) + 'px center',
-            end: () => (i * 100) + 50 + 'px center',
+            trigger: companyBanner.value,
+            start: 'top 70%',
+            end: 'bottom top',
             //scrub: true,
           }
         });
-      });
 
-      const item = document.querySelectorAll('.content-card')
-
-      item.forEach((el, i) => {
-        // $gsap.to(el, {
-        //   scrollTrigger: {
-        //     trigger: el,
-        //     start: '40% bottom',
-        //     end: '40% top',
-        //     // markers: true,
-        //     onEnter: () => el.classList.add('on'),
-        //   }
-        // })
-
-        const cardTl = $gsap.timeline({
-          scrollTrigger: {
-            trigger: el,
-            start: "top bottom",
-            duration: 1,
-            scrub: true,
-            onEnter: () => el.classList.add('on'),
-          }
-        });      
-
-        const isOdd = (i % 2 === 1);
-        const defaultX = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2));
-        let xOffset = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2) + ((scrollFixedHeadingInner.value.offsetWidth) / 1.2)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2) - ((scrollFixedHeadingInner.value.offsetWidth) / 1.2));
-        let midX = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2) + ((scrollFixedHeadingInner.value.offsetWidth) / 1.5)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2) - ((scrollFixedHeadingInner.value.offsetWidth) / 1.5));
-        let mobileXOffset = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2) + ((scrollFixedHeadingInner.value.offsetWidth) / 2.3)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2) - ((scrollFixedHeadingInner.value.offsetWidth) / 2.3));
-        let mobileMidX = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2) + ((scrollFixedHeadingInner.value.offsetWidth) / 2.3)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2) - ((scrollFixedHeadingInner.value.offsetWidth) / 2.3));
-
-        const mmCompany = $gsap.matchMedia("");
-
-        mmCompany.add({
-          isMobile: "(max-width: 768px)",
-          isDesktop: "(min-width: 769px)",
-        }, (context) => {
-          let { isMobile } = context.conditions;
-
-          if (isMobile) {
-            xOffset = mobileXOffset;
-            midX = mobileMidX;
-          } else {
-            xOffset = xOffset;
-            midX = midX;
-          }
+        bannerTextArray.forEach((text, i) => {
+          bannerTl.to(text, {
+            y: '0%',
+            duration: 1.5,
+            rotateX: 0,
+            ease: 'power4.out',
+          }, i * 0.1)
+          .fromTo(bannerFigureBig.value, {
+            y: "-100%",
+            x: "50%"
+          }, {
+            y: "0%",
+            x: "0%",
+            duration: 1.5,
+            ease: "power4.out",
+          }, 0)
+          .fromTo(bannerFigureSmall.value, {
+            y: "100%",
+            x: "-50%"
+          }, {
+            y: "0%",
+            x: "0%",
+            duration: 1.5,
+            ease: "power4.out",
+          }, 0);
         });
-        cardTl.set(el,
-          {
-            x: defaultX,
-            opacity: 0,
-            
-          })
-        .to(el, 
-          {
-            x: xOffset,     // 좌우로 벌어지기
-            opacity: 1,
-            ease: "power2.out",
-            duration: 1
-          })
-        .to(el, 
-          {
-            x: midX,        // 위로 상승
-            ease: "none",
-          }, 1)
+
       })
 
-      $gsap.fromTo(companyCiSection.value, 
-        { y: '20%', opacity: 0 }, 
-        { y: '0%', opacity: 1, duration: 1.5, ease: 'ease',
-          scrollTrigger: {
-            trigger: companyCiSection.value,
-            start: 'top 80%',
-            end: 'top 80%',
-        }
-      });
+      // 초기 로드 시에만 refresh (깜빡임 방지)
+      if (isFirstLoad) {
+        isFirstLoad = false;
+        setTimeout(() => $ScrollTrigger.refresh(), 50);
+      }
+    };
 
-      const bannerTextItems = companyBanner.value.querySelectorAll('.showText');
-      const bannerTextArray = Array.from(bannerTextItems);
+    // 초기 실행
+    initAnimation();
 
-      const bannerTl = $gsap.timeline({
-        scrollTrigger: {
-          trigger: companyBanner.value,
-          start: 'top 70%',
-          end: 'bottom top',
-          //scrub: true,
-        }
-      });
+    // 이후 리사이즈 감지
+    const resizeObserver = new ResizeObserver(() => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        initAnimation();
+      }, 200); // 조금 더 여유있게
+    });
 
-      bannerTextArray.forEach((text, i) => {
-        bannerTl.to(text, {
-          y: '0%',
-          duration: 1.5,
-          rotateX: 0,
-          ease: 'power4.out',
-        }, i * 0.1)
-        .fromTo(bannerFigureBig.value, {
-          y: "-100%",
-          x: "50%"
-        }, {
-          y: "0%",
-          x: "0%",
-          duration: 1.5,
-          ease: "power4.out",
-        }, 0)
-        .fromTo(bannerFigureSmall.value, {
-          y: "100%",
-          x: "-50%"
-        }, {
-          y: "0%",
-          x: "0%",
-          duration: 1.5,
-          ease: "power4.out",
-        }, 0);
-      });
+    //resizeObserver.observe(missionSection.value);
+    resizeObserver.observe(scrollSection.value);
 
-    })
-  });
+    $lenis.scrollTo(0, { immediate: true });
+
+    onUnmounted(() => {
+      clearTimeout(resizeTimeout);
+      resizeObserver.disconnect();
+      ctx?.revert();
+    });
+  })
+
+  
 
 </script>
 

@@ -22,6 +22,12 @@ export default defineNuxtPlugin((nuxtApp) => {
     });
   });
 
+  ScrollTrigger.normalizeScroll({
+    momentum: 0.08,
+    allowNestedScroll: true,
+    lockAxis: true,
+  })
+
   // Lenis 초기화
   const lenis = new Lenis({
     duration: 1.2,

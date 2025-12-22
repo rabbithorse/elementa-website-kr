@@ -122,7 +122,7 @@
               <div ref="newParadigm" class="leading-none gradient-text blue text-[length:inherit] md:flex-nowrap flex-wrap justify-center pt-1.5" >
                   <div class="character-wrap inline-block overflow-clip ">
                     <div class="primary-character primary-character--disappear">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="97" height="179" viewBox="0 0 97 179" fill="none" class="aspect-[97/179]">
+                      <!-- <svg xmlns="http://www.w3.org/2000/svg" width="97" height="179" viewBox="0 0 97 179" fill="none" class="aspect-[97/179]">
                         <foreignObject x="-40" y="-40" width="176.8" height="258.2"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_24_1220_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M0 178.2V0H27.72L64.24 85.8V0H96.8V178.2H70.18L33.66 85.8V178.2H0Z" fill="url(#paint0_linear_24_1220)"/>
                         <defs>
                         <clipPath id="bgblur_0_24_1220_clip_path" transform="translate(40 40)"><path d="M0 178.2V0H27.72L64.24 85.8V0H96.8V178.2H70.18L33.66 85.8V178.2H0Z"/>
@@ -131,12 +131,13 @@
                         <stop offset="1" stop-color="#7D4FF0"/>
                         </linearGradient>
                         </defs>
-                      </svg>
+                      </svg> -->
+                      <img src="~assets/images/main/gradient/new-n.svg" alt="" class="aspect-[97/179]">
                     </div>
                   </div>
                   <div class="character-wrap inline-block overflow-clip ">
                     <div class="primary-character primary-character--disappear">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="81" height="179" viewBox="0 0 81 179" fill="none" class="aspect-[81/179]">
+                      <!--<svg xmlns="http://www.w3.org/2000/svg" width="81" height="179" viewBox="0 0 81 179" fill="none" class="aspect-[81/179]">
                         <foreignObject x="-40" y="-40" width="160.52" height="258.2"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_24_1219_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M0 178.2V0H80.08V26.84H39.38V71.06H70.4V98.34H39.38V151.58H80.52V178.2H0Z" fill="url(#paint0_linear_24_1219)"/>
                         <defs>
                         <clipPath id="bgblur_0_24_1219_clip_path" transform="translate(40 40)"><path d="M0 178.2V0H80.08V26.84H39.38V71.06H70.4V98.34H39.38V151.58H80.52V178.2H0Z"/>
@@ -145,12 +146,13 @@
                         <stop offset="1" stop-color="#7D4FF0"/>
                         </linearGradient>
                         </defs>
-                      </svg>
+                      </svg>-->
+                      <img src="~assets/images/main/gradient/new-e.svg" alt="" class="aspect-[81/179]">
                     </div>
                   </div>
                   <div class="character-wrap inline-block overflow-clip ">
                     <div class="primary-character primary-character--disappear">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="142" height="179" viewBox="0 0 142 179" fill="none" class="aspect-[142/179]">
+                      <!--<svg xmlns="http://www.w3.org/2000/svg" width="142" height="179" viewBox="0 0 142 179" fill="none" class="aspect-[142/179]">
                         <foreignObject x="-40" y="-40" width="221.46" height="258.2"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_24_1218_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M21.56 178.2L0 0H33.44L44 103.84L57.42 0.220011H83.6L97.68 103.18L108.46 0H141.46L120.12 178.2H85.8L70.62 70.62L56.32 178.2H21.56Z" fill="url(#paint0_linear_24_1218)"/>
                         <defs>
                           <clipPath id="bgblur_0_24_1218_clip_path" transform="translate(40 40)"><path d="M21.56 178.2L0 0H33.44L44 103.84L57.42 0.220011H83.6L97.68 103.18L108.46 0H141.46L120.12 178.2H85.8L70.62 70.62L56.32 178.2H21.56Z"/>
@@ -159,7 +161,8 @@
                         <stop offset="1" stop-color="#7D4FF0"/>
                         </linearGradient>
                         </defs>
-                      </svg>
+                      </svg>-->
+                      <img src="~assets/images/main/gradient/new-w.svg" alt="" class="aspect-[142/179]">
                     </div>
                   </div>
                   <span class="text-spacer p-5 max-lg:block max-lg:p-0 max-lg:w-full max-sm:p-[5px]"></span>
@@ -610,179 +613,8 @@
             </p>
           </div>
           <div class="card-grid flex flex-col gap-y-18">
-            <EffectGlass class="card-glass glass-blur relative after:absolute after:inset-y-0 after:right-0 after:w-80 max-md:ml-[-2%] py-5" ref="glassRef">
-              <div class="card-list md:gap-[3.75rem] gap-4 justify-center flow-left md:mb-[4.375rem] flex flex-row" ref="flowLeft">
-                <div class="card md:w-[28rem] w-[21rem]" >
-                  <EffectCardHover>
-                    <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                      <div class="card-img">
-                        <img src="~assets/images/main/newsroom-thumb01.png" alt="">
-                      </div>
-                      <div class="card-content">
-                        <div class="card-title text-white break-keep">
-                          '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
-                        </div>
-                      </div>
-                    </div>
-                  </EffectCardHover>
-                </div>
-                <div class="card md:w-[28rem] w-[21rem]" >
-                  <EffectCardHover>
-                    <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                      <div class="card-img">
-                        <img src="~assets/images/main/newsroom-thumb02.png" alt="">
-                      </div>
-                      <div class="card-content">
-                        <div class="card-title text-white break-keep">
-                          UE5로 만든 싱가포르 서브컬처 기대작, 실버 팰리스 공개
-                        </div>
-                      </div>
-                    </div>
-                  </EffectCardHover>
-                </div>
-                <div class="card md:w-[28rem] w-[21rem]" >
-                  <EffectCardHover>
-                    <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                      <div class="card-img">
-                        <img src="~assets/images/main/newsroom-thumb03.png" alt="">
-                      </div>
-                      <div class="card-content">
-                        <div class="card-title text-white break-keep">
-                          엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 게임...
-                        </div>
-                      </div>
-                    </div>
-                  </EffectCardHover>
-                </div>
-                <div class="card md:w-[28rem] w-[21rem]" >
-                  <EffectCardHover>
-                    <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                      <div class="card-img">
-                        <img src="~assets/images/main/newsroom-thumb04.png" alt="">
-                      </div>
-                      <div class="card-content">
-                        <div class="card-title text-white break-keep">
-                          엘리멘타, 신작 실버 팰리스 첫 공개
-                        </div>
-                      </div>
-                    </div>
-                  </EffectCardHover>
-                </div>
-                <div class="card md:w-[28rem] w-[21rem]" >
-                  <EffectCardHover>
-                    <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                      <div class="card-img">
-                        <img src="~assets/images/main/newsroom-thumb05.png" alt="">
-                      </div>
-                      <div class="card-content">
-                        <div class="card-title text-white break-keep">
-                          엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 공개…글로벌 시장 공략
-                        </div>
-                      </div>
-                    </div>
-                  </EffectCardHover>
-                </div>
-                <div class="card md:w-[28rem] w-[21rem]" >
-                  <EffectCardHover>
-                    <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                      <div class="card-img">
-                        <img src="~assets/images/main/newsroom-thumb06.png" alt="">
-                      </div>
-                      <div class="card-content">
-                        <div class="card-title text-white break-keep">
-                          '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
-                        </div>
-                      </div>
-                    </div>
-                  </EffectCardHover>
-                </div>
-              </div>
-              <div class="card-list gap-[3.75rem] justify-center flow-left rows-reverse md:flex flex-row hidden " ref="flowRight">
-                <div class="card md:w-[28rem] w-[21rem]" >
-                  <EffectCardHover>
-                    <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                      <div class="card-img">
-                        <img src="~assets/images/main/newsroom-thumb01.png" alt="">
-                      </div>
-                      <div class="card-content">
-                        <div class="card-title text-white break-keep ">
-                          '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
-                        </div>
-                      </div>
-                    </div>
-                  </EffectCardHover>
-                </div>
-                <div class="card md:w-[28rem] w-[21rem]" >
-                  <EffectCardHover>
-                    <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                      <div class="card-img">
-                        <img src="~assets/images/main/newsroom-thumb02.png" alt="">
-                      </div>
-                      <div class="card-content">
-                        <div class="card-title text-white break-keep">
-                          UE5로 만든 싱가포르 서브컬처 기대작, 실버 팰리스 공개
-                        </div>
-                      </div>
-                    </div>
-                  </EffectCardHover>
-                </div>
-                <div class="card md:w-[28rem] w-[21rem]" >
-                  <EffectCardHover>
-                    <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                      <div class="card-img">
-                        <img src="~assets/images/main/newsroom-thumb03.png" alt="">
-                      </div>
-                      <div class="card-content">
-                        <div class="card-title text-white break-keep">
-                          엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 게임...
-                        </div>
-                      </div>
-                    </div>
-                  </EffectCardHover>
-                </div>
-                <div class="card md:w-[28rem] w-[21rem]" >
-                  <EffectCardHover>
-                    <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                      <div class="card-img">
-                        <img src="~assets/images/main/newsroom-thumb04.png" alt="">
-                      </div>
-                      <div class="card-content">
-                        <div class="card-title text-white break-keep">
-                          엘리멘타, 신작 실버 팰리스 첫 공개
-                        </div>
-                      </div>
-                    </div>
-                  </EffectCardHover>
-                </div>
-                <div class="card md:w-[28rem] w-[21rem]" >
-                  <EffectCardHover>
-                    <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                      <div class="card-img">
-                        <img src="~assets/images/main/newsroom-thumb05.png" alt="">
-                      </div>
-                      <div class="card-content">
-                        <div class="card-title text-white break-keep">
-                          엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 공개…글로벌 시장 공략
-                        </div>
-                      </div>
-                    </div>
-                  </EffectCardHover>
-                </div>
-                <div class="card md:w-[28rem] w-[21rem]" >
-                  <EffectCardHover>
-                    <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                      <div class="card-img">
-                        <img src="~assets/images/main/newsroom-thumb06.png" alt="">
-                      </div>
-                      <div class="card-content">
-                        <div class="card-title text-white break-keep">
-                          '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
-                        </div>
-                      </div>
-                    </div>
-                  </EffectCardHover>
-                </div>
-              </div>
+            <EffectGlass class="card-glass glass-blur relative after:absolute after:inset-y-0 after:right-0 after:w-80 max-md:ml-[-5.5%] lg:pt-20 lg:pb-44 pt-[52px] pb-[42px] lg:w-[81.77vw] w-[101vw]">
+              <BlocksScrollSlider />
             </EffectGlass>
           </div>
           <div class="content-button md:hidden flex justify-center mt-5">
@@ -923,92 +755,6 @@ let handleResize = null
 
 
 // Newsroom
-const glassRef = ref(null)
-const flowLeft = ref(null)
-const flowRight = ref(null)
-const isHovered = ref(false)
-let scrollTrigger = null
-let scrollAmount = 0
-
-const handleWheel = (e) => {
-  if (!isHovered.value) return
-
-  e.preventDefault()
-  e.stopPropagation()
-  
-  const slider1 = slider1Ref.value
-  const slider2 = slider2Ref.value
-  const delta = e.deltaY
-  const speed = 1.5
-
-  // 스크롤 양 누적
-  scrollAmount += delta * speed
-
-  // 슬라이더의 전체 너비와 보이는 영역 계산
-  const slider1Width = slider1.scrollWidth
-  const viewportWidth = glassRef.value.clientWidth
-  const padding = 50
-  
-  // 최대 스크롤 거리: 전체 너비 - 화면 너비 + 시작 여백
-  const maxScroll = slider1Width - viewportWidth + padding + 40
-
-  // 스크롤 범위 제한
-  scrollAmount = Math.max(0, Math.min(scrollAmount, maxScroll))
-
-  // 첫 번째 슬라이더: 우 -> 좌 (시작: 왼쪽 50px 여백)
-  $gsap.to(slider1, {
-    x: padding - scrollAmount,
-    duration: 0.5,
-    ease: 'power2.out'
-  })
-
-  // 두 번째 슬라이더: 좌 -> 우 (시작: 오른쪽 50px 여백)
-  $gsap.to(slider2, {
-    x: -maxScroll + scrollAmount + 40,
-    duration: 0.5,
-    ease: 'power2.out'
-  })
-}
-
-// 마우스 업 핸들러
-const handleMouseUp = () => {
-  if (!isHovered.value) return
-  
-  const slider1 = slider1Ref.value
-  const slider2 = slider2Ref.value
-  
-  // 초기 위치로 복귀
-  $gsap.to(slider1, {
-    x: 50,
-    duration: 0.8,
-    ease: 'power2.out'
-  })
-  
-  $gsap.to(slider2, {
-    x: -50,
-    duration: 0.8,
-    ease: 'power2.out'
-  })
-  
-  // 스크롤 양도 초기화
-  scrollAmount = 0
-}
-
-// 마우스 진입/이탈 핸들러
-const handleMouseEnter = () => {
-  isHovered.value = true
-  if (scrollTrigger) {
-    scrollTrigger.pin(true)
-  }
-}
-
-const handleMouseLeave = () => {
-  isHovered.value = false
-  if (scrollTrigger) {
-    scrollTrigger.pin(false)
-  }
-}
-
 
 /* [OSJ : 2025-12-03] Gsap 초기화 안됨 대응. */
 let ctx
@@ -1039,6 +785,7 @@ onMounted(async () => {
       scrollTrigger: {
         trigger: visualSection.value,
         start: "top 80%",
+        fastScrollEnd: false
       }
     })
 
@@ -1085,6 +832,7 @@ onMounted(async () => {
         //pinSpacing: true,
         markers: true,
         end: () => "+=800%",
+        fastScrollEnd: false
       }
     });
     tl.to(videoWrap.value,
@@ -1199,8 +947,9 @@ $ScrollTrigger.create({
   //pin: true,
    start: "top top",
   end: "+=600%",
-  scrub: 1,
+  scrub: 2.5,
   anticipatePin: 1,
+  fastScrollEnd: false,
   onEnter: () => {
     // pin이 시작될 때 y 위치 초기화
     // $gsap.set(missionSection.value, { 
@@ -1243,6 +992,7 @@ $ScrollTrigger.create({
         pin: true,
         pinSpacing: true,
         end: () => "+=" + (accordionSection.value.offsetHeight * 1.5),
+        fastScrollEnd: false,
         //scrub: 1,
       }
     })
@@ -1253,6 +1003,7 @@ $ScrollTrigger.create({
           trigger: item,
           start: 'top 50%',
           duration: 0.15,
+          fastScrollEnd: false,
           //scrub: 1,
         },
         x: 100,
@@ -1268,7 +1019,8 @@ $ScrollTrigger.create({
         pin: true,
         pinSpacing: true,
         end: () => "+=" + (wetheworldSection.value.offsetHeight * 11),
-        scrub: 1,
+        scrub: 1.5,
+        fastScrollEnd: false,
         //markers: true
       }
     })
@@ -1361,65 +1113,66 @@ $ScrollTrigger.create({
       duration: 1,
     }, "<")
 
-    const newsroomSliderWrap = document.querySelectorAll('.newsroom-section .card-glass');
-
     // 뉴스룸 섹션
 
-    /*const glass = glassRef.value
-    const slider1 = flowLeft.value
-    const slider2 = flowRight.value
+    // const glass = glassRef.value
+    // const slider1 = flowLeft.value
+    // const slider2 = flowRight.value
 
     // 초기 위치 설정 (시작할 때 여백)
-    $gsap.set(slider1, { x: 50 }) // 왼쪽 50px 여백에서 시작
-    $gsap.set(slider2, { x: -(slider2.scrollWidth - glassRef.value.clientWidth) -50 }) // 오른쪽 50px 여백에서 시작
+    // $gsap.set(slider1, { x: 50 }) // 왼쪽 50px 여백에서 시작
+    // $gsap.set(slider2, { x: -(slider2.scrollWidth - glass.clientWidth) -50 }) // 오른쪽 50px 여백에서 시작
 
     // 스크롤 트리거 설정 - 초기에는 pin 비활성화
-    scrollTrigger = $ScrollTrigger.create({
-      trigger: glass,
-      start: 'top top',
-      end: '+=300%',
-      pin: false,
-      pinSpacing: true,
-      anticipatePin: 1
-    })
+    // scrollTrigger = $ScrollTrigger.create({
+    //   trigger: glass,
+    //   start: 'top top',
+    //   end: '+=300%',
+    //   pin: false,
+    //   pinSpacing: true,
+    //   anticipatePin: 1
+    // })
 
   // 휠 이벤트 리스너 추가
-  glass.addEventListener('wheel', handleWheel, { passive: false })*/
-    $ScrollTrigger.matchMedia({
-      "(min-width: 1024px)": function() {
-        const elementaKoreaTl = $gsap.timeline({
-          scrollTrigger: {
-            trigger: elementaKoreaSection.value,
-            start: 'top 80%',
-            scrub: 1,
-          }
-        })
+  //glass.addEventListener('wheel', handleWheel, { passive: false })
+  
+  $ScrollTrigger.matchMedia({
+    "(min-width: 1024px)": function() {
+      const elementaKoreaTl = $gsap.timeline({
+        scrollTrigger: {
+          trigger: elementaKoreaSection.value,
+          start: 'top 80%',
+          scrub: 1,
+          fastScrollEnd: false
+        }
+      })
 
-        elementaKoreaTl.to(sliderImg.value, {
-          maxWidth: '30rem',
-          ease: 'power2.out',
-          duration: 5,
-        })
-      },
+      elementaKoreaTl.to(sliderImg.value, {
+        maxWidth: '30rem',
+        ease: 'power2.out',
+        duration: 5,
+      })
+    },
 
-      "(max-width: 1024px)": function() {
-        const elementaKoreaTl = $gsap.timeline({
-          scrollTrigger: {
-            trigger: sliderImg.value,
-            start: 'top 80%',
-            //end: () => "+=" + (elementaKoreaSection.value.offsetHeight * 1.5),
-            scrub: 1,
-          }
-        })
+    "(max-width: 1024px)": function() {
+      const elementaKoreaTl = $gsap.timeline({
+        scrollTrigger: {
+          trigger: sliderImg.value,
+          start: 'top 80%',
+          //end: () => "+=" + (elementaKoreaSection.value.offsetHeight * 1.5),
+          scrub: 1.5,
+          fastScrollEnd: false
+        }
+      })
 
-        elementaKoreaTl.to(sliderImg.value, {
-          maxWidth: '38%',
-          ease: 'power2.out',
-          duration: 5,
-        })
-      },
+      elementaKoreaTl.to(sliderImg.value, {
+        maxWidth: '38%',
+        ease: 'power2.out',
+        duration: 5,
+      })
+    },
 
-    })
+  })
     /*"(min-width: 2560px)": function() {
       const newsroomTl = $gsap.timeline({
         scrollTrigger: {
@@ -1567,6 +1320,7 @@ $ScrollTrigger.create({
         trigger: cardList,
         start: 'top 90%',
         end: 'top 90%',
+        fastScrollEnd: false
         // markers: true
     }
     }).fromTo(cardList, 
@@ -1590,7 +1344,9 @@ $ScrollTrigger.create({
 
 onUnmounted(() => {
   window.removeEventListener("resize", handleResize)
+
 })
+
 
 const nodeVersion = process.version
 </script>
