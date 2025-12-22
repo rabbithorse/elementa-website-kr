@@ -1365,7 +1365,7 @@ $ScrollTrigger.create({
 
     // 뉴스룸 섹션
 
-    const glass = glassRef.value
+    /*const glass = glassRef.value
     const slider1 = flowLeft.value
     const slider2 = flowRight.value
 
@@ -1384,7 +1384,7 @@ $ScrollTrigger.create({
     })
 
   // 휠 이벤트 리스너 추가
-  glass.addEventListener('wheel', handleWheel, { passive: false })
+  glass.addEventListener('wheel', handleWheel, { passive: false })*/
     $ScrollTrigger.matchMedia({
       "(min-width: 1024px)": function() {
         const elementaKoreaTl = $gsap.timeline({
