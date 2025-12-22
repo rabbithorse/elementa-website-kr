@@ -67,8 +67,8 @@
           <p class="lg:text-2xl text-sm list-header lg:mb-[2.5rem] mb-[1.25rem] relative overflow-hidden"><span class="block" ref="upText">100개의 검색결과</span></p>
           <ul class="grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-x-[1.25rem] lg:gap-y-[5.63rem] gap-y-[1.25rem] list relative">
             <li v-for="(n, index) in 24" :key="index" class="relative">
-              <EffectCardHover>
-                <div class="filter-glass"></div>
+              <EffectCardHover filter="distort" blur="blurred4">
+                <!-- <div class="filter-glass"></div> -->
                 <a class="cont relative" href="./join_us_detail">
                   <figure>
                     <img src="~/assets/images/sub/join-us-img01.png" alt="대표 이미지">
@@ -103,16 +103,6 @@
       </div>
       <!-- 채용 리스트 -->
     </section>
-    <!-- SVG Filter -->
-    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute; overflow:hidden">
-      <defs>
-        <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%">
-            <feTurbulence type="fractalNoise" baseFrequency="0.004 0.004" numOctaves="2" seed="1000" result="noise"></feTurbulence>
-            <feGaussianBlur in="noise" stdDeviation="2" result="blurred"></feGaussianBlur>
-            <feDisplacementMap in="SourceGraphic" in2="blurred" scale="91" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
-        </filter>
-      </defs>
-    </svg>
   </div>
 </template>
 

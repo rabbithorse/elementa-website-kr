@@ -95,8 +95,8 @@
 .shape.small::before {animation: shape-move-small-before 2s forwards;}
 
 @keyframes shape-move {
-  0% {width: 796px;}
-  100% {width: 896px;}
+  0% {width: 796px; opacity: 0;}
+  100% {width: 896px; opacity: 1;}
 }
 
 @keyframes shape-move-shine-before {
@@ -110,8 +110,8 @@
 }
 
 @keyframes shape-move-small {
-  0% {width: 796px; right: calc(-100% + 348px);}
-  100% {width: 896px; right: calc(-100% + 398px);}
+  0% {width: 796px; right: calc(-100% + 348px); opacity: 0;}
+  100% {width: 896px; right: calc(-100% + 398px); opacity: 1;}
 }
 
 @keyframes shape-move-small-before {

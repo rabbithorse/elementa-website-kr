@@ -1,5 +1,5 @@
 <template>
-  <div class="card-wrap relative" :class="[filterClass]">
+  <div class="card-wrap relative" :class="[filterClass, blurClass]">
     <div class="card-moving">
       <div class="animatedCard" ref="card" @mouseenter="cardHover">
         <slot></slot>
@@ -87,12 +87,21 @@
     
   const props = defineProps({
     filter: { type: String, default: '' },
+    blur: { type: String, default: '' },
   })
 
   const filterClass = computed(() => {
     switch (props.filter) {
       case 'distort': return 'absolute w-full h-full box-border transform-3d cursor-pointer distort'
       default: return 'absolute w-full h-full box-border transform-3d cursor-pointer'
+    } 
+  })
+
+  const blurClass = computed(() => {
+    switch (props.blur) {
+      case 'blurred4': return 'blurred4'
+      case 'blurred6': return 'blurred6'
+      default: return 'blurred0'
     } 
   })
 
@@ -116,10 +125,19 @@
     perspective: 800px;
   }
 
-  .distort .animatedCard {
+  .distort.blurred0 .animatedCard {
+    -webkit-backdrop-filter: url(#glass-distortion) blur(0px);
+    backdrop-filter: url(#glass-distortion) blur(0px);
+  } 
+
+  .distort.blurred6 .animatedCard {
     -webkit-backdrop-filter: url(#glass-distortion) blur(6px);
     backdrop-filter: url(#glass-distortion) blur(6px);
-    
+  }
+
+  .distort.blurred4 .animatedCard {
+    -webkit-backdrop-filter: url(#glass-distortion) blur(4px);
+    backdrop-filter: url(#glass-distortion) blur(4px);
   } 
 
   .distort .animatedCard::after {

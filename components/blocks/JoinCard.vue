@@ -1,6 +1,6 @@
 <template>
   <div class="relative h-full">
-    <EffectCardHover filter="distort">
+    <EffectCardHover filter="distort" blur="blurred6">
       <!-- <EffectGlassLiquid /> -->
       <a class="flex flex-col cont relative" href="">
         <figure>

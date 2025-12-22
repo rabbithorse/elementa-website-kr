@@ -19,8 +19,8 @@
       class="accordion-content xl:flex xl:mt-0 mt-auto"
       :class="{'w-0 max-xl:h-0 hidden': accordionItem.locked }"
     >
-      <div class="content-bg absolute left-0 top-0 w-[100vw] h-full overflow-hidden">
-        <video autoplay muted loop class="w-full h-full object-cover">
+      <div class="content-bg absolute left-0 top-0 w-[100vw] xl:h-full h-screen overflow-hidden">
+        <video autoplay playsinline muted loop class="w-full h-full object-cover">
           <source :src="`${accordionItem.videoSrc}`" type="video/mp4">
         </video>
       </div>
@@ -47,7 +47,7 @@
 </template>
 
 <script setup>
-import silverpalace from '@/assets/videos/main-game-silverpalace_enc.mp4';
+import silverpalace from '@/assets/videos/main-game-silverpalace.mp4';
 
   const accordionItems = [
     { 

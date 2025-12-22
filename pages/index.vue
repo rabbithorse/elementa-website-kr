@@ -1,16 +1,16 @@
 <template>
   <div>
-    <section ref="visualSection" class="visual-section h-dvh relative overflow-hidden">
+    <section ref="visualSection" class="visual-section h-screen relative overflow-hidden">
       <EffectGlass class="glass-blur"/>
       <div class="bg-video">
-        <video class="bg-video--content" autoplay muted loop>
-          <source src="~/assets/videos/main-logo-ani_enc.mp4" type="video/mp4" />
+        <video class="bg-video--content" autoplay playsinline muted loop preload="metadata">
+          <source src="~/assets/videos/main-logo-ani.mp4" type="video/mp4" />
         </video>
       </div>
       <div ref="videoWrap" class="video-layer video-layer--main z-[1]">
         <span ref="videoWrapLayer" class="bg-video-layer"></span>
         <EffectGlass>
-          <video autoplay muted loop ref="videoBigShape">
+          <video autoplay playsinline muted loop ref="videoBigShape">
             <source src="~/assets/videos/main-fly.mp4" type="video/mp4" />
           </video>
         </EffectGlass>
@@ -495,7 +495,7 @@
             </span>
             <div class="slider-img flex items-center justify-center mt-3 md:rounded-[10px] rounded-md" ref="sliderImg">
               <!-- <img src="~assets/images/main/elementakorea-center-img.png" alt="" class="block 3xl:w-auto xl:w-[17vw] lg:w-[22vw] w-[28vw]"> -->
-              <video autoplay muted loop class="block 3xl:w-auto xl:w-[17vw] lg:w-[22vw] w-[28vw] max-w-none">
+              <video autoplay playsinline muted loop class="block 3xl:w-auto xl:w-[17vw] lg:w-[22vw] w-[28vw] max-w-none">
                 <source src="~assets/videos/main-face.mp4" type="video/mp4" >
               </video>
             </div>
@@ -509,18 +509,18 @@
     </section>
     <section class="wetheworld-section flex items-center justify-center overflow-hidden h-dvh" ref="wetheworldSection">
       <div class="wetheworldbg-video01 opacity-0 invisible absolute inset-0 z-0" ref="wetheworldbg1">
-        <video class="bg-video--content w-full h-full object-cover" autoplay muted loop>
-          <source src="~/assets/videos/main-wetheworld-inspire_enc.mp4" type="video/mp4" />
+        <video class="bg-video--content w-full h-full object-cover" autoplay playsinline muted loop preload="metadata">
+          <source src="~/assets/videos/main-wetheworld-inspire.mp4" type="video/mp4" />
         </video>
       </div>
       <div class="wetheworldbg-video02 opacity-0 invisible absolute inset-0 z-0" ref="wetheworldbg2">
-        <video class="bg-video--content w-full h-full object-cover" autoplay muted loop>
-          <source src="~/assets/videos/main-wetheworld-connect_enc.mp4" type="video/mp4" />
+        <video class="bg-video--content w-full h-full object-cover" autoplay playsinline muted loop preload="metadata">
+          <source src="~/assets/videos/main-wetheworld-connect.mp4" type="video/mp4" />
         </video>
       </div>
       <div class="wetheworldbg-video03 opacity-0 invisible absolute inset-0 z-0" ref="wetheworldbg3">
-        <video class="bg-video--content w-full h-full object-cover" autoplay muted loop>
-          <source src="~/assets/videos/main-wetheworld-change_enc.mp4" type="video/mp4" />
+        <video class="bg-video--content w-full h-full object-cover" autoplay playsinline muted loop preload="metadata">
+          <source src="~/assets/videos/main-wetheworld-change.mp4" type="video/mp4" />
         </video>
       </div>
       <h2 class="2xl:text-[272px] xl:text-[220px] md:text-[180px] text-[25.3vw] leading-1 font-bold text-white text-center z-10 ">
@@ -610,7 +610,7 @@
             </p>
           </div>
           <div class="card-grid flex flex-col gap-y-18">
-            <EffectGlass class="card-glass glass-blur relative after:absolute after:inset-y-0 after:right-0 after:w-80 max-md:ml-[-2%] py-5">
+            <EffectGlass class="card-glass glass-blur relative after:absolute after:inset-y-0 after:right-0 after:w-80 max-md:ml-[-2%] py-5" ref="glassRef">
               <div class="card-list md:gap-[3.75rem] gap-4 justify-center flow-left md:mb-[4.375rem] flex flex-row" ref="flowLeft">
                 <div class="card md:w-[28rem] w-[21rem]" >
                   <EffectCardHover>
@@ -814,8 +814,8 @@
       <div class="section-content">
         <div class="content-glass py-[108px]">
           <EffectGlass class="glass-blur absolute left-0 top-0 w-full h-full" />
-          <div class="px-8"> 
-            <div class="controls xl:hidden flex gap-3 items-center justify-end">
+          <div class="lg:px-8"> 
+            <div class="controls xl:hidden flex gap-3 items-center justify-end pr-6">
               <PrevButton :swiper="swiperInstance" />
               <NextButton :swiper="swiperInstance" />
             </div>
@@ -882,7 +882,7 @@
 </template>
 
 <script setup>
-import { onBeforeRouteLeave } from 'vue-router'
+import { ref, onMounted, onUnmounted } from 'vue';
 import { EffectGlass } from '#components';
 import Container from '~/components/Container.vue';
 
@@ -904,8 +904,7 @@ const elementaKoreaSection = ref(null)
 const sliderImg = ref(null)
 const newsroomSection = ref(null)
 const newsroomHeading = ref(null)
-const flowLeft = ref(null)
-const flowRight = ref(null)
+
 const accordionSection = ref(null)
 const accordionItem = ref([])
 const wetheworldSection = ref(null)
@@ -921,6 +920,95 @@ const inspireText = ref(null)
 const connectText = ref(null)
 const changeText = ref(null)
 let handleResize = null
+
+
+// Newsroom
+const glassRef = ref(null)
+const flowLeft = ref(null)
+const flowRight = ref(null)
+const isHovered = ref(false)
+let scrollTrigger = null
+let scrollAmount = 0
+
+const handleWheel = (e) => {
+  if (!isHovered.value) return
+
+  e.preventDefault()
+  e.stopPropagation()
+  
+  const slider1 = slider1Ref.value
+  const slider2 = slider2Ref.value
+  const delta = e.deltaY
+  const speed = 1.5
+
+  // 스크롤 양 누적
+  scrollAmount += delta * speed
+
+  // 슬라이더의 전체 너비와 보이는 영역 계산
+  const slider1Width = slider1.scrollWidth
+  const viewportWidth = glassRef.value.clientWidth
+  const padding = 50
+  
+  // 최대 스크롤 거리: 전체 너비 - 화면 너비 + 시작 여백
+  const maxScroll = slider1Width - viewportWidth + padding + 40
+
+  // 스크롤 범위 제한
+  scrollAmount = Math.max(0, Math.min(scrollAmount, maxScroll))
+
+  // 첫 번째 슬라이더: 우 -> 좌 (시작: 왼쪽 50px 여백)
+  $gsap.to(slider1, {
+    x: padding - scrollAmount,
+    duration: 0.5,
+    ease: 'power2.out'
+  })
+
+  // 두 번째 슬라이더: 좌 -> 우 (시작: 오른쪽 50px 여백)
+  $gsap.to(slider2, {
+    x: -maxScroll + scrollAmount + 40,
+    duration: 0.5,
+    ease: 'power2.out'
+  })
+}
+
+// 마우스 업 핸들러
+const handleMouseUp = () => {
+  if (!isHovered.value) return
+  
+  const slider1 = slider1Ref.value
+  const slider2 = slider2Ref.value
+  
+  // 초기 위치로 복귀
+  $gsap.to(slider1, {
+    x: 50,
+    duration: 0.8,
+    ease: 'power2.out'
+  })
+  
+  $gsap.to(slider2, {
+    x: -50,
+    duration: 0.8,
+    ease: 'power2.out'
+  })
+  
+  // 스크롤 양도 초기화
+  scrollAmount = 0
+}
+
+// 마우스 진입/이탈 핸들러
+const handleMouseEnter = () => {
+  isHovered.value = true
+  if (scrollTrigger) {
+    scrollTrigger.pin(true)
+  }
+}
+
+const handleMouseLeave = () => {
+  isHovered.value = false
+  if (scrollTrigger) {
+    scrollTrigger.pin(false)
+  }
+}
+
 
 /* [OSJ : 2025-12-03] Gsap 초기화 안됨 대응. */
 let ctx
@@ -1276,8 +1364,63 @@ $ScrollTrigger.create({
     const newsroomSliderWrap = document.querySelectorAll('.newsroom-section .card-glass');
 
     // 뉴스룸 섹션
+
+    const glass = glassRef.value
+    const slider1 = flowLeft.value
+    const slider2 = flowRight.value
+
+    // 초기 위치 설정 (시작할 때 여백)
+    $gsap.set(slider1, { x: 50 }) // 왼쪽 50px 여백에서 시작
+    $gsap.set(slider2, { x: -(slider2.scrollWidth - glassRef.value.clientWidth) -50 }) // 오른쪽 50px 여백에서 시작
+
+    // 스크롤 트리거 설정 - 초기에는 pin 비활성화
+    scrollTrigger = $ScrollTrigger.create({
+      trigger: glass,
+      start: 'top top',
+      end: '+=300%',
+      pin: false,
+      pinSpacing: true,
+      anticipatePin: 1
+    })
+
+  // 휠 이벤트 리스너 추가
+  glass.addEventListener('wheel', handleWheel, { passive: false })
     $ScrollTrigger.matchMedia({
-    "(min-width: 2560px)": function() {
+      "(min-width: 1024px)": function() {
+        const elementaKoreaTl = $gsap.timeline({
+          scrollTrigger: {
+            trigger: elementaKoreaSection.value,
+            start: 'top 80%',
+            scrub: 1,
+          }
+        })
+
+        elementaKoreaTl.to(sliderImg.value, {
+          maxWidth: '30rem',
+          ease: 'power2.out',
+          duration: 5,
+        })
+      },
+
+      "(max-width: 1024px)": function() {
+        const elementaKoreaTl = $gsap.timeline({
+          scrollTrigger: {
+            trigger: sliderImg.value,
+            start: 'top 80%',
+            //end: () => "+=" + (elementaKoreaSection.value.offsetHeight * 1.5),
+            scrub: 1,
+          }
+        })
+
+        elementaKoreaTl.to(sliderImg.value, {
+          maxWidth: '38%',
+          ease: 'power2.out',
+          duration: 5,
+        })
+      },
+
+    })
+    /*"(min-width: 2560px)": function() {
       const newsroomTl = $gsap.timeline({
         scrollTrigger: {
           trigger: newsroomSection.value,
@@ -1413,7 +1556,7 @@ $ScrollTrigger.create({
         duration: 2,
       }, 0.2)
     }
-    });
+    });*/
 
     // 카드 스크롤 애니메이션
     const cardList = document.querySelectorAll('.careers-section .swiper');

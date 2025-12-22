@@ -16,7 +16,7 @@
 </script>
 
 <style scoped>
-  @media (max-width: 1024px) {
+  @media (max-width: 1023px) {
     .container {width: 90%;}
   }
 </style>

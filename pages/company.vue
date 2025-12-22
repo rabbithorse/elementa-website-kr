@@ -155,17 +155,17 @@
                     </div>
                   </div>
                 </div>
-                <div class="mission-img-wrapper 2xl:col-start-4 2xl:col-end-9 lg:col-start-4 lg:col-end-10 sm:col-start-3 sm:col-end-11 col-start-2 col-end-12 translate-x-[19%]">
+                <div class="mission-img-wrapper 2xl:col-start-4 2xl:col-end-9 lg:col-start-4 lg:col-end-10 sm:col-start-3 sm:col-end-11 col-start-2 col-end-12 2xl:translate-x-[19%]">
                   <div class="flex relative" ref="missionImgWrap">
                     <div class="card z-[1] relative w-[94.242%] overflow-hidden" ref="missionCards">
                       <img src="@/assets/images/sub/company-mission-card01.png" alt="">
-                      <div class="card-title flex items-center gap-x-[25px] absolute top-10 left-[34%] z-[1]">
-                        <h6 class="text-[36px] font-bold text-white">혁신</h6>
-                        <span class="text-xl font-bold text-white">Innovation</span>
+                      <div class="card-title flex items-center sm:gap-x-[25px] gap-x-4 absolute top-[5.5%] left-[34%] z-[1]">
+                        <h6 class="2xl:text-[36px] md:text-[2.2vw] text-[4.2vw] font-semibold text-white">혁신</h6>
+                        <span class="2xl:text-xl md:text-[1.2vw] text-[2.2vw] font-semibold text-white">Innovation</span>
                       </div>
-                      <div class="figure-wrap absolute -top-[20px] right-[5.22rem] w-[56.5%] h-[83.6%]">
-                        <div class="card-figure card-figure-big absolute left-0 xl:w-auto w-[86%] opacity-[90%]" ref="">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="367" height="507" viewBox="0 0 367 507" fill="none" class="aspect-[367/507] xl:w-[367px] w-[100%] h-auto">
+                      <div class="figure-wrap absolute -top-[20px] 4xl:right-[5rem] xl:right-[11.2%] sm:right-[10.8%] right-[10%] w-[56.5%] aspect-[422/527]">
+                        <div class="card-figure card-figure-big absolute 4xl:left-0 left-[5%] 4xl:w-auto w-[86%] opacity-[90%]" ref="">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="367" height="507" viewBox="0 0 367 507" fill="none" class="aspect-[367/507] 4xl:w-[367px] w-[100%] h-auto">
                             <path d="M182.602 -20.7559H366.921L184.319 506.469H0L182.602 -20.7559Z" fill="url(#paint0_linear_386_1809)"/>
                             <defs>
                             <linearGradient id="paint0_linear_386_1809" x1="121.514" y1="-20.7559" x2="121.514" y2="492.609" gradientUnits="userSpaceOnUse">
@@ -175,8 +175,8 @@
                             </defs>
                           </svg>
                         </div>
-                        <div class="card-figure card-figure-small absolute right-0 top-1/2 xl:w-[204px] w-[48.34%] opacity-[80%]">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="218" height="272" viewBox="0 0 218 272" fill="none" class="aspect-[218/272] xl:w-[204px] w-[100%] h-auto">
+                        <div class="card-figure card-figure-small absolute right-0 top-1/2 4xl:w-[204px] w-[48.34%] opacity-[80%]">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="218" height="272" viewBox="0 0 218 272" fill="none" class="aspect-[218/272] 4xl:w-[204px] w-[100%] h-auto">
                             <path d="M94.0679 0H217.463L123.395 271.097H0L94.0679 0Z" fill="url(#paint0_linear_386_1810)"/>
                             <defs>
                             <linearGradient id="paint0_linear_386_1810" x1="147.465" y1="-3.38286e-06" x2="147.465" y2="252.524" gradientUnits="userSpaceOnUse">
@@ -190,13 +190,13 @@
                     </div>
                     <div class="card w-[94.242%] overflow-hidden" ref="missionCards">
                       <img src="@/assets/images/sub/company-mission-card02.png" alt="">
-                      <div class="card-title flex items-center gap-x-[25px] absolute top-10 left-[34%] z-[1]">
-                        <h6 class="text-[36px] font-bold text-white">신뢰</h6>
-                        <span class="text-xl font-bold text-white">Trust</span>
+                      <div class="card-title flex items-center sm:gap-x-[25px] gap-x-4 absolute top-[5.5%] left-[34%] z-[1]">
+                        <h6 class="2xl:text-[36px] md:text-[2.2vw] text-[4.2vw] font-semibold text-white">신뢰</h6>
+                        <span class="2xl:text-xl md:text-[1.2vw] text-[2.2vw] font-semibold text-white">Trust</span>
                       </div>
-                      <div class="figure-wrap absolute -top-[20px] right-[5.22rem] w-[56.5%] h-[83.6%]">
-                        <div class="card-figure card-figure-big absolute left-0 xl:w-auto w-[86%] opacity-[90%]" ref="">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="367" height="507" viewBox="0 0 367 507" fill="none" class="aspect-[367/507] xl:w-[367px] w-[100%] h-auto">
+                      <div class="figure-wrap absolute -top-[20px] 4xl:right-[5rem] xl:right-[11.2%] sm:right-[10.8%] right-[10%] w-[56.5%] aspect-[422/527]">
+                        <div class="card-figure card-figure-big absolute 4xl:left-0 left-[5%] 4xl:w-auto w-[86%] opacity-[90%]" ref="">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="367" height="507" viewBox="0 0 367 507" fill="none" class="aspect-[367/507] 4xl:w-[367px] w-[100%] h-auto">
                             <path d="M182.602 -20.7539H366.921L184.319 506.471H0L182.602 -20.7539Z" fill="url(#paint0_linear_386_1870)"/>
                             <defs>
                             <linearGradient id="paint0_linear_386_1870" x1="121.514" y1="-20.7539" x2="121.514" y2="492.611" gradientUnits="userSpaceOnUse">
@@ -206,8 +206,8 @@
                             </defs>
                           </svg>
                         </div>
-                        <div class="card-figure card-figure-small absolute right-0 top-1/2 xl:w-[204px] w-[48.34%] opacity-[80%]">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="218" height="272" viewBox="0 0 218 272" fill="none" class="aspect-[218/272] xl:w-[204px] w-[100%] h-auto">
+                        <div class="card-figure card-figure-small absolute right-0 top-1/2 4xl:w-[204px] w-[48.34%] opacity-[80%]">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="218" height="272" viewBox="0 0 218 272" fill="none" class="aspect-[218/272] 4xl:w-[204px] w-[100%] h-auto">
                             <path d="M94.0679 0H217.463L123.395 271.096H0L94.0679 0Z" fill="url(#paint0_linear_386_1871)"/>
                             <defs>
                             <linearGradient id="paint0_linear_386_1871" x1="147.465" y1="-3.38286e-06" x2="147.465" y2="252.524" gradientUnits="userSpaceOnUse">
@@ -221,13 +221,13 @@
                     </div>
                     <div class="card w-[94.242%] overflow-hidden" ref="missionCards">
                       <img src="@/assets/images/sub/company-mission-card03.png" alt="">
-                      <div class="card-title flex items-center gap-x-[25px] absolute top-10 left-[34%] z-[1]">
-                        <h6 class="text-[36px] font-bold text-white">문화</h6>
-                        <span class="text-xl font-bold text-white">Culture</span>
+                      <div class="card-title flex items-center sm:gap-x-[25px] gap-x-4 absolute top-[5.5%] left-[34%] z-[1]">
+                        <h6 class="2xl:text-[36px] md:text-[2.2vw] text-[4.2vw] font-semibold text-white">문화</h6>
+                        <span class="2xl:text-xl md:text-[1.2vw] text-[2.2vw] font-semibold text-white">Culture</span>
                       </div>
-                      <div class="figure-wrap absolute -top-[20px] right-[5.22rem] w-[56.5%] h-[83.6%]">
-                        <div class="card-figure card-figure-big absolute left-0 xl:w-auto w-[86%] opacity-[90%]" ref="">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="367" height="507" viewBox="0 0 367 507" fill="none" class="aspect-[367/507] xl:w-[367px] w-[100%] h-auto">
+                      <div class="figure-wrap absolute -top-[20px] 4xl:right-[5rem] xl:right-[11.2%] sm:right-[10.8%] right-[10%] w-[56.5%] aspect-[422/527]">
+                        <div class="card-figure card-figure-big absolute 4xl:left-0 left-[5%] 4xl:w-auto w-[86%] opacity-[90%]" ref="">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="367" height="507" viewBox="0 0 367 507" fill="none" class="aspect-[367/507] 4xl:w-[367px] w-[100%] h-auto">
                             <path d="M182.602 -20.7539H366.921L184.319 506.471H0L182.602 -20.7539Z" fill="url(#paint0_linear_386_1899)"/>
                             <defs>
                             <linearGradient id="paint0_linear_386_1899" x1="121.514" y1="-20.7539" x2="121.514" y2="492.611" gradientUnits="userSpaceOnUse">
@@ -237,8 +237,8 @@
                             </defs>
                           </svg>
                         </div>
-                        <div class="card-figure card-figure-small absolute right-0 top-1/2 xl:w-[204px] w-[48.34%] opacity-[80%]">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="218" height="272" viewBox="0 0 218 272" fill="none" class="aspect-[218/272] xl:w-[204px] w-[100%] h-auto">
+                        <div class="card-figure card-figure-small absolute right-0 top-1/2 2xl:w-[204px] w-[48.34%] opacity-[80%]">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="218" height="272" viewBox="0 0 218 272" fill="none" class="aspect-[218/272] 2xl:w-[204px] w-[100%] h-auto">
                             <path d="M94.0679 0H217.463L123.395 271.096H0L94.0679 0Z" fill="url(#paint0_linear_386_1900)"/>
                             <defs>
                             <linearGradient id="paint0_linear_386_1900" x1="147.465" y1="-3.38286e-06" x2="147.465" y2="252.524" gradientUnits="userSpaceOnUse">
@@ -252,13 +252,13 @@
                     </div>
                     <div class="card w-[94.242%] overflow-hidden" ref="missionCards">
                       <img src="@/assets/images/sub/company-mission-card04.png" alt="">
-                      <div class="card-title flex items-center gap-x-[25px] absolute top-10 left-[34%] z-[1]">
-                        <h6 class="text-[36px] font-bold text-white">경험</h6>
-                        <span class="text-xl font-bold text-white">Experience</span>
+                      <div class="card-title flex items-center sm:gap-x-[25px] gap-x-4 absolute top-[5.5%] left-[34%] z-[1]">
+                        <h6 class="2xl:text-[36px] md:text-[2.2vw] text-[4.2vw] font-semibold text-white">경험</h6>
+                        <span class="2xl:text-xl md:text-[1.2vw] text-[2.2vw] font-semibold text-white">Experience</span>
                       </div>
-                      <div class="figure-wrap absolute -top-[20px] right-[5.22rem] w-[56.5%] h-[83.6%]">
-                        <div class="card-figure card-figure-big absolute left-0 xl:w-auto w-[86%] opacity-[90%]" ref="">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="367" height="507" viewBox="0 0 367 507" fill="none" class="aspect-[367/507] xl:w-[367px] w-[100%] h-auto">
+                      <div class="figure-wrap absolute -top-[20px] 4xl:right-[5rem] xl:right-[11.2%] sm:right-[10.8%] right-[10%] w-[56.5%] aspect-[422/527]">
+                        <div class="card-figure card-figure-big absolute 4xl:left-0 left-[5%] 2xl:w-auto w-[86%] opacity-[90%]" ref="">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="367" height="507" viewBox="0 0 367 507" fill="none" class="aspect-[367/507] 4xl:w-[367px] w-[100%] h-auto">
                             <path d="M182.602 -20.7539H366.921L184.319 506.471H0L182.602 -20.7539Z" fill="url(#paint0_linear_386_1928)"/>
                             <defs>
                             <linearGradient id="paint0_linear_386_1928" x1="121.514" y1="-20.7539" x2="121.514" y2="492.611" gradientUnits="userSpaceOnUse">
@@ -268,8 +268,8 @@
                             </defs>
                           </svg>
                         </div>
-                        <div class="card-figure card-figure-small absolute right-0 top-1/2 xl:w-[204px] w-[48.34%] opacity-[80%]">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="218" height="272" viewBox="0 0 218 272" fill="none" class="aspect-[218/272] xl:w-[204px] w-[100%] h-auto">
+                        <div class="card-figure card-figure-small absolute right-0 top-1/2 4xl:w-[204px] w-[48.34%] opacity-[80%]">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="218" height="272" viewBox="0 0 218 272" fill="none" class="aspect-[218/272] 4xl:w-[204px] w-[100%] h-auto">
                             <path d="M94.0679 0H217.463L123.395 271.096H0L94.0679 0Z" fill="url(#paint0_linear_386_1929)"/>
                             <defs>
                             <linearGradient id="paint0_linear_386_1929" x1="147.465" y1="-3.38286e-06" x2="147.465" y2="252.524" gradientUnits="userSpaceOnUse">
@@ -595,23 +595,23 @@
         cardsArray.forEach((c, i) => {
           if (i !== idx) {
             $gsap.set(c.querySelector('.card-figure-big'), {
-              y: "-100%", x: "50%"
+              y: "-100%", x: "45%"
             });
             $gsap.set(c.querySelector('.card-figure-small'), {
-              y: "100%", x: "-50%"
+              y: "100%", x: "-45%"
             });
           }
         });
 
         $gsap.fromTo(
           large,
-          { y: "-100%", x: "50%" },
+          { y: "-100%", x: "45%" },
           { y: "0%", x: "0%", duration: 1, ease: 'power2.out', delay: 0.1 }
         );
 
         $gsap.fromTo(
           small,
-          { y: "100%", x: "-50%" },
+          { y: "100%", x: "-45%" },
           { y: "0%", x: "0%", duration: 1, ease: 'power2.out', delay: 0.1 }
         );
       }
@@ -996,6 +996,12 @@
   @media (max-width: 639px) {
     .bgtitle .primary-char-wrap {
       margin-left: -2px;
+    }
+
+    .mission-wrap .card-title h6::after {
+      width: 2.5px;
+      height: 2.5px;
+      right: -8px;
     }
 
     .company-scroll .content-card .inner-img {

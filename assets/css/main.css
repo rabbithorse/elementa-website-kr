@@ -108,7 +108,8 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 .accordion-item .accordion-trigger button span {font-size: 24px;}
 .accordion-item .accordion-trigger button h3 {writing-mode: vertical-lr; transform: rotate(180deg); font-size: 26px; line-height: 150%;}
 .accordion-item.locked button {padding: 6.25rem 1rem; width: auto;}
-.locked {width: 110px; flex-shrink: 0;}
+.locked {width: 110px; flex-shrink: 0; position: relative;}
+.locked::before {content: ""; display: block; width: 4px; height: 100%; background: url('~/assets/images/main/accordion-line.png') no-repeat center/contain; position: absolute; top: -120px; left: 0; z-index: 1;}
 .locked-title-text {transform: rotate(0)}
 
 .curtain-item {opacity: 0; background: rgba(0, 0, 0, 0.20); box-shadow: -2px -3px 3px 0 rgba(255, 255, 255, 0.25) inset, 5px 3px 5px 0 rgba(255, 255, 255, 0.40) inset;}
@@ -227,11 +228,12 @@ section .primary-text, section .primary-text * {line-height: 1em;}
   .careers-section .swiper-slide .cont .text-box {padding: 1.88rem;}
 }
 @media (max-width: 1279px) {
-  .video-layer {height: 100vh; right: auto; left: 30%;}
+  .video-layer {height: 100svh; right: auto; left: 30%;}
 
   .accordion-item.opened .accordion-trigger button {display: flex; flex-direction: row; justify-content: space-between; row-gap: 3.125rem; padding: 1.25rem; width: 100%}
   .accordion-item.opened .accordion-trigger button h3 {writing-mode: horizontal-tb; transform: rotate(0);}
   .locked { width: 100%; }
+  .locked::before {background: url('~/assets/images/main/accordion-line-mobile.png') no-repeat center/cover; top: 0; left: 0; width: 100%; height: 3px; }
   .accordion-item.locked button {flex-direction: row; justify-content: space-between; padding: 0.2rem 0 0.2rem 1rem; width: 100%;}
   .locked-title-icon {width: 20px; height: 29px; background: url("~/assets/images/main/icon-lock.svg") no-repeat center/contain; vertical-align: middle; }
   .locked-title-text {width: 139px; height: 47px; background: url("~/assets/images/main/text-lock.png") no-repeat center/contain; vertical-align: middle; }
@@ -248,7 +250,8 @@ section .primary-text, section .primary-text * {line-height: 1em;}
   .accordion-item .content-text .glass {padding: 0 !important;}
   
   .careers-section .swiper-slide {width: 100%; height: 415px;} 
-  .careers-section .content-glass {padding: 15px; padding-right: 0;}
+  .careers-section .content-glass {padding: 20px 20px 48px; padding-right: 0;}
+  .careers-section .content-glass::before, .careers-section .content-glass::after {content: none;}
 }
 
 /* -------------------------------------- */
