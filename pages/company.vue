@@ -84,95 +84,209 @@
         </Container>
       </div>
       <div class="h-screen flex items-center pt-[3.75rem] relative" ref="missionSection">
-        <div class="absolute left-0 inset-y-0 h-full 2xl:w-[11.6rem] lg:w-[8rem] sm:w-14 w-9 z-20">
-          <EffectGlass class="w-full h-full" />
-        </div>
-        <div class="absolute right-0 inset-y-0 h-full 2xl:w-[11.6rem] lg:w-[8rem] sm:w-14 w-9 z-20">
-          <EffectGlass class="w-full h-full" />
-        </div>
-        <div class="section-heading absolute 2xl:left-[15.2rem] lg:left-[10.6rem] sm:left-20 left-14 6xl:top-[9.25rem] top-[3.75rem]">
-          <div class="heading-text flex flex-col md:gap-y-10 gap-y-4">
-            <span class="sectionTitle-eng text-white md:text-base text-sm relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] md:before:w-3 md:before:h-3 before:w-[0.625rem] before:h-[0.625rem] before:rounded-full pl-5">Our Mission</span>
+        <div class="missiont-content h-screen w-full flex items-center mt-[340px] relative">
+          <div class="absolute left-0 inset-y-0 h-full 2xl:w-[11.6rem] lg:w-[8rem] sm:w-14 w-9 z-20">
+            <EffectGlass class="w-full h-full glass-blur" />
           </div>
-        </div>
-        <Container class="flex items-center h-full">
-          <div class="section-content">
-            <div class="mission-wrap grid items-center grid-cols-12 gap-x-4 relative">
-              <div class="bgtitle absolute left-1/2 -translate-x-1/2 w-full">
-                <h2 class="text-[#9FAEB5] 2xl:text-[10rem] md:text-[8rem] sm:text-[7rem] text-[3.5rem] font-paperlogy font-extrabold text-center" ref="bgTitle">
-                  <TypographyPrimary>
-                    O
-                  </TypographyPrimary>
-                  <TypographyPrimary>
-                    U
-                  </TypographyPrimary>
-                  <TypographyPrimary>
-                    R
-                  </TypographyPrimary>
+          <div class="absolute right-0 inset-y-0 h-full 2xl:w-[11.6rem] lg:w-[8rem] sm:w-14 w-9 z-20">
+            <EffectGlass class="w-full h-full glass-blur" />
+          </div>
+          <div class="section-heading absolute 2xl:left-[15.2rem] lg:left-[10.6rem] sm:left-20 left-14 6xl:top-[9.25rem] top-[3.75rem]">
+            <div class="heading-text flex flex-col md:gap-y-10 gap-y-4">
+              <span class="sectionTitle-eng text-white md:text-base text-sm relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] md:before:w-3 md:before:h-3 before:w-[0.625rem] before:h-[0.625rem] before:rounded-full pl-5">Our Mission</span>
+            </div>
+          </div>
+          <Container class="flex items-center h-full">
+            <div class="section-content">
+              <div class="mission-wrap grid items-center grid-cols-12 gap-x-4 relative">
+                <div class="bgtitle absolute left-1/2 -translate-x-1/2 w-full">
+                  <h2 class="text-[#9FAEB5] 2xl:text-[10rem] md:text-[8rem] sm:text-[7rem] text-[3.5rem] font-paperlogy font-extrabold text-center" ref="bgTitle">
+                    <TypographyPrimary>
+                      O
+                    </TypographyPrimary>
+                    <TypographyPrimary>
+                      U
+                    </TypographyPrimary>
+                    <TypographyPrimary>
+                      R
+                    </TypographyPrimary>
 
-                  <br>
-                  <TypographyPrimary>
-                    M
-                  </TypographyPrimary>
-                  <TypographyPrimary>
-                    I
-                  </TypographyPrimary>
-                  <TypographyPrimary>
-                    S
-                  </TypographyPrimary>
-                  <TypographyPrimary>
-                    S
-                  </TypographyPrimary>
-                  <TypographyPrimary>
-                    I
-                  </TypographyPrimary>
-                  <TypographyPrimary>
-                    O
-                  </TypographyPrimary>
-                  <TypographyPrimary>
-                    N
-                  </TypographyPrimary>
-                </h2>
-              </div>
-              <div class="mission-text-wrapper absolute">
-                <div class="flex items-center flex-row-reverse gap-x-52" ref="missionTextWrap">
-                  <div class="flex flex-col items-center">
-                    <span class="text-[#7B728F] xl:text-[3.125rem] md:text-4xl text-xl whitespace-nowrap">게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다 게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다.</span>
-                    <h2 class="text-[#7B728F] 3xl:text-[16.25rem] xl:text-[12rem] md:text-[10rem] sm:text-[8rem] text-[5rem] font-paperlogy font-extrabold leading-[130%]">INNOVATION</h2>
-                  </div>
-                  <div class="flex flex-col items-center">
-                    <span class="text-[#728D8F] xl:text-[3.125rem] md:text-4xl text-xl whitespace-nowrap">게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다 게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다.</span>
-                    <h2 class="text-[#728D8F] 3xl:text-[16.25rem] xl:text-[12rem] md:text-[10rem] sm:text-[8rem] text-[5rem] font-paperlogy font-extrabold leading-[130%]">Trust Trust</h2>
-                  </div>
-                  <div class="flex flex-col items-center">
-                    <span class="text-[#728F7F] xl:text-[3.125rem] md:text-4xl text-xl whitespace-nowrap">게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다 게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다.</span>
-                    <h2 class="text-[#728F7F] 3xl:text-[16.25rem] xl:text-[12rem] md:text-[10rem] sm:text-[8rem] text-[5rem] font-paperlogy font-extrabold leading-[130%]">Culture</h2>
-                  </div>
-                  <div class="flex flex-col items-center">
-                    <span class="text-[#8F8872] xl:text-[3.125rem] md:text-4xl text-xl whitespace-nowrap">게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다 게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다.</span>
-                    <h2 class="text-[#8F8872] 3xl:text-[16.25rem] xl:text-[12rem] md:text-[10rem] sm:text-[8rem] text-[5rem] font-paperlogy font-extrabold leading-[130%]">Experience</h2>
+                    <br>
+                    <TypographyPrimary>
+                      M
+                    </TypographyPrimary>
+                    <TypographyPrimary>
+                      I
+                    </TypographyPrimary>
+                    <TypographyPrimary>
+                      S
+                    </TypographyPrimary>
+                    <TypographyPrimary>
+                      S
+                    </TypographyPrimary>
+                    <TypographyPrimary>
+                      I
+                    </TypographyPrimary>
+                    <TypographyPrimary>
+                      O
+                    </TypographyPrimary>
+                    <TypographyPrimary>
+                      N
+                    </TypographyPrimary>
+                  </h2>
+                </div>
+                <div class="mission-text-wrapper absolute">
+                  <div class="flex items-center flex-row-reverse gap-x-52" ref="missionTextWrap">
+                    <div class="flex flex-col items-center">
+                      <span class="text-[#7B728F] xl:text-[3.125rem] md:text-4xl text-xl whitespace-nowrap">게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다 게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다.</span>
+                      <h2 class="text-[#7B728F] 3xl:text-[16.25rem] xl:text-[12rem] md:text-[10rem] sm:text-[8rem] text-[5rem] font-paperlogy font-extrabold leading-[130%]">INNOVATION</h2>
+                    </div>
+                    <div class="flex flex-col items-center">
+                      <span class="text-[#728D8F] xl:text-[3.125rem] md:text-4xl text-xl whitespace-nowrap">게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다 게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다.</span>
+                      <h2 class="text-[#728D8F] 3xl:text-[16.25rem] xl:text-[12rem] md:text-[10rem] sm:text-[8rem] text-[5rem] font-paperlogy font-extrabold leading-[130%]">Trust Trust</h2>
+                    </div>
+                    <div class="flex flex-col items-center">
+                      <span class="text-[#728F7F] xl:text-[3.125rem] md:text-4xl text-xl whitespace-nowrap">게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다 게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다.</span>
+                      <h2 class="text-[#728F7F] 3xl:text-[16.25rem] xl:text-[12rem] md:text-[10rem] sm:text-[8rem] text-[5rem] font-paperlogy font-extrabold leading-[130%]">Culture</h2>
+                    </div>
+                    <div class="flex flex-col items-center">
+                      <span class="text-[#8F8872] xl:text-[3.125rem] md:text-4xl text-xl whitespace-nowrap">게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다 게임의 미래를 재설계합니다.  게임의 미래를 재설계합니다.</span>
+                      <h2 class="text-[#8F8872] 3xl:text-[16.25rem] xl:text-[12rem] md:text-[10rem] sm:text-[8rem] text-[5rem] font-paperlogy font-extrabold leading-[130%]">Experience</h2>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="mission-img-wrapper 2xl:col-start-5 2xl:col-end-9 lg:col-start-4 lg:col-end-10 sm:col-start-3 sm:col-end-11 col-start-2 col-end-12">
-                <div class="flex relative" ref="missionImgWrap">
-                  <div class="card z-[1]">
-                    <img src="@/assets/images/sub/company-mission-card01.png" alt="">
-                  </div>
-                  <div class="card">
-                    <img src="@/assets/images/sub/company-mission-card02.png" alt="">
-                  </div>
-                  <div class="card">
-                    <img src="@/assets/images/sub/company-mission-card03.png" alt="">
-                  </div>
-                  <div class="card">
-                    <img src="@/assets/images/sub/company-mission-card04.png" alt="">
+                <div class="mission-img-wrapper 2xl:col-start-4 2xl:col-end-9 lg:col-start-4 lg:col-end-10 sm:col-start-3 sm:col-end-11 col-start-2 col-end-12 translate-x-[19%]">
+                  <div class="flex relative" ref="missionImgWrap">
+                    <div class="card z-[1] relative w-[94.242%] overflow-hidden" ref="missionCards">
+                      <img src="@/assets/images/sub/company-mission-card01.png" alt="">
+                      <div class="card-title flex items-center gap-x-[25px] absolute top-10 left-[34%] z-[1]">
+                        <h6 class="text-[36px] font-bold text-white">혁신</h6>
+                        <span class="text-xl font-bold text-white">Innovation</span>
+                      </div>
+                      <div class="figure-wrap absolute -top-[20px] right-[5.22rem] w-[56.5%] h-[83.6%]">
+                        <div class="card-figure card-figure-big absolute left-0 xl:w-auto w-[86%] opacity-[90%]" ref="">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="367" height="507" viewBox="0 0 367 507" fill="none" class="aspect-[367/507] xl:w-[367px] w-[100%] h-auto">
+                            <path d="M182.602 -20.7559H366.921L184.319 506.469H0L182.602 -20.7559Z" fill="url(#paint0_linear_386_1809)"/>
+                            <defs>
+                            <linearGradient id="paint0_linear_386_1809" x1="121.514" y1="-20.7559" x2="121.514" y2="492.609" gradientUnits="userSpaceOnUse">
+                            <stop offset="0.355769" stop-color="#734BD7"/>
+                            <stop offset="1" stop-color="#00C8EB" stop-opacity="0"/>
+                            </linearGradient>
+                            </defs>
+                          </svg>
+                        </div>
+                        <div class="card-figure card-figure-small absolute right-0 top-1/2 xl:w-[204px] w-[48.34%] opacity-[80%]">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="218" height="272" viewBox="0 0 218 272" fill="none" class="aspect-[218/272] xl:w-[204px] w-[100%] h-auto">
+                            <path d="M94.0679 0H217.463L123.395 271.097H0L94.0679 0Z" fill="url(#paint0_linear_386_1810)"/>
+                            <defs>
+                            <linearGradient id="paint0_linear_386_1810" x1="147.465" y1="-3.38286e-06" x2="147.465" y2="252.524" gradientUnits="userSpaceOnUse">
+                            <stop offset="0.201923" stop-color="#734BD7"/>
+                            <stop offset="1" stop-color="#00C8EB" stop-opacity="0"/>
+                            </linearGradient>
+                            </defs>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card w-[94.242%] overflow-hidden" ref="missionCards">
+                      <img src="@/assets/images/sub/company-mission-card02.png" alt="">
+                      <div class="card-title flex items-center gap-x-[25px] absolute top-10 left-[34%] z-[1]">
+                        <h6 class="text-[36px] font-bold text-white">신뢰</h6>
+                        <span class="text-xl font-bold text-white">Trust</span>
+                      </div>
+                      <div class="figure-wrap absolute -top-[20px] right-[5.22rem] w-[56.5%] h-[83.6%]">
+                        <div class="card-figure card-figure-big absolute left-0 xl:w-auto w-[86%] opacity-[90%]" ref="">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="367" height="507" viewBox="0 0 367 507" fill="none" class="aspect-[367/507] xl:w-[367px] w-[100%] h-auto">
+                            <path d="M182.602 -20.7539H366.921L184.319 506.471H0L182.602 -20.7539Z" fill="url(#paint0_linear_386_1870)"/>
+                            <defs>
+                            <linearGradient id="paint0_linear_386_1870" x1="121.514" y1="-20.7539" x2="121.514" y2="492.611" gradientUnits="userSpaceOnUse">
+                            <stop offset="0.355769" stop-color="#00C8EB" stop-opacity="0.9"/>
+                            <stop offset="1" stop-color="#00BD5F" stop-opacity="0"/>
+                            </linearGradient>
+                            </defs>
+                          </svg>
+                        </div>
+                        <div class="card-figure card-figure-small absolute right-0 top-1/2 xl:w-[204px] w-[48.34%] opacity-[80%]">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="218" height="272" viewBox="0 0 218 272" fill="none" class="aspect-[218/272] xl:w-[204px] w-[100%] h-auto">
+                            <path d="M94.0679 0H217.463L123.395 271.096H0L94.0679 0Z" fill="url(#paint0_linear_386_1871)"/>
+                            <defs>
+                            <linearGradient id="paint0_linear_386_1871" x1="147.465" y1="-3.38286e-06" x2="147.465" y2="252.524" gradientUnits="userSpaceOnUse">
+                            <stop offset="0.201923" stop-color="#00C8EB" stop-opacity="0.9"/>
+                            <stop offset="1" stop-color="#00BD5F" stop-opacity="0"/>
+                            </linearGradient>
+                            </defs>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card w-[94.242%] overflow-hidden" ref="missionCards">
+                      <img src="@/assets/images/sub/company-mission-card03.png" alt="">
+                      <div class="card-title flex items-center gap-x-[25px] absolute top-10 left-[34%] z-[1]">
+                        <h6 class="text-[36px] font-bold text-white">문화</h6>
+                        <span class="text-xl font-bold text-white">Culture</span>
+                      </div>
+                      <div class="figure-wrap absolute -top-[20px] right-[5.22rem] w-[56.5%] h-[83.6%]">
+                        <div class="card-figure card-figure-big absolute left-0 xl:w-auto w-[86%] opacity-[90%]" ref="">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="367" height="507" viewBox="0 0 367 507" fill="none" class="aspect-[367/507] xl:w-[367px] w-[100%] h-auto">
+                            <path d="M182.602 -20.7539H366.921L184.319 506.471H0L182.602 -20.7539Z" fill="url(#paint0_linear_386_1899)"/>
+                            <defs>
+                            <linearGradient id="paint0_linear_386_1899" x1="121.514" y1="-20.7539" x2="121.514" y2="492.611" gradientUnits="userSpaceOnUse">
+                            <stop offset="0.355769" stop-color="#2B9D5D" stop-opacity="0.9"/>
+                            <stop offset="0.894231" stop-color="#00C8EB" stop-opacity="0"/>
+                            </linearGradient>
+                            </defs>
+                          </svg>
+                        </div>
+                        <div class="card-figure card-figure-small absolute right-0 top-1/2 xl:w-[204px] w-[48.34%] opacity-[80%]">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="218" height="272" viewBox="0 0 218 272" fill="none" class="aspect-[218/272] xl:w-[204px] w-[100%] h-auto">
+                            <path d="M94.0679 0H217.463L123.395 271.096H0L94.0679 0Z" fill="url(#paint0_linear_386_1900)"/>
+                            <defs>
+                            <linearGradient id="paint0_linear_386_1900" x1="147.465" y1="-3.38286e-06" x2="147.465" y2="252.524" gradientUnits="userSpaceOnUse">
+                            <stop offset="0.201923" stop-color="#2B9D5D" stop-opacity="0.9"/>
+                            <stop offset="0.903846" stop-color="#00C8EB" stop-opacity="0"/>
+                            </linearGradient>
+                            </defs>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card w-[94.242%] overflow-hidden" ref="missionCards">
+                      <img src="@/assets/images/sub/company-mission-card04.png" alt="">
+                      <div class="card-title flex items-center gap-x-[25px] absolute top-10 left-[34%] z-[1]">
+                        <h6 class="text-[36px] font-bold text-white">경험</h6>
+                        <span class="text-xl font-bold text-white">Experience</span>
+                      </div>
+                      <div class="figure-wrap absolute -top-[20px] right-[5.22rem] w-[56.5%] h-[83.6%]">
+                        <div class="card-figure card-figure-big absolute left-0 xl:w-auto w-[86%] opacity-[90%]" ref="">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="367" height="507" viewBox="0 0 367 507" fill="none" class="aspect-[367/507] xl:w-[367px] w-[100%] h-auto">
+                            <path d="M182.602 -20.7539H366.921L184.319 506.471H0L182.602 -20.7539Z" fill="url(#paint0_linear_386_1928)"/>
+                            <defs>
+                            <linearGradient id="paint0_linear_386_1928" x1="121.514" y1="-20.7539" x2="121.514" y2="492.611" gradientUnits="userSpaceOnUse">
+                            <stop offset="0.317308" stop-color="#9D892B" stop-opacity="0.95"/>
+                            <stop offset="0.923077" stop-color="#BD7400" stop-opacity="0"/>
+                            </linearGradient>
+                            </defs>
+                          </svg>
+                        </div>
+                        <div class="card-figure card-figure-small absolute right-0 top-1/2 xl:w-[204px] w-[48.34%] opacity-[80%]">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="218" height="272" viewBox="0 0 218 272" fill="none" class="aspect-[218/272] xl:w-[204px] w-[100%] h-auto">
+                            <path d="M94.0679 0H217.463L123.395 271.096H0L94.0679 0Z" fill="url(#paint0_linear_386_1929)"/>
+                            <defs>
+                            <linearGradient id="paint0_linear_386_1929" x1="147.465" y1="-3.38286e-06" x2="147.465" y2="252.524" gradientUnits="userSpaceOnUse">
+                            <stop offset="0.201923" stop-color="#9D892B"/>
+                            <stop offset="0.870192" stop-color="#BD7400" stop-opacity="0"/>
+                            </linearGradient>
+                            </defs>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </Container>
+          </Container>
+        </div>
       </div>
       <div class="h-screen flex items-center justify-center overflow-hidden" ref="visionSection">
         <Container class="w-full">
@@ -323,9 +437,9 @@
 </template>
 
 <script setup>
-  import { ref, onMounted } from 'vue';
+  import { ref, onMounted, onBeforeUnmount } from 'vue';
 
-  const { $gsap } = useNuxtApp();
+  const { $gsap, $ScrollTrigger } = useNuxtApp();
   // Intro Section Refs
   const introSection = ref(null);
   const introText = ref(null);
@@ -358,295 +472,353 @@
   const bannerFigureBig = ref(null);
   const bannerFigureSmall = ref(null);
 
-  onMounted(() => {
-    $gsap.fromTo(introText.value, {
-      opacity: 0,
-      y: '30%'
-    }, {
-      opacity: 1,
-      y: '0%',
-      ease: 'none',
-      duration: 0.5,
-      delay: 0.5,
-      scrollTrigger: {
-        trigger: introSection.value,
-        start: 'top 80%',
-      }
-    })
-
-    let cards = missionSection.value.querySelectorAll('.mission-img-wrapper .card');
-    let cardsArray = Array.from(cards);
-    
-    const zDown = [
-      [2, 0, 0, 0],   // 활성 1
-      [1, 2, 0, 0],   // 활성 2
-      [0, 1, 2, 0],    // 활성 3
-      [0, 0, 1, 2]      // 활성 4
-    ];
-
-    // 스크롤 UP(-1)일 때 z-index 패턴
-    const zUp = [
-      [2, 1, 0, 0],   // 활성 1
-      [0, 2, 1, 0],    // 활성 2
-      [0, 0, 2, 1],     // 활성 3
-      [0, 0, 1, 2]      // 활성 4
-    ];
-
-    const missionTl = $gsap.timeline({
-      scrollTrigger: {
-        pin: true,
-        trigger: missionSection.value,
-        start: 'top top',
-        end: "+=1000%",
-        scrub: true,
-        onUpdate: (self) => {
-          const p = self.progress;   
-          //console.log(self.progress);
-          if (p < 0.2) return;    
-          const local = p / 0.9;
-          const idx = Math.min(
-            3, Math.floor(local * 4)
-          );  // 0~3 (1~4번)
-          updateZIndex(idx, self.direction);
-
-          const dir = self.direction;
-          
-          const pattern = dir === 1 ? zDown[idx] : zUp[idx];
-
-          // 패턴을 곧바로 z-index에 대입
-          pattern.forEach((z, i) => {
-            cardsArray[i].style.zIndex = z;
-          });
-        }
-      }
-    })
-
-    missionTl.fromTo(bgTitle.value, {
-      x: '0%'
-    }, {
-      x: '-250%',
-      duration: 0.08
-    }, 0.005)
-    .fromTo(missionImgWrap.value, {
-      x: '300%'
-    }, {
-      x: '0',
-      duration: 0.2
-    }, 0)
-    .fromTo(missionTextWrap.value, {
-      x: '-103%'
-    }, {
-      x: '-2%',
-      duration: 0.8
-    }, ">-0.15");
-
-    function updateZIndex(active, direction) {
-      // 원하는 패턴에 맞춰 넣으면 됨
-      //console.log("현재 카드:", active, "방향:", direction);
+  let ctx
+  onBeforeUnmount(() => {
+    if (ctx) {
+      ctx.revert();
+      $ScrollTrigger.getAll().forEach(t => t.kill());
+      $ScrollTrigger.refresh();
     }
+    console.log('Gsap context reverted');
+  })
 
-    // vision section animation
-    const visionTl = $gsap.timeline({
-      scrollTrigger: {
-        trigger: visionSection.value,
-        start: 'top center',
-        end: 'bottom center',
-        //scrub: 1,
-      }
-    })
+  onMounted(() => {
+    window.scrollTo(0, 0);
 
-    visionTl.fromTo(visionText.value, {
-      opacity: 0,
-      y: '30%'
-    }, {
-      opacity: 1,
-      y: '0%',
-      ease: 'none',
-      duration: 1,
-    })
-    .fromTo(visionTitle.value, {
-      opacity: 0,
-      y: '30%'
-    }, {
-      opacity: 1,
-      y: '0%',
-      ease: 'none',
-      duration: 1,
-    }, ">-0.8")
-    .fromTo(visionFigureWrap.value, {
-      opacity: 0
-    }, {
-      opacity: 1,
-      ease: 'none',
-      duration: 1,
-    }, ">-0.8");
+    $ScrollTrigger.clearScrollMemory();
+    $ScrollTrigger.refresh();
 
-    $gsap.timeline({
-      scrollTrigger: {
-        trigger: scrollSection.value,
-        start: 'top top',
-        end: () => "+=" + ( scrollSection.value.offsetHeight - window.innerHeight - (wideImageArea.value.offsetHeight / 2) + (scrollFixedHeadingInner.value.offsetHeight / 2) ),
-        scrub: 2,
-        // markers: true,
-        pin: scrollFixedHeading.value,
-        pinSpacing: false,
-        onEnter: () => {
-          scrollFixedHeading.value.classList.add('visible');
-        },
-      },
-    })
-
-    $gsap.fromTo(scrollTitle.value, {
-      opacity: 0,
-      y: '30%'
-    }, {
-      opacity: 1,
-      y: '0%',
-      ease: 'none',
-      duration: 0.5,
-      scrollTrigger: {
-        trigger: scrollSection.value,
-        start: 'top 40%',
-        // end: 'bottom top',
-        // scrub: true,
-      }
-    })
-    
-
-    const scrollTextItems = scrollSection.value.querySelectorAll('.showText');
-    const scrollTextArray = Array.from(scrollTextItems);
-
-    scrollTextArray.forEach((text, i) => {
-      $gsap.to(text, {
+    ctx = $gsap.context(() => { 
+      $gsap.fromTo(introText.value, {
+        opacity: 0,
+        y: '30%'
+      }, {
+        opacity: 1,
         y: '0%',
-        duration: 1.5,
-        rotateX: 0,
-        ease: 'power4.out',
+        ease: 'none',
+        duration: 0.5,
+        delay: 0.5,
+        scrollTrigger: {
+          trigger: introSection.value,
+          start: 'top 80%',
+        }
+      })
+
+      let cards = missionSection.value.querySelectorAll('.mission-img-wrapper .card');
+      let cardsArray = Array.from(cards);
+      
+      const zDown = [
+        [2, 0, 0, 0],   // 활성 1
+        [1, 2, 0, 0],   // 활성 2
+        [0, 1, 2, 0],    // 활성 3
+        [0, 0, 1, 2]      // 활성 4
+      ];
+
+      // 스크롤 UP(-1)일 때 z-index 패턴
+      const zUp = [
+        [2, 1, 0, 0],   // 활성 1
+        [0, 2, 1, 0],    // 활성 2
+        [0, 0, 2, 1],     // 활성 3
+        [0, 0, 1, 2]      // 활성 4
+      ];
+
+      let prevIdx = -1;
+
+      const missionTl = $gsap.timeline({
+        scrollTrigger: {
+          pin: true,
+          trigger: missionSection.value,
+          start: 'top top-=200',
+          end: "+=1000%",
+          scrub: true,
+          onUpdate: (self) => {
+            const p = self.progress;
+
+            const wait = 0.18;
+            if (p < wait) return;
+
+            const local = (p - wait) / (1 - wait);
+            const idx = Math.min(
+              3, Math.floor(local * 4)
+            );  // 0~3 (1~4번)
+            updateZIndex(idx, self.direction);
+
+            const dir = self.direction;
+            
+            const pattern = dir === 1 ? zDown[idx] : zUp[idx];
+
+            // 패턴을 곧바로 z-index에 대입
+            pattern.forEach((z, i) => {
+              cardsArray[i].style.zIndex = z;
+            });
+
+            if (idx !== prevIdx) {
+              animateFigures(idx, dir);
+              prevIdx = idx;
+            }
+          }
+        }
+      })
+
+      missionTl.fromTo(bgTitle.value, {
+        x: '0%'
+      }, {
+        x: '-250%',
+        duration: 0.6
+      }, 0.05)
+      .fromTo(missionImgWrap.value, {
+        x: '300%'
+      }, {
+        x: '0',
+        duration: 0.2
+      }, 0)
+      .fromTo(missionTextWrap.value, {
+        x: '-103%'
+      }, {
+        x: '-2%',
+        duration: 0.5
+      }, "<0.15");
+
+      function updateZIndex(active, direction) {
+        // 원하는 패턴에 맞춰 넣으면 됨
+        //console.log("현재 카드:", active, "방향:", direction);
+      }
+
+      function animateFigures(idx, direction) {
+        const card = cardsArray[idx];
+        if (!card) return;
+
+        const large = card.querySelector('.card-figure-big');
+        const small = card.querySelector('.card-figure-small');
+
+        // 이전 카드들 figure 리셋
+        cardsArray.forEach((c, i) => {
+          if (i !== idx) {
+            $gsap.set(c.querySelector('.card-figure-big'), {
+              y: "-100%", x: "50%"
+            });
+            $gsap.set(c.querySelector('.card-figure-small'), {
+              y: "100%", x: "-50%"
+            });
+          }
+        });
+
+        $gsap.fromTo(
+          large,
+          { y: "-100%", x: "50%" },
+          { y: "0%", x: "0%", duration: 1, ease: 'power2.out', delay: 0.1 }
+        );
+
+        $gsap.fromTo(
+          small,
+          { y: "100%", x: "-50%" },
+          { y: "0%", x: "0%", duration: 1, ease: 'power2.out', delay: 0.1 }
+        );
+      }
+
+      // vision section animation
+      const visionTl = $gsap.timeline({
+        scrollTrigger: {
+          trigger: visionSection.value,
+          start: 'top center',
+          end: 'bottom center',
+          //scrub: 1,
+        }
+      })
+
+      visionTl.fromTo(visionText.value, {
+        opacity: 0,
+        y: '30%'
+      }, {
+        opacity: 1,
+        y: '0%',
+        ease: 'none',
+        duration: 1,
+      })
+      .fromTo(visionTitle.value, {
+        opacity: 0,
+        y: '30%'
+      }, {
+        opacity: 1,
+        y: '0%',
+        ease: 'none',
+        duration: 1,
+      }, ">-0.8")
+      .fromTo(visionFigureWrap.value, {
+        opacity: 0
+      }, {
+        opacity: 1,
+        ease: 'none',
+        duration: 1,
+      }, ">-0.8");
+
+      $gsap.timeline({
         scrollTrigger: {
           trigger: scrollSection.value,
-          start: () => (i * 100) + 'px center',
-          end: () => (i * 100) + 50 + 'px center',
+          start: 'top top',
+          end: () => "+=" + ( scrollSection.value.offsetHeight - window.innerHeight - (wideImageArea.value.offsetHeight / 2) + (scrollFixedHeadingInner.value.offsetHeight / 2) ),
+          scrub: 2,
+          // markers: true,
+          pin: scrollFixedHeading.value,
+          pinSpacing: false,
+          onEnter: () => {
+            scrollFixedHeading.value.classList.add('visible');
+          },
+        },
+      })
+
+      $gsap.fromTo(scrollTitle.value, {
+        opacity: 0,
+        y: '30%'
+      }, {
+        opacity: 1,
+        y: '0%',
+        ease: 'none',
+        duration: 0.5,
+        scrollTrigger: {
+          trigger: scrollSection.value,
+          start: 'top 40%',
+          // end: 'bottom top',
+          // scrub: true,
+        }
+      })
+      
+
+      const scrollTextItems = scrollSection.value.querySelectorAll('.showText');
+      const scrollTextArray = Array.from(scrollTextItems);
+
+      scrollTextArray.forEach((text, i) => {
+        $gsap.to(text, {
+          y: '0%',
+          duration: 1.5,
+          rotateX: 0,
+          ease: 'power4.out',
+          scrollTrigger: {
+            trigger: scrollSection.value,
+            start: () => (i * 100) + 'px center',
+            end: () => (i * 100) + 50 + 'px center',
+            //scrub: true,
+          }
+        });
+      });
+
+      const item = document.querySelectorAll('.content-card')
+
+      item.forEach((el, i) => {
+        // $gsap.to(el, {
+        //   scrollTrigger: {
+        //     trigger: el,
+        //     start: '40% bottom',
+        //     end: '40% top',
+        //     // markers: true,
+        //     onEnter: () => el.classList.add('on'),
+        //   }
+        // })
+
+        const cardTl = $gsap.timeline({
+          scrollTrigger: {
+            trigger: el,
+            start: "top bottom",
+            duration: 1,
+            scrub: true,
+            onEnter: () => el.classList.add('on'),
+          }
+        });      
+
+        const isOdd = (i % 2 === 1);
+        const defaultX = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2));
+        let xOffset = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2) + ((scrollFixedHeadingInner.value.offsetWidth) / 1.2)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2) - ((scrollFixedHeadingInner.value.offsetWidth) / 1.2));
+        let midX = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2) + ((scrollFixedHeadingInner.value.offsetWidth) / 1.5)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2) - ((scrollFixedHeadingInner.value.offsetWidth) / 1.5));
+        let mobileXOffset = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2) + ((scrollFixedHeadingInner.value.offsetWidth) / 2.3)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2) - ((scrollFixedHeadingInner.value.offsetWidth) / 2.3));
+        let mobileMidX = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2) + ((scrollFixedHeadingInner.value.offsetWidth) / 2.3)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2) - ((scrollFixedHeadingInner.value.offsetWidth) / 2.3));
+
+        const mmCompany = $gsap.matchMedia("");
+
+        mmCompany.add({
+          isMobile: "(max-width: 768px)",
+          isDesktop: "(min-width: 769px)",
+        }, (context) => {
+          let { isMobile } = context.conditions;
+
+          if (isMobile) {
+            xOffset = mobileXOffset;
+            midX = mobileMidX;
+          } else {
+            xOffset = xOffset;
+            midX = midX;
+          }
+        });
+        cardTl.set(el,
+          {
+            x: defaultX,
+            opacity: 0,
+            
+          })
+        .to(el, 
+          {
+            x: xOffset,     // 좌우로 벌어지기
+            opacity: 1,
+            ease: "power2.out",
+            duration: 1
+          })
+        .to(el, 
+          {
+            x: midX,        // 위로 상승
+            ease: "none",
+          }, 1)
+      })
+
+      $gsap.fromTo(companyCiSection.value, 
+        { y: '20%', opacity: 0 }, 
+        { y: '0%', opacity: 1, duration: 1.5, ease: 'ease',
+          scrollTrigger: {
+            trigger: companyCiSection.value,
+            start: 'top 80%',
+            end: 'top 80%',
+        }
+      });
+
+      const bannerTextItems = companyBanner.value.querySelectorAll('.showText');
+      const bannerTextArray = Array.from(bannerTextItems);
+
+      const bannerTl = $gsap.timeline({
+        scrollTrigger: {
+          trigger: companyBanner.value,
+          start: 'top 70%',
+          end: 'bottom top',
           //scrub: true,
         }
       });
-    });
 
-    const item = document.querySelectorAll('.content-card')
-
-    item.forEach((el, i) => {
-      // $gsap.to(el, {
-      //   scrollTrigger: {
-      //     trigger: el,
-      //     start: '40% bottom',
-      //     end: '40% top',
-      //     // markers: true,
-      //     onEnter: () => el.classList.add('on'),
-      //   }
-      // })
-
-      const cardTl = $gsap.timeline({
-        scrollTrigger: {
-          trigger: el,
-          start: "top bottom",
-          duration: 1,
-          scrub: true,
-          onEnter: () => el.classList.add('on'),
-        }
-      });      
-
-      const isOdd = (i % 2 === 1);
-      const defaultX = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2));
-      let xOffset = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2) + ((scrollFixedHeadingInner.value.offsetWidth) / 1.2)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2) - ((scrollFixedHeadingInner.value.offsetWidth) / 1.2));
-      let midX = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2) + ((scrollFixedHeadingInner.value.offsetWidth) / 1.5)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2) - ((scrollFixedHeadingInner.value.offsetWidth) / 1.5));
-      let mobileXOffset = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2) + ((scrollFixedHeadingInner.value.offsetWidth) / 2.3)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2) - ((scrollFixedHeadingInner.value.offsetWidth) / 2.3));
-      let mobileMidX = isOdd ? (((window.innerWidth) / 2) - (el.offsetWidth / 2) + ((scrollFixedHeadingInner.value.offsetWidth) / 2.3)) : (((window.innerWidth) / 2) - (el.offsetWidth / 2) - ((scrollFixedHeadingInner.value.offsetWidth) / 2.3));
-
-      const mmCompany = $gsap.matchMedia("");
-
-      mmCompany.add({
-        isMobile: "(max-width: 768px)",
-        isDesktop: "(min-width: 769px)",
-      }, (context) => {
-        let { isMobile } = context.conditions;
-
-        if (isMobile) {
-          xOffset = mobileXOffset;
-          midX = mobileMidX;
-        } else {
-          xOffset = xOffset;
-          midX = midX;
-        }
+      bannerTextArray.forEach((text, i) => {
+        bannerTl.to(text, {
+          y: '0%',
+          duration: 1.5,
+          rotateX: 0,
+          ease: 'power4.out',
+        }, i * 0.1)
+        .fromTo(bannerFigureBig.value, {
+          y: "-100%",
+          x: "50%"
+        }, {
+          y: "0%",
+          x: "0%",
+          duration: 1.5,
+          ease: "power4.out",
+        }, 0)
+        .fromTo(bannerFigureSmall.value, {
+          y: "100%",
+          x: "-50%"
+        }, {
+          y: "0%",
+          x: "0%",
+          duration: 1.5,
+          ease: "power4.out",
+        }, 0);
       });
-      cardTl.set(el,
-        {
-          x: defaultX,
-          opacity: 0,
-          
-        })
-      .to(el, 
-        {
-          x: xOffset,     // 좌우로 벌어지기
-          opacity: 1,
-          ease: "power2.out",
-          duration: 1
-        })
-      .to(el, 
-        {
-          x: midX,        // 위로 상승
-          ease: "none",
-        }, 1)
+
     })
-
-    $gsap.fromTo(companyCiSection.value, 
-      { y: '20%', opacity: 0 }, 
-      { y: '0%', opacity: 1, duration: 1.5, ease: 'ease',
-        scrollTrigger: {
-          trigger: companyCiSection.value,
-          start: 'top 80%',
-          end: 'top 80%',
-      }
-    });
-
-    const bannerTextItems = companyBanner.value.querySelectorAll('.showText');
-    const bannerTextArray = Array.from(bannerTextItems);
-
-    const bannerTl = $gsap.timeline({
-      scrollTrigger: {
-        trigger: companyBanner.value,
-        start: 'top 70%',
-        end: 'bottom top',
-        //scrub: true,
-      }
-    });
-
-    bannerTextArray.forEach((text, i) => {
-      bannerTl.to(text, {
-        y: '0%',
-        duration: 1.5,
-        rotateX: 0,
-        ease: 'power4.out',
-      }, i * 0.1)
-      .fromTo(bannerFigureBig.value, {
-        y: "-100%",
-        x: "50%"
-      }, {
-        y: "0%",
-        x: "0%",
-        duration: 1.5,
-        ease: "power4.out",
-      }, 0)
-      .fromTo(bannerFigureSmall.value, {
-        y: "100%",
-        x: "-50%"
-      }, {
-        y: "0%",
-        x: "0%",
-        duration: 1.5,
-        ease: "power4.out",
-      }, 0);
-    });
-
-  })
+  });
 
 </script>
 
@@ -663,10 +835,44 @@
     margin-left: -5px;
   }
 
+  .missiont-content {
+    position: relative;
+  }
+
+  .missiont-content::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 33.333%;
+    background: linear-gradient(180deg, rgba(5, 6, 11, 0.00) 0%, #05060B 85%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 25;
+  }
+
   .mission-img-wrapper .card:not(:first-child) {
     position: absolute;
     left: 0; 
     top: 0;
+    z-index: 0;
+  }
+
+  .mission-wrap .card-title h6 {
+    position: relative;
+  }
+
+  .mission-wrap .card-title h6::after {
+    content: ""; 
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 999px;
+    background: #fff;
+    position: absolute; 
+    right: -12.5px;
+    top: 50%;
+    transform: translate(50%, -50%);
   }
 
   .company-scroll .wide-image-area {

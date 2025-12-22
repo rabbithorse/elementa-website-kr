@@ -1,10 +1,19 @@
 <template>
-  <div class="card-wrap relative">
+  <div class="card-wrap relative" :class="[filterClass]">
     <div class="card-moving">
       <div class="animatedCard" ref="card" @mouseenter="cardHover">
         <slot></slot>
       </div>
     </div>
+    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute; overflow:hidden">
+      <defs>
+        <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.004 0.004" numOctaves="2" seed="1000" result="noise"></feTurbulence>
+            <feGaussianBlur in="noise" stdDeviation="2" result="blurred"></feGaussianBlur>
+            <feDisplacementMap in="SourceGraphic" in2="blurred" scale="81" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+        </filter>
+      </defs>
+    </svg>
   </div>
 </template>
 
@@ -76,7 +85,16 @@
       animate();
     }
     
+  const props = defineProps({
+    filter: { type: String, default: '' },
+  })
 
+  const filterClass = computed(() => {
+    switch (props.filter) {
+      case 'distort': return 'absolute w-full h-full box-border transform-3d cursor-pointer distort'
+      default: return 'absolute w-full h-full box-border transform-3d cursor-pointer'
+    } 
+  })
 
 
 
@@ -98,15 +116,19 @@
     perspective: 800px;
   }
 
-  .animatedCard {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-    cursor: pointer;
-    transform-style: preserve-3d;
+  .distort .animatedCard {
+    -webkit-backdrop-filter: url(#glass-distortion) blur(6px);
+    backdrop-filter: url(#glass-distortion) blur(6px);
+    
+  } 
 
+  .distort .animatedCard::after {
+    content: "";
+    position: absolute;
+    inset: 0;
     /* OSJ : 그림자 윤곽 추가 */
     box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px 0px;
+    backdrop-filter: blur(4px);
+    
   }
 </style>
