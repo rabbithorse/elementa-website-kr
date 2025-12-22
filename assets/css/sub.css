@@ -697,41 +697,50 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 
 /***** responsive, 순서 변경 금지*****/
 
-/*** media & newsroom slider 스와이퍼 부분 4k 와이드 모니터 & 노트북 & 태블릿 고려 ***/
+/*** media & newsroom slider 스와이퍼 부분 4k 와이드 모니터 & 노트북 고려 ***/
 
 /* wide */
-@media (min-width: 3840px) {
+@media (max-width: 3840px) {
+  /* media & newsroom slider */
+  .media-slider .swiper {transform: translateX(5.5vw);}
+  .media-slider .swiper-slide.swiper-slide-prev,
+  .media-slider .swiper-slide.swiper-slide-next {width: 10.46vw !important; height: 13.04vw !important;}
+  .media-slider .swiper-slide.swiper-slide-active {width: 41.88vw !important; height: 23.35vw !important;}
+  .media-slider-wrap .dimmed-glass {height: 17.53vw;}
+  .media-slider-wrap .dimmed-yellow {width: 29.53vw; height: 11.63vw;}
+  .media-slider-wrap .slider-text {padding-top: 0; padding-bottom: 1.7vw;}
   
 }
-@media (min-width: 2560px) {
-  
+@media (max-width: 2560px) {
+  /* media & newsroom slider */
+  .media-slider .swiper {transform: translateX(5.2vw);}
+  .media-slider-wrap .dimmed-glass {height: 16.53vw;}
+  .media-slider-wrap .slider-text  {padding-bottom: 2vw; padding-top:0.62vw;}
 }
 
 /* normal */
-@media (min-width: 1920px) {
+@media (max-width: 1920px) {
   /* media & newsroom slider */
-  /* .media-slider .swiper-wrapper {height: 47.59vw!important;}
-  .media-slider .swiper-slide.swiper-slide-prev {width: 31.66vw !important; height: 36.04vw !important;}
-  .media-slider .swiper-slide.swiper-slide-active {width: 82.75vw !important; height: 47.59vw !important;}
-  .media-slider .swiper-slide.swiper-slide-next {width: 31.66vw !important; height: 36.04vw !important;}
+  .media-slider .swiper {transform: translateX(1.3vw);}
+  .media-slider .swiper-slide.swiper-slide-prev,
+  .media-slider .swiper-slide.swiper-slide-next {width: 11.46vw!important; height: 16.04vw!important;}
+  .media-slider .swiper-slide.swiper-slide-active {width: 46.88vw !important; height: 26.35vw !important;}
   .media-slider-wrap .dimmed-glass {height: 20.53vw;}
   .media-slider-wrap .dimmed-yellow {width: 55.53vw; height: 17.63vw;}
-  .media-slider-wrap .slider-text  {padding-top: 1.82vw; padding-bottom: 3.13vw;}*/
+  .media-slider-wrap .slider-text  {padding-top: 1.82vw; padding-bottom: 3.13vw;}
 } 
 
 /* mac*/
-@media (min-width: 1728px) {
 
+@media (max-width: 1512px) {
+  .media-slider .swiper {transform: translateX(0.8vw);}
+  .media-slider-wrap .slider-text  {padding-top: 2.82vw;}
 }
-@media (min-width: 1512px) {
+@media (max-width: 1440px) {
+  .media-slider .swiper {transform: translateX(1vw);}
+  
+}
 
-}
-@media (min-width: 1440px) {
-
-}
-@media (min-width: 1280px) {
-
-}
 /*** media & newsroom slider 4k 와이드 모니터 고려 ***/
 
 /* pc에서 레이아웃 깨지는 것만 */
@@ -1123,7 +1132,7 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
   .subSection {background: none;}
   .subSection.logo-bg::before {background-size: 300px; background-position-x: calc(100% + 50px); filter: blur(6px);}
   .subSection.logo-bg::after {content:''; display:block; width:100%; height:300px; background: linear-gradient(0deg, black 25%, transparent); position: absolute; left: 0; top: 120px;}
-  .subPageTitle {font-size: 80px; gap: 15px; transform: translateX(15px);}
+  .subPageTitle {font-size: 80px; gap: 10px; transform: translateX(15px);}
   .subPageTitle2 {padding-top: 80px; font-size:22px;}
   .subPageTitle2::before {content:''; display:block; width:42.11vw; height:31.29vw; background:url(assets/images/sub/sub-section-bg-m.png) no-repeat center / cover; position:absolute; left:-12.39vw; bottom:-16.95vw;}
   .subPageTitle3 {font-size: 15px;}
@@ -1213,10 +1222,11 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
   .media-slider-wrap::before {height: 60%; background: linear-gradient(0deg, black 65%, transparent 100%);}
   
   .media-slider .swiper-wrapper {height: 47.59vw!important;}
+  .media-slider .swiper {transform: translateX(1.1vw);}
   .media-slider .swiper-slide.swiper-slide-prev {width: 31.66vw !important; height: 36.04vw !important;}
   .media-slider .swiper-slide.swiper-slide-active {width: 82.75vw !important; height: 47.59vw !important;}
   .media-slider .swiper-slide.swiper-slide-next {width: 31.66vw !important; height: 36.04vw !important;}
-  .media-slider-wrap .slider-text {padding-top: 4.82vw; padding-bottom: 6.13vw;}
+  .media-slider-wrap .slider-text {padding-top: 2.82vw; padding-bottom: 3.13vw;}
   .media-slider-wrap .dimmed-glass {height: 45.53vw; backdrop-filter: blur(70px);}
   .media-slider-wrap .dimmed-yellow {width: 51.53vw; height: 25.63vw;}
 
@@ -1324,6 +1334,9 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 
 /* 모바일 세부조정 */
 @media (max-width: 640px) {
+   /* media & newsroom slider */
+   .media-slider .swiper {transform: translateX(0.8vw);}
+
   /***** 게임 소개 *****/
   /* section02 : 대사 씬 */
   .cut-scene .cut_01 .line-box {width: 358px; height: 173px; left: -20px;}
@@ -1347,6 +1360,9 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 }
 
 @media (max-width: 375px) {
+ /* media & newsroom slider */
+  .media-slider .swiper {transform: translateX(0.15vw);}
+
  /* join us list recruit */
   .list-recruit .list .cont .text-box .apply .btn .inner{padding: 0 1.5rem!important;}
 

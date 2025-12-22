@@ -53,7 +53,11 @@
             <div class="float-box absolute"></div>
             <Swiper
               :modules="[Navigation, Autoplay]"
-              
+              :autoplay="{
+                delay: 2000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true
+              }"
               :slides-per-view="2"
               :centeredSlides="true"
               :space-between="10"
@@ -81,7 +85,7 @@
               <swiper-slide data-text="'실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'">
                 <div class="swiper-image">
                   <EffectCardHover>
-                  <a class="image" href="">
+                  <a class="image" href="https://news.nate.com/view/20251219n15148" target="_blank">
                     <img src="~/assets/images/sub/newsroom-slide01.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -90,7 +94,7 @@
               <swiper-slide data-text="뉴스룸 2번 슬라이드 설명 텍스트">
                 <div class="swiper-image">
                   <EffectCardHover>
-                  <a class="image" href="">
+                  <a class="image" href="https://www.g-enews.com/article/ICT/2025/08/202508071152291640c5fa75ef86_1" target="_blank">
                     <img src="~/assets/images/sub/newsroom-slide02.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -99,7 +103,7 @@
               <swiper-slide data-text="뉴스룸 3번 슬라이드 설명 텍스트">
                 <div class="swiper-image">
                   <EffectCardHover>
-                  <a class="image" href="">
+                  <a class="image" href="https://news.nate.com/view/20251219n15148" target="_blank">
                     <img src="~/assets/images/sub/newsroom-slide03.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -108,7 +112,7 @@
               <swiper-slide data-text="뉴스룸 4번 슬라이드 설명 텍스트">
                 <div class="swiper-image">
                   <EffectCardHover>
-                  <a class="image" href="">
+                  <a class="image" href="https://www.g-enews.com/article/ICT/2025/08/202508071152291640c5fa75ef86_1" target="_blank">
                     <img src="~/assets/images/sub/newsroom-slide04.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -117,7 +121,7 @@
               <swiper-slide data-text="뉴스룸 5번 슬라이드 설명 텍스트">
                 <div class="swiper-image">
                   <EffectCardHover>
-                  <a class="image" href="">
+                  <a class="image" href="https://news.nate.com/view/20251219n15148" target="_blank">
                     <img src="~/assets/images/sub/newsroom-slide05.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -126,7 +130,7 @@
               <swiper-slide data-text="뉴스룸 6번 슬라이드 설명 텍스트">
                 <div class="swiper-image">
                   <EffectCardHover>
-                  <a class="image" href="">
+                  <a class="image" href="https://www.g-enews.com/article/ICT/2025/08/202508071152291640c5fa75ef86_1" target="_blank">
                     <img src="~/assets/images/sub/newsroom-slide06.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -135,7 +139,7 @@
               <swiper-slide data-text="뉴스룸 7번 슬라이드 설명 텍스트">
                 <div class="swiper-image">
                   <EffectCardHover>
-                  <a class="image" href="">
+                  <a class="image" href="https://news.nate.com/view/20251219n15148" target="_blank">
                     <img src="~/assets/images/sub/newsroom-slide01.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -144,7 +148,7 @@
               <swiper-slide data-text="뉴스룸 8번 슬라이드 설명 텍스트">
                 <div class="swiper-image">
                   <EffectCardHover>
-                  <a class="image" href="">
+                  <a class="image" href="https://www.g-enews.com/article/ICT/2025/08/202508071152291640c5fa75ef86_1" target="_blank">
                     <img src="~/assets/images/sub/newsroom-slide02.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -153,7 +157,7 @@
               <swiper-slide data-text="뉴스룸 9번 슬라이드 설명 텍스트">
                 <div class="swiper-image">
                   <EffectCardHover>
-                  <a class="image" href="">
+                  <a class="image" href="https://news.nate.com/view/20251219n15148" target="_blank">
                     <img src="~/assets/images/sub/newsroom-slide03.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -162,7 +166,7 @@
               <swiper-slide data-text="뉴스룸 10번 슬라이드 설명 텍스트">
                 <div class="swiper-image">
                   <EffectCardHover>
-                  <a class="image" href="">
+                  <a class="image" href="https://www.g-enews.com/article/ICT/2025/08/202508071152291640c5fa75ef86_1" target="_blank">
                     <img src="~/assets/images/sub/newsroom-slide04.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -171,7 +175,7 @@
               <swiper-slide data-text="뉴스룸 11번 슬라이드 설명 텍스트">
                 <div class="swiper-image">
                   <EffectCardHover>
-                  <a class="image" href="">
+                  <a class="image" href="https://news.nate.com/view/20251219n15148" target="_blank">
                     <img src="~/assets/images/sub/newsroom-slide05.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -180,7 +184,7 @@
               <swiper-slide data-text="뉴스룸 12번 슬라이드 설명 텍스트">
                 <div class="swiper-image">
                   <EffectCardHover>
-                  <a class="image" href="">
+                  <a class="image" href="https://www.g-enews.com/article/ICT/2025/08/202508071152291640c5fa75ef86_1" target="_blank">
                     <img src="~/assets/images/sub/newsroom-slide06.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -189,7 +193,7 @@
               <swiper-slide data-text="뉴스룸 12번 슬라이드 설명 텍스트">
                 <div class="swiper-image">
                   <EffectCardHover>
-                  <a class="image" href="">
+                  <a class="image" href="https://news.nate.com/view/20251219n15148" target="_blank">
                     <img src="~/assets/images/sub/newsroom-slide06.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -198,7 +202,7 @@
               <swiper-slide data-text="뉴스룸 13번 슬라이드 설명 텍스트">
                 <div class="swiper-image">
                   <EffectCardHover>
-                  <a class="image" href="">
+                  <a class="image" href="https://www.g-enews.com/article/ICT/2025/08/202508071152291640c5fa75ef86_1" target="_blank">
                     <img src="~/assets/images/sub/newsroom-slide06.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -213,7 +217,7 @@
         </div>
         <!-- //slider wrap -->
         
-        <!-- 채용 리스트 -->
+        <!-- 뉴스 리스트 -->
         <div class="media-list lg:pt-[140px] pt-[70px] lg:pb-[270px] pb-[200px] relative">
           <Container>
             <div class="list-sch-bar flex lg:gap-[20px] gap-[10px]">
@@ -223,7 +227,7 @@
             <ul class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-[1.25rem] gap-y-[5.63rem] list lg:pt-[3.75rem] pt-[1.88rem] relative">
               <li v-for="(n, index) in 16" :key="index" class="relative card w-full">
                 <EffectCardHover>
-                  <a class="flex flex-col gap-y-4 w-full h-full justify-start text-white" href="">
+                  <a class="flex flex-col gap-y-4 w-full h-full justify-start text-white" :href="index % 2 === 0 ? 'https://news.nate.com/view/20251219n15148' : 'https://www.g-enews.com/article/ICT/2025/08/202508071152291640c5fa75ef86_1'" target="_blank">
                     <div class="card-img relative">
                         <img src="~assets/images/main/newsroom-thumb01.png" alt="">
                       </div>

@@ -12,7 +12,7 @@
             <div class="w-full mx-auto aspect-video">
               <iframe
                 class="w-full h-full"
-                src="https://www.youtube.com/embed/iFXoYNc9-vA?si=KRehctRQC7wTU-39"
+                src="https://www.youtube.com/embed/oAyDo0kxh-8?si=Kx4Ztn3jueJae7EB"
                 title="YouTube video player"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -24,7 +24,7 @@
             <div class="flex flex-col gap-[10px]" ref="sideBtnWrap">
               <ButtonsBasic href="#" color="blue" width="full" size="lg"><i class="ico ico-prev bg-white"></i>이전 게시글 보기</ButtonsBasic>
               <ButtonsBasic href="#" color="blue" width="full" size="lg">다음 게시글 보기<i class="ico ico-next bg-white"></i></ButtonsBasic>
-              <ButtonsBasic href="#" width="full" size="lg">목록으로</ButtonsBasic>
+              <ButtonsBasic href="/media" width="full" size="lg">목록으로</ButtonsBasic>
             </div>
           </div>
         </Container>
