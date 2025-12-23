@@ -3,7 +3,7 @@ import { defineNuxtPlugin } from '#app'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
-import Lenis from '@studio-freight/lenis'
+import Lenis from 'lenis'
 
 export default defineNuxtPlugin((nuxtApp) => {
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
@@ -12,14 +12,6 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   router.afterEach(async () => {
     await nextTick();
-
-    const { $lenis } = useNuxtApp();
-
-    if (!$lenis) return;
-
-    requestAnimationFrame(() => {
-      $lenis.scrollTo(0, { immediate: true });
-    });
   });
 
   ScrollTrigger.normalizeScroll({
@@ -34,13 +26,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     duration: 1.2,
     smoothWheel: true,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    prevent: (node) => {
-    // Swiper 관련 요소는 Lenis가 터치 이벤트 처리하지 않음
-    return node.classList.contains('swiper') || 
-           node.closest('.swiper') !== null ||
-           node.classList.contains('swiper-wrapper') ||
-           node.classList.contains('swiper-slide')
-    }
+    
   })
 
   function raf(time: number) {
