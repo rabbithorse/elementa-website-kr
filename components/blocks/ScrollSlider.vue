@@ -194,9 +194,9 @@
       <!-- 모바일 버전: Swiper.js -->
       <template v-else>
         <!-- 첫 번째 Swiper -->
-        <div class="slider-wrapper">
+        <div class="slider-wrapper" @touchstart.stop @touchmove.stop>
           <div class="swiper swiper1">
-            <div class="swiper-wrapper ml-4">
+            <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <div class="flex flex-col gap-y-4 w-full h-full justify-start">
                   <div class="card-img">
@@ -382,6 +382,10 @@
     if (scrollTrigger) {
       scrollTrigger.pin(true)
     }
+
+    if (isTouchDevice.value && window.lenis) {
+      window.lenis.stop()
+    }
   }
 
   const handleMouseLeave = () => {
@@ -390,6 +394,10 @@
     isHovered.value = false
     if (scrollTrigger) {
       scrollTrigger.pin(false)
+    }
+
+    if (isTouchDevice.value && window.lenis) {
+      window.lenis.start()
     }
   }
 
@@ -420,16 +428,37 @@
       glass.addEventListener('wheel', handleWheel, { passive: false })
     } else {
       nextTick(() => {
+      
+      // Swiper 영역 lenis 차단
+      const swiper1El = document.querySelector('.swiper1')
+
+      const stopLenisOnTouch = (e) => {
+        e.stopPropagation()
+      }
+      
+      swiper1El?.addEventListener('touchstart', stopLenisOnTouch, { passive: true })
+      swiper1El?.addEventListener('touchmove', stopLenisOnTouch, { passive: true })
+
       swiper1 = new Swiper('.swiper1', {
         slidesPerView: '1.2',
         spaceBetween: 15,
-        freeMode: true,
-        freeModeMomentum: true,
-        freeModeMomentumRatio: 0.5,
+        freeMode: {
+          enabled: true,
+          momentum: true,
+          momentumRatio: 1,
+          momentumVelocityRatio: 1,
+        },
         grabCursor: true,
         touchRatio: 1,
         resistance: true,
-        resistanceRatio: 0,
+        resistanceRatio: 0.2,
+        simulateTouch: true,
+        allowTouchMove: true,
+        touchStartPreventDefault: false,
+        touchMoveStopPropagation: true,
+        nested: true,
+        slidesOffsetBefore: padding.value,
+        slidesOffsetAfter: padding.value,
         speed: 600,
       })
       

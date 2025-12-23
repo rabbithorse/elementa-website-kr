@@ -30,9 +30,17 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   // Lenis 초기화
   const lenis = new Lenis({
+    autoRaf: true,
     duration: 1.2,
     smoothWheel: true,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    prevent: (node) => {
+    // Swiper 관련 요소는 Lenis가 터치 이벤트 처리하지 않음
+    return node.classList.contains('swiper') || 
+           node.closest('.swiper') !== null ||
+           node.classList.contains('swiper-wrapper') ||
+           node.classList.contains('swiper-slide')
+    }
   })
 
   function raf(time: number) {
