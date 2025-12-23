@@ -700,6 +700,7 @@
                   slidesPerView: 6,
                 }
               }"
+              class="no-lenis"
             >
               <swiper-slide>
                 <BlocksJoinCard />
@@ -726,8 +727,10 @@
           </div>  
         </div>
 
-        <div class="content-button xl:hidden flex justify-center md:mt-10 mt-5">
-          <ButtonsBasic href="/join_us" color="blue" class="md:w-1/2 w-full [&>*]:w-[90%]">View more</ButtonsBasic>
+        <div class="content-button xl:hidden md:mt-10 mt-5">
+          <Container class="flex justify-center">
+            <ButtonsBasic href="/join_us" color="blue" class="md:w-1/2 w-full [&>*]:w-[100%]">View more</ButtonsBasic>
+          </Container>
         </div>
       </div>
     </section>
@@ -1365,6 +1368,13 @@ onMounted(async () => {
     resizeObserver.observe(newsroomSection.value);
 
     $lenis.scrollTo(0, { immediate: true });
+
+    const lenis = new Lenis({
+      smooth: true,
+      prevent: (e) => {
+        return e.target.closest('.no-lenis')
+      }
+    })
 
     onUnmounted(() => {
       clearTimeout(resizeTimeout);
