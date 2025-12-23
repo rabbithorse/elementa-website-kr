@@ -12,21 +12,21 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   router.afterEach(async () => {
     await nextTick();
-  });
 
-  // ScrollTrigger.normalizeScroll({
-  //   //momentum: 0.02,
-  //   allowNestedScroll: true,
-  //   lockAxis: true,
-  // })
+    const { $lenis } = useNuxtApp();
+
+    if (!$lenis) return;
+
+    requestAnimationFrame(() => {
+      $lenis.scrollTo(0, { immediate: true });
+    });
+  });
 
   // Lenis 초기화
   const lenis = new Lenis({
-    //autoRaf: true,
     duration: 1.2,
     smoothWheel: true,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    
   })
 
   function raf(time: number) {
