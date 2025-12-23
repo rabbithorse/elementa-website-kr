@@ -2,20 +2,21 @@
   <div>
     <!-- section01 : 인트로 -->
     <section class="intro relative overflow-hidden" ref="introSection">
-      <div class="movie-bg absolute w-full" ref="movieBg">
+      <div class="movie-bg w-full sticky top-0 left-0" ref="movieBg">
         <video ref="bgVideo" class="video-bg" autoplay loop muted playsinline preload="auto">
           <source src="~/assets/videos/main-war.mp4" type="video/mp4" />
         </video>
         <div class="intro-vid-cover absolute w-full h-full top-0 left-0 bg-black"></div>
       </div>
-      <div class="panel_01"></div>
-      <div class="panel_02" ref="panel02"></div>
-      <div class="title-area absolute w-full flex flex-col justify-center items-center text-center left-0 top-0" ref="titleArea">
-        <img src="~/assets/images/sub/game-logo01.png" alt="실버 팰리스" class="block">
+      <div class="panel_01 vh-section-60"></div>
+      <div class="title-area-wrap absolute left-0 top-0 w-full flex flex-col justify-center items-center vh-section">
+        <div class="title-area text-center flex justify-center items-center" ref="titleArea">
+          <img src="~/assets/images/sub/game-logo01.png" alt="실버 팰리스" class="block">
+        </div>
       </div>
     </section>
     <!-- section02 : 대사 씬 -->
-    <section class="cut-scene w-full relative overflow-hidden" ref="cutScene">
+    <section class="cut-scene w-full relative overflow-hidden vh-section" ref="cutScene">
       <!-- 씬 1 -->
       <div class="cut_01 w-full h-full flex items-end absolute z-20" ref="cutBg01">
         <!-- 씬 1 배경 -->
@@ -56,40 +57,40 @@
       <!-- //씬 2 -->
     </section>
     <!-- section03 : 게임 설명 intro-->
-    <section class="description relative overflow-hidden" ref="descriptionSec">
+    <section class="description relative overflow-hidden vh-section" ref="descriptionSec">
       <div class="movie-dimmed absolute w-full h-full top-0 left-0 z-30"></div>
       <!-- video 1 -->
-      <div class="movie-bg-des absolute sec01 w-full top-0 left-0 z-20">
+      <div class="movie-bg-des absolute sec01 w-full top-0 left-0 z-20 vh-section">
         <video class="video-bg" autoplay loop muted playsinline preload="auto">
           <source src="~/assets/videos/game_visuals_01.mp4" type="video/mp4" />
         </video>
       </div>
       <!-- video 2 -->
-      <div class="movie-bg-des absolute sec02 w-full top-0 left-0 z-10">
+      <div class="movie-bg-des absolute sec02 w-full top-0 left-0 z-10 vh-section">
         <video class="video-bg" autoplay loop muted playsinline preload="auto">
           <source src="~/assets/videos/game_visuals_02.mp4" type="video/mp4" />
         </video>
       </div>
       <!-- video 3 -->
-      <div class="movie-bg-des absolute sec03 w-full top-0 left-0 z-10">
+      <div class="movie-bg-des absolute sec03 w-full top-0 left-0 z-10 vh-section">
         <video class="video-bg" autoplay loop muted playsinline preload="auto">
           <source src="~/assets/videos/game_visuals_03.mp4" type="video/mp4" />
         </video>
       </div>
       <!-- video 4 -->
-      <div class="movie-bg-des absolute sec04 w-full top-0 left-0 z-10">
+      <div class="movie-bg-des absolute sec04 w-full top-0 left-0 z-10 vh-section">
         <video class="video-bg" autoplay loop muted playsinline preload="auto">
           <source src="~/assets/videos/game_visuals_04.mp4" type="video/mp4" />
         </video>
       </div>
       <!-- video 5 -->
-      <div class="movie-bg-des absolute sec05 w-full top-0 left-0 z-10">
+      <div class="movie-bg-des absolute sec05 w-full top-0 left-0 z-10 vh-section">
         <video class="video-bg" autoplay loop muted playsinline preload="auto">
           <source src="~/assets/videos/game_visuals_05.mp4" type="video/mp4" />
         </video>
       </div>
       <!-- video 6 -->
-      <div class="movie-bg-des absolute sec06 w-full top-0 left-0 z-10">
+      <div class="movie-bg-des absolute sec06 w-full top-0 left-0 z-10 vh-section">
         <video class="video-bg" autoplay loop muted playsinline preload="auto">
           <source src="~/assets/videos/game_visuals_06.mp4" type="video/mp4" />
         </video>
@@ -97,7 +98,7 @@
 
       <!-- text 6 -->
       <Container>
-      <div class="text-area sec06 flex w-full lg:justify-end justify-center items-end z-40 absolute top-0 left-0">
+      <div class="text-area sec06 flex w-full lg:justify-end justify-center items-end z-40 absolute top-0 left-0 vh-section">
         <div class="text-box game-info bottom relative">
           <div class="game-info-title relative z-10 left">
             <span class="block lg:text-lg text-xs">강력한 액션과 짜릿한 쾌감</span>
@@ -111,7 +112,7 @@
       </div>
       </Container>
       <!-- text 5 -->
-      <div class="text-area sec05 flex w-full justify-center items-center z-40 absolute top-0 left-0">
+      <div class="text-area sec05 flex w-full justify-center items-center z-40 absolute top-0 left-0 vh-section">
         <div class="text-box text-center">
           <span class="lg:text-2xl text-lg font-semibold relative">강력한 액션과 짜릿한 쾌감</span>
           <div class="text-white text-2xl lg:leading-[1.7] xl:py-[55px] py-[35px] mt-[30px] sub-text type2 relative">
@@ -123,7 +124,7 @@
       </div>
       <!-- text 4_2 -->
       <Container>
-      <div class="text-area sec04_2 flex w-full lg:justify-start justify-center lg:items-start items-end z-40 absolute top-0 left-0">
+      <div class="text-area sec04_2 flex w-full lg:justify-start justify-center lg:items-start items-end z-40 absolute top-0 left-0 vh-section">
         <div class="text-box game-info left relative">
           <div class="game-info-title relative z-10 left">
             <span class="block lg:text-lg text-xs">압도적 비주얼과 시대적 배경</span>
@@ -137,7 +138,7 @@
       </div>
       </Container>
       <!-- text 4 -->
-      <div class="text-area sec04 flex w-full justify-center items-center z-40 absolute top-0 left-0">
+      <div class="text-area sec04 flex w-full justify-center items-center z-40 absolute top-0 left-0 vh-section">
         <div class="text-box text-center">
           <span class="lg:text-2xl text-lg font-semibold relative">압도적 비주얼과 시대적 배경</span>
           <div class="text-white text-2xl lg:leading-[1.7] xl:py-[55px] py-[35px] mt-[30px] sub-text type2 relative">
@@ -149,7 +150,7 @@
       </div>
       <!-- text 3 -->
       <Container>
-      <div class="text-area sec03 flex w-full lg:justify-end justify-center lg:items-start items-end z-40 absolute top-0 left-0">
+      <div class="text-area sec03 flex w-full lg:justify-end justify-center lg:items-start items-end z-40 absolute top-0 left-0 vh-section">
         <div class="text-box game-info relative">
           <div class="game-info-title relative z-10">
             <span class="block lg:text-lg text-xs">독창적 세계관</span>
@@ -163,7 +164,7 @@
       </div>
       </Container>
       <!-- text 2 -->
-      <div class="text-area sec02 flex w-full justify-center items-center z-40 absolute top-0 left-0">
+      <div class="text-area sec02 flex w-full justify-center items-center z-40 absolute top-0 left-0 vh-section">
         <div class="text-box text-center">
           <span class="lg:text-2xl text-lg font-semibold relative">독창적 세계관</span>
           <div class="text-white text-2xl lg:leading-[1.7] xl:py-[55px] py-[35px] mt-[30px] sub-text type2 relative">
@@ -174,7 +175,7 @@
         </div>
       </div>
       <!-- text 1 -->
-      <div class="text-area sec01 flex flex-col w-full justify-center items-center z-40 absolute top-0 left-0">
+      <div class="text-area sec01 flex flex-col w-full justify-center items-center z-40 absolute top-0 left-0 vh-section">
         <div class="text-box text-center">
           <span class="lg:text-2xl text-lg font-semibold">Intro</span>
           <p class="text-white xl:text-[3.44rem] lg:text-4xl sm:text-[1.63rem] text-[1.53rem] lg:pt-[20px] pt-[5px] title tracking-[-1.65px] relative font-semibold">
@@ -189,7 +190,7 @@
     </section>
     <!-- section04 : 유튜브 영상-->
     <section class="youtube-area relative overflow-visible" ref="youtubeArea">
-      <div class="video-wrap w-full flex justify-center items-center relative">
+      <div class="video-wrap w-full flex justify-center items-center relative vh-section">
         <div class="bg-text flex flex-col justify-center items-center">
           <p class="font-extrabold">SILVER</p>
           <p class="font-extrabold">PALACE</p>
@@ -223,7 +224,7 @@
     <!-- section05 : 수사보드 -->
     <section class="inv-board overflow-hidden relative xl:block hidden" ref="invBoard">
       <div class="inv-dimmed absolute z-10 w-full h-full top-0 left-0"></div>
-      <div class="in-camera w-full overflow-hidden relative">
+      <div class="in-camera w-full overflow-hidden relative vh-section">
         <div class="bg relative flex flex-col items-center justify-end overflow-visible">
           <!-- 배경 캔버스 -->
           <canvas class="bg-canvas absolute top-0 left-0 w-full h-full" id="boardCanvas"></canvas>
@@ -280,7 +281,7 @@
       </div>
     </section>
     <!-- section06 : 에필로그 -->
-    <section class="last-scene w-full overflow-hidden xl:block hidden" ref="lastScene">
+    <section class="last-scene w-full overflow-hidden xl:block hidden vh-section" ref="lastScene">
       <div class="last-scene-inner w-full h-full relative">
         <!-- 비디오 -->
         <div class="w-full h-full top-0 left-0 z-20 absolute epilogue-video text-white">
@@ -291,7 +292,7 @@
         <!-- 엔딩 문구 -->
         <div class="epilogue-dimmed absolute  top-0 left-0 z-20 w-full"></div>
         <!-- 엔딩 text 2 -->
-        <div class="e-text sec02 flex w-full justify-center items-center z-20 absolute top-0 left-0">
+        <div class="e-text sec02 flex w-full justify-center items-center z-20 absolute top-0 left-0 vh-section">
           <div class="text-box text-center">
             <span class="lg:text-2xl text-lg font-semibold block">탐정</span>
             <p class="text-white xl:text-[3.44rem] lg:text-4xl sm:text-[1.63rem] text-[1.53rem] lg:pt-[20px] pt-[5px] title tracking-[-1.65px] relative font-semibold">당신이 다시 써줄 수 있다면</p>
@@ -311,7 +312,7 @@
           </div>
         </div>
          <!-- 엔딩 text 1 -->
-        <div class="e-text sec01 flex w-full justify-center items-center z-20 absolute top-0 left-0">
+        <div class="e-text sec01 flex w-full justify-center items-center z-20 absolute top-0 left-0 vh-section">
           <div class="text-box text-center">
             <span class="lg:text-2xl text-lg font-semibold block">탐정</span>
             <p class="text-white xl:text-[3.44rem] lg:text-4xl sm:text-[1.63rem] text-[1.53rem] lg:pt-[20px] pt-[5px] title tracking-[-1.65px] relative font-semibold">우리는 운명에서 벗어날 수 없단 걸, <br>전 이미 깨달았죠.</p>
@@ -332,7 +333,7 @@
       </div>
     </section>
     <!-- section 06 : 에필로그 모바일 -->
-    <section class="last-scene-m w-full overflow-hidden xl:hidden block relative" ref="lastSceneMobile">
+    <section class="last-scene-m w-full overflow-hidden xl:hidden block relative vh-section" ref="lastSceneMobile">
       <div class="last-scene-m cover-dimmed absolute top-0 left-0 z-40 w-full h-full"></div>
       <div class="epilogue-dimmed absolute  top-0 left-0 z-20 w-full"></div>
       <Container class="absolute left-1/2 -translate-x-1/2 transform top-[100px] z-20 e-side-text">
@@ -342,8 +343,8 @@
 
       
       <!-- 엔딩 text 2 -->
-      <div class="e-text sec02 flex w-full justify-center items-center z-20 absolute top-0 left-0">
-        <div class="text-box text-center">
+      <div class="e-text sec02 flex w-full justify-center items-center z-20 absolute top-0 left-0 vh-section">
+        <div class="text-box text-center sm:mb-[0px] mb-[100px]">
           <span class="lg:text-2xl text-lg font-semibold block">탐정</span>
           <p class="text-white xl:text-[3.44rem] lg:text-4xl sm:text-[1.63rem] text-[1.53rem] lg:pt-[20px] pt-[5px] title tracking-[-1.65px] relative font-semibold">당신이 다시 써줄 수 있다면</p>
           <div class="btn-wrap relative mt-[20px]">
@@ -352,8 +353,8 @@
         </div>
       </div>
       <!-- 엔딩 text 1 -->
-      <div class="e-text sec01 flex w-full justify-center items-center z-20 absolute top-0 left-0">
-        <div class="text-box text-center">
+      <div class="e-text sec01 flex w-full justify-center items-center z-20 absolute top-0 left-0 vh-section">
+        <div class="text-box text-center sm:mb-[0px] mb-[30px]">
           <span class="lg:text-2xl text-lg font-semibold block">탐정</span>
           <p class="text-white xl:text-[3.44rem] lg:text-4xl sm:text-[1.63rem] text-[1.53rem] lg:pt-[20px] pt-[5px] title tracking-[-1.65px] relative font-semibold">우리는 운명에서 벗어날 수 없단 걸, <br>전 이미 깨달았죠.</p>
         </div>
@@ -605,6 +606,14 @@
     });
   };
 
+  // vh 자동계산 변수
+  let vhTimer
+
+  const setVh = () => {
+    const vh = window.innerHeight * 0.01
+    document.documentElement.style.setProperty('--vh', `${vh}px`)
+  }
+
   /*-----------------------*/
     // 00. intro 섹션 - 초기 동작 애니메이션 세팅
   /*-----------------------*/
@@ -657,19 +666,30 @@
 onMounted(() => {
 
     /*-----------------------*/
+    // 00. 모바일 높이 vh 계산 
+    /*-----------------------*/
+    setVh()
+    window.addEventListener('resize', () => {
+      clearTimeout(vhTimer)
+      vhTimer = setTimeout(setVh, 150)
+    })
+
+    /*-----------------------*/
     // 01. intro 섹션 - movieBg 고정
     /*-----------------------*/
 
-      $ScrollTrigger.create({
-        trigger: introSection.value,
-        start:  panel02.value.offsetTop + 'top',
-        end: 'bottom top',
-        pinspacing: true,
-        pin: movieBg.value,
-        pinType: "transform",
-        scrub: 2,
-        //markers: true,
-      })
+      // $ScrollTrigger.create({
+      //   trigger: introSection.value,
+      //   start:  panel02.value.offsetTop + 'top',
+      //   end: 'bottom top',
+      //   pinspacing: true,
+      //   pin: movieBg.value,
+      //   pinType: "transform",
+      //   scrub: 2,
+      //   anticipatePin: 1,
+      //   invalidateOnRefresh: true,
+      //   //markers: true,
+      // })
     
 
     /*-----------------------*/
@@ -706,6 +726,8 @@ onMounted(() => {
       pinType: "transform",
       scrub: 2,
       animation: scrollIntro,
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
       // markers: true,
 
       onUpdate(self) {
@@ -807,7 +829,9 @@ onMounted(() => {
         // markers: true,
         scrub: 1,
         pin: true,
-        animation: cutSceneTimeline
+        animation: cutSceneTimeline,
+        fastScrollEnd: true,         // 빠르게 스크롤 시 '튐' 방지
+        invalidateOnRefresh: true,
       })
     
 
@@ -917,6 +941,8 @@ onMounted(() => {
         pin: true,
         scrub: 2,
         animation: desBgTimeline,
+        fastScrollEnd: true,         // 빠르게 스크롤 시 '튐' 방지
+        invalidateOnRefresh: true,
         // markers: true,
       })
     
@@ -943,6 +969,8 @@ onMounted(() => {
       pin: youtubeArea.value,
       pinType: "transform",
       anticipatePin: 1,
+      fastScrollEnd: true,         // 빠르게 스크롤 시 '튐' 방지
+      invalidateOnRefresh: true,
       // markers: true,
     })
 
@@ -1161,7 +1189,8 @@ onMounted(() => {
           //markers: true,
           animation: invBoardTimeline,
           anticipatePin: 3,
-          invalidateOnRefresh: true, //리사이즈 시 트윈 리셋
+          invalidateOnRefresh: true, //리사이즈 시 트윈 리셋,
+          fastScrollEnd: true,         // 빠르게 스크롤 시 '튐' 방지
         })
       }
     })
@@ -1250,11 +1279,11 @@ onMounted(() => {
 
     const EpilogueMobileTimeline = $gsap.timeline()
     .to(eCoverDimmedMobile, { opacity: 0, duration: 1, ease: "power2.out"})
-    .to(eCoverDimmedMobile, { visibility: "hidden"}, ">+0.01")
-    .fromTo(eText1Mobile, { opacity: 0 }, { opacity: 1, duration: 1, ease:"power1.in" }) // 에필로그 문구1 나타남
-    .to(eText1Mobile, { opacity: 0, duration: 1, ease:"power1.out" }, "+=1") // 에필로그 문구1 사라짐
+    .to(eCoverDimmedMobile, { visibility: "hidden"}, ">+0.001")
+    .fromTo(eText1Mobile, { opacity: 0 }, { opacity: 1, duration: 0.5, ease:"power1.in" },">+0.001") // 에필로그 문구1 나타남
+    .to(eText1Mobile, { opacity: 0, duration: 0.5, ease:"power1.out" }, "+=0.5") // 에필로그 문구1 사라짐
     .to(eText1Mobile, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
-    .fromTo(eText2Mobile, { opacity: 0, y: 20 }, { y:0, opacity: 1, duration: 1, ease:"power1.in" }, "+=0.1") // 에필로그 문구2 나타남
+    .fromTo(eText2Mobile, { opacity: 0, y: 20 }, { y:0, opacity: 1, duration: 0.5, ease:"power1.in" }, "+=0.05") // 에필로그 문구2 나타남
     
     $ScrollTrigger.matchMedia({
       "(max-width: 1279px)": () => {
@@ -1284,6 +1313,9 @@ onMounted(() => {
     requestAnimationFrame(() => {
       $ScrollTrigger.refresh()
     })
+
+    // vh 단위 재설정
+    window.addEventListener('resize', setVh);
   });
 
   
@@ -1412,6 +1444,9 @@ onMounted(() => {
   onUnmounted(() => {
     // resize 이벤트 제거
     window.removeEventListener('resize', handleResize)
+
+    // vh 재설정 이벤트 제거
+    window.removeEventListener('resize', setVh)
   });
 
 
