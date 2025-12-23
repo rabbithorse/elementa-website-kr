@@ -28,6 +28,7 @@
         @mousemove="handleMouseMove"
         @mouseup="handleMouseUp"
         @mouseleave="handleMouseUp"
+        
       >
         <div
           v-for="(card, index) in cards"
@@ -393,6 +394,8 @@ export default {
       this.touchStartTime = Date.now();
       this.dragOffset = 0;
       this.accumulatedDrag = 0;
+
+      window.lenis.stop();
     },
 
     handleTouchMove(e) {
@@ -423,6 +426,8 @@ export default {
       this.touchStartTime = 0;
       this.dragOffset = 0;
       this.accumulatedDrag = 0;
+
+      window.lenis.start()
     },
 
     handleMouseDown(e) {
@@ -432,6 +437,8 @@ export default {
       this.isDragging = true;
       this.dragOffset = 0;
       this.accumulatedDrag = 0;
+
+      window.lenis.stop()
     },
 
     handleMouseMove(e) {
@@ -467,6 +474,8 @@ export default {
       this.touchStartTime = 0;
       this.dragOffset = 0;
       this.accumulatedDrag = 0;
+
+      window.lenis.start()
     },
 
     handleRealtimeDrag() {

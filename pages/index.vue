@@ -531,7 +531,7 @@
         
       </div>
     </section>
-    <section class="wetheworld-section flex items-center justify-center overflow-hidden h-dvh" ref="wetheworldSection">
+    <section class="wetheworld-section flex items-center justify-center overflow-hidden h-svh" ref="wetheworldSection">
       <div class="wetheworldbg-video01 opacity-0 invisible absolute inset-0 z-0" ref="wetheworldbg1">
         <video class="bg-video--content w-full h-full object-cover" autoplay playsinline muted loop preload="metadata">
           <source src="~/assets/videos/main-wetheworld-inspire.mp4" type="video/mp4" />
@@ -587,14 +587,14 @@
       </h2>
 
       <div class="gotopCurtain curtains">
-        <div class="curtain-item absolute w-full h-[50vh] top-0 left-0" ref="gotopCurtain"></div>
-        <div class="curtain-item absolute w-full h-[50vh] top-0 left-0" ref="gotopCurtain"></div>
-        <div class="curtain-item absolute w-full h-[50vh] top-0 left-0" ref="gotopCurtain"></div>
+        <div class="curtain-item absolute w-full h-[50svh] top-0 left-0" ref="gotopCurtain"></div>
+        <div class="curtain-item absolute w-full h-[50svh] top-0 left-0" ref="gotopCurtain"></div>
+        <div class="curtain-item absolute w-full h-[50svh] top-0 left-0" ref="gotopCurtain"></div>
       </div>
       <div class="godownCurtain curtains">
-        <div class="curtain-item absolute w-full h-[50vh] bottom-0 left-0" ref="godownCurtain"></div>
-        <div class="curtain-item absolute w-full h-[50vh] bottom-0 left-0" ref="godownCurtain"></div>
-        <div class="curtain-item absolute w-full h-[50vh] bottom-0 left-0" ref="godownCurtain"></div>
+        <div class="curtain-item absolute w-full h-[50svh] bottom-0 left-0" ref="godownCurtain"></div>
+        <div class="curtain-item absolute w-full h-[50svh] bottom-0 left-0" ref="godownCurtain"></div>
+        <div class="curtain-item absolute w-full h-[50svh] bottom-0 left-0" ref="godownCurtain"></div>
       </div>
       <h2 class="flex items-center justify-center 2xl:text-[272px] xl:text-[220px] md:text-[180px] text-[25.3vw] leading-1 font-bold text-white text-center h-0 w-full overflow-clip absolute" ref="wetheworldSlogan">
         <span class="flex items-center justify-center leading-[100%]" ref="inspireText">
@@ -672,58 +672,63 @@
               <PrevButton :swiper="swiperInstance" />
               <NextButton :swiper="swiperInstance" />
             </div>
-            <swiper
-              :slidesPerView="1.15"
-              :spaceBetween="15"
-              @swiper="onSwiper"
-              :breakpoints="{
-                480: {
-                  slidesPerView: 1.4,
-                },
-                768: {
-                  slidesPerView: 1.8,
-                },
-                1024: {
-                  slidesPerView: 2.4,
-                },
-                1280: {
-                  slidesPerView: 3,
-                  spaceBetween: 20
-                },
-                2000: {
-                  slidesPerView: 4,
-                },
-                2600: {
-                  slidesPerView: 5,
-                },
-                3000: {
-                  slidesPerView: 6,
-                }
-              }"
-              class="no-lenis"
-            >
-              <swiper-slide>
-                <BlocksJoinCard />
-              </swiper-slide>
-              <swiper-slide>
-                <BlocksJoinCard />
-              </swiper-slide>
-              <swiper-slide>
-                <BlocksJoinCard />
-              </swiper-slide>
-              <swiper-slide>
-                <BlocksJoinCard />
-              </swiper-slide>
-              <swiper-slide>
-                <BlocksJoinCard />
-              </swiper-slide>
-              <swiper-slide>
-                <BlocksJoinCard />
-              </swiper-slide>
-              <swiper-slide>
-                <BlocksJoinCard />
-              </swiper-slide>
-            </swiper>
+            <div class="slide-wrapper" ref="careerSliderRef">
+              <swiper
+                :slidesPerView="1.15"
+                :spaceBetween="15"
+                :allowTouchMove="true"
+                :simulateTouch="true"
+                :passiveListeners="false"
+                @swiper="onSwiper"
+                :breakpoints="{
+                  480: {
+                    slidesPerView: 1.4,
+                  },
+                  768: {
+                    slidesPerView: 1.8,
+                  },
+                  1024: {
+                    slidesPerView: 2.4,
+                  },
+                  1280: {
+                    slidesPerView: 3,
+                    spaceBetween: 20
+                  },
+                  2000: {
+                    slidesPerView: 4,
+                  },
+                  2600: {
+                    slidesPerView: 5,
+                  },
+                  3000: {
+                    slidesPerView: 6,
+                  }
+                }"
+                class="no-lenis career-section"
+              >
+                <swiper-slide>
+                  <BlocksJoinCard />
+                </swiper-slide>
+                <swiper-slide>
+                  <BlocksJoinCard />
+                </swiper-slide>
+                <swiper-slide>
+                  <BlocksJoinCard />
+                </swiper-slide>
+                <swiper-slide>
+                  <BlocksJoinCard />
+                </swiper-slide>
+                <swiper-slide>
+                  <BlocksJoinCard />
+                </swiper-slide>
+                <swiper-slide>
+                  <BlocksJoinCard />
+                </swiper-slide>
+                <swiper-slide>
+                  <BlocksJoinCard />
+                </swiper-slide>
+              </swiper>
+            </div>
           </div>  
         </div>
 
@@ -758,11 +763,11 @@ const newParadigm = ref(null)
 const lastingImpact = ref(null)
 const elementaKoreaSection = ref(null)
 const sliderImg = ref(null)
-const newsroomSection = ref(null)
-const newsroomHeading = ref(null)
 
 const accordionSection = ref(null)
 const accordionItem = ref([])
+
+// We The World
 const wetheworldSection = ref(null)
 const wetheworldbg1 = ref(null)
 const wetheworldbg2 = ref(null)
@@ -776,6 +781,14 @@ const inspireText = ref(null)
 const connectText = ref(null)
 const changeText = ref(null)
 
+// Newsroom
+const newsroomSection = ref(null)
+const newsroomHeading = ref(null)
+
+// Careers
+const careerSliderRef = ref(null)
+
+
 
 // Newsroom
 
@@ -783,16 +796,24 @@ const changeText = ref(null)
 let ctx
 let resizeTimeout;
 let isFirstLoad = true;
-// onBeforeUnmount(() => {
-//   if (ctx) {
-//     ctx.revert();
-//     $ScrollTrigger.getAll().forEach(t => t.kill());
-//     $ScrollTrigger.refresh();
-//   }
-//   console.log('Gsap context reverted');
-// })
+let normalizeInstance;
+onBeforeUnmount(() => {
+  if (ctx) {
+    ctx.revert();
+    $ScrollTrigger.getAll().forEach(t => t.kill());
+    $ScrollTrigger.refresh();
+    normalizeInstance?.kill()
+  }
+  console.log('Gsap context reverted');
+})
 
 onMounted(async () => {
+  normalizeInstance = $ScrollTrigger.normalizeScroll({
+    momentum: 0.08,
+    allowNestedScroll: true,
+    lockAxis: true,
+  })
+
   const initAnimation = () => {
     ctx?.revert();
     const characterRevealItems = missionSection.value.querySelectorAll('.primary-character');
@@ -921,83 +942,83 @@ onMounted(async () => {
       
 
       let currentStep = -1
-  const animations = []
+      const animations = []
 
-  // 각 애니메이션을 개별 타임라인으로 생성 (paused 상태)
-  const anim1 = $gsap.timeline({ paused: true })
-    .to(characterRevealArray, {
-      x: 0,
-      opacity: 1,
-      duration: 0.2, // 실제 애니메이션 시간
-      ease: "none"
-    })
-    .fromTo(missionBox.value, 
-      { yPercent: 100, opacity: 0 },
-      { yPercent: 0, opacity: 1, duration: 0.4, stagger: 0.05, ease: "power2.out" }, ">"
-    )
+      // 각 애니메이션을 개별 타임라인으로 생성 (paused 상태)
+      const anim1 = $gsap.timeline({ paused: true })
+        .to(characterRevealArray, {
+          x: 0,
+          opacity: 1,
+          duration: 0.2, // 실제 애니메이션 시간
+          ease: "none"
+        })
+        .fromTo(missionBox.value, 
+          { yPercent: 100, opacity: 0 },
+          { yPercent: 0, opacity: 1, duration: 0.4, stagger: 0.05, ease: "power2.out" }, ">"
+        )
 
-  const anim2 = $gsap.timeline({ paused: true })
-    .to(characterDisappearArray, {
-      x: 0,
-      opacity: 1,
-      duration: 0.2, // 실제 애니메이션 시간
-      ease: "none"
-    })
-    .to(characterDisappearArray, {
-      x: 150,
-      duration: 0.6,
-      ease: "none",
-    })
+      const anim2 = $gsap.timeline({ paused: true })
+        .to(characterDisappearArray, {
+          x: 0,
+          opacity: 1,
+          duration: 0.2, // 실제 애니메이션 시간
+          ease: "none"
+        })
+        .to(characterDisappearArray, {
+          x: 150,
+          duration: 0.6,
+          ease: "none",
+        })
 
-  const anim3 = $gsap.timeline({ paused: true })
-    .to(characterDelayArray, {
-      x: 0,
-      opacity: 1,
-      visibility: 'visible',
-      ease: "none",
-      duration: 0.2,
-    })
+      const anim3 = $gsap.timeline({ paused: true })
+        .to(characterDelayArray, {
+          x: 0,
+          opacity: 1,
+          visibility: 'visible',
+          ease: "none",
+          duration: 0.2,
+        })
 
-    //const anim4 =  $gsap.timeline({ paused: true })
-    
+        //const anim4 =  $gsap.timeline({ paused: true })
+        
 
-  animations.push(anim1, anim2, anim3);
+      animations.push(anim1, anim2, anim3);
 
 
-  $ScrollTrigger.create({
-    trigger: missionSection.value,
-    //pin: true,
-    start: "top top",
-    end: "+=600%",
-    scrub: 2.5,
-    anticipatePin: 1,
-    fastScrollEnd: false,
-    onEnter: () => {
-      // pin이 시작될 때 y 위치 초기화
-      // $gsap.set(missionSection.value, { 
-      //   yPercent: 0,
-      //   clearProps: 'transform' // 기존 transform 제거
-      // })
-    },
-    onUpdate: (self) => {
-      const margin = 0.3; 
-      if (self.progress < margin) return;
+      $ScrollTrigger.create({
+        trigger: missionSection.value,
+        //pin: true,
+        start: "top top",
+        end: "+=600%",
+        scrub: 2.5,
+        anticipatePin: 1,
+        fastScrollEnd: false,
+        onEnter: () => {
+          // pin이 시작될 때 y 위치 초기화
+          // $gsap.set(missionSection.value, { 
+          //   yPercent: 0,
+          //   clearProps: 'transform' // 기존 transform 제거
+          // })
+        },
+        onUpdate: (self) => {
+          const margin = 0.3; 
+          if (self.progress < margin) return;
 
-      // progress를 (margin ~ 1) 사이에서 (0 ~ 1)로 재계산
-      const adjustedProgress = (self.progress - margin) / (1 - margin);
-      const newStep = Math.floor(adjustedProgress * 3);
+          // progress를 (margin ~ 1) 사이에서 (0 ~ 1)로 재계산
+          const adjustedProgress = (self.progress - margin) / (1 - margin);
+          const newStep = Math.floor(adjustedProgress * 3);
 
-      if (newStep !== currentStep && newStep > currentStep) {
-        for (let i = currentStep + 1; i <= newStep; i++) {
-          if (i >= 0 && i < animations.length) {
-            animations[i].play();
+          if (newStep !== currentStep && newStep > currentStep) {
+            for (let i = currentStep + 1; i <= newStep; i++) {
+              if (i >= 0 && i < animations.length) {
+                animations[i].play();
+              }
+            }
+            currentStep = newStep;
           }
-        }
-        currentStep = newStep;
-      }
-    },
-    
-  })
+        },
+        
+      })
 
       
 
@@ -1334,7 +1355,7 @@ onMounted(async () => {
       });*/
 
       // 카드 스크롤 애니메이션
-      const cardList = document.querySelectorAll('.careers-section .swiper');
+      const cardList = document.querySelector('.careers-section .slide-wrapper');
 
       // 카드 스크롤 애니메이션
       $gsap.timeline({
@@ -1349,7 +1370,36 @@ onMounted(async () => {
         { y: '30%', opacity: 0 }, 
         { y: '0%', opacity: 1, duration: 1.5, ease: 'ease'   
       })
+
+      if (careerSliderRef.value) {
+        careerSliderRef.value.style.touchAction = 'pan-x pan-y'
+        careerSliderRef.value.setAttribute('data-lenis-prevent', '')
+      }
+
+      // Swiper 초기화 전에 이벤트 캡처 설정
+      const swiperEl = careerSliderRef.value?.querySelector('.swiper')
+      
+      if (swiperEl) {
+        const preventLenis = (e) => {
+          e.stopImmediatePropagation()
+        }
+        
+        swiperEl.addEventListener('touchstart', preventLenis, { 
+          capture: true, 
+          passive: false 
+        })
+        swiperEl.addEventListener('touchmove', preventLenis, { 
+          capture: true, 
+          passive: false 
+        })
+      }
     });
+
+    // 초기 로드 시에만 refresh (깜빡임 방지)
+    if (isFirstLoad) {
+      isFirstLoad = false;
+      setTimeout(() => $ScrollTrigger.refresh(), 50);
+    }
   }
 
  // 초기 실행
@@ -1369,16 +1419,10 @@ onMounted(async () => {
 
     $lenis.scrollTo(0, { immediate: true });
 
-    const lenis = new Lenis({
-      smooth: true,
-      prevent: (e) => {
-        return e.target.closest('.no-lenis')
-      }
-    })
-
     onUnmounted(() => {
       clearTimeout(resizeTimeout);
       resizeObserver.disconnect();
+      
       ctx?.revert();
     });
 })
