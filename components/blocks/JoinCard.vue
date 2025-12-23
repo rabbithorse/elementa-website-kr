@@ -2,7 +2,7 @@
   <div class="relative h-full">
     <EffectCardHover filter="distort" blur="blurred6">
       <!-- <EffectGlassLiquid /> -->
-      <a class="flex flex-col cont relative" href="">
+      <a class="flex flex-col cont relative">
         <figure>
           <img src="~/assets/images/sub/join-us-img01.png" alt="대표 이미지">
         </figure>
@@ -17,7 +17,7 @@
           </div>
           <div class="apply absolute">
             <span class="text-xs text-[#00C8EB]">100명의 지원자가 보고갔어요!</span>
-            <ButtonsBasic size="sm" target="_blank">지원하러 가기</ButtonsBasic>
+            <ButtonsBasic href="/join_us_detail" size="sm" target="_blank">지원하러 가기</ButtonsBasic>
           </div>
         </div>
       </a>
