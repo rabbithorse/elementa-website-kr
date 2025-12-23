@@ -3,7 +3,7 @@ import { defineNuxtPlugin } from '#app'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
-import Lenis from 'lenis'
+import Lenis from '@studio-freight/lenis'
 
 export default defineNuxtPlugin((nuxtApp) => {
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
@@ -14,15 +14,15 @@ export default defineNuxtPlugin((nuxtApp) => {
     await nextTick();
   });
 
-  ScrollTrigger.normalizeScroll({
-    momentum: 0.08,
-    allowNestedScroll: true,
-    lockAxis: true,
-  })
+  // ScrollTrigger.normalizeScroll({
+  //   //momentum: 0.02,
+  //   allowNestedScroll: true,
+  //   lockAxis: true,
+  // })
 
   // Lenis 초기화
   const lenis = new Lenis({
-    autoRaf: true,
+    //autoRaf: true,
     duration: 1.2,
     smoothWheel: true,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
