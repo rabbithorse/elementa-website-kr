@@ -531,7 +531,7 @@
         
       </div>
     </section>
-    <section class="wetheworld-section flex items-center justify-center overflow-hidden h-svh" ref="wetheworldSection">
+    <section class="wetheworld-section flex items-center justify-center overflow-hidden h-screen" ref="wetheworldSection">
       <div class="wetheworldbg-video01 opacity-0 invisible absolute inset-0 z-0" ref="wetheworldbg1">
         <video class="bg-video--content w-full h-full object-cover" autoplay playsinline muted loop preload="metadata">
           <source src="~/assets/videos/main-wetheworld-inspire.mp4" type="video/mp4" />
@@ -799,9 +799,9 @@ let isFirstLoad = true;
 let normalizeInstance;
 onBeforeUnmount(() => {
   if (ctx) {
-    ctx.revert();
-    $ScrollTrigger.getAll().forEach(t => t.kill());
-    $ScrollTrigger.refresh();
+    // ctx.revert();
+    // $ScrollTrigger.getAll().forEach(t => t.kill());
+    // $ScrollTrigger.refresh();
     normalizeInstance?.kill()
   }
   console.log('Gsap context reverted');
@@ -873,13 +873,16 @@ onMounted(async () => {
           pin: true, 
           scrub: 1,
           //pinSpacing: true,
-          markers: true,
+          //markers: true,
           end: () => "+=800%",
           fastScrollEnd: false
         }
       });
-      tl.to(videoWrap.value,
+      tl.fromTo(videoWrap.value,
         {
+          clipPath: 'polygon(46% 0%, 74.5% 0%, 57.5% 100%, 29% 100%)',
+          scale: 1,
+        }, {
           clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
           scale: 1.4,
           
@@ -898,7 +901,11 @@ onMounted(async () => {
           scrub: 1,
         }
       }, 0)
-      .to(videoSubWrap.value, 
+      .fromTo(videoSubWrap.value, 
+      {
+        clipPath: 'polygon(46% 0%, 74.5% 0%, 57.5% 100%, 29% 100%)',
+        scale: 1,
+      },
       {
         xPercent: 100,
         clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
@@ -1132,29 +1139,30 @@ onMounted(async () => {
       }, "-=0.5")
       .to(inspireText.value, {
         opacity: 0,
-      }, ">")
+      }, 1)
       .to(connectText.value, {
         opacity: 1,
         filter: "blur(0px)",
         duration: 0.5,
-      })
+      }, 1.5)
       .to(wetheworldbg2.value, {
         opacity: 1,
         visibility: 'visible',
-      }, "<")
+        duration: 1,
+      }, 1.5)
       .to(connectText.value, {
         opacity: 0,
-      }, ">0.5")
+      }, 2)
       .to(changeText.value, {
         opacity: 1,
         filter: "blur(0px)",
         duration: 0.5,
-      })
+      }, 2.5)
       .to(wetheworldbg3.value, {
         opacity: 1,
         visibility: 'visible',
         duration: 1,
-      }, "<")
+      }, 2.5)
 
       // 뉴스룸 섹션
 
@@ -1415,6 +1423,8 @@ onMounted(async () => {
 
     resizeObserver.observe(introSection.value);
     resizeObserver.observe(missionSection.value);
+    resizeObserver.observe(wetheworldSection.value);
+    resizeObserver.observe(inspireText.value);
     resizeObserver.observe(newsroomSection.value);
 
     $lenis.scrollTo(0, { immediate: true });

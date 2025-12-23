@@ -7,42 +7,73 @@
 </template>
 
 <script setup>
-  import { ref, onMounted, onBeforeUnmount } from 'vue'  
+  import { ref, onMounted, onUnmounted } from 'vue'  
   import { useNuxtApp } from '#app'
 
-  const { $gsap, $ScrollTrigger } = useNuxtApp();
+  const { $gsap, $ScrollTrigger, $lenis } = useNuxtApp();
 
 
   const primaryCharWrap = ref([]);
   const primaryChar = ref(null);
   let scrollTriggerInstance = null;
 
-  let ctx;
-  onBeforeUnmount(() => {
-    if (ctx) {
-      ctx.revert();
-      $ScrollTrigger.getAll().forEach(t => t.kill());
-      $ScrollTrigger.refresh();
-    }
-  });
+  let ctx
+  let resizeTimeout;
+  let isFirstLoad = true;
+  // onBeforeUnmount(() => {
+  //   if (ctx) {
+  //     ctx.revert();
+  //     $ScrollTrigger.getAll().forEach(t => t.kill());
+  //     $ScrollTrigger.refresh();
+  //   }
+  // });
 
   onMounted(() => {    
-    ctx = $gsap.context(() => {
-      scrollTriggerInstance = $ScrollTrigger.create({
-        trigger: primaryChar.value,
-        once: false,
-        start: "top 80%",
-        //markers: true,
-        scroller: window,
-        invalidateOnRefresh: true,
-        onEnter: () => {
-          $gsap.to(primaryChar.value, {
-            x: '0%',
-            duration: 1,
-            ease: 'power4.out',
-          });
-        }
-      })
+    const initAnimation = () => {
+      ctx = $gsap.context(() => {
+        scrollTriggerInstance = $ScrollTrigger.create({
+          trigger: primaryChar.value,
+          once: false,
+          start: "top 80%",
+          //markers: true,
+          scroller: window,
+          invalidateOnRefresh: true,
+          onEnter: () => {
+            $gsap.to(primaryChar.value, {
+              x: '0%',
+              duration: 1,
+              ease: 'power4.out',
+            });
+          }
+        })
+      });
+
+      // 초기 로드 시에만 refresh (깜빡임 방지)
+      if (isFirstLoad) {
+        isFirstLoad = false;
+        setTimeout(() => $ScrollTrigger.refresh(), 50);
+      }
+    };
+
+    initAnimation();
+
+    // 이후 리사이즈 감지
+    const resizeObserver = new ResizeObserver(() => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        initAnimation();
+      }, 200); // 조금 더 여유있게
+    });
+
+    resizeObserver.observe(primaryChar.value);
+
+    $lenis.scrollTo(0, { immediate: true });
+
+    onUnmounted(() => {
+      clearTimeout(resizeTimeout);
+      resizeObserver.disconnect();
+      
+      ctx?.revert();
     });
   })
 </script>
