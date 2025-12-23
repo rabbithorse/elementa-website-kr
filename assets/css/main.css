@@ -172,6 +172,7 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 .careers-section .swiper-slide .cont .text-box .info .date {align-self: flex-end;}
 .careers-section .swiper-slide .cont .text-box .apply {display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end; right:1.88rem; bottom:1.88rem;}
 .careers-section .swiper-slide .cont .text-box .apply > span {padding-bottom:8px;}
+.swiper, .swiper-wrapper, .swiper-slide {touch-action: pan-y pan-x !important;}
 
 .careers-section .list-bg {width: 100%; height: 100vh; top:175px; z-index: 1; background: url(~/assets/images/sub/list-bg-a.svg) no-repeat center top / contain; filter: grayscale(1);}
 
