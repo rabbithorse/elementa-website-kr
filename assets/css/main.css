@@ -274,6 +274,7 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 /* MOBILE : 0 ~ 767 */
 /* -------------------------------------- */
 @media (max-width: 767px) {
+  .video-layer--sub {display: none;}
   .visual-section .polygon .inner::after {transform: skew(-23deg); right: 9px;}
 
   .mission-section .box-wrap .glass {padding: 25px 20px 30px;}
