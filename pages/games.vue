@@ -961,18 +961,22 @@ onMounted(() => {
     .fromTo(bgText, {transform: "translate(-50%, -45%)"}, {duration: 2, ease: "power3.out", transform: "translate(-50%, -50%)"}, "<") // 동시 진행
 
     // 섹션 고정 전담 - 고정이 살짝 늦게 풀림
-    $ScrollTrigger.create({
-      trigger: youtubeArea.value,
-      start: 'top top',
-      end: "+=" + youtubeTimeline.duration() * 200,
-      scrub: 2,
-      pin: youtubeArea.value,
-      pinType: "transform",
-      anticipatePin: 1,
-      fastScrollEnd: true,         // 빠르게 스크롤 시 '튐' 방지
-      invalidateOnRefresh: true,
-      // markers: true,
-    })
+    $ScrollTrigger.matchMedia({
+      "(min-width: 1024px)": () => {
+        $ScrollTrigger.create({
+          trigger: youtubeArea.value,
+          start: 'top top',
+          end: "+=" + youtubeTimeline.duration() * 200,
+          scrub: 2,
+          pin: youtubeArea.value,
+          pinType: "transform",
+          anticipatePin: 1,
+          fastScrollEnd: true,         // 빠르게 스크롤 시 '튐' 방지
+          invalidateOnRefresh: true,
+          // markers: true,
+        })
+      }
+    });
 
     // 애니메이션 재생 전담 - 타임라인 애니메이션만큼 end 지점 설정해서 애니메이션만큼 진행
     $ScrollTrigger.matchMedia({
