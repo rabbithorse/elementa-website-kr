@@ -294,7 +294,7 @@
             <p class="text-white lg:text-2xl md:text-lg sm:text-base text-sm leading-[160%] break-keep" ref="visionText">혁신적 경험으로 게임의 기준을 새로 쓰고, <br>협력과 도전으로 문화를 확장하며, <br>전 세계가 공감할 지속 가능한 감동을 만드는 문화·패러다임의 선도자로 성장하겠습니다.</p>
             <h2 class="text-white font-paperlogy xl:text-[10rem] lg:text-[8.25rem] md:text-[7rem] sm:text-[5rem] text-6xl font-extrabold" ref="visionTitle">ELEMENTA</h2>
 
-            <div class="figure-wrap absolute top-0 lg:-right-[18rem] md:-right-[10rem] -right-[-5.5rem] -z-[1] lg:w-auto md:w-[260px] sm:w-[200px]" ref="visionFigureWrap"> 
+            <div class="figure-wrap absolute top-0 lg:-right-[18rem] md:-right-[10rem] sm:-right-[-5.5rem] -right-[6.5rem] -z-[1] lg:w-auto md:w-[260px] sm:w-[200px] w-[160px]" ref="visionFigureWrap"> 
               <div class="figure ">
                 <img src="@/assets/images/sub/company-vision-figure.png" alt="">
               </div>
@@ -364,7 +364,7 @@
                 <div class="heading flex lg:flex-nowrap flex-wrap items-end gap-x-4 gap-y-2 xl:pl-[3.25rem] md:pl-[2.8rem] relative lg:pb-0 pb-12">
                   <h2 class="font-paperlogy xl:text-7xl md:text-5xl text-4xl font-bold text-white z-10 flex-shrink-0 sm:pl-0 pl-[1.5rem]">CI</h2>
                   <p class="text-white lg:text-[19px] md:text-[1rem] text-sm break-keep z-[1] w-full">로고는 일관된 커뮤니케이션을 위해 형태나 색상, 스타일의 변형, 타 그래픽 요소와의 결합 없이 그대로 사용해야 합니다.</p>
-                  <ButtonsBasic href="/assets/images/sub/company-ci-download.zip" size="md-narrow" color="blue" outline class="download-btn ml-auto px-3">
+                  <ButtonsBasic href="/file/Elementa-brand-guide.pdf" download="ELEMENTA Brand Guide.pdf" size="md-narrow" color="blue" outline class="download-btn ml-auto px-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                       <path d="M17.5 12.5V15.8333C17.5 16.2754 17.3244 16.6993 17.0118 17.0118C16.6993 17.3244 16.2754 17.5 15.8333 17.5H4.16667C3.72464 17.5 3.30072 17.3244 2.98816 17.0118C2.67559 16.6993 2.5 16.2754 2.5 15.8333V12.5" stroke="#734BD7" stroke-width="2"/>
                       <path d="M5.83325 8.33203L9.99992 12.4987L14.1666 8.33203" stroke="#734BD7" stroke-width="2"/>

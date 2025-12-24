@@ -7,16 +7,19 @@
           <source src="~/assets/videos/main-logo-ani.mp4" type="video/mp4" />
         </video>
       </div>
-      <div ref="videoWrap" class="video-layer video-layer--main z-[1]">
+      <div ref="videoWrap" class="video-layer video-layer--main z-[1] overflow-hidden">
         <span ref="videoWrapLayer" class="bg-video-layer"></span>
-        <EffectGlass>
-          <video autoplay playsinline muted loop ref="videoBigShape">
-            <source src="~/assets/videos/main-fly.mp4" type="video/mp4" />
-          </video>
-        </EffectGlass>
+        <EffectGlassLiquid class="z-[1]" />
+        <video autoplay playsinline muted loop ref="videoBigShape">
+          <source src="~/assets/videos/main-fly.mp4" type="video/mp4" />
+        </video>
+        <span class="line line-before"></span>
+        <span class="line line-after"></span>
       </div>
-      <div ref="videoSubWrap" class="video-layer video-layer--sub z-[1]">
+      <div ref="videoSubWrap" class="video-layer video-layer--sub z-[1] overflow-hidden">
         <img src="~/assets/images/main/main-war.jpg" alt="" ref="videoSmallShape">
+        <span class="line line-before"></span>
+        <span class="line line-after"></span>
       </div>
       <div class="intro-section h-full" ref="introSection">
         <Container class="h-full">
@@ -874,7 +877,7 @@ onMounted(async () => {
           scrub: 1,
           //pinSpacing: true,
           //markers: true,
-          end: () => "+=800%",
+          end: () => "+=700%",
           fastScrollEnd: false
         }
       });
@@ -914,6 +917,24 @@ onMounted(async () => {
           scrub: 1,
         }
       }, 0)
+      .to('.line-before', {
+        x: "-190%",
+        rotation: "-17deg",
+        ease: 'power2.out',
+        scrollTrigger: {
+          end: () => "+=100%",
+          scrub: 1,
+        }
+      }, '<')
+      .to('.line-after', {
+        x: "120%",
+        rotation: "-17deg",
+        ease: 'power2.out',
+        scrollTrigger: {
+          end: () => "+=100%",
+          scrub: 1,
+        }
+      }, '<')
       .fromTo(videoWrapLayer.value, {
         opacity: 0,
         zIndex: 5,
@@ -968,7 +989,7 @@ onMounted(async () => {
         .to(characterDisappearArray, {
           x: 0,
           opacity: 1,
-          duration: 0.2, // 실제 애니메이션 시간
+          duration: 0.1, // 실제 애니메이션 시간
           ease: "none"
         })
         .to(characterDisappearArray, {
@@ -1068,9 +1089,10 @@ onMounted(async () => {
           trigger: wetheworldSection.value,
           pin: true,
           pinSpacing: true,
-          end: () => "+=" + (wetheworldSection.value.offsetHeight * 11),
+          end: () => "+=" + (wetheworldSection.value.offsetHeight * 10),
           scrub: 1.5,
           fastScrollEnd: false,
+          invalidateOnRefresh: true,
           //markers: true
         }
       })
@@ -1106,34 +1128,34 @@ onMounted(async () => {
         duration: 0.05,
         opacity: (i) => `${opacityValues[i]}`,
         backdropFilter: (i) => `blur(${blurValues[i]}px)`,
-      })
+      }, 0.5)
       .to(godownCurtainItemArray, 
       {
         start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
         duration: 0.05,
         opacity: (i) => `${opacityValues[i]}`,
         backdropFilter: (i) => `blur(${blurValues[i]}px)`,
-      }, "<")
+      }, )
       .to(weText.value, {
         y: '-80vh',
         start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
         end: () => "+=" + (wetheworldSection.value.offsetHeight * 2.5),
         scrub: 8,
-      })
+      }, 0.5)
       .to(theworldText.value, {
         y: '80vh',
         start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
         end: () => "+=" + (wetheworldSection.value.offsetHeight * 2.5),
         scrub: 8,
-      }, "<")
+      }, 0.5)
       .to(gotopCurtainItemArray, {
         y: (i) => `-${goYValues[i]}`,
         stagger: 0.03,
-      }, "<")
+      }, 0.5)
       .to(godownCurtainItemArray, {
         y: (i) => `${goYValues[i]}`,
         stagger: 0.03,
-      }, "<")
+      }, 0.5)
       .to(wetheworldSlogan.value, {
         height: '100%',
       }, "-=0.5")
