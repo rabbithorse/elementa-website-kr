@@ -329,11 +329,13 @@
     const maxScroll = slider1Width - viewportWidth + padding.value + 50
 
     // 스크롤 범위 제한
-    scrollAmount = Math.max(0, Math.min(scrollAmount, maxScroll))
+    scrollAmount = Math.max(0, Math.min(scrollAmount, maxScroll));
+
+    console.log('scrollAmount:', scrollAmount, 'maxScroll:', maxScroll);
 
     // 첫 번째 슬라이더: 우 -> 좌 
     $gsap.to(slider1, {
-      x: padding.value - scrollAmount + 70,
+      x: padding.value - scrollAmount,
       duration: 0.8,
       ease: 'power1.out',
       overwrite: 'auto'
@@ -341,7 +343,7 @@
 
     // 두 번째 슬라이더: 좌 -> 우
     $gsap.to(slider2, {
-      x: -maxScroll + scrollAmount + padding.value - 70,
+      x: -maxScroll + scrollAmount + padding.value,
       duration: 0.8,
       ease: 'power1.out',
       overwrite: 'auto'
@@ -364,7 +366,7 @@
     })
     
     $gsap.to(slider2, {
-      x: -(slider2.scrollWidth - glassRef.value.clientWidth) - padding.value,
+      x: -padding.value,
       duration: 0.8,
       ease: 'power1.out',
       overwrite: 'auto'
@@ -412,7 +414,7 @@
       const slider2 = slider2Ref.value
 
       $gsap.set(slider1, { x: padding.value }) 
-      $gsap.set(slider2, { x: -(slider2.scrollWidth - glassRef.value.clientWidth) - padding.value })
+      $gsap.set(slider2, { x: -padding.value })
 
       // 스크롤 트리거 설정 - 초기에는 pin 비활성화
       scrollTrigger = $ScrollTrigger.create({

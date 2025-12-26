@@ -1,7 +1,7 @@
 <template>
   <div>
     <section ref="visualSection" class="visual-section h-screen relative overflow-hidden">
-      <EffectGlass class="glass-blur"/>
+      <div class="blur-overlay absolute inset-0"></div>
       <div class="bg-video">
         <video class="bg-video--content" autoplay playsinline muted loop preload="metadata">
           <source src="~/assets/videos/main-logo-ani.mp4" type="video/mp4" />
@@ -9,7 +9,6 @@
       </div>
       <div ref="videoWrap" class="video-layer video-layer--main z-[1] overflow-hidden">
         <span ref="videoWrapLayer" class="bg-video-layer"></span>
-        <EffectGlassLiquid class="z-[1]" />
         <video autoplay playsinline muted loop ref="videoBigShape">
           <source src="~/assets/videos/main-fly.mp4" type="video/mp4" />
         </video>
@@ -637,7 +636,7 @@
             </p>
           </div>
           <div class="card-grid flex flex-col gap-y-18">
-            <EffectGlass class="card-glass glass-blur relative after:absolute after:inset-y-0 after:right-0 after:w-80 max-md:ml-[-5.5%] lg:pt-20 lg:pb-44 pt-[52px] pb-[42px] lg:w-[81.77vw] w-[101vw]">
+            <EffectGlass class="card-glass glass-blur relative after:absolute after:inset-y-0 after:right-0 after:w-80 max-md:ml-[-5.5%] lg:pt-20 lg:pb-44 pt-[52px] pb-[42px] lg:w-auto w-[101vw]">
               <BlocksScrollSlider />
             </EffectGlass>
           </div>
@@ -812,7 +811,7 @@ onBeforeUnmount(() => {
 
 onMounted(async () => {
   normalizeInstance = $ScrollTrigger.normalizeScroll({
-    momentum: 0.08,
+    momentum: 0.2,
     allowNestedScroll: true,
     lockAxis: true,
   })
@@ -867,363 +866,186 @@ onMounted(async () => {
         duration: 2,
         ease: 'none',
       }, "<")
-
-      const mmSection1 = $ScrollTrigger.matchMedia();
-      let tl = null;
       
-      mmSection1.add("(min-width: 1025px)", () => {
-        tl = $gsap.timeline({
-          scrollTrigger: {
-            trigger: visualSection.value,
-            start: "top top",
-            pin: true, 
-            scrub: 1,
-            //pinSpacing: true,
-            //markers: true,
-            end: () => "+=700%",
-            fastScrollEnd: false
-          }
-        });
-        tl.fromTo(videoWrap.value,
-          {
-            clipPath: 'polygon(46% 0%, 74.5% 0%, 57.5% 100%, 29% 100%)',
-            scale: 1,
-          }, {
-            clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-            scale: 1.4,
-            
-            scrollTrigger: {
-              end: () => "+=100%",
-              scrub: 1,
-              ease: 'none',
-              pin: true,
-            },
-          }, 0)
-        .to(visualTitle.value, 
-        {
-          xPercent: -150,
-          scrollTrigger: {
-            end: () => "+=100%",
-            scrub: 1,
-          }
-        }, 0)
-        .fromTo(videoSubWrap.value, 
+
+      const tl = $gsap.timeline({
+        scrollTrigger: {
+          trigger: visualSection.value,
+          start: "top top",
+          pin: true, 
+          scrub: 1,
+          //pinSpacing: true,
+          //markers: true,
+          end: () => "+=700%",
+          fastScrollEnd: false
+        }
+      });
+      tl.fromTo(videoWrap.value,
         {
           clipPath: 'polygon(46% 0%, 74.5% 0%, 57.5% 100%, 29% 100%)',
           scale: 1,
-        },
-        {
-          xPercent: 100,
+        }, {
           clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+          scale: 1.4,
+          
           scrollTrigger: {
             end: () => "+=100%",
             scrub: 1,
-          }
+            ease: 'none',
+            pin: true,
+          },
         }, 0)
-        .to('.line-before', {
-          x: "-190%",
-          rotation: "-17deg",
-          ease: 'power2.out',
-          scrollTrigger: {
-            end: () => "+=100%",
-            scrub: 1,
-          }
-        }, '<')
-        .to('.line-after', {
-          x: "120%",
-          rotation: "-17deg",
-          ease: 'power2.out',
-          scrollTrigger: {
-            end: () => "+=100%",
-            scrub: 1,
-          }
-        }, '<')
-        .fromTo(videoWrapLayer.value, {
-          opacity: 0,
-          zIndex: 5,
-          visibility: 'hidden',
-        },
-        {
-          opacity: 0.5,
-          zIndex: 5,
-          visibility: 'visible',
-          ease: 'none',
-          scrollTrigger: {
-            //trigger: videoWrapLayer.value,
-            end: () => "+=100%",
-            //end: () => "+=" + (visualSection.value.offsetHeight * 0.1),
-            scrub: 1,
-          }
-        })
-        .to(missionSection.value, {
-          yPercent: -100,
-          ease: "none",
+      .to(visualTitle.value, 
+      {
+        xPercent: -150,
+        scrollTrigger: {
+          end: () => "+=100%",
           scrub: 1,
-          scrollTrigger: {
-            //trigger: missionSection.value,
-            start: () => "+=" + (visualSection.value.offsetHeight * 0.3),
-            end: () => "+=100%",
-            scrub: 1,
-          }
-        }, ">1")
-      
-        let currentStep = -1
-        const animations = []
-
-        // 각 애니메이션을 개별 타임라인으로 생성 (paused 상태)
-        const anim1 = $gsap.timeline({ paused: true })
-          .to(characterRevealArray, {
-            x: 0,
-            opacity: 1,
-            duration: 0.2, // 실제 애니메이션 시간
-            ease: "none"
-          })
-          .fromTo(missionBox.value, 
-            { yPercent: 100, opacity: 0 },
-            { yPercent: 0, opacity: 1, duration: 0.4, stagger: 0.05, ease: "power2.out" }, ">"
-          )
-
-        const anim2 = $gsap.timeline({ paused: true })
-          .to(characterDisappearArray, {
-            x: 0,
-            opacity: 1,
-            duration: 0.1, // 실제 애니메이션 시간
-            ease: "none"
-          })
-          .to(characterDisappearArray, {
-            x: 150,
-            duration: 0.6,
-            ease: "none",
-          })
-
-        const anim3 = $gsap.timeline({ paused: true })
-          .to(characterDelayArray, {
-            x: 0,
-            opacity: 1,
-            visibility: 'visible',
-            ease: "none",
-            duration: 0.2,
-          })
-
-          //const anim4 =  $gsap.timeline({ paused: true })
-          
-
-        animations.push(anim1, anim2, anim3);
-
-
-        $ScrollTrigger.create({
-          trigger: missionSection.value,
-          //pin: true,
-          start: "top top",
-          end: "+=600%",
-          scrub: 2.5,
-          anticipatePin: 1,
-          fastScrollEnd: false,
-          onEnter: () => {
-            // pin이 시작될 때 y 위치 초기화
-            // $gsap.set(missionSection.value, { 
-            //   yPercent: 0,
-            //   clearProps: 'transform' // 기존 transform 제거
-            // })
-          },
-          onUpdate: (self) => {
-            const margin = 0.3; 
-            if (self.progress < margin) return;
-
-            // progress를 (margin ~ 1) 사이에서 (0 ~ 1)로 재계산
-            const adjustedProgress = (self.progress - margin) / (1 - margin);
-            const newStep = Math.floor(adjustedProgress * 3);
-
-            if (newStep !== currentStep && newStep > currentStep) {
-              for (let i = currentStep + 1; i <= newStep; i++) {
-                if (i >= 0 && i < animations.length) {
-                  animations[i].play();
-                }
-              }
-              currentStep = newStep;
-            }
-          },
-          
-        })
-      });
-
-      mmSection1.add("(max-width: 1024px)", () => {
-        tl = $gsap.timeline({
-          scrollTrigger: {
-            trigger: visualSection.value,
-            start: "top top",
-            pin: true, 
-            scrub: 1,
-            //pinSpacing: true,
-            //markers: true,
-            end: () => "+=500%",
-            fastScrollEnd: false
-          }
-        });
-        tl.fromTo(videoWrap.value,
-          {
-            clipPath: 'polygon(46% 0%, 74.5% 0%, 57.5% 100%, 29% 100%)',
-            scale: 1,
-          }, {
-            clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-            scale: 1.4,
-            
-            scrollTrigger: {
-              end: () => "+=100%",
-              scrub: 1,
-              ease: 'none',
-              pin: true,
-            },
-          }, 0)
-        .to(visualTitle.value, 
-        {
-          xPercent: -150,
-          scrollTrigger: {
-            end: () => "+=100%",
-            scrub: 1,
-          }
-        }, 0)
-        .fromTo(videoSubWrap.value, 
-        {
-          clipPath: 'polygon(46% 0%, 74.5% 0%, 57.5% 100%, 29% 100%)',
-          scale: 1,
-        },
-        {
-          xPercent: 100,
-          clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-          scrollTrigger: {
-            end: () => "+=100%",
-            scrub: 1,
-          }
-        }, 0)
-        .to('.line-before', {
-          x: "-190%",
-          rotation: "-17deg",
-          ease: 'power2.out',
-          scrollTrigger: {
-            end: () => "+=100%",
-            scrub: 1,
-          }
-        }, '<')
-        .to('.line-after', {
-          x: "120%",
-          rotation: "-17deg",
-          ease: 'power2.out',
-          scrollTrigger: {
-            end: () => "+=100%",
-            scrub: 1,
-          }
-        }, '<')
-        .fromTo(videoWrapLayer.value, {
-          opacity: 0,
-          zIndex: 5,
-          visibility: 'hidden',
-        },
-        {
-          opacity: 0.5,
-          zIndex: 5,
-          visibility: 'visible',
-          ease: 'none',
-          scrollTrigger: {
-            //trigger: videoWrapLayer.value,
-            end: () => "+=100%",
-            //end: () => "+=" + (visualSection.value.offsetHeight * 0.1),
-            scrub: 1,
-          }
-        })
-        .to(missionSection.value, {
-          yPercent: -100,
-          ease: "none",
+        }
+      }, 0)
+      .fromTo(videoSubWrap.value, 
+      {
+        clipPath: 'polygon(46% 0%, 74.5% 0%, 57.5% 100%, 29% 100%)',
+        scale: 1,
+      },
+      {
+        xPercent: 100,
+        clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+        scrollTrigger: {
+          end: () => "+=100%",
           scrub: 1,
-          scrollTrigger: {
-            //trigger: missionSection.value,
-            start: () => "+=" + (visualSection.value.offsetHeight * 0.3),
-            end: () => "+=100%",
-            scrub: 1,
-          }
-        }, ">1")
+        }
+      }, 0)
+      .to('.line-before', {
+        x: "-190%",
+        rotation: "-17deg",
+        ease: 'power2.out',
+        scrollTrigger: {
+          end: () => "+=100%",
+          scrub: 1,
+        }
+      }, '<')
+      .to('.line-after', {
+        x: "120%",
+        rotation: "-17deg",
+        ease: 'power2.out',
+        scrollTrigger: {
+          end: () => "+=100%",
+          scrub: 1,
+        }
+      }, '<')
+      .fromTo(videoWrapLayer.value, {
+        opacity: 0,
+        zIndex: 5,
+        visibility: 'hidden',
+      },
+      {
+        opacity: 0.5,
+        zIndex: 5,
+        visibility: 'visible',
+        ease: 'none',
+        scrollTrigger: {
+          //trigger: videoWrapLayer.value,
+          end: () => "+=100%",
+          //end: () => "+=" + (visualSection.value.offsetHeight * 0.1),
+          scrub: 1,
+        }
+      })
+      .to(missionSection.value, {
+        yPercent: -100,
+        ease: "none",
+        scrub: 1,
+        scrollTrigger: {
+          //trigger: missionSection.value,
+          start: () => "+=" + (visualSection.value.offsetHeight * 0.3),
+          end: () => "+=100%",
+          scrub: 1,
+        }
+      }, ">1")
       
-        let currentStep = -1
-        const animations = []
-
-        // 각 애니메이션을 개별 타임라인으로 생성 (paused 상태)
-        const anim1 = $gsap.timeline({ paused: true })
-          .to(characterRevealArray, {
-            x: 0,
-            opacity: 1,
-            duration: 0.2, // 실제 애니메이션 시간
-            ease: "none"
-          })
-          .fromTo(missionBox.value, 
-            { yPercent: 100, opacity: 0 },
-            { yPercent: 0, opacity: 1, duration: 0.4, stagger: 0.05, ease: "power2.out" }, ">"
-          )
-
-        const anim2 = $gsap.timeline({ paused: true })
-          .to(characterDisappearArray, {
-            x: 0,
-            opacity: 1,
-            duration: 0.1, // 실제 애니메이션 시간
-            ease: "none"
-          })
-          .to(characterDisappearArray, {
-            x: 150,
-            duration: 0.6,
-            ease: "none",
-          })
-
-        const anim3 = $gsap.timeline({ paused: true })
-          .to(characterDelayArray, {
-            x: 0,
-            opacity: 1,
-            visibility: 'visible',
-            ease: "none",
-            duration: 0.2,
-          })
-
-          //const anim4 =  $gsap.timeline({ paused: true })
-          
-
-        animations.push(anim1, anim2, anim3);
 
 
-        $ScrollTrigger.create({
-          trigger: missionSection.value,
-          //pin: true,
-          start: "top top",
-          end: "+=400%",
-          scrub: 2.5,
-          anticipatePin: 1,
-          fastScrollEnd: false,
-          onEnter: () => {
-            // pin이 시작될 때 y 위치 초기화
-            // $gsap.set(missionSection.value, { 
-            //   yPercent: 0,
-            //   clearProps: 'transform' // 기존 transform 제거
-            // })
-          },
-          onUpdate: (self) => {
-            const margin = 0.3; 
-            if (self.progress < margin) return;
+      
+      
 
-            // progress를 (margin ~ 1) 사이에서 (0 ~ 1)로 재계산
-            const adjustedProgress = (self.progress - margin) / (1 - margin);
-            const newStep = Math.floor(adjustedProgress * 3);
+      let currentStep = -1
+      const animations = []
 
-            if (newStep !== currentStep && newStep > currentStep) {
-              for (let i = currentStep + 1; i <= newStep; i++) {
-                if (i >= 0 && i < animations.length) {
-                  animations[i].play();
-                }
-              }
-              currentStep = newStep;
-            }
-          },
-          
+      // 각 애니메이션을 개별 타임라인으로 생성 (paused 상태)
+      const anim1 = $gsap.timeline({ paused: true })
+        .to(characterRevealArray, {
+          x: 0,
+          opacity: 1,
+          duration: 0.3, // 실제 애니메이션 시간
+          ease: "none"
         })
-      });
+        .fromTo(missionBox.value, 
+          { yPercent: 100, opacity: 0 },
+          { yPercent: 0, opacity: 1, duration: 0.3, stagger: 0.05, ease: "power2.out" }, ">"
+        )
 
-      
+      const anim2 = $gsap.timeline({ paused: true })
+        .to(characterDisappearArray, {
+          x: 0,
+          opacity: 1,
+          duration: 0.4, // 실제 애니메이션 시간
+          ease: "none"
+        }, ">")
+        .to(characterDisappearArray, {
+          x: 150,
+          duration: 0.4,
+          ease: "none",
+        }, "+=0.1")
+
+      const anim3 = $gsap.timeline({ paused: true })
+        .to(characterDelayArray, {
+          x: 0,
+          opacity: 1,
+          visibility: 'visible',
+          ease: "none",
+          duration: 0.4,
+        }, "+=0.2")
+
+        //const anim4 =  $gsap.timeline({ paused: true })
+        
+
+      animations.push(anim1, anim2, anim3);
+
+
+      $ScrollTrigger.create({
+        trigger: missionSection.value,
+        //pin: true,
+        start: "top top",
+        end: "+=600%",
+        scrub: 2.5,
+        anticipatePin: 1,
+        fastScrollEnd: false,
+        onEnter: () => {
+          // pin이 시작될 때 y 위치 초기화
+          // $gsap.set(missionSection.value, { 
+          //   yPercent: 0,
+          //   clearProps: 'transform' // 기존 transform 제거
+          // })
+        },
+        onUpdate: (self) => {
+          const margin = 0.3; 
+          if (self.progress < margin) return;
+
+          // progress를 (margin ~ 1) 사이에서 (0 ~ 1)로 재계산
+          const adjustedProgress = (self.progress - margin) / (1 - margin);
+          const newStep = Math.floor(adjustedProgress * 3);
+
+          if (newStep !== currentStep && newStep > currentStep) {
+            for (let i = currentStep + 1; i <= newStep; i++) {
+              if (i >= 0 && i < animations.length) {
+                animations[i].play();
+              }
+            }
+            currentStep = newStep;
+          }
+        },
+        
+      })
 
       
 
@@ -1261,41 +1083,20 @@ onMounted(async () => {
         })
       });
 
-
-      const mmSection4 = $ScrollTrigger.matchMedia();
-      let wetheworldTl = null;
-      
-      mmSection4.add("(min-width: 1025px)", () => {
-
-        wetheworldTl = $gsap.timeline({
-          scrollTrigger: {
-            trigger: wetheworldSection.value,
-            pin: true,
-            pinSpacing: true,
-            end: () => "+=" + (wetheworldSection.value.offsetHeight * 10),
-            scrub: 1.5,
-            fastScrollEnd: false,
-            invalidateOnRefresh: true,
-            //markers: true
-          }
-        })
-      });
-
-      mmSection4.add("(max-width: 1024px)", () => {
-
-        wetheworldTl = $gsap.timeline({
-          scrollTrigger: {
-            trigger: wetheworldSection.value,
-            pin: true,
-            pinSpacing: true,
-            end: () => "+=" + (wetheworldSection.value.offsetHeight * 8),
-            scrub: 1.5,
-            fastScrollEnd: false,
-            invalidateOnRefresh: true,
-            //markers: true
-          }
-        })
-      });
+      const wetheworldTl = $gsap.timeline({
+        scrollTrigger: {
+          trigger: wetheworldSection.value,
+          pin: true,
+          anticipatePin: 1,
+          start: 'top top',
+          end: () => "+=800%",
+          scrub: 1.5,
+          //fastScrollEnd: false,
+          //invalidateOnRefresh: true,
+          //markers: true
+        },
+        
+      })
 
       // WE THE WORLD 섹션
       const gotopCurtainItems = wetheworldSection.value.querySelectorAll('.gotopCurtain .curtain-item');
@@ -1328,64 +1129,64 @@ onMounted(async () => {
         duration: 0.05,
         opacity: (i) => `${opacityValues[i]}`,
         backdropFilter: (i) => `blur(${blurValues[i]}px)`,
-      }, 0.5)
+      })
       .to(godownCurtainItemArray, 
       {
         start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
         duration: 0.05,
         opacity: (i) => `${opacityValues[i]}`,
         backdropFilter: (i) => `blur(${blurValues[i]}px)`,
-      }, )
+      }, "<")
       .to(weText.value, {
         y: '-80vh',
         start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
         end: () => "+=" + (wetheworldSection.value.offsetHeight * 2.5),
         scrub: 8,
-      }, 0.5)
+      })
       .to(theworldText.value, {
         y: '80vh',
         start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
         end: () => "+=" + (wetheworldSection.value.offsetHeight * 2.5),
         scrub: 8,
-      }, 0.5)
+      }, "<")
       .to(gotopCurtainItemArray, {
         y: (i) => `-${goYValues[i]}`,
         stagger: 0.03,
-      }, 0.5)
+      }, "<")
       .to(godownCurtainItemArray, {
         y: (i) => `${goYValues[i]}`,
         stagger: 0.03,
-      }, 0.5)
+      }, "<")
       .to(wetheworldSlogan.value, {
         height: '100%',
       }, "-=0.5")
       .to(inspireText.value, {
         opacity: 0,
-      }, 1)
+      }, ">")
       .to(connectText.value, {
         opacity: 1,
         filter: "blur(0px)",
         duration: 0.5,
-      }, 1.5)
+      })
       .to(wetheworldbg2.value, {
         opacity: 1,
         visibility: 'visible',
-        duration: 1,
-      }, 1.5)
+      }, "<")
       .to(connectText.value, {
         opacity: 0,
-      }, 2)
+      }, ">0.5")
       .to(changeText.value, {
         opacity: 1,
         filter: "blur(0px)",
         duration: 0.5,
-      }, 2.5)
+      })
       .to(wetheworldbg3.value, {
         opacity: 1,
         visibility: 'visible',
         duration: 1,
-      }, 2.5)
+      }, "<")
 
+      
       // 뉴스룸 섹션
 
       // const glass = glassRef.value
@@ -1446,143 +1247,6 @@ onMounted(async () => {
       },
 
     })
-      /*"(min-width: 2560px)": function() {
-        const newsroomTl = $gsap.timeline({
-          scrollTrigger: {
-            trigger: newsroomSection.value,
-            start: 'top 0%',
-            pin: true,
-            end: () => "+=" + (newsroomSection.value.offsetHeight * 2),
-            scrub: 1,
-          }
-        })
-
-        newsroomTl.fromTo(flowLeft.value, {
-          x: "10%",
-        }, {
-          x: "-43%",
-          ease: 'power2.out',
-          duration: 2,
-        }, 0.2)
-
-        newsroomTl.fromTo(flowRight.value, {
-          x: "-47%",
-        }, {
-          x: "3%",
-          ease: 'power2.out',
-          duration: 2,
-        }, 0.2)
-      },
-
-      "(min-width: 1920px) and (max-width: 2559px)": function() {
-          const newsroomTl = $gsap.timeline({
-          scrollTrigger: {
-            trigger: newsroomSection.value,
-            start: 'top -35%',
-            pin: true,
-            end: () => "+=" + (newsroomSection.value.offsetHeight * 2),
-            scrub: 1,
-          }
-        })
-
-        newsroomTl.fromTo(flowLeft.value, {
-          x: "10%",
-        }, {
-          x: "-43%",
-          ease: 'power2.out',
-          duration: 2,
-        }, 0.2)
-
-        newsroomTl.fromTo(flowRight.value, {
-          x: "-47%",
-        }, {
-          x: "3%",
-          ease: 'power2.out',
-          duration: 2,
-        }, 0.2)
-      },
-
-      "(min-width: 1024px)": function() {
-        const elementaKoreaTl = $gsap.timeline({
-          scrollTrigger: {
-            trigger: elementaKoreaSection.value,
-            start: 'top 80%',
-            scrub: 1,
-          }
-        })
-
-        elementaKoreaTl.to(sliderImg.value, {
-          maxWidth: '30rem',
-          ease: 'power2.out',
-          duration: 5,
-        })
-      },
-
-      "(max-width: 1024px)": function() {
-        const elementaKoreaTl = $gsap.timeline({
-          scrollTrigger: {
-            trigger: sliderImg.value,
-            start: 'top 80%',
-            //end: () => "+=" + (elementaKoreaSection.value.offsetHeight * 1.5),
-            scrub: 1,
-          }
-        })
-
-        elementaKoreaTl.to(sliderImg.value, {
-          maxWidth: '38%',
-          ease: 'power2.out',
-          duration: 5,
-        })
-      },
-
-      "(min-width: 768px) and (max-width: 1023px)": function() {
-        const newsroomTl = $gsap.timeline({
-          scrollTrigger: {
-            trigger: newsroomSection.value,
-            start: 'top -20%',
-            pin: true,
-            end: () => "+=" + (newsroomSection.value.offsetHeight * 2),
-            scrub: 1,
-          }
-        })
-
-        newsroomTl.fromTo(flowLeft.value, {
-          x: "3%",
-        }, {
-          x: "-78%",
-          ease: 'power2.out',
-          duration: 2,
-        }, 0.2)
-
-        newsroomTl.fromTo(flowRight.value, {
-          x: "-78%",
-        }, {
-          x: "0%",
-          ease: 'power2.out',
-          duration: 2,
-        }, 0.2)
-      },
-
-      "(max-width: 767px)": function() {
-        const newsroomTl = $gsap.timeline({
-          scrollTrigger: {
-            trigger: newsroomSection.value,
-            start: 'top 10%',
-            pin: true,
-            end: () => "+=" + (newsroomSection.value.offsetHeight * 2.5),
-            scrub: 1,
-          }
-        })
-
-        newsroomTl.fromTo(flowLeft.value, {
-          x: "1%",
-        }, {
-          x: "-84%",
-          ease: 'power2.out',
-          duration: 2,
-        }, 0.2)
-      }
-      });*/
 
       // 카드 스크롤 애니메이션
       const cardList = document.querySelector('.careers-section .slide-wrapper');
@@ -1638,15 +1302,15 @@ onMounted(async () => {
     // 이후 리사이즈 감지
     const resizeObserver = new ResizeObserver(() => {
       clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        initAnimation();
-      }, 200); // 조금 더 여유있게
+      // resizeTimeout = setTimeout(() => {
+      //   initAnimation();
+      // }, 200); // 조금 더 여유있게
     });
 
     resizeObserver.observe(introSection.value);
     resizeObserver.observe(missionSection.value);
     resizeObserver.observe(wetheworldSection.value);
-    resizeObserver.observe(inspireText.value);
+    //resizeObserver.observe(inspireText.value);
     resizeObserver.observe(newsroomSection.value);
 
     $lenis.scrollTo(0, { immediate: true });
@@ -1656,7 +1320,6 @@ onMounted(async () => {
       resizeObserver.disconnect();
       
       ctx?.revert();
-      mmSection1?.revert();
     });
 })
 
