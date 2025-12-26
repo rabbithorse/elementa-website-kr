@@ -58,16 +58,18 @@
               :touchStartPreventDefault="false"
               :grabCursor="true"
               :loopedSlides="12"
-              :allowTouchMove="false"
+              :allowTouchMove="true"
               :slideToClickedSlide="true"
               :breakpoints="{
                 '1280' : {
                   slidesPerView: 4,
-                  spaceBetween: 20
+                  spaceBetween: 20,
+                  allowTouchMove: false
                 },
                 '768' : {
                   slidesPerView: 4,
-                  spaceBetween: 10
+                  spaceBetween: 10,
+                  allowTouchMove: true
                 },
               }"
               @slideChange="onSlideChange"
@@ -311,6 +313,8 @@
       },
     })
     // gsap 미디어 쿼리
+
+    const isDesktop = window.matchMedia('(min-width: 1280px)').matches
     
     const floatBox = document.querySelector('.float-box')
     const slider = document.querySelector('.media-slider')
@@ -319,6 +323,7 @@
 
     // 마우스가 슬라이더에 들어오면 등장
     slider.addEventListener('mouseenter', () => {
+      if (!isDesktop) return
       $gsap.to(floatBox, {
         opacity: 1,
         scale: 1,
@@ -345,12 +350,14 @@
       const x = e.clientX - rect.left
       const y = e.clientY - rect.top
 
-      $gsap.to(floatBox, {
-        x: x,
-        y: y,
-        duration: 0.2,
-        ease: "power3.out"
-      })
+      if (isDesktop) {
+        $gsap.to(floatBox, {
+          x: x,
+          y: y,
+          duration: 0.2,
+          ease: "power3.out"
+        })
+      }
 
       // --- 왼쪽 / 오른쪽 감지 ---
       const activeSlide = document.querySelector('.swiper-slide-active')
@@ -374,6 +381,7 @@
 
     // 마우스가 슬라이더에서 벗어나면 사라짐
     slider.addEventListener('mouseleave', () => {
+      if (!isDesktop) return
       $gsap.to(floatBox, {
         opacity: 0,
         scale: 0.8,

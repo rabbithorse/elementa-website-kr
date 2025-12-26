@@ -1,7 +1,7 @@
 <template>
   <div>
-    <section class="subSection logo-bg lg:pt-[180px] pt-[115px] relative">
-      <div class="join-us-detail-area relative">
+    <section class="subSection logo-bg lg:pt-[180px] pt-[115px] relative overflow-none">
+      <div class="join-us-detail-area relative overflow-hidden">
         <Container class="grid 2xl:gap-x-[9.4%] xl:gap-x-[3.4%] xl:grid-cols-[1fr_auto] grid-cols-1 lg:grid-row-[auto 1fr]">
           <div class="detail-title-area xl:col-span-2">
             <ButtonsBadge category="y">Business</ButtonsBadge>
@@ -100,7 +100,7 @@
         </Container>
       </div>
 
-      <div class="our-office-area lg:py-[180px] pt-[130px]" id="ourOfficeArea">
+      <div class="our-office-area lg:py-[180px] pt-[130px] overflow-hidden" id="ourOfficeArea">
         <Container>
           <p class="text-white twink-point flex gap-[10px] items-center lg:font-bold font-normal lg:pb-[2rem] pb-[0.94rem] lg:text-base text-sm">Our office</p>
           <TypographySkewText time="0.0">
@@ -199,7 +199,19 @@
           </div>
         </Container>
       </div>
-      <div class="h-[600px] lg:block hidden"></div>
+      <!-- <div class="h-[10px] lg:block hidden"></div> -->
+
+      <!-- 모바일 고정 바 -->
+      <div class="px-[20px] py-[15px] flex items-end justify-between gap-[10px] sticky bottom-[-1px] xl:hidden left-0 z-30 side-btn-wrap-m w-full">
+        <div class="grow">
+          <p class="text-base text-white font-semibold">퍼포먼스 마케터</p>
+          <p class="text-xs text-white">205.11.10~25.12.10 신입</p>
+        </div>
+        <div class="flex gap-[10px]">
+          <ButtonsBasic class="share-btn"><i class="ico ico-share bg-white"></i></ButtonsBasic>
+          <ButtonsBasic color="blue" width="full" class="grow" href="#">지원하기</ButtonsBasic>
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -274,17 +286,37 @@
     })
 
     // 오피스 고정 배경
-    $gsap.timeline({
-      scrollTrigger: {
-        trigger: imgArea.value,
-        start: 'top top',
-        end: 'bottom+=600 bottom',
-        scrub: 2,
-        // markers: true,
-        pin: textBg.value,
-        pinSpacing: false
-      },
-    })
+    $ScrollTrigger.matchMedia({
+      "(min-width: 1024px)": () => {
+        $gsap.timeline({
+          scrollTrigger: {
+            trigger: imgArea.value,
+            start: 'top top',
+            end: 'bottom+=600 bottom',
+            scrub: 2,
+            // markers: true,
+            pin: textBg.value,
+            pinSpacing: false
+          },
+        })
+      }
+    });
+
+    $ScrollTrigger.matchMedia({
+      "(max-width: 1023px)": () => {
+        $gsap.timeline({
+          scrollTrigger: {
+            trigger: imgArea.value,
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: 2,
+            // markers: true,
+            pin: textBg.value,
+            pinSpacing: false
+          },
+        })
+      }
+    });
 
     /*-----------------------*/
     // 리사이즈 시 ScrollTrigger 전체 재계산

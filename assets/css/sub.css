@@ -27,9 +27,9 @@
   opacity: 0;
 }
 
-.vh-section {height: 100dvh; /* fallback */ height: calc(var(--vh) * 100); padding-bottom: env(safe-area-inset-bottom);}
-.vh-section-60 {height: 60dvh; height: calc(var(--vh) * 60); padding-bottom: env(safe-area-inset-bottom);}
-.vh-section-40 {height: 40dvh; height: calc(var(--vh) * 40); padding-bottom: env(safe-area-inset-bottom);}
+.vh-section {/*height: 100dvh; height: calc(var(--vh) * 100); padding-bottom: env(safe-area-inset-bottom);*/ height: 100dvh;}
+.vh-section-60 {/*height: 60dvh; height: calc(var(--vh) * 60); padding-bottom: env(safe-area-inset-bottom);*/ height: 60dvh;}
+.vh-section-40 {/*height: 40dvh; height: calc(var(--vh) * 40); padding-bottom: env(safe-area-inset-bottom);*/ height: 40dvh;}
 
 /* -------------------------------------- */
 /* 기본값 (1536px 이상) — PC 디자인 원본 */
@@ -56,6 +56,7 @@
 
 /* sub top */
 .subSection {overflow: hidden; height: auto; background: url(~/assets/images/sub/sub-section-bg.png) no-repeat top / 100%;}
+.subSection.overflow-none {overflow: inherit;}
 .subSection.logo-bg::before {content:''; display:block; width:100%; height:100%; background:url(~/assets/images/sub/list-bg-a-blur.svg) no-repeat right top / 1000px; position:absolute; right:0; top:0;}
 .subSection .container {z-index: 3;}
 .path-visual {right: 150px; top: 0; z-index: 1;  transition: all .5s;}
@@ -206,12 +207,16 @@ box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.25) inset, 0 0 4px 0 rgba(255, 255,
 /* join us detail */
 .join-us-detail-area .deco-text::before {content:''; display:block; width:24px; height:38px; background:url(~/assets/images/sub/logo-icon.svg) no-repeat center / cover;}
 
+.side-btn-wrap-m {background: #05060B;}
+.side-btn-wrap-m .btn + .btn {max-width: 98px;}
+
+
 .detail-glass-box {opacity: 0; /*background: rgba(0, 0, 0, 0.15);*/ border-bottom:1px solid rgba(255,255,255,0.2); border-right: 1px solid rgba(255, 255, 255, 0.2); border-top: 1px solid rgba(255,255,255,0.5); border-left: 1px solid rgba(255,255,255,0.5); /*box-shadow: -28px -22px 0px -17px rgba(255,255,255,0.2) inset;*/}
 .detail-glass-box-side {background: rgba(0, 0, 0, 0.5); border-top: 1px solid rgba(255,255,255,0.5); box-shadow: -28px -22px 0px -17px rgba(255,255,255,0.2) inset;}
 .detail-glass-box-side::after {content:''; display:block; width:75px; height:79px; background:url(~/assets/images/sub/logo-icon-small.svg) no-repeat center / cover; position:absolute; right:0; top:0; z-index: 2; right:12px; top: 12px; filter: grayscale(1);}
 
-.office-link::after {content:''; display: block; width: 100%; height: 100%; position: absolute; left: 0; top: 0; background: rgba(0, 0, 0, 0.4); z-index: 2; display: block; opacity: 0; transition: opacity 0.3s ease;}
-.office-link:hover::after {opacity: 1;}
+.office-link::after {content:''; display: block; width: 100%; height: 100%; position: absolute; left: 0; top: 0; background: rgba(0, 0, 0, 0.4); z-index: 2; display: block; visibility: hidden; transition: all 0.3s ease; opacity: 0;}
+.office-link:hover::after {visibility: visible; opacity: 1;}
 .office-link span {bottom:-20px; transition: bottom .6s ease;}
 .office-link:hover span {bottom: 10px;}
 
@@ -327,7 +332,7 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 
 /***** 게임 소개 *****/
 /* section 01 : 인트로 */
-  .movie-bg {left: 0; top: 0; z-index: -1; height: 140dvh; height: calc(var(--vh) * 140); padding-bottom: env(safe-area-inset-bottom);}
+  .movie-bg {left: 0; top: 0; z-index: -1; height: 140dvh; /*height: calc(var(--vh) * 140); padding-bottom: env(safe-area-inset-bottom);*/}
   .video-bg {width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;}
   .panel_01 {width: 100%;}
 
@@ -424,7 +429,7 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 .character-intro-modal .modal-inner::-webkit-scrollbar {display: none; /* Chrome, Safari, Opera */}
 
 /* 모달 기본 레이아웃 */
-.character-intro-modal .modal-inner {width: 100%; height: 101dvh; height: calc(var(--vh) * 101); padding-bottom: env(safe-area-inset-bottom); overflow-y: auto; background: #05060B; position: relative;}
+.character-intro-modal .modal-inner {width: 100%; height: 101dvh; /*height: calc(var(--vh) * 101); padding-bottom: env(safe-area-inset-bottom);*/ overflow-y: auto; background: #05060B; position: relative;}
 
 /* 가로 아코디언 */
 .char-accordion {position: sticky; top: 0; background: #05060B; display: flex; width: 100%; height: 100%; z-index: 20; border-bottom: 2px solid #ddd;}
@@ -871,6 +876,9 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
   /* join us list recruit */
   .list-recruit .list-bg {background-size: 400px;}
 
+  /* join us detail */
+  
+
   /* media & newsroom slider */
   .media-slider-wrap::before {height: 60%; background: linear-gradient(0deg, black 65%, transparent 100%);}
 
@@ -1132,7 +1140,7 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
   .subSection.logo-bg::after {content:''; display:block; width:100%; height:300px; background: linear-gradient(0deg, black 25%, transparent); position: absolute; left: 0; top: 120px;}
   .subPageTitle {font-size: 80px; gap: 10px; transform: translateX(15px);}
   .subPageTitle2 {padding-top: 80px; font-size:22px;}
-  .subPageTitle2::before {content:''; display:block; width:42.11vw; height:31.29vw; background:url(assets/images/sub/sub-section-bg-m.png) no-repeat center / cover; position:absolute; left:-12.39vw; bottom:-16.95vw;}
+  .subPageTitle2::before {content:''; display:block; width:42.11vw; height:41.29vw; background:url(assets/images/sub/sub-section-bg-m.png) no-repeat center / cover; position:absolute; left:-12.39vw; bottom:-16.95vw; mask-image: radial-gradient(circle, black 25%, transparent 65%);}
   .subPageTitle3 {font-size: 15px;}
 
   .subSection .path-visual + .container::before,
@@ -1358,6 +1366,9 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 }
 
 @media (max-width: 375px) {
+  /* sub top */
+  .subPageTitle {transform: translateX(9px);}
+
  /* media & newsroom slider */
   .media-slider .swiper {transform: translateX(0.15vw);}
 

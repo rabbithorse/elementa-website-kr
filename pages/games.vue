@@ -607,18 +607,25 @@
   };
 
   // vh 자동계산 변수
-  let vhTimer
+  /*let vhTimer
 
   const setVh = () => {
     const vh = window.innerHeight * 0.01
     document.documentElement.style.setProperty('--vh', `${vh}px`)
-  }
+  }*/
 
   /*-----------------------*/
-    // 00. intro 섹션 - 초기 동작 애니메이션 세팅
+    // 00. intro 섹션 - 초기 동작 애니메이션 세팅 & Lenis
   /*-----------------------*/
 
   onMounted(async () => {
+
+  normalizeInstance = $ScrollTrigger.normalizeScroll({
+    momentum: 0.08,
+    allowNestedScroll: true,
+    lockAxis: true,
+  })
+
   await nextTick()
 
   const introVidDim = movieBg.value.querySelector('.intro-vid-cover')
@@ -668,11 +675,11 @@ onMounted(() => {
     /*-----------------------*/
     // 00. 모바일 높이 vh 계산 
     /*-----------------------*/
-    setVh()
-    window.addEventListener('resize', () => {
-      clearTimeout(vhTimer)
-      vhTimer = setTimeout(setVh, 150)
-    })
+    // setVh()
+    // window.addEventListener('resize', () => {
+    //   clearTimeout(vhTimer)
+    //   vhTimer = setTimeout(setVh, 150)
+    // })
 
     /*-----------------------*/
     // 01. intro 섹션 - movieBg 고정
@@ -987,7 +994,7 @@ onMounted(() => {
           start: 'top bottom',
           end: "+=" + youtubeTimeline.duration() * 100 + " top",
           //markers: true,
-          scrub: true,
+          scrub: 2,
           animation: youtubeTimeline,
         })
       }
@@ -1004,7 +1011,7 @@ onMounted(() => {
             trigger: youtubeArea.value,
             start: "center-=500 top",
             end: "+=699",
-            scrub: true,
+            scrub: 2,
             anticipatePin: 1,
             // markers: true,
           }
@@ -1022,7 +1029,7 @@ onMounted(() => {
             trigger: youtubeArea.value,
             start: "center-=300 top",
             end: "+=399",
-            scrub: true,
+            scrub: 2,
             anticipatePin: 1,
             // markers: true,
           }
@@ -1319,7 +1326,7 @@ onMounted(() => {
     })
 
     // vh 단위 재설정
-    window.addEventListener('resize', setVh);
+    // window.addEventListener('resize', setVh);
   });
 
   
@@ -1450,16 +1457,21 @@ onMounted(() => {
     window.removeEventListener('resize', handleResize)
 
     // vh 재설정 이벤트 제거
-    window.removeEventListener('resize', setVh)
+    // window.removeEventListener('resize', setVh)
   });
 
 
   let ctx
+  let isFirstLoad = true;
+  let normalizeInstance;
+
   onBeforeUnmount(() => {
+    
     if (ctx) {
       ctx.revert();
       $ScrollTrigger.getAll().forEach(t => t.kill());
       $ScrollTrigger.refresh();
+      normalizeInstance?.kill()
     }
     console.log('Gsap context reverted');
   })
@@ -1468,5 +1480,11 @@ onMounted(() => {
 </script>
 
 <style scoped>
-  
+  html, body {
+  overscroll-behavior-y: none;
+}
+body { touch-action: pan-y; -webkit-overflow-scrolling: touch;
+}
+
+
 </style>
