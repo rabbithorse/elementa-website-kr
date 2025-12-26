@@ -357,14 +357,14 @@
     
     // 초기 위치로 복귀
     $gsap.to(slider1, {
-      x: window.innerWidth - glassRef.value.clientWidth + padding.value,
+      x: padding.value,
       duration: 0.8,
       ease: 'power1.out',
       overwrite: 'auto'
     })
     
     $gsap.to(slider2, {
-      x: -(slider2.scrollWidth - glassRef.value.clientWidth) -padding.value,
+      x: -(slider2.scrollWidth - glassRef.value.clientWidth) - padding.value,
       duration: 0.8,
       ease: 'power1.out',
       overwrite: 'auto'
@@ -411,8 +411,8 @@
       const slider1 = slider1Ref.value
       const slider2 = slider2Ref.value
 
-      $gsap.set(slider1, { x: window.innerWidth - glassRef.value.clientWidth + padding.value }) 
-      $gsap.set(slider2, { x: -(slider2.scrollWidth - glassRef.value.clientWidth) -padding.value })
+      $gsap.set(slider1, { x: padding.value }) 
+      $gsap.set(slider2, { x: -(slider2.scrollWidth - glassRef.value.clientWidth) - padding.value })
 
       // 스크롤 트리거 설정 - 초기에는 pin 비활성화
       scrollTrigger = $ScrollTrigger.create({
