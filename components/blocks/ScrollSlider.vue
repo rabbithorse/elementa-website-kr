@@ -538,6 +538,12 @@
     z-index: 9999;
     width: 80px;
     height: 80px;
-    
+  }
+  
+
+  @media (max-width: 1024px) {
+    .custom-cursor {
+      display: none;
+    }
   }
 </style>

@@ -667,7 +667,7 @@
         </Container>
       </div>
       <div class="section-content">
-        <div class="content-glass py-[108px]">
+        <div class="content-glass xl:py-[108px] py-[54px]">
           <EffectGlass class="glass-blur absolute left-0 top-0 w-full h-full" />
           <div class="lg:px-8"> 
             <div class="controls xl:hidden flex gap-3 items-center justify-end pr-6">
@@ -736,7 +736,7 @@
 
         <div class="content-button xl:hidden md:mt-10 mt-5">
           <Container class="flex justify-center">
-            <ButtonsBasic href="/join_us" color="blue" class="md:w-1/2 w-full [&>*]:w-[100%]">View more</ButtonsBasic>
+            <ButtonsBasic href="/join_us" color="blue" class="xl:w-1/2 w-full [&>*]:w-[100%]">View more</ButtonsBasic>
           </Container>
         </div>
       </div>
