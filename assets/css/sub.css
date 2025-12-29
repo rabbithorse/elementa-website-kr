@@ -350,6 +350,7 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
   }
 
   /* section 02 : 대사 씬 */
+  .cut-scene {-webkit-overflow-scrolling: touch; /* iOS 부드러운 스크롤 강제 */ will-change: transform;}
   .cut-scene .cut_01_inner,
   .cut-scene .cut_02_inner {mask-image: linear-gradient(transparent 0%, black 43%);}
   .cut-scene img {width: 100%;}
@@ -367,6 +368,7 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
   .cut-scene .cut_02 .line-box .line02-1 .normal {transform: translateY(-38px); padding-left: 160px;}
 
   /* section 03 : 비디오 배경 게임 설명 */
+  .description {-webkit-overflow-scrolling: touch; /* iOS 부드러운 스크롤 강제 */ will-change: transform;}
   .description .movie-dimmed {background: #05060B;}
   .description .movie-bg-des video {width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;}
   .description .text-area {opacity: 0;}
@@ -680,7 +682,8 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
   }
 }
 
-/* section6 : 에필로그 모바일*/
+/* section6 : 에필로그 모바일*/ 
+.last-scene-m {-webkit-overflow-scrolling: touch; /* iOS 부드러운 스크롤 강제 */ will-change: transform;}
 .last-scene-m .cover-dimmed {background: #09090b;}
 .last-scene-m {background: url('~/assets/images/sub/last-inner-bg.png') no-repeat top / cover;}
 .last-scene-m .e-side-text::before {width: 377px; height: 78px; background: url('/_nuxt/assets/images/sub/e-side-text-bg.svg') no-repeat 10px / contain;}
@@ -915,6 +918,13 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
   /* section 04 : 유튜브 영상 */
   .youtube-area .video-wrap .inner-video .dumy-box-left, .youtube-area .video-wrap .inner-video .dumy-box-right {width: 10.56vw; height: 31.79vw;}
   .youtube-area .video-wrap .inner-video::before, .youtube-area .video-wrap .inner-video .video-box {max-width: 60.72vw;}
+
+  /* section 05 : 수사보드  */
+  .inv-board {visibility: hidden; pointer-events: none; contain: layout paint;}
+  .inv-board * {will-change: auto;}
+
+  /* section 06 : 에필로그 */
+  .last-scene {visibility: hidden; pointer-events: none; contain: layout paint;}
 }
 
 /* -------------------------------------- */
@@ -1096,6 +1106,13 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
   .youtube-area .video-wrap .inner-video .dumy-box-left, .youtube-area .video-wrap .inner-video .dumy-box-right {display: none;}
   .youtube-area .video-wrap .bg-text {gap: 14.55vw;}
   .youtube-area .video-wrap .bg-text p {font-size: 17.59vw;}
+
+  /* section 05 : 수사보드  */
+  .inv-board {visibility: hidden; pointer-events: none; contain: layout paint;}
+  .inv-board * {will-change: auto;}
+
+  /* section 06 : 에필로그 */
+  .last-scene {visibility: hidden; pointer-events: none; contain: layout paint;}
 }
 
 /*** 컷신 & 캐릭터 소개 & 유튜브 모바일 가로세로 반응형 조절 - 태블릿, 모바일 가로 고려***/
@@ -1249,6 +1266,7 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 
   /* section01 : 인트로 */
   .intro .title-area img {max-width:299px;}
+  .panel_01.vh-section-40 {height: 20dvh;}
 
   /* section02 : 대사 씬 */
   .cut-scene .cut_01_inner,
@@ -1331,6 +1349,13 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
   .youtube-area .video-wrap .inner-video::before, .youtube-area .video-wrap .inner-video .video-box {max-width: 100%;}
   .youtube-area .video-wrap .bg-text {gap: 24.55vw;}
   .youtube-area .video-wrap .bg-text p {font-size: 21.8vw;}
+
+  /* section 05 : 수사보드  */
+  .inv-board {visibility: hidden; pointer-events: none; contain: layout paint;}
+  .inv-board * {will-change: auto;}
+
+  /* section 06 : 에필로그 */
+  .last-scene {visibility: hidden; pointer-events: none; contain: layout paint;}
 
   /* section6 : 에필로그 모바일*/
   .last-scene-m .bottom-link .f-logo {margin-bottom: 2.75rem;}

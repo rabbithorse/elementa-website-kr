@@ -3,12 +3,12 @@
     <!-- section01 : 인트로 -->
     <section class="intro relative overflow-hidden" ref="introSection">
       <div class="movie-bg w-full sticky top-0 left-0" ref="movieBg">
-        <video ref="bgVideo" class="video-bg" autoplay loop muted playsinline preload="auto">
-          <source src="~/assets/videos/main-war.mp4" type="video/mp4" />
+        <video ref="bgVideo" class="video-bg" autoplay loop muted playsinline preload="none">
+          <source src="~/assets/videos/game_visuals_06.mp4" type="video/mp4" />
         </video>
         <div class="intro-vid-cover absolute w-full h-full top-0 left-0 bg-black"></div>
       </div>
-      <div class="panel_01 vh-section-60"></div>
+      <div class="panel_01 vh-section-40"></div>
       <div class="title-area-wrap absolute left-0 top-0 w-full flex flex-col justify-center items-center vh-section">
         <div class="title-area text-center flex justify-center items-center" ref="titleArea">
           <img src="~/assets/images/sub/game-logo01.png" alt="실버 팰리스" class="block">
@@ -55,48 +55,49 @@
         </Container>
       </div>
       <!-- //씬 2 -->
+      <button class="cutscene-replay-btn text-white text-base absolute left-0 bottom-[40px] xl:hidden z-10" ref="replayBtn">다시보기</button>
     </section>
     <!-- section03 : 게임 설명 intro-->
     <section class="description relative overflow-hidden vh-section" ref="descriptionSec">
       <div class="movie-dimmed absolute w-full h-full top-0 left-0 z-30"></div>
       <!-- video 1 -->
       <div class="movie-bg-des absolute sec01 w-full top-0 left-0 z-20 vh-section">
-        <video class="video-bg" autoplay loop muted playsinline preload="auto">
+        <video class="video-bg" autoplay loop muted playsinline preload="none">
           <source src="~/assets/videos/game_visuals_01.mp4" type="video/mp4" />
         </video>
       </div>
       <!-- video 2 -->
       <div class="movie-bg-des absolute sec02 w-full top-0 left-0 z-10 vh-section">
-        <video class="video-bg" autoplay loop muted playsinline preload="auto">
+        <video class="video-bg" autoplay loop muted playsinline preload="none">
           <source src="~/assets/videos/game_visuals_02.mp4" type="video/mp4" />
         </video>
       </div>
       <!-- video 3 -->
       <div class="movie-bg-des absolute sec03 w-full top-0 left-0 z-10 vh-section">
-        <video class="video-bg" autoplay loop muted playsinline preload="auto">
+        <video class="video-bg" autoplay loop muted playsinline preload="none">
           <source src="~/assets/videos/game_visuals_03.mp4" type="video/mp4" />
         </video>
       </div>
       <!-- video 4 -->
       <div class="movie-bg-des absolute sec04 w-full top-0 left-0 z-10 vh-section">
-        <video class="video-bg" autoplay loop muted playsinline preload="auto">
+        <video class="video-bg" autoplay loop muted playsinline preload="none">
           <source src="~/assets/videos/game_visuals_04.mp4" type="video/mp4" />
         </video>
       </div>
       <!-- video 5 -->
       <div class="movie-bg-des absolute sec05 w-full top-0 left-0 z-10 vh-section">
-        <video class="video-bg" autoplay loop muted playsinline preload="auto">
+        <video class="video-bg" autoplay loop muted playsinline preload="none">
           <source src="~/assets/videos/game_visuals_05.mp4" type="video/mp4" />
         </video>
       </div>
       <!-- video 6 -->
       <div class="movie-bg-des absolute sec06 w-full top-0 left-0 z-10 vh-section">
-        <video class="video-bg" autoplay loop muted playsinline preload="auto">
+        <video class="video-bg" autoplay loop muted playsinline preload="none">
           <source src="~/assets/videos/game_visuals_06.mp4" type="video/mp4" />
         </video>
       </div>
 
-      <!-- text 6 -->
+     <!-- text 6 -->
       <Container>
       <div class="text-area sec06 flex w-full lg:justify-end justify-center items-end z-40 absolute top-0 left-0 vh-section">
         <div class="text-box game-info bottom relative">
@@ -285,7 +286,7 @@
       <div class="last-scene-inner w-full h-full relative">
         <!-- 비디오 -->
         <div class="w-full h-full top-0 left-0 z-20 absolute epilogue-video text-white">
-          <video class="e-video-bg" muted playsinline preload="auto">
+          <video class="e-video-bg" muted playsinline preload="none">
             <source src="~/assets/videos/epilogue.mp4" type="video/mp4" />
           </video>
         </div>
@@ -577,6 +578,9 @@
   const line02_1 = ref(null)
   const cutBg02 = ref(null)
 
+  const replayBtn = ref(null);
+
+
   // 캐릭터 소개 모달 열기 함수
   const showCharModal = ref(false)
 
@@ -620,57 +624,61 @@
 
   onMounted(async () => {
 
-  normalizeInstance = $ScrollTrigger.normalizeScroll({
-    momentum: 0.08,
-    allowNestedScroll: true,
-    lockAxis: true,
+    normalizeInstance = $ScrollTrigger.normalizeScroll({
+      momentum: 0.08,
+      allowNestedScroll: true,
+      lockAxis: true,
+    })
+
+    await nextTick()
+
+    const introVidDim = movieBg.value.querySelector('.intro-vid-cover')
+    const video = bgVideo.value
+    const introEl = introSection.value
+
+    let faded = false
+
+    const fadeOut = () => {
+      if (faded) return
+      faded = true
+
+      $gsap.timeline({
+        onComplete: () => {
+          // CSS 최종 상태로 전환
+          introEl.classList.add('is-intro-done')
+        }
+      })
+      .to(introVidDim, {
+        opacity: 0,
+        duration: 0.9,
+        ease: 'none'
+      })
+      .to(titleArea.value, {
+        opacity: 1,
+        duration: 0.9,
+        ease: 'none'
+      }, "<")
+      .fromTo(
+        movieBg.value,
+        { scale: 1.5 },
+        {
+          scale: 1,
+          duration: 4,
+          ease: "power3.out"
+        }, "<"
+      )
+    }
+
+    video.addEventListener('loadeddata', fadeOut, { once: true })
+    setTimeout(fadeOut, 800)
   })
-
-  await nextTick()
-
-  const introVidDim = movieBg.value.querySelector('.intro-vid-cover')
-  const video = bgVideo.value
-  const introEl = introSection.value
-
-  let faded = false
-
-  const fadeOut = () => {
-    if (faded) return
-    faded = true
-
-    $gsap.timeline({
-      onComplete: () => {
-        // CSS 최종 상태로 전환
-        introEl.classList.add('is-intro-done')
-      }
-    })
-    .to(introVidDim, {
-      opacity: 0,
-      duration: 0.9,
-      ease: 'none'
-    })
-    .to(titleArea.value, {
-      opacity: 1,
-      duration: 0.9,
-      ease: 'none'
-    }, "<")
-    .fromTo(
-      movieBg.value,
-      { scale: 1.5 },
-      {
-        scale: 1,
-        duration: 4,
-        ease: "power3.out"
-      }, "<"
-    )
-  }
-
-  video.addEventListener('loadeddata', fadeOut, { once: true })
-  setTimeout(fadeOut, 800)
-})
 
 
 onMounted(() => {
+
+  $ScrollTrigger.config({
+      ignoreMobileResize: true
+    });
 
     /*-----------------------*/
     // 00. 모바일 높이 vh 계산 
@@ -725,29 +733,64 @@ onMounted(() => {
       { opacity: 0, duration: 0.4, ease: "none" }, ">"
     )
 
-    $ScrollTrigger.create({
-      trigger: introSection.value,
-      start: 'top top',
-      end: "+=" + scrollIntro.duration() * 600,
-      pin: titleArea.value,
-      pinType: "transform",
-      scrub: 2,
-      animation: scrollIntro,
-      anticipatePin: 1,
-      invalidateOnRefresh: true,
-      // markers: true,
+    let introST;
 
-      onUpdate(self) {
-        const progress = self.progress;
-        const currentTime = scrollIntro.totalDuration() * progress;
+    $ScrollTrigger.matchMedia({
 
-        const t1 = scrollIntro.labels["videoIntroRestart"];
+      // PC
+      "(min-width: 1280px)": () => {
+        introST = $ScrollTrigger.create({
+          trigger: introSection.value,
+          start: "top top",
+          end: "+=" + scrollIntro.duration() * 600,
+          pin: titleArea.value,          
+          pinType: "transform",
+          scrub: 0.1,
+          animation: scrollIntro,
+          anticipatePin: 1.5,
+          invalidateOnRefresh: true,
+          fastScrollEnd: true,
+          preventOverlaps: true,
 
-        if (currentTime < t1) {
-          restartIntroVideo = false;
-        }
+          onUpdate(self) {
+            const progress = self.progress;
+            const currentTime = scrollIntro.totalDuration() * progress;
+            const t1 = scrollIntro.labels["videoIntroRestart"];
+
+            if (currentTime < t1) {
+              restartIntroVideo = false;
+            }
+          }
+        });
+      },
+
+      // Mobile
+      "(max-width: 1279px)": () => {
+        introST = $ScrollTrigger.create({
+          trigger: introSection.value,
+          start: "top top",
+          end: "+=500",
+          scrub: 0.1,                    
+          animation: scrollIntro,
+          anticipatePin: 1.5,
+          invalidateOnRefresh: true,
+          fastScrollEnd: true,
+          preventOverlaps: true,
+
+          onUpdate(self) {
+            const progress = self.progress;
+            const currentTime = scrollIntro.totalDuration() * progress;
+            const t1 = scrollIntro.labels["videoIntroRestart"];
+
+            if (currentTime < t1) {
+              restartIntroVideo = false;
+            }
+          }
+        });
       }
-    })
+
+    });
+
     
     /*-----------------------*/
     // 03. 컷신 섹션 - 컷신 타임라인 애니메이션
@@ -778,7 +821,7 @@ onMounted(() => {
     const cut02NormalSpans = cut02Normal.querySelectorAll("span");
 
     // **컷신 타임라인 애니메이션**
-    const cutSceneTimeline = $gsap.timeline()
+    const cutSceneTimeline = $gsap.timeline({ paused: true })
     // (01) 컷 신 나옴
     .fromTo(cutScene.value, { opacity: 0 }, { opacity: 1, duration: 1 })
 
@@ -829,17 +872,47 @@ onMounted(() => {
     // (12) 컷 신 두번째 배경 서서히 사라짐
     .to(cutBg02.value, { opacity: 0, duration: 1}, ">+1")//동시 실행
 
-      $ScrollTrigger.create({
-        trigger: cutScene.value,
-        start: 'top top',
-        end: "+=" + cutSceneTimeline.duration() * 700, // timeline 길이에 자동 매칭
-        // markers: true,
-        scrub: 1,
-        pin: true,
-        animation: cutSceneTimeline,
-        fastScrollEnd: true,         // 빠르게 스크롤 시 '튐' 방지
-        invalidateOnRefresh: true,
-      })
+    // 컷 신 pc용
+    $ScrollTrigger.matchMedia({
+      "(min-width: 1280px)": () => {
+        $ScrollTrigger.create({
+          trigger: cutScene.value,
+          start: 'top top',
+          end: "+=" + cutSceneTimeline.duration() * 700, // timeline 길이에 자동 매칭
+          // markers: true,
+          scrub: 0.1,
+          pin: true,
+          animation: cutSceneTimeline,
+          anticipatePin: 1.5,
+          fastScrollEnd: true,         // 빠르게 스크롤 시 '튐' 방지
+          invalidateOnRefresh: true,
+        })
+      }
+    });
+
+    // 컷 신 모바일용
+    $ScrollTrigger.matchMedia({
+      "(max-width: 1279px)": () => {
+
+        $ScrollTrigger.create({
+          trigger: cutScene.value,
+          start: "center center",   // 화면 중앙쯤
+          animation: cutSceneTimeline,
+          end: "+=1", 
+          once: true,
+          pinType: "transform",
+          onEnter: () => {
+            cutSceneTimeline.restart();
+          }
+        });
+      }
+    });
+
+    replayBtn.value?.addEventListener("click", () => {
+      cutSceneTimeline.restart(true);
+    });
+
+
     
 
     /*-----------------------*/
@@ -867,91 +940,185 @@ onMounted(() => {
     const textDes6 = descriptionSec.value.querySelector(".text-area.sec06"); 
     const textDes6inner = textDes6.querySelector(".text-box");
 
-    const desBgTimeline = $gsap.timeline()
-    // (01) 비디오 딤드 투명해지면서 첫번째 비디오 밝아짐, 첫번째 텍스트 나타남
-    .fromTo(movieDimmed, { opacity: 1 }, { opacity: 0, duration: 4 })
-    .to(textDes1, { opacity: 1, duration: 3}, "<") // 동시 진행
-    .fromTo(textDes1inner, { y: "30px", "mask-image": "radial-gradient(circle, black -30%, transparent 60%);" }, { "mask-image": "radial-gradient(circle, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
-  
-    // (02) 첫번째 비디오 서서히 사라짐, 첫번째 텍스트 사라짐
-    .to(videoDes1, { opacity: 0, duration: 4 })
-    .to(textDes1inner, { "mask-image": "radial-gradient(circle, black -30%, transparent 60%);",y: "30px", duration: 1, ease:"ease"}, ">-2") // 이전 효과 후 바로 실행
-    .to(textDes1, { opacity: 0, duration: 1.5 }, ">-2") // 이전 효과 후 바로 실행
-    .to(textDes1, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
-    
-    // (03) 두번째 비디오 서서히 나타남, 두번째 텍스트 나타남
-    .fromTo(videoDes2, { opacity: 0 }, { opacity: 1, duration: 4 },">-3") // 이전 효과 진행 후 바로 실행
-    .to(textDes2, { opacity: 1, duration: 3 }, "<") //동시 진행
-    .fromTo(textDes2inner, { y: "30px", "mask-image": "radial-gradient(circle, black -30%, transparent 60%);"}, { "mask-image": "radial-gradient(circle, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
-    
-    // (04) 두번째 비디오 서서히 사라짐. 두번째 텍스트 사라짐
-    .to(videoDes2, { opacity: 0, duration: 4 })
-    .to(textDes2inner, { "mask-image": "radial-gradient(circle, black -30%, transparent 60%);",y: "30px", duration: 1, ease:"ease"}, ">-2")
-    .to(textDes2, { opacity: 0, duration: 1.5 }, ">-2") // 이전 효과 후 바로 실행
-    .to(textDes2, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
-    
-    // (05) 세번째 비디오 서서히 나타남, 세번째 텍스트 나타남
-    .fromTo(videoDes3, { opacity: 0 }, { opacity: 1, duration: 4 },">-3") // 이전 효과 진행 후 바로 실행
-    .to(textDes3, { opacity: 1, duration: 3 }, "<") //동시 진행
-    .fromTo(textDes3inner, { y: "30px", "mask-image": "linear-gradient(to right, black -30%, transparent 60%);"}, { "mask-image": "linear-gradient(to right, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
-    
-    // (06) 세번째 비디오 서서히 사라짐, 세번째 텍스트 사라짐
-    .to(videoDes3, { opacity: 0, duration: 4 })
-    .to(textDes3inner, { "mask-image": "linear-gradient(to right, black -30%, transparent 60%);",y: "30px", duration: 1, ease:"ease"}, ">-2")
-    .to(textDes3, { opacity: 0, duration: 1.5 }, ">-2") // 이전 효과 후 바로 실행
-    .to(textDes3, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
+    // 게임소개 타임라인 애니메이션
+    $ScrollTrigger.matchMedia({
+      "(min-width: 1280px)": () => {
+        const desBgTimeline = $gsap.timeline({ paused: true })
+        // (01) 비디오 딤드 투명해지면서 첫번째 비디오 밝아짐, 첫번째 텍스트 나타남
+        .fromTo(movieDimmed, { opacity: 1 }, { opacity: 0, duration: 4 })
+        .to(textDes1, { opacity: 1, duration: 3}, "<") // 동시 진행
+        .fromTo(textDes1inner, { y: "30px", "mask-image": "radial-gradient(circle, black -30%, transparent 60%);" }, { "mask-image": "radial-gradient(circle, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
+      
+        // (02) 첫번째 비디오 서서히 사라짐, 첫번째 텍스트 사라짐
+        .to(videoDes1, { opacity: 0, duration: 4 })
+        .to(textDes1inner, { "mask-image": "radial-gradient(circle, black -30%, transparent 60%);",y: "30px", duration: 1, ease:"ease"}, ">-2") // 이전 효과 후 바로 실행
+        .to(textDes1, { opacity: 0, duration: 1.5 }, ">-2") // 이전 효과 후 바로 실행
+        .to(textDes1, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
+        
+        // (03) 두번째 비디오 서서히 나타남, 두번째 텍스트 나타남
+        .fromTo(videoDes2, { opacity: 0 }, { opacity: 1, duration: 4 },">-3") // 이전 효과 진행 후 바로 실행
+        .to(textDes2, { opacity: 1, duration: 3 }, "<") //동시 진행
+        .fromTo(textDes2inner, { y: "30px", "mask-image": "radial-gradient(circle, black -30%, transparent 60%);"}, { "mask-image": "radial-gradient(circle, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
+        
+        // (04) 두번째 비디오 서서히 사라짐. 두번째 텍스트 사라짐
+        .to(videoDes2, { opacity: 0, duration: 4 })
+        .to(textDes2inner, { "mask-image": "radial-gradient(circle, black -30%, transparent 60%);",y: "30px", duration: 1, ease:"ease"}, ">-2")
+        .to(textDes2, { opacity: 0, duration: 1.5 }, ">-2") // 이전 효과 후 바로 실행
+        .to(textDes2, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
+        
+        // (05) 세번째 비디오 서서히 나타남, 세번째 텍스트 나타남
+        .fromTo(videoDes3, { opacity: 0 }, { opacity: 1, duration: 4 },">-3") // 이전 효과 진행 후 바로 실행
+        .to(textDes3, { opacity: 1, duration: 3 }, "<") //동시 진행
+        .fromTo(textDes3inner, { y: "30px", "mask-image": "linear-gradient(to right, black -30%, transparent 60%);"}, { "mask-image": "linear-gradient(to right, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
+        
+        // (06) 세번째 비디오 서서히 사라짐, 세번째 텍스트 사라짐
+        .to(videoDes3, { opacity: 0, duration: 4 })
+        .to(textDes3inner, { "mask-image": "linear-gradient(to right, black -30%, transparent 60%);",y: "30px", duration: 1, ease:"ease"}, ">-2")
+        .to(textDes3, { opacity: 0, duration: 1.5 }, ">-2") // 이전 효과 후 바로 실행
+        .to(textDes3, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
 
-    // (07) 네번째 비디오 서서히 나타남, 네번째 텍스트 나타남
-    .fromTo(videoDes4, { opacity: 0 }, { opacity: 1, duration: 4 },">-3") // 이전 효과 진행 후 바로 실행
-    .to(textDes4, { opacity: 1, duration: 3 }, "<") //동시 진행
-    .fromTo(textDes4inner, { y: "30px", "mask-image": "radial-gradient(circle, black -30%, transparent 60%);"}, { "mask-image": "radial-gradient(circle, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
-    
-    // (08) 네번째(4_1) 텍스트 사라짐
-    .to(textDes4inner, { "mask-image": "radial-gradient(circle, black -30%, transparent 60%);",y: "30px", duration: 1, ease:"ease"})
-    .to(textDes4, { opacity: 0, duration: 1.5 }, ">-2") // 이전 효과 후 바로 실행
-    .to(textDes4, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
+        // (07) 네번째 비디오 서서히 나타남, 네번째 텍스트 나타남
+        .fromTo(videoDes4, { opacity: 0 }, { opacity: 1, duration: 4 },">-3") // 이전 효과 진행 후 바로 실행
+        .to(textDes4, { opacity: 1, duration: 3 }, "<") //동시 진행
+        .fromTo(textDes4inner, { y: "30px", "mask-image": "radial-gradient(circle, black -30%, transparent 60%);"}, { "mask-image": "radial-gradient(circle, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
+        
+        // (08) 네번째(4_1) 텍스트 사라짐
+        .to(textDes4inner, { "mask-image": "radial-gradient(circle, black -30%, transparent 60%);",y: "30px", duration: 1, ease:"ease"})
+        .to(textDes4, { opacity: 0, duration: 1.5 }, ">-2") // 이전 효과 후 바로 실행
+        .to(textDes4, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
 
-    // (09) 네번째(4_2) 텍스트 나타남
-    .to(textDes4_2, { opacity: 1, duration: 3 }, ">-2") //이전 효과 후 바로 실행
-    .fromTo(textDes4inner_2, { y: "30px", "mask-image": "linear-gradient(to right, black -30%, transparent 60%);"}, { "mask-image": "linear-gradient(to right, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
+        // (09) 네번째(4_2) 텍스트 나타남
+        .to(textDes4_2, { opacity: 1, duration: 3 }, ">-2") //이전 효과 후 바로 실행
+        .fromTo(textDes4inner_2, { y: "30px", "mask-image": "linear-gradient(to right, black -30%, transparent 60%);"}, { "mask-image": "linear-gradient(to right, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
 
-    // (10) 네번째 비디오 서서히 사라짐, 네번째(4-2) 텍스트 사라짐
-    .to(videoDes4, { opacity: 0, duration: 4 })
-    .to(textDes4inner_2, { "mask-image": "linear-gradient(to right, black -30%, transparent 60%);",y: "30px", duration: 1, ease:"ease"}, ">-2")
-    .to(textDes4_2, { opacity: 0, duration: 1.5 }, ">-2") // 이전 효과 후 바로 실행
-    .to(textDes4_2, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
+        // (10) 네번째 비디오 서서히 사라짐, 네번째(4-2) 텍스트 사라짐
+        .to(videoDes4, { opacity: 0, duration: 4 })
+        .to(textDes4inner_2, { "mask-image": "linear-gradient(to right, black -30%, transparent 60%);",y: "30px", duration: 1, ease:"ease"}, ">-2")
+        .to(textDes4_2, { opacity: 0, duration: 1.5 }, ">-2") // 이전 효과 후 바로 실행
+        .to(textDes4_2, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
 
-    // (11) 다섯번째 비디오 서서히 나타남, 다섯번째 텍스트 나타남
-    .fromTo(videoDes5, { opacity: 0 }, { opacity: 1, duration: 4 },">-3") // 이전 효과 진행 후 바로 실행
-    .to(textDes5, { opacity: 1, duration: 3 }, "<") //동시 진행
-    .fromTo(textDes5inner, { y: "30px", "mask-image": "radial-gradient(circle, black -30%, transparent 60%);"}, { "mask-image": "radial-gradient(circle, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
+        // (11) 다섯번째 비디오 서서히 나타남, 다섯번째 텍스트 나타남
+        .fromTo(videoDes5, { opacity: 0 }, { opacity: 1, duration: 4 },">-3") // 이전 효과 진행 후 바로 실행
+        .to(textDes5, { opacity: 1, duration: 3 }, "<") //동시 진행
+        .fromTo(textDes5inner, { y: "30px", "mask-image": "radial-gradient(circle, black -30%, transparent 60%);"}, { "mask-image": "radial-gradient(circle, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
 
-    // (12) 다섯번째 비디오 서서히 사라짐. 다섯번째 텍스트 사라짐
-    .to(videoDes5, { opacity: 0, duration: 4 })
-    .to(textDes5inner, { "mask-image": "radial-gradient(circle, black -30%, transparent 60%);",y: "30px", duration: 1, ease:"ease"}, ">-2")
-    .to(textDes5, { opacity: 0, duration: 1.5 }, ">-2") // 이전 효과 후 바로 실행
-    .to(textDes5, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
+        // (12) 다섯번째 비디오 서서히 사라짐. 다섯번째 텍스트 사라짐
+        .to(videoDes5, { opacity: 0, duration: 4 })
+        .to(textDes5inner, { "mask-image": "radial-gradient(circle, black -30%, transparent 60%);",y: "30px", duration: 1, ease:"ease"}, ">-2")
+        .to(textDes5, { opacity: 0, duration: 1.5 }, ">-2") // 이전 효과 후 바로 실행
+        .to(textDes5, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
 
-    // (13) 여섯번째 비디오 서서히 나타남, 여섯번째 텍스트 나타남
-    .fromTo(videoDes6, { opacity: 0 }, { opacity: 1, duration: 4 },">-3") // 이전 효과 진행 후 바로 실행
-    .to(textDes6, { opacity: 1, duration: 3 }, "<") //동시 진행
-    .fromTo(textDes6inner, { y: "30px", "mask-image": "linear-gradient(to right, black -30%, transparent 60%);"}, { "mask-image": "linear-gradient(to right, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
-    
-    // (14) 여섯번째 비디오 서서히 사라짐, 여섯번째 텍스트 사라짐
-    .to(videoDes6, { opacity: 0, duration: 2 })
-    .to(textDes6, { opacity: 0, duration: 2 }, ">-2") // 이전 효과 후 바로 실행
+        // (13) 여섯번째 비디오 서서히 나타남, 여섯번째 텍스트 나타남
+        .fromTo(videoDes6, { opacity: 0 }, { opacity: 1, duration: 4 },">-3") // 이전 효과 진행 후 바로 실행
+        .to(textDes6, { opacity: 1, duration: 3 }, "<") //동시 진행
+        .fromTo(textDes6inner, { y: "30px", "mask-image": "linear-gradient(to right, black -30%, transparent 60%);"}, { "mask-image": "linear-gradient(to right, black 100%, transparent 100%)", y: "0px", duration: 2, ease:"power1.in"}, "<") // 동시 진행
+        
+        // (14) 여섯번째 비디오 서서히 사라짐, 여섯번째 텍스트 사라짐
+        .to(videoDes6, { opacity: 0, duration: 2 })
+        .to(textDes6, { opacity: 0, duration: 2 }, ">-2") // 이전 효과 후 바로 실행
+        $ScrollTrigger.create({
+          trigger: descriptionSec.value,
+          start: 'top top',
+          end: "+=" + desBgTimeline.duration() * 700, // timeline 길이에 자동 매칭
+          pin: true,
+          scrub: 0.1,
+          animation: desBgTimeline,
+          fastScrollEnd: true,         // 빠르게 스크롤 시 '튐' 방지
+          invalidateOnRefresh: true,
+          anticipatePin: 1.5
+          // markers: true,
+        })
+      },
+      // 모바일
+      "(max-width: 1279px)": () => {
+        const desBgTimelineMobile = $gsap.timeline({ paused: true })
+        // (01) 비디오 딤드 투명해지면서 첫번째 비디오 밝아짐, 첫번째 텍스트 나타남
+        .fromTo(movieDimmed, { opacity: 1 }, { opacity: 0, duration: 1 })
+        .to(textDes1, { opacity: 1, duration: 1}, "<") // 동시 진행
+        .fromTo(textDes1inner, { opacity: 0}, { opacity: 1, duration: 1, ease:"none"}, "<") // 동시 진행
+      
+        // (02) 첫번째 비디오 서서히 사라짐, 첫번째 텍스트 사라짐
+        .to(videoDes1, { opacity: 0, duration: 1 })
+        .to(textDes1inner, {opacity: 0, duration: 1, ease:"ease"}, "<") // 이전 효과 후 바로 실행
+        .to(textDes1, { opacity: 0, duration: 1 }, "<") // 이전 효과 후 바로 실행
+        .to(textDes1, { "visibility": "hidden"},"+=0.01") // 이전 효과 후 바로 실행
+        
+        // (03) 두번째 비디오 서서히 나타남, 두번째 텍스트 나타남
+        .fromTo(videoDes2, { opacity: 0 }, { opacity: 1, duration: 1 }, ">-1") // 이전 효과 진행 후 바로 실행
+        .to(textDes2, { opacity: 1, duration: 1 }, "<") //동시 진행
+        .fromTo(textDes2inner, { opacity: 0}, { opacity: 1, duration: 1, ease:"none"}, "<") // 동시 진행
+        
+        // (04) 두번째 비디오 서서히 사라짐. 두번째 텍스트 사라짐
+        .to(videoDes2, { opacity: 0, duration: 1 })
+        .to(textDes2inner, {opacity: 0, duration: 1, ease:"ease"}, "<") // 이전 효과 후 바로 실행
+        .to(textDes2, { opacity: 0, duration: 1 }, "<") // 이전 효과 후 바로 실행
+        .to(textDes2, { "visibility": "hidden"},">+0.01") // 이전 효과 후 바로 실행
 
-      $ScrollTrigger.create({
-        trigger: descriptionSec.value,
-        start: 'top top',
-        end: "+=" + desBgTimeline.duration() * 700, // timeline 길이에 자동 매칭
-        pin: true,
-        scrub: 2,
-        animation: desBgTimeline,
-        fastScrollEnd: true,         // 빠르게 스크롤 시 '튐' 방지
-        invalidateOnRefresh: true,
-        // markers: true,
-      })
+        // (05) 세번째 비디오 서서히 나타남, 세번째 텍스트 나타남
+        .fromTo(videoDes3, { opacity: 0 }, { opacity: 1, duration: 1 }, ">-1") // 이전 효과 진행 후 바로 실행
+        .to(textDes3, { opacity: 1, duration: 1 }, "<") //동시 진행
+        .fromTo(textDes3inner, { opacity: 0}, { opacity: 1, duration: 1, ease:"none"}, "<") // 동시 진행
+        
+        // (06) 세번째 비디오 서서히 사라짐, 세번째 텍스트 사라짐
+        .to(videoDes3, { opacity: 0, duration: 1 })
+        .to(textDes3inner, {opacity: 0, duration: 1, ease:"ease"}, "<") // 이전 효과 후 바로 실행
+        .to(textDes3, { opacity: 0, duration: 1 }) // 이전 효과 후 바로 실행
+        .to(textDes3, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
+
+        // (07) 네번째 비디오 서서히 나타남, 네번째 텍스트 나타남
+        .fromTo(videoDes4, { opacity: 0 }, { opacity: 1, duration: 1 }, ">-2") // 이전 효과 진행 후 바로 실행
+        .to(textDes4, { opacity: 1, duration: 1 }, "<") //동시 진행
+        .fromTo(textDes4inner, { opacity: 0}, { opacity: 1, duration: 1, ease:"none"}, "<") // 동시 진행
+        // (08) 네번째(4_1) 텍스트 사라짐
+        .to(textDes4, { opacity: 0, duration: 1 }) // 이전 효과 후 바로 실행
+        .to(textDes4, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
+
+        // (09) 네번째(4_2) 텍스트 나타남
+        .to(textDes4_2, { opacity: 1, duration: 1 }) //이전 효과 후 바로 실행
+        // (10) 네번째 비디오 서서히 사라짐, 네번째(4-2) 텍스트 사라짐
+        .to(videoDes4, { opacity: 0, duration: 1 })
+        .to(textDes4inner_2, {opacity: 0, duration: 1, ease:"ease"}, "<") // 이전 효과 후 바로 실행
+        .to(textDes4_2, { opacity: 0, duration: 1 }) // 이전 효과 후 바로 실행
+        .to(textDes4_2, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
+
+        // (11) 다섯번째 비디오 서서히 나타남, 다섯번째 텍스트 나타남
+        .fromTo(videoDes5, { opacity: 0 }, { opacity: 1, duration: 1 }, ">-2") // 이전 효과 진행 후 바로 실행
+        .to(textDes5, { opacity: 1, duration: 1 }, "<") //동시 진행
+        .fromTo(textDes5inner, { opacity: 0}, { opacity: 1, duration: 1, ease:"none"}, "<") // 동시 진행
+
+        // (12) 다섯번째 비디오 서서히 사라짐. 다섯번째 텍스트 사라짐
+        .to(videoDes5, { opacity: 0, duration: 1 })
+        .to(textDes5inner, {opacity: 0, duration: 1, ease:"ease"}, "<") // 이전 효과 후 바로 실행
+        .to(textDes5, { opacity: 0, duration: 1 }) // 이전 효과 후 바로 실행
+        .to(textDes5, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
+
+        // (13) 여섯번째 비디오 서서히 나타남, 여섯번째 텍스트 나타남
+        .fromTo(videoDes6, { opacity: 0 }, { opacity: 1, duration: 1 }, ">-2") // 이전 효과 진행 후 바로 실행
+        .to(textDes6, { opacity: 1, duration: 1 }, "<") //동시 진행
+        .fromTo(textDes6inner, { opacity: 0}, { opacity: 1, duration: 1, ease:"none"}, "<") // 동시 진행
+        
+        // (14) 여섯번째 비디오 서서히 사라짐, 여섯번째 텍스트 사라짐
+        .to(videoDes6, { opacity: 0, duration: 1 })
+        .to(textDes6inner, {opacity: 0, duration: 1, ease:"ease"}, "<") // 이전 효과 후 바로 실행 
+        .to(textDes6, { opacity: 0, duration: 1 }) // 이전 효과 후 바로 실행
+        .to(textDes6, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
+
+        $ScrollTrigger.create({
+          trigger: descriptionSec.value,
+          start: 'top top',
+          end: "+=8000", // timeline 길이에 자동 매칭
+          pin: true,
+          scrub: 2,
+          animation: desBgTimelineMobile,
+          fastScrollEnd: true,         // 빠르게 스크롤 시 '튐' 방지
+          invalidateOnRefresh: true,
+          anticipatePin: 1.5,
+          pinType: "transform"
+          // markers: true,
+        })
+      }
+    });
+     
     
 
     /*-----------------------*/
@@ -980,6 +1147,7 @@ onMounted(() => {
           anticipatePin: 1,
           fastScrollEnd: true,         // 빠르게 스크롤 시 '튐' 방지
           invalidateOnRefresh: true,
+          preventOverlaps: true
           // markers: true,
         })
       }
@@ -1011,8 +1179,10 @@ onMounted(() => {
             trigger: youtubeArea.value,
             start: "center-=500 top",
             end: "+=699",
-            scrub: 2,
-            anticipatePin: 1,
+            scrub: 0.1,
+            anticipatePin: 1.5,
+            fastScrollEnd: true,
+            preventOverlaps: true,
             // markers: true,
           }
         }).to(youtubeArea.value, {
@@ -1029,8 +1199,11 @@ onMounted(() => {
             trigger: youtubeArea.value,
             start: "center-=300 top",
             end: "+=399",
-            scrub: 2,
+            scrub: 0.1,
             anticipatePin: 1,
+            fastScrollEnd: true,
+            preventOverlaps: true, 
+            pinType: "transform"
             // markers: true,
           }
         }).to(youtubeArea.value, {
@@ -1051,6 +1224,7 @@ onMounted(() => {
     
     // 배경 캔버스 생성
     const canvas = document.getElementById("boardCanvas");
+    if (!canvas) return;
     const ctx = canvas.getContext("2d");
     canvas.width = 5760;
     canvas.height = 6492;
@@ -1064,6 +1238,7 @@ onMounted(() => {
 
     // 라인 캔버스 생성
     const canvasLine = document.getElementById("boardLine");
+    if (!canvasLine) return;
     const ctxLine = canvasLine.getContext("2d");
     canvasLine.width = 5760;
     canvasLine.height = 6492;
@@ -1188,9 +1363,11 @@ onMounted(() => {
     invBoardTimeline.progress(1);
     invBoardTimeline.progress(0);
 
+    let invPc
+
     $ScrollTrigger.matchMedia({
       "(min-width: 1280px)": () => {
-        $ScrollTrigger.create({
+        invPc = $ScrollTrigger.create({
           trigger: invBoard.value,
           start: 'top+=1 top',
           end: "+=" + invBoardTimeline.duration() * 700,
@@ -1202,9 +1379,16 @@ onMounted(() => {
           anticipatePin: 3,
           invalidateOnRefresh: true, //리사이즈 시 트윈 리셋,
           fastScrollEnd: true,         // 빠르게 스크롤 시 '튐' 방지
+          preventOverlaps: true
         })
       }
     })
+
+    if (window.innerWidth < 1280) {
+      invPc?.kill(true)
+      invBoard.value.remove()
+      $ScrollTrigger.refresh(true)
+    }
         
     /*-----------------------*/
     // 08. 에필로그 섹션
@@ -1264,9 +1448,11 @@ onMounted(() => {
     }, }, "+=0.1") // 에필로그 문구2 나타남
     .to(eVideoWrap, { opacity: 0, duration: 2, ease: "power2.out"}, "+=0.01") // 비디오 서서히 사라짐
 
+    let lastPc
+
     $ScrollTrigger.matchMedia({
       "(min-width: 1280px)": () => {
-        $ScrollTrigger.create({
+        lastPc = $ScrollTrigger.create({
           trigger: lastScene.value,
           start: "top+=1 top",
           end: "+=" + EpilogueTimeline.duration() * 700,  
@@ -1279,6 +1465,12 @@ onMounted(() => {
         })
       }
     })
+
+    if (window.innerWidth < 1280) {
+      lastPc?.kill(true)
+      lastScene.value.remove()
+      $ScrollTrigger.refresh(true)
+    }
 
     /*-----------------------*/
     // 08_2. 에필로그 섹션 모바일
@@ -1301,13 +1493,14 @@ onMounted(() => {
         $ScrollTrigger.create({
           trigger: lastSceneMobile.value,
           start: "top+=1 top",
-          end: "+=" + EpilogueMobileTimeline.duration() * 700,  
+          end: "+=1000",  
           animation: EpilogueMobileTimeline,  
-          scrub: 2,
+          scrub: 0.8,
           pin: true,
-          anticipatePin: 1,            
+          anticipatePin: 1.5,            
           fastScrollEnd: true,         // 빠르게 스크롤 시 '튐' 방지
           invalidateOnRefresh: true,   // 리사이즈 시 값 재계산 (와이드 대응)
+          pinType: "transform"
         })
       }
     })
@@ -1481,7 +1674,8 @@ onMounted(() => {
 
 <style scoped>
   html, body {
-  overscroll-behavior-y: none;
+  overflow-y:scroll;
+overscroll-behavior:none;
 }
 body { touch-action: pan-y; -webkit-overflow-scrolling: touch;
 }
