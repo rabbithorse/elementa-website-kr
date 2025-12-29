@@ -2,6 +2,11 @@
   <div class="company-page">
     <section class="subSection relative" ref="subSection">
       <div class="intro-section h-screen flex items-center" ref="introSection">
+        <div class="intro-bg w-full h-full absolute top-0 left-0 z-0">
+          <video autoplay muted loop playsinline class="object-cover w-full">
+            <source src="@/assets/videos/company_visuals.mp4">
+          </video>
+        </div>
         <Container>
           <div class="heading flex flex-col lg:gap-y-12 md:gap-y-6 gap-y-2 text-center">
             <h2 class="flex items-end lg:gap-x-4 md:gap-x-2 gap-x-1 leading-1 font-bold text-white relative justify-center">
@@ -325,27 +330,35 @@
         </div>
         <div class="content-scroll-area flex flex-col gap-y-4" ref="contentScrollArea">
           <figure class="content-card w-fit">
+            <Temporary type="image" />
             <div class="inner-img"><img src="@/assets/images/sub/company-scroll-card01.png" alt=""></div>
           </figure>
           <figure class="content-card w-fit">
+            <Temporary type="image" />
             <div class="inner-img"><img src="@/assets/images/sub/company-scroll-card02.png" alt=""></div>
           </figure>
           <figure class="content-card w-fit">
+            <Temporary type="image" />
             <div class="inner-img"><img src="@/assets/images/sub/company-scroll-card03.png" alt=""></div>
           </figure>
           <figure class="content-card w-fit">
+            <Temporary type="image" />
             <div class="inner-img"><img src="@/assets/images/sub/company-scroll-card04.png" alt=""></div>
           </figure>
           <figure class="content-card w-fit">
+            <Temporary type="image" />
             <div class="inner-img"><img src="@/assets/images/sub/company-scroll-card01.png" alt=""></div>
           </figure>
           <figure class="content-card w-fit">
+            <Temporary type="image" />
             <div class="inner-img"><img src="@/assets/images/sub/company-scroll-card02.png" alt=""></div>
           </figure>
           <figure class="content-card w-fit">
+            <Temporary type="image" />
             <div class="inner-img"><img src="@/assets/images/sub/company-scroll-card03.png" alt=""></div>
           </figure>
           <figure class="content-card w-fit">
+            <Temporary type="image" />
             <div class="inner-img"><img src="@/assets/images/sub/company-scroll-card04.png" alt=""></div>
           </figure>
         </div>
@@ -549,6 +562,9 @@
               // 패턴을 곧바로 z-index에 대입
               pattern.forEach((z, i) => {
                 cardsArray[i].style.zIndex = z;
+                cardsArray[i].style.filter = z === 2 ? 'blur(0px)' : 'blur(4px)';
+                cardsArray[i].style.opacity = z === 2 ? '1' : '0.5';
+                // cardsArray[i].style.scale = z === 2 ? '1' : '0.96';
               });
 
               if (idx !== prevIdx) {
@@ -883,6 +899,15 @@
     bottom: 0;
     left: 0;
     z-index: 25;
+  }
+
+  .mission-img-wrapper .card {
+    /* transform: scale(0.96); */
+    transition: 
+    transform 1.2s ease,
+    /* scale 0.7s ease, */
+    opacity 2s ease,
+    filter 2s ease;
   }
 
   .mission-img-wrapper .card:not(:first-child) {

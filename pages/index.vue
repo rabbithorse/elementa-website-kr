@@ -636,7 +636,7 @@
             </p>
           </div>
           <div class="card-grid flex flex-col gap-y-18">
-            <EffectGlass class="card-glass glass-blur relative after:absolute after:inset-y-0 after:right-0 after:w-80 max-md:ml-[-5.5%] lg:pt-20 lg:pb-44 pt-[52px] pb-[42px] lg:w-auto w-[101vw]">
+            <EffectGlass class="card-glass glass-blur relative after:absolute after:inset-y-0 after:right-0 after:w-80 max-md:ml-[-5.5%] 5xl:pt-20 5xl:pb-44 lg:pt-16 lg:pb-20 pt-[52px] pb-[42px] lg:w-auto w-[101vw]">
               <BlocksScrollSlider />
             </EffectGlass>
           </div>

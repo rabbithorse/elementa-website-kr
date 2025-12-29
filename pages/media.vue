@@ -79,6 +79,7 @@
                 <div class="swiper-image">
                   <EffectCardHover>
                   <a class="image" href="">
+                    <Temporary type="image" />
                     <img src="~/assets/images/sub/newsroom-slide01.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -88,6 +89,7 @@
                 <div class="swiper-image">
                   <EffectCardHover>
                   <a class="image" href="">
+                    <Temporary type="image" />
                     <video src="~/assets/videos/main-fly.mp4" alt="" muted autoplay playsinline webkit-playsinline loop></video>
                   </a>
                   </EffectCardHover>
@@ -97,6 +99,7 @@
                 <div class="swiper-image">
                   <EffectCardHover>
                   <a class="image" href="">
+                    <Temporary type="image" />
                     <img src="~/assets/images/sub/newsroom-slide03.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -106,6 +109,7 @@
                 <div class="swiper-image">
                   <EffectCardHover>
                   <a class="image" href="">
+                    <Temporary type="image" />
                     <video src="~/assets/videos/main-war.mp4" alt="" muted autoplay playsinline webkit-playsinline loop></video>
                   </a>
                   </EffectCardHover>
@@ -115,6 +119,7 @@
                 <div class="swiper-image">
                   <EffectCardHover>
                   <a class="image" href="">
+                    <Temporary type="image" />
                     <img src="~/assets/images/sub/newsroom-slide05.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -124,6 +129,7 @@
                 <div class="swiper-image">
                   <EffectCardHover>
                   <a class="image" href="">
+                    <Temporary type="image" />
                     <video src="~/assets/videos/main-wetheworld.mp4" alt="" muted autoplay playsinline webkit-playsinline loop></video>
                   </a>
                   </EffectCardHover>
@@ -133,6 +139,7 @@
                 <div class="swiper-image">
                   <EffectCardHover>
                   <a class="image" href="">
+                    <Temporary type="image" />
                     <img src="~/assets/images/sub/newsroom-slide01.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -142,6 +149,7 @@
                 <div class="swiper-image">
                   <EffectCardHover>
                   <a class="image" href="">
+                    <Temporary type="image" />
                     <img src="~/assets/images/sub/newsroom-slide02.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -151,6 +159,7 @@
                 <div class="swiper-image">
                   <EffectCardHover>
                   <a class="image" href="">
+                    <Temporary type="image" />
                     <img src="~/assets/images/sub/newsroom-slide03.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -160,6 +169,7 @@
                 <div class="swiper-image">
                   <EffectCardHover>
                   <a class="image" href="">
+                    <Temporary type="image" />
                     <img src="~/assets/images/sub/newsroom-slide04.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -169,6 +179,7 @@
                 <div class="swiper-image">
                   <EffectCardHover>
                   <a class="image" href="">
+                    <Temporary type="image" />
                     <img src="~/assets/images/sub/newsroom-slide05.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -178,6 +189,7 @@
                 <div class="swiper-image">
                   <EffectCardHover>
                   <a class="image" href="">
+                    <Temporary type="image" />
                     <img src="~/assets/images/sub/newsroom-slide06.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -204,6 +216,7 @@
                 <EffectCardHover>
                   <a class="flex flex-col gap-y-4 w-full h-full justify-start text-white" href="./media_detail">
                     <div class="card-img relative">
+                        <Temporary type="image" />
                         <img src="~assets/images/main/newsroom-thumb01.png" alt="">
                       </div>
                       <div class="card-content">

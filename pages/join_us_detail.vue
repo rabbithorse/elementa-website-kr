@@ -89,6 +89,7 @@
 
               <div class="cursor-pointer xl:block hidden" @click="scrollToTarget('#ourOfficeArea')">
                 <div class="w-full bg-white aspect-[449/160] overflow-hidden relative office-link">
+                  <Temporary type="image" />
                   <img src="~/assets/images/sub/recruit-img01.png" alt="" class="w-full h-full object-cover object-[center_-110px]">
                   <span class="text-white text-base font-bold absolute right-[25px] bottom-0 z-10">오피스 둘러보기</span>
                 </div>

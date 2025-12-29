@@ -34,7 +34,7 @@
       <div class="wide-image-container w-full overflow-hidden 2xl:mt-[228px] xl:mt-[148px] mt-[3.5rem]">
         <Container>
         <!-- wide image -->
-        <div class="wide-image-area xl:h-[600px] lg:h-[450px] h-[400px] relative " ref="wideImageArea"></div> 
+        <div class="wide-image-area xl:h-[600px] lg:h-[450px] h-[400px] relative " ref="wideImageArea"><Temporary type="image" /></div> 
         </Container>
       </div>      
 

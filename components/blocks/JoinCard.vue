@@ -3,7 +3,8 @@
     <EffectCardHover filter="distort" blur="blurred6">
       <!-- <EffectGlassLiquid /> -->
       <a class="flex flex-col cont relative">
-        <figure>
+        <figure class="relative">
+          <Temporary type="image" />
           <img src="~/assets/images/sub/join-us-img01.png" alt="대표 이미지">
         </figure>
         <div class="text-box">

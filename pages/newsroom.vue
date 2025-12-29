@@ -88,6 +88,7 @@
                 <div class="swiper-image">
                   <EffectCardHover>
                   <a class="image" href="https://news.nate.com/view/20251219n15148" target="_blank">
+                    <Temporary type="image" />
                     <img src="~/assets/images/sub/newsroom-slide01.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -97,6 +98,7 @@
                 <div class="swiper-image">
                   <EffectCardHover>
                   <a class="image" href="https://www.g-enews.com/article/ICT/2025/08/202508071152291640c5fa75ef86_1" target="_blank">
+                    <Temporary type="image" />
                     <img src="~/assets/images/sub/newsroom-slide02.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -106,6 +108,7 @@
                 <div class="swiper-image">
                   <EffectCardHover>
                   <a class="image" href="https://news.nate.com/view/20251219n15148" target="_blank">
+                    <Temporary type="image" />
                     <img src="~/assets/images/sub/newsroom-slide03.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -115,6 +118,7 @@
                 <div class="swiper-image">
                   <EffectCardHover>
                   <a class="image" href="https://www.g-enews.com/article/ICT/2025/08/202508071152291640c5fa75ef86_1" target="_blank">
+                    <Temporary type="image" />
                     <img src="~/assets/images/sub/newsroom-slide04.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -124,6 +128,7 @@
                 <div class="swiper-image">
                   <EffectCardHover>
                   <a class="image" href="https://news.nate.com/view/20251219n15148" target="_blank">
+                    <Temporary type="image" />
                     <img src="~/assets/images/sub/newsroom-slide05.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -133,6 +138,7 @@
                 <div class="swiper-image">
                   <EffectCardHover>
                   <a class="image" href="https://www.g-enews.com/article/ICT/2025/08/202508071152291640c5fa75ef86_1" target="_blank">
+                    <Temporary type="image" />
                     <img src="~/assets/images/sub/newsroom-slide06.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -142,6 +148,7 @@
                 <div class="swiper-image">
                   <EffectCardHover>
                   <a class="image" href="https://news.nate.com/view/20251219n15148" target="_blank">
+                    <Temporary type="image" />
                     <img src="~/assets/images/sub/newsroom-slide01.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -151,6 +158,7 @@
                 <div class="swiper-image">
                   <EffectCardHover>
                   <a class="image" href="https://www.g-enews.com/article/ICT/2025/08/202508071152291640c5fa75ef86_1" target="_blank">
+                    <Temporary type="image" />
                     <img src="~/assets/images/sub/newsroom-slide02.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -160,6 +168,7 @@
                 <div class="swiper-image">
                   <EffectCardHover>
                   <a class="image" href="https://news.nate.com/view/20251219n15148" target="_blank">
+                    <Temporary type="image" />
                     <img src="~/assets/images/sub/newsroom-slide03.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -169,6 +178,7 @@
                 <div class="swiper-image">
                   <EffectCardHover>
                   <a class="image" href="https://www.g-enews.com/article/ICT/2025/08/202508071152291640c5fa75ef86_1" target="_blank">
+                    <Temporary type="image" />
                     <img src="~/assets/images/sub/newsroom-slide04.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -178,6 +188,7 @@
                 <div class="swiper-image">
                   <EffectCardHover>
                   <a class="image" href="https://news.nate.com/view/20251219n15148" target="_blank">
+                    <Temporary type="image" />
                     <img src="~/assets/images/sub/newsroom-slide05.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -187,6 +198,7 @@
                 <div class="swiper-image">
                   <EffectCardHover>
                   <a class="image" href="https://www.g-enews.com/article/ICT/2025/08/202508071152291640c5fa75ef86_1" target="_blank">
+                    <Temporary type="image" />
                     <img src="~/assets/images/sub/newsroom-slide06.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -196,6 +208,7 @@
                 <div class="swiper-image">
                   <EffectCardHover>
                   <a class="image" href="https://news.nate.com/view/20251219n15148" target="_blank">
+                    <Temporary type="image" />
                     <img src="~/assets/images/sub/newsroom-slide06.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -205,6 +218,7 @@
                 <div class="swiper-image">
                   <EffectCardHover>
                   <a class="image" href="https://www.g-enews.com/article/ICT/2025/08/202508071152291640c5fa75ef86_1" target="_blank">
+                    <Temporary type="image" />
                     <img src="~/assets/images/sub/newsroom-slide06.png" alt="">
                   </a>
                   </EffectCardHover>
@@ -231,6 +245,7 @@
                 <EffectCardHover>
                   <a class="flex flex-col gap-y-4 w-full h-full justify-start text-white" :href="index % 2 === 0 ? 'https://news.nate.com/view/20251219n15148' : 'https://www.g-enews.com/article/ICT/2025/08/202508071152291640c5fa75ef86_1'" target="_blank">
                     <div class="card-img relative">
+                        <Temporary type="image" />
                         <img src="~assets/images/main/newsroom-thumb01.png" alt="">
                       </div>
                       <div class="card-content">

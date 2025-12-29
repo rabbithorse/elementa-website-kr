@@ -70,7 +70,8 @@
               <EffectCardHover filter="distort" blur="blurred4">
                 <!-- <div class="filter-glass"></div> -->
                 <a class="cont relative" href="./join_us_detail">
-                  <figure>
+                  <figure class="relative">
+                    <Temporary type="image" />
                     <img src="~/assets/images/sub/join-us-img01.png" alt="대표 이미지">
                   </figure>
                   <div class="text-box">

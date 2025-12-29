@@ -1,268 +1,289 @@
 <template>
-  <div>
-    <div 
-      ref="glassRef"
-      @mouseenter="isHovered = true"
-      @mouseleave="isHovered = false"
-      @wheel="handleWheel"
-    >
+  <div 
+    ref="glassRef"
+    @mouseenter="isHovered = true; showCustomCursor()"
+    @mouseleave="isHovered = false; hideCustomCursor()"
+    @mousemove="moveCursor"
+    @wheel="handleWheel"
+    class="cursor-none"
+  >
 
-      <template v-if="!isTouchDevice">
-        <!-- 첫 번째 슬라이더 (우 -> 좌) -->
-        <div class="slider-wrapper">
-          <div ref="slider1Ref" class="slider card-list md:gap-[3.75rem] gap-4 justify-center flow-left md:mb-[4.375rem] flex flex-row">
-            
-            <div class="card md:w-[28rem] w-[21rem]" >
-              <EffectCardHover>
-                <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                  <div class="card-img">
-                    <img src="~assets/images/main/newsroom-thumb01.png" alt="">
-                  </div>
-                  <div class="card-content">
-                    <div class="card-title text-white break-keep">
-                      '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
-                    </div>
+    <div v-if="!isTouchDevice">
+      <!-- 첫 번째 슬라이더 (우 -> 좌) -->
+      <div class="slider-wrapper">
+        <div ref="slider1Ref" class="slider card-list md:gap-[3.75rem] gap-4 justify-center flow-left md:mb-[4.375rem] flex flex-row">
+          
+          <div class="card md:w-[28rem] w-[21rem]">
+            <EffectCardHover class="cursor-none">
+              <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                <div class="card-img">
+                  <Temporary type="image" />
+                  <img src="~assets/images/main/newsroom-thumb01.png" alt="">
+                </div>
+                <div class="card-content">
+                  <div class="card-title text-white break-keep">
+                    '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
                   </div>
                 </div>
-              </EffectCardHover>
-            </div>
-            <div class="card md:w-[28rem] w-[21rem]" >
-              <EffectCardHover>
-                <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                  <div class="card-img">
-                    <img src="~assets/images/main/newsroom-thumb02.png" alt="">
-                  </div>
-                  <div class="card-content">
-                    <div class="card-title text-white break-keep">
-                      UE5로 만든 싱가포르 서브컬처 기대작, 실버 팰리스 공개
-                    </div>
+              </div>
+            </EffectCardHover>
+          </div>
+          <div class="card md:w-[28rem] w-[21rem]" >
+            <EffectCardHover class="cursor-none">
+              <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                <div class="card-img">
+                  <Temporary type="image" />
+                  <img src="~assets/images/main/newsroom-thumb02.png" alt="">
+                </div>
+                <div class="card-content">
+                  <div class="card-title text-white break-keep">
+                    UE5로 만든 싱가포르 서브컬처 기대작, 실버 팰리스 공개
                   </div>
                 </div>
-              </EffectCardHover>
-            </div>
-            <div class="card md:w-[28rem] w-[21rem]" >
-              <EffectCardHover>
-                <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                  <div class="card-img">
-                    <img src="~assets/images/main/newsroom-thumb03.png" alt="">
-                  </div>
-                  <div class="card-content">
-                    <div class="card-title text-white break-keep">
-                      엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 게임...
-                    </div>
+              </div>
+            </EffectCardHover>
+          </div>
+          <div class="card md:w-[28rem] w-[21rem]" >
+            <EffectCardHover class="cursor-none">
+              <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                <div class="card-img">
+                  <Temporary type="image" />
+                  <img src="~assets/images/main/newsroom-thumb03.png" alt="">
+                </div>
+                <div class="card-content">
+                  <div class="card-title text-white break-keep">
+                    엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 게임...
                   </div>
                 </div>
-              </EffectCardHover>
-            </div>
-            <div class="card md:w-[28rem] w-[21rem]" >
-              <EffectCardHover>
-                <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                  <div class="card-img">
-                    <img src="~assets/images/main/newsroom-thumb04.png" alt="">
-                  </div>
-                  <div class="card-content">
-                    <div class="card-title text-white break-keep">
-                      엘리멘타, 신작 실버 팰리스 첫 공개
-                    </div>
+              </div>
+            </EffectCardHover>
+          </div>
+          <div class="card md:w-[28rem] w-[21rem]" >
+            <EffectCardHover class="cursor-none">
+              <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                <div class="card-img">
+                  <Temporary type="image" />
+                  <img src="~assets/images/main/newsroom-thumb04.png" alt="">
+                </div>
+                <div class="card-content">
+                  <div class="card-title text-white break-keep">
+                    엘리멘타, 신작 실버 팰리스 첫 공개
                   </div>
                 </div>
-              </EffectCardHover>
-            </div>
-            <div class="card md:w-[28rem] w-[21rem]" >
-              <EffectCardHover>
-                <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                  <div class="card-img">
-                    <img src="~assets/images/main/newsroom-thumb05.png" alt="">
-                  </div>
-                  <div class="card-content">
-                    <div class="card-title text-white break-keep">
-                      엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 공개…글로벌 시장 공략
-                    </div>
+              </div>
+            </EffectCardHover>
+          </div>
+          <div class="card md:w-[28rem] w-[21rem]" >
+            <EffectCardHover class="cursor-none">
+              <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                <div class="card-img">
+                  <Temporary type="image" />
+                  <img src="~assets/images/main/newsroom-thumb05.png" alt="">
+                </div>
+                <div class="card-content">
+                  <div class="card-title text-white break-keep">
+                    엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 공개…글로벌 시장 공략
                   </div>
                 </div>
-              </EffectCardHover>
-            </div>
-            <div class="card md:w-[28rem] w-[21rem]" >
-              <EffectCardHover>
-                <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                  <div class="card-img">
-                    <img src="~assets/images/main/newsroom-thumb06.png" alt="">
-                  </div>
-                  <div class="card-content">
-                    <div class="card-title text-white break-keep">
-                      '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
-                    </div>
+              </div>
+            </EffectCardHover>
+          </div>
+          <div class="card md:w-[28rem] w-[21rem]" >
+            <EffectCardHover class="cursor-none">
+              <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                <div class="card-img">
+                  <Temporary type="image" />
+                  <img src="~assets/images/main/newsroom-thumb06.png" alt="">
+                </div>
+                <div class="card-content">
+                  <div class="card-title text-white break-keep">
+                    '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
                   </div>
                 </div>
-              </EffectCardHover>
-            </div>
-            
+              </div>
+            </EffectCardHover>
+          </div>
+          
+        </div>
+      </div>
+
+      <!-- 두 번째 슬라이더 (좌 -> 우) -->
+      <div class="slider-wrapper">
+        <div ref="slider2Ref" class="slider card-list gap-[3.75rem] justify-center flow-left rows-reverse md:flex flex-row hidden">
+          <div class="card md:w-[28rem] w-[21rem]" >
+            <EffectCardHover class="cursor-none">
+              <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                <div class="card-img">
+                  <Temporary type="image" />
+                  <img src="~assets/images/main/newsroom-thumb01.png" alt="">
+                </div>
+                <div class="card-content">
+                  <div class="card-title text-white break-keep">
+                    '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
+                  </div>
+                </div>
+              </div>
+            </EffectCardHover>
+          </div>
+          <div class="card md:w-[28rem] w-[21rem]" >
+            <EffectCardHover class="cursor-none">
+              <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                <div class="card-img">
+                  <Temporary type="image" />
+                  <img src="~assets/images/main/newsroom-thumb02.png" alt="">
+                </div>
+                <div class="card-content">
+                  <div class="card-title text-white break-keep">
+                    UE5로 만든 싱가포르 서브컬처 기대작, 실버 팰리스 공개
+                  </div>
+                </div>
+              </div>
+            </EffectCardHover>
+          </div>
+          <div class="card md:w-[28rem] w-[21rem]" >
+            <EffectCardHover class="cursor-none">
+              <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                <div class="card-img">
+                  <Temporary type="image" />
+                  <img src="~assets/images/main/newsroom-thumb03.png" alt="">
+                </div>
+                <div class="card-content">
+                  <div class="card-title text-white break-keep">
+                    엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 게임...
+                  </div>
+                </div>
+              </div>
+            </EffectCardHover>
+          </div>
+          <div class="card md:w-[28rem] w-[21rem]" >
+            <EffectCardHover class="cursor-none">
+              <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                <div class="card-img">
+                  <Temporary type="image" />
+                  <img src="~assets/images/main/newsroom-thumb04.png" alt="">
+                </div>
+                <div class="card-content">
+                  <div class="card-title text-white break-keep">
+                    엘리멘타, 신작 실버 팰리스 첫 공개
+                  </div>
+                </div>
+              </div>
+            </EffectCardHover>
+          </div>
+          <div class="card md:w-[28rem] w-[21rem]" >
+            <EffectCardHover class="cursor-none">
+              <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                <div class="card-img">
+                  <Temporary type="image" />
+                  <img src="~assets/images/main/newsroom-thumb05.png" alt="">
+                </div>
+                <div class="card-content">
+                  <div class="card-title text-white break-keep">
+                    엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 공개…글로벌 시장 공략
+                  </div>
+                </div>
+              </div>
+            </EffectCardHover>
+          </div>
+          <div class="card md:w-[28rem] w-[21rem]" >
+            <EffectCardHover class="cursor-none">
+              <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                <div class="card-img">
+                  <Temporary type="image" />
+                  <img src="~assets/images/main/newsroom-thumb06.png" alt="">
+                </div>
+                <div class="card-content">
+                  <div class="card-title text-white break-keep">
+                    '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
+                  </div>
+                </div>
+              </div>
+            </EffectCardHover>
           </div>
         </div>
+      </div>
+    </div>
 
-        <!-- 두 번째 슬라이더 (좌 -> 우) -->
-        <div class="slider-wrapper">
-          <div ref="slider2Ref" class="slider card-list gap-[3.75rem] justify-center flow-left rows-reverse md:flex flex-row hidden">
-            <div class="card md:w-[28rem] w-[21rem]" >
-              <EffectCardHover>
-                <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                  <div class="card-img">
-                    <img src="~assets/images/main/newsroom-thumb01.png" alt="">
-                  </div>
-                  <div class="card-content">
-                    <div class="card-title text-white break-keep">
-                      '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
-                    </div>
-                  </div>
+    <!-- 모바일 버전: Swiper.js -->
+    <div v-else>
+      <!-- 첫 번째 Swiper -->
+      <div class="slider-wrapper" @touchstart.stop @touchmove.stop>
+        <div class="swiper swiper1">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                <div class="card-img">
+                  <img src="~assets/images/main/newsroom-thumb01.png" alt="">
                 </div>
-              </EffectCardHover>
-            </div>
-            <div class="card md:w-[28rem] w-[21rem]" >
-              <EffectCardHover>
-                <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                  <div class="card-img">
-                    <img src="~assets/images/main/newsroom-thumb02.png" alt="">
-                  </div>
-                  <div class="card-content">
-                    <div class="card-title text-white break-keep">
-                      UE5로 만든 싱가포르 서브컬처 기대작, 실버 팰리스 공개
-                    </div>
-                  </div>
-                </div>
-              </EffectCardHover>
-            </div>
-            <div class="card md:w-[28rem] w-[21rem]" >
-              <EffectCardHover>
-                <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                  <div class="card-img">
-                    <img src="~assets/images/main/newsroom-thumb03.png" alt="">
-                  </div>
-                  <div class="card-content">
-                    <div class="card-title text-white break-keep">
-                      엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 게임...
-                    </div>
-                  </div>
-                </div>
-              </EffectCardHover>
-            </div>
-            <div class="card md:w-[28rem] w-[21rem]" >
-              <EffectCardHover>
-                <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                  <div class="card-img">
-                    <img src="~assets/images/main/newsroom-thumb04.png" alt="">
-                  </div>
-                  <div class="card-content">
-                    <div class="card-title text-white break-keep">
-                      엘리멘타, 신작 실버 팰리스 첫 공개
-                    </div>
-                  </div>
-                </div>
-              </EffectCardHover>
-            </div>
-            <div class="card md:w-[28rem] w-[21rem]" >
-              <EffectCardHover>
-                <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                  <div class="card-img">
-                    <img src="~assets/images/main/newsroom-thumb05.png" alt="">
-                  </div>
-                  <div class="card-content">
-                    <div class="card-title text-white break-keep">
-                      엘리멘타, 언리얼 엔진 5 기반 신작 ‘실버 팰리스’ 공개…글로벌 시장 공략
-                    </div>
-                  </div>
-                </div>
-              </EffectCardHover>
-            </div>
-            <div class="card md:w-[28rem] w-[21rem]" >
-              <EffectCardHover>
-                <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                  <div class="card-img">
-                    <img src="~assets/images/main/newsroom-thumb06.png" alt="">
-                  </div>
-                  <div class="card-content">
-                    <div class="card-title text-white break-keep">
-                      '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
-                    </div>
-                  </div>
-                </div>
-              </EffectCardHover>
-            </div>
-          </div>
-        </div>
-      </template>
-
-      <!-- 모바일 버전: Swiper.js -->
-      <template v-else>
-        <!-- 첫 번째 Swiper -->
-        <div class="slider-wrapper" @touchstart.stop @touchmove.stop>
-          <div class="swiper swiper1">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                  <div class="card-img">
-                    <img src="~assets/images/main/newsroom-thumb01.png" alt="">
-                  </div>
-                  <div class="card-content">
-                    <div class="card-title text-white break-keep">
-                      '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
-                    </div>
+                <div class="card-content">
+                  <div class="card-title text-white break-keep">
+                    '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
                   </div>
                 </div>
               </div>
-              <div class="swiper-slide">
-                <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                  <div class="card-img">
-                    <img src="~assets/images/main/newsroom-thumb01.png" alt="">
-                  </div>
-                  <div class="card-content">
-                    <div class="card-title text-white break-keep">
-                      '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
-                    </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                <div class="card-img">
+                  <img src="~assets/images/main/newsroom-thumb01.png" alt="">
+                </div>
+                <div class="card-content">
+                  <div class="card-title text-white break-keep">
+                    '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
                   </div>
                 </div>
               </div>
-              <div class="swiper-slide">
-                <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                  <div class="card-img">
-                    <img src="~assets/images/main/newsroom-thumb01.png" alt="">
-                  </div>
-                  <div class="card-content">
-                    <div class="card-title text-white break-keep">
-                      '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
-                    </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                <div class="card-img">
+                  <img src="~assets/images/main/newsroom-thumb01.png" alt="">
+                </div>
+                <div class="card-content">
+                  <div class="card-title text-white break-keep">
+                    '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
                   </div>
                 </div>
               </div>
-              <div class="swiper-slide">
-                <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                  <div class="card-img">
-                    <img src="~assets/images/main/newsroom-thumb01.png" alt="">
-                  </div>
-                  <div class="card-content">
-                    <div class="card-title text-white break-keep">
-                      '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
-                    </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                <div class="card-img">
+                  <img src="~assets/images/main/newsroom-thumb01.png" alt="">
+                </div>
+                <div class="card-content">
+                  <div class="card-title text-white break-keep">
+                    '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
                   </div>
                 </div>
               </div>
-              <div class="swiper-slide">
-                <div class="flex flex-col gap-y-4 w-full h-full justify-start">
-                  <div class="card-img">
-                    <img src="~assets/images/main/newsroom-thumb01.png" alt="">
-                  </div>
-                  <div class="card-content">
-                    <div class="card-title text-white break-keep">
-                      '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
-                    </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="flex flex-col gap-y-4 w-full h-full justify-start">
+                <div class="card-img">
+                  <img src="~assets/images/main/newsroom-thumb01.png" alt="">
+                </div>
+                <div class="card-content">
+                  <div class="card-title text-white break-keep">
+                    '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </template>
+      </div>
     </div>
   </div>
+  <Teleport to="body">
+    <div 
+      v-if="cursorVisible"
+      class="custom-cursor"
+      :style="{ left: cursorX + 'px', top: cursorY + 'px', transform: 'translate(-50%, -50%)' }"
+    >
+      <img src="~assets/images/main/scroll-cursor.png" alt="스크롤 하세요">
+    </div>
+  </Teleport>
 </template>
 
 <script setup>
@@ -321,6 +342,8 @@
     // 스크롤 양 누적
     scrollAmount += delta * speed
 
+    //console.log('scrollAmount:', scrollAmount);
+
     // 슬라이더의 전체 너비와 보이는 영역 계산
     const slider1Width = slider1.scrollWidth
     const viewportWidth = glassRef.value.clientWidth
@@ -330,8 +353,6 @@
 
     // 스크롤 범위 제한
     scrollAmount = Math.max(0, Math.min(scrollAmount, maxScroll));
-
-    console.log('scrollAmount:', scrollAmount, 'maxScroll:', maxScroll);
 
     // 첫 번째 슬라이더: 우 -> 좌 
     $gsap.to(slider1, {
@@ -488,4 +509,35 @@
     
     window.removeEventListener('resize', updatePadding)
   })
+
+  // Cursor
+  const cursorVisible = ref(false);
+  const cursorX = ref(0);
+  const cursorY = ref(0);
+
+  const showCustomCursor = () => {
+    cursorVisible.value = true;
+    console.log(`showCustomerCursor: ${cursorVisible.value}`);
+    
+  };
+
+  const hideCustomCursor = () => {
+    cursorVisible.value = false;
+  };
+
+  const moveCursor = (e) => {
+    cursorX.value = e.clientX;
+    cursorY.value = e.clientY;
+  };
 </script>
+
+<style>
+  .custom-cursor {
+    position: fixed !important;
+    pointer-events: none;
+    z-index: 9999;
+    width: 80px;
+    height: 80px;
+    
+  }
+</style>
