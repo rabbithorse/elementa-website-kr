@@ -24,17 +24,17 @@
         <div class="flex flex-col lg:items-end items-start gap-y-5">
           <!-- Family Site -->
           <div class="max-lg:w-full">
-            <div class="familySite custom-select relative lg:w-[15.6rem] w-full cursor-pointer">
-              <div class="selected lg:py-3 py-2 px-5 relative" @click="familySiteOpen = !familySiteOpen" :class="{ 'opened': familySiteOpen }">
+            <div class="familySite custom-select relative lg:w-[15.6rem] w-full cursor-pointer" ref="selectRef">
+              <div class="selected lg:py-3 py-2 px-5 relative" @click="toggleDropdown" :class="{ 'opened': familySiteOpen }">
                 <span class="selected-text text-[0.875rem]">Family site</span>
               </div>
-              <div v-accordion="familySiteOpen" class="absolute w-full left-0 z-10 origin-top">
-                <ul class="options transition-all duration-300 ">
+              <transition :name="openDirection === 'up' ? 'slide-up' : 'slide-down'" class="absolute w-full left-0 z-10 origin-top">
+                <ul class="options transition-all duration-300">
                   <li v-for="family in familySites" :key="family.name">
                     <a :href="family.link" class="option-text text-4 leading-[1.4em] py-[0.7rem] px-8 block hover:bg-[#191919]">{{ family.name }}</a>
                   </li>
                 </ul>
-              </div>
+              </transition>
             </div>
           </div>
 
@@ -58,7 +58,13 @@
   </footer>
 </template>
 
-<script setup lang="ts">
+<script setup>
+  import { ref, onMounted, onUnmounted, nextTick } from 'vue';
+
+  const isOpen = ref(false)
+  const openDirection = ref('down')
+  const selectRef = ref(null)
+  const dropdownRef = ref(null)
   const familySiteOpen = ref(false);
 
   const footerMenuItems = [
@@ -81,6 +87,53 @@
     { name: "instagram", link: "", src: "/icons/footerInstaIcon.svg", alt: "Instagram Link"},
     { name: "x", link: "", src: "/icons/footerXIcon.svg", alt: "X Link"},
   ]
+
+  const checkDropdownDirection = async () => {
+    await nextTick()
+    
+    if (selectRef.value && dropdownRef.value) {
+      const selectRect = selectRef.value.getBoundingClientRect()
+      const dropdownHeight = dropdownRef.value.offsetHeight
+      const viewportHeight = window.innerHeight
+      
+      // 아래 남은 공간 계산
+      const spaceBelow = viewportHeight - selectRect.bottom
+      
+      // 드롭다운이 들어갈 공간이 충분한지 확인 (여유 20px)
+      if (spaceBelow < dropdownHeight + 20) {
+        openDirection.value = 'up'
+      } else {
+        openDirection.value = 'down'
+      }
+    }
+  }
+
+  const toggleDropdown = () => {
+    isOpen.value = !isOpen.value
+    if (isOpen.value) {
+      checkDropdownDirection()
+    }
+  }
+
+  const selectOption = (option) => {
+    selectedValue.value = option
+    isOpen.value = false
+  }
+
+  // 외부 클릭 감지
+  const handleClickOutside = (event) => {
+    if (selectRef.value && !selectRef.value.contains(event.target)) {
+      isOpen.value = false
+    }
+  }
+
+  onMounted(() => {
+    document.addEventListener('mousedown', handleClickOutside)
+  })
+
+  onUnmounted(() => {
+    document.removeEventListener('mousedown', handleClickOutside)
+  })
 </script>
 
 <style scoped>
