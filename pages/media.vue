@@ -1,6 +1,6 @@
 <template>
   <div>
-      <section class="subSection media-area lg:pt-[130px] pt-[95px] relative" ref="subSection">
+      <section class="subSection media-area style2 lg:pt-[130px] pt-[95px] relative" ref="subSection">
         <div class="path-visual absolute" ref="pathVisual">
           <div class="inner relative">
             <div class="big shape" ref="shapeBig"></div>

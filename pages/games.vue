@@ -4,7 +4,7 @@
     <section class="intro relative overflow-hidden" ref="introSection">
       <div class="movie-bg w-full sticky top-0 left-0" ref="movieBg">
         <video ref="bgVideo" class="video-bg" autoplay loop muted playsinline preload="none">
-          <source src="~/assets/videos/game_visuals_06.mp4" type="video/mp4" />
+          <source src="~/assets/videos/motion-poster-temp.mp4" type="video/mp4" />
         </video>
         <div class="intro-vid-cover absolute w-full h-full top-0 left-0 bg-black"></div>
       </div>
@@ -1281,12 +1281,6 @@ onMounted(() => {
 
     const creditListItems = creditList.value.querySelectorAll("li");
 
-    // GPU 레이어 고정
-    $gsap.set([bgInvBoard, box1, box2, box2_5, box3, box4, box5, box5_5, box6, box6_5, box7, box8, box9, box9_5, box10, box11, box12], {
-      force3D: true,
-      transform: "translate3d(0,0,0)" 
-    });
-
     // 수사보드 사진 타임라인
     const pic01 = $gsap.timeline()
     .fromTo(box1, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "none" }) //1지점 사진들
@@ -1323,28 +1317,28 @@ onMounted(() => {
     .to(invDimmed, {opacity: 0, duration: 0.3, ease: "none" })
     .to(invDimmed, {visibility: "hidden", duration: 0.3, ease: "none" })
     .addLabel("startMove") //1지점
-    .to(bgInvBoard, {x:-998, y:-513 , duration: 2, ease: "none" , force3D: true}, "startMove+=1") //첫번째 구간 이동
+    .to(bgInvBoard, {x:-998, y:-513 , duration: 2, ease: "none" }, "startMove+=1") //첫번째 구간 이동
 
     .addLabel("movePoint_01") //2지점
-    .to(bgInvBoard, {x:-350, y:-999 , duration: 2, ease: "none", force3D: true }, "movePoint_01+=1") //두번쨰 구간 이동
+    .to(bgInvBoard, {x:-350, y:-999 , duration: 2, ease: "none" }, "movePoint_01+=1") //두번쨰 구간 이동
 
     .addLabel("movePoint_02") //3지점 
-    .to(bgInvBoard, {x:-2316, y:-1250 , duration: 2, ease: "none", force3D: true }, "movePoint_02+=1") //세번째 구간 이동
+    .to(bgInvBoard, {x:-2316, y:-1250 , duration: 2, ease: "none" }, "movePoint_02+=1") //세번째 구간 이동
 
     .addLabel("movePoint_03") //4지점
-    .to(bgInvBoard, {x:-1437, y:-2466 , duration: 2, ease: "none", force3D: true }, "movePoint_03+=1") //네번째 구간 이동
+    .to(bgInvBoard, {x:-1437, y:-2466 , duration: 2, ease: "none" }, "movePoint_03+=1") //네번째 구간 이동
 
     .addLabel("movePoint_04") //5지점
-    .to(bgInvBoard, {x:-2268, y:-2697 , duration: 2, ease: "none", force3D: true }, "movePoint_04+=1") //다섯번째 구간 이동
+    .to(bgInvBoard, {x:-2268, y:-2697 , duration: 2, ease: "none" }, "movePoint_04+=1") //다섯번째 구간 이동
 
     .addLabel("movePoint_05") //6지점
-    .to(bgInvBoard, {x:-3432, y:-2951 , duration: 2, ease: "none", force3D: true }, "movePoint_05+=1") //여섯번째 구간 이동
+    .to(bgInvBoard, {x:-3432, y:-2951 , duration: 2, ease: "none" }, "movePoint_05+=1") //여섯번째 구간 이동
 
     .addLabel("movePoint_06") //7지점
-    .to(bgInvBoard, {x:() => (window.innerWidth - bgInvBoard.offsetWidth) / 2, y: -3812, duration: 2, ease: "none", force3D: true }, "movePoint_06+=1") //일곱번째 구간 이동
+    .to(bgInvBoard, {x:() => (window.innerWidth - bgInvBoard.offsetWidth) / 2, y: -3812, duration: 2, ease: "none" }, "movePoint_06+=1") //일곱번째 구간 이동
 
     .addLabel("movePoint_07") //8지점
-    .to(bgInvBoard, {x:() => (window.innerWidth - bgInvBoard.offsetWidth) / 2, y: -6092, duration: 3, ease: "none", force3D: true }, "movePoint_07+=1") // 마지막 구간으로 이동
+    .to(bgInvBoard, {x:() => (window.innerWidth - bgInvBoard.offsetWidth) / 2, y: -6092, duration: 3, ease: "none" }, "movePoint_07+=1") // 마지막 구간으로 이동
     .fromTo(box12, { opacity: 0 }, { opacity: 0.6, duration: 0.5, ease: "none" }, "movePoint_07+=1.3")
     .fromTo(creditListItems, { opacity: 0 }, { opacity: 1, duration: 1, ease: "none", stagger: 0.2 }, "movePoint_07+=1") //크레딧 리스트 나타남
     .to(invBoard.value, {opacity: 0.5, duration: 0.3, ease: "none" })
@@ -1409,10 +1403,6 @@ onMounted(() => {
     const eText1 = lastScene.value.querySelector(".e-text.sec01");
     const eText2 = lastScene.value.querySelector(".e-text.sec02");
 
-    $gsap.set([logoHole, recHole], {
-      force3D: true,       
-    })
-    
     const EpilogueTimeline = $gsap.timeline({
       defaults: {
         ease: "none",

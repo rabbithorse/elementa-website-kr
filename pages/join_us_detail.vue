@@ -161,7 +161,7 @@
               <figure class="relative overflow-hidden z-20">
                 <span class="dimmed"></span>
                 <div class="inner-img">
-                  <img src="/assets/images/sub/join-us-detail-item01.jpg" alt="">
+                  <img src="/assets/images/sub/join-us-detail-item04.jpg" alt="">
                 </div>
                 <figcaption class="absolute text-center w-full font-bold 2xl:text-2xl text-[0.81rem]">Company overview</figcaption>
               </figure>
@@ -175,7 +175,7 @@
               <figure class="relative overflow-hidden z-20">
                 <span class="dimmed"></span>
                 <div class="inner-img">
-                  <img src="/assets/images/sub/join-us-detail-item04.jpg" alt="">
+                  <img src="/assets/images/sub/join-us-detail-item05.jpg" alt="">
                 </div>
                 <figcaption class="absolute text-center w-full font-bold 2xl:text-[2.5rem] text-[0.81rem]">Company overview</figcaption>
               </figure>

@@ -129,9 +129,12 @@
 .subSection.media-area .shape.big {background:url(~/assets/images/sub/sub_bg03.png) no-repeat 70% / cover;}
 .subSection.media-area .shape.small {background:url(~/assets/images/sub/sub_bg04.png) no-repeat top / 130%;}
 
+.subSection.media-area.style2 .shape.big {background:url(~/assets/images/sub/sub_bg05.png) no-repeat 70% / cover;}
+.subSection.media-area.style2 .shape.small {background:url(~/assets/images/sub/sub_bg06.png) no-repeat top / 130%;}
+
 /* shape visual - contact */
-.subSection.contact-area .shape.big {background:url(~/assets/images/sub/sub_bg03.png) no-repeat 70% / cover;}
-.subSection.contact-area .shape.small {background:url(~/assets/images/sub/sub_bg04.png) no-repeat top / 130%;}
+.subSection.contact-area .shape.big {background:url(~/assets/images/sub/sub_bg07.png) no-repeat 70% / cover;}
+.subSection.contact-area .shape.small {background:url(~/assets/images/sub/sub_bg08.png) no-repeat top / 130%;}
 
 
 /* selectbox */
@@ -151,6 +154,9 @@
 .filter-box .filter-inner .custom-select.active ul {display: block;}
 .filter-box .filter-inner .custom-select ul li {cursor:pointer; padding: 8px 15px; font-size: 18px;}
 .filter-box .filter-inner .custom-select ul li:hover {background:rgba(0,0,0,0.15)}
+
+/* fiter-box no result */
+.filter-box.no-result::before {display: none;}
 
 /* search box */
 /* search box in list header */
@@ -222,7 +228,7 @@ box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.25) inset, 0 0 4px 0 rgba(255, 255,
 
 .our-office-area .img_area .img-item {transform: translateY(-20px); display: inline-block;}
 .our-office-area .img_area .img-item figure .inner-img {clip-path: inset(50% 30% 20% 30% round 15%); transition: clip-path 1.4s ease;}
-.our-office-area .img_area .img-item figure .dimmed {content: ''; display: block; width: 100%; height: 35%; position: absolute; opacity: 0; left: 0; bottom: 0; transition: all 2s cubic-bezier(0.075, 0.82, 0.165, 1); z-index: 2; backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px); background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.50) 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 60%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 60%);}
+.our-office-area .img_area .img-item figure .dimmed {content: ''; display: block; width: 100%; height: 35%; position: absolute; opacity: 0; left: 0; bottom: 0; transition: all 2s cubic-bezier(0.075, 0.82, 0.165, 1); z-index: 2; backdrop-filter: blur(4.5px); -webkit-backdrop-filter: blur(4.5px); background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.50) 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 60%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 60%);}
 .our-office-area .img_area .img-item figure .inner-img img {transform: scale(1.4); transition: transform 1.6s ease; width: 100%;}
 .our-office-area .img_area .img-item figure figcaption {left:0; bottom:-45px; transition: bottom .6s ease; z-index: 3;}
 .our-office-area .img_area .img-item.on figure .inner-img {clip-path: inset(0% 0% 0% 0% round 0%);}
@@ -242,7 +248,7 @@ box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.25) inset, 0 0 4px 0 rgba(255, 255,
 .our-office-area .img_area .img-item.item-03:hover figure figcaption,
 .our-office-area .img_area .img-item.item-04:hover figure figcaption,
 .our-office-area .img_area .img-item.item-06:hover figure figcaption {bottom: 25px;}
-.our-office-area .img_area .img-item:hover figure .dimmed {opacity: 1; backdrop-filter: blur(4.5px); -webkit-backdrop-filter: blur(4.5px);}
+.our-office-area .img_area .img-item:hover figure .dimmed {opacity: 1;}
 .our-office-area .img_area .img-item:hover figure + p {transform: translateY(-100%);}
  
 .twink-point::before {content:''; width:12px; height:12px; background: var(--main-color); border-radius: 50%; animation: twink 2.8s ease-in-out infinite; opacity: .3;}
@@ -350,7 +356,7 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
   }
 
   /* section 02 : 대사 씬 */
-  .cut-scene {-webkit-overflow-scrolling: touch; /* iOS 부드러운 스크롤 강제 */ will-change: transform;}
+  .cut-scene {-webkit-overflow-scrolling: touch; /* iOS 부드러운 스크롤 강제 */}
   .cut-scene .cut_01_inner,
   .cut-scene .cut_02_inner {mask-image: linear-gradient(transparent 0%, black 43%);}
   .cut-scene img {width: 100%;}
@@ -368,7 +374,7 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
   .cut-scene .cut_02 .line-box .line02-1 .normal {transform: translateY(-38px); padding-left: 160px;}
 
   /* section 03 : 비디오 배경 게임 설명 */
-  .description {-webkit-overflow-scrolling: touch; /* iOS 부드러운 스크롤 강제 */ will-change: transform;}
+  .description {-webkit-overflow-scrolling: touch; /* iOS 부드러운 스크롤 강제 */}
   .description .movie-dimmed {background: #05060B;}
   .description .movie-bg-des video {width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;}
   .description .text-area {opacity: 0;}
@@ -542,20 +548,18 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 /* section 05 : 수사보드 */
 .inv-board .inv-dimmed{background: #05060B;}
 .inv-board .in-camera {margin:0 auto; max-width: 5760px; width: 100%; /*border: 1px solid red;*/ background: url('/_nuxt/assets/images/sub/camera-bg-line.png') repeat-y calc(50% + 1px) / 9px;}
-.inv-board .in-camera .bg {width:5760px; height:6492px; will-change: transform, opacity; transform: translate3d(0,0,0); background: #05060B;}
+.inv-board .in-camera .bg {width:5760px; height:6492px; background: #05060B;}
 .inv-board .in-camera .bg .bg-canvas {position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  will-change: transform;}
-  .inv-board .in-camera .bg-line {width:5760px; height:6492px; will-change: transform, opacity; transform: translate3d(0,0,0);}
+  height: 100%;}
+  .inv-board .in-camera .bg-line {width:5760px; height:6492px;}
   .inv-board .in-camera .bg .bg-line .line {position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    will-change: transform;}
+    height: 100%;}
 /* .inv-board .in-camera .bg .line {will-change: transform, opacity; transform: translate3d(0,0,0);}
 .inv-board .in-camera .bg .line .main-line {left: 428px; top: 146px; will-change: transform, opacity; transform: translate3d(0,0,0);}
 .inv-board .in-camera .bg .line .sub-line-01 {left: 450px; top: 166px; will-change: transform, opacity; transform: translate3d(0,0,0);}
@@ -568,13 +572,6 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 
 .inv-board .in-camera .bg .picbox-04 .box12 {transform: translateX(-50%);}
 
-.inv-board .in-camera .bg [class^="picbox"],
-.inv-board .in-camera .bg [class*=" picbox"],
-.inv-board .in-camera .bg [class^="box"],
-.inv-board .in-camera .bg [class*=" box"],
-.inv-board .in-camera .bg [class^="box"] img,
-.inv-board .in-camera .bg [class*=" box"] img {
-  will-change: transform, opacity; transform: translate3d(0,0,0);}
 .inv-board .in-camera .bg .box1 {left: 160px; top: 76px;}
 .inv-board .in-camera .bg .box2 {left: 15px; bottom: -60px;}
 .inv-board .in-camera .bg .box2-5 {left: 1124px; bottom: 46px;}
@@ -600,7 +597,7 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 .inv-board .in-camera .bg .box12 {right: 1939px; bottom: -1230px;}
 
 .inv-board .in-camera .bg [class^="box"] span,
-.inv-board .in-camera .bg [class*=" box"] span {will-change: transform, opacity; transform: translate3d(0,0,0); color: rgba(255, 255, 255, 1); font-family: Eulyoo1945;}
+.inv-board .in-camera .bg [class*=" box"] span {color: rgba(255, 255, 255, 1); font-family: Eulyoo1945;}
 
 .credit-list span{color: #CDBC79; display: block; text-align: center;}
 .credit-list-links li a {border-radius: 50%; transition: box-shadow 0.3s ease; backdrop-filter: blur(10px);}
@@ -683,7 +680,7 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 }
 
 /* section6 : 에필로그 모바일*/ 
-.last-scene-m {-webkit-overflow-scrolling: touch; /* iOS 부드러운 스크롤 강제 */ will-change: transform;}
+.last-scene-m {-webkit-overflow-scrolling: touch; /* iOS 부드러운 스크롤 강제 */}
 .last-scene-m .cover-dimmed {background: #09090b;}
 .last-scene-m {background: url('~/assets/images/sub/last-inner-bg.png') no-repeat top / cover;}
 .last-scene-m .e-side-text::before {width: 377px; height: 78px; background: url('/_nuxt/assets/images/sub/e-side-text-bg.svg') no-repeat 10px / contain;}
@@ -921,7 +918,6 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 
   /* section 05 : 수사보드  */
   .inv-board {visibility: hidden; pointer-events: none; contain: layout paint;}
-  .inv-board * {will-change: auto;}
 
   /* section 06 : 에필로그 */
   .last-scene {visibility: hidden; pointer-events: none; contain: layout paint;}
@@ -1109,7 +1105,6 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 
   /* section 05 : 수사보드  */
   .inv-board {visibility: hidden; pointer-events: none; contain: layout paint;}
-  .inv-board * {will-change: auto;}
 
   /* section 06 : 에필로그 */
   .last-scene {visibility: hidden; pointer-events: none; contain: layout paint;}
@@ -1352,7 +1347,6 @@ box-shadow: -1px -2px 2px 0 rgba(255, 255, 255, 0.25) inset, 4px 2px 4px 0 rgba(
 
   /* section 05 : 수사보드  */
   .inv-board {visibility: hidden; pointer-events: none; contain: layout paint;}
-  .inv-board * {will-change: auto;}
 
   /* section 06 : 에필로그 */
   .last-scene {visibility: hidden; pointer-events: none; contain: layout paint;}
