@@ -23,7 +23,7 @@
       <div class="intro-section h-full" ref="introSection">
         <Container class="h-full">
           <!-- 첫번째 애니메이션 -->
-          <div class="flex flex-col h-full pb-[6.25rem]" ref="visualTitle">
+          <div class="flex flex-col h-full md:pb-[6.25rem] pb-32" ref="visualTitle">
             <h2 class="3xl:text-[272px] 2xl:text-[240px] xl:text-[180px] md:text-[160px] text-[25.3vw] leading-1 font-bold text-white pt-[6.25rem] primary-text whitespace-nowrap" >
               <TypographyPrimary>
                 E
@@ -533,7 +533,7 @@
         
       </div>
     </section>
-    <section class="wetheworld-section flex items-center justify-center overflow-hidden h-screen" ref="wetheworldSection">
+    <section class="wetheworld-section flex items-center justify-center overflow-hidden md:h-screen h-svh" ref="wetheworldSection">
       <div class="wetheworldbg-video01 opacity-0 invisible absolute inset-0 z-0" ref="wetheworldbg1">
         <video class="bg-video--content w-full h-full object-cover" autoplay playsinline muted loop preload="metadata">
           <source src="~/assets/videos/main-wetheworld-inspire.mp4" type="video/mp4" />
@@ -550,7 +550,7 @@
         </video>
       </div>
       <h2 class="2xl:text-[272px] xl:text-[220px] md:text-[180px] text-[25.3vw] leading-1 font-bold text-white text-center z-10 ">
-        <span ref="weText" class="block leading-[100%]">
+        <span ref="weText" class="block leading-[100%] 2xl:pl-[17px] md:pl-[12px] ml-[1.5vw]">
           <TypographyPrimary>
             W
           </TypographyPrimary>
@@ -559,7 +559,7 @@
           </TypographyPrimary>
         </span>
         <div class="text-spacer md:py-5"></div>
-        <span ref="theworldText" class="block leading-[100%]">
+        <span ref="theworldText" class="block leading-[100%] 2xl:pl-[17px] md:pl-[12px] ml-[1.5vw]">
           <TypographyPrimary>
               T
             </TypographyPrimary>
@@ -635,11 +635,7 @@
               Lasting Impact
             </p>
           </div>
-          <div class="card-grid flex flex-col gap-y-18">
-            <EffectGlass class="card-glass glass-blur relative after:absolute after:inset-y-0 after:right-0 after:w-80 max-md:ml-[-5.5%] 5xl:pt-20 5xl:pb-44 lg:pt-16 lg:pb-20 pt-[52px] pb-[42px] lg:w-auto w-[101vw]">
-              <BlocksScrollSlider />
-            </EffectGlass>
-          </div>
+          <BlocksScrollSlider />
           <div class="content-button md:hidden flex justify-center mt-5">
             <ButtonsBasic color="blue" class="max-md:w-full [&>*]:w-full">View more</ButtonsBasic>
           </div>
@@ -669,7 +665,7 @@
       <div class="section-content">
         <div class="content-glass xl:py-[108px] py-[54px]">
           <EffectGlass class="glass-blur absolute left-0 top-0 w-full h-full" />
-          <div class="lg:px-8"> 
+          <div class="lg:px-4"> 
             <div class="controls xl:hidden flex gap-3 items-center justify-end pr-6">
               <PrevButton :swiper="swiperInstance" />
               <NextButton :swiper="swiperInstance" />
@@ -678,10 +674,13 @@
               <swiper
                 :slidesPerView="1.15"
                 :spaceBetween="15"
+                :slidesOffsetBefore="20"
+                :slidesOffsetAfter="20"
                 :allowTouchMove="true"
                 :simulateTouch="true"
                 :passiveListeners="false"
                 @swiper="onSwiper"
+                @slideChange="onSlideChange"
                 :breakpoints="{
                   480: {
                     slidesPerView: 1.4,
@@ -811,7 +810,7 @@ onBeforeUnmount(() => {
 
 onMounted(async () => {
   normalizeInstance = $ScrollTrigger.normalizeScroll({
-    momentum: 0.2,
+    momentum: 0.3,
     allowNestedScroll: true,
     lockAxis: true,
   })
@@ -981,19 +980,19 @@ onMounted(async () => {
         })
         .fromTo(missionBox.value, 
           { yPercent: 100, opacity: 0 },
-          { yPercent: 0, opacity: 1, duration: 0.3, stagger: 0.05, ease: "power2.out" }, ">"
+          { yPercent: 0, opacity: 1, duration: 0.2, stagger: 0.05, ease: "power2.out" }, ">"
         )
 
       const anim2 = $gsap.timeline({ paused: true })
         .to(characterDisappearArray, {
           x: 0,
           opacity: 1,
-          duration: 0.4, // 실제 애니메이션 시간
+          duration: 0.3, // 실제 애니메이션 시간
           ease: "none"
-        }, ">")
+        }, "<")
         .to(characterDisappearArray, {
           x: 150,
-          duration: 0.4,
+          duration: 0.3,
           ease: "none",
         }, "+=0.1")
 
@@ -1003,8 +1002,8 @@ onMounted(async () => {
           opacity: 1,
           visibility: 'visible',
           ease: "none",
-          duration: 0.4,
-        }, "+=0.2")
+          duration: 0.3,
+        }, "+=0.05")
 
         //const anim4 =  $gsap.timeline({ paused: true })
         
@@ -1337,13 +1336,6 @@ const nodeVersion = process.version
   import NextButton from '@/components/buttons/nextButton.vue'
   import PrevButton from '@/components/buttons/prevButton.vue'
 
-  const modules = [Navigation]
-
-  const swiperInstance = ref({})
-  const onSwiper = (swiper) => {
-    swiperInstance.value = swiper
-  }
-
   export default {
     components: {
       Swiper,
@@ -1353,13 +1345,16 @@ const nodeVersion = process.version
     },
     data() {
       return {
-        modules: modules,
-        swiperInstance: {},
+        modules : [Navigation],
+        swiperInstance: null,
       };
     },
     methods: {
       onSwiper(swiper) {
         this.swiperInstance = swiper
+      },
+      onSlideChange() {
+        this.$forceUpdate()
       }
     }
     
