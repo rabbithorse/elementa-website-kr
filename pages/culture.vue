@@ -147,7 +147,7 @@
       </div>
 
       <div class="culture-interview bg-[url('~/assets/images/sub/culture-interview-bg.png')] bg-[#05060B] no-repeat bg-center bg-cover xl:pt-56 pt-32 relative z-10">
-        <EffectGlass>
+        <EffectGlass class="glass-blur">
           <Container class="xl:pt-[4.5rem] md:pt-10 pt-6">
             <div class="section-heading">
               

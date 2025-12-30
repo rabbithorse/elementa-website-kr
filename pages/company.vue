@@ -3,7 +3,7 @@
     <section class="subSection relative" ref="subSection">
       <div class="intro-section h-screen flex items-center" ref="introSection">
         <div class="intro-bg w-full h-full absolute top-0 left-0 z-0">
-          <video autoplay muted loop playsinline class="object-cover w-full">
+          <video autoplay muted loop playsinline class="object-cover w-full xl:max-w-full max-w-none xl:h-screen h-svh">
             <source src="@/assets/videos/company_visuals.mp4">
           </video>
         </div>
@@ -562,7 +562,7 @@
               // 패턴을 곧바로 z-index에 대입
               pattern.forEach((z, i) => {
                 cardsArray[i].style.zIndex = z;
-                cardsArray[i].style.filter = z === 2 ? 'blur(0px)' : 'blur(4px)';
+                cardsArray[i].style.filter = z === 2 ? 'blur(0px)' : 'blur(8px)';
                 cardsArray[i].style.opacity = z === 2 ? '1' : '0.5';
                 // cardsArray[i].style.scale = z === 2 ? '1' : '0.96';
               });
@@ -903,11 +903,12 @@
 
   .mission-img-wrapper .card {
     /* transform: scale(0.96); */
+    clip-path: polygon(30.3% 0, 100% 0, 69.7% 100%, 0 100%);
     transition: 
     transform 1.2s ease,
     /* scale 0.7s ease, */
-    opacity 2s ease,
-    filter 2s ease;
+    opacity 1.2s ease,
+    filter 1.2s ease;
   }
 
   .mission-img-wrapper .card:not(:first-child) {
