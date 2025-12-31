@@ -126,10 +126,10 @@
 
 /* shape visual - newsroom ~ media list */
 .subSection.media-area .path-visual {opacity: .4;}
-.subSection.media-area .shape.big {background:url(~/assets/images/sub/sub_bg03.png) no-repeat 70% / cover;}
+.subSection.media-area .shape.big {background:url(~/assets/images/sub/sub_bg03.png) no-repeat -8% / cover;}
 .subSection.media-area .shape.small {background:url(~/assets/images/sub/sub_bg04.png) no-repeat top / 130%;}
 
-.subSection.media-area.style2 .shape.big {background:url(~/assets/images/sub/sub_bg05.png) no-repeat 70% / cover;}
+.subSection.media-area.style2 .shape.big {background:url(~/assets/images/sub/sub_bg05.png) no-repeat 5% / cover;}
 .subSection.media-area.style2 .shape.small {background:url(~/assets/images/sub/sub_bg06.png) no-repeat top / 130%;}
 
 /* shape visual - contact */
