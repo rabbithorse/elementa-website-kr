@@ -1,15 +1,16 @@
 <template>
   <div>
     <!-- section01 : 인트로 -->
-    <section class="intro relative overflow-hidden" ref="introSection">
-      <div class="movie-bg w-full sticky top-0 left-0" ref="movieBg">
-        <video ref="bgVideo" class="video-bg" autoplay loop muted playsinline preload="none">
-          <source src="~/assets/videos/motion-poster-temp.mp4" type="video/mp4" />
-        </video>
-        <div class="intro-vid-cover absolute w-full h-full top-0 left-0 bg-black"></div>
+    <section class="intro relative overflow-visible" ref="introSection">
+      <div class="overflow-hidden w-full h-full absolute left-0 top-0">
+        <div class="movie-bg w-full h-full" ref="movieBg">
+          <video ref="bgVideo" class="video-bg" autoplay loop muted playsinline preload="metadata">
+            <source src="~/assets/videos/motion-poster-temp.mp4" type="video/mp4" />
+          </video>
+          <div class="intro-vid-cover absolute w-full h-full top-0 left-0 bg-black"></div>
+        </div>
       </div>
-      <div class="panel_01 vh-section-40"></div>
-      <div class="title-area-wrap absolute left-0 top-0 w-full flex flex-col justify-center items-center vh-section">
+      <div class="title-area-wrap sticky left-0 top-0 w-full flex flex-col justify-center items-center vh-section">
         <div class="title-area text-center flex justify-center items-center" ref="titleArea">
           <img src="~/assets/images/sub/game-logo01.png" alt="실버 팰리스" class="block">
         </div>
@@ -62,44 +63,125 @@
       <div class="movie-dimmed absolute w-full h-full top-0 left-0 z-30"></div>
       <!-- video 1 -->
       <div class="movie-bg-des absolute sec01 w-full top-0 left-0 z-20 vh-section">
-        <video class="video-bg" autoplay loop muted playsinline preload="none">
+        <video class="video-bg" autoplay loop muted playsinline preload="metadata">
           <source src="~/assets/videos/game_visuals_01.mp4" type="video/mp4" />
         </video>
+        <!-- text 1 mobile!-->
+        <div class="text-area mobile sec01 xl:hidden flex flex-col w-full justify-center items-center z-40 absolute top-0 left-0 vh-section">
+          <div class="text-box text-center">
+            <span class="lg:text-2xl text-lg font-semibold">Intro</span>
+            <p class="text-white xl:text-[3.44rem] lg:text-4xl sm:text-[1.63rem] text-[1.53rem] lg:pt-[20px] pt-[5px] title tracking-[-1.65px] relative font-semibold">
+              사건의 진위, 그 무대의 서막
+            </p>
+            <div class="text-white xl:text-[1.5rem] lg:text-[1.125rem] text-[0.94rem] leading-[1.6] xl:py-[60px] py-[40px] sub-text lg:mt-[40px] mt-[30px] lg:mx-[0px] mx-[15px] relative">펠리아나 3년, 다시 실버니아로 돌아온 탐정. <br class="lg:hidden block">그리고 현실과 우화가 뒤섞이고, <br class="lg:hidden block">번영과 몰락의 경계에 서 있는 실버니아. <br>
+            사교와 조사, 판단 그리고 전투, <br class="lg:hidden block">당신이 그 총알 한 발의 진실을 찾아낸다면, <br class="lg:hidden block">자신은 물론, 모든 이들의 운명까지 결정짓게 될 것이다.</div>
+          </div>
+          <ButtonsBasic color="yellow" size="lg" id="openChar" @click="openModal">캐릭터 소개</ButtonsBasic>
+        </div>
       </div>
       <!-- video 2 -->
       <div class="movie-bg-des absolute sec02 w-full top-0 left-0 z-10 vh-section">
-        <video class="video-bg" autoplay loop muted playsinline preload="none">
+        <video class="video-bg" autoplay loop muted playsinline preload="metadata">
           <source src="~/assets/videos/game_visuals_02.mp4" type="video/mp4" />
         </video>
+        <!-- text 2 mobile! -->
+        <div class="text-area sec02 mobile xl:hidden flex w-full justify-center items-center z-40 absolute top-0 left-0 vh-section">
+          <div class="text-box text-center">
+            <span class="lg:text-2xl text-lg font-semibold relative">독창적 세계관</span>
+            <div class="text-white text-2xl lg:leading-[1.7] xl:py-[55px] py-[35px] mt-[30px] sub-text type2 relative">
+              <p class="text-white xl:text-[3.44rem] lg:text-4xl sm:text-[1.63rem] text-[1.53rem] title tracking-[-1.65px] relative font-semibold z-10">
+              탐정 서사와 흑동화로 완성된 <br class="lg:hidden block">미스터리 판타지</p>
+            </div>
+          </div>
+        </div>
       </div>
       <!-- video 3 -->
-      <div class="movie-bg-des absolute sec03 w-full top-0 left-0 z-10 vh-section">
-        <video class="video-bg" autoplay loop muted playsinline preload="none">
+      <div class="movie-bg-des absolute sec03 w-full top-0 left-0 xl:z-10 z-[9] vh-section">
+        <video class="video-bg" autoplay loop muted playsinline preload="metadata">
           <source src="~/assets/videos/game_visuals_03.mp4" type="video/mp4" />
         </video>
+        <!-- text 3 mobile-->
+        <div class="text-area sec03 mobile xl:hidden flex w-full lg:justify-end justify-center lg:items-start items-end z-40 absolute top-0 left-0 vh-section">
+          <div class="text-box game-info relative">
+            <div class="game-info-title relative z-10">
+              <span class="block lg:text-lg text-xs">독창적 세계관</span>
+              <p class="text-white lg:text-[1.75rem] text-lg font-normal">미스터리 판타지</p>
+            </div>
+            <div class="game-info-cont relative z-10 lg:py-[2.5rem] py-[1.88rem] lg:px-[1.88rem] px-[1.25rem]">
+              <p class="text-white lg:text-[1.06rem] text-sm break-keep">숨 막히는 사건, 교차하는 음모, <br>그리고 3년 만에 돌아온 탐정.</p>
+              <p class="text-white lg:text-[1.06rem] text-sm pt-[1.25rem] break-keep">현실과 우화가 겹쳐진 실버니아에서, <br>플레이어는 진실을 찾아내고 도시의 운명을 뒤바꾼다. <br>누구도 예상치 못한 반전과 깊이 있는 스토리가 당신을 기다린다.</p>
+            </div>
+          </div>
+        </div>
       </div>
       <!-- video 4 -->
-      <div class="movie-bg-des absolute sec04 w-full top-0 left-0 z-10 vh-section">
-        <video class="video-bg" autoplay loop muted playsinline preload="none">
+      <div class="movie-bg-des absolute sec04 w-full top-0 left-0 xl:z-10 z-[8] vh-section">
+        <video class="video-bg" autoplay loop muted playsinline preload="metadata">
           <source src="~/assets/videos/game_visuals_04.mp4" type="video/mp4" />
         </video>
+        <!-- text 4 mobile!-->
+        <div class="text-area sec04 mobile xl:hidden flex w-full justify-center items-center z-40 absolute top-0 left-0 vh-section sec04-mtext-1">
+          <div class="text-box text-center">
+            <span class="lg:text-2xl text-lg font-semibold relative">압도적 비주얼과 시대적 배경</span>
+            <div class="text-white text-2xl lg:leading-[1.7] xl:py-[55px] py-[35px] mt-[30px] sub-text type2 relative">
+              <p class="text-white xl:text-[3.44rem] lg:text-4xl sm:text-[1.63rem] text-[1.53rem] title tracking-[-1.75px] relative font-semibold z-10">
+              압도적 스케일의 살아 숨 쉬는 배경</p>
+            </div>
+          </div>
+        </div>
+        <!-- text 4_2 mobile! -->
+        <div class="text-area sec04_2 mobile xl:hidden flex w-full lg:justify-start justify-center lg:items-start items-end z-40 absolute top-0 left-0 vh-section sec04-mtext-2">
+          <div class="text-box game-info left relative">
+            <div class="game-info-title relative z-10 left">
+              <span class="block lg:text-lg text-xs">압도적 비주얼과 시대적 배경</span>
+              <p class="text-white lg:text-[1.75rem] text-lg font-normal">살아 숨 쉬는 배경</p>
+            </div>
+            <div class="game-info-cont relative z-10 lg:py-[2.5rem] py-[1.88rem] lg:px-[1.88rem] px-[1.25rem]">
+              <p class="text-white lg:text-[1.06rem] text-sm break-keep">언리얼 엔진 5로 구현된 빅토리아풍의 대도시 실버니아.</p>
+              <p class="text-white lg:text-[1.06rem] text-sm pt-[1.25rem] break-keep">찬란한 번영과 몰락의 그림자가 교차하는 실버니아에서 <br>압도적 스케일의 드라마가 펼쳐진다.</p>
+            </div>
+          </div>
+        </div>
       </div>
       <!-- video 5 -->
-      <div class="movie-bg-des absolute sec05 w-full top-0 left-0 z-10 vh-section">
-        <video class="video-bg" autoplay loop muted playsinline preload="none">
+      <div class="movie-bg-des absolute sec05 w-full top-0 left-0 xl:z-10 z-[7] vh-section">
+        <video class="video-bg" autoplay loop muted playsinline preload="metadata">
           <source src="~/assets/videos/game_visuals_05.mp4" type="video/mp4" />
         </video>
+        <!-- text 5 mobile!-->
+        <div class="text-area sec05 mobile xl:hidden flex w-full justify-center items-center z-40 absolute top-0 left-0 vh-section">
+          <div class="text-box text-center">
+            <span class="lg:text-2xl text-lg font-semibold relative">강력한 액션과 짜릿한 쾌감</span>
+            <div class="text-white text-2xl lg:leading-[1.7] xl:py-[55px] py-[35px] mt-[30px] sub-text type2 relative">
+              <p class="text-white xl:text-[3.44rem] lg:text-4xl sm:text-[1.63rem] text-[1.53rem] title tracking-[-1.75px] relative font-semibold z-10">
+              콤보와 QTE로 완성되는 <br class="lg:hidden block">스타일리시 배틀</p>
+            </div>
+          </div>
+        </div>
       </div>
       <!-- video 6 -->
-      <div class="movie-bg-des absolute sec06 w-full top-0 left-0 z-10 vh-section">
-        <video class="video-bg" autoplay loop muted playsinline preload="none">
+      <div class="movie-bg-des absolute sec06 w-full top-0 left-0 xl:z-10 z-[6] vh-section">
+        <video class="video-bg" autoplay loop muted playsinline preload="metadata">
           <source src="~/assets/videos/game_visuals_06.mp4" type="video/mp4" />
         </video>
+        <!-- text 6 mobile!-->
+        <div class="text-area sec06 mobile xl:hidden flex w-full lg:justify-end justify-center items-end z-40 absolute top-0 left-0 vh-section">
+          <div class="text-box game-info bottom relative">
+            <div class="game-info-title relative z-10 left">
+              <span class="block lg:text-lg text-xs">강력한 액션과 짜릿한 쾌감</span>
+              <p class="text-white lg:text-[1.75rem] text-lg font-normal">스타일리시 배틀</p>
+            </div>
+            <div class="game-info-cont relative z-10 lg:py-[2.5rem] py-[1.88rem] lg:px-[1.88rem] px-[1.25rem]">
+              <p class="text-white lg:text-[1.06rem] text-sm break-keep">각기 다른 개성을 가진 동료들과 함께 싸우고, <br>속도감 넘치는 액션과 타격감으로 전장을 지배하라.</p>
+              <p class="text-white lg:text-[1.06rem] text-sm pt-[1.25rem] break-keep">한 발의 총성과 한 번의 선택이 역사를 다시 쓰는 <br>짜릿한 경험이 펼쳐진다.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-     <!-- text 6 -->
+      <!-- text 6 -->
       <Container>
-      <div class="text-area sec06 flex w-full lg:justify-end justify-center items-end z-40 absolute top-0 left-0 vh-section">
+      <div class="text-area sec06 pc xl:flex hidden w-full lg:justify-end justify-center items-end z-40 absolute top-0 left-0 vh-section">
         <div class="text-box game-info bottom relative">
           <div class="game-info-title relative z-10 left">
             <span class="block lg:text-lg text-xs">강력한 액션과 짜릿한 쾌감</span>
@@ -113,7 +195,7 @@
       </div>
       </Container>
       <!-- text 5 -->
-      <div class="text-area sec05 flex w-full justify-center items-center z-40 absolute top-0 left-0 vh-section">
+      <div class="text-area sec05 pc xl:flex hidden w-full justify-center items-center z-40 absolute top-0 left-0 vh-section">
         <div class="text-box text-center">
           <span class="lg:text-2xl text-lg font-semibold relative">강력한 액션과 짜릿한 쾌감</span>
           <div class="text-white text-2xl lg:leading-[1.7] xl:py-[55px] py-[35px] mt-[30px] sub-text type2 relative">
@@ -125,7 +207,7 @@
       </div>
       <!-- text 4_2 -->
       <Container>
-      <div class="text-area sec04_2 flex w-full lg:justify-start justify-center lg:items-start items-end z-40 absolute top-0 left-0 vh-section">
+      <div class="text-area sec04_2 pc xl:flex hidden w-full lg:justify-start justify-center lg:items-start items-end z-40 absolute top-0 left-0 vh-section">
         <div class="text-box game-info left relative">
           <div class="game-info-title relative z-10 left">
             <span class="block lg:text-lg text-xs">압도적 비주얼과 시대적 배경</span>
@@ -139,7 +221,7 @@
       </div>
       </Container>
       <!-- text 4 -->
-      <div class="text-area sec04 flex w-full justify-center items-center z-40 absolute top-0 left-0 vh-section">
+      <div class="text-area sec04 pc xl:flex hidden w-full justify-center items-center z-40 absolute top-0 left-0 vh-section">
         <div class="text-box text-center">
           <span class="lg:text-2xl text-lg font-semibold relative">압도적 비주얼과 시대적 배경</span>
           <div class="text-white text-2xl lg:leading-[1.7] xl:py-[55px] py-[35px] mt-[30px] sub-text type2 relative">
@@ -151,7 +233,7 @@
       </div>
       <!-- text 3 -->
       <Container>
-      <div class="text-area sec03 flex w-full lg:justify-end justify-center lg:items-start items-end z-40 absolute top-0 left-0 vh-section">
+      <div class="text-area sec03 pc xl:flex hidden w-full lg:justify-end justify-center lg:items-start items-end z-40 absolute top-0 left-0 vh-section">
         <div class="text-box game-info relative">
           <div class="game-info-title relative z-10">
             <span class="block lg:text-lg text-xs">독창적 세계관</span>
@@ -165,7 +247,7 @@
       </div>
       </Container>
       <!-- text 2 -->
-      <div class="text-area sec02 flex w-full justify-center items-center z-40 absolute top-0 left-0 vh-section">
+      <div class="text-area sec02 pc xl:flex hidden w-full justify-center items-center z-40 absolute top-0 left-0 vh-section">
         <div class="text-box text-center">
           <span class="lg:text-2xl text-lg font-semibold relative">독창적 세계관</span>
           <div class="text-white text-2xl lg:leading-[1.7] xl:py-[55px] py-[35px] mt-[30px] sub-text type2 relative">
@@ -176,7 +258,7 @@
         </div>
       </div>
       <!-- text 1 -->
-      <div class="text-area sec01 flex flex-col w-full justify-center items-center z-40 absolute top-0 left-0 vh-section">
+      <div class="text-area sec01 pc xl:flex hidden flex-col w-full justify-center items-center z-40 absolute top-0 left-0 vh-section">
         <div class="text-box text-center">
           <span class="lg:text-2xl text-lg font-semibold">Intro</span>
           <p class="text-white xl:text-[3.44rem] lg:text-4xl sm:text-[1.63rem] text-[1.53rem] lg:pt-[20px] pt-[5px] title tracking-[-1.65px] relative font-semibold">
@@ -189,6 +271,7 @@
         <ButtonsBasic color="yellow" size="lg" id="openChar" @click="openModal">캐릭터 소개</ButtonsBasic>
       </div>
     </section>
+    
     <!-- section04 : 유튜브 영상-->
     <section class="youtube-area relative overflow-visible" ref="youtubeArea">
       <div class="video-wrap w-full flex justify-center items-center relative vh-section">
@@ -286,7 +369,7 @@
       <div class="last-scene-inner w-full h-full relative">
         <!-- 비디오 -->
         <div class="w-full h-full top-0 left-0 z-20 absolute epilogue-video text-white">
-          <video class="e-video-bg" muted playsinline preload="none">
+          <video class="e-video-bg" muted playsinline preload="metadata">
             <source src="~/assets/videos/epilogue.mp4" type="video/mp4" />
           </video>
         </div>
@@ -724,74 +807,39 @@ onMounted(() => {
     }, "videoIntroRestart")  // label
     // movieBg 어두워짐 (밝기 감소)
     .fromTo(
+      titleArea.value,
+      { opacity: 1 },
+      { opacity: 0, duration: 2.5, ease: "none" },
+    )
+    .fromTo(
       movieBg.value,
       { opacity: 1 },
-      { opacity: 0, duration: 0.4, ease: "none" },
+      { opacity: 0, duration: 2.5, ease: "none" },
     )
-    .to(
-      introSection.value,
-      { opacity: 0, duration: 0.4, ease: "none" }, ">"
-    )
-
+    
     let introST;
 
-    $ScrollTrigger.matchMedia({
-
-      // PC
-      "(min-width: 1280px)": () => {
-        introST = $ScrollTrigger.create({
-          trigger: introSection.value,
-          start: "top top",
-          end: "+=" + scrollIntro.duration() * 600,
-          pin: titleArea.value,          
-          pinType: "transform",
-          scrub: 0.1,
-          animation: scrollIntro,
-          anticipatePin: 1.5,
-          invalidateOnRefresh: true,
-          fastScrollEnd: true,
-          preventOverlaps: true,
-
-          onUpdate(self) {
-            const progress = self.progress;
-            const currentTime = scrollIntro.totalDuration() * progress;
-            const t1 = scrollIntro.labels["videoIntroRestart"];
-
-            if (currentTime < t1) {
-              restartIntroVideo = false;
-            }
-          }
-        });
-      },
-
-      // Mobile
-      "(max-width: 1279px)": () => {
-        introST = $ScrollTrigger.create({
-          trigger: introSection.value,
-          start: "top top",
-          end: "+=500",
-          scrub: 0.1,                    
-          animation: scrollIntro,
-          anticipatePin: 1.5,
-          invalidateOnRefresh: true,
-          fastScrollEnd: true,
-          preventOverlaps: true,
-
-          onUpdate(self) {
-            const progress = self.progress;
-            const currentTime = scrollIntro.totalDuration() * progress;
-            const t1 = scrollIntro.labels["videoIntroRestart"];
-
-            if (currentTime < t1) {
-              restartIntroVideo = false;
-            }
-          }
-        });
+    // PC
+    introST = $ScrollTrigger.create({
+      trigger: introSection.value,
+      start: "top top",
+      end: "+=" + scrollIntro.duration() * 600,
+      scrub: 0.1,
+      animation: scrollIntro,
+      anticipatePin: 1.5,
+      invalidateOnRefresh: true,
+      fastScrollEnd: true,
+      preventOverlaps: true,
+      onUpdate(self) {
+        const progress = self.progress;
+        const currentTime = scrollIntro.totalDuration() * progress;
+        const t1 = scrollIntro.labels["videoIntroRestart"]
+        if (currentTime < t1) {
+          restartIntroVideo = false;
+        }
       }
-
     });
 
-    
     /*-----------------------*/
     // 03. 컷신 섹션 - 컷신 타임라인 애니메이션
     /*-----------------------*/
@@ -900,7 +948,6 @@ onMounted(() => {
           animation: cutSceneTimeline,
           end: "+=1", 
           once: true,
-          pinType: "transform",
           onEnter: () => {
             cutSceneTimeline.restart();
           }
@@ -923,24 +970,26 @@ onMounted(() => {
     const videoDes2 = descriptionSec.value.querySelector(".movie-bg-des.sec02");
     const videoDes3 = descriptionSec.value.querySelector(".movie-bg-des.sec03");
     const videoDes4 = descriptionSec.value.querySelector(".movie-bg-des.sec04");
+    const textDesM_1 = videoDes4.querySelector(".sec04-mtext-1");
+    const textDesM_2 = videoDes4.querySelector(".sec04-mtext-2");
+
     const videoDes5 = descriptionSec.value.querySelector(".movie-bg-des.sec05");
     const videoDes6 = descriptionSec.value.querySelector(".movie-bg-des.sec06");
-    const textDes1 = descriptionSec.value.querySelector(".text-area.sec01");
+    const textDes1 = descriptionSec.value.querySelector(".text-area.sec01.pc");
     const textDes1inner = textDes1.querySelector(".text-box");
-    const textDes2 = descriptionSec.value.querySelector(".text-area.sec02");
+    const textDes2 = descriptionSec.value.querySelector(".text-area.sec02.pc");
     const textDes2inner = textDes2.querySelector(".text-box");
-    const textDes3 = descriptionSec.value.querySelector(".text-area.sec03");
+    const textDes3 = descriptionSec.value.querySelector(".text-area.sec03.pc");
     const textDes3inner = textDes3.querySelector(".text-box");
-    const textDes4 = descriptionSec.value.querySelector(".text-area.sec04"); 
+    const textDes4 = descriptionSec.value.querySelector(".text-area.sec04.pc"); 
     const textDes4inner = textDes4.querySelector(".text-box");
-    const textDes4_2 = descriptionSec.value.querySelector(".text-area.sec04_2");
+    const textDes4_2 = descriptionSec.value.querySelector(".text-area.sec04_2.pc");
     const textDes4inner_2 = textDes4_2.querySelector(".text-box");
-    const textDes5 = descriptionSec.value.querySelector(".text-area.sec05"); 
+    const textDes5 = descriptionSec.value.querySelector(".text-area.sec05.pc"); 
     const textDes5inner = textDes5.querySelector(".text-box");
-    const textDes6 = descriptionSec.value.querySelector(".text-area.sec06"); 
+    const textDes6 = descriptionSec.value.querySelector(".text-area.sec06.pc"); 
     const textDes6inner = textDes6.querySelector(".text-box");
 
-    // 게임소개 타임라인 애니메이션
     $ScrollTrigger.matchMedia({
       "(min-width: 1280px)": () => {
         const desBgTimeline = $gsap.timeline({ paused: true })
@@ -1033,91 +1082,66 @@ onMounted(() => {
       "(max-width: 1279px)": () => {
         const desBgTimelineMobile = $gsap.timeline({ paused: true })
         // (01) 비디오 딤드 투명해지면서 첫번째 비디오 밝아짐, 첫번째 텍스트 나타남
-        .fromTo(movieDimmed, { opacity: 1 }, { opacity: 0, duration: 1 })
-        .to(textDes1, { opacity: 1, duration: 1}, "<") // 동시 진행
-        .fromTo(textDes1inner, { opacity: 0}, { opacity: 1, duration: 1, ease:"none"}, "<") // 동시 진행
+        .fromTo(movieDimmed, { opacity: 1 }, { opacity: 0, duration: 0.5 })
+        .to(movieDimmed, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
       
         // (02) 첫번째 비디오 서서히 사라짐, 첫번째 텍스트 사라짐
         .to(videoDes1, { opacity: 0, duration: 1 })
-        .to(textDes1inner, {opacity: 0, duration: 1, ease:"ease"}, "<") // 이전 효과 후 바로 실행
-        .to(textDes1, { opacity: 0, duration: 1 }, "<") // 이전 효과 후 바로 실행
-        .to(textDes1, { "visibility": "hidden"},"+=0.01") // 이전 효과 후 바로 실행
+        .to(videoDes1, { "visibility": "hidden"},"+=0.01") // 이전 효과 후 바로 실행
         
         // (03) 두번째 비디오 서서히 나타남, 두번째 텍스트 나타남
         .fromTo(videoDes2, { opacity: 0 }, { opacity: 1, duration: 1 }, ">-1") // 이전 효과 진행 후 바로 실행
-        .to(textDes2, { opacity: 1, duration: 1 }, "<") //동시 진행
-        .fromTo(textDes2inner, { opacity: 0}, { opacity: 1, duration: 1, ease:"none"}, "<") // 동시 진행
         
         // (04) 두번째 비디오 서서히 사라짐. 두번째 텍스트 사라짐
         .to(videoDes2, { opacity: 0, duration: 1 })
-        .to(textDes2inner, {opacity: 0, duration: 1, ease:"ease"}, "<") // 이전 효과 후 바로 실행
-        .to(textDes2, { opacity: 0, duration: 1 }, "<") // 이전 효과 후 바로 실행
-        .to(textDes2, { "visibility": "hidden"},">+0.01") // 이전 효과 후 바로 실행
+        .to(videoDes2, { "visibility": "hidden"},">+0.01") // 이전 효과 후 바로 실행
 
         // (05) 세번째 비디오 서서히 나타남, 세번째 텍스트 나타남
         .fromTo(videoDes3, { opacity: 0 }, { opacity: 1, duration: 1 }, ">-1") // 이전 효과 진행 후 바로 실행
-        .to(textDes3, { opacity: 1, duration: 1 }, "<") //동시 진행
-        .fromTo(textDes3inner, { opacity: 0}, { opacity: 1, duration: 1, ease:"none"}, "<") // 동시 진행
         
         // (06) 세번째 비디오 서서히 사라짐, 세번째 텍스트 사라짐
         .to(videoDes3, { opacity: 0, duration: 1 })
-        .to(textDes3inner, {opacity: 0, duration: 1, ease:"ease"}, "<") // 이전 효과 후 바로 실행
-        .to(textDes3, { opacity: 0, duration: 1 }) // 이전 효과 후 바로 실행
-        .to(textDes3, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
+        .to(videoDes3, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
 
         // (07) 네번째 비디오 서서히 나타남, 네번째 텍스트 나타남
-        .fromTo(videoDes4, { opacity: 0 }, { opacity: 1, duration: 1 }, ">-2") // 이전 효과 진행 후 바로 실행
-        .to(textDes4, { opacity: 1, duration: 1 }, "<") //동시 진행
-        .fromTo(textDes4inner, { opacity: 0}, { opacity: 1, duration: 1, ease:"none"}, "<") // 동시 진행
+        .fromTo(videoDes4, { opacity: 0 }, { opacity: 1, duration: 1 }, ">-1") // 이전 효과 진행 후 바로 실행
         // (08) 네번째(4_1) 텍스트 사라짐
-        .to(textDes4, { opacity: 0, duration: 1 }) // 이전 효과 후 바로 실행
-        .to(textDes4, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
+        .to(textDesM_1, { opacity: 0, duration: 0.5 })
 
-        // (09) 네번째(4_2) 텍스트 나타남
-        .to(textDes4_2, { opacity: 1, duration: 1 }) //이전 효과 후 바로 실행
-        // (10) 네번째 비디오 서서히 사라짐, 네번째(4-2) 텍스트 사라짐
+        // (09)네번째(4-2) 텍스트 나타남
+        .fromTo(textDesM_2, {opacity: 0}, { opacity: 1, duration: 0.5 })
         .to(videoDes4, { opacity: 0, duration: 1 })
-        .to(textDes4inner_2, {opacity: 0, duration: 1, ease:"ease"}, "<") // 이전 효과 후 바로 실행
-        .to(textDes4_2, { opacity: 0, duration: 1 }) // 이전 효과 후 바로 실행
-        .to(textDes4_2, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
+        .to(videoDes4, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
 
         // (11) 다섯번째 비디오 서서히 나타남, 다섯번째 텍스트 나타남
-        .fromTo(videoDes5, { opacity: 0 }, { opacity: 1, duration: 1 }, ">-2") // 이전 효과 진행 후 바로 실행
-        .to(textDes5, { opacity: 1, duration: 1 }, "<") //동시 진행
-        .fromTo(textDes5inner, { opacity: 0}, { opacity: 1, duration: 1, ease:"none"}, "<") // 동시 진행
+        .fromTo(videoDes5, { opacity: 0 }, { opacity: 1, duration: 1 }, ">-1") // 이전 효과 진행 후 바로 실행
 
         // (12) 다섯번째 비디오 서서히 사라짐. 다섯번째 텍스트 사라짐
         .to(videoDes5, { opacity: 0, duration: 1 })
-        .to(textDes5inner, {opacity: 0, duration: 1, ease:"ease"}, "<") // 이전 효과 후 바로 실행
-        .to(textDes5, { opacity: 0, duration: 1 }) // 이전 효과 후 바로 실행
-        .to(textDes5, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
+        .to(videoDes5, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
 
         // (13) 여섯번째 비디오 서서히 나타남, 여섯번째 텍스트 나타남
-        .fromTo(videoDes6, { opacity: 0 }, { opacity: 1, duration: 1 }, ">-2") // 이전 효과 진행 후 바로 실행
-        .to(textDes6, { opacity: 1, duration: 1 }, "<") //동시 진행
-        .fromTo(textDes6inner, { opacity: 0}, { opacity: 1, duration: 1, ease:"none"}, "<") // 동시 진행
+        .fromTo(videoDes6, { opacity: 0 }, { opacity: 1, duration: 1 }, ">-1") // 이전 효과 진행 후 바로 실행
         
         // (14) 여섯번째 비디오 서서히 사라짐, 여섯번째 텍스트 사라짐
         .to(videoDes6, { opacity: 0, duration: 1 })
-        .to(textDes6inner, {opacity: 0, duration: 1, ease:"ease"}, "<") // 이전 효과 후 바로 실행 
-        .to(textDes6, { opacity: 0, duration: 1 }) // 이전 효과 후 바로 실행
-        .to(textDes6, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
+        .to(videoDes6, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
 
         $ScrollTrigger.create({
           trigger: descriptionSec.value,
           start: 'top top',
-          end: "+=8000", // timeline 길이에 자동 매칭
+          end: "+=4000",
           pin: true,
-          scrub: 2,
+          scrub: 1,
           animation: desBgTimelineMobile,
           fastScrollEnd: true,         // 빠르게 스크롤 시 '튐' 방지
           invalidateOnRefresh: true,
           anticipatePin: 1.5,
-          pinType: "transform"
           // markers: true,
         })
       }
     });
+     
      
     
 
