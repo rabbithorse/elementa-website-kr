@@ -56,7 +56,7 @@
         </Container>
       </div>
       <!-- //씬 2 -->
-      <button class="cutscene-replay-btn text-white text-base absolute left-0 bottom-[40px] xl:hidden z-10" ref="replayBtn">다시보기</button>
+      <!-- <button class="cutscene-replay-btn text-white text-base absolute left-0 bottom-[40px] xl:hidden z-10" ref="replayBtn">다시보기</button> -->
     </section>
     <!-- section03 : 게임 설명 intro-->
     <section class="description relative overflow-hidden vh-section" ref="descriptionSec">
@@ -420,7 +420,7 @@
     <section class="last-scene-m w-full overflow-hidden xl:hidden block relative vh-section" ref="lastSceneMobile">
       <div class="last-scene-m cover-dimmed absolute top-0 left-0 z-40 w-full h-full"></div>
       <div class="epilogue-dimmed absolute  top-0 left-0 z-20 w-full"></div>
-      <Container class="absolute left-1/2 -translate-x-1/2 transform top-[100px] z-20 e-side-text">
+      <Container class="absolute left-1/2 -translate-x-1/2 transform md:top-[100px] top-[50px] z-20 e-side-text">
         <p class="relative text-white font-bold text-xl opacity-[0.8] xl:pl-[3.13rem] sm:pl-[1.88rem] pl-[0px]">Epilogue</p>
         <span class="smoke"></span>
       </Container>
@@ -868,61 +868,62 @@ onMounted(() => {
     const cut02TitleSpans = cut02Title.querySelectorAll("span");
     const cut02NormalSpans = cut02Normal.querySelectorAll("span");
 
-    // **컷신 타임라인 애니메이션**
-    const cutSceneTimeline = $gsap.timeline({ paused: true })
-    // (01) 컷 신 나옴
-    .fromTo(cutScene.value, { opacity: 0 }, { opacity: 1, duration: 1 })
-
-    // (02) 컷 신 텍스트 첫번째 박스 선명하게 나옴
-    .fromTo(cutLine01.value, { "filter": "blur(50px)" }, { "filter": "blur(0px)", duration: 2 },"<")//동시 실행
-
-    // (03) 컷 신 텍스트 박스 안의 문장들 서서히 나타남
-    .fromTo(cut01Title, { opacity: 0 }, { opacity: 1, duration: 3 },"<")//동시 실행
-    .fromTo(cut01Normal, { opacity: 0 }, { opacity: 1, duration: 3 },"<")//동시 실행
-    .fromTo(cut01Normal2, { opacity: 0 }, { opacity: 0, duration: 3 },"<")//동시 실행
-
-    // (04) 컷 신 텍스트 박스 안의 글자들 타자 치듯 등장
-    // 각 글자마다 타자 치듯 등장
-    .from(cut01TitleSpans, {opacity: 0, duration: 0.03, stagger: 0.03, ease: "none"},">-1")//이전 효과 후 바로 실행
-    // 각 글자마다 타자 치듯 등장
-    .from(cut01NormalSpans, {opacity: 0, duration: 0.03, stagger: 0.03, ease: "none"},">")//이전 효과 후 바로 실행
-    
-    // (05) 컷 신 첫번째 텍스트는 점점 사라짐 
-    .to(cut01Normal, { opacity: 0, duration: 1.5 },">+1")//이전 효과 후 1초 뒤 실행
-
-    // (06) 컷 신 두번째 텍스트 나타남
-    .to(cut01Normal2, { opacity: 1, duration: 0.5 },">")//동시 실행
-    .from(cut01Normal2Spans, {opacity: 0, duration: 0.03, stagger: 0.03, ease: "none"},">")//이전 효과 후 바로 실행
-    // // 각 글자마다 타자 치듯 등장
-
-    // ****** 두 번째 씬으로 전환*****
-
-    // (07) 컷 신 첫번째 텍스트 박스 사라짐
-    .to(cutLine01.value, { opacity: 0, "filter": "blur(50px)", "transform": "translateX(-100px)", duration: 4 },">+1")
-    //이전 효과 후 1초 뒤 실행
-
-    // (08) 컷 신 첫번째 배경 서서히 사라짐
-    .to(cutBg01.value, { opacity: 0, duration: 2}, "<")//동시 실행
-    .to(cutBg01.value, { "visibility": "hidden", duration: 3}, ">+0.01")//이전 효과 후 0.5초 뒤 실행
-
-    // (09) 컷 신 텍스트 박스 선명하게 나옴
-    .fromTo(cutLine02.value, { "filter": "blur(50px)", "transform": "translateX(100px)" }, { "filter": "blur(0px)", "transform": "translateX(0px)", duration: 1 },"<")//동시 실행
-
-    // (10) 컷 신 텍스트 박스 안의 문장들 서서히 나타남
-    .fromTo(cut02Title, { opacity: 0 }, { opacity: 1, duration: 3 },"<")//동시 실행
-    .fromTo(cut02Normal, { opacity: 0 }, { opacity: 1, duration: 3 },"<")//동시 실행
-
-    // (11) 컷 신 텍스트 박스 안의 글자들 타자 치듯 등장
-    // 각 글자마다 타자 치듯 등장
-    .from(cut02TitleSpans, {opacity: 0, duration: 0.03, stagger: 0.03, ease: "none"},">-1")//이전 효과 후 바로 실행
-    // 각 글자마다 타자 치듯 등장
-    .from(cut02NormalSpans, {opacity: 0, duration: 0.03, stagger: 0.03, ease: "none"},"<")//이전 효과 후 바로 실행
-    // (12) 컷 신 두번째 배경 서서히 사라짐
-    .to(cutBg02.value, { opacity: 0, duration: 1}, ">+1")//동시 실행
-
-    // 컷 신 pc용
     $ScrollTrigger.matchMedia({
       "(min-width: 1280px)": () => {
+        // **컷신 타임라인 애니메이션**
+        const cutSceneTimeline = $gsap.timeline({ paused: true })
+        // (01) 컷 신 나옴
+        .fromTo(cutScene.value, { opacity: 0 }, { opacity: 1, duration: 1 })
+
+        // (02) 컷 신 텍스트 첫번째 박스 선명하게 나옴
+        .fromTo(cutLine01.value, { "filter": "blur(50px)" }, { "filter": "blur(0px)", duration: 2 },"<")//동시 실행
+
+        // (03) 컷 신 텍스트 박스 안의 문장들 서서히 나타남
+        .fromTo(cut01Title, { opacity: 0 }, { opacity: 1, duration: 3 },"<")//동시 실행
+        .fromTo(cut01Normal, { opacity: 0 }, { opacity: 1, duration: 3 },"<")//동시 실행
+        .fromTo(cut01Normal2, { opacity: 0 }, { opacity: 0, duration: 3 },"<")//동시 실행
+
+        // (04) 컷 신 텍스트 박스 안의 글자들 타자 치듯 등장
+        // 각 글자마다 타자 치듯 등장
+        .from(cut01TitleSpans, {opacity: 0, duration: 0.03, stagger: 0.03, ease: "none"},">-1")//이전 효과 후 바로 실행
+        // 각 글자마다 타자 치듯 등장
+        .from(cut01NormalSpans, {opacity: 0, duration: 0.03, stagger: 0.03, ease: "none"},">")//이전 효과 후 바로 실행
+        
+        // (05) 컷 신 첫번째 텍스트는 점점 사라짐 
+        .to(cut01Normal, { opacity: 0, duration: 1.5 },">+1")//이전 효과 후 1초 뒤 실행
+
+        // (06) 컷 신 두번째 텍스트 나타남
+        .to(cut01Normal2, { opacity: 1, duration: 0.5 },">")//동시 실행
+        .from(cut01Normal2Spans, {opacity: 0, duration: 0.03, stagger: 0.03, ease: "none"},">")//이전 효과 후 바로 실행
+        // // 각 글자마다 타자 치듯 등장
+
+        // ****** 두 번째 씬으로 전환*****
+
+        // (07) 컷 신 첫번째 텍스트 박스 사라짐
+        .to(cutLine01.value, { opacity: 0, "filter": "blur(50px)", "transform": "translateX(-100px)", duration: 4 },">+1")
+        //이전 효과 후 1초 뒤 실행
+
+        // (08) 컷 신 첫번째 배경 서서히 사라짐
+        .to(cutBg01.value, { opacity: 0, duration: 2}, "<")//동시 실행
+        .to(cutBg01.value, { "visibility": "hidden", duration: 3}, ">+0.01")//이전 효과 후 0.5초 뒤 실행
+
+        // (09) 컷 신 텍스트 박스 선명하게 나옴
+        .fromTo(cutLine02.value, { "filter": "blur(50px)", "transform": "translateX(100px)" }, { "filter": "blur(0px)", "transform": "translateX(0px)", duration: 1 },"<")//동시 실행
+
+        // (10) 컷 신 텍스트 박스 안의 문장들 서서히 나타남
+        .fromTo(cut02Title, { opacity: 0 }, { opacity: 1, duration: 3 },"<")//동시 실행
+        .fromTo(cut02Normal, { opacity: 0 }, { opacity: 1, duration: 3 },"<")//동시 실행
+
+        // (11) 컷 신 텍스트 박스 안의 글자들 타자 치듯 등장
+        // 각 글자마다 타자 치듯 등장
+        .from(cut02TitleSpans, {opacity: 0, duration: 0.03, stagger: 0.03, ease: "none"},">-1")//이전 효과 후 바로 실행
+        // 각 글자마다 타자 치듯 등장
+        .from(cut02NormalSpans, {opacity: 0, duration: 0.03, stagger: 0.03, ease: "none"},"<")//이전 효과 후 바로 실행
+        // (12) 컷 신 두번째 배경 서서히 사라짐
+        .to(cutBg02.value, { opacity: 0, duration: 1}, ">+1")//동시 실행
+
+        // 컷 신 pc용
+    
         $ScrollTrigger.create({
           trigger: cutScene.value,
           start: 'top top',
@@ -941,23 +942,73 @@ onMounted(() => {
     // 컷 신 모바일용
     $ScrollTrigger.matchMedia({
       "(max-width: 1279px)": () => {
+        // **컷신 타임라인 애니메이션 모바일**
+        const cutSceneTimelineMobile = $gsap.timeline({ paused: true,  repeat: -1, repeatDelay: 1})
+        // (01) 컷 신 나옴
+        .fromTo(cutScene.value, { opacity: 0 }, { opacity: 1, duration: 1 })
+
+        // (03) 컷 신 텍스트 박스 안의 문장들 서서히 나타남
+        .fromTo(cut01Title, { opacity: 0 }, { opacity: 1, duration: 1.5 },"<")//동시 실행
+        .fromTo(cut01Normal, { opacity: 0 }, { opacity: 1, duration: 1.5 },"<")//동시 실행
+        .fromTo(cut01Normal2, { opacity: 0 }, { opacity: 0, duration: 1.5 },"<")//동시 실행
+
+        // (04) 컷 신 텍스트 박스 안의 글자들 타자 치듯 등장
+        // 각 글자마다 타자 치듯 등장
+        .from(cut01TitleSpans, {opacity: 0, duration: 0.03, stagger: 0.03, ease: "none"},">-1")//이전 효과 후 바로 실행
+        // 각 글자마다 타자 치듯 등장
+        .from(cut01NormalSpans, {opacity: 0, duration: 0.03, stagger: 0.03, ease: "none"},">")//이전 효과 후 바로 실행
+        
+        // (05) 컷 신 첫번째 텍스트는 점점 사라짐 
+        .to(cut01Normal, { opacity: 0, duration: 0.5 },">+1")//이전 효과 후 1초 뒤 실행
+
+        // (06) 컷 신 두번째 텍스트 나타남
+        .to(cut01Normal2, { opacity: 1, duration: 0.25 },">")//동시 실행
+        .from(cut01Normal2Spans, {opacity: 0, duration: 0.03, stagger: 0.03, ease: "none"},">")//이전 효과 후 바로 실행
+        // // 각 글자마다 타자 치듯 등장
+
+        // ****** 두 번째 씬으로 전환*****
+
+        // (07) 컷 신 첫번째 텍스트 박스 사라짐
+        .to(cutLine01.value, { opacity: 0,  duration: 1 },">+1")
+        //이전 효과 후 1초 뒤 실행
+
+        // (08) 컷 신 첫번째 배경 서서히 사라짐
+        .to(cutBg01.value, { opacity: 0, duration: 0.5}, "<")//동시 실행
+        .to(cutBg01.value, { "visibility": "hidden", duration: 1.5}, ">+0.01")//이전 효과 후 0.5초 뒤 실행
+
+        // (09) 컷 신 텍스트 박스 선명하게 나옴
+        .fromTo(cutLine02.value, { opacity: 0 }, { opacity: 1, duration: 0.5 },"<")//동시 실행
+
+        // (10) 컷 신 텍스트 박스 안의 문장들 서서히 나타남
+        .fromTo(cut02Title, { opacity: 0 }, { opacity: 1, duration: 1.5 },"<")//동시 실행
+        .fromTo(cut02Normal, { opacity: 0 }, { opacity: 1, duration: 1.5 },"<")//동시 실행
+        // (11) 컷 신 텍스트 박스 안의 글자들 타자 치듯 등장
+        // 각 글자마다 타자 치듯 등장
+        .from(cut02TitleSpans, {opacity: 0, duration: 0.03, stagger: 0.03, ease: "none"},">-1")//이전 효과 후 바로 실행
+        // 각 글자마다 타자 치듯 등장
+        .from(cut02NormalSpans, {opacity: 0, duration: 0.03, stagger: 0.03, ease: "none"},"<")//이전 효과 후 바로 실행
+        // (12) 컷 신 두번째 배경 서서히 사라짐
+        .to(cutBg02.value, { opacity: 0, duration: 0.5}, ">+1")//동시 실행
 
         $ScrollTrigger.create({
           trigger: cutScene.value,
-          start: "center center",   // 화면 중앙쯤
-          animation: cutSceneTimeline,
-          end: "+=1", 
-          once: true,
-          onEnter: () => {
-            cutSceneTimeline.restart();
-          }
+          start: "top 70%",
+          end: "bottom 30%",
+          //markers: true,
+          animation: cutSceneTimelineMobile, 
+           onEnter: () => cutSceneTimeline.restart(true),
+           onEnterBack: () => cutSceneTimelineMobile.restart(true),
+
+           onLeave: () => cutSceneTimelineMobile.pause(0),
+           onLeaveBack: () => cutSceneTimelineMobile.pause(0)
         });
       }
     });
 
-    replayBtn.value?.addEventListener("click", () => {
-      cutSceneTimeline.restart(true);
-    });
+    // 컷 신 리플레이 버튼 필요할 시
+    // replayBtn.value?.addEventListener("click", () => {
+    //   cutSceneTimeline.restart(true);
+    // });
 
 
     
@@ -1494,11 +1545,11 @@ onMounted(() => {
     const eText1Mobile = lastSceneMobile.value.querySelector(".e-text.sec01");
     const eText2Mobile = lastSceneMobile.value.querySelector(".e-text.sec02");
 
-    const EpilogueMobileTimeline = $gsap.timeline()
-    .to(eCoverDimmedMobile, { opacity: 0, duration: 1, ease: "power2.out"})
+    const EpilogueMobileTimeline = $gsap.timeline({ paused: true })
+    .to(eCoverDimmedMobile, { opacity: 0, duration: 2, ease: "power2.out"})
     .to(eCoverDimmedMobile, { visibility: "hidden"}, ">+0.001")
-    .fromTo(eText1Mobile, { opacity: 0 }, { opacity: 1, duration: 0.5, ease:"power1.in" },">+0.001") // 에필로그 문구1 나타남
-    .to(eText1Mobile, { opacity: 0, duration: 0.5, ease:"power1.out" }, "+=0.5") // 에필로그 문구1 사라짐
+    .fromTo(eText1Mobile, { opacity: 0 }, { opacity: 1, duration: 0.5, ease:"power1.in" },">-1.5") // 에필로그 문구1 나타남
+    .to(eText1Mobile, { opacity: 0, duration: 0.5, ease:"power1.out" }) // 에필로그 문구1 사라짐
     .to(eText1Mobile, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
     .fromTo(eText2Mobile, { opacity: 0, y: 20 }, { y:0, opacity: 1, duration: 0.5, ease:"power1.in" }, "+=0.05") // 에필로그 문구2 나타남
     
@@ -1506,15 +1557,18 @@ onMounted(() => {
       "(max-width: 1279px)": () => {
         $ScrollTrigger.create({
           trigger: lastSceneMobile.value,
-          start: "top+=1 top",
-          end: "+=1000",  
+          start: "top+=1 bottom",
+          end: "bottom top",  
           animation: EpilogueMobileTimeline,  
-          scrub: 0.8,
-          pin: true,
+          //scrub: 2,
+          //pin: true,
           anticipatePin: 1.5,            
           fastScrollEnd: true,         // 빠르게 스크롤 시 '튐' 방지
           invalidateOnRefresh: true,   // 리사이즈 시 값 재계산 (와이드 대응)
-          pinType: "transform"
+          pinType: "transform",
+          onEnter: () => {
+            EpilogueMobileTimeline.restart();
+          }
         })
       }
     })
