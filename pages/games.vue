@@ -71,6 +71,7 @@
           <div class="text-box text-center">
             <span class="lg:text-2xl text-lg font-semibold">Intro</span>
             <p class="text-white xl:text-[3.44rem] lg:text-4xl sm:text-[1.63rem] text-[1.53rem] lg:pt-[20px] pt-[5px] title tracking-[-1.65px] relative font-semibold">
+              <span class="absolute inset-0 block pointer-events-none max-w-[100%] mx-auto"></span>
               사건의 진위, 그 무대의 서막
             </p>
             <div class="text-white xl:text-[1.5rem] lg:text-[1.125rem] text-[0.94rem] leading-[1.6] xl:py-[60px] py-[40px] sub-text lg:mt-[40px] mt-[30px] lg:mx-[0px] mx-[15px] relative">펠리아나 3년, 다시 실버니아로 돌아온 탐정. <br class="lg:hidden block">그리고 현실과 우화가 뒤섞이고, <br class="lg:hidden block">번영과 몰락의 경계에 서 있는 실버니아. <br>
@@ -90,7 +91,8 @@
             <span class="lg:text-2xl text-lg font-semibold relative">독창적 세계관</span>
             <div class="text-white text-2xl lg:leading-[1.7] xl:py-[55px] py-[35px] mt-[30px] sub-text type2 relative">
               <p class="text-white xl:text-[3.44rem] lg:text-4xl sm:text-[1.63rem] text-[1.53rem] title tracking-[-1.65px] relative font-semibold z-10">
-              탐정 서사와 흑동화로 완성된 <br class="lg:hidden block">미스터리 판타지</p>
+                <span class="absolute inset-0 block pointer-events-none max-w-[100%] mx-auto"></span>
+                탐정 서사와 흑동화로 완성된 <br class="lg:hidden block">미스터리 판타지</p>
             </div>
           </div>
         </div>
@@ -125,7 +127,8 @@
             <span class="lg:text-2xl text-lg font-semibold relative">압도적 비주얼과 시대적 배경</span>
             <div class="text-white text-2xl lg:leading-[1.7] xl:py-[55px] py-[35px] mt-[30px] sub-text type2 relative">
               <p class="text-white xl:text-[3.44rem] lg:text-4xl sm:text-[1.63rem] text-[1.53rem] title tracking-[-1.75px] relative font-semibold z-10">
-              압도적 스케일의 살아 숨 쉬는 배경</p>
+                <span class="absolute inset-0 block pointer-events-none max-w-[100%] mx-auto"></span>
+                압도적 스케일의 살아 숨 쉬는 배경</p>
             </div>
           </div>
         </div>
@@ -154,7 +157,8 @@
             <span class="lg:text-2xl text-lg font-semibold relative">강력한 액션과 짜릿한 쾌감</span>
             <div class="text-white text-2xl lg:leading-[1.7] xl:py-[55px] py-[35px] mt-[30px] sub-text type2 relative">
               <p class="text-white xl:text-[3.44rem] lg:text-4xl sm:text-[1.63rem] text-[1.53rem] title tracking-[-1.75px] relative font-semibold z-10">
-              콤보와 QTE로 완성되는 <br class="lg:hidden block">스타일리시 배틀</p>
+                <span class="absolute inset-0 block pointer-events-none max-w-[100%] mx-auto"></span>
+                콤보와 QTE로 완성되는 <br class="lg:hidden block">스타일리시 배틀</p>
             </div>
           </div>
         </div>

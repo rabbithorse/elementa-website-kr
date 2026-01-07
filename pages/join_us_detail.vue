@@ -5,7 +5,30 @@
         <Container class="grid 2xl:gap-x-[9.4%] xl:gap-x-[3.4%] xl:grid-cols-[1fr_auto] grid-cols-1 lg:grid-row-[auto 1fr]">
           <div class="detail-title-area xl:col-span-2">
             <ButtonsBadge category="y">Business</ButtonsBadge>
-            <h3 class="text-white lg:text-[4.69rem] text-[2.38rem] lg:pb-[90px] pb-[30px] lg:pt-[0px] pt-[5px] font-bold">퍼포먼스 마케터</h3>
+            <h3 class="text-white lg:text-[4.69rem] text-[2.38rem] lg:pb-[90px] pb-[30px] lg:pt-[0px] pt-[5px] font-bold flex lg:gap-[18px] sm:gap-[13px] gap-[6px]">
+              <TypographyPrimary>
+                퍼
+              </TypographyPrimary>
+              <TypographyPrimary>
+                포
+              </TypographyPrimary>
+              <TypographyPrimary>
+                먼
+              </TypographyPrimary>
+              <TypographyPrimary>
+                스
+              </TypographyPrimary>
+              <div class="empty-space sm:gap-[0px] gap-[5px]"></div>
+              <TypographyPrimary>
+                마
+              </TypographyPrimary>
+              <TypographyPrimary>
+                케
+              </TypographyPrimary>
+              <TypographyPrimary>
+                터
+              </TypographyPrimary>
+            </h3>
           </div>
           <div class="detail-cont" ref="detailCont">
             <TypographySkewText time="0.0">
