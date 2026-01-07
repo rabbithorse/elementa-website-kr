@@ -507,9 +507,8 @@
        
     </section>
     <section class="accordion-section h-dvh" ref="accordionSection">
-      <div class="accordion-list flex xl:flex-row flex-col h-full w-full">
-        <BlocksAccordion ref="accordionItem">
-        </BlocksAccordion>
+      <div class="accordion-list flex xl:flex-row flex-col h-full w-full relative">
+        <BlocksAccordion ref="accordionItem" />
       </div>
     </section>
     <section class="h-auto" ref="elementaKoreaSection">
@@ -798,15 +797,19 @@ let ctx
 let resizeTimeout;
 let isFirstLoad = true;
 let normalizeInstance;
-onBeforeUnmount(() => {
-  if (ctx) {
-    // ctx.revert();
-    // $ScrollTrigger.getAll().forEach(t => t.kill());
-    // $ScrollTrigger.refresh();
-    normalizeInstance?.kill()
+const router = useRouter();
+
+router.beforeEach(() => {
+  // ScrollTrigger 인스턴스 모두 제거
+  if ($gsap?.ScrollTrigger) {
+    $gsap.ScrollTrigger.getAll().forEach(trigger => trigger.kill());
   }
-  console.log('Gsap context reverted');
-})
+  
+  // Lenis 스크롤 리셋
+  if ($lenis) {
+    $lenis.scrollTo(0, { immediate: true });
+  }
+});
 
 onMounted(async () => {
   normalizeInstance = $ScrollTrigger.normalizeScroll({
@@ -1291,7 +1294,7 @@ onMounted(async () => {
     // 초기 로드 시에만 refresh (깜빡임 방지)
     if (isFirstLoad) {
       isFirstLoad = false;
-      setTimeout(() => $ScrollTrigger.refresh(), 50);
+      setTimeout(() => $ScrollTrigger.refresh());
     }
   }
 
@@ -1312,8 +1315,6 @@ onMounted(async () => {
     //resizeObserver.observe(inspireText.value);
     resizeObserver.observe(newsroomSection.value);
 
-    $lenis.scrollTo(0, { immediate: true });
-
     onUnmounted(() => {
       clearTimeout(resizeTimeout);
       resizeObserver.disconnect();
@@ -1322,6 +1323,17 @@ onMounted(async () => {
     });
 })
 
+onBeforeUnmount(() => {
+  if (ctx) {
+    //ctx.revert();
+    
+    normalizeInstance?.kill()
+  }
+  if ($gsap?.ScrollTrigger) {
+    $gsap.ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  }
+  console.log('Gsap context reverted');
+})
 
 const nodeVersion = process.version
 </script>

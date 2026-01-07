@@ -15,6 +15,13 @@ export default defineNuxtConfig({
       meta: [
         { name: 'description', content: 'Elementa' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
+      ],
+      link: [
+        // Favicon
+        { rel: 'icon', href: '/favicon/favicon.ico', sizes: 'any' },
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon/favicon-16x16.png' },
+        { rel: 'apple-touch-icon', href: '/favicon/apple-touch-icon.png' },
+        { rel: 'manifest', href: '/favicon/site.webmanifest' },
       ]
     }
   },

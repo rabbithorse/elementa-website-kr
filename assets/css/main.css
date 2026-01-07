@@ -94,13 +94,15 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 .mission-section .box-wrap::after {content: ""; display: block; width: 100%; height: 100%; box-shadow: 20px 20px 20px 0 rgba(0, 0, 0, 0.08), 2px 1px 3px 0 rgba(255, 255, 255, 0.40) inset; position: absolute; top: 0; left: 0;}
 .mission-section .box-wrap .glass {padding: 35px 0 40px;}
 
-.accordion-item.opened {flex: 1;}
+.accordion-item {z-index: 2;}
+.accordion-item.opened {flex: 1; z-index: 1}
 .locked .accordion-trigger {width: 100%; backdrop-filter: blur(8px)}
 .locked.locked1 .accordion-trigger {background: rgba(0, 0, 0, 0.10);}
 .locked.locked2 .accordion-trigger {background: rgba(0, 0, 0, 0.40);}
 .locked.locked3 .accordion-trigger {background: rgba(0, 0, 0, 0.80);}
 .locked button {display: flex; flex-direction: column; align-items: center; row-gap: 2rem;}
-.accordion-item .content-bg {z-index: -1;}
+.accordion-item .content-bg {z-index: -5;}
+.accordion-item .accordion-content {overflow: hidden; width: 0; transition: width 0.5s ease;}
 /* .accordion-item .content-text {box-shadow: -30px 0 30px 0 rgba(255, 174, 0, 0.08) inset, 20px 0 50px 0 rgba(255, 187, 0, 0.05) inset, 50px 4px 100px 0 rgba(0, 0, 0, 0.25), 100px 0 200px 0 rgba(255, 174, 0, 0.05) inset, 3px 0 3px 0 rgba(255, 255, 255, 0.40) inset;} */
 .accordion-item .content-text {position: relative;}
 .accordion-item .content-text::before {content: ""; display: block; inset: 0; box-shadow: -30px 0 30px 0 rgba(255, 174, 0, 0.08) inset, 20px 0 50px 0 rgba(255, 187, 0, 0.05) inset, 50px 4px 100px 0 rgba(0, 0, 0, 0.25), 100px 0 200px 0 rgba(255, 174, 0, 0.05) inset, 3px 0 3px 0 rgba(255, 255, 255, 0.40) inset; position: absolute; z-index: 1;}
