@@ -40,7 +40,7 @@
                   :class="{ 'dropdown-up': openDirection === 'up' }"
                 >
                   <li v-for="family in familySites" :key="family.name">
-                    <a :href="family.link" class="option-text text-4 leading-[1.4em] py-[0.7rem] px-8 block hover:bg-[#191919]">{{ family.name }}</a>
+                    <a :href="family.link" target="_blank" class="option-text text-[13px] leading-[1.4em] py-[0.7rem] px-5 block hover:bg-[#323033]">{{ family.name }}</a>
                   </li>
                 </ul>
               </transition>
@@ -86,9 +86,9 @@
   ]
 
   const familySites = [
-    { name: "패밀리사이트 1", link: "#" },
-    { name: "패밀리사이트 2", link: "#" },
-    { name: "패밀리사이트 3", link: "#" },
+    { name: "Family Site 1", link: "https://www.google.com/" },
+    { name: "Family Site 2", link: "https://chatgpt.com/" },
+    { name: "Family Site 3", link: "https://cursor.com/" },
   ]
 
   const footerSocials = [
@@ -173,15 +173,16 @@
     border-left: 1px solid #35383A;
     border-right: 1px solid #35383A;
     border-bottom: 1px solid #35383A;
+    border-top: 1px solid #35383A;
     background: #141217;
   }
 
   .dropdown-list:not(.dropdown-up) {
-    top: calc(100% + 4px);
+    top: calc(100% - 1px);
   }
 
   .dropdown-list.dropdown-up {
-    bottom: 100%;
+    bottom: calc(100% - 1px);
   }
 
   .custom-select .option-text {

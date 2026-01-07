@@ -35,7 +35,7 @@
           scrollTrigger: {
             trigger: primaryChar.value,
             once: false,
-            start: "top 95%",
+            start: "top 90%",
             //markers: true,
             scroller: window,
             invalidateOnRefresh: true,
@@ -44,9 +44,9 @@
 
         PrimaryTl.to(primaryChar.value, {
           x: '0%',
-          duration: 1,
+          duration: 1.6,
           ease: 'power4.out',
-        });
+        }, "+=0.5");
       });
 
       // 초기 로드 시에만 refresh (깜빡임 방지)

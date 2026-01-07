@@ -1,7 +1,11 @@
 <template>
   <header id="header" :scrollDirection="scrollDirection" :class="['fixed w-full lg:py-[1.55rem] sm:py-5 py-3 z-50', headerClass]">
     <Container class="2xl:px-8 lg:px-6 px-4 py-[12px]">
-      <NuxtLink href="/" class="flex items-center 2xl:w-auto md:w-32 w-[88px]">
+      <NuxtLink 
+        href="/" 
+        @click="handleLogoClick"
+        class="flex items-center 2xl:w-auto md:w-32 w-[88px]"
+      >
         <Logo class="text-white" />
       </NuxtLink>
       <Menu class="xl:flex hidden" :menuItems="menuItems" />
@@ -31,12 +35,19 @@
   </header>
 </template>
 
-<script setup lang="ts">
+<script setup>
   import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
   import Menu from './Menu.vue'
   import MobileMenu from './MobileMenu.vue'
   
-  const { $lenis } = useNuxtApp()
+  const { $gsap, $ScrollTrigger, $lenis } = useNuxtApp()
+  const route = useRouter();
+
+  const handleLogoClick = async (e) => {
+    if (route.path === '/') {
+      window.location.reload();
+    }
+  };
 
   const isOpen = ref(false);
   const subMenuOpen = ref(false);
@@ -80,11 +91,20 @@
   const lastScroll = ref(0)
   const waiting = ref(false)
 
+  const scrollTop = 2
+
   function handleScroll() {
     if (waiting.value) return
     waiting.value = true
 
     const current = window.scrollY
+
+    if (current <= scrollTop) {
+      scrollDirection.value = 1
+      lastScroll.value = current
+      waiting.value = false
+      return
+    }
 
     if (current > lastScroll.value) {
       scrollDirection.value = -1   // down

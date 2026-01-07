@@ -509,12 +509,12 @@
           y: '0%',
           ease: 'none',
           duration: 0.5,
-          delay: 0.5,
+          delay: 0.8,
           scrollTrigger: {
             trigger: introSection.value,
             start: 'top 80%',
           }
-        })
+        });
 
         let cards = missionSection.value.querySelectorAll('.mission-img-wrapper .card');
         let cardsArray = Array.from(cards);
@@ -942,6 +942,7 @@
   .company-scroll .content-card {
     clip-path: inset(50% 30% 20% 30% round 15%); 
     transition: clip-path 1s ease 0.2s;
+    position: relative;
   }
 
   .company-scroll .content-card img {

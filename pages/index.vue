@@ -55,7 +55,7 @@
                 <TypographySecondary>Design the Future of Play,</TypographySecondary>
                 <TypographySecondary>Create a Culture the World Shares</TypographySecondary>
               </div>
-              <div class="w-fit polygon">
+              <div class="w-fit polygon opacity-0" ref="visualPolygonRef">
                 <div class="inner">
                   <div class="text-list flex gap-x-7 md:py-[0.9rem] py-[0.7rem]">
                     <span class="md:text-lg text-base text-white">Innovation</span>
@@ -636,7 +636,7 @@
           </div>
           <BlocksScrollSlider />
           <div class="content-button md:hidden flex justify-center mt-5">
-            <ButtonsBasic color="blue" class="max-md:w-full [&>*]:w-full">View more</ButtonsBasic>
+            <ButtonsBasic href="/newsroom" color="blue" class="max-md:w-full [&>*]:w-full">View more</ButtonsBasic>
           </div>
         </div>
         
@@ -756,6 +756,7 @@ const videoSmallShape = ref(null)
 const visualSection = ref(null)
 const videoSubWrap = ref(null)
 const visualTitle = ref(null)
+const visualPolygonRef = ref(null)
 const missionSection = ref(null)
 const missionBox = ref(null)
 const weCreate = ref(null)
@@ -811,9 +812,24 @@ router.beforeEach(() => {
   }
 });
 
+const createAnimations = () => {
+  $gsap.set(videoWrapRef.value, { clearProps: 'all' });
+  $gsap.set(videoWrapRef.value, {
+    x: '3%',
+    opacity: 0,
+    clipPath: 'inset(40% 40% round 20px)',
+  });
+  
+  $gsap.fromTo(
+    videoWrapRef.value,
+    { x: '3%', opacity: 0 },
+    { x: '0%', opacity: 1, duration: 2, ease: 'power2.out' }
+  );
+};
+
 onMounted(async () => {
   normalizeInstance = $ScrollTrigger.normalizeScroll({
-    momentum: 0.3,
+    momentum: 0.54,
     allowNestedScroll: true,
     lockAxis: true,
   })
@@ -836,7 +852,16 @@ onMounted(async () => {
         }
       })
 
-      introTl.fromTo(videoWrap.value, {
+      introTl.fromTo(visualPolygonRef.value,  {
+        x: '-30%',
+        opacity: 0,
+      }, {
+        x: '-15%',
+        opacity: 1,
+        duration: 1.5,
+        ease: 'none',
+      }, 0)
+      .fromTo(videoWrap.value, {
         x: '3%',
         opacity: 0,
       }, {

@@ -45,12 +45,18 @@
 
   .temporary-overlay span {
     display: inline-block;
-    font-size: 2rem;
+    font-size: 1.2rem;
     font-weight: bold;
     color: #fff;
   }
 
   .newsroom-section .card-img {
     position: relative;
+  }
+
+  @media (min-width: 768px) {
+    .temporary-overlay span {
+      font-size: 2rem;
+    }
   }
 </style>

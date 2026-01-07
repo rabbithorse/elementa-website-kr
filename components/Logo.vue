@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img src="/logo/logoHeader.svg" alt="Elementa Company Logo">
+    <img src="/logo/logoHeader.png" alt="Elementa Company Logo">
   </div>
 </template>
 
