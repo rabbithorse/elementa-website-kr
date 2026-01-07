@@ -20,54 +20,50 @@
   let ctx
   let resizeTimeout;
   let isFirstLoad = true;
-  // onBeforeUnmount(() => {
-  //   if (ctx) {
-  //     ctx.revert();
-  //     $ScrollTrigger.getAll().forEach(t => t.kill());
-  //     $ScrollTrigger.refresh();
-  //   }
-  // });
+  onBeforeUnmount(() => {
+    if (ctx) {
+      ctx.revert();
+      $ScrollTrigger.getAll().forEach(t => t.kill());
+      $ScrollTrigger.refresh();
+    }
+  });
 
   onMounted(() => {    
-    const initAnimation = () => {
+    //const initAnimation = () => {
       ctx = $gsap.context(() => {
-        scrollTriggerInstance = $ScrollTrigger.create({
-          trigger: primaryChar.value,
-          once: false,
-          start: "top 80%",
-          //markers: true,
-          scroller: window,
-          invalidateOnRefresh: true,
-          onEnter: () => {
-            $gsap.to(primaryChar.value, {
-              x: '0%',
-              duration: 1,
-              ease: 'power4.out',
-            });
+        const PrimaryTl = $gsap.timeline({
+          scrollTrigger: {
+            trigger: primaryChar.value,
+            once: false,
+            start: "top 95%",
+            //markers: true,
+            scroller: window,
+            invalidateOnRefresh: true,
           }
         })
+
+        PrimaryTl.to(primaryChar.value, {
+          x: '0%',
+          duration: 1,
+          ease: 'power4.out',
+        });
       });
 
       // 초기 로드 시에만 refresh (깜빡임 방지)
       if (isFirstLoad) {
         isFirstLoad = false;
-        setTimeout(() => $ScrollTrigger.refresh(), 50);
+        setTimeout(() => $ScrollTrigger.refresh(), 10);
       }
-    };
+    // };
 
-    initAnimation();
+    // initAnimation();
 
     // 이후 리사이즈 감지
     const resizeObserver = new ResizeObserver(() => {
       clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        initAnimation();
-      }, 200); // 조금 더 여유있게
     });
 
     resizeObserver.observe(primaryChar.value);
-
-    $lenis.scrollTo(0, { immediate: true });
 
     onUnmounted(() => {
       clearTimeout(resizeTimeout);
