@@ -25,11 +25,20 @@
           <!-- Family Site -->
           <div class="max-lg:w-full">
             <div class="familySite custom-select relative lg:w-[15.6rem] w-full cursor-pointer" ref="selectRef">
-              <div class="selected lg:py-3 py-2 px-5 relative" @click="toggleDropdown" :class="{ 'opened': familySiteOpen }">
+              <div 
+                class="selected lg:py-3 py-2 px-5 relative" 
+                @click="toggleDropdown" 
+                :class="{ 'opened': isOpen }"
+              >
                 <span class="selected-text text-[0.875rem]">Family site</span>
               </div>
-              <transition :name="openDirection === 'up' ? 'slide-up' : 'slide-down'" class="absolute w-full left-0 z-10 origin-top">
-                <ul class="options transition-all duration-300">
+              <transition :name="openDirection === 'up' ? 'slide-up' : 'slide-down'" >
+                <ul 
+                  v-if="isOpen"
+                  ref="dropdownRef"
+                  class="options dropdown-list"
+                  :class="{ 'dropdown-up': openDirection === 'up' }"
+                >
                   <li v-for="family in familySites" :key="family.name">
                     <a :href="family.link" class="option-text text-4 leading-[1.4em] py-[0.7rem] px-8 block hover:bg-[#191919]">{{ family.name }}</a>
                   </li>
@@ -89,18 +98,15 @@
   ]
 
   const checkDropdownDirection = async () => {
-    await nextTick()
-    
-    if (selectRef.value && dropdownRef.value) {
+    if (selectRef.value) {
       const selectRect = selectRef.value.getBoundingClientRect()
-      const dropdownHeight = dropdownRef.value.offsetHeight
       const viewportHeight = window.innerHeight
       
-      // 아래 남은 공간 계산
+      const estimatedDropdownHeight = familySites.length * 42 + 8
+      
       const spaceBelow = viewportHeight - selectRect.bottom
       
-      // 드롭다운이 들어갈 공간이 충분한지 확인 (여유 20px)
-      if (spaceBelow < dropdownHeight + 20) {
+      if (spaceBelow < estimatedDropdownHeight + 20) {
         openDirection.value = 'up'
       } else {
         openDirection.value = 'down'
@@ -109,10 +115,10 @@
   }
 
   const toggleDropdown = () => {
-    isOpen.value = !isOpen.value
-    if (isOpen.value) {
+    if (!isOpen.value) {
       checkDropdownDirection()
     }
+    isOpen.value = !isOpen.value
   }
 
   const selectOption = (option) => {
@@ -158,14 +164,69 @@
     transform: translateY(-50%) rotate(180deg);
   }
 
-  .custom-select .options {
+  .custom-select .dropdown-list {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    max-height: 280px;
     border-left: 1px solid #35383A;
     border-right: 1px solid #35383A;
     border-bottom: 1px solid #35383A;
     background: #141217;
   }
 
+  .dropdown-list:not(.dropdown-up) {
+    top: calc(100% + 4px);
+  }
+
+  .dropdown-list.dropdown-up {
+    bottom: 100%;
+  }
+
   .custom-select .option-text {
     backdrop-filter: blur(10px);
+  }
+
+
+  /* dropdown open animation */
+  /* going down */
+  .slide-down-enter-active {
+    animation: slideDown 0.2s ease-out;
+  }
+
+  .slide-down-leave-active {
+    animation: slideDown 0.15s ease-in reverse;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* going up */
+  .slide-up-enter-active {
+    animation: slideUp 0.2s ease-out;
+  }
+
+  .slide-up-leave-active {
+    animation: slideUp 0.15s ease-in reverse;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 </style>
