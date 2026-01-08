@@ -1,13 +1,12 @@
 <template>
   <header id="header" :scrollDirection="scrollDirection" :class="['fixed w-full lg:py-[1.55rem] sm:py-5 py-3 z-50', headerClass]">
     <Container class="2xl:px-8 lg:px-6 px-4 py-[12px]">
-      <NuxtLink 
-        href="/" 
-        @click="handleLogoClick"
+      <button 
+        @click="goHome"
         class="flex items-center 2xl:w-auto md:w-32 w-[88px]"
       >
         <Logo class="text-white" />
-      </NuxtLink>
+      </button>
       <Menu class="xl:flex hidden" :menuItems="menuItems" />
     </Container>
     <button
@@ -43,11 +42,17 @@
   const { $gsap, $ScrollTrigger, $lenis } = useNuxtApp()
   const route = useRouter();
 
-  const handleLogoClick = async (e) => {
-    if (route.path === '/') {
-      window.location.reload();
+  function goHome() {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual'
     }
-  };
+
+    // ✅ 무조건 최상단으로 만든 후 리로드
+    window.scrollTo(0, 0)
+
+    // ✅ 메인 강제 리로드
+    window.location.href = '/'
+  }
 
   const isOpen = ref(false);
   const subMenuOpen = ref(false);

@@ -743,7 +743,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
 import { EffectGlass } from '#components';
 import Container from '~/components/Container.vue';
 
@@ -801,7 +801,7 @@ let normalizeInstance;
 const router = useRouter();
 
 router.beforeEach(() => {
-  // ScrollTrigger 인스턴스 모두 제거
+  // ScrollTrigger 인스턴스 모두 제거 
   if ($gsap?.ScrollTrigger) {
     $gsap.ScrollTrigger.getAll().forEach(trigger => trigger.kill());
   }
@@ -812,30 +812,26 @@ router.beforeEach(() => {
   }
 });
 
-const createAnimations = () => {
-  $gsap.set(videoWrapRef.value, { clearProps: 'all' });
-  $gsap.set(videoWrapRef.value, {
-    x: '3%',
-    opacity: 0,
-    clipPath: 'inset(40% 40% round 20px)',
-  });
-  
-  $gsap.fromTo(
-    videoWrapRef.value,
-    { x: '3%', opacity: 0 },
-    { x: '0%', opacity: 1, duration: 2, ease: 'power2.out' }
-  );
-};
+let initAnimation;
 
 onMounted(async () => {
+  await nextTick()
+
   normalizeInstance = $ScrollTrigger.normalizeScroll({
-    momentum: 0.54,
+    momentum: 0.56,
     allowNestedScroll: true,
     lockAxis: true,
   })
 
-  const initAnimation = () => {
-    ctx?.revert();
+  initAnimation = () => {
+    if (ctx) {
+      ctx.revert();
+      ctx.kill();
+      ctx = null;
+    }
+
+    videoWrap.value.removeAttribute('style');
+
     const characterRevealItems = missionSection.value.querySelectorAll('.primary-character');
     const characterRevealArray = Array.from(characterRevealItems);
     const characterDisappearItems = missionSection.value.querySelectorAll('.primary-character--disappear');
@@ -843,510 +839,532 @@ onMounted(async () => {
     const characterDelayItems = missionSection.value.querySelectorAll('.primary-character--delay');
     const characterDelayArray = Array.from(characterDelayItems);
 
-    ctx = $gsap.context(() => {
-      const introTl = $gsap.timeline({
-        scrollTrigger: {
-          trigger: visualSection.value,
-          start: "top 80%",
-          fastScrollEnd: false
-        }
-      })
-
-      introTl.fromTo(visualPolygonRef.value,  {
-        x: '-30%',
-        opacity: 0,
-      }, {
-        x: '-15%',
-        opacity: 1,
-        duration: 1.5,
-        ease: 'none',
-      }, 0)
-      .fromTo(videoWrap.value, {
-        x: '3%',
-        opacity: 0,
-      }, {
-        x: '0%',
-        opacity: 1,
-        duration: 2,
-        ease: 'none',
-      }, 0)
-      .fromTo(videoBigShape.value, {
-        x: '8%',
-      }, {
-        x: '0%',
-        duration: 2,
-        ease: 'none',
-      },0)
-      .fromTo(videoSubWrap.value, {
-        x: '3%',
-        opacity: 0,
-      }, {
-        x: '0%',
-        opacity: 1,
-        duration: 2,
-        ease: 'none',
-      }, 0)
-      .fromTo(videoSmallShape.value, {
-        x: '5%',
-      }, {
-        x: '0%',
-        duration: 2,
-        ease: 'none',
-      }, "<")
-      
-
-      const tl = $gsap.timeline({
-        scrollTrigger: {
-          trigger: visualSection.value,
-          start: "top top",
-          pin: true, 
-          scrub: 1,
-          //pinSpacing: true,
-          //markers: true,
-          end: () => "+=700%",
-          fastScrollEnd: false
-        }
-      });
-      tl.fromTo(videoWrap.value,
-        {
-          clipPath: 'polygon(46% 0%, 74.5% 0%, 57.5% 100%, 29% 100%)',
+    requestAnimationFrame(() => {
+      ctx = $gsap.context(() => {
+        
+        // 초기 상태 강제 설정
+        $gsap.set(videoWrap.value, { 
+          x: '3%',
+          opacity: 0,
           scale: 1,
+          clipPath: 'polygon(46% 0%, 74.5% 0%, 57.5% 100%, 29% 100%)',
+        });
+
+        const introTl = $gsap.timeline({
+          scrollTrigger: {
+            trigger: visualSection.value,
+            start: "top 80%",
+            fastScrollEnd: false,
+            immediateRender: false,
+          }
+        })
+
+        introTl.fromTo(visualPolygonRef.value,  {
+          x: '-30%',
+          opacity: 0,
         }, {
-          clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-          scale: 1.4,
-          
+          x: '-15%',
+          opacity: 1,
+          duration: 1.5,
+          ease: 'none',
+        }, 0)
+        .to(videoWrap.value, {
+          x: '0%',
+          opacity: 1,
+          duration: 2,
+          ease: 'none',
+        }, 0)
+        .fromTo(videoBigShape.value, {
+          x: '8%',
+        }, {
+          x: '0%',
+          duration: 2,
+          ease: 'none',
+        },0)
+        .fromTo(videoSubWrap.value, {
+          x: '3%',
+          opacity: 0,
+        }, {
+          x: '0%',
+          opacity: 1,
+          duration: 2,
+          ease: 'none',
+        }, 0)
+        .fromTo(videoSmallShape.value, {
+          x: '5%',
+        }, {
+          x: '0%',
+          duration: 2,
+          ease: 'none',
+        }, "<")
+        
+
+        const tl = $gsap.timeline({
+          scrollTrigger: {
+            trigger: visualSection.value,
+            start: "top top",
+            pin: true, 
+            scrub: 1,
+            //pinSpacing: true,
+            //markers: true,
+            end: () => "+=1000%",
+            fastScrollEnd: false
+          }
+        });
+        tl.to(videoWrap.value,
+          {
+            clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+            scale: 1.4,
+            
+            scrollTrigger: {
+              end: () => "+=100%",
+              scrub: 1,
+              ease: 'none',
+              pin: true,
+            },
+          }, 0)
+        .to(visualTitle.value, 
+        {
+          xPercent: -150,
           scrollTrigger: {
             end: () => "+=100%",
             scrub: 1,
-            ease: 'none',
-            pin: true,
-          },
-        }, 0)
-      .to(visualTitle.value, 
-      {
-        xPercent: -150,
-        scrollTrigger: {
-          end: () => "+=100%",
-          scrub: 1,
-        }
-      }, 0)
-      .fromTo(videoSubWrap.value, 
-      {
-        clipPath: 'polygon(46% 0%, 74.5% 0%, 57.5% 100%, 29% 100%)',
-        scale: 1,
-      },
-      {
-        xPercent: 100,
-        clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-        scrollTrigger: {
-          end: () => "+=100%",
-          scrub: 1,
-        }
-      }, 0)
-      .to('.line-before', {
-        x: "-190%",
-        rotation: "-17deg",
-        ease: 'power2.out',
-        scrollTrigger: {
-          end: () => "+=100%",
-          scrub: 1,
-        }
-      }, '<')
-      .to('.line-after', {
-        x: "120%",
-        rotation: "-17deg",
-        ease: 'power2.out',
-        scrollTrigger: {
-          end: () => "+=100%",
-          scrub: 1,
-        }
-      }, '<')
-      .fromTo(videoWrapLayer.value, {
-        opacity: 0,
-        zIndex: 5,
-        visibility: 'hidden',
-      },
-      {
-        opacity: 0.5,
-        zIndex: 5,
-        visibility: 'visible',
-        ease: 'none',
-        scrollTrigger: {
-          //trigger: videoWrapLayer.value,
-          end: () => "+=100%",
-          //end: () => "+=" + (visualSection.value.offsetHeight * 0.1),
-          scrub: 1,
-        }
-      })
-      .to(missionSection.value, {
-        yPercent: -100,
-        ease: "none",
-        scrub: 1,
-        scrollTrigger: {
-          //trigger: missionSection.value,
-          start: () => "+=" + (visualSection.value.offsetHeight * 0.3),
-          end: () => "+=100%",
-          scrub: 1,
-        }
-      }, ">1")
-      
-
-
-      
-      
-
-      let currentStep = -1
-      const animations = []
-
-      // 각 애니메이션을 개별 타임라인으로 생성 (paused 상태)
-      const anim1 = $gsap.timeline({ paused: true })
-        .to(characterRevealArray, {
-          x: 0,
-          opacity: 1,
-          duration: 0.3, // 실제 애니메이션 시간
-          ease: "none"
-        })
-        .fromTo(missionBox.value, 
-          { yPercent: 100, opacity: 0 },
-          { yPercent: 0, opacity: 1, duration: 0.2, stagger: 0.05, ease: "power2.out" }, ">"
-        )
-
-      const anim2 = $gsap.timeline({ paused: true })
-        .to(characterDisappearArray, {
-          x: 0,
-          opacity: 1,
-          duration: 0.3, // 실제 애니메이션 시간
-          ease: "none"
-        }, "<")
-        .to(characterDisappearArray, {
-          x: 150,
-          duration: 0.3,
-          ease: "none",
-        }, "+=0.1")
-
-      const anim3 = $gsap.timeline({ paused: true })
-        .to(characterDelayArray, {
-          x: 0,
-          opacity: 1,
-          visibility: 'visible',
-          ease: "none",
-          duration: 0.3,
-        }, "+=0.05")
-
-        //const anim4 =  $gsap.timeline({ paused: true })
-        
-
-      animations.push(anim1, anim2, anim3);
-
-
-      $ScrollTrigger.create({
-        trigger: missionSection.value,
-        //pin: true,
-        start: "top top",
-        end: "+=600%",
-        scrub: 2.5,
-        anticipatePin: 1,
-        fastScrollEnd: false,
-        onEnter: () => {
-          // pin이 시작될 때 y 위치 초기화
-          // $gsap.set(missionSection.value, { 
-          //   yPercent: 0,
-          //   clearProps: 'transform' // 기존 transform 제거
-          // })
-        },
-        onUpdate: (self) => {
-          const margin = 0.3; 
-          if (self.progress < margin) return;
-
-          // progress를 (margin ~ 1) 사이에서 (0 ~ 1)로 재계산
-          const adjustedProgress = (self.progress - margin) / (1 - margin);
-          const newStep = Math.floor(adjustedProgress * 3);
-
-          if (newStep !== currentStep && newStep > currentStep) {
-            for (let i = currentStep + 1; i <= newStep; i++) {
-              if (i >= 0 && i < animations.length) {
-                animations[i].play();
-              }
-            }
-            currentStep = newStep;
           }
+        }, 0)
+        .fromTo(videoSubWrap.value, 
+        {
+          clipPath: 'polygon(46% 0%, 74.5% 0%, 57.5% 100%, 29% 100%)',
+          scale: 1,
         },
-        
-      })
-
-      
-
-      
-
-      // 아코디언 섹션
-      const accordionItems = accordionSection.value.querySelectorAll('.accordion-list > *');
-      const accordionArray = Array.from(accordionItems);
-
-      $gsap.timeline({
-        scrollTrigger: {
-          trigger: accordionSection.value,
-          start: 'top top',
-          pin: true,
-          pinSpacing: true,
-          end: () => "+=" + (accordionSection.value.offsetHeight * 1.5),
-          fastScrollEnd: false,
-          //scrub: 1,
-        }
-      })
-    
-      accordionArray.forEach((item, i) => {
-        $gsap.from(item, {
+        {
+          xPercent: 100,
+          clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
           scrollTrigger: {
-            trigger: item,
-            start: 'top 50%',
-            duration: 0.15,
+            end: () => "+=100%",
+            scrub: 1,
+          }
+        }, 0)
+        .to('.line-before', {
+          x: "-190%",
+          rotation: "-17deg",
+          ease: 'power2.out',
+          scrollTrigger: {
+            end: () => "+=100%",
+            scrub: 1,
+          }
+        }, '<')
+        .to('.line-after', {
+          x: "120%",
+          rotation: "-17deg",
+          ease: 'power2.out',
+          scrollTrigger: {
+            end: () => "+=100%",
+            scrub: 1,
+          }
+        }, '<')
+        .fromTo(videoWrapLayer.value, {
+          opacity: 0,
+          zIndex: 5,
+          visibility: 'hidden',
+        },
+        {
+          opacity: 0.5,
+          zIndex: 5,
+          visibility: 'visible',
+          ease: 'none',
+          scrollTrigger: {
+            //trigger: videoWrapLayer.value,
+            end: () => "+=100%",
+            //end: () => "+=" + (visualSection.value.offsetHeight * 0.1),
+            scrub: 1,
+          }
+        })
+        .to(missionSection.value, {
+          yPercent: -100,
+          ease: "none",
+          scrub: 1,
+          scrollTrigger: {
+            //trigger: missionSection.value,
+            start: () => "+=" + (visualSection.value.offsetHeight * 0.3),
+            end: () => "+=100%",
+            scrub: 1,
+          }
+        }, ">1")
+        
+
+
+        
+        
+
+        let currentStep = -1
+        const animations = []
+
+        // 각 애니메이션을 개별 타임라인으로 생성 (paused 상태)
+        const anim1 = $gsap.timeline({ paused: true })
+          .to(characterRevealArray, {
+            x: 0,
+            opacity: 1,
+            duration: 0.3, // 실제 애니메이션 시간
+            ease: "none"
+          })
+          .fromTo(missionBox.value, 
+            { yPercent: 100, opacity: 0 },
+            { yPercent: 0, opacity: 1, duration: 0.2, stagger: 0.05, ease: "power2.out" }, ">"
+          )
+
+        const anim2 = $gsap.timeline({ paused: true })
+          .to(characterDisappearArray, {
+            x: 0,
+            opacity: 1,
+            duration: 0.3, // 실제 애니메이션 시간
+            ease: "none"
+          }, "<")
+          .to(characterDisappearArray, {
+            x: 150,
+            duration: 0.3,
+            ease: "none",
+          }, "+=0.1")
+
+        const anim3 = $gsap.timeline({ paused: true })
+          .to(characterDelayArray, {
+            x: 0,
+            opacity: 1,
+            visibility: 'visible',
+            ease: "none",
+            duration: 0.3,
+          }, "+=0.05")
+
+          //const anim4 =  $gsap.timeline({ paused: true })
+          
+
+        animations.push(anim1, anim2, anim3);
+
+
+        $ScrollTrigger.create({
+          trigger: missionSection.value,
+          //pin: true,
+          start: "top top",
+          end: "+=900%",
+          scrub: 2.5,
+          anticipatePin: 1,
+          fastScrollEnd: false,
+          onEnter: () => {
+            // pin이 시작될 때 y 위치 초기화
+            // $gsap.set(missionSection.value, { 
+            //   yPercent: 0,
+            //   clearProps: 'transform' // 기존 transform 제거
+            // })
+          },
+          onUpdate: (self) => {
+            const margin = 0.3; 
+            if (self.progress < margin) return;
+
+            // progress를 (margin ~ 1) 사이에서 (0 ~ 1)로 재계산
+            const adjustedProgress = (self.progress - margin) / (1 - margin);
+            const newStep = Math.floor(adjustedProgress * 3);
+
+            if (newStep !== currentStep && newStep > currentStep) {
+              for (let i = currentStep + 1; i <= newStep; i++) {
+                if (i >= 0 && i < animations.length) {
+                  animations[i].play();
+                }
+              }
+              currentStep = newStep;
+            }
+          },
+          
+        })
+
+        
+
+        
+
+        // 아코디언 섹션
+        const accordionItems = accordionSection.value.querySelectorAll('.accordion-list > *');
+        const accordionArray = Array.from(accordionItems);
+
+        $gsap.timeline({
+          scrollTrigger: {
+            trigger: accordionSection.value,
+            start: 'top top',
+            pin: true,
+            pinSpacing: true,
+            end: () => "+=" + (accordionSection.value.offsetHeight * 1.5),
             fastScrollEnd: false,
             //scrub: 1,
-          },
-          x: 100,
-          y: 50,
-          opacity: 0,
-          stagger: 0.2,
+          }
         })
+      
+        accordionArray.forEach((item, i) => {
+          $gsap.from(item, {
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 50%',
+              duration: 0.15,
+              fastScrollEnd: false,
+              //scrub: 1,
+            },
+            x: 100,
+            y: 50,
+            opacity: 0,
+            stagger: 0.2,
+          })
+        });
+
+        const wetheworldTl = $gsap.timeline({
+          scrollTrigger: {
+            trigger: wetheworldSection.value,
+            pin: true,
+            anticipatePin: 1,
+            start: 'top top',
+            end: () => "+=800%",
+            scrub: 1.5,
+            //fastScrollEnd: false,
+            //invalidateOnRefresh: true,
+            //markers: true
+          },
+          
+        })
+
+        // WE THE WORLD 섹션
+        const gotopCurtainItems = wetheworldSection.value.querySelectorAll('.gotopCurtain .curtain-item');
+        const godownCurtainItems = wetheworldSection.value.querySelectorAll('.godownCurtain .curtain-item');
+        const gotopCurtainItemArray = Array.from(gotopCurtainItems);
+        const godownCurtainItemArray = Array.from(godownCurtainItems);
+        const blurValues = [150, 80, 25];
+        const opacityValues = [0.42, 0.41, 0.4];
+        const goYValues = ['84%', '78%', '72.5%'];
+
+        wetheworldTl.to(wetheworldbg1.value, {
+          opacity: 1,
+          visibility: 'visible',
+          start: 'top top',
+          end: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
+        }, 0)
+        .to(weText.value, {
+          color: 'black',
+          start: 'top top',
+          end: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
+        }, 0)
+        .to(theworldText.value, {
+          color: 'black',
+          start: 'top top',
+          end: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
+        }, 0)
+        .to(gotopCurtainItemArray,
+        {
+          start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
+          duration: 0.05,
+          opacity: (i) => `${opacityValues[i]}`,
+          backdropFilter: (i) => `blur(${blurValues[i]}px)`,
+        })
+        .to(godownCurtainItemArray, 
+        {
+          start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
+          duration: 0.05,
+          opacity: (i) => `${opacityValues[i]}`,
+          backdropFilter: (i) => `blur(${blurValues[i]}px)`,
+        }, "<")
+        .to(weText.value, {
+          y: '-80vh',
+          start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
+          end: () => "+=" + (wetheworldSection.value.offsetHeight * 2.5),
+          scrub: 8,
+        })
+        .to(theworldText.value, {
+          y: '80vh',
+          start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
+          end: () => "+=" + (wetheworldSection.value.offsetHeight * 2.5),
+          scrub: 8,
+        }, "<")
+        .to(gotopCurtainItemArray, {
+          y: (i) => `-${goYValues[i]}`,
+          stagger: 0.03,
+        }, "<")
+        .to(godownCurtainItemArray, {
+          y: (i) => `${goYValues[i]}`,
+          stagger: 0.03,
+        }, "<")
+        .to(wetheworldSlogan.value, {
+          height: '100%',
+        }, "-=0.5")
+        .to(inspireText.value, {
+          opacity: 0,
+        }, ">")
+        .to(connectText.value, {
+          opacity: 1,
+          filter: "blur(0px)",
+          duration: 0.5,
+        })
+        .to(wetheworldbg2.value, {
+          opacity: 1,
+          visibility: 'visible',
+        }, "<")
+        .to(connectText.value, {
+          opacity: 0,
+        }, ">0.5")
+        .to(changeText.value, {
+          opacity: 1,
+          filter: "blur(0px)",
+          duration: 0.5,
+        })
+        .to(wetheworldbg3.value, {
+          opacity: 1,
+          visibility: 'visible',
+          duration: 1,
+        }, "<")
+
+        
+        // 뉴스룸 섹션
+
+        // const glass = glassRef.value
+        // const slider1 = flowLeft.value
+        // const slider2 = flowRight.value
+
+        // 초기 위치 설정 (시작할 때 여백)
+        // $gsap.set(slider1, { x: 50 }) // 왼쪽 50px 여백에서 시작
+        // $gsap.set(slider2, { x: -(slider2.scrollWidth - glass.clientWidth) -50 }) // 오른쪽 50px 여백에서 시작
+
+        // 스크롤 트리거 설정 - 초기에는 pin 비활성화
+        // scrollTrigger = $ScrollTrigger.create({
+        //   trigger: glass,
+        //   start: 'top top',
+        //   end: '+=300%',
+        //   pin: false,
+        //   pinSpacing: true,
+        //   anticipatePin: 1
+        // })
+
+      // 휠 이벤트 리스너 추가
+      //glass.addEventListener('wheel', handleWheel, { passive: false })
+      
+      $ScrollTrigger.matchMedia({
+        "(min-width: 1024px)": function() {
+          const elementaKoreaTl = $gsap.timeline({
+            scrollTrigger: {
+              trigger: elementaKoreaSection.value,
+              start: 'top 80%',
+              scrub: 1,
+              fastScrollEnd: false
+            }
+          })
+
+          elementaKoreaTl.to(sliderImg.value, {
+            maxWidth: '30rem',
+            ease: 'power2.out',
+            duration: 5,
+          })
+        },
+
+        "(max-width: 1024px)": function() {
+          const elementaKoreaTl = $gsap.timeline({
+            scrollTrigger: {
+              trigger: sliderImg.value,
+              start: 'top 80%',
+              //end: () => "+=" + (elementaKoreaSection.value.offsetHeight * 1.5),
+              scrub: 1.5,
+              fastScrollEnd: false
+            }
+          })
+
+          elementaKoreaTl.to(sliderImg.value, {
+            maxWidth: '38%',
+            ease: 'power2.out',
+            duration: 5,
+          })
+        },
+
+      })
+
+        // 카드 스크롤 애니메이션
+        const cardList = document.querySelector('.careers-section .slide-wrapper');
+
+        // 카드 스크롤 애니메이션
+        $gsap.timeline({
+          scrollTrigger: {
+            trigger: cardList,
+            start: 'top 90%',
+            end: 'top 90%',
+            fastScrollEnd: false
+            // markers: true
+        }
+        }).fromTo(cardList, 
+          { y: '30%', opacity: 0 }, 
+          { y: '0%', opacity: 1, duration: 1.5, ease: 'ease'   
+        })
+
+        if (careerSliderRef.value) {
+          careerSliderRef.value.style.touchAction = 'pan-x pan-y'
+          careerSliderRef.value.setAttribute('data-lenis-prevent', '')
+        }
+
+        // Swiper 초기화 전에 이벤트 캡처 설정
+        const swiperEl = careerSliderRef.value?.querySelector('.swiper')
+        
+        if (swiperEl) {
+          const preventLenis = (e) => {
+            e.stopImmediatePropagation()
+          }
+          
+          swiperEl.addEventListener('touchstart', preventLenis, { 
+            capture: true, 
+            passive: false 
+          })
+          swiperEl.addEventListener('touchmove', preventLenis, { 
+            capture: true, 
+            passive: false 
+          })
+        }
       });
 
-      const wetheworldTl = $gsap.timeline({
-        scrollTrigger: {
-          trigger: wetheworldSection.value,
-          pin: true,
-          anticipatePin: 1,
-          start: 'top top',
-          end: () => "+=800%",
-          scrub: 1.5,
-          //fastScrollEnd: false,
-          //invalidateOnRefresh: true,
-          //markers: true
-        },
-        
-      })
-
-      // WE THE WORLD 섹션
-      const gotopCurtainItems = wetheworldSection.value.querySelectorAll('.gotopCurtain .curtain-item');
-      const godownCurtainItems = wetheworldSection.value.querySelectorAll('.godownCurtain .curtain-item');
-      const gotopCurtainItemArray = Array.from(gotopCurtainItems);
-      const godownCurtainItemArray = Array.from(godownCurtainItems);
-      const blurValues = [150, 80, 25];
-      const opacityValues = [0.42, 0.41, 0.4];
-      const goYValues = ['84%', '78%', '72.5%'];
-
-      wetheworldTl.to(wetheworldbg1.value, {
-        opacity: 1,
-        visibility: 'visible',
-        start: 'top top',
-        end: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
-      }, 0)
-      .to(weText.value, {
-        color: 'black',
-        start: 'top top',
-        end: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
-      }, 0)
-      .to(theworldText.value, {
-        color: 'black',
-        start: 'top top',
-        end: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
-      }, 0)
-      .to(gotopCurtainItemArray,
-      {
-        start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
-        duration: 0.05,
-        opacity: (i) => `${opacityValues[i]}`,
-        backdropFilter: (i) => `blur(${blurValues[i]}px)`,
-      })
-      .to(godownCurtainItemArray, 
-      {
-        start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
-        duration: 0.05,
-        opacity: (i) => `${opacityValues[i]}`,
-        backdropFilter: (i) => `blur(${blurValues[i]}px)`,
-      }, "<")
-      .to(weText.value, {
-        y: '-80vh',
-        start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
-        end: () => "+=" + (wetheworldSection.value.offsetHeight * 2.5),
-        scrub: 8,
-      })
-      .to(theworldText.value, {
-        y: '80vh',
-        start: () => "+=" + (wetheworldSection.value.offsetHeight * 1.5),
-        end: () => "+=" + (wetheworldSection.value.offsetHeight * 2.5),
-        scrub: 8,
-      }, "<")
-      .to(gotopCurtainItemArray, {
-        y: (i) => `-${goYValues[i]}`,
-        stagger: 0.03,
-      }, "<")
-      .to(godownCurtainItemArray, {
-        y: (i) => `${goYValues[i]}`,
-        stagger: 0.03,
-      }, "<")
-      .to(wetheworldSlogan.value, {
-        height: '100%',
-      }, "-=0.5")
-      .to(inspireText.value, {
-        opacity: 0,
-      }, ">")
-      .to(connectText.value, {
-        opacity: 1,
-        filter: "blur(0px)",
-        duration: 0.5,
-      })
-      .to(wetheworldbg2.value, {
-        opacity: 1,
-        visibility: 'visible',
-      }, "<")
-      .to(connectText.value, {
-        opacity: 0,
-      }, ">0.5")
-      .to(changeText.value, {
-        opacity: 1,
-        filter: "blur(0px)",
-        duration: 0.5,
-      })
-      .to(wetheworldbg3.value, {
-        opacity: 1,
-        visibility: 'visible',
-        duration: 1,
-      }, "<")
-
-      
-      // 뉴스룸 섹션
-
-      // const glass = glassRef.value
-      // const slider1 = flowLeft.value
-      // const slider2 = flowRight.value
-
-      // 초기 위치 설정 (시작할 때 여백)
-      // $gsap.set(slider1, { x: 50 }) // 왼쪽 50px 여백에서 시작
-      // $gsap.set(slider2, { x: -(slider2.scrollWidth - glass.clientWidth) -50 }) // 오른쪽 50px 여백에서 시작
-
-      // 스크롤 트리거 설정 - 초기에는 pin 비활성화
-      // scrollTrigger = $ScrollTrigger.create({
-      //   trigger: glass,
-      //   start: 'top top',
-      //   end: '+=300%',
-      //   pin: false,
-      //   pinSpacing: true,
-      //   anticipatePin: 1
-      // })
-
-    // 휠 이벤트 리스너 추가
-    //glass.addEventListener('wheel', handleWheel, { passive: false })
-    
-    $ScrollTrigger.matchMedia({
-      "(min-width: 1024px)": function() {
-        const elementaKoreaTl = $gsap.timeline({
-          scrollTrigger: {
-            trigger: elementaKoreaSection.value,
-            start: 'top 80%',
-            scrub: 1,
-            fastScrollEnd: false
-          }
-        })
-
-        elementaKoreaTl.to(sliderImg.value, {
-          maxWidth: '30rem',
-          ease: 'power2.out',
-          duration: 5,
-        })
-      },
-
-      "(max-width: 1024px)": function() {
-        const elementaKoreaTl = $gsap.timeline({
-          scrollTrigger: {
-            trigger: sliderImg.value,
-            start: 'top 80%',
-            //end: () => "+=" + (elementaKoreaSection.value.offsetHeight * 1.5),
-            scrub: 1.5,
-            fastScrollEnd: false
-          }
-        })
-
-        elementaKoreaTl.to(sliderImg.value, {
-          maxWidth: '38%',
-          ease: 'power2.out',
-          duration: 5,
-        })
-      },
-
-    })
-
-      // 카드 스크롤 애니메이션
-      const cardList = document.querySelector('.careers-section .slide-wrapper');
-
-      // 카드 스크롤 애니메이션
-      $gsap.timeline({
-        scrollTrigger: {
-          trigger: cardList,
-          start: 'top 90%',
-          end: 'top 90%',
-          fastScrollEnd: false
-          // markers: true
-      }
-      }).fromTo(cardList, 
-        { y: '30%', opacity: 0 }, 
-        { y: '0%', opacity: 1, duration: 1.5, ease: 'ease'   
-      })
-
-      if (careerSliderRef.value) {
-        careerSliderRef.value.style.touchAction = 'pan-x pan-y'
-        careerSliderRef.value.setAttribute('data-lenis-prevent', '')
-      }
-
-      // Swiper 초기화 전에 이벤트 캡처 설정
-      const swiperEl = careerSliderRef.value?.querySelector('.swiper')
-      
-      if (swiperEl) {
-        const preventLenis = (e) => {
-          e.stopImmediatePropagation()
-        }
-        
-        swiperEl.addEventListener('touchstart', preventLenis, { 
-          capture: true, 
-          passive: false 
-        })
-        swiperEl.addEventListener('touchmove', preventLenis, { 
-          capture: true, 
-          passive: false 
-        })
+      // 초기 로드 시에만 refresh (깜빡임 방지)
+      if (isFirstLoad) {
+        isFirstLoad = false;
+        setTimeout(() => $ScrollTrigger.refresh());
       }
     });
-
-    // 초기 로드 시에만 refresh (깜빡임 방지)
-    if (isFirstLoad) {
-      isFirstLoad = false;
-      setTimeout(() => $ScrollTrigger.refresh());
-    }
+ 
   }
 
- // 초기 실행
-    initAnimation();
+  // 초기 실행
+  initAnimation();
 
-    // 이후 리사이즈 감지
-    const resizeObserver = new ResizeObserver(() => {
-      clearTimeout(resizeTimeout);
-      // resizeTimeout = setTimeout(() => {
-      //   initAnimation();
-      // }, 200); // 조금 더 여유있게
-    });
+  window.addEventListener('page:reinit', () => {
+    if (videoWrap.value) {
+      videoWrap.value.removeAttribute('style');
+    }
+    setTimeout(init, 100);
+  });
 
-    resizeObserver.observe(introSection.value);
-    resizeObserver.observe(missionSection.value);
-    resizeObserver.observe(wetheworldSection.value);
-    //resizeObserver.observe(inspireText.value);
-    resizeObserver.observe(newsroomSection.value);
+  // 이후 리사이즈 감지
+  const resizeObserver = new ResizeObserver(() => {
+    clearTimeout(resizeTimeout);
+    // resizeTimeout = setTimeout(() => {
+    //   initAnimation();
+    // }, 200); // 조금 더 여유있게
+  });
 
-    onUnmounted(() => {
-      clearTimeout(resizeTimeout);
-      resizeObserver.disconnect();
-      
-      ctx?.revert();
-    });
+  resizeObserver.observe(missionSection.value);
+  resizeObserver.observe(wetheworldSection.value);
+  //resizeObserver.observe(inspireText.value);
+  resizeObserver.observe(newsroomSection.value);
+
+  onUnmounted(() => {
+    window.removeEventListener('page:reinit', initAnimation);
+    clearTimeout(resizeTimeout);
+    resizeObserver.disconnect();
+    
+    ctx?.revert();
+  });
 })
+
+watch(
+  () => router.fullPath,
+  async () => {
+    await nextTick()
+    initAnimation()
+  }
+)
 
 onBeforeUnmount(() => {
   if (ctx) {
