@@ -541,12 +541,12 @@
             pin: true,
             trigger: missionSection.value,
             start: 'top top-=200',
-            end: "+=1000%",
+            end: "+=1200%",
             scrub: true,
             onUpdate: (self) => {
               const p = self.progress;
 
-              const wait = 0.18;
+              const wait = 0.25;
               if (p < wait) return;
 
               const local = (p - wait) / (1 - wait);
@@ -573,26 +573,26 @@
               }
             }
           }
-        })
+        }, "+=0.2")
 
         missionTl.fromTo(bgTitle.value, {
           x: '0%'
         }, {
           x: '-250%',
           duration: 0.6
-        }, 0.05)
+        }, "+=0.15")
         .fromTo(missionImgWrap.value, {
           x: '300%'
         }, {
           x: '0',
-          duration: 0.2
-        }, 0)
+          duration: 0.15
+        }, "<")
         .fromTo(missionTextWrap.value, {
           x: '-103%'
         }, {
           x: '-2%',
           duration: 0.5
-        }, "<0.15");
+        }, ">-0.05");
 
         function updateZIndex(active, direction) {
           // 원하는 패턴에 맞춰 넣으면 됨
@@ -738,7 +738,7 @@
             scrollTrigger: {
               trigger: el,
               start: "top bottom",
-              duration: 1,
+              duration: 2,
               scrub: true,
               onEnter: () => el.classList.add('on'),
             }
@@ -941,7 +941,7 @@
 
   .company-scroll .content-card {
     clip-path: inset(50% 30% 20% 30% round 15%); 
-    transition: clip-path 1s ease 0.2s;
+    transition: clip-path .7s ease 0.2s;
     position: relative;
   }
 

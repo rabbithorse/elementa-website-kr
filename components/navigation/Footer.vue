@@ -4,9 +4,9 @@
       <div class="flex lg:flex-row flex-col gap-y-12 justify-between">
         <div class="flex flex-col lg:gap-y-12 gap-y-5">
           <!-- Logo -->
-          <NuxtLink to="/" class="flex items-center">
+          <button class="flex items-center">
             <LogoFooter class="text-white lg:w-auto w-48" />
-          </NuxtLink>
+          </button>
           <!-- Footer Links + Info -->
           <nav class="footer-menu">
             <ul class="footer-menu-list flex xl:gap-x-[3.125rem] lg:gap-x-8 gap-x-5 max-lg:flex-wrap">
