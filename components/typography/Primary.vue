@@ -29,34 +29,50 @@
   });
 
   onMounted(() => {    
-    //const initAnimation = () => {
       ctx = $gsap.context(() => {
-        const PrimaryTl = $gsap.timeline({
-          scrollTrigger: {
-            trigger: primaryChar.value,
-            once: false,
-            start: "top 90%",
-            //markers: true,
-            scroller: window,
-            invalidateOnRefresh: true,
+
+        $ScrollTrigger.matchMedia({
+          "(min-width: 1024px)": function() {
+            const PrimaryTl = $gsap.timeline({
+              scrollTrigger: {
+                trigger: primaryChar.value,
+                once: false,
+                start: "top 90%",
+                //markers: true,
+                scroller: window,
+                invalidateOnRefresh: true,
+              }
+            })
+
+            PrimaryTl.to(primaryChar.value, {
+              x: '0%',
+              duration: 1.6,
+              ease: 'power4.out',
+            }, "+=0.5");
+          },
+
+          "(max-width: 1024px)": function() {
+            const PrimaryTl = $gsap.timeline({
+              scrollTrigger: {
+                trigger: primaryChar.value,
+                once: false,
+                start: "top 98%",
+                //markers: true,
+                scroller: window,
+                invalidateOnRefresh: true,
+              }
+            })
+
+            PrimaryTl.to(primaryChar.value, {
+              x: '0%',
+              duration: 1.6,
+              ease: 'power4.out',
+            }, 0);
+
           }
-        })
+        });
 
-        PrimaryTl.to(primaryChar.value, {
-          x: '0%',
-          duration: 1.6,
-          ease: 'power4.out',
-        }, "+=0.5");
       });
-
-      // 초기 로드 시에만 refresh (깜빡임 방지)
-      if (isFirstLoad) {
-        isFirstLoad = false;
-        setTimeout(() => $ScrollTrigger.refresh(), 10);
-      }
-    // };
-
-    // initAnimation();
 
     // 이후 리사이즈 감지
     const resizeObserver = new ResizeObserver(() => {

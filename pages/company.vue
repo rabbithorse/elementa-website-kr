@@ -941,7 +941,7 @@
 
   .company-scroll .content-card {
     clip-path: inset(50% 30% 20% 30% round 15%); 
-    transition: clip-path 1s ease 0.2s;
+    transition: clip-path .7s ease 0.2s;
     position: relative;
   }
 

@@ -46,11 +46,7 @@
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual'
     }
-
-    // ✅ 무조건 최상단으로 만든 후 리로드
-    window.scrollTo(0, 0)
-
-    // ✅ 메인 강제 리로드
+    window.scrollTo(0, 0);
     window.location.href = '/'
   }
 
