@@ -5,7 +5,7 @@
         <Container class="grid 2xl:gap-x-[9.4%] xl:gap-x-[3.4%] xl:grid-cols-[1fr_auto] grid-cols-1 lg:grid-row-[auto 1fr]">
           <div class="detail-title-area xl:col-span-2">
             <ButtonsBadge category="y">Business</ButtonsBadge>
-            <h3 class="text-white lg:text-[4.69rem] text-[2.38rem] lg:pb-[90px] pb-[30px] lg:pt-[0px] pt-[5px] font-bold flex lg:gap-[18px] sm:gap-[13px] gap-[6px]">
+            <h3 class="text-white lg:text-[4.69rem] text-[2.38rem] lg:pb-[90px] pb-[30px] lg:pt-[0px] pt-[5px] font-bold flex lg:gap-[18px] sm:gap-[13px] gap-[6px] sm:pl-[15px] pl-[6px]">
               <TypographyPrimary>
                 퍼
               </TypographyPrimary>
@@ -31,13 +31,13 @@
             </h3>
           </div>
           <div class="detail-cont" ref="detailCont">
-            <TypographySkewText time="0.0">
+            <TypographySkewText time="0.6">
             <p class="font-bold lg:text-[1.75rem] text-lg text-white leading-[2.63rem] lg:pb-[30px] pb-[10px] deco-text flex gap-[10px] relative items-center">신입 ∙ 0년~2년</p>
             </TypographySkewText>
-            <TypographySkewText time="0.3">
+            <TypographySkewText time="0.9">
             <span class="text-[var(--text-disabled)] lg:text-[0.94rem] text-xs">포지션 소개</span>
             </TypographySkewText>
-            <TypographySkewText time="0.6" class="lg:mt-[10px] mt-[5px] lg:mb-[3.75rem] mb-[2.5rem]">
+            <TypographySkewText time="1.2" class="lg:mt-[10px] mt-[5px] lg:mb-[3.75rem] mb-[2.5rem]">
               <p class="text-white lg:text-lg text-sm break-keep lg:leading-[1.81rem] leading-[1.51rem]">퍼포먼스 마케터는 온라인 광고 채널(Google, Meta, Naver, Kakao 등)을 운영하며 KPI 달성을 위한 캠페인을 설계하고 최적화하는 역할을 담당합니다. 데이터 기반으로 예산을 효율적으로 집행하고, 퍼널 분석과 A/B 테스트 등을 통해 신규 유저 유입과 리텐션을 동시에 강화합니다.</p>
             </TypographySkewText>
             <div class="detail-glass-box lg:p-[2.25rem] px-[1.5rem] py-[1rem] flex justify-between items-center relative overflow-hidden" ref="detailGlassBox">
@@ -271,7 +271,7 @@
       opacity: 1,
       duration: 0.8,
       y:0,
-      delay: 0.8
+      delay: 1.2
     });
 
     // 사이드 메뉴 고정
