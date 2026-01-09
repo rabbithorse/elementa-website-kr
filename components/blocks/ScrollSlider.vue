@@ -340,7 +340,8 @@
 
   // 마우스 휠 이벤트 핸들러
   const handleWheel = (e) => {
-    if (!isHovered.value || isTouchDevice.value) return
+    if (isTouchDevice.value) return
+    if (!isHovered.value) return
 
     e.preventDefault()
     e.stopPropagation()
@@ -469,15 +470,49 @@
     } else {
       nextTick(() => {
       
-      // Swiper 영역 lenis 차단
       const swiper1El = document.querySelector('.swiper1')
+      if (!swiper1El) return
 
-      const stopLenisOnTouch = (e) => {
-        e.stopPropagation()
-      }
-      
-      swiper1El?.addEventListener('touchstart', stopLenisOnTouch, { passive: true })
-      swiper1El?.addEventListener('touchmove', stopLenisOnTouch, { passive: true })
+      let startX = 0
+      let startY = 0
+      let isHorizontal = false
+
+      swiper1El.addEventListener(
+        'touchstart',
+        (e) => {
+          const t = e.touches[0]
+          startX = t.clientX
+          startY = t.clientY
+          isHorizontal = false
+        },
+        { passive: true }
+      )
+
+      swiper1El.addEventListener(
+        'touchmove',
+        (e) => {
+          const t = e.touches[0]
+          const diffX = Math.abs(t.clientX - startX)
+          const diffY = Math.abs(t.clientY - startY)
+
+          // 👉 가로 스와이프일 때만 Lenis 개입 차단
+          if (diffX > diffY && diffX > 10) {
+            if (!isHorizontal) {
+              isHorizontal = true
+              $lenis.stop()
+            }
+          }
+        },
+        { passive: true }
+      )
+
+      swiper1El.addEventListener(
+        'touchend',
+        () => {
+          $lenis.start()
+        },
+        { passive: true }
+      )
 
       swiper1 = new Swiper('.swiper1', {
         slidesPerView: '1.2',
@@ -490,12 +525,12 @@
             slidesPerView: 2,
           },
         },
-        freeMode: {
-          enabled: true,
-          momentum: true,
-          momentumRatio: 1,
-          momentumVelocityRatio: 1,
-        },
+        // freeMode: {
+        //   enabled: true,
+        //   momentum: true,
+        //   momentumRatio: 1,
+        //   momentumVelocityRatio: 1,
+        // },
         grabCursor: true,
         touchRatio: 1,
         resistance: true,
@@ -508,6 +543,7 @@
         slidesOffsetBefore: padding.value,
         slidesOffsetAfter: padding.value,
         speed: 600,
+        
       })
       
     })
@@ -557,6 +593,10 @@
 </script>
 
 <style>
+  .swiper1 {
+    touch-action: pan-x pan-y;
+  }
+
   .custom-cursor {
     position: fixed !important;
     pointer-events: none;

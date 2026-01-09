@@ -68,7 +68,6 @@
               duration: 1.6,
               ease: 'power4.out',
             }, 0);
-
           }
         });
 

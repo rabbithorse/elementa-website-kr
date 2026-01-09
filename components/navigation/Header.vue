@@ -13,7 +13,7 @@
       :class="{
         'opened shadow-md bg-opacity-75 rounded-md': isOpen, '': !isOpen
       }"
-      class="fixed z-[100] text-white transition duration-300 xl:hidden lg:p-[1.1rem] md:p-[1rem] p-3 rounded-md lg:top-[1.55rem] sm:top-5 top-3 lg:right-[2%] right-[5%] hamburger-open"
+      class="fixed z-[100] text-white transition duration-300 xl:hidden xl:p-[1.1rem] md:p-[1rem] p-3 rounded-md xl:top-[1.55rem] sm:top-5 top-3 lg:right-[2%] right-[5%] hamburger-open"
       @click="toggle"
       :isOpen="isOpen"
     >

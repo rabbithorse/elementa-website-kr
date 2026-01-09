@@ -245,7 +245,7 @@
                   </div>
                   <div class="character-wrap inline-block overflow-clip ">
                     <div class="primary-character primary-character--disappear">
-                      <!-- <svg xmlns="http://www.w3.org/2000/svg" width="40" height="179" viewBox="0 0 40 179" fill="none" class="aspect-[40/179]">
+                      <!-- <svg xmlns="http://www.w3.org/2000/svg" width="40" height="179" viewBox="0 0 40 179" fill="none" class="aspect-[40/177]">
                         <foreignObject x="-40" y="-40" width="119.38" height="258.2"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_24_1212_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M0 178.2V0H39.38V178.2H0Z" fill="url(#paint0_linear_24_1212)"/>
                         <defs>
                           <clipPath id="bgblur_0_24_1212_clip_path" transform="translate(40 40)"><path d="M0 178.2V0H39.38V178.2H0Z"/>
@@ -255,7 +255,7 @@
                       </linearGradient>
                       </defs>
                       </svg> -->
-                      <img src="~assets/images/main/gradient/paradigm-i.svg" alt="" class="aspect-[40/179]">
+                      <img src="~assets/images/main/gradient/paradigm-i.svg" alt="" class="aspect-[40/177]">
                     </div>
                   </div>
                   <div class="character-wrap inline-block overflow-clip ">
@@ -354,7 +354,7 @@
                   </div>
                   <div class="character-wrap inline-block overflow-clip ">
                     <div class="primary-character--delay">
-                      <!-- <svg xmlns="http://www.w3.org/2000/svg" width="40" height="179" viewBox="0 0 40 179" fill="none" class="aspect-[40/179]">
+                      <!-- <svg xmlns="http://www.w3.org/2000/svg" width="40" height="179" viewBox="0 0 40 179" fill="none" class="aspect-[40/177]">
                         <foreignObject x="-40" y="-40" width="119.38" height="258.2"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_39_2049_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M0 178.2V0H39.38V178.2H0Z" fill="url(#paint0_linear_39_2049)"/>
                         <defs>
                         <clipPath id="bgblur_0_39_2049_clip_path" transform="translate(40 40)"><path d="M0 178.2V0H39.38V178.2H0Z"/>
@@ -364,7 +364,7 @@
                         </linearGradient>
                         </defs>
                       </svg> -->
-                      <img src="~assets/images/main/gradient/lasting-i.svg" alt="" class="aspect-[40/179]">
+                      <img src="~assets/images/main/gradient/lasting-i.svg" alt="" class="aspect-[40/177]">
                     </div>
                   </div>
                   <div class="character-wrap inline-block overflow-clip ">
@@ -402,7 +402,7 @@
                 <span class="primary-text">
                   <div class="character-wrap inline-block overflow-clip ">
                     <div class="primary-character--delay">
-                      <!-- <svg xmlns="http://www.w3.org/2000/svg" width="40" height="179" viewBox="0 0 40 179" fill="none" class="aspect-[40/179]">
+                      <!-- <svg xmlns="http://www.w3.org/2000/svg" width="40" height="179" viewBox="0 0 40 179" fill="none" class="aspect-[40/177]">
                         <foreignObject x="-40" y="-40" width="119.38" height="258.2"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_39_2046_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="40" d="M0 178.2V0H39.38V178.2H0Z" fill="url(#paint0_linear_39_2046)"/>
                         <defs>
                           <clipPath id="bgblur_0_39_2046_clip_path" transform="translate(40 40)"><path d="M0 178.2V0H39.38V178.2H0Z"/>
@@ -412,7 +412,7 @@
                       </linearGradient>
                       </defs>
                       </svg> -->
-                      <img src="~assets/images/main/gradient/impact-i.svg" alt="" class="aspect-[40/179]">
+                      <img src="~assets/images/main/gradient/impact-i.svg" alt="" class="aspect-[40/177]">
                     </div>
                   </div>
                   <div class="character-wrap inline-block overflow-clip ">
@@ -609,7 +609,7 @@
         </span>
       </h2>
     </section>
-    <section class="newsroom-section relative md:pt-[6.25rem] pt-[3.25rem] pb-[6rem] min-h-dvh" ref="newsroomSection">
+    <section class="newsroom-section relative md:pt-[6.25rem] pt-[3.25rem] pb-[6rem] xl:min-h-dvh sm:min-h-[50svh] min-h-svh" ref="newsroomSection">
       <div class="bg-text flex xl:flex-col flex-col-reverse absolute xl:bottom-0 bottom-[3.75rem] left-0 ">
         <span class="text-[#403B4E] md:text-[5rem] text-[2.5rem] font-bold font-oswald">NEW PARADIGM, LASTING IMPACT. ELEMENTA KOREA</span>
         <h2 class="md:text-[28rem] text-[12.5rem] gradient-text grey font-bold">ELEMENTA ELEMENTA</h2>
@@ -678,6 +678,14 @@
                 :allowTouchMove="true"
                 :simulateTouch="true"
                 :passiveListeners="false"
+                :direction="horizontal"
+                :grabCursor="true"
+                :touchRatio="1"
+                :resistance="true"
+                :resistanceRatio="0.2"
+                :touchStartPreventDefault="false"
+                :touchMoveStopPropagation="true"
+                :nested="true"
                 @swiper="onSwiper"
                 @slideChange="onSlideChange"
                 :breakpoints="{
@@ -860,12 +868,12 @@ onMounted(async () => {
         })
 
         introTl.fromTo(visualPolygonRef.value,  {
-          x: '-30%',
+          x: '-25%',
           opacity: 0,
         }, {
           x: '-15%',
           opacity: 1,
-          duration: 1.5,
+          duration: 1,
           ease: 'none',
         }, 0)
         .to(videoWrap.value, {
@@ -898,186 +906,346 @@ onMounted(async () => {
           ease: 'none',
         }, "<")
         
+        $ScrollTrigger.matchMedia({
+          "(min-width: 1024px)": function() {
+            const tl = $gsap.timeline({
+              scrollTrigger: {
+                trigger: visualSection.value,
+                start: "top top",
+                pin: true, 
+                scrub: 1,
+                //pinSpacing: true,
+                //markers: true,
+                end: () => "+=1000%",
+                fastScrollEnd: false,
+              }
+            });
+            tl.to(videoWrap.value,
+              {
+                clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+                scale: 1.4,
+                
+                scrollTrigger: {
+                  end: () => "+=100%",
+                  scrub: 1,
+                  ease: 'none',
+                  pin: true,
+                },
+              }, 0)
+            .to(visualTitle.value, 
+            {
+              xPercent: -150,
+              scrollTrigger: {
+                end: () => "+=100%",
+                scrub: 1,
+              }
+            }, 0)
+            .fromTo(videoSubWrap.value, 
+            {
+              clipPath: 'polygon(46% 0%, 74.5% 0%, 57.5% 100%, 29% 100%)',
+              scale: 1,
+            },
+            {
+              xPercent: 100,
+              clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+              scrollTrigger: {
+                end: () => "+=100%",
+                scrub: 1,
+              }
+            }, 0)
+            .to('.line-before', {
+              x: "-190%",
+              rotation: "-17deg",
+              ease: 'power2.out',
+              scrollTrigger: {
+                end: () => "+=100%",
+                scrub: 1,
+              }
+            }, '<')
+            .to('.line-after', {
+              x: "120%",
+              rotation: "-17deg",
+              ease: 'power2.out',
+              scrollTrigger: {
+                end: () => "+=100%",
+                scrub: 1,
+              }
+            }, '<')
+            .fromTo(videoWrapLayer.value, {
+              opacity: 0,
+              zIndex: 5,
+              visibility: 'hidden',
+            },
+            {
+              opacity: 0.5,
+              zIndex: 5,
+              visibility: 'visible',
+              ease: 'none',
+              scrollTrigger: {
+                //trigger: videoWrapLayer.value,
+                end: () => "+=100%",
+                //end: () => "+=" + (visualSection.value.offsetHeight * 0.1),
+                scrub: 1,
+              }
+            })
+            .to(missionSection.value, {
+              yPercent: -100,
+              ease: "none",
+              scrub: 1,
+              scrollTrigger: {
+                //trigger: missionSection.value,
+                start: () => "+=0%",
+                end: () => "+=100%",
+                scrub: 1,
+              }
+            }, ">1")
 
-        const tl = $gsap.timeline({
-          scrollTrigger: {
-            trigger: visualSection.value,
-            start: "top top",
-            pin: true, 
-            scrub: 1,
-            //pinSpacing: true,
-            //markers: true,
-            end: () => "+=1000%",
-            fastScrollEnd: false
+            let currentStep = -1
+            const animations = []
+
+            // 각 애니메이션을 개별 타임라인으로 생성 (paused 상태)
+            const anim1 = $gsap.timeline({ paused: true })
+              .to(characterRevealArray, {
+                x: 0,
+                opacity: 1,
+                duration: 0.3, // 실제 애니메이션 시간
+                ease: "none"
+              })
+              .fromTo(missionBox.value, 
+                { yPercent: 100, opacity: 0 },
+                { yPercent: 0, opacity: 1, duration: 0.2, stagger: 0.05, ease: "power2.out" }, ">"
+              )
+
+            const anim2 = $gsap.timeline({ paused: true })
+              .to(characterDisappearArray, {
+                x: 0,
+                opacity: 1,
+                duration: 0.3, // 실제 애니메이션 시간
+                ease: "power2.out",
+              }, "<")
+              .to(characterDisappearArray, {
+                x: 150,
+                duration: 0.5,
+                ease: "power2.out",
+              }, ">0.1")
+
+            const anim3 = $gsap.timeline({ paused: true })
+              .to(characterDelayArray, {
+                x: 0,
+                opacity: 1,
+                visibility: 'visible',
+                ease: "power2.out",
+                duration: 0.3,
+              }, ">0.1")
+
+              //const anim4 =  $gsap.timeline({ paused: true })
+              
+
+            animations.push(anim1, anim2, anim3);
+
+
+            $ScrollTrigger.create({
+              trigger: missionSection.value,
+              start: "top top",
+              end: "+=900%",
+              scrub: 2.5,
+              anticipatePin: 1,
+              fastScrollEnd: false,
+
+              onUpdate(self) {
+                const margin = 0.3
+                if (self.progress < margin) return
+
+                const adjustedProgress = (self.progress - margin) / (1 - margin)
+                const newStep = Math.floor(adjustedProgress * animations.length)
+
+                if (newStep > currentStep) {
+                  for (let i = currentStep + 1; i <= newStep; i++) {
+                    if (animations[i]) animations[i].play()
+                  }
+                  currentStep = newStep
+                }
+              },
+              
+            })
+          },
+
+          "(max-width: 1023px)": function() {
+            const tl = $gsap.timeline({
+              scrollTrigger: {
+                trigger: visualSection.value,
+                start: "top top",
+                pin: true, 
+                scrub: 1,
+                //pinSpacing: true,
+                //markers: true,
+                end: () => "+=600%",
+                //fastScrollEnd: false,
+              }
+            });
+            tl.to(videoWrap.value,
+              {
+                clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+                scale: 1.4,
+                
+                scrollTrigger: {
+                  end: () => "+=100%",
+                  scrub: 1,
+                  ease: 'none',
+                  pin: true,
+                },
+              }, 0)
+            .to(visualTitle.value, 
+            {
+              xPercent: -150,
+              scrollTrigger: {
+                end: () => "+=100%",
+                scrub: 1,
+              }
+            }, 0)
+            .fromTo(videoSubWrap.value, 
+            {
+              clipPath: 'polygon(46% 0%, 74.5% 0%, 57.5% 100%, 29% 100%)',
+              scale: 1,
+            },
+            {
+              xPercent: 100,
+              clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+              scrollTrigger: {
+                end: () => "+=100%",
+                scrub: 1,
+              }
+            }, 0)
+            .to('.line-before', {
+              x: "-190%",
+              rotation: "-17deg",
+              ease: 'power2.out',
+              scrollTrigger: {
+                end: () => "+=100%",
+                scrub: 1,
+              }
+            }, '<')
+            .to('.line-after', {
+              x: "120%",
+              rotation: "-17deg",
+              ease: 'power2.out',
+              scrollTrigger: {
+                end: () => "+=100%",
+                scrub: 1,
+              }
+            }, '<')
+            .fromTo(videoWrapLayer.value, {
+              opacity: 0,
+              zIndex: 5,
+              visibility: 'hidden',
+            },
+            {
+              opacity: 0.5,
+              zIndex: 5,
+              visibility: 'visible',
+              ease: 'none',
+              scrollTrigger: {
+                //trigger: videoWrapLayer.value,
+                end: () => "+=100%",
+                //end: () => "+=" + (visualSection.value.offsetHeight * 0.1),
+                scrub: 1,
+              }
+            })
+            .to(missionSection.value, {
+              yPercent: -100,
+              ease: "none",
+              scrub: 1,
+              scrollTrigger: {
+                //trigger: missionSection.value,
+                start: () => "+=" + (visualSection.value.offsetHeight * 0.3),
+                end: () => "+=100%",
+                scrub: 1,
+              }
+            }, ">1")
+
+            let currentStep = -1
+            const animations = []
+
+            // 각 애니메이션을 개별 타임라인으로 생성 (paused 상태)
+            const anim1 = $gsap.timeline({ paused: true })
+              .to(characterRevealArray, {
+                x: 0,
+                opacity: 1,
+                duration: 0.3, // 실제 애니메이션 시간
+                ease: "none"
+              })
+              .fromTo(missionBox.value, 
+                { yPercent: 100, opacity: 0 },
+                { yPercent: 0, opacity: 1, duration: 0.2, stagger: 0.05, ease: "power2.out" }, ">"
+              )
+
+            const anim2 = $gsap.timeline({ paused: true })
+              .to(characterDisappearArray, {
+                x: 0,
+                opacity: 1,
+                duration: 0.3, // 실제 애니메이션 시간
+                ease: "power2.out",
+              }, "<")
+              .to(characterDisappearArray, {
+                x: 150,
+                duration: 0.3,
+                ease: "power2.out",
+              }, ">")
+
+            const anim3 = $gsap.timeline({ paused: true })
+              .to(characterDelayArray, {
+                x: 0,
+                opacity: 1,
+                visibility: 'visible',
+                ease: "power2.out",
+                duration: 0.3,
+              }, ">0.3")
+
+              //const anim4 =  $gsap.timeline({ paused: true })
+              
+
+            animations.push(anim1, anim2, anim3);
+
+
+            $ScrollTrigger.create({
+              trigger: missionSection.value,
+              //pin: true,
+              start: "top top",
+              end: "+=400%",
+              scrub: 2.5,
+              anticipatePin: 1,
+              fastScrollEnd: false,
+              id: "missionAnimation",
+              onEnter: () => {
+                // pin이 시작될 때 y 위치 초기화
+                // $gsap.set(missionSection.value, { 
+                //   yPercent: 0,
+                //   clearProps: 'transform' // 기존 transform 제거
+                // })
+              },
+              onUpdate: (self) => {
+                const margin = 0.3; 
+                if (self.progress < margin) return;
+
+                // progress를 (margin ~ 1) 사이에서 (0 ~ 1)로 재계산
+                const adjustedProgress = (self.progress - margin) / (1 - margin);
+                const newStep = Math.floor(adjustedProgress * 3);
+
+                if (newStep !== currentStep && newStep > currentStep) {
+                  for (let i = currentStep + 1; i <= newStep; i++) {
+                    if (i >= 0 && i < animations.length) {
+                      animations[i].play();
+                    }
+                  }
+                  currentStep = newStep;
+                }
+              },
+              
+            })
           }
         });
-        tl.to(videoWrap.value,
-          {
-            clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-            scale: 1.4,
-            
-            scrollTrigger: {
-              end: () => "+=100%",
-              scrub: 1,
-              ease: 'none',
-              pin: true,
-            },
-          }, 0)
-        .to(visualTitle.value, 
-        {
-          xPercent: -150,
-          scrollTrigger: {
-            end: () => "+=100%",
-            scrub: 1,
-          }
-        }, 0)
-        .fromTo(videoSubWrap.value, 
-        {
-          clipPath: 'polygon(46% 0%, 74.5% 0%, 57.5% 100%, 29% 100%)',
-          scale: 1,
-        },
-        {
-          xPercent: 100,
-          clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-          scrollTrigger: {
-            end: () => "+=100%",
-            scrub: 1,
-          }
-        }, 0)
-        .to('.line-before', {
-          x: "-190%",
-          rotation: "-17deg",
-          ease: 'power2.out',
-          scrollTrigger: {
-            end: () => "+=100%",
-            scrub: 1,
-          }
-        }, '<')
-        .to('.line-after', {
-          x: "120%",
-          rotation: "-17deg",
-          ease: 'power2.out',
-          scrollTrigger: {
-            end: () => "+=100%",
-            scrub: 1,
-          }
-        }, '<')
-        .fromTo(videoWrapLayer.value, {
-          opacity: 0,
-          zIndex: 5,
-          visibility: 'hidden',
-        },
-        {
-          opacity: 0.5,
-          zIndex: 5,
-          visibility: 'visible',
-          ease: 'none',
-          scrollTrigger: {
-            //trigger: videoWrapLayer.value,
-            end: () => "+=100%",
-            //end: () => "+=" + (visualSection.value.offsetHeight * 0.1),
-            scrub: 1,
-          }
-        })
-        .to(missionSection.value, {
-          yPercent: -100,
-          ease: "none",
-          scrub: 1,
-          scrollTrigger: {
-            //trigger: missionSection.value,
-            start: () => "+=" + (visualSection.value.offsetHeight * 0.3),
-            end: () => "+=100%",
-            scrub: 1,
-          }
-        }, ">1")
-        
-
-
-        
-        
-
-        let currentStep = -1
-        const animations = []
-
-        // 각 애니메이션을 개별 타임라인으로 생성 (paused 상태)
-        const anim1 = $gsap.timeline({ paused: true })
-          .to(characterRevealArray, {
-            x: 0,
-            opacity: 1,
-            duration: 0.3, // 실제 애니메이션 시간
-            ease: "none"
-          })
-          .fromTo(missionBox.value, 
-            { yPercent: 100, opacity: 0 },
-            { yPercent: 0, opacity: 1, duration: 0.2, stagger: 0.05, ease: "power2.out" }, ">"
-          )
-
-        const anim2 = $gsap.timeline({ paused: true })
-          .to(characterDisappearArray, {
-            x: 0,
-            opacity: 1,
-            duration: 0.3, // 실제 애니메이션 시간
-            ease: "none"
-          }, "<")
-          .to(characterDisappearArray, {
-            x: 150,
-            duration: 0.3,
-            ease: "none",
-          }, "+=0.1")
-
-        const anim3 = $gsap.timeline({ paused: true })
-          .to(characterDelayArray, {
-            x: 0,
-            opacity: 1,
-            visibility: 'visible',
-            ease: "none",
-            duration: 0.3,
-          }, "+=0.05")
-
-          //const anim4 =  $gsap.timeline({ paused: true })
           
 
-        animations.push(anim1, anim2, anim3);
-
-
-        $ScrollTrigger.create({
-          trigger: missionSection.value,
-          //pin: true,
-          start: "top top",
-          end: "+=900%",
-          scrub: 2.5,
-          anticipatePin: 1,
-          fastScrollEnd: false,
-          onEnter: () => {
-            // pin이 시작될 때 y 위치 초기화
-            // $gsap.set(missionSection.value, { 
-            //   yPercent: 0,
-            //   clearProps: 'transform' // 기존 transform 제거
-            // })
-          },
-          onUpdate: (self) => {
-            const margin = 0.3; 
-            if (self.progress < margin) return;
-
-            // progress를 (margin ~ 1) 사이에서 (0 ~ 1)로 재계산
-            const adjustedProgress = (self.progress - margin) / (1 - margin);
-            const newStep = Math.floor(adjustedProgress * 3);
-
-            if (newStep !== currentStep && newStep > currentStep) {
-              for (let i = currentStep + 1; i <= newStep; i++) {
-                if (i >= 0 && i < animations.length) {
-                  animations[i].play();
-                }
-              }
-              currentStep = newStep;
-            }
-          },
-          
-        })
-
-        
-
-        
 
         // 아코디언 섹션
         const accordionItems = accordionSection.value.querySelectorAll('.accordion-list > *');
@@ -1111,6 +1279,46 @@ onMounted(async () => {
           })
         });
 
+        // ELEMENTA KOREA 섹션
+        $ScrollTrigger.matchMedia({
+          "(min-width: 1024px)": function() {
+            const elementaKoreaTl = $gsap.timeline({
+              scrollTrigger: {
+                trigger: elementaKoreaSection.value,
+                start: 'top 80%',
+                scrub: 1,
+                fastScrollEnd: false
+              }
+            })
+
+            elementaKoreaTl.to(sliderImg.value, {
+              maxWidth: '30rem',
+              ease: 'power2.out',
+              duration: 5,
+            })
+          },
+
+          "(max-width: 1023px)": function() {
+            const elementaKoreaTl = $gsap.timeline({
+              scrollTrigger: {
+                trigger: sliderImg.value,
+                start: 'top 80%',
+                //end: () => "+=" + (elementaKoreaSection.value.offsetHeight * 1.5),
+                scrub: 1.5,
+                fastScrollEnd: false
+              }
+            })
+
+            elementaKoreaTl.to(sliderImg.value, {
+              maxWidth: '38%',
+              ease: 'power2.out',
+              duration: 5,
+            })
+          },
+
+        })
+
+        // WE THE WORLD 섹션
         const wetheworldTl = $gsap.timeline({
           scrollTrigger: {
             trigger: wetheworldSection.value,
@@ -1123,10 +1331,8 @@ onMounted(async () => {
             //invalidateOnRefresh: true,
             //markers: true
           },
-          
         })
 
-        // WE THE WORLD 섹션
         const gotopCurtainItems = wetheworldSection.value.querySelectorAll('.gotopCurtain .curtain-item');
         const godownCurtainItems = wetheworldSection.value.querySelectorAll('.godownCurtain .curtain-item');
         const gotopCurtainItemArray = Array.from(gotopCurtainItems);
@@ -1237,44 +1443,6 @@ onMounted(async () => {
 
       // 휠 이벤트 리스너 추가
       //glass.addEventListener('wheel', handleWheel, { passive: false })
-      
-      $ScrollTrigger.matchMedia({
-        "(min-width: 1024px)": function() {
-          const elementaKoreaTl = $gsap.timeline({
-            scrollTrigger: {
-              trigger: elementaKoreaSection.value,
-              start: 'top 80%',
-              scrub: 1,
-              fastScrollEnd: false
-            }
-          })
-
-          elementaKoreaTl.to(sliderImg.value, {
-            maxWidth: '30rem',
-            ease: 'power2.out',
-            duration: 5,
-          })
-        },
-
-        "(max-width: 1024px)": function() {
-          const elementaKoreaTl = $gsap.timeline({
-            scrollTrigger: {
-              trigger: sliderImg.value,
-              start: 'top 80%',
-              //end: () => "+=" + (elementaKoreaSection.value.offsetHeight * 1.5),
-              scrub: 1.5,
-              fastScrollEnd: false
-            }
-          })
-
-          elementaKoreaTl.to(sliderImg.value, {
-            maxWidth: '38%',
-            ease: 'power2.out',
-            duration: 5,
-          })
-        },
-
-      })
 
         // 카드 스크롤 애니메이션
         const cardList = document.querySelector('.careers-section .slide-wrapper');
@@ -1294,27 +1462,53 @@ onMounted(async () => {
         })
 
         if (careerSliderRef.value) {
-          careerSliderRef.value.style.touchAction = 'pan-x pan-y'
-          careerSliderRef.value.setAttribute('data-lenis-prevent', '')
-        }
+  // ✅ 세로 스크롤은 브라우저 / Lenis에게
+  careerSliderRef.value.style.touchAction = 'pan-x pan-y'
 
-        // Swiper 초기화 전에 이벤트 캡처 설정
-        const swiperEl = careerSliderRef.value?.querySelector('.swiper')
-        
-        if (swiperEl) {
-          const preventLenis = (e) => {
-            e.stopImmediatePropagation()
-          }
-          
-          swiperEl.addEventListener('touchstart', preventLenis, { 
-            capture: true, 
-            passive: false 
-          })
-          swiperEl.addEventListener('touchmove', preventLenis, { 
-            capture: true, 
-            passive: false 
-          })
+  const swiperEl = careerSliderRef.value
+
+  let startX = 0
+  let startY = 0
+  let isHorizontal = false
+
+  swiperEl.addEventListener(
+    'touchstart',
+    (e) => {
+      const t = e.touches[0]
+      startX = t.clientX
+      startY = t.clientY
+      isHorizontal = false
+    },
+    { passive: true }
+  )
+
+  swiperEl.addEventListener(
+    'touchmove',
+    (e) => {
+      const t = e.touches[0]
+      const diffX = Math.abs(t.clientX - startX)
+      const diffY = Math.abs(t.clientY - startY)
+
+      // 👉 가로 스와이프라고 판단될 때만 Lenis 정지
+      if (diffX > diffY && diffX > 10) {
+        if (!isHorizontal) {
+          isHorizontal = true
+          $lenis.stop()
         }
+      }
+    },
+    { passive: true }
+  )
+
+  swiperEl.addEventListener(
+    'touchend',
+    () => {
+      // 👉 터치 종료 시 Lenis 복구
+      $lenis.start()
+    },
+    { passive: true }
+  )
+}
       });
 
       // 초기 로드 시에만 refresh (깜빡임 방지)
@@ -1328,13 +1522,6 @@ onMounted(async () => {
 
   // 초기 실행
   initAnimation();
-
-  window.addEventListener('page:reinit', () => {
-    if (videoWrap.value) {
-      videoWrap.value.removeAttribute('style');
-    }
-    setTimeout(init, 100);
-  });
 
   // 이후 리사이즈 감지
   const resizeObserver = new ResizeObserver(() => {
