@@ -275,6 +275,9 @@
         <ButtonsBasic color="yellow" size="lg" id="openChar" @click="openModal">캐릭터 소개</ButtonsBasic>
       </div>
     </section>
+
+    <!-- 모바일 간격 -->
+    <section class="xl:h-[0px] sm:h-[0px] h-[100px]"></section>
     
     <!-- section04 : 유튜브 영상-->
     <section class="youtube-area relative overflow-visible" ref="youtubeArea">
@@ -306,7 +309,7 @@
         </div>
         </Container>
       </div>
-      <section class="xl:h-[500px] h-[300px]"></section>
+      <section class="xl:h-[500px] sm:h-[0px] h-[100px]"></section>
     </section>
     <!-- 위 영역과 간격 -->
     <!-- section05 : 수사보드 -->
@@ -422,7 +425,6 @@
     </section>
     <!-- section 06 : 에필로그 모바일 -->
     <section class="last-scene-m w-full overflow-hidden xl:hidden block relative vh-section" ref="lastSceneMobile">
-      <div class="last-scene-m cover-dimmed absolute top-0 left-0 z-40 w-full h-full"></div>
       <div class="epilogue-dimmed absolute  top-0 left-0 z-20 w-full"></div>
       <Container class="absolute left-1/2 -translate-x-1/2 transform md:top-[100px] top-[50px] z-20 e-side-text">
         <p class="relative text-white font-bold text-xl opacity-[0.8] xl:pl-[3.13rem] sm:pl-[1.88rem] pl-[0px]">Epilogue</p>
@@ -1179,8 +1181,7 @@ onMounted(() => {
         .fromTo(videoDes6, { opacity: 0 }, { opacity: 1, duration: 1 }, ">-1") // 이전 효과 진행 후 바로 실행
         
         // (14) 여섯번째 비디오 서서히 사라짐, 여섯번째 텍스트 사라짐
-        .to(videoDes6, { opacity: 0, duration: 1 })
-        .to(videoDes6, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
+        
 
         $ScrollTrigger.create({
           trigger: descriptionSec.value,
@@ -1193,6 +1194,24 @@ onMounted(() => {
           invalidateOnRefresh: true,
           anticipatePin: 1.5,
           // markers: true,
+        })
+
+        // 모바일 게임 소개 영역 마지막 사라짐 효과 (아래 영상과의 높이 조절 위함)
+        $gsap.timeline({
+          scrollTrigger: {
+            trigger: descriptionSec.value,
+            start: "bottom-=200 top+=100",
+            end: "+=300",
+            scrub: 0.1,
+            anticipatePin: 1.5,
+            fastScrollEnd: true,
+            preventOverlaps: true,
+            //markers: true,
+          }
+        }).to(descriptionSec.value, {
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out"
         })
       }
     });
@@ -1545,34 +1564,31 @@ onMounted(() => {
     // 08_2. 에필로그 섹션 모바일
     /*-----------------------*/
 
-    const eCoverDimmedMobile = lastSceneMobile.value.querySelector(".cover-dimmed");
     const eText1Mobile = lastSceneMobile.value.querySelector(".e-text.sec01");
     const eText2Mobile = lastSceneMobile.value.querySelector(".e-text.sec02");
 
     const EpilogueMobileTimeline = $gsap.timeline({ paused: true })
-    .to(eCoverDimmedMobile, { opacity: 0, duration: 2, ease: "power2.out"})
-    .to(eCoverDimmedMobile, { visibility: "hidden"}, ">+0.001")
     .fromTo(eText1Mobile, { opacity: 0 }, { opacity: 1, duration: 0.5, ease:"power1.in" },">-1.5") // 에필로그 문구1 나타남
     .to(eText1Mobile, { opacity: 0, duration: 0.5, ease:"power1.out" }) // 에필로그 문구1 사라짐
     .to(eText1Mobile, { "visibility": "hidden"}, ">+0.01") // 이전 효과 후 바로 실행
     .fromTo(eText2Mobile, { opacity: 0, y: 20 }, { y:0, opacity: 1, duration: 0.5, ease:"power1.in" }, "+=0.05") // 에필로그 문구2 나타남
-    
+ 
     $ScrollTrigger.matchMedia({
       "(max-width: 1279px)": () => {
         $ScrollTrigger.create({
           trigger: lastSceneMobile.value,
-          start: "top+=1 bottom",
+          start: "top+=200 bottom",
           end: "bottom top",  
           animation: EpilogueMobileTimeline,  
+           toggleActions: "restart none restart none",
           //scrub: 2,
           //pin: true,
+          //markers: true,
           anticipatePin: 1.5,            
           fastScrollEnd: true,         // 빠르게 스크롤 시 '튐' 방지
           invalidateOnRefresh: true,   // 리사이즈 시 값 재계산 (와이드 대응)
           pinType: "transform",
-          onEnter: () => {
-            EpilogueMobileTimeline.restart();
-          }
+          invalidateOnRefresh: true,
         })
       }
     })
