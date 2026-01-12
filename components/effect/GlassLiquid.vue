@@ -1,5 +1,5 @@
 <template>
-  <div class="glassWrap absolute inset-0">
+  <div class="glassWrap absolute inset-0" :class="[glassBlurClass]">
     <div class="distortion-glass"></div>
     <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute; overflow:hidden">
       <defs>
@@ -14,7 +14,45 @@
   
 </template>
 
+<script setup>
+  const props = defineProps({
+    blur: { type: String, default: '' },
+  })
+
+  const glassBlurClass = computed(() => {
+    switch (props.blur) {
+      case 'blurred2': return 'blurred2'
+      case 'blurred3': return 'blurred3'
+      case 'blurred4': return 'blurred4'
+      default: return 'blurred0'
+    } 
+  })
+</script>
+
 <style>
+  .glassWrap::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    inset: 0;
+  }
+
+  .glassWrap.blurred0::after {
+    backdrop-filter: blur(0px);
+  }
+
+  .glassWrap.blurred2::after {
+    backdrop-filter: blur(2px);
+  }
+
+  .glassWrap.blurred3::after {
+    backdrop-filter: blur(3px);
+  }
+
+  .glassWrap.blurred4::after {
+    backdrop-filter: blur(4px);
+  }
+
   .distortion-glass {
     width: 100%; 
     height:100%; 
@@ -74,7 +112,3 @@
     }
   }
 </style>
-
-<script>
-
-</script>

@@ -496,7 +496,7 @@
           </h2>
         </div>
         <div class="box-wrap max-w-[61rem] mx-auto w-[90%] md:pt-[2.15rem] pt-7 md:pb-[2.5rem] pb-8 px-5 overflow-hidden relative" ref="missionBox">
-          <EffectGlassLiquid />
+          <EffectGlassLiquid blur="blurred4" />
             <span class="sectionTitle-eng text-white text-base relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] md:before:w-3 md:before:h-3 before:w-[0.625rem] before:h-[0.625rem] before:rounded-full pl-5">Our Mission</span>
             <div class="text-content gap-x-7 py-[0.9rem] z-[1] relative">
               <p class="text-white md:text-[1.5rem] text-[4.1vw] leading-[150%] break-keep">혁신적 경험으로 게임의 기준을 새롭게 쓰고, 협력과 도전으로 문화를 확장하며, <br>전 세계가 공감할 지속 가능한 감동을 만드는 문화·패러다임의 선도자로 성장하겠습니다.</p>
@@ -1079,7 +1079,7 @@ onMounted(async () => {
                 scrub: 1,
                 //pinSpacing: true,
                 //markers: true,
-                end: () => "+=600%",
+                end: () => "+=300%",
                 //fastScrollEnd: false,
               }
             });
@@ -1089,7 +1089,7 @@ onMounted(async () => {
                 scale: 1.4,
                 
                 scrollTrigger: {
-                  end: () => "+=100%",
+                  end: () => "+=50%",
                   scrub: 1,
                   ease: 'none',
                   pin: true,
@@ -1099,7 +1099,7 @@ onMounted(async () => {
             {
               xPercent: -150,
               scrollTrigger: {
-                end: () => "+=100%",
+                end: () => "+=50%",
                 scrub: 1,
               }
             }, 0)
@@ -1112,7 +1112,7 @@ onMounted(async () => {
               xPercent: 100,
               clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
               scrollTrigger: {
-                end: () => "+=100%",
+                end: () => "+=50%",
                 scrub: 1,
               }
             }, 0)
@@ -1121,7 +1121,7 @@ onMounted(async () => {
               rotation: "-17deg",
               ease: 'power2.out',
               scrollTrigger: {
-                end: () => "+=100%",
+                end: () => "+=50%",
                 scrub: 1,
               }
             }, '<')
@@ -1130,7 +1130,7 @@ onMounted(async () => {
               rotation: "-17deg",
               ease: 'power2.out',
               scrollTrigger: {
-                end: () => "+=100%",
+                end: () => "+=50%",
                 scrub: 1,
               }
             }, '<')
@@ -1146,7 +1146,7 @@ onMounted(async () => {
               ease: 'none',
               scrollTrigger: {
                 //trigger: videoWrapLayer.value,
-                end: () => "+=100%",
+                end: () => "+=50%",
                 //end: () => "+=" + (visualSection.value.offsetHeight * 0.1),
                 scrub: 1,
               }
@@ -1158,7 +1158,7 @@ onMounted(async () => {
               scrollTrigger: {
                 //trigger: missionSection.value,
                 start: () => "+=" + (visualSection.value.offsetHeight * 0.3),
-                end: () => "+=100%",
+                end: () => "+=50%",
                 scrub: 1,
               }
             }, ">1")
@@ -1171,24 +1171,24 @@ onMounted(async () => {
               .to(characterRevealArray, {
                 x: 0,
                 opacity: 1,
-                duration: 0.3, // 실제 애니메이션 시간
+                duration: 0.2, // 실제 애니메이션 시간
                 ease: "none"
               })
               .fromTo(missionBox.value, 
                 { yPercent: 100, opacity: 0 },
-                { yPercent: 0, opacity: 1, duration: 0.2, stagger: 0.05, ease: "power2.out" }, ">"
+                { yPercent: 0, opacity: 1, duration: 0.1, stagger: 0.05, ease: "power2.out" }, ">"
               )
 
             const anim2 = $gsap.timeline({ paused: true })
               .to(characterDisappearArray, {
                 x: 0,
                 opacity: 1,
-                duration: 0.3, // 실제 애니메이션 시간
+                duration: 0.2, // 실제 애니메이션 시간
                 ease: "power2.out",
               }, "<")
               .to(characterDisappearArray, {
                 x: 150,
-                duration: 0.3,
+                duration: 1,
                 ease: "power2.out",
               }, ">")
 
@@ -1198,8 +1198,8 @@ onMounted(async () => {
                 opacity: 1,
                 visibility: 'visible',
                 ease: "power2.out",
-                duration: 0.3,
-              }, ">0.3")
+                duration: 0.2,
+              }, ">")
 
               //const anim4 =  $gsap.timeline({ paused: true })
               
@@ -1211,11 +1211,10 @@ onMounted(async () => {
               trigger: missionSection.value,
               //pin: true,
               start: "top top",
-              end: "+=400%",
+              end: "+=250%",
               scrub: 2.5,
               anticipatePin: 1,
               fastScrollEnd: false,
-              id: "missionAnimation",
               onEnter: () => {
                 // pin이 시작될 때 y 위치 초기화
                 // $gsap.set(missionSection.value, { 
@@ -1224,7 +1223,7 @@ onMounted(async () => {
                 // })
               },
               onUpdate: (self) => {
-                const margin = 0.3; 
+                const margin = 0.15; 
                 if (self.progress < margin) return;
 
                 // progress를 (margin ~ 1) 사이에서 (0 ~ 1)로 재계산
@@ -1462,53 +1461,51 @@ onMounted(async () => {
         })
 
         if (careerSliderRef.value) {
-  // ✅ 세로 스크롤은 브라우저 / Lenis에게
-  careerSliderRef.value.style.touchAction = 'pan-x pan-y'
+          careerSliderRef.value.style.touchAction = 'pan-x pan-y'
 
-  const swiperEl = careerSliderRef.value
+          const swiperEl = careerSliderRef.value
 
-  let startX = 0
-  let startY = 0
-  let isHorizontal = false
+          let startX = 0
+          let startY = 0
+          let isHorizontal = false
 
-  swiperEl.addEventListener(
-    'touchstart',
-    (e) => {
-      const t = e.touches[0]
-      startX = t.clientX
-      startY = t.clientY
-      isHorizontal = false
-    },
-    { passive: true }
-  )
+          swiperEl.addEventListener(
+            'touchstart',
+            (e) => {
+              const t = e.touches[0]
+              startX = t.clientX
+              startY = t.clientY
+              isHorizontal = false
+            },
+            { passive: true }
+          )
 
-  swiperEl.addEventListener(
-    'touchmove',
-    (e) => {
-      const t = e.touches[0]
-      const diffX = Math.abs(t.clientX - startX)
-      const diffY = Math.abs(t.clientY - startY)
+          swiperEl.addEventListener(
+            'touchmove',
+            (e) => {
+              const t = e.touches[0]
+              const diffX = Math.abs(t.clientX - startX)
+              const diffY = Math.abs(t.clientY - startY)
 
-      // 👉 가로 스와이프라고 판단될 때만 Lenis 정지
-      if (diffX > diffY && diffX > 10) {
-        if (!isHorizontal) {
-          isHorizontal = true
-          $lenis.stop()
+              // 👉 가로 스와이프라고 판단될 때만 Lenis 정지
+              if (diffX > diffY && diffX > 10) {
+                if (!isHorizontal) {
+                  isHorizontal = true
+                  $lenis.stop()
+                }
+              }
+            },
+            { passive: true }
+          )
+
+          swiperEl.addEventListener(
+            'touchend',
+            () => {
+              $lenis.start()
+            },
+            { passive: true }
+          )
         }
-      }
-    },
-    { passive: true }
-  )
-
-  swiperEl.addEventListener(
-    'touchend',
-    () => {
-      // 👉 터치 종료 시 Lenis 복구
-      $lenis.start()
-    },
-    { passive: true }
-  )
-}
       });
 
       // 초기 로드 시에만 refresh (깜빡임 방지)
