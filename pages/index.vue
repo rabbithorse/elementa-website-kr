@@ -1059,11 +1059,13 @@ onMounted(async () => {
                 const adjustedProgress = (self.progress - margin) / (1 - margin)
                 const newStep = Math.floor(adjustedProgress * animations.length)
 
-                if (newStep > currentStep) {
+                if (newStep !== currentStep && newStep > currentStep) {
                   for (let i = currentStep + 1; i <= newStep; i++) {
-                    if (animations[i]) animations[i].play()
+                    if (i >= 0 && i < animations.length) {
+                      animations[i].play();
+                    }
                   }
-                  currentStep = newStep
+                  currentStep = newStep;
                 }
               },
               
@@ -1079,8 +1081,8 @@ onMounted(async () => {
                 scrub: 1,
                 //pinSpacing: true,
                 //markers: true,
-                end: () => "+=300%",
-                //fastScrollEnd: false,
+                end: () => "+=200%",
+                fastScrollEnd: false,
               }
             });
             tl.to(videoWrap.value,
@@ -1089,7 +1091,7 @@ onMounted(async () => {
                 scale: 1.4,
                 
                 scrollTrigger: {
-                  end: () => "+=50%",
+                  end: () => "+=30%",
                   scrub: 1,
                   ease: 'none',
                   pin: true,
@@ -1099,7 +1101,7 @@ onMounted(async () => {
             {
               xPercent: -150,
               scrollTrigger: {
-                end: () => "+=50%",
+                end: () => "+=30%",
                 scrub: 1,
               }
             }, 0)
@@ -1112,7 +1114,7 @@ onMounted(async () => {
               xPercent: 100,
               clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
               scrollTrigger: {
-                end: () => "+=50%",
+                end: () => "+=30%",
                 scrub: 1,
               }
             }, 0)
@@ -1121,7 +1123,7 @@ onMounted(async () => {
               rotation: "-17deg",
               ease: 'power2.out',
               scrollTrigger: {
-                end: () => "+=50%",
+                end: () => "+=30%",
                 scrub: 1,
               }
             }, '<')
@@ -1130,7 +1132,7 @@ onMounted(async () => {
               rotation: "-17deg",
               ease: 'power2.out',
               scrollTrigger: {
-                end: () => "+=50%",
+                end: () => "+=30%",
                 scrub: 1,
               }
             }, '<')
@@ -1146,7 +1148,7 @@ onMounted(async () => {
               ease: 'none',
               scrollTrigger: {
                 //trigger: videoWrapLayer.value,
-                end: () => "+=50%",
+                end: () => "+=30%",
                 //end: () => "+=" + (visualSection.value.offsetHeight * 0.1),
                 scrub: 1,
               }
@@ -1158,88 +1160,39 @@ onMounted(async () => {
               scrollTrigger: {
                 //trigger: missionSection.value,
                 start: () => "+=" + (visualSection.value.offsetHeight * 0.3),
-                end: () => "+=50%",
+                end: () => "+=30%",
                 scrub: 1,
               }
             }, ">1")
 
-            let currentStep = -1
-            const animations = []
 
             // 각 애니메이션을 개별 타임라인으로 생성 (paused 상태)
-            const anim1 = $gsap.timeline({ paused: true })
-              .to(characterRevealArray, {
-                x: 0,
-                opacity: 1,
-                duration: 0.2, // 실제 애니메이션 시간
-                ease: "none"
-              })
-              .fromTo(missionBox.value, 
-                { yPercent: 100, opacity: 0 },
-                { yPercent: 0, opacity: 1, duration: 0.1, stagger: 0.05, ease: "power2.out" }, ">"
-              )
-
-            const anim2 = $gsap.timeline({ paused: true })
+            const anim1 = $gsap.timeline({ paused: true, timeScale: 2 })
               .to(characterDisappearArray, {
-                x: 0,
-                opacity: 1,
-                duration: 0.2, // 실제 애니메이션 시간
-                ease: "power2.out",
-              }, "<")
-              .to(characterDisappearArray, {
-                x: 150,
-                duration: 1,
-                ease: "power2.out",
-              }, ">")
-
-            const anim3 = $gsap.timeline({ paused: true })
-              .to(characterDelayArray, {
-                x: 0,
+                xPercent: 102,
+                duration: 0.05,
+                ease: "power1.out",
+              }, "<-0.5")
+              .fromTo(characterDelayArray, {
+                xPercent: -102,
+                opacity: 0,
+                visibility: 'hidden',
+              }, 
+              {
+                xPercent: 0,
                 opacity: 1,
                 visibility: 'visible',
-                ease: "power2.out",
-                duration: 0.2,
-              }, ">")
-
-              //const anim4 =  $gsap.timeline({ paused: true })
-              
-
-            animations.push(anim1, anim2, anim3);
-
+                ease: "power1.out",
+                duration: 0.05,
+              }, ">-0.01")
 
             $ScrollTrigger.create({
               trigger: missionSection.value,
               //pin: true,
               start: "top top",
-              end: "+=250%",
-              scrub: 2.5,
-              anticipatePin: 1,
-              fastScrollEnd: false,
-              onEnter: () => {
-                // pin이 시작될 때 y 위치 초기화
-                // $gsap.set(missionSection.value, { 
-                //   yPercent: 0,
-                //   clearProps: 'transform' // 기존 transform 제거
-                // })
-              },
-              onUpdate: (self) => {
-                const margin = 0.15; 
-                if (self.progress < margin) return;
-
-                // progress를 (margin ~ 1) 사이에서 (0 ~ 1)로 재계산
-                const adjustedProgress = (self.progress - margin) / (1 - margin);
-                const newStep = Math.floor(adjustedProgress * 3);
-
-                if (newStep !== currentStep && newStep > currentStep) {
-                  for (let i = currentStep + 1; i <= newStep; i++) {
-                    if (i >= 0 && i < animations.length) {
-                      animations[i].play();
-                    }
-                  }
-                  currentStep = newStep;
-                }
-              },
-              
+              end: "+=90%",
+              scrub: 1,
+              animation: anim1
             })
           }
         });
@@ -1627,6 +1580,16 @@ const nodeVersion = process.version
   clip-path: inset(0 0 -.086em 0);
   will-change: transform;
   perspective: 1000px;
+}
+
+@media (max-width: 1023px) {
+  .primary-character {
+    transform: translateX(0%);
+  }
+
+  .primary-character--delay {
+    transform: unset;
+  }
 }
 
 @media (max-width: 767px) {
