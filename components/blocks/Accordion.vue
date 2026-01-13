@@ -29,7 +29,7 @@
       </div>
 
       <div class="content-text xl:w-[440px] xl:h-full xl:ml-auto xl:mt-0 mt-auto w-full h-auto ml-0 relative overflow-hidden shrink-0">
-        <EffectGlassLiquid class="xl:h-full" blur="blurred3" />
+        <EffectGlassLiquid class="xl:h-full" blur="blurred6" />
         <div class="flex flex-col justify-end xl:gap-y-[3.125rem] gap-y-5 xl:pb-[5.625rem] pt-4 pb-9 xl:px-8 sm:px-7 px-5 h-full relative z-[1]">
           <div class="content-title relative title-img xl:w-[52%] w-56 aspect-229/75">
             <EffectFloatingDots />

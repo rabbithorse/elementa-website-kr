@@ -24,6 +24,7 @@
       case 'blurred2': return 'blurred2'
       case 'blurred3': return 'blurred3'
       case 'blurred4': return 'blurred4'
+      case 'blurred6': return 'blurred6'
       default: return 'blurred0'
     } 
   })
@@ -51,6 +52,10 @@
 
   .glassWrap.blurred4::after {
     backdrop-filter: blur(4px);
+  }
+  
+  .glassWrap.blurred6::after {
+    backdrop-filter: blur(6px);
   }
 
   .distortion-glass {

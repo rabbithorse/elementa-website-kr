@@ -497,7 +497,7 @@
           </h2>
         </div>
         <div class="box-wrap fade-text max-w-[61rem] mx-auto w-[90%] md:pt-[2.15rem] pt-7 md:pb-[2.5rem] pb-8 px-5 overflow-hidden relative" ref="missionBox">
-          <EffectGlassLiquid blur="blurred4" />
+          <EffectGlassLiquid blur="blurred6" />
             <span class="sectionTitle-eng text-white text-base relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] md:before:w-3 md:before:h-3 before:w-[0.625rem] before:h-[0.625rem] before:rounded-full pl-5">Our Mission</span>
             <div class="text-content gap-x-7 py-[0.9rem] z-[1] relative">
               <p class="text-white md:text-[1.5rem] text-[4.1vw] leading-[150%] break-keep">혁신적 경험으로 게임의 기준을 새롭게 쓰고, 협력과 도전으로 문화를 확장하며, <br>전 세계가 공감할 지속 가능한 감동을 만드는 문화·패러다임의 선도자로 성장하겠습니다.</p>
@@ -892,7 +892,7 @@ function initAnimation() {
             scrub: 1,
             //pinSpacing: true,
             //markers: true,
-            end: () => "+=800%",
+            end: () => "+=1400%",
             fastScrollEnd: false,
           }
         });
@@ -978,71 +978,117 @@ function initAnimation() {
 
 
         // 각 애니메이션을 개별 타임라인으로 생성 (paused 상태)
-        const anim1 = $gsap.timeline({ paused: true, delay: 0.3 })
+        const anim1 = $gsap.timeline({ paused: true })
           .to(characterRevealArray, {
             x: 0,
             opacity: 1,
-            duration: 0.7, // 실제 애니메이션 시간
-            ease: "none"
-          })
-          .fromTo(missionBox.value, 
-            { yPercent: 100, opacity: 0 },
-            { yPercent: 0, opacity: 1, duration: 0.4, ease: "power2.out" }, ">0.2"
-          )
-
-        const anim2 = $gsap.timeline({ paused: true, delay: 0.3 })
+            duration: 1.6, // 실제 애니메이션 시간
+            ease: 'power4.out',
+          }, 0.4)
           .to(characterDisappearArray, {
             x: 0,
             opacity: 1,
-            duration: 0.7, // 실제 애니메이션 시간
-            ease: "power2.out",
-          }, "<")
+            duration: 1.6, // 실제 애니메이션 시간
+            ease: 'power4.out',
+          }, 0.4)
+          .fromTo(missionBox.value, 
+            { yPercent: 100, opacity: 0 },
+            { yPercent: 0, opacity: 1, duration: 0.2, ease: "none" }, 1.3
+          )
           
-          const anim3 = $gsap.timeline({ paused: true })
+          const anim2 = $gsap.timeline({ paused: true })
           .to(characterDisappearArray, {
             x: 150,
-            duration: 0.7,
-            ease: "power2.out",
-          }, ">0.1")
+            duration: 1.6,
+            ease: 'power4.out',
+          })
 
-        const anim4 = $gsap.timeline({ paused: true })
+        const anim3 = $gsap.timeline({ paused: true })
           .to(characterDelayArray, {
             x: 0,
             opacity: 1,
             visibility: 'visible',
-            ease: "power2.out",
-            duration: 0.8,
-          }, ">0.1")
+            ease: 'power4.out',
+            duration: 1.6,
+          })
 
           //const anim4 =  $gsap.timeline({ paused: true })
           
 
-        const animations = [anim1, anim2, anim3, anim4]
-        let currentStep = -1
+        const animations = [anim1, anim2, anim3]
+        let currentStep = 0
+        let isAnimating = false
+        let wheelAccum = 0
+
+        const WHEEL_THRESHOLD = 180
+        const STEP_COUNT = animations.length
+        const STEP_SCROLL = 300
 
 
         $ScrollTrigger.create({
           trigger: missionSection.value,
-          start: "top top-=300",
-          end: "+=600%",
-          snap: {
-  snapTo: 1 / animations.length,
-  duration: 0.2,
-  ease: "power1.out"
-},
+          start: "top top",
+          end: () => `+=${STEP_COUNT * STEP_SCROLL}`,
+          ease: "power1.out",
+          scrub: false,
           anticipatePin: 1,
-          fastScrollEnd: false,
-
-          onUpdate(self) {
-    const step = Math.floor(self.progress * animations.length)
-
-    if (step !== currentStep && step > currentStep) {
-      animations[step]?.play()
-      currentStep = step
-    }
-  }
-          
         })
+
+        function playNext() {
+  if (isAnimating) return
+  if (currentStep >= animations.length) return
+
+  isAnimating = true
+
+  const anim = animations[currentStep]
+
+  anim.eventCallback('onComplete', () => {
+    isAnimating = false
+    currentStep++
+  })
+
+  anim.play()
+}
+
+function playPrev() {
+  if (isAnimating) return
+  if (currentStep <= 0) return
+
+  isAnimating = true
+
+  const prevStep = currentStep - 1
+  const anim = animations[prevStep]
+
+  anim.eventCallback('onReverseComplete', () => {
+    isAnimating = false
+    currentStep--
+  })
+
+  anim.reverse()
+}
+
+
+function onWheel(e) {
+  if (isAnimating) {
+    e.preventDefault()
+    return
+  }
+
+  wheelAccum += e.deltaY
+
+  if (wheelAccum > WHEEL_THRESHOLD) {
+    wheelAccum = 0
+    playNext()
+  }
+
+  if (wheelAccum < -WHEEL_THRESHOLD) {
+    wheelAccum = 0
+    playPrev()
+  }
+}
+missionSection.value.addEventListener('wheel', onWheel, { passive: false })
+
+
       },
 
       "(max-width: 1023px)": function() {
