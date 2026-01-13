@@ -277,7 +277,7 @@
     </section>
 
     <!-- 모바일 간격 -->
-    <section class="xl:h-[0px] sm:h-[0px] h-[100px]"></section>
+    <section class="xl:h-[0px] md:h-[0px] h-[100px]"></section>
     
     <!-- section04 : 유튜브 영상-->
     <section class="youtube-area relative overflow-visible" ref="youtubeArea">
@@ -309,7 +309,7 @@
         </div>
         </Container>
       </div>
-      <section class="xl:h-[500px] sm:h-[0px] h-[100px]"></section>
+      <section class="xl:h-[500px] md:h-[0px] h-[100px]"></section>
     </section>
     <!-- 위 영역과 간격 -->
     <!-- section05 : 수사보드 -->
@@ -1629,8 +1629,12 @@ onMounted(() => {
     return $ScrollTrigger.getAll().filter(st => !modalTriggers.includes(st))
   }
 
-  // (B) 세로 step 스크롤 트리거 만들기
+  // (B) 모바일 여부 체크
+  const isMobile = () => window.innerWidth <= 767
+
+  // (C) 세로 step 스크롤 트리거 만들기
   const initStepsTriggers = () => {
+    if (isMobile()) return //모바일 팝업 스크롤 트리거 비활성화
     const steps = stepsRef.value.querySelectorAll('.char-step')
 
     steps.forEach((step, index) => {
@@ -1654,7 +1658,7 @@ onMounted(() => {
   }
 
 
-  // (C) 모달 열기
+  // (D) 모달 열기
   const openModal = async () => {
     showCharModal.value = true
     document.body.style.overflow = "hidden"
@@ -1728,7 +1732,9 @@ onMounted(() => {
         isScrollingByClick = false
 
         // 스크롤 위치 계산을 다시 맞춰야 불안정함 사라짐
-        $ScrollTrigger.refresh()
+        if (!isMobile()) {
+          $ScrollTrigger.refresh()
+        }
       }
     })
   }
