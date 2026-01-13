@@ -1035,60 +1035,58 @@ function initAnimation() {
         })
 
         function playNext() {
-  if (isAnimating) return
-  if (currentStep >= animations.length) return
+          if (isAnimating) return
+          if (currentStep >= animations.length) return
 
-  isAnimating = true
+          isAnimating = true
 
-  const anim = animations[currentStep]
+          const anim = animations[currentStep]
 
-  anim.eventCallback('onComplete', () => {
-    isAnimating = false
-    currentStep++
-  })
+          anim.eventCallback('onComplete', () => {
+            isAnimating = false
+            currentStep++
+          })
 
-  anim.play()
-}
+          anim.play()
+        }
 
-function playPrev() {
-  if (isAnimating) return
-  if (currentStep <= 0) return
+        function playPrev() {
+          if (isAnimating) return
+          if (currentStep <= 0) return
 
-  isAnimating = true
+          isAnimating = true
 
-  const prevStep = currentStep - 1
-  const anim = animations[prevStep]
+          const prevStep = currentStep - 1
+          const anim = animations[prevStep]
 
-  anim.eventCallback('onReverseComplete', () => {
-    isAnimating = false
-    currentStep--
-  })
+          anim.eventCallback('onReverseComplete', () => {
+            isAnimating = false
+            currentStep--
+          })
 
-  anim.reverse()
-}
-
-
-function onWheel(e) {
-  if (isAnimating) {
-    e.preventDefault()
-    return
-  }
-
-  wheelAccum += e.deltaY
-
-  if (wheelAccum > WHEEL_THRESHOLD) {
-    wheelAccum = 0
-    playNext()
-  }
-
-  if (wheelAccum < -WHEEL_THRESHOLD) {
-    wheelAccum = 0
-    playPrev()
-  }
-}
-missionSection.value.addEventListener('wheel', onWheel, { passive: false })
+          anim.reverse()
+        }
 
 
+        function onWheel(e) {
+          if (isAnimating) {
+            e.preventDefault()
+            return
+          }
+
+          wheelAccum += e.deltaY
+
+          if (wheelAccum > WHEEL_THRESHOLD) {
+            wheelAccum = 0
+            playNext()
+          }
+
+          if (wheelAccum < -WHEEL_THRESHOLD) {
+            wheelAccum = 0
+            playPrev()
+          }
+        }
+        missionSection.value.addEventListener('wheel', onWheel, { passive: false })
       },
 
       "(max-width: 1023px)": function() {
