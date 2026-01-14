@@ -680,7 +680,6 @@
                 :allowTouchMove="true"
                 :simulateTouch="true"
                 :passiveListeners="false"
-                :direction="horizontal"
                 :grabCursor="true"
                 :touchRatio="1"
                 :resistance="true"

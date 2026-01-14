@@ -5,8 +5,8 @@
         ref="glassRef"
         @mouseenter="isHovered = true; showCustomCursor()"
         @mouseleave="isHovered = false; hideCustomCursor()"
-        @mousemove="moveCursor"
-        @wheel="handleWheel"
+        @mousemove="!isTouchDevice && moveCursor"
+        @wheel="!isTouchDevice && handleWheel"
         class="cursor-none"
       >
 
@@ -209,7 +209,8 @@
         <!-- 모바일 버전: Swiper.js -->
         <div v-else>
           <!-- 첫 번째 Swiper -->
-          <div class="slider-wrapper" @touchstart.stop @touchmove.stop>
+          <!-- <div class="slider-wrapper" @touchstart.stop @touchmove.stop/> -->
+          <div class="slider-wrapper">
             <div class="swiper swiper1">
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -292,7 +293,7 @@
 
 <script setup>
   import { ref, onMounted, onUnmounted } from 'vue';
-  const { $gsap, $ScrollTrigger } = useNuxtApp()
+  const { $gsap, $ScrollTrigger, $lenis } = useNuxtApp()
   import Swiper from 'swiper';
   import 'swiper/css';
 
@@ -308,11 +309,12 @@
   let swiper1 = null
 
   const detectTouchDevice = () => {
-    isTouchDevice.value = 
-      'ontouchstart' in window || 
-      navigator.maxTouchPoints > 0 || 
-      navigator.msMaxTouchPoints > 0 ||
-      (navigator.userAgent.includes('Mac') && 'ontouchend' in document);
+    isTouchDevice.value = window.matchMedia('(pointer: coarse)').matches;
+  }
+
+  const safeSetX = (el, x) => {
+    if (!el) return
+    $gsap.set(el, { x })
   }
 
   const outerSpace = computed(() => {
@@ -323,18 +325,18 @@
 
   const updatePadding = () => {
     const width = window.innerWidth
-    if (width >= 1856) { // 3xl
+
+    if (width >= 1856) {
       padding.value = 350
-    } else if (width >= 1280) { // xl
+    } else if (width >= 1280) {
       padding.value = 250
-    } else { // sm
+    } else {
       padding.value = 20
     }
-    
-    // padding 변경 시 초기 위치도 업데이트
-    if (!isTouchDevice.value && slider1Ref.value && slider2Ref.value) {
-      $gsap.set(slider1Ref.value, { x: padding.value })
-      $gsap.set(slider2Ref.value, { x: -padding.value })
+
+    if (!isTouchDevice.value) {
+      safeSetX(slider1Ref.value, padding.value)
+      safeSetX(slider2Ref.value, -padding.value)
     }
   }
 
@@ -422,9 +424,7 @@
       scrollTrigger.pin(true)
     }
 
-    if (isTouchDevice.value && window.lenis) {
-      window.lenis.stop()
-    }
+    if (isTouchDevice.value) return
   }
 
   const handleMouseLeave = () => {
@@ -435,9 +435,7 @@
       scrollTrigger.pin(false)
     }
 
-    if (isTouchDevice.value && window.lenis) {
-      window.lenis.start()
-    }
+    if (isTouchDevice.value) return
   }
 
   onMounted(() => {
@@ -469,87 +467,73 @@
       glass.addEventListener('wheel', handleWheel, { passive: false })
     } else {
       nextTick(() => {
-      
-      const swiper1El = document.querySelector('.swiper1')
-      if (!swiper1El) return
+        const swiperEl = document.querySelector('.swiper1')
+        if (!swiperEl) return
 
-      let startX = 0
-      let startY = 0
-      let isHorizontal = false
+        glass.style.touchAction = 'pan-x pan-y'
 
-      swiper1El.addEventListener(
-        'touchstart',
-        (e) => {
-          const t = e.touches[0]
-          startX = t.clientX
-          startY = t.clientY
-          isHorizontal = false
-        },
-        { passive: true }
-      )
+        let startX = 0
+        let startY = 0
+        let swiperInstance = null
+        let disabledByVertical = false
 
-      swiper1El.addEventListener(
-        'touchmove',
-        (e) => {
-          const t = e.touches[0]
-          const diffX = Math.abs(t.clientX - startX)
-          const diffY = Math.abs(t.clientY - startY)
+        swiperInstance = new Swiper('.swiper1', {
+          slidesPerView: '1.2',
+          spaceBetween: 15,
+          breakpoints: {
+            640: { slidesPerView: 1.6 },
+            1024: { slidesPerView: 2 },
+          },
+          grabCursor: true,
+          resistance: true,
+          resistanceRatio: 0.2,
+          simulateTouch: true,
+          allowTouchMove: true,
+          touchStartPreventDefault: false,
+          nested: true,
+          slidesOffsetBefore: padding.value,
+          slidesOffsetAfter: padding.value,
+          speed: 600,
+        })
 
-          // 👉 가로 스와이프일 때만 Lenis 개입 차단
-          if (diffX > diffY && diffX > 10) {
-            if (!isHorizontal) {
-              isHorizontal = true
-              $lenis.stop()
+        swiperEl.addEventListener(
+          'touchstart',
+          (e) => {
+            const t = e.touches[0]
+            startX = t.clientX
+            startY = t.clientY
+            disabledByVertical = false
+          },
+          { passive: true }
+        )
+
+        swiperEl.addEventListener(
+          'touchmove',
+          (e) => {
+            if (!swiperInstance || disabledByVertical) return
+
+            const t = e.touches[0]
+            const diffX = Math.abs(t.clientX - startX)
+            const diffY = Math.abs(t.clientY - startY)
+
+            if (diffY > diffX && diffY > 6) {
+              swiperInstance.allowTouchMove = false
+              disabledByVertical = true
             }
-          }
-        },
-        { passive: true }
-      )
-
-      swiper1El.addEventListener(
-        'touchend',
-        () => {
-          $lenis.start()
-        },
-        { passive: true }
-      )
-
-      swiper1 = new Swiper('.swiper1', {
-        slidesPerView: '1.2',
-        spaceBetween: 15,
-        breakpoints: {
-          640: {
-            slidesPerView: 1.6,
           },
-          1024: {
-            slidesPerView: 2,
+          { passive: true }
+        )
+
+        swiperEl.addEventListener(
+          'touchend',
+          () => {
+            if (swiperInstance) {
+              swiperInstance.allowTouchMove = true
+            }
           },
-        },
-        // freeMode: {
-        //   enabled: true,
-        //   momentum: true,
-        //   momentumRatio: 1,
-        //   momentumVelocityRatio: 1,
-        // },
-        grabCursor: true,
-        touchRatio: 1,
-        resistance: true,
-        resistanceRatio: 0.2,
-        simulateTouch: true,
-        allowTouchMove: true,
-        touchStartPreventDefault: false,
-        touchMoveStopPropagation: false,
-        passiveListeners: true,
-        touchAngle: 45,
-        threshold: 10,
-        nested: true,
-        slidesOffsetBefore: padding.value,
-        slidesOffsetAfter: padding.value,
-        speed: 600,
-        
+          { passive: true }
+        )
       })
-      
-    })
     }
 
     window.addEventListener('resize', updatePadding)
@@ -596,10 +580,6 @@
 </script>
 
 <style>
-  .swiper1 {
-    touch-action: pan-x pan-y;
-  }
-
   .custom-cursor {
     position: fixed !important;
     pointer-events: none;
