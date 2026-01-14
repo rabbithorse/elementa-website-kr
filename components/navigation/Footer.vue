@@ -51,12 +51,12 @@
           <div class="flex gap-x-[6.25rem] mt-auto max-lg:w-full justify-between">
             <div class="flex">
               <div class="flex items-center justify-center gap-4 lg:order-last lg:mb-0">
-				        <NuxtLink href="" v-for="social in footerSocials" :key="social.name">
+				        <a target="_blank" href="" v-for="social in footerSocials" :key="social.name">
                   <span class="sr-only">{{ social.alt }}</span>
                   <span class="icon">
                     <img :src="social.src" :alt="social.alt">
                   </span>
-                </NuxtLink>
+                </a>
               </div>
             </div>
           </div>

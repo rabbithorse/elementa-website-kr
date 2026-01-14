@@ -3,7 +3,7 @@
     <section ref="visualSection" class="visual-section h-screen relative overflow-hidden">
       
       <div class="blur-overlay absolute inset-0"></div>
-      <div class="bg-video">
+      <div ref="bgVideoRef" class="bg-video opacity-0">
         <video class="bg-video--content" autoplay playsinline muted loop preload="metadata">
           <source src="~/assets/videos/main-logo-ani.mp4" type="video/mp4" />
         </video>
@@ -759,6 +759,7 @@ import Container from '~/components/Container.vue';
 const { $gsap, $ScrollTrigger, $lenis } = useNuxtApp()
 const isMounted = ref(false)
 const introSection = ref(null)
+const bgVideoRef = ref(null)
 const videoWrap = ref(null)
 const videoWrapLayer = ref(null)
 const videoBigShape = ref(null)
@@ -826,6 +827,9 @@ function initAnimation() {
   ctx = $gsap.context(() => {
         
     // 초기 상태 강제 설정
+    $gsap.set(bgVideoRef.value, { 
+      opacity: 0,
+    });
     $gsap.set(videoWrap.value, { 
       x: '3%',
       opacity: 0,
@@ -841,8 +845,13 @@ function initAnimation() {
         immediateRender: false,
       }
     })
-
-    introTl.fromTo(visualPolygonRef.value,  {
+    introTl
+    .to(bgVideoRef.value, {
+      opacity: 1,
+      duration: 1,
+      ease: 'none',
+    })
+    .fromTo(visualPolygonRef.value,  {
       x: '-25%',
       opacity: 0,
     }, {
