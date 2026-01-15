@@ -20,7 +20,7 @@
                 @mouseleave="cursorMode = 'scroll'"
                 class="card md:w-[28rem] w-[21rem]"
               >
-                <a :href="news.src" target="_blank" rel="noopener noreferrer">
+                <a :href="news.link" target="_blank" rel="noopener noreferrer">
                   <EffectCardHover>
                     <div class="flex flex-col gap-y-4 w-full h-full justify-start">
                       <div class="card-img">
@@ -104,8 +104,10 @@
           :style="{ left: cursorX + 'px', top: cursorY + 'px', transform: 'translate(-50%, -50%)' }"
         >
           <img src="~assets/images/main/scroll-cursor-bg.png" alt="스크롤 하세요">
-          <span class="text-[white] text-[20px] font-bold font-paperlogy absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            {{ cursorMode === 'click' ? 'Click' : 'Scroll' }}
+          <span 
+            :class="[cursorMode === 'click' ? 'canClick' : '']"
+            class="text-[white] text-[16px] font-bold font-paperlogy absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            Scroll
           </span>
         </div>
       </Teleport>
@@ -344,7 +346,7 @@
           },
         })
 
-        document.querySelectorAll('.slide-link').forEach((link) => {
+        document.querySelectorAll('.card-link').forEach((link) => {
           link.addEventListener('click', (e) => {
             if (isDragging) {
               e.preventDefault()
@@ -456,7 +458,20 @@
     width: 80px;
     height: 80px;
   }
+
+  .custom-cursor span.canClick {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+  }
   
+  .custom-cursor span.canClick::after {
+    content: "»";
+    display: inline-block;
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 500;
+  }
 
   @media (max-width: 1024px) {
     .custom-cursor {
