@@ -900,7 +900,7 @@ function initAnimation() {
             scrub: 1,
             //pinSpacing: true,
             //markers: true,
-            end: () => "+=1000%",
+            end: () => "+=900%",
             fastScrollEnd: false,
           }
         });
@@ -992,18 +992,18 @@ function initAnimation() {
           .to(characterRevealArray, {
             x: 0,
             opacity: 1,
-            duration: 1.4, // 실제 애니메이션 시간
+            duration: 1.2, // 실제 애니메이션 시간
             ease: 'power4.out',
-          }, 1)
+          }, 0.8)
           .to(characterDisappearArray, {
             x: 0,
             opacity: 1,
-            duration: 1.4, // 실제 애니메이션 시간
+            duration: 1.2, // 실제 애니메이션 시간
             ease: 'power4.out',
-          }, 1)
+          }, 0.8)
           .fromTo(missionBox.value, 
             { yPercent: 100, opacity: 0 },
-            { yPercent: 0, opacity: 1, duration: 1.4, ease: 'power4.out' }, 1.2
+            { yPercent: 0, opacity: 1, duration: 1.2, ease: 'power4.out' }, 1
           )
           
           const anim2 = $gsap.timeline({ paused: true })
@@ -1019,7 +1019,7 @@ function initAnimation() {
             opacity: 1,
             visibility: 'visible',
             ease: 'power4.out',
-            duration: 1.4,
+            duration: 1.2,
           })
 
           //const anim4 =  $gsap.timeline({ paused: true })
@@ -1030,9 +1030,9 @@ function initAnimation() {
         let isAnimating = false
         let wheelAccum = 0
 
-        const WHEEL_THRESHOLD = 160
+        const WHEEL_THRESHOLD = 180
         const STEP_COUNT = animations.length
-        const STEP_SCROLL = 220
+        const STEP_SCROLL = 200
 
 
         $ScrollTrigger.create({
