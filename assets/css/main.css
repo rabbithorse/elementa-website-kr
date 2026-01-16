@@ -186,7 +186,9 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 .gradient-text .character-wrap img {height: 120px; width: auto; height: 17vw;}
 
 @media (min-width: 3441px) {
-  .video-layer {height: 2100px;}
+  .video-layer {height: 100svh; width: 100vw;}
+  .video-layer--main {right: -12.5vw;}
+  .video-layer--sub {right: -40.5vw;}
 }
 @media (min-width: 2580px) and (max-width: 3440px) {
   .video-layer {height: 1920px;}

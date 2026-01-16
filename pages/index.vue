@@ -900,7 +900,7 @@ function initAnimation() {
             scrub: 1,
             //pinSpacing: true,
             //markers: true,
-            end: () => "+=1200%",
+            end: () => "+=900%",
             fastScrollEnd: false,
           }
         });
@@ -1001,7 +1001,7 @@ function initAnimation() {
           }, 1)
           .fromTo(missionBox.value, 
             { yPercent: 100, opacity: 0 },
-            { yPercent: 0, opacity: 1, duration: 0.4, ease: "none" }, 1.2
+            { yPercent: 0, opacity: 1, duration: 1.6, ease: 'power4.out' }, 1.2
           )
           
           const anim2 = $gsap.timeline({ paused: true })
@@ -1030,7 +1030,7 @@ function initAnimation() {
 
         const WHEEL_THRESHOLD = 160
         const STEP_COUNT = animations.length
-        const STEP_SCROLL = 250
+        const STEP_SCROLL = 225
 
 
         $ScrollTrigger.create({

@@ -34,7 +34,7 @@
       <div class="wide-image-container w-full overflow-hidden 2xl:mt-[228px] xl:mt-[148px] mt-[3.5rem]">
         <Container>
         <!-- wide image -->
-        <div class="wide-image-area xl:h-[600px] lg:h-[450px] h-[400px] relative " ref="wideImageArea"><Temporary type="image" /></div> 
+        <div class="wide-image-area xl:h-[600px] lg:h-[450px] h-[400px] relative opacity-0" ref="wideImageArea"><Temporary type="image" /></div> 
         </Container>
       </div>      
 
@@ -223,8 +223,23 @@
         //markers: true,
         duration: 1,
       },
-    }).to(wideImageArea.value, {
+    })
+    .to(wideImageArea.value, {
       y: '-100px',
+      ease: 'none',
+    })
+
+    $gsap.timeline({
+      scrollTrigger: {
+        trigger: wideImageArea.value,
+        start: 'top center',
+        end: 'top top',
+        
+      },
+    })
+    .to(wideImageArea.value, {
+      opacity: 1,
+      duration: 2,
       ease: 'none',
     })
 
