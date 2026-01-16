@@ -1032,7 +1032,7 @@ function initAnimation() {
 
         const WHEEL_THRESHOLD = 180
         const STEP_COUNT = animations.length
-        const STEP_SCROLL = 200
+        const STEP_SCROLL = 220
 
 
         $ScrollTrigger.create({
