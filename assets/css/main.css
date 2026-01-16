@@ -185,11 +185,22 @@ section .primary-text, section .primary-text * {line-height: 1em;}
 
 .gradient-text .character-wrap img {height: 120px; width: auto; height: 17vw;}
 
-@media (min-width: 3441px) {
+@media (min-width: 4801px) {
   .video-layer {height: 100svh; width: 100vw;}
+  .line.line-before {transform: rotate(0.5deg); left: 27.25vw;}
+  .line.line-after {transform: rotate(0.5deg); left: 54.5vw;}
   .video-layer--main {right: -12.5vw;}
   .video-layer--sub {right: -40.5vw;}
 }
+
+@media (min-width: 3441px) and (max-width: 4800px) {
+  .video-layer {height: 100svh; width: 100vw;}
+  .line.line-before {transform: rotate(2deg); left: 28.05vw;}
+  .line.line-after {transform: rotate(2deg); left: 55.48vw;}
+  .video-layer--main {right: -12.5vw;}
+  .video-layer--sub {right: -40.5vw;}
+}
+
 @media (min-width: 2580px) and (max-width: 3440px) {
   .video-layer {height: 1920px;}
 }

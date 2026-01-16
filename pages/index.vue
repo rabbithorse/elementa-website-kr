@@ -900,7 +900,7 @@ function initAnimation() {
             scrub: 1,
             //pinSpacing: true,
             //markers: true,
-            end: () => "+=900%",
+            end: () => "+=1000%",
             fastScrollEnd: false,
           }
         });
@@ -938,9 +938,10 @@ function initAnimation() {
           }
         }, 0)
         .to('.line-before', {
-          x: "-190%",
+          x: "-195%",
           rotation: "-17deg",
           ease: 'power2.out',
+          invalidateOnRefresh: true,
           scrollTrigger: {
             end: () => "+=100%",
             scrub: 1,
@@ -950,6 +951,7 @@ function initAnimation() {
           x: "120%",
           rotation: "-17deg",
           ease: 'power2.out',
+          invalidateOnRefresh: true,
           scrollTrigger: {
             end: () => "+=100%",
             scrub: 1,
@@ -990,18 +992,18 @@ function initAnimation() {
           .to(characterRevealArray, {
             x: 0,
             opacity: 1,
-            duration: 1.6, // 실제 애니메이션 시간
+            duration: 1.4, // 실제 애니메이션 시간
             ease: 'power4.out',
           }, 1)
           .to(characterDisappearArray, {
             x: 0,
             opacity: 1,
-            duration: 1.6, // 실제 애니메이션 시간
+            duration: 1.4, // 실제 애니메이션 시간
             ease: 'power4.out',
           }, 1)
           .fromTo(missionBox.value, 
             { yPercent: 100, opacity: 0 },
-            { yPercent: 0, opacity: 1, duration: 1.6, ease: 'power4.out' }, 1.2
+            { yPercent: 0, opacity: 1, duration: 1.4, ease: 'power4.out' }, 1.2
           )
           
           const anim2 = $gsap.timeline({ paused: true })
@@ -1017,7 +1019,7 @@ function initAnimation() {
             opacity: 1,
             visibility: 'visible',
             ease: 'power4.out',
-            duration: 1.6,
+            duration: 1.4,
           })
 
           //const anim4 =  $gsap.timeline({ paused: true })
@@ -1030,7 +1032,7 @@ function initAnimation() {
 
         const WHEEL_THRESHOLD = 160
         const STEP_COUNT = animations.length
-        const STEP_SCROLL = 225
+        const STEP_SCROLL = 220
 
 
         $ScrollTrigger.create({
@@ -1530,7 +1532,8 @@ function handleScrollTopReset() {
 }
 
 function onResize() {
-  if (resizeTimer) return
+  if (resizeTimer) return;
+  clearTimeout(resizeTimer);
 
   resizeTimer = setTimeout(() => {
     resizeTimer = null
