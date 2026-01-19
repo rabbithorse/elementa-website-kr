@@ -41,7 +41,7 @@
               <p class="text-white lg:text-lg text-sm break-keep lg:leading-[1.81rem] leading-[1.51rem]">퍼포먼스 마케터는 온라인 광고 채널(Google, Meta, Naver, Kakao 등)을 운영하며 KPI 달성을 위한 캠페인을 설계하고 최적화하는 역할을 담당합니다. 데이터 기반으로 예산을 효율적으로 집행하고, 퍼널 분석과 A/B 테스트 등을 통해 신규 유저 유입과 리텐션을 동시에 강화합니다.</p>
             </TypographySkewText>
             <div class="detail-glass-box lg:p-[2.25rem] px-[1.5rem] py-[1rem] flex justify-between items-center relative overflow-hidden" ref="detailGlassBox">
-              <EffectGlassTest />
+              <EffectGlassLiquid blur="blurred4"/>
               <div class="filter-noise"></div>
               <div class="filter-shine"></div>
               <p class="text-white grow lg:text-lg text-[0.81rem] font-medium relative z-10">기간</p>
@@ -62,7 +62,7 @@
           <div class="side-btn-wrap xl:mt-[0px] mt-[1.25rem]">
             <div class="flex w-full flex-col lg:gap-[1.88rem] gap-[1.25rem] inner" ref="sideInner">
               <div class="detail-glass-box-side overflow-hidden relative rounded-[5px]">
-                <EffectGlassTest />
+                <EffectGlassLiquid blur="blurred4"/>
                 <div class="filter-noise"></div>
                 <div class="filter-shine"></div>
                 <div class="inner flex lg:gap-[1.25rem] gap-[0.94rem] flex-col lg:px-[2.5rem] px-[1.25rem] lg:pt-[1.25rem] lg:pb-[1.88rem] py-[1.56rem] rounded-[5px] relative z-10">
@@ -229,7 +229,7 @@
       <div class="px-[20px] py-[15px] flex items-end justify-between gap-[10px] sticky bottom-[-1px] xl:hidden left-0 z-30 side-btn-wrap-m w-full">
         <div class="grow">
           <p class="text-base text-white font-semibold">퍼포먼스 마케터</p>
-          <p class="text-xs text-white">205.11.10~25.12.10 신입</p>
+          <p class="text-xs text-white">25.11.10~25.12.10 신입</p>
         </div>
         <div class="flex gap-[10px]">
           <ButtonsBasic class="share-btn"><i class="ico ico-share bg-white"></i></ButtonsBasic>
@@ -250,7 +250,7 @@
   import { useNuxtApp } from '#app'
   import { onBeforeRouteLeave } from 'vue-router'
 
-  const { $gsap, $ScrollTrigger,  } = useNuxtApp()
+  const { $gsap, $ScrollTrigger  } = useNuxtApp()
 
   const sideInner = ref(null)
   const detailCont = ref(null)
@@ -345,11 +345,11 @@
     /*-----------------------*/
     // 리사이즈 시 ScrollTrigger 전체 재계산
     /*-----------------------*/
-    handleResize = () => {
-      $ScrollTrigger.refresh()
-    }
+    // handleResize = () => {
+    //   $ScrollTrigger.refresh()
+    // }
 
-    window.addEventListener("resize", handleResize)
+    // window.addEventListener("resize", handleResize)
   });
 
   // 스크롤 이동 함수
