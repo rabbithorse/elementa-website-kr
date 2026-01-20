@@ -38,7 +38,7 @@
         <client-only>
         <div class="filter-box text-white 2xl:mt-[5.5rem] mt-[3.75rem] flex lg:flex-row flex-col 2xl:gap-10 gap-[0.94rem] items-end relative">
           <div class="filter-noise"></div>
-          <EffectGlassTest />
+          <EffectGlassLiquid />
           <div class="filter-shine"></div>
           <BlocksCustomSelect class="z-30"
           label="직군"
@@ -103,7 +103,7 @@
           <!-- 검색 결과 없음 화면 -->
           <div class="no-result filter-box text-white flex justify-center items-center relative lg:h-[500px] h-[400px]">
             <div class="filter-noise"></div>
-            <EffectGlassTest />
+            <EffectGlassLiquid />
             <div class="filter-shine"></div>
             <p class="lg:text-[1.75rem] text-lg text-center relative z-10 break-keep leading-[1.5]">앗, 찾으시는 결과가 없네요. <br>혹시 다른 키워드로 검색해보는 건 어떠세요?</p>
           </div>
