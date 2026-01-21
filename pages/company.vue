@@ -91,10 +91,10 @@
       <div class="h-svh flex items-center pt-[3.75rem] relative" ref="missionSection">
         <div class="missiont-content h-svh w-full flex items-center mt-[340px] relative">
           <div class="absolute left-0 inset-y-0 h-full 2xl:w-[11.6rem] lg:w-[8rem] sm:w-14 w-9 z-20">
-            <EffectGlass class="w-full h-full glass-blur" />
+            <EffectGlass blur="blurred16" class="w-full h-full glass-blur" />
           </div>
           <div class="absolute right-0 inset-y-0 h-full 2xl:w-[11.6rem] lg:w-[8rem] sm:w-14 w-9 z-20">
-            <EffectGlass class="w-full h-full glass-blur" />
+            <EffectGlass blur="blurred16" class="w-full h-full glass-blur" />
           </div>
           <div class="section-heading absolute 2xl:left-[15.2rem] lg:left-[10.6rem] sm:left-20 left-14 6xl:top-[9.25rem] top-[7.25rem]">
             <div class="heading-text flex flex-col md:gap-y-10 gap-y-4">

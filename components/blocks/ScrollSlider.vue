@@ -1,6 +1,6 @@
 <template>
   <div class="card-grid flex flex-col gap-y-18" ref="cardGrid">
-    <EffectGlass class="card-glass glass-blur relative after:absolute after:inset-y-0 after:right-0 after:w-80 5xl:pt-20 5xl:pb-44 lg:pt-16 lg:pb-20 pt-[52px] pb-[42px] xl:w-auto w-[101vw]">
+    <EffectGlass blur="blurred16" class="card-glass glass-blur relative after:absolute after:inset-y-0 after:right-0 after:w-80 5xl:pt-20 5xl:pb-44 lg:pt-16 lg:pb-20 pt-[52px] pb-[42px] xl:w-auto w-[101vw]">
       <div 
         ref="glassRef"
         @mouseenter="isHovered = true; showCustomCursor()"

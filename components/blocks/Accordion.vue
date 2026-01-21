@@ -4,7 +4,8 @@
     v-for="(accordionItem, index) in accordionItems" :key="index"
     :class="{ opened: openedIndex === index, [`locked locked${index}`]: accordionItem.locked }"
   >
-    <EffectGlassLiquid class="accordion-glass" ></EffectGlassLiquid>
+    <EffectGlassLiquid class="accordion-glass xl:block hidden" />
+    <EffectGlass blur="blurred6" class="card-glass glass-blur absolute xl:hidden block" />
     <div v-if="!accordionItem.locked" class="accordion-trigger">
       <button @click="openAccordion(index)">
         <span class="text-white z-[1]">0{{ index + 1 }}</span>
@@ -29,7 +30,8 @@
       </div>
 
       <div class="content-text xl:w-[440px] xl:h-full xl:ml-auto xl:mt-0 mt-auto w-full h-auto ml-0 relative overflow-hidden shrink-0">
-        <EffectGlassLiquid class="xl:h-full" blur="blurred6" />
+        <EffectGlassLiquid class="xl:h-full xl:block hidden" blur="blurred6" />
+        <EffectGlass blur="blurred6" class="card-glass glass-blur absolute xl:hidden block" />
         <div class="flex flex-col justify-end xl:gap-y-[3.125rem] gap-y-5 xl:pb-[5.625rem] pt-4 pb-9 xl:px-8 sm:px-7 px-5 h-full relative z-[1]">
           <div class="content-title relative title-img xl:w-[52%] w-56 aspect-229/75">
             <EffectFloatingDots />

@@ -496,8 +496,9 @@
             </div>
           </h2>
         </div>
-        <div class="box-wrap fade-text max-w-[61rem] mx-auto w-[90%] md:pt-[2.15rem] pt-7 md:pb-[2.5rem] pb-8 px-5 overflow-hidden relative" ref="missionBox">
-          <EffectGlassLiquid blur="blurred6" />
+        <div class="box-wrap fade-text max-w-[61rem] mx-auto w-[90%] md:pt-[2.15rem] pt-7 md:pb-[2.5rem] pb-8 px-5 relative" ref="missionBox">
+          <EffectGlassLiquid blur="blurred6" class="xl:block hidden" />
+          <EffectGlass blur="blurred6" class="card-glass glass-blur absolute xl:hidden block" />
             <span class="sectionTitle-eng text-white text-base relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:animate-pulse before:bg-[#00C8EB] md:before:w-3 md:before:h-3 before:w-[0.625rem] before:h-[0.625rem] before:rounded-full pl-5">Our Mission</span>
             <div class="text-content gap-x-7 py-[0.9rem] z-[1] relative">
               <p class="text-white md:text-[1.5rem] text-[4.1vw] leading-[150%] break-keep">혁신적 경험으로 게임의 기준을 새롭게 쓰고, 협력과 도전으로 문화를 확장하며, <br>전 세계가 공감할 지속 가능한 감동을 만드는 문화·패러다임의 선도자로 성장하겠습니다.</p>
@@ -665,7 +666,7 @@
       </div>
       <div class="section-content">
         <div class="content-glass xl:py-[108px] py-[54px]">
-          <EffectGlass class="glass-blur absolute left-0 top-0 w-full h-full" />
+          <EffectGlass blur="blurred16" class="glass-blur absolute left-0 top-0 w-full h-full" />
           <div class="lg:px-4"> 
             <div class="controls xl:hidden flex gap-3 items-center justify-end pr-6">
               <PrevButton :swiper="swiperInstance" />

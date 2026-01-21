@@ -1,5 +1,5 @@
 <template>
-  <div class="glassWrap absolute inset-0" :class="[glassBlurClass]">
+  <div class="glassWrap absolute inset-0 isolate" :class="[glassLiquidBlurClass]">
     <div class="distortion-glass"></div>
     <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute; overflow:hidden">
       <defs>
@@ -19,7 +19,7 @@
     blur: { type: String, default: '' },
   })
 
-  const glassBlurClass = computed(() => {
+  const glassLiquidBlurClass = computed(() => {
     switch (props.blur) {
       case 'blurred2': return 'blurred2'
       case 'blurred3': return 'blurred3'
@@ -39,22 +39,27 @@
   }
 
   .glassWrap.blurred0::after {
+    -webkit-backdrop-filter: blur(0px);
     backdrop-filter: blur(0px);
   }
 
   .glassWrap.blurred2::after {
+    -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
   }
 
   .glassWrap.blurred3::after {
+    -webkit-backdrop-filter: blur(3px);
     backdrop-filter: blur(3px);
   }
 
   .glassWrap.blurred4::after {
+    -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
   }
   
   .glassWrap.blurred6::after {
+    -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
   }
 
@@ -84,7 +89,6 @@
     position: absolute;
     inset: 0;
     z-index: -1;
-    backdrop-filter: blur(4px);
     -webkit-backdrop-filter: url(#glass-distortion);
     backdrop-filter: url(#glass-distortion); 
     /* mask: url(#glass-distortion);

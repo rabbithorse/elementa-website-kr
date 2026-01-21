@@ -1,13 +1,26 @@
 <template>
   <!-- OSJ : 글라스모피즘 UI 변경(임시) -->
-  <div class="glass">
+  <div class="glass" :class="[glassBlurClass]">
     <slot />
   </div>
 </template>
 
+<script setup>
+  const props = defineProps({
+    blur: { type: String, default: '' },
+  })
+
+  const glassBlurClass = computed(() => {
+    switch (props.blur) {
+      case 'blurred6': return 'blurred6'
+      case 'blurred16': return 'blurred16'
+      default: return 'blurred0'
+    } 
+  })
+</script>
+
 <style scoped>
 .glass {
-  position: relative;
   inset: 0;
   border-radius: 0;
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -17,6 +30,15 @@
 
 .glass.glass-blur {
   background: rgba(255, 255, 255, 0.03);
+}
+
+.glass.glass-blur.blurred6 {
+  border: none;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.glass.glass-blur.blurred16 {
   backdrop-filter: blur(16px) saturate(160%);
   -webkit-backdrop-filter: blur(16px) saturate(160%);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25), inset 0 0 1px rgba(255, 255, 255, 0.22);
