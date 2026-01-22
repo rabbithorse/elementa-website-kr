@@ -66,32 +66,36 @@
         <Container>
           <p class="lg:text-2xl text-sm list-header lg:mb-[2.5rem] mb-[1.25rem] relative overflow-hidden"><span class="block" ref="upText">100개의 검색결과</span></p>
           <ul class="grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-x-[1.25rem] lg:gap-y-[5.63rem] gap-y-[1.25rem] list relative">
-            <li v-for="(n, index) in 24" :key="index" class="relative">
+            <!-- <li v-for="(n, index) in 24" :key="index" class="relative"> -->
+            <!-- [무한스크롤] v-for 변경 및 변수 설정 -->
+            <li v-for="(item, index) in list" :key="item.id" class="relative" >
               <EffectCardHover filter="distort" blur="blurred4">
                 <!-- <div class="filter-glass"></div> -->
-                <a class="cont relative" href="./join_us_detail">
+                <!-- <a class="cont relative" :href="item.url"> -->
+                <NuxtLink class="cont relative" :to="item.url" >
                   <figure class="relative">
                     <Temporary type="image" />
-                    <img src="~/assets/images/sub/join-us-img01.png" alt="대표 이미지">
+                    <!-- <img src="~/assets/images/sub/join-us-img01.png" alt="대표 이미지"> -->
+                    <img :src="item.image" alt="대표 이미지" style="width: 449px; height: 225px;">
                   </figure>
                   <div class="text-box">
                     <div class="info">
                       <div class="tit">
-                        <ButtonsBadge class="mb-[10px]">D-10</ButtonsBadge>
-                        <h4 class="text-white lg:text-xl text-base">개발 PM 담당</h4>
-                        <p class="text-white lg:text-[0.88rem] text-xs">경력직 ㆍ 경력 2-4년</p>
+                        <ButtonsBadge class="mb-[10px]">{{ item.dday }}</ButtonsBadge><!-- D-day 표시 -->
+                        <h4 class="text-white lg:text-xl text-base">{{ item.title }}</h4><!-- 채용 제목 -->
+                        <p class="text-white lg:text-[0.88rem] text-xs">{{ item.desc }}</p><!-- 채용 설명 -->
                       </div>
-                      <p class="text-white date lg:text-[0.88rem] text-xs">25.10.01~25.10.30</p>
+                      <p class="text-white date lg:text-[0.88rem] text-xs">{{ item.date }}</p><!-- 채용 기간 -->
                     </div>
                     <div class="apply absolute">
-                      <span class="text-xs text-[var(--main-color)]">100명의 지원자가 보고갔어요!</span>
+                      <span class="text-xs text-[var(--main-color)]">{{ item.applicants }}</span><!-- 지원자 수 표시 -->
                       <ButtonsBasic size="sm">지원하러 가기</ButtonsBasic>
                     </div>
                   </div>
-                </a>
+                </NuxtLink>
                 <!-- 채용 마감 시 보임 -->
-                <div class="circle-filter absolute" :class="{ on: index === 7 }"></div>
-                <div class="end-bg absolute" :class="{ on: index === 7 }">
+                <div class="circle-filter absolute" :class="{ on: item.recruitEnd }"></div>
+                <div class="end-bg absolute" :class="{ on: item.recruitEnd }">
                   <div class="inner-circle">
                     <p class="lg:text-[2.5rem] text-[1.88rem] text-white font-bold">채용 마감</p>
                   </div>
@@ -100,17 +104,24 @@
               </EffectCardHover>
             </li>
           </ul>
+
           <!-- 검색 결과 없음 화면 -->
-          <div class="no-result filter-box text-white flex justify-center items-center relative lg:h-[500px] h-[400px]">
+          <!-- [무한스크롤] v-if 변경 -->
+          <div v-if="!list.length && !isLoading" class="no-result  filter-box text-white flex justify-center items-center relative lg:h-[500px] h-[400px]">
             <div class="filter-noise"></div>
             <EffectGlassLiquid />
             <div class="filter-shine"></div>
             <p class="lg:text-[1.75rem] text-lg text-center relative z-10 break-keep leading-[1.5]">앗, 찾으시는 결과가 없네요. <br>혹시 다른 키워드로 검색해보는 건 어떠세요?</p>
           </div>
           <!-- //검색 결과 없음 화면 -->
+
+          <!-- [무한스크롤] 바닥 감지용 -->
+          <div ref="observerEl" class="h-[1px]"></div>
+          
         </Container>
       </div>
       <!-- //채용 리스트 -->
+
     </section>
   </div>
 </template>
@@ -138,7 +149,100 @@
   const listRecruit = ref(null);
   const listBg = ref(null);
 
+  /* [무한스크롤] list 데이터 */
+  const list = ref([])
+  const page = ref(1)
+  const pageSize = 24
+  const isLoading = ref(false)
+  const hasMore = ref(true)
+
+  const fetchList = async () => {
+    if (isLoading.value || !hasMore.value) return;
+
+    isLoading.value = true;
+
+    // 실제 API로 변경 필요 함.
+    // await $fetch(API_ENDPOINT, {
+    //       params: {
+    //         limit: pageSize,
+    //         skip: (page.value - 1) * pageSize
+    //       })
+
+    // 임시 데이터 생성
+    await new Promise(r => setTimeout(r, 800));
+
+    const newItems = Array.from({ length: pageSize }, (_, i) => ({
+      id: (page.value - 1) * pageSize + i,
+      image: '/_nuxt/assets/images/sub/join-us-img01.png', // 임시 이미지 URL
+      url: `/join_us_detail/${(page.value - 1) * pageSize + i}`, // 임시 URL
+      dday: `D-${Math.floor(Math.random() * 10) + 1}`, // 임시 D-day
+      title: `채용 제목 ${(page.value - 1) * pageSize + i}`, // 임시 제목
+      desc: `채용 설명 ${(page.value - 1) * pageSize + i}`, // 임시 설명
+      applicants: `${Math.floor(Math.random() * 100)}명의 지원자가 보고갔어요!`, // 임시 지원자 수
+      recruitEnd: Math.random() < 0.5, // 임시로 채용 마감 여부 설정
+      date: '25.10.01~25.10.30' // 임시 채용 기간
+    }))
+
+    if (newItems.length < pageSize) {
+      hasMore.value = false;
+    }
+
+    list.value.push(...newItems);
+    page.value++;
+
+    isLoading.value = false;
+
+    nextTick(() => {
+      initCardAnimation();
+    })
+  }
+  
+  // [무한스크롤] GSAP 애니메이션 초기화
+  const initCardAnimation = () => {
+    const cardItems = document.querySelectorAll('.list-recruit .list > li')
+    if (!cardItems.length) return
+
+    cardItems.forEach((cardEl) => {
+      if (cardEl.dataset.animated) return
+      cardEl.dataset.animated = 'true'
+
+      $gsap.fromTo(
+        cardEl,
+        { y: '30%', opacity: 0 },
+        {
+          y: '0%',
+          opacity: 1,
+          duration: 1.5,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: cardEl,
+            start: 'top 90%',
+            once: true
+          }
+        }
+      )
+    })
+  }
+
+  const observerEl = ref(null);
+  let observer;
+
   onMounted(() => {
+    // [무한스크롤] START
+    fetchList();
+    observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          fetchList();
+        }
+      },
+      { rootMargin: '200px' } // 미리 로딩
+    );
+
+    if (observerEl.value) {
+      observer.observe(observerEl.value);
+    }
+    // [무한스크롤] END
 
     // Visual Parallax Effect
 
@@ -254,6 +358,10 @@
     })
   })
 
+  // [무한스크롤] 언마운트
+  onBeforeUnmount(() => {
+    observer?.disconnect()
+  })
   
 </script>
 
