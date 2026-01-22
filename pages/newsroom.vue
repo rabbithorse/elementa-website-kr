@@ -241,22 +241,25 @@
               <ButtonsBasic color="sch" role="search"><i class="ico ico-sch bg-white"></i></ButtonsBasic>
             </div>
             <ul class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-[1.25rem] gap-y-[5.63rem] list lg:pt-[3.75rem] pt-[1.88rem] relative">
-              <li v-for="(n, index) in 16" :key="index" class="relative card w-full">
+              <li v-for="(newsItem, index) in newsList" :key="index" class="relative card w-full">
                 <EffectCardHover>
-                  <a class="flex flex-col gap-y-4 w-full h-full justify-start text-white" :href="index % 2 === 0 ? 'https://news.nate.com/view/20251219n15148' : 'https://www.g-enews.com/article/ICT/2025/08/202508071152291640c5fa75ef86_1'" target="_blank">
+                  <NuxtLink class="flex flex-col gap-y-4 w-full h-full justify-start text-white" :to="newsItem.url" target="_blank">
                     <div class="card-img relative">
                         <Temporary type="image" />
-                        <img src="~assets/images/main/newsroom-thumb01.png" alt="">
+                        <img :src="newsItem.image" alt="">
                       </div>
                       <div class="card-content">
                         <div class="card-title text-white break-keep">
-                          '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차' '실버 팰리스' 엘리멘타, 한국 지사 세우고 국내 공략 '박차'
+                          {{ newsItem.title }}
                         </div>
                       </div>
-                  </a>
+                  </NuxtLink>
                 </EffectCardHover>
               </li>
             </ul>
+
+            <!-- [무한스크롤] 바닥 감지용 -->
+            <div ref="observerEl" class="h-[1px]"></div>
           </Container>
         </div>
         <!-- 채용 리스트 -->
@@ -270,7 +273,7 @@
   })
 
   import Container from '~/components/Container.vue';
-  import { ref, onMounted, onUnmounted } from 'vue'
+  import { ref, onMounted, onBeforeUnmount } from 'vue'
   import { useNuxtApp } from '#app'
 
   const { $gsap, $ScrollTrigger } = useNuxtApp()
@@ -286,7 +289,96 @@
   import 'swiper/css/navigation';
   import 'swiper/css';
 
+  /* [무한스크롤] list 데이터 */
+  const newsList = ref([])
+  const page = ref(1)
+  const pageSize = 24
+  const isLoading = ref(false)
+  const hasMore = ref(true)
+
+  const fetchList = async () => {
+    if (isLoading.value || !hasMore.value) return;
+
+    isLoading.value = true;
+
+    // 실제 API로 변경 필요 함.
+    // await $fetch(API_ENDPOINT, {
+    //       params: {
+    //         limit: pageSize,
+    //         skip: (page.value - 1) * pageSize
+    //       })
+
+    // 임시 데이터 생성
+    await new Promise(r => setTimeout(r, 800));
+
+    const newsNewItems = Array.from({ length: pageSize }, (_, i) => ({
+      id: (page.value - 1) * pageSize + i,
+      image: '/_nuxt/assets/images/main/newsroom-thumb01.png', // 임시 이미지 URL
+      url: `https://www.google.com/`, // 임시 URL
+      title: `[뉴스] ${(page.value - 1) * pageSize + i}`, // 임시 제목
+    }))
+
+    if (newsNewItems.length < pageSize) {
+      hasMore.value = false;
+    }
+
+    newsList.value.push(...newsNewItems);
+    page.value++;
+
+    isLoading.value = false;
+
+    nextTick(() => {
+      initCardAnimation();
+    })
+  }
+
+  // [무한스크롤] GSAP 애니메이션 초기화
+  const initCardAnimation = () => {
+    const cardItems = document.querySelectorAll('.media-list .list > li')
+    if (!cardItems.length) return
+
+    cardItems.forEach((cardEl) => {
+      if (cardEl.dataset.animated) return
+      cardEl.dataset.animated = 'true'
+
+      $gsap.fromTo(
+        cardEl,
+        { y: '30%', opacity: 0 },
+        {
+          y: '0%',
+          opacity: 1,
+          duration: 1.5,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: cardEl,
+            start: 'top 90%',
+            once: true
+          }
+        }
+      )
+    })
+  }
+
+  const observerEl = ref(null);
+  let observer;
+
   onMounted(() => {
+    // [무한스크롤] START
+    fetchList();
+    observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          fetchList();
+        }
+      },
+      { rootMargin: '200px' } // 미리 로딩
+    );
+
+    if (observerEl.value) {
+      observer.observe(observerEl.value);
+    }
+    // [무한스크롤] END
+
     // Visual Parallax Effect
 
     // gsap 미디어 쿼리
@@ -448,6 +540,11 @@
       })
     })
 
+  })
+
+  // [무한스크롤] 언마운트
+  onBeforeUnmount(() => {
+    observer?.disconnect()
   })
 
   // 현재 텍스트

@@ -132,7 +132,7 @@
   })
 
   import Container from '~/components/Container.vue';
-  import { ref, onMounted, onUnmounted } from 'vue'
+  import { ref, onMounted, onBeforeUnmount } from 'vue'
   import { useNuxtApp } from '#app'
 
   const { $gsap, $ScrollTrigger } = useNuxtApp()
