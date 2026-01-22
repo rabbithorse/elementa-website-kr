@@ -43,6 +43,9 @@
         currentRotateX += (targetRotateX - currentRotateX) * ease;
         currentRotateY += (targetRotateY - currentRotateY) * ease;
 
+        /* [OSJ : 2026-01-22] 카드가 없는 경우 오류 예외처리 */
+        if(!card.value) return;
+
         card.value.style.transform = `rotateX(${currentRotateX}deg) rotateY(${currentRotateY}deg) translate(${currentX}px, ${currentY}px)`;
         
         
