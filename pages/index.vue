@@ -8,18 +8,20 @@
           <source src="~/assets/videos/main-logo-ani.mp4" type="video/mp4" />
         </video>
       </div>
-      <div ref="videoWrap" class="video-layer video-layer--main z-[1] overflow-hidden">
-        <span ref="videoWrapLayer" class="bg-video-layer"></span>
-        <video autoplay playsinline muted loop ref="videoBigShape">
-          <source src="~/assets/videos/main-fly.mp4" type="video/mp4" />
-        </video>
-        <span class="line line-before"></span>
-        <span class="line line-after"></span>
-      </div>
-      <div ref="videoSubWrap" class="video-layer video-layer--sub z-[1] overflow-hidden">
-        <img src="~/assets/images/main/main-war.jpg" alt="" ref="videoSmallShape">
-        <span class="line line-before"></span>
-        <span class="line line-after"></span>
+      <div class="w-[71.5%] h-full absolute right-[-10%]">
+        <div ref="videoWrap" class="video-layer video-layer--main z-[1] overflow-hidden">
+          <span ref="videoWrapLayer" class="bg-video-layer"></span>
+          <video autoplay playsinline muted loop ref="videoBigShape">
+            <source src="~/assets/videos/main-fly.mp4" type="video/mp4" />
+          </video>
+          <span class="line line-before"></span>
+          <span class="line line-after"></span>
+        </div>
+        <div ref="videoSubWrap" class="img-layer img-layer--sub z-[1] overflow-hidden">
+          <img src="~/assets/images/main/main-war.png" alt="" ref="videoSmallShape">
+          <span class="line line-before"></span>
+          <span class="line line-after"></span>
+        </div>
       </div>
       <div class="intro-section h-full" ref="introSection">
         <Container class="h-full">
@@ -835,7 +837,7 @@ function initAnimation() {
       x: '3%',
       opacity: 0,
       scale: 1,
-      clipPath: 'polygon(46% 0%, 74.5% 0%, 57.5% 100%, 29% 100%)',
+      clipPath: 'polygon(46% 0%, 74.22% 0%, 57.5% 100%, 29% 100%)',
     });
 
     const introTl = $gsap.timeline({
@@ -862,7 +864,7 @@ function initAnimation() {
       ease: 'none',
     }, 0)
     .to(videoWrap.value, {
-      x: '0%',
+      x: '0',
       opacity: 1,
       duration: 2,
       ease: 'none',
@@ -908,7 +910,7 @@ function initAnimation() {
         tl.to(videoWrap.value,
           {
             clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-            scale: 1.4,
+            scale: 1.6,
             
             scrollTrigger: {
               end: () => "+=100%",
@@ -925,13 +927,12 @@ function initAnimation() {
             scrub: 1,
           }
         }, 0)
-        .fromTo(videoSubWrap.value, 
-        {
-          clipPath: 'polygon(46% 0%, 74.5% 0%, 57.5% 100%, 29% 100%)',
-          scale: 1,
+        .fromTo(videoSubWrap.value, {
+          xPercent: 0,
+          clipPath: 'polygon(36% 0%, 100% 0%, 64% 100%, 0% 100%)',
         },
         {
-          xPercent: 100,
+          xPercent: 200,
           clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
           scrollTrigger: {
             end: () => "+=100%",
@@ -1562,7 +1563,9 @@ onMounted(async () => {
   })
 
   requestAnimationFrame(() => {
-    initAnimation()
+    setTimeout(() => {
+      initAnimation()
+    }, 500);
     $ScrollTrigger.refresh(true)
   })
 

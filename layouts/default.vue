@@ -1,5 +1,7 @@
 <template>
   <div>
+    <LoadingScreen />
+    
     <NavigationHeader />
 
     <main class="main">

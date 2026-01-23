@@ -281,7 +281,7 @@
     //       })
 
     // 임시 데이터 생성
-    await new Promise(r => setTimeout(r, 800));
+    await new Promise(r => setTimeout(r, 600));
 
     const mediaNewItems = Array.from({ length: pageSize }, (_, i) => ({
       id: (page.value - 1) * pageSize + i,
