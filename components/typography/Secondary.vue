@@ -7,14 +7,18 @@
 </template>
 
 <script setup>
-  import { ref, onMounted, onBeforeUnmount } from 'vue'
+  import { ref, onMounted, onBeforeUnmount, computed } from 'vue'
   import { useNuxtApp } from '#app'
+  import { useRoute } from 'vue-router'
 
+  const route = useRoute()
   const { $gsap, $ScrollTrigger } = useNuxtApp()
   const secondaryCharWrap = ref(null);
   const secondaryChar = ref(null);
 
   let ctx;
+  let resizeTimeout;
+  
   onBeforeUnmount(() => {
     if (ctx) {
       ctx.revert();
@@ -23,7 +27,7 @@
     }
   });
 
-  const SecondaryAnimation = () => {
+  const secondaryAnimation = () => {
     requestAnimationFrame(() => {
       ctx = $gsap.context(() => {
         $ScrollTrigger.matchMedia({
@@ -72,14 +76,40 @@
     })
   }
 
+  const isMainPage = computed(() => route.path === '/')
+
   onMounted(() => {
-    if (document.readyState === 'complete') {
-      SecondaryAnimation();
-    } else {
-      window.addEventListener('load', () => {
-        SecondaryAnimation();
+    if (isMainPage.value) {
+      console.log('메인페이지입니다.');
+      
+      const minTimeout = new Promise(resolve => setTimeout(resolve, 2000));
+      const loadComplete = new Promise(resolve => {
+        if (document.readyState === 'complete') resolve();
+        else window.addEventListener('load', resolve, { once: true });
       });
+
+      Promise.all([minTimeout, loadComplete]).then(() => {
+        secondaryAnimation();
+      });
+
+    } else {
+      console.log('서브페이지입니다.');
+      secondaryAnimation();
     }
+
+
+    const resizeObserver = new ResizeObserver(() => {
+      clearTimeout(resizeTimeout);
+    });
+
+    resizeObserver.observe(secondaryCharWrap.value);
+
+    onUnmounted(() => {
+      clearTimeout(resizeTimeout);
+      resizeObserver.disconnect();
+      
+      ctx?.revert();
+    });
     
   });
 

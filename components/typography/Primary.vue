@@ -7,19 +7,19 @@
 </template>
 
 <script setup>
-  import { ref, onMounted, onUnmounted } from 'vue'  
+  import { ref, onMounted, onUnmounted, computed } from 'vue'  
   import { useNuxtApp } from '#app'
+  import { useRoute } from 'vue-router'
 
   const { $gsap, $ScrollTrigger, $lenis } = useNuxtApp();
 
-
+  const route = useRoute()
   const primaryCharWrap = ref([]);
   const primaryChar = ref(null);
-  let scrollTriggerInstance = null;
 
   let ctx
   let resizeTimeout;
-  let isFirstLoad = true;
+
   onBeforeUnmount(() => {
     if (ctx) {
       ctx.revert();
@@ -75,17 +75,27 @@
     })
   }
 
-  onMounted(() => {    
-    if (document.readyState === 'complete') {
-      primaryAnimation();
-    } else {
-      window.addEventListener('load', () => {
+  const isMainPage = computed(() => route.path === '/')
+
+  onMounted(() => {
+    if (isMainPage.value) {
+      // 메인 페이지 로드 대기
+      const minTimeout = new Promise(resolve => setTimeout(resolve, 2000));
+      const loadComplete = new Promise(resolve => {
+        if (document.readyState === 'complete') resolve();
+        else window.addEventListener('load', resolve, { once: true });
+      });
+
+      Promise.all([minTimeout, loadComplete]).then(() => {
         primaryAnimation();
       });
+
+    } else {
+      // 서브 페이지 즉시 실행
+      primaryAnimation();
     }
     
 
-    // 이후 리사이즈 감지
     const resizeObserver = new ResizeObserver(() => {
       clearTimeout(resizeTimeout);
     });

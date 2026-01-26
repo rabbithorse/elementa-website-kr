@@ -28,11 +28,19 @@
   onMounted(() => {
     if (!isMainPage.value) return
 
-    if (document.readyState === 'complete') {
-      finishLoading()
-    } else {
-      window.addEventListener('load', finishLoading)
-    }
+    const minTimeout = new Promise((resolve) => setTimeout(resolve, 2000));
+
+    const loadComplete = new Promise((resolve) => {
+      if (document.readyState === 'complete') {
+        resolve();
+      } else {
+        window.addEventListener('load', resolve, { once: true });
+      }
+    });
+
+    Promise.all([minTimeout, loadComplete]).then(() => {
+      finishLoading();
+    });
   })
 </script>
 
@@ -51,19 +59,18 @@
   }
 
   .logo-container img {
-    width: 150px;
-    height: 150px;
-    animation: pulse 2s infinite linear;
+    width: 300px;
+    height: 300px;
+    animation: pulse 1.6s infinite linear;
     will-change: transform;
     backface-visibility: hidden;
     perspective: 1000px;
-    transform: translateZ(0);
     contain: strict;
   }
 
   @keyframes pulse {
-    0%, 100%  { transform: scale(1); }
-    50% { transform: scale(1.05); }
+    0%, 100%  { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(0, 0, 0) scale(1.05); }
   }
 
   .fade-leave-active {
@@ -77,8 +84,8 @@
 
   @media (max-width: 768px) {
     .logo-container img {
-      width: 90px;
-      height: 90px;
+      width: 110px;
+      height: 110px;
     }
   }
 

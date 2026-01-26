@@ -1032,7 +1032,7 @@ function initAnimation() {
         let isAnimating = false
         let wheelAccum = 0
 
-        const WHEEL_THRESHOLD = 180
+        const WHEEL_THRESHOLD = 120
         const STEP_COUNT = animations.length
         const STEP_SCROLL = 220
 
@@ -1148,7 +1148,7 @@ function initAnimation() {
           }
         }, 0)
         .to('.line-before', {
-          x: "-190%",
+          x: "-200%",
           rotation: "-17deg",
           ease: 'power2.out',
           scrollTrigger: {
@@ -1562,23 +1562,17 @@ onMounted(async () => {
     lockAxis: true
   })
 
-  
-  if (document.readyState === 'complete') {
-    requestAnimationFrame(() => {
-      initAnimation()
+  const minTimeout = new Promise(resolve => setTimeout(resolve, 2000));
+  const loadComplete = new Promise(resolve => {
+    if (document.readyState === 'complete') resolve();
+    else window.addEventListener('load', resolve, { once: true });
+  });
 
-      $ScrollTrigger.refresh(true)
-    });
-  } else {
-    requestAnimationFrame(() => {
-      window.addEventListener('load', () => {
-        initAnimation()
-      })
+  Promise.all([minTimeout, loadComplete]).then(() => {
+    initAnimation();
 
-      $ScrollTrigger.refresh(true)
-    })
-  }
-  
+    $ScrollTrigger.refresh(true)
+  });
   
 
   window.addEventListener('resize', onResize)
