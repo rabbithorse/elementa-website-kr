@@ -53,7 +53,7 @@
   .logo-container img {
     width: 150px;
     height: 150px;
-    animation: pulse 1.5s infinite linear;
+    animation: pulse 2s infinite linear;
     will-change: transform;
     backface-visibility: hidden;
     perspective: 1000px;
@@ -62,8 +62,8 @@
   }
 
   @keyframes pulse {
-    0%, 100%  { transform: scale(0.95); }
-    50% { transform: scale(1); }
+    0%, 100%  { transform: scale(1); }
+    50% { transform: scale(1.05); }
   }
 
   .fade-leave-active {

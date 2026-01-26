@@ -1562,12 +1562,24 @@ onMounted(async () => {
     lockAxis: true
   })
 
-  requestAnimationFrame(() => {
-    setTimeout(() => {
+  
+  if (document.readyState === 'complete') {
+    requestAnimationFrame(() => {
       initAnimation()
-    }, 500);
-    $ScrollTrigger.refresh(true)
-  })
+
+      $ScrollTrigger.refresh(true)
+    });
+  } else {
+    requestAnimationFrame(() => {
+      window.addEventListener('load', () => {
+        initAnimation()
+      })
+
+      $ScrollTrigger.refresh(true)
+    })
+  }
+  
+  
 
   window.addEventListener('resize', onResize)
   window.addEventListener('scroll', handleScrollTopReset, { passive: true })

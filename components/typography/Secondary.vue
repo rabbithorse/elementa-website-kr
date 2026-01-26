@@ -23,51 +23,64 @@
     }
   });
 
-  onMounted(() => {
-    ctx = $gsap.context(() => {
-      $ScrollTrigger.matchMedia({
-        "(min-width: 1024px)": function() {
-          const secondaryTl = $gsap.timeline({
-            scrollTrigger: {
-              trigger: secondaryCharWrap.value,
-              start: "top 90%",
-              end: "bottom 40%",
-              //markers: true,
-              //scrub: true,
-              scroller: window,
-              invalidateOnRefresh: true,
-            },
-          });
-          secondaryTl.to(secondaryChar.value, {
-            y: '0%',
-            duration: 3,
-            rotateX: 0,
-            ease: 'power4.out',
-            stagger: 0.04
-          }, "+=0.4");
-        },
-        "(max-width: 1024px)": function() {
-          const secondaryTl = $gsap.timeline({
-            scrollTrigger: {
-              trigger: secondaryCharWrap.value,
-              start: "top 98%",
-              end: "bottom 40%",
-              //markers: true,
-              //scrub: true,
-              scroller: window,
-              invalidateOnRefresh: true,
-            },
-          });
-          secondaryTl.to(secondaryChar.value, {
-            y: '0%',
-            duration: 2,
-            rotateX: 0,
-            ease: 'power4.out',
-            stagger: 0.04
-          }, 0);
-        },
+  const SecondaryAnimation = () => {
+    requestAnimationFrame(() => {
+      ctx = $gsap.context(() => {
+        $ScrollTrigger.matchMedia({
+          "(min-width: 1024px)": function() {
+            const secondaryTl = $gsap.timeline({
+              scrollTrigger: {
+                trigger: secondaryCharWrap.value,
+                start: "top 90%",
+                end: "bottom 40%",
+                //markers: true,
+                //scrub: true,
+                scroller: window,
+                invalidateOnRefresh: true,
+              },
+            });
+            secondaryTl.to(secondaryChar.value, {
+              y: '0%',
+              duration: 3,
+              rotateX: 0,
+              ease: 'power4.out',
+              stagger: 0.04
+            }, "+=0.4");
+          },
+          "(max-width: 1024px)": function() {
+            const secondaryTl = $gsap.timeline({
+              scrollTrigger: {
+                trigger: secondaryCharWrap.value,
+                start: "top 98%",
+                end: "bottom 40%",
+                //markers: true,
+                //scrub: true,
+                scroller: window,
+                invalidateOnRefresh: true,
+              },
+            });
+            secondaryTl.to(secondaryChar.value, {
+              y: '0%',
+              duration: 2,
+              rotateX: 0,
+              ease: 'power4.out',
+              stagger: 0.04
+            }, 0);
+          },
+        });
       });
-    });
+    })
+  }
+
+  onMounted(() => {
+    if (document.readyState === 'complete') {
+      SecondaryAnimation();
+    } else {
+      window.addEventListener('load', () => {
+        SecondaryAnimation();
+      });
+    }
+    
   });
 
 </script>

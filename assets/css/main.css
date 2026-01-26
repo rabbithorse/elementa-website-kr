@@ -201,6 +201,7 @@ section .primary-text, section .primary-text * {line-height: 1em;}
   .line.line-after {transform: rotate(2deg); left: 55.48vw;}
   .video-layer--main {right: -12.5vw;}
   .video-layer--sub {right: -40.5vw;} */
+  .video-layer--main {width: 99vw;}
 }
 
 /* @media (min-width: 2580px) and (max-width: 3440px) {

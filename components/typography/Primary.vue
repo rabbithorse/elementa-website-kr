@@ -28,9 +28,9 @@
     }
   });
 
-  onMounted(() => {    
+  const primaryAnimation = () => {
+    requestAnimationFrame(() => {
       ctx = $gsap.context(() => {
-
         $ScrollTrigger.matchMedia({
           "(min-width: 1024px)": function() {
             const PrimaryTl = $gsap.timeline({
@@ -72,6 +72,18 @@
         });
 
       });
+    })
+  }
+
+  onMounted(() => {    
+    if (document.readyState === 'complete') {
+      primaryAnimation();
+    } else {
+      window.addEventListener('load', () => {
+        primaryAnimation();
+      });
+    }
+    
 
     // 이후 리사이즈 감지
     const resizeObserver = new ResizeObserver(() => {

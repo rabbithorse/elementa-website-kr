@@ -18,7 +18,7 @@
           </div>
           <div class="apply absolute">
             <span class="text-xs text-[#00C8EB]">100명의 지원자가 보고갔어요!</span>
-            <ButtonsBasic href="/join_us_detail" size="sm" target="_blank">지원하러 가기</ButtonsBasic>
+            <ButtonsBasic href="/join_us_detail/1" size="sm" target="_blank">지원하러 가기</ButtonsBasic>
           </div>
         </div>
       </a>
