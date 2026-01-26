@@ -488,6 +488,8 @@
   let ctx;
   let resizeTimeout;
   let isFirstLoad = true;
+  let normalizeInstance;
+
   // onBeforeUnmount(() => {
   //   if (ctx) {
   //     ctx.revert();
@@ -497,6 +499,12 @@
   // })
 
   onMounted(async () => {
+
+    normalizeInstance = $ScrollTrigger.normalizeScroll({
+      momentum: 1,
+      allowNestedScroll: true,
+      lockAxis: true
+    })
     
     const initAnimation = () => {
       ctx?.revert();
@@ -542,7 +550,8 @@
             trigger: missionSection.value,
             start: 'top top-=200',
             end: "+=1200%",
-            scrub: true,
+            scrub: 1,
+            anticipatePin: 1,
             onUpdate: (self) => {
               const p = self.progress;
 
@@ -579,19 +588,22 @@
           x: '0%'
         }, {
           x: '-250%',
-          duration: 0.6
+          duration: 0.6,
+          force3D: true,
         }, "+=0.15")
         .fromTo(missionImgWrap.value, {
           x: '300%'
         }, {
           x: '0',
-          duration: 0.15
+          duration: 0.15,
+          force3D: true
         }, "<")
         .fromTo(missionTextWrap.value, {
           x: '-103%'
         }, {
           x: '-2%',
-          duration: 0.5
+          duration: 0.5,
+          force3D: true
         }, ">-0.05");
 
         function updateZIndex(active, direction) {
@@ -610,10 +622,12 @@
           cardsArray.forEach((c, i) => {
             if (i !== idx) {
               $gsap.set(c.querySelector('.card-figure-big'), {
-                y: "-100%", x: "45%"
+                y: "-100%", x: "45%",
+                force3D: true
               });
               $gsap.set(c.querySelector('.card-figure-small'), {
-                y: "100%", x: "-45%"
+                y: "100%", x: "-45%",
+                force3D: true
               });
             }
           });
