@@ -132,7 +132,7 @@
   })
 
   import Container from '~/components/Container.vue';
-  import { ref, onMounted, onBeforeUnmount } from 'vue'
+  import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
   import { useNuxtApp } from '#app'
 
   const { $gsap, $ScrollTrigger } = useNuxtApp()
@@ -169,7 +169,7 @@
     //       })
 
     // 임시 데이터 생성
-    await new Promise(r => setTimeout(r, 600));
+    await new Promise(r => setTimeout(r, 200));
 
     const newItems = Array.from({ length: pageSize }, (_, i) => ({
       id: (page.value - 1) * pageSize + i,
@@ -177,7 +177,7 @@
       url: `/join_us_detail/${(page.value - 1) * pageSize + i}`, // 임시 URL
       dday: `D-${Math.floor(Math.random() * 10) + 1}`, // 임시 D-day
       title: `채용 제목 ${(page.value - 1) * pageSize + i}`, // 임시 제목
-      desc: `채용 설명 ${(page.value - 1) * pageSize + i}`, // 임시 설명
+      desc: `경력직 ㆍ 경력 2-4년`, // 임시 설명
       applicants: `${Math.floor(Math.random() * 100)}명의 지원자가 보고갔어요!`, // 임시 지원자 수
       recruitEnd: Math.random() < 0.5, // 임시로 채용 마감 여부 설정
       date: '25.10.01~25.10.30' // 임시 채용 기간
@@ -194,6 +194,7 @@
 
     nextTick(() => {
       initCardAnimation();
+      $ScrollTrigger.refresh();
     })
   }
   
