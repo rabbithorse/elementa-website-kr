@@ -3,7 +3,7 @@
     <section class="subSection relative" ref="subSection">
       <div class="intro-section h-screen flex items-center" ref="introSection">
         <div class="intro-bg w-full h-full absolute top-0 left-0 z-0">
-          <video autoplay muted loop playsinline class="object-cover w-full xl:max-w-full max-w-none xl:h-screen h-svh">
+          <video autoplay muted loop playsinline preload="metadata" class="object-cover w-full xl:max-w-full max-w-none xl:h-screen h-svh">
             <source src="@/assets/videos/company_visuals.mp4">
           </video>
         </div>

@@ -4,36 +4,35 @@
     v-for="(accordionItem, index) in accordionItems" :key="index"
     :class="{ opened: openedIndex === index, [`locked locked${index}`]: accordionItem.locked }"
   >
-    <EffectGlassLiquid class="accordion-glass xl:block hidden" />
-    <EffectGlass blur="blurred6" class="card-glass glass-blur absolute xl:hidden block" />
-    <div v-if="!accordionItem.locked" class="accordion-trigger">
+    <div 
+      class="content-bg absolute xl:left-[-20vw] xl:top-0 xl:h-full left-0 top-[-20vh] overflow-hidden transition-opacity duration-1000 ease-in-out"
+      :class="openedIndex === index ? 'opacity-0 xl:w-[120vw] w-screen h-[120vh]' : 'opacity-0 xl:w-0 w-screen h-0'"
+    >
+      <video autoplay webkit-playsinline playsinline muted loop preload="metadata" class="w-full h-full object-cover">
+        <source :src="`${accordionItem.videoSrc}`" type="video/mp4">
+      </video>
+    </div>
+    <!-- <EffectGlassLiquid class="accordion-glass xl:block hidden" />
+    <EffectGlass blur="blurred6" class="card-glass glass-blur absolute xl:hidden block" /> -->
+    <div v-if="!accordionItem.locked" class="accordion-trigger z-[1]">
       <button @click="openAccordion(index)">
-        <span class="text-white z-[1]">0{{ index + 1 }}</span>
+        <span class="text-white">0{{ index + 1 }}</span>
         <h3 class="text-white">{{ accordionItem.title }}</h3>
       </button>
     </div>
-    <button v-else class="accordion-trigger">
-      <span class="locked-title-icon z-[1]"></span>
-      <span class="locked-title-text z-[1]"></span>
+    <button v-else class="accordion-trigger z-[1]">
+      <span class="locked-title-icon"></span>
+      <span class="locked-title-text"></span>
     </button>
     <div 
-      class="accordion-content xl:flex xl:mt-0 mt-auto transform-none"
+      class="accordion-content xl:flex xl:mt-0 mt-auto transform-none overflow-hidden"
       :class="{'w-0 max-xl:h-0 hidden': accordionItem.locked }"
     >
-      <div 
-        class="content-bg absolute left-0 top-0 xl:h-full h-screen overflow-hidden transition-[width] duration-500 ease-in-out"
-        :class="openedIndex === index ? 'w-screen' : 'w-0'"
-      >
-        <video autoplay playsinline muted loop class="w-full h-full object-cover">
-          <source :src="`${accordionItem.videoSrc}`" type="video/mp4">
-        </video>
-      </div>
-
-      <div class="content-text xl:w-[440px] xl:h-full xl:ml-auto xl:mt-0 mt-auto w-full h-auto ml-0 relative overflow-hidden shrink-0">
+      <div class="content-text xl:h-full xl:ml-auto xl:mt-0 mt-auto h-auto ml-0 relative overflow-hidden shrink-0">
         <EffectGlassLiquid class="xl:h-full xl:block hidden" blur="blurred6" />
         <EffectGlass blur="blurred6" class="card-glass glass-blur absolute xl:hidden block" />
         <div class="flex flex-col justify-end xl:gap-y-[3.125rem] gap-y-5 xl:pb-[5.625rem] pt-4 pb-9 xl:px-8 sm:px-7 px-5 h-full relative z-[1]">
-          <div class="content-title relative title-img xl:w-[52%] w-56 aspect-229/75">
+          <div class="content-title relative title-img xl:w-[195px] sm:w-56 w-48 aspect-229/75">
             <EffectFloatingDots />
             <img src="~/assets/images/main/text-game-silverpalace.png" alt="icon" />
           </div>
@@ -55,7 +54,7 @@
   import { ref } from 'vue';
   import silverpalace from '@/assets/videos/main-game-silverpalace.mp4';
   import silverpalace2 from '@/assets/videos/main-fly.mp4';
-import accordion from '~/plugins/accordion';
+  import accordion from '~/plugins/accordion';
 
   const accordionItems = ref([
     { 
@@ -69,7 +68,7 @@ import accordion from '~/plugins/accordion';
       locked: false},
     { title: "", videoSrc: "", subtitle: "", content1: "", content2: "", isOpen: false, locked: true },
     { title: "", videoSrc: "", subtitle: "", content1: "", content2: "", isOpen: false, locked: true },
-    { title: "", videoSrc: "", subtitle: "", content1: "", content2: "", isOpen: false, locked: true },
+    { title: "", videoSrc: "", subtitle: "", content1: "", content2: "", isOpen: false, locked: true }
   ])
 
 const openedIndex = ref(
@@ -100,4 +99,8 @@ const openAccordion = (index) => {
     opacity: 0;
     z-index: -10;
   }
+
+  .content-bg {opacity: 0}
+
+  .opened .content-bg {opacity: 1;}
 </style>

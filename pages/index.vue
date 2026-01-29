@@ -4,14 +4,14 @@
       
       <div class="blur-overlay absolute inset-0"></div>
       <div ref="bgVideoRef" class="bg-video opacity-0">
-        <video class="bg-video--content" autoplay playsinline muted loop preload="metadata">
+        <video class="bg-video--content" autoplay webkit-playsinline playsinline muted loop preload="metadata">
           <source src="~/assets/videos/main-logo-ani.mp4" type="video/mp4" />
         </video>
       </div>
       <div class="w-[71.5%] h-full absolute right-[-10%]">
         <div ref="videoWrap" class="video-layer video-layer--main z-[1] overflow-hidden">
           <span ref="videoWrapLayer" class="bg-video-layer"></span>
-          <video autoplay playsinline muted loop ref="videoBigShape">
+          <video autoplay webkit-playsinline playsinline muted loop preload="metadata" ref="videoBigShape">
             <source src="~/assets/videos/main-fly.mp4" type="video/mp4" />
           </video>
           <span class="line line-before"></span>
@@ -525,7 +525,7 @@
             </span>
             <div class="slider-img flex items-center justify-center mt-3 md:rounded-[10px] rounded-md" ref="sliderImg">
               <!-- <img src="~assets/images/main/elementakorea-center-img.png" alt="" class="block 3xl:w-auto xl:w-[17vw] lg:w-[22vw] w-[28vw]"> -->
-              <video autoplay playsinline muted loop class="block 3xl:w-auto xl:w-[17vw] lg:w-[22vw] w-[28vw] max-w-none">
+              <video autoplay webkit-playsinline playsinline muted loop preload="metadata" class="block 3xl:w-auto xl:w-[17vw] lg:w-[22vw] w-[28vw] max-w-none">
                 <source src="~assets/videos/main-face.mp4" type="video/mp4" >
               </video>
             </div>
@@ -539,17 +539,17 @@
     </section>
     <section class="wetheworld-section flex items-center justify-center overflow-hidden md:h-screen h-svh" ref="wetheworldSection">
       <div class="wetheworldbg-video01 opacity-0 invisible absolute inset-0 z-0" ref="wetheworldbg1">
-        <video class="bg-video--content w-full h-full object-cover" autoplay playsinline muted loop preload="metadata">
+        <video class="bg-video--content w-full h-full object-cover" autoplay webkit-playsinline playsinline muted loop preload="metadata">
           <source src="~/assets/videos/main-wetheworld-inspire.mp4" type="video/mp4" />
         </video>
       </div>
       <div class="wetheworldbg-video02 opacity-0 invisible absolute inset-0 z-0" ref="wetheworldbg2">
-        <video class="bg-video--content w-full h-full object-cover" autoplay playsinline muted loop preload="metadata">
+        <video class="bg-video--content w-full h-full object-cover" autoplay webkit-playsinline playsinline muted loop preload="metadata">
           <source src="~/assets/videos/main-wetheworld-connect.mp4" type="video/mp4" />
         </video>
       </div>
       <div class="wetheworldbg-video03 opacity-0 invisible absolute inset-0 z-0" ref="wetheworldbg3">
-        <video class="bg-video--content w-full h-full object-cover" autoplay playsinline muted loop preload="metadata">
+        <video class="bg-video--content w-full h-full object-cover" autoplay webkit-playsinline playsinline muted loop preload="metadata">
           <source src="~/assets/videos/main-wetheworld-change.mp4" type="video/mp4" />
         </video>
       </div>

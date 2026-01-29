@@ -82,6 +82,10 @@
     opacity: 0;
   }
 
+  @media (max-width: 1279px) {
+    .logo-container img {width: 200px; height: 200px;}
+  }
+
   @media (max-width: 768px) {
     .logo-container img {
       width: 110px;
